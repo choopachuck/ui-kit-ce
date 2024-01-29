@@ -1,0 +1,25 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { CustomizedTableCell } from '@v-uik/table/examples/CustomizedTableCell'
+import RawCustomizedTableCell from '!!raw-loader!@v-uik/table/examples/CustomizedTableCell.tsx'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Таблица с пользовательским содержимом ячеек',
+  ])}
+  component={Table}
+/>
+
+# Таблица с пользовательским содержимом ячеек
+
+В объекте описания колонки `columns` с помощью функции `renderCellContent` можно указать, как ячейке
+отрисовывать её содержимое.
+
+<Canvas withSource="none">
+  <CustomizedTableCell />
+</Canvas>
+
+<Source language="tsx" code={RawCustomizedTableCell} />

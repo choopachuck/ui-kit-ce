@@ -1,0 +1,29 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { FixedColumnsStory } from '@v-uik/table/examples/FixedColumnsStory'
+import RawFixedColumnsStory from '!!raw-loader!@v-uik/table/examples/FixedColumnsStory.tsx'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Таблица с фиксированными столбцами',
+  ])}
+  component={Table}
+/>
+
+# Таблица с фиксированными столбцами
+
+Чтобы зафиксировать столбец при горизонтальном скролле, необходимо добавить в соответствующий объект
+columns поля `fixed` (со значением `start` или `end`, определяющим сторону фиксации) и `width`
+(ширина колонки в пикселях). Для корректного отображения остальных колонок рекомендуется задать ширину
+либо каждой колонке по-отдельности, либо таблице целиком. Функциональность основана на css-свойстве
+`position: sticky`, поэтому в IE 11 она работать не будет. Также, на данный момент, эта функциональность
+не работает со сложным (многострочным) заголовком таблицы.
+
+<Canvas withSource="none">
+  <FixedColumnsStory />
+</Canvas>
+
+<Source language="tsx" code={RawFixedColumnsStory} />

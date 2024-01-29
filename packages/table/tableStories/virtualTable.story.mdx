@@ -1,0 +1,26 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { VirtualTableStory } from '@v-uik/table/examples/VirtualTableStory.tsx'
+import RawVirtualTableStory from '!!raw-loader!@v-uik/table/examples/VirtualTableStory.tsx'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Таблица с вирутализацией',
+  ])}
+  component={Table}
+/>
+
+# Таблица с вирутализацией
+
+Таблица с виртуализацией необходима для оптимальной отрисовки больших данных.
+В качестве библиотеки вирутализации была взята библиотека [react-window](https://github.com/bvaughn/react-window).
+Для реализации виртуализации необходимо заменить компонент `Body` на кастомизированный компонент с виртуализацией и передать в `components` (см. пример ниже).
+
+<Canvas withSource="none">
+  <VirtualTableStory />
+</Canvas>
+
+<Source language="tsx" code={RawVirtualTableStory} />

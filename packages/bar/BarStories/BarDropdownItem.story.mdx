@@ -1,0 +1,36 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { BarDropdownItem } from '@v-uik/bar'
+import { BarMenuItemExample, BarDropdownItemClassesDummy } from '../examples'
+import RawBarMenuItemExample from '!!raw-loader!@v-uik/bar/examples/BarMenuItemExample'
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Bar', 'BarDropdownItem'])}
+  component={BarDropdownItem}
+/>
+
+# BarDropdownItem
+
+Компонент в основном применяется для отображения ссылок, которые используются для быстрой навигации по приложению.
+
+# BarDropdownItem API
+
+<ArgsTable of={BarDropdownItem} />
+
+## Сlasses
+
+<ArgsTable of={BarDropdownItemClassesDummy} />
+
+# import
+
+```ts
+import { BarDropdownItem } from '@v-uik/bar'
+```
+
+# Пример использования
+
+<Canvas withSource="none">
+  <BarMenuItemExample />
+</Canvas>
+
+<Source language="tsx" code={RawBarMenuItemExample} />

@@ -1,0 +1,217 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Badge } from '@v-uik/badge'
+import { Button } from '@v-uik/button'
+import {
+  createTitle,
+  COMPONENTS,
+  DocsAlert,
+  createStory,
+} from '../../docs/showroom/config'
+import { BadgeToggle, Canvas as CanvasStory } from '@v-uik/badge/examples'
+import RawBadgeToggle from '!!raw-loader!@v-uik/badge/examples/BadgeToggle'
+import RawCanvas from '!!raw-loader!@v-uik/badge/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'Badge', 'Badge'])}
+  component={Badge}
+/>
+
+<Story
+  name="Badge"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Badge
+
+Badge генерирует маленький значок в углу своего дочернего элемента.
+
+## import
+
+```ts
+import { Badge } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Badge } from '@v-uik/badge'
+```
+
+## Автономный значок без дочерних компонентов (Standalone)
+
+Используется для отображения контента в одном из доступных цветовых состояний, например, для отображения информации о новых уведомлениях.
+
+<Canvas>
+  <Badge content={1} />
+  <Badge content={1} status="error" />
+  <Badge content={1} status="info" />
+  <Badge content={1} status="neutral" />
+  <Badge content={1} status="warning" />
+  <Badge content={1} status="success" />
+  <Badge disabled content={1} />
+</Canvas>
+
+<DocsAlert>
+  Использование цвета для обозначения статуса обеспечивает только визуальную
+  индикацию, которую не смогут получить пользователи программ чтения с экрана.
+  <br />
+  <br />
+  Убедитесь, что информация, обозначенная цветом, либо очевидна из контекста, либо
+  доступна для screen reader с помощью альтернативных средств, таких как атрибут{' '}
+  <b>aria-description</b>
+</DocsAlert>
+
+## Простые значки для компонента кнопки
+
+На примере кнопки (целевой элемент, к которому применяется значок, может быть любым) показано отображение значков с использованием разных цветов.
+
+<Canvas>
+  <Badge content={10}>
+    <Button>Notifications</Button>
+  </Badge>
+  <Badge content={10} status="success">
+    <Button kind="outlined">Notifications</Button>
+  </Badge>
+  <Badge content={10} status="error">
+    <Button kind="ghost">Notifications</Button>
+  </Badge>
+  <Badge content={10} status="info">
+    <Button>Notifications</Button>
+  </Badge>
+  <Badge content={10} status="warning">
+    <Button kind="outlined">Notifications</Button>
+  </Badge>
+  <Badge disabled content={10}>
+    <Button kind="ghost" disabled>
+      Notifications
+    </Button>
+  </Badge>
+</Canvas>
+
+## Превышение максимального значения
+
+При превышении максимального значения компонента Badge отрисовывается вспомогательный символ «+».
+
+<Canvas>
+  <Badge content={10} max={9}>
+    <Button>Notifications</Button>
+  </Badge>
+</Canvas>
+
+## Видимость значка
+
+Когда свойство `content` имеет пустое значение — _0, undefined, null, '', false_ — значок исчезает.
+
+<Canvas withSource="none">
+  <BadgeToggle />
+</Canvas>
+
+<Source language="tsx" code={RawBadgeToggle} />
+
+Если необходимо, чтобы значок отображался всегда, используйте свойство `showZero`.
+
+<Canvas>
+  <Badge content={0} showZero>
+    <div
+      style={{
+        height: '40px',
+        width: '40px',
+        backgroundColor: 'bisque',
+      }}
+    ></div>
+  </Badge>
+</Canvas>
+
+## Значок-точка
+
+Свойство `dot` превращает значок в точку. Это можно использовать как уведомление, что что-то изменилось без количества.
+
+**Обратите внимание, свойство `dot` не отображает значок с пустым контентом.
+Убедитесь, что `content` не является пустым значением или указано свойство `showZero`**.
+
+<Canvas>
+  <Badge content={1} dot>
+    <div
+      style={{
+        height: '40px',
+        width: '40px',
+        backgroundColor: 'bisque',
+      }}
+    ></div>
+  </Badge>
+  <Badge dot showZero>
+    <div
+      style={{
+        height: '40px',
+        width: '40px',
+        backgroundColor: 'bisque',
+      }}
+    ></div>
+  </Badge>
+</Canvas>
+
+## Выравнивание компонента Badge
+
+Когда значок отображается относительно дочернего элемента, можно управлять его позицией с помощью свойства `position`,
+а также производить смещение по вертикали и горизонтали с помощью свойств `horizontalOffset` и `verticalOffset` соответственно.
+
+<Canvas>
+  <Badge content={1} position="top-right">
+    <div
+      style={{
+        height: '40px',
+        width: '40px',
+        backgroundColor: 'bisque',
+      }}
+    ></div>
+  </Badge>
+  <Badge content={1} position="bottom-right">
+    <div
+      style={{
+        height: '40px',
+        width: '40px',
+        backgroundColor: 'bisque',
+      }}
+    ></div>
+  </Badge>
+  <Badge content={1} position="top-left">
+    <div
+      style={{
+        height: '40px',
+        width: '40px',
+        backgroundColor: 'bisque',
+      }}
+    ></div>
+  </Badge>
+  <Badge content={1} position="bottom-left">
+    <div
+      style={{
+        height: '40px',
+        width: '40px',
+        backgroundColor: 'bisque',
+      }}
+    ></div>
+  </Badge>
+</Canvas>
+
+## Доступность
+
+Рекомендуется использовать дополнительное описание при использовании компонента Badge с кнопкой. Например, атрибут `aria-label`.
+
+<Canvas>
+  <Badge content={10}>
+    <Button aria-label="10 уведомлений">Notifications</Button>
+  </Badge>
+</Canvas>

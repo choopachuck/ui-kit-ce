@@ -1,0 +1,23 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Container } from '@v-uik/container'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { ClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Container', 'API'])}
+  component={Container}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Container API
+
+<ArgsTable of={Container} />
+
+# Classes
+
+<ArgsTable of={ClassesDummy} />

@@ -1,0 +1,26 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Grid, GridItem } from '@v-uik/grid'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Grid', 'API'])}
+  component={Grid}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Grid API
+
+<ArgsTable of={Grid} />
+
+# GridItem API
+
+<ArgsTable of={GridItem} />

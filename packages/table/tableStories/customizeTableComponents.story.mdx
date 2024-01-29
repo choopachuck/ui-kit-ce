@@ -1,0 +1,24 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { CustomizeTableComponents } from '@v-uik/table/examples/CustomizeTableComponents'
+import RawCustomizeTableComponents from '!!raw-loader!@v-uik/table/examples/CustomizeTableComponents.tsx'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Таблица с переопределенными компонентами',
+  ])}
+  component={Table}
+/>
+
+# Таблица с переопределенными компонентами
+
+С помощью свойства `components` можно переопределить, как будут отрисованы элементы таблицы.
+
+<Canvas withSource="none">
+  <CustomizeTableComponents />
+</Canvas>
+
+<Source language="tsx" code={RawCustomizeTableComponents} />

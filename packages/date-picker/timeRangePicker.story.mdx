@@ -1,0 +1,110 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { TimePicker } from '@v-uik/date-picker'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { TimeRangePickerStory } from './examples/TimeRangePicker/TimeRangePickerStory'
+import { RangedCustomInput } from './examples/TimeRangePicker/RangedCustomInput'
+import { TimeRange12HoursFormat } from './examples/TimeRangePicker/TimeRange12HoursFormat'
+import RawTimeRangePickerStory from '!!raw-loader!./examples/TimeRangePicker/TimeRangePickerStory'
+import RawRangedCustomInput from '!!raw-loader!./examples/TimeRangePicker/RangedCustomInput'
+import RawTimeRange12HoursFormat from '!!raw-loader!./examples/TimeRangePicker/TimeRange12HoursFormat'
+
+import { TimeRangePickerSizeStory } from './examples/TimeRangePicker/TimeRangePickerSizeStory'
+import RawTimeRangePickerSizeStory from '!!raw-loader!./examples/TimeRangePicker/TimeRangePickerSizeStory'
+
+import { TimeRangePickerIcons } from './examples/TimeRangePicker/TimeRangePickerIcons'
+import RawTimeRangePickerIcons from '!!raw-loader!./examples/TimeRangePicker/TimeRangePickerIcons'
+
+import TimeRangePickerCanvas from './examples/TimeRangePicker/TimeRangePickerCanvas'
+import RawCanvas from '!!raw-loader!@v-uik/date-picker/examples/TimeRangePicker/TimeRangePickerCanvas'
+
+export const story = createStory(TimeRangePickerCanvas, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'TimePicker', 'TimeRangePicker'])}
+  component={TimePicker.RangePicker}
+/>
+
+<Story
+  name="TimeRangePicker"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+  decorators={[
+    (Story) => (
+      <div style={{ height: '150vh' }}>
+        <Story />
+      </div>
+    ),
+  ]}
+>
+  {story.component}
+</Story>
+
+# TimeRangePicker
+
+Компонент выбора диапазона времени
+
+## import
+
+```ts
+import { TimePicker } from '@v-uik/date-picker'
+```
+
+## Базовый пример
+
+<Canvas withSource="none">
+  <TimeRangePickerStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimeRangePickerStory} />
+
+## Размеры
+
+<Canvas withSource="none">
+  <TimeRangePickerSizeStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimeRangePickerSizeStory} />
+
+## Иконки
+
+В компонент `TimeRange` можно добалять/изменять иконки.
+Для этого необходимо в property `inputProps` передать `suffix` и `prefix`.
+
+<Canvas withSource="none">
+  <TimeRangePickerIcons />
+</Canvas>
+
+<Source language="tsx" code={RawTimeRangePickerIcons} />
+
+## 12-ти часовой формат времени (AM/PM)
+
+12-и часовой формат времени включается при `baseTimePickerProps.is12HoursFormat = true`.
+
+<Canvas withSource="none">
+  <TimeRange12HoursFormat />
+</Canvas>
+
+<Source language="tsx" code={RawTimeRange12HoursFormat} />
+
+## Персонализированная настройка input с помощью renderInput
+
+<Canvas withSource="none">
+  <RangedCustomInput />
+</Canvas>
+
+<Source language="tsx" code={RawRangedCustomInput} />
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

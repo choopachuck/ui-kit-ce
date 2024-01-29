@@ -1,0 +1,30 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { MonthViewStory, MonthViewClassesDummy } from '../examples'
+import { MonthView } from '@v-uik/date-picker'
+import RawMonthViewStory from '!!raw-loader!../examples/MonthViewStory'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'DatePicker', 'MonthView'])}
+  component={MonthView}
+/>
+
+# Подкомпонент MonthView
+
+Используется для отображения месяцев.
+
+# MonthView API
+
+<ArgsTable of={MonthView} />
+
+## MonthView classes
+
+<ArgsTable of={MonthViewClassesDummy} />
+
+# Пример использования
+
+<Canvas withSource="none">
+  <MonthViewStory />
+</Canvas>
+
+<Source language="tsx" code={RawMonthViewStory} />

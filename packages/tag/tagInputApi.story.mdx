@@ -1,0 +1,23 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { TagInput } from '@v-uik/tag'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { TagInputClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'TagInput', 'API'])}
+  component={TagInput}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# TagInput API
+
+<ArgsTable of={TagInput} />
+
+# TagInput classes
+
+<ArgsTable of={TagInputClassesDummy} />

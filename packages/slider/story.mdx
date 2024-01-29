@@ -1,0 +1,104 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Slider } from '@v-uik/slider'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  WithTicks,
+  WithCustomTicks,
+  Basic,
+  Disabled,
+  Labelled,
+  WithInput,
+} from './examples'
+import RawWithTicks from '!!raw-loader!@v-uik/slider/examples/WithTicks'
+import RawWithCustomTicks from '!!raw-loader!@v-uik/slider/examples/WithCustomTicks'
+import RawBasic from '!!raw-loader!@v-uik/slider/examples/Basic'
+import RawDisabled from '!!raw-loader!@v-uik/slider/examples/Disabled'
+import RawLabelled from '!!raw-loader!@v-uik/slider/examples/Labelled'
+import RawWithInput from '!!raw-loader!@v-uik/slider/examples/WithInput'
+
+export const story = createStory(Basic, RawBasic)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Slider', 'Slider'])}
+  component={Slider}
+/>
+
+<Story
+  name="Slider"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Slider
+
+Компонент выбора значения на числовой прямой
+
+## import
+
+```ts
+import { Slider } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Slider } from '@v-uik/slider'
+```
+
+## Базовый пример компонента Slider
+
+<Canvas withSource="none">
+  <Basic />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+## Пример с визуальным отображением возможных значений в виде делений на прямой
+
+<Canvas withSource="none">
+  <WithTicks />
+</Canvas>
+
+<Source language="tsx" code={RawWithTicks} />
+
+## Пример с визуальным отображением пользовательских значений в виде делений на прямой
+
+<Canvas withSource="none">
+  <WithCustomTicks />
+</Canvas>
+
+<Source language="tsx" code={RawWithCustomTicks} />
+
+## Пример с отключением компонента Slider
+
+<Canvas withSource="none">
+  <Disabled />
+</Canvas>
+
+<Source language="tsx" code={RawDisabled} />
+
+## Пример компонента Slider с подписью
+
+<Canvas withSource="none">
+  <Labelled />
+</Canvas>
+
+<Source language="tsx" code={RawLabelled} />
+
+## Пример компонента Slider с Input
+
+<Canvas withSource="none">
+  <WithInput />
+</Canvas>
+
+<Source language="tsx" code={RawWithInput} />

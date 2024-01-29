@@ -1,0 +1,62 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Dropdown } from '@v-uik/dropdown'
+import { Button } from '@v-uik/button'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { Basic } from './examples/Basic'
+import RawBasic from '!!raw-loader!./examples/Basic'
+
+export const story = createStory(Basic, RawBasic)
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Dropdown', 'Dropdown'])}
+  component={Dropdown}
+/>
+
+<Story
+  name="Dropdown"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Dropdown
+
+Компонент `Dropdown` является более функциональной оберткой `Popup`.
+Компонент-потомок `Dropdown` становится триггером и ориентиром отображения `Popup` по действию, переданному в свойство
+`action`: hover, click, contextMenu.
+Содержимое компонента `Popup` передается в свойство `content`.
+
+## import
+
+```ts
+import { Dropdown } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Dropdown } from '@v-uik/dropdown'
+```
+
+## Dropdown, выпадающий при на нажатии на кнопку
+
+Его доступность можно настраивать аналогично компонентам Popup и Tooltip через `aria` атрибуты
+
+<Canvas withSource="none">
+  <Basic />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+## Связанные компоненты
+
+- [Popup](?path=/docs/вспомогательные-компоненты-popup-popup--popup)

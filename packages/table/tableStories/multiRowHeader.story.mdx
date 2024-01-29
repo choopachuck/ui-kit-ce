@@ -1,0 +1,25 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { MultiRowHeader } from '@v-uik/table/examples/MultiRowHeader'
+import RawMultiRowHeader from '!!raw-loader!@v-uik/table/examples/MultiRowHeader'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Сложный (многострочный) заголовок',
+  ])}
+  component={Table}
+/>
+
+# Сложный (многострочный) заголовок
+
+Для создания многострочных заголовков таблицы в объектах массива `columns` можно указать свойство `children`,
+содержащее массив объектов этого же типа.
+
+<Canvas withSource="none">
+  <MultiRowHeader />
+</Canvas>
+
+<Source language="tsx" code={RawMultiRowHeader} />

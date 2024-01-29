@@ -1,0 +1,192 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Select } from '@v-uik/select'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+  DocsAlert,
+} from '../../docs/showroom/config'
+
+import {
+  ErrorExample,
+  LimitExample,
+  CustomOptionProps,
+  HelperTextExample,
+  MultiSelectExample,
+  ErrorMultiSelectExample,
+  MaximumRowsExample,
+  MultiSelectHelperText,
+  ComplexLayout,
+  AbsolutePositioningExample,
+  PlaceholderExample,
+  Canvas as CanvasStory,
+} from './examples'
+
+import RawErrorExample from '!!raw-loader!./examples/ErrorExample'
+import RawLimitExample from '!!raw-loader!./examples/LimitExample'
+import RawCustomOptionProps from '!!raw-loader!./examples/CustomOptionProps'
+import RawHelperTextExample from '!!raw-loader!./examples/HelperTextExample'
+import RawMultiSelectExample from '!!raw-loader!./examples/MultiSelectExample'
+import RawErrorMultiSelectExample from '!!raw-loader!./examples/ErrorMultiSelectExample'
+import RawMaximumRowsExample from '!!raw-loader!./examples/MaximumRowsExample'
+import RawMultiSelectHelperText from '!!raw-loader!./examples/MultiSelectHelperText'
+import RawComplexLayout from '!!raw-loader!./examples/ComplexLayout'
+import RawCanvas from '!!raw-loader!@v-uik/select/examples/Canvas'
+import RawAbsolutePositioningExample from '!!raw-loader!@v-uik/select/examples/AbsolutePositioning'
+import RawPlaceholderExample from '!!raw-loader!@v-uik/select/examples/PlaceholderExample'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'Select', 'Select'])}
+  component={Select}
+/>
+
+<Story
+  name="Select"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Select
+
+Компонент представляет собой раскрывающийся элемент выбора опций.
+Для отрисовки выпадающего меню используется компонент Dropdown, который можно настраивать с помощью
+свойства `dropdownProps`, и List, настраиваемый с помощью `listProps`.
+
+<DocsAlert>
+  Компонент Select является стилизованной имитацией нативного html select. Если
+  вам нужны такие продвинутые функции как поиск по значениям, мультивыбор,
+  добавление опций, то используйте компонент{' '}
+  <a href="?path=/docs/поля-ввода-combobox-combobox--combo-box">ComboBox</a>
+</DocsAlert>
+<br />
+
+## import
+
+```ts
+import { Select } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Select } from '@v-uik/select'
+```
+
+## Ограничение меню по ширине компонента Select
+
+<Canvas withSource="none">
+  <LimitExample />
+</Canvas>
+
+<Source language="tsx" code={RawLimitExample} />
+
+## Индикация ошибки
+
+<Canvas withSource="none">
+  <ErrorExample />
+</Canvas>
+
+<Source language="tsx" code={RawErrorExample} />
+
+## Персонализированная настройка опций
+
+Объекты массива `options` принимают свойства компонента ListItem для более гибкой настройки.
+
+<Canvas withSource="none">
+  <CustomOptionProps />
+</Canvas>
+
+<Source language="tsx" code={RawCustomOptionProps} />
+
+## Вывод подсказки
+
+Для вывода ошибки достаточно указать `helperText` совместно с флагом `error`
+
+<Canvas withSource="none">
+  <HelperTextExample />
+</Canvas>
+
+<Source language="tsx" code={RawHelperTextExample} />
+
+## Множественный выбор
+
+Множественный выбор можно включить параметром `multiple`.
+
+<Canvas withSource="none">
+  <MultiSelectExample />
+</Canvas>
+
+<Source language="tsx" code={RawMultiSelectExample} />
+
+## Индикация ошибки при множественном выборе
+
+<Canvas withSource="none">
+  <ErrorMultiSelectExample />
+</Canvas>
+
+<Source language="tsx" code={RawErrorMultiSelectExample} />
+
+## Ограничение количества отображаемых строк
+
+Количество строк, отображаемых за один раз, можно регулировать числовым параметром `rows`.
+
+<Canvas withSource="none">
+  <MaximumRowsExample />
+</Canvas>
+
+<Source language="tsx" code={RawMaximumRowsExample} />
+
+## Вывод подсказки при множественном выборе
+
+<Canvas withSource="none">
+  <MultiSelectHelperText />
+</Canvas>
+
+<Source language="tsx" code={RawMultiSelectHelperText} />
+
+## Сложная верстка опции
+
+<Canvas withSource="none">
+  <ComplexLayout />
+</Canvas>
+
+<Source language="tsx" code={RawComplexLayout} />
+
+## Абсолютное позиционирование выпадающего меню
+
+По умолчанию все выпадающие меню маунтятся в body с position fixed.
+Для переопределения такого поведения можно воспользоваться свойством dropdownProps. <br/>
+`disablePortal` - маунтинг рядом с Select <br/>
+`strategy: 'absolute'` - изменение позиционирования c fixed на absolute
+
+<Canvas withSource="none">
+  <AbsolutePositioningExample />
+</Canvas>
+
+<Source language="tsx" code={RawAbsolutePositioningExample} />
+
+## Возможность указания placeholder через атрибут
+
+По умолчанию placeholder отображает первое значение `option` переданное в массиве `options`
+Если такое поведением вам не подходит можно передать placeholder через атрибут.
+
+<Canvas withSource="none">
+  <PlaceholderExample />
+</Canvas>
+
+<Source language="tsx" code={RawPlaceholderExample} />
+
+## Связанные компоненты
+
+- [Popup](?path=/docs/вспомогательные-компоненты-popup-popup--popup)
+- [InputLabel API](?path=/docs/поля-ввода-input-api--page#inputlabel-api)
+- [InputHelperText API](?path=/docs/поля-ввода-input-api--page#inputhelpertext-api)
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

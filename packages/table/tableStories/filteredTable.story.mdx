@@ -1,0 +1,24 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { FilteredTable } from '@v-uik/table/examples/FilteredTable'
+import RawFilteredTable from '!!raw-loader!@v-uik/table/examples/FilteredTable'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Фильтрация по колонкам',
+  ])}
+  component={Table}
+/>
+
+# Фильтрация по колонкам
+
+Вариант, как могла бы выглядеть фильтрация данных таблицы по колонкам
+
+<Canvas withSource="none">
+  <FilteredTable />
+</Canvas>
+
+<Source language="tsx" code={RawFilteredTable} />

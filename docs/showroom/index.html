@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="/vendor/system.js"></script>
+    <script src="/vendor/amd.min.js"></script>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "react": "/vendor/react.development.js",
+          "react-dom": "/vendor/react-dom.development.js",
+          "react-jss": "/vendor/react-jss.js",
+          "jss": "/vendor/jss.min.js"
+        }
+      }
+    </script>
+    <script>
+      System.import('/bundle.js')
+    </script>
+  </body>
+</html>

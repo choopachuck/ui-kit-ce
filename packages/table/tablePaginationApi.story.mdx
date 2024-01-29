@@ -1,0 +1,23 @@
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../docs/showroom/config'
+import { TablePagination } from '@v-uik/table'
+import { TablePaginationClassesDummy } from './examples/Classes.dummy'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'TablePagination', 'API'])}
+  component={TablePagination}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# API
+
+<ArgsTable of={TablePagination} />
+
+# Classes
+
+<ArgsTable of={TablePaginationClassesDummy} />

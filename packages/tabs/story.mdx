@@ -1,0 +1,115 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Tabs, Tab } from '@v-uik/tabs'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Disabled,
+  Filled,
+  WithIcons,
+  WithRemoving,
+  Vertical,
+  ForceRender,
+  Canvas as CanvasStory,
+} from './examples'
+import RawDisabled from '!!raw-loader!@v-uik/tabs/examples/Disabled'
+import RawFilled from '!!raw-loader!@v-uik/tabs/examples/Filled'
+import RawWithIcons from '!!raw-loader!@v-uik/tabs/examples/WithIcons'
+import RawWithRemoving from '!!raw-loader!@v-uik/tabs/examples/WithRemoving'
+import RawVertical from '!!raw-loader!@v-uik/tabs/examples/Vertical'
+import RawForceRender from '!!raw-loader!@v-uik/tabs/examples/ForceRender'
+import RawCanvas from '!!raw-loader!@v-uik/tabs/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Tabs', 'Tabs'])}
+  component={Tabs}
+/>
+
+<Story
+  name="Tabs"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Tabs
+
+Компонент для отображения элементов, объединенных в секции — вкладки.
+
+# Tab
+
+Для управления отображением каждой конкретной секцией используется компонент Tab.
+
+## import
+
+```ts
+import { Tabs, Tab } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Tabs, Tab } from '@v-uik/tabs'
+```
+
+## Вариант с заливкой
+
+<Canvas withSource="none">
+  <Filled />
+</Canvas>
+
+<Source language="tsx" code={RawFilled} />
+
+## Отключаемые секции
+
+Секцию можно запретить для выбора, добавив ей атрибут disabled.
+
+<Canvas withSource="none">
+  <Disabled />
+</Canvas>
+
+<Source language="tsx" code={RawDisabled} />
+
+## Вариант с иконками и значком
+
+<Canvas withSource="none">
+  <WithIcons />
+</Canvas>
+
+<Source language="tsx" code={RawWithIcons} />
+
+## Вариант с добавлением/удалением вкладок
+
+<Canvas withSource="none">
+  <WithRemoving />
+</Canvas>
+
+<Source language="tsx" code={RawWithRemoving} />
+
+## Вертикальное расположение
+
+<Canvas withSource="none">
+  <Vertical />
+</Canvas>
+
+<Source language="tsx" code={RawVertical} />
+
+## Принудительный рендеринг всех вкладок в DOM
+
+Чтобы включить принудительный рендеринг контента во вкладках необходимо в компонент `Tab` передать `forceRender={true}`.
+Размонтирование контента при переключении вкладок не происходит.
+
+<Canvas withSource="none">
+  <ForceRender />
+</Canvas>
+
+<Source language="tsx" code={RawForceRender} />

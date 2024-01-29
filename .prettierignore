@@ -1,0 +1,11 @@
+node_modules
+storybook-static
+dist
+template
+package-lock.json
+coverage
+CHANGELOG.md
+lerna.json
+playwright/.cache
+playwright-report
+docs/showroom/theme-tokens.json

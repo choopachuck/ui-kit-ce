@@ -1,0 +1,104 @@
+import { Canvas, Meta, Source, Story } from '@storybook/addon-docs'
+import { Divider } from './src'
+import {
+  COMPONENTS,
+  createTitle,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  BasicDivider,
+  DividerWithContent,
+  TokensCustom,
+  VerticalDivider,
+  VerticalWithText,
+  ClassesDummy,
+} from './examples'
+import RawBasicDivider from '!!raw-loader!./examples/BasicDivider'
+import RawVerticalDivider from '!!raw-loader!./examples/VerticalDivider'
+import RawDividerWithContent from '!!raw-loader!./examples/DividerWithContent'
+import RawTokensCustom from '!!raw-loader!./examples/TokensCustom'
+import RawVerticalWithText from '!!raw-loader!./examples/VerticalWithText'
+
+export const story = createStory(BasicDivider, RawBasicDivider)
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Divider', 'Divider'])}
+  component={Divider}
+/>
+
+<Story
+  name="Divider"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Divider
+
+Divider — это тонкая линия, которая помогает разделить на группы содержимое в списках и макетах.
+
+## import
+
+```ts
+import { Divider } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Divider } from '@v-uik/divider'
+```
+
+## Пример
+
+Разделитель по умолчанию отображается как `<hr>`. Его можно изменить согласно спецификации.
+Например, в списках должны быть только `<li>`. Тег `<hr>` заменяется через полиморфный атрибут `as`.
+
+<Canvas withSource="none">
+  <BasicDivider />
+</Canvas>
+
+<Source language="tsx" code={RawBasicDivider} />
+
+## Вертикальный разделитель
+
+<Canvas withSource="none">
+  <VerticalDivider />
+</Canvas>
+
+<Source language="tsx" code={RawVerticalDivider} />
+
+## Горизонтальный разделитель с текстом
+
+<Canvas withSource="none">
+  <DividerWithContent />
+</Canvas>
+
+<Source language="tsx" code={RawDividerWithContent} />
+
+## Вертикальный разделитель с текстом
+
+<Canvas withSource="none">
+  <VerticalWithText />
+</Canvas>
+
+<Source language="tsx" code={RawVerticalWithText} />
+
+## Персонализированная настройка компонента через токены компонентного уровня
+
+Параметр `width` имеет больший вес чем токен `theme.comp.divider.lineWidth`. Сделано это для более
+сложного использования компонента внутри дизайн-системы с двумя и более вариантами толщины линии.
+
+<Canvas withSource="none">
+  <TokensCustom />
+</Canvas>
+
+<Source language="tsx" code={RawTokensCustom} />

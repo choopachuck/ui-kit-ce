@@ -1,0 +1,71 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs'
+import { createTitle, COOKBOOK } from '../config'
+import { FormWithFormik } from './Form/Form'
+import RawFormWithFormik from '!!raw-loader!./Form/Form'
+import RawTextareaFieldAdapter from '!!raw-loader!./Form/Adapters/TextareaFieldAdapter'
+import RawTextFieldAdapter from '!!raw-loader!./Form/Adapters/TextFieldAdapter'
+import RawSwitchFieldAdapter from '!!raw-loader!./Form/Adapters/SwitchFieldAdapter'
+import RawCheckboxGroupFieldAdapter from '!!raw-loader!./Form/Adapters/CheckboxGroupFieldAdapter'
+import RawSelectFieldAdapter from '!!raw-loader!./Form/Adapters/SelectFieldAdapter'
+import RawComboboxFieldAdapter from '!!raw-loader!./Form/Adapters/ComboboxFieldAdapter'
+import { FormWithHook } from './Form/FormWithHook'
+import RawFormWithHook from '!!raw-loader!./Form/FormWithHook'
+
+<Meta title={createTitle([COOKBOOK.root, COOKBOOK.formInteraction])} />
+
+# Интеграция @v-uik с библиотеками форм
+
+В данном разделе описаны варианты взаимодействия библиотеки с внешними библиотеками для работы с формами.
+
+## Formik через component
+
+Одна из самых популярных библиотек для работы с формами.
+
+В примере ниже показан подход разработки через компонент `<Field />` в который передается компонент. Ниже приведены базовые
+примеры с компонентами `@v-uik`
+
+<Canvas withSource="none">
+  <FormWithFormik />
+</Canvas>
+
+<Source language="tsx" code={RawFormWithFormik} />
+
+## Адаптер для TextArea
+
+Для компонентов с полем ввода, достаточно передать `id` в `inputProps`
+
+<Source language="tsx" code={RawTextareaFieldAdapter} />
+
+## Адаптер для Input
+
+<Source language="tsx" code={RawTextFieldAdapter} />
+
+## Адаптер для Switch
+
+<Source language="tsx" code={RawSwitchFieldAdapter} />
+
+## Адаптер для CheckboxGroup
+
+У компонентов без поля ввода, вариант с использованием field.id работать не будет. Для этого советуется использовать ф-ию изменения поля `setFieldValue`
+
+<Source language="tsx" code={RawCheckboxGroupFieldAdapter} />
+
+## Адаптер для Select
+
+У компонентов без поля ввода, вариант с использованием field.id работать не будет. Для этого советуется использовать ф-ию изменения поля `setFieldValue`
+
+<Source language="tsx" code={RawSelectFieldAdapter} />
+
+## Адаптер для Combobox
+
+У компонентов без поля ввода, вариант с использованием field.id работать не будет. Для этого советуется использовать ф-ию изменения поля `setFieldValue`
+
+<Source language="tsx" code={RawComboboxFieldAdapter} />
+
+## Реализация через хук useFormik
+
+<Canvas withSource="none">
+  <FormWithHook />
+</Canvas>
+
+<Source language="tsx" code={RawFormWithHook} />

@@ -1,0 +1,46 @@
+import { ArgsTable, Canvas, Meta } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { Bar, BarButton, BarDate } from '@v-uik/bar'
+import { ContainerMock, BarDateClassesDummy } from '../examples'
+import { IconBurger } from '@v-uik/bar/examples/assets/IconBurger'
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Bar', 'BarDate'])}
+  component={BarDate}
+/>
+
+# BarDate
+
+Компонент для отображения текущей системной даты и времени.
+
+# BarDate API
+
+<ArgsTable of={BarDate} />
+
+## Сlasses
+
+<ArgsTable of={BarDateClassesDummy} />
+
+# import
+
+```ts
+import { BarDate } from '@v-uik/bar'
+```
+
+# Пример использования
+
+<Canvas withSource="none">
+  <ContainerMock>
+    <Bar style={{ position: 'absolute' }}>
+      <BarButton icon={<IconBurger />} />
+      <BarDate style={{ marginLeft: 'auto' }} />
+    </Bar>
+  </ContainerMock>
+</Canvas>
+
+```tsx
+<Bar>
+  <BarButton icon={<IconBurger />} />
+  <BarDate style={{ marginLeft: 'auto' }} />
+</Bar>
+```

@@ -1,0 +1,23 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Tag } from '@v-uik/tag'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { TagClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Tag', 'API'])}
+  component={Tag}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Tag API
+
+<ArgsTable of={Tag} />
+
+# Tag classes
+
+<ArgsTable of={TagClassesDummy} />{' '}

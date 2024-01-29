@@ -1,0 +1,187 @@
+﻿'use client'
+
+import * as React from 'react'
+import { createUseStyles, clsx } from '@v-uik/theme'
+import { Button, ButtonKinds, ButtonColor, ButtonProps } from '@v-uik/button'
+import { ChevronLeftIcon } from './ChevronLeftIcon'
+import { ChevronRightIcon } from './ChevronRightIcon'
+
+const useStyles = createUseStyles((theme) => ({
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  chevron: {
+    minWidth: 0,
+    padding: 8,
+    borderTopLeftRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusTopLeft,
+    borderTopRightRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusTopRight,
+    borderBottomLeftRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusBottomLeft,
+    borderBottomRightRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusBottomRight,
+  },
+  month: {
+    flex: 1,
+    textTransform: 'capitalize',
+    borderTopLeftRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusTopLeft,
+    borderTopRightRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusTopRight,
+    borderBottomLeftRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusBottomLeft,
+    borderBottomRightRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusBottomRight,
+
+    '&$selected': {
+      color: theme.comp.calendarPicker.monthButtonColorTextSelected,
+      backgroundColor:
+        theme.comp.calendarPicker.monthButtonColorBackgroundSelected,
+    },
+  },
+  year: {
+    padding: [10, 20],
+    borderTopLeftRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusTopLeft,
+    borderTopRightRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusTopRight,
+    borderBottomLeftRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusBottomLeft,
+    borderBottomRightRadius:
+      theme.comp.calendarPicker.buttonShapeBorderRadiusBottomRight,
+
+    '&$selected': {
+      color: theme.comp.calendarPicker.yearButtonColorTextSelected,
+      backgroundColor:
+        theme.comp.calendarPicker.yearButtonColorBackgroundSelected,
+    },
+  },
+  selected: {},
+}))
+
+export interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * Показывать ли месяц и стрелки переключения
+   */
+  showMonth?: boolean
+  /**
+   * Текст кнопки выбора месяца
+   */
+  monthText?: string
+  /**
+   * Кнопка месяца выделена
+   */
+  monthSelected?: boolean
+  /**
+   * Обработчик нажатия кнопки месяца
+   */
+  onClickMonth?: ButtonProps['onClick']
+  /**
+   * Обработчик нажатия стрелок
+   */
+  onClickChevron?: (event: React.MouseEvent, value: number) => void
+  /**
+   * Показывать ли год
+   */
+  showYear?: boolean
+  /**
+   * Текст кнопки выбора года
+   */
+  yearText?: string | number
+  /**
+   * Кнопка года выделена
+   */
+  yearSelected?: boolean
+  /**
+   * Обработчик нажатия кнопки года
+   */
+  onClickYear?: ButtonProps['onClick']
+}
+
+export const PanelHeader = React.forwardRef(
+  ({ showYear = true, ...props }: Props, ref: React.Ref<HTMLDivElement>) => {
+    const {
+      className: classNameProp,
+      showMonth,
+      monthText,
+      monthSelected,
+      onClickMonth,
+      onClickChevron,
+      yearText,
+      yearSelected,
+      onClickYear,
+      ...rest
+    } = props
+
+    const classesList = useStyles()
+    const className = clsx(classNameProp, classesList.root)
+
+    const handleLeftClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      onClickChevron?.(event, -1)
+    }
+
+    const handleRightClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+      onClickChevron?.(event, 1)
+    }
+
+    if (!showMonth && !showYear) {
+      return null
+    }
+
+    return (
+      <div {...rest} ref={ref} className={className}>
+        {showMonth && (
+          <>
+            <Button
+              kind={ButtonKinds.ghost}
+              color={ButtonColor.secondary}
+              className={classesList.chevron}
+              onClick={handleLeftClick}
+            >
+              <ChevronLeftIcon />
+            </Button>
+
+            <Button
+              kind={ButtonKinds.ghost}
+              color={ButtonColor.secondary}
+              className={clsx(classesList.month, {
+                [classesList.selected]: monthSelected,
+              })}
+              onClick={onClickMonth}
+            >
+              {monthText}
+            </Button>
+
+            <Button
+              kind={ButtonKinds.ghost}
+              color={ButtonColor.secondary}
+              className={classesList.chevron}
+              onClick={handleRightClick}
+            >
+              <ChevronRightIcon />
+            </Button>
+          </>
+        )}
+
+        {showYear && (
+          <Button
+            kind={ButtonKinds.ghost}
+            color={ButtonColor.secondary}
+            className={clsx(classesList.year, {
+              [classesList.selected]: yearSelected,
+            })}
+            onClick={onClickYear}
+          >
+            {yearText}
+          </Button>
+        )}
+      </div>
+    )
+  }
+)
+
+PanelHeader.displayName = 'PanelHeader'

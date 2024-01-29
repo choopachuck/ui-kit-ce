@@ -1,0 +1,109 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { ButtonGroup } from '@v-uik/button-group'
+import { Button } from '@v-uik/button'
+import {
+  createTitle,
+  COMPONENTS,
+  DocsAlert,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Single,
+  Multi,
+  Examples,
+  PopupExample,
+  ClassesDummy,
+  Canvas as CanvasStory,
+} from '@v-uik/button-group/examples'
+import RawSingle from '!!raw-loader!@v-uik/button-group/examples/Single'
+import RawMulti from '!!raw-loader!@v-uik/button-group/examples/Multi'
+import RawExamples from '!!raw-loader!@v-uik/button-group/examples/Examples'
+import RawPopupExample from '!!raw-loader!@v-uik/button-group/examples/PopupExample'
+import RawCanvas from '!!raw-loader!@v-uik/button-group/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'ButtonGroup', 'ButtonGroup'])}
+  component={ButtonGroup}
+/>
+
+<Story
+  name="ButtonGroup"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# ButtonGroup
+
+Отображает группу связанных кнопок.
+
+## import
+
+```ts
+import { ButtonGroup, Button } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { ButtonGroup } from '@v-uik/button-group'
+import { Button } from '@v-uik/button'
+```
+
+## Размеры и цветовая схема
+
+<Canvas withSource="none">
+  <Examples />
+</Canvas>
+
+<Source language="tsx" code={RawExamples} />
+
+## Единичный выбор
+
+Единичный выбор предполагает выбор одного значения из возможных.
+
+<Canvas withSource="none">
+  <Single />
+</Canvas>
+
+<Source language="tsx" code={RawSingle} />
+
+## Множественный выбор
+
+Множественный выбор предполагает выбор нескольких значений из возможных.
+
+<Canvas withSource="none">
+  <Multi />
+</Canvas>
+
+<Source language="tsx" code={RawMulti} />
+
+## Отображение PopUp внутри ButtonGroup
+
+<DocsAlert type="warning">
+  Компонент <b>ButtonGroup</b> рекомендуется использовать только для одной цели
+  — отображение кнопок в ряд и получения состояния <b>selected</b>.
+  Компонент&nbsp;
+  <b>ButtonGroup</b> позволяет использовать внутри себя только компонент&nbsp;
+  <b>Button</b>, не обернутый в какой-либо тег или компонент.
+</DocsAlert>
+
+<Canvas withSource="none">
+  <PopupExample />
+</Canvas>
+
+<Source language="tsx" code={RawPopupExample} />
+
+## Связанные компоненты
+
+- [Button](?path=/docs/элементы-управления-button-button--button)

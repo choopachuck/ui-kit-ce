@@ -1,0 +1,88 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Dropzone } from '@v-uik/file-uploader'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../../docs/showroom/config'
+
+import CanvasStory from '../examples/dropzone/Canvas'
+import RawCanvas from '!!raw-loader!../examples/dropzone/Canvas'
+
+import { BasicDropzone } from '../examples/dropzone/BasicDropzone'
+import RawBasicDropzone from '!!raw-loader!../examples/dropzone/BasicDropzone'
+
+import { DropzoneStatuses } from '../examples/dropzone/DropzoneStatuses'
+import RawDropzoneStatuses from '!!raw-loader!../examples/dropzone/DropzoneStatuses'
+
+import { DropzoneSizesCause } from '../examples/dropzone/DropzoneSizesCause'
+import RawDropzoneSizesCause from '!!raw-loader!../examples/dropzone/DropzoneSizesCause'
+
+import { ClassesDummy } from '../examples/dropzone/Classes.dummy'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'FileUploader'])}
+  component={Dropzone}
+/>
+
+<Story
+  name="Dropzone"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Dropzone
+
+Dropzone — компонент, основанный на технологии drag-and-drop.
+Он позволяет пользователям добавлять файлы на сервер через интерфейс браузера.
+
+## import
+
+```ts
+import { Dropzone } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Dropzone } from '@v-uik/file-uploader'
+```
+
+## Базовый пример
+
+<Canvas withSource="none">
+  <BasicDropzone />
+</Canvas>
+
+<Source language="tsx" code={RawBasicDropzone} />
+
+## Разные состояния Dropzone
+
+<Canvas withSource="none">
+  <DropzoneStatuses />
+</Canvas>
+
+<Source language="tsx" code={RawDropzoneStatuses} />
+
+## Изменение размеров Dropzone
+
+По умолчанию компонент Dropzone имеет минимальную высоту и расширяется в зависимости от наполнения.
+Для того чтобы Dropzone занимал всю доступную площадь родителя, его необходимо вручную стилизовать.
+
+<Canvas withSource="none">
+  <DropzoneSizesCause />
+</Canvas>
+
+<Source language="tsx" code={RawDropzoneSizesCause} />
+
+## Связанные компоненты
+
+- [Button](?path=/docs/элементы-управления-button-button--button)

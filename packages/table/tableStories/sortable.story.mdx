@@ -1,0 +1,27 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { SortableStory } from '@v-uik/table/examples/SortableStory'
+import RawSortableStory from '!!raw-loader!@v-uik/table/examples/SortableStory'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Table', 'Сортировка'])}
+  component={Table}
+/>
+
+# Сортировка
+
+Сортировку можно разделить на 2 части — отображение текущего состояния сортировки и манипуляции с данными. Таблица реализует
+первую часть — хранит состояние и генерирует события с полезной нагрузкой, необходимые для реализации второй части.
+
+## Почему вы не сделали манипуляции с данными внутри таблицы?
+
+Пользователи по разному используют таблицу — кто-то сортирует данные с учетом [non-ASCII characters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#sorting_non-ascii_characters),
+кому-то требуется мульти-сортировка по нескольким столбцам, а кто-то и вовсе не делает сортировку на фронте, а делает запрос на бек с набором параметров.
+Чтобы покрыть большинство кейсов, мы стараемся предоставить необходимый набор инструментов без перегрузки API большим набором опций.
+
+<Canvas withSource="none">
+  <SortableStory />
+</Canvas>
+
+<Source language="tsx" code={RawSortableStory} />

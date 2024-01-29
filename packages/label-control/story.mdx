@@ -1,0 +1,51 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { LabelControl } from '@v-uik/label-control'
+import { Checkbox } from '@v-uik/checkbox'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { Canvas as CanvasStory } from './examples'
+import RawCanvas from '!!raw-loader!@v-uik/label-control/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'LabelControl', 'LabelControl'])}
+  component={LabelControl}
+/>
+
+<Story
+  name="LabelControl"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# LabelControl
+
+Компонент для отображения компонентов Radio, CheckBox и Switch совместно с заголовком
+
+## import
+
+```ts
+import { LabelControl } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { LabelControl } from '@v-uik/label-control'
+```
+
+## Связанные компоненты
+
+- [Switch](?path=/docs/элементы-управления-switch-switch--switch-story)
+- [Radio](?path=/docs/элементы-управления-radio-radio--radio)
+- [CheckBox](?path=/docs/элементы-управления-checkbox-checkbox--checkbox)

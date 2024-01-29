@@ -1,0 +1,26 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { FixedHeaderStory } from '@v-uik/table/examples/FixedHeaderStory'
+import RawFixedHeaderStory from '!!raw-loader!@v-uik/table/examples/FixedHeaderStory.tsx'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Таблица с фиксированной шапкой',
+  ])}
+  component={Table}
+/>
+
+# Таблица с фиксированной шапкой
+
+Если расположить таблицу в скроллящемся контейнере, можно зафиксировать её header при скролле, используя
+свойство `fixedHeader`. Эта функциональность реализована с помощью `position: sticky`, поэтому в IE 11
+она работать не будет.
+
+<Canvas withSource="none">
+  <FixedHeaderStory />
+</Canvas>
+
+<Source language="tsx" code={RawFixedHeaderStory} />

@@ -1,0 +1,154 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Input } from '@v-uik/input'
+import { InputHelperText } from '@v-uik/input-helper-text'
+import { InputLabel } from '@v-uik/input-label'
+import { createTitle, COMPONENTS, createStory } from '@v-uik/showroom/config'
+import {
+  Icon,
+  InputWithTooltip,
+  InputWithHelperText,
+  InputWithDescription,
+  ErrorIndication,
+  InputWithCounter,
+  InputWithCustomCounter,
+  Canvas as CanvasStory,
+  InputWithClear,
+  InputRequired,
+} from './examples'
+import RawInputWithHelperText from '!!raw-loader!@v-uik/input/examples/InputWithHelperText'
+import RawInputWithTooltip from '!!raw-loader!@v-uik/input/examples/InputWithTooltip'
+import RawErrorIndication from '!!raw-loader!@v-uik/input/examples/ErrorIndication'
+import RawCanvas from '!!raw-loader!@v-uik/input/examples/Canvas'
+import RawInputWithCounter from '!!raw-loader!@v-uik/input/examples/InputWithCounter'
+import RawInputWithCustomCounter from '!!raw-loader!@v-uik/input/examples/InputWithCustomCounter'
+import RawInputWithClear from '!!raw-loader!@v-uik/input/examples/InputWithClear'
+import RawInputWithDescription from '!!raw-loader!@v-uik/input/examples/InputWithDescription'
+import RawInputRequired from '!!raw-loader!@v-uik/input/examples/InputRequired'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'Input', 'Input'])}
+  component={Input}
+/>
+
+<Story
+  name="Input"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Input
+
+Компонент ввода текста.
+
+## import
+
+```ts
+import { Input, InputLabel, InputHelperText } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Input } from '@v-uik/input'
+import { InputLabel } from '@v-uik/input-label'
+import { InputHelperText } from '@v-uik/input-helper-text'
+```
+
+## Labelled
+
+Это подкомпонент, включающий в себя описание и подкомпоненты `InputLabel` и `InputHelperText` для различных полей ввода.
+
+### InputLabel
+
+InputLabel — это подкомпонент отображения label для различных полей ввода, который можно настроить через свойство `labelProps`.
+
+### InputHelperText
+
+Это подкомпонент отображения вспомогательного текста для различных полей ввода, который можно настроить через свойство `helperTextProps`.
+
+## Поле ввода с ярлыком и подсказкой
+
+<Canvas withSource="none">
+  <InputWithHelperText />
+</Canvas>
+
+<Source language="tsx" code={RawInputWithHelperText} />
+
+## Поле ввода с ярлыком и описанием
+
+<Canvas withSource="none">
+  <InputWithDescription />
+</Canvas>
+
+<Source language="tsx" code={RawInputWithDescription} />
+
+## Поле ввода с ярлыком и тултипом
+
+<Canvas withSource="none">
+  <InputWithTooltip />
+</Canvas>
+
+<Source language="tsx" code={RawInputWithTooltip} />
+
+## Обязательное поле ввода
+
+<Canvas withSource="none">
+  <InputRequired />
+</Canvas>
+
+<Source language="tsx" code={RawInputRequired} />
+
+## Поле ввода с подсчетом введенных символов
+
+Если необходим счетчик введенных символов, можно использовать свойство showCount.
+Чтобы указать лимит символов, используете внутреннее свойство компонента Input — `inputProps.maxLength`.
+
+<Canvas withSource="none">
+  <InputWithCounter />
+</Canvas>
+
+<Source language="tsx" code={RawInputWithCounter} />
+
+### Поле ввода с пользовательским счетчиком введенных символов
+
+Если необходимо свое расположение счетчика, его можно написать самостоятельно.
+
+<Canvas withSource="none">
+  <InputWithCustomCounter />
+</Canvas>
+
+<Source language="tsx" code={RawInputWithCustomCounter} />
+
+## Варианты индикации ошибки
+
+<Canvas withSource="none">
+  <ErrorIndication />
+</Canvas>
+
+<Source language="tsx" code={RawErrorIndication} />
+
+## Поле ввода с иконками в начале и конце
+
+<Canvas>
+  <Input prefix={<Icon />} suffix={<Icon />} />
+</Canvas>
+
+## Поле ввода с кнопкой очистки
+
+<Canvas withSource="none">
+  <InputWithClear />
+</Canvas>
+
+<Source language="tsx" code={RawInputWithClear} />
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

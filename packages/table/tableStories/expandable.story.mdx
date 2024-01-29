@@ -1,0 +1,27 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { ExpandableStory } from '@v-uik/table/examples/ExpandableStory'
+import RawExpandableStory from '!!raw-loader!@v-uik/table/examples/ExpandableStory.tsx'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Table', 'Расширяемая строка'])}
+  component={Table}
+/>
+
+# Расширяемая строка
+
+Если объект конфигуратора столбцов `columns` содержит свойство `kind` со значением `expand`,
+то для этой строки включается функциональность «расширения».
+
+Свойство `isRowExpanded` управляет отображением состояния расширяемой строки — если переданная функция
+обратного вызова вернет `true`, строка раскрыта, если `false` — закрыта.
+
+Можно скрыть отображение ячейки для расширяемой строки (только иконку, сама ячейка останется
+в DOM дереве) — для этого в качестве значения для свойства `isRowExpanded` передайте `undefined` или `null`.
+
+<Canvas withSource="none">
+  <ExpandableStory />
+</Canvas>
+
+<Source language="tsx" code={RawExpandableStory} />

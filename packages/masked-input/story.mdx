@@ -1,0 +1,128 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { MaskedInput } from '@v-uik/masked-input'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { Example } from '@v-uik/masked-input/examples/Example'
+import RawExample from '!!raw-loader!@v-uik/masked-input/examples/Example'
+
+export const story = createStory(Example, RawExample)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'MaskedInput', 'MaskedInput'])}
+  component={MaskedInput}
+/>
+
+<Story
+  name="MaskedInput"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# MaskedInput
+
+Компонент ввода значения по маске.
+
+## import
+
+```ts
+import { MaskedInput } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { MaskedInput } from '@v-uik/masked-input'
+```
+
+## FormatCharacters
+
+Объект, ключами которого являются символы маски, а значение — объект с полями 'validate' (значением которого будет функция, принимающая параметр 'char' — проверяемый символ и возвращающая булево значение, которое сообщает подходит ли символ по маске) и 'transform' (необязательное поле, значением которого должна быть функция, принимающая параметр 'char' — проверяемый символ и возвращающая преобразованный символ).
+
+```tsx
+export const DIGIT_REGEXP = /^\d$/
+export const LETTER_REGEXP = /^[A-Za-zА-Яа-яёЁ]$/
+export const CYRILLIC_REGEXP = /^[А-Яа-яёЁ]$/
+export const LATIN_REGEXP = /^[A-Za-z]$/
+export const ALPHANUMERIC_REGEXP = /^[\dA-Za-zА-Яа-яёЁ]$/
+export const DEFAULT_FORMAT_CHARACTERS = {
+  '*': {
+    validate(char) {
+      return ALPHANUMERIC_REGEXP.test(char)
+    },
+  },
+  '1': {
+    validate(char) {
+      return DIGIT_REGEXP.test(char)
+    },
+  },
+  a: {
+    validate(char) {
+      return LETTER_REGEXP.test(char)
+    },
+  },
+  A: {
+    validate(char) {
+      return LETTER_REGEXP.test(char)
+    },
+    transform(char) {
+      return char.toUpperCase()
+    },
+  },
+  я: {
+    validate(char) {
+      return CYRILLIC_REGEXP.test(char)
+    },
+  },
+  Я: {
+    validate(char) {
+      return CYRILLIC_REGEXP.test(char)
+    },
+    transform(char) {
+      return char.toUpperCase()
+    },
+  },
+  l: {
+    validate(char) {
+      return LATIN_REGEXP.test(char)
+    },
+  },
+  L: {
+    validate(char) {
+      return LATIN_REGEXP.test(char)
+    },
+    transform(char) {
+      return char.toUpperCase()
+    },
+  },
+  '#': {
+    validate(char) {
+      return ALPHANUMERIC_REGEXP.test(char)
+    },
+    transform(char) {
+      return char.toUpperCase()
+    },
+  },
+}
+```
+
+## Валидация номера телефона для региона Россия (+7)
+
+<Canvas withSource="none">
+  <Example />
+</Canvas>
+
+<Source language="tsx" code={RawExample} />
+
+## Связанные компоненты
+
+- [Input](?path=/docs/поля-ввода-input-input--input)
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

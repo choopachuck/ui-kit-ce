@@ -1,0 +1,131 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Labelled } from '@v-uik/labelled'
+import {
+  createTitle,
+  createStory,
+  COMPONENTS,
+} from '../../docs/showroom/config'
+import { Controls } from '../../docs/showroom/components'
+import { Canvas as CanvasStory, Playground } from './examples'
+import RowCanvas from '!!raw-loader!./examples/Canvas'
+import RawPlayground from '!!raw-loader!./examples/Playground'
+
+export const story = createStory(Canvas, RowCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Labelled', 'Labelled'])}
+  component={Labelled}
+/>
+
+<Story
+  name="Labelled"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Labelled
+
+Компонент для добавления подписи, описания или подсказки к любому вложенному в него компоненту.
+Включает в себя компоненты [InputLabel](?path=/docs/поля-ввода-input-api--page#inputlabel-api) и [InputHelperText](?path=/docs/поля-ввода-input-api--page#inputhelpertext-api)
+
+## import
+
+```ts
+import { Labelled } from '@v-uik/labelled'
+```
+
+или
+
+```ts
+import { Labelled } from '@v-uik/base'
+```
+
+## Интерактивный пример
+
+<Controls
+  overrideFields={[
+    {
+      key: 'required',
+      name: 'Поле обязательно',
+      defaultValue: true,
+      gridItem: {
+        size: 4,
+      },
+    },
+    {
+      key: 'error',
+      name: 'Поле содержит ошибку',
+      defaultValue: false,
+      gridItem: {
+        size: 5,
+      },
+    },
+    {
+      key: 'disabled',
+      name: 'Поле заблокировано',
+      gridItem: {
+        size: 5,
+      },
+    },
+    {
+      key: 'label',
+      name: 'Подпись',
+      defaultValue: 'Login',
+    },
+    {
+      key: 'helperText',
+      name: 'Подсказка',
+      defaultValue: 'Some helper text',
+    },
+    {
+      key: 'description',
+      name: 'Описание',
+      defaultValue: 'Some long description of the field',
+      gridItem: {
+        size: 16,
+      },
+    },
+    {
+      key: 'keepHelperTextMinHeight',
+      name: 'Оставить минимальную высоту контейнера для helperText',
+      defaultValue: true,
+      gridItem: {
+        size: 16,
+      },
+    },
+  ]}
+>
+  {(props) => <Playground {...props} />}
+</Controls>
+
+<Source language="tsx" code={RawPlayground} />
+
+## Подкомпоненты
+
+- [InputLabel API](?path=/docs/поля-ввода-input--input#inputlabel-api)
+- [InputHelperText API](?path=/docs/поля-ввода-input--input#inputhelpertext-api)
+
+## Связанные компоненты
+
+- [Autocomplete](?path=/docs/поля-ввода-autocomplete--autocomplete)
+- [ComboBox](?path=/docs/поля-ввода-combobox-combobox--combo-box)
+- [DatePicker](?path=/docs/поля-ввода-datepicker-datepicker--date-picker)
+- [DateTimePicker](?path=/docs/поля-ввода-datepicker-datetimepicker--date-time-picker)
+- [Input](?path=/docs/поля-ввода-input-input--input)
+- [InputNumber](?path=/docs/поля-ввода-inputnumber-inputnumber--input-number)
+- [InputPassword](?path=/docs/поля-ввода-inputpassword-inputpassword--input-password)
+- [RangePicker](?path=/docs/поля-ввода-rangepicker-rangepicker--range-picker)
+- [MaskedInput](?path=/docs/поля-ввода-maskedinput-maskedinput--masked-input)
+- [Select](?path=/docs/поля-ввода-select-select--select)
+- [Textarea](?path=/docs/поля-ввода-textarea-textarea--textarea)
+- [TimePicker](?path=/docs/поля-ввода-timepicker-timepicker--time-picker)
+- [TimeRangePicker](?path=/docs/поля-ввода-timepicker-timerangepicker--time-range-picker)

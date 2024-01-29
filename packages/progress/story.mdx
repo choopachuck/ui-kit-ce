@@ -1,0 +1,186 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { LinearProgress, CircularProgress } from '@v-uik/progress'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  ControlledProgress,
+  IndeterminateProgress,
+  BasicProgress,
+  DifferentSizes,
+  DifferentThickness,
+  ControlledCircularProgress,
+  CircularWithLabel,
+  DifferentLineColor,
+  DifferentCircularLineColor,
+  AccessibleLinearProgress,
+  AccessibleCircularProgress,
+  CircularClassesDummy,
+  LinearClassesDummy,
+  Canvas as CanvasStory,
+} from './examples'
+import RawControlledProgress from '!!raw-loader!@v-uik/progress/examples/ControlledProgress'
+import RawCIndeterminateProgress from '!!raw-loader!@v-uik/progress/examples/IndeterminateProgress'
+import RawBasicProgress from '!!raw-loader!@v-uik/progress/examples/BasicProgress'
+import RawDifferentSizes from '!!raw-loader!@v-uik/progress/examples/DifferentSizes'
+import RawDifferentThickness from '!!raw-loader!@v-uik/progress/examples/DifferentThickness'
+import RawControlledCircularProgress from '!!raw-loader!@v-uik/progress/examples/ControlledCircularProgress'
+import RawCircularWithLabel from '!!raw-loader!@v-uik/progress/examples/CircularWithLabel'
+import RawDifferentLineColor from '!!raw-loader!@v-uik/progress/examples/DifferentLineColor'
+import RawDifferentCircularLineColor from '!!raw-loader!@v-uik/progress/examples/DifferentCircularLineColor'
+import RawAccessibleLinearProgress from '!!raw-loader!@v-uik/progress/examples/AccessibleLinearProgress'
+import RawAccessibleCircularProgress from '!!raw-loader!@v-uik/progress/examples/AccessibleCircularProgress'
+import RawCanvas from '!!raw-loader!@v-uik/progress/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'Progress', 'Progress'])}
+  component={LinearProgress}
+/>
+
+<Story
+  name="Progress"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Progress
+
+Компоненты отображения прогресса некоторого процесса.
+
+## LinearProgress
+
+LinearProgress — линейный progress bar.
+
+## import
+
+```ts
+import { LinearProgress } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { LinearProgress } from '@v-uik/progress'
+```
+
+### Неопределенный progress bar
+
+<Canvas withSource="none">
+  <IndeterminateProgress />
+</Canvas>
+
+<Source language="tsx" code={RawCIndeterminateProgress} />
+
+### Контролируемый progress bar
+
+<Canvas withSource="none">
+  <ControlledProgress />
+</Canvas>
+
+<Source language="tsx" code={RawControlledProgress} />
+
+### Цвета линий
+
+<Canvas withSource="none">
+  <DifferentLineColor />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentLineColor} />
+
+### Обеспечение доступности
+
+Для обеспечения доступности дополнительно требуется использовать `aria` атрибуты,
+которые можно передать через `trackProps`
+
+<Canvas withSource="none">
+  <AccessibleLinearProgress />
+</Canvas>
+
+<Source language="tsx" code={RawAccessibleLinearProgress} />
+
+## CircularProgress
+
+CircularProgress — круглый progress bar.
+
+## import
+
+```ts
+import { CircularProgress } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { CircularProgress } from '@v-uik/progress'
+```
+
+### Простой CircularProgress
+
+<Canvas withSource="none">
+  <BasicProgress />
+</Canvas>
+
+<Source language="tsx" code={RawBasicProgress} />
+
+### Размеры CircularProgress
+
+<Canvas withSource="none">
+  <DifferentSizes />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentSizes} />
+
+### Толщина линий CircularProgress
+
+<Canvas withSource="none">
+  <DifferentThickness />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentThickness} />
+
+### Контролируемый CircularProgress
+
+<Canvas withSource="none">
+  <ControlledCircularProgress />
+</Canvas>
+
+<Source language="tsx" code={RawControlledCircularProgress} />
+
+### CircularProgress c заголовком
+
+Отображение прогресса внутри круга рекомендуется использовать при размере круга `xlg`.
+
+<Canvas withSource="none">
+  <CircularWithLabel />
+</Canvas>
+
+<Source language="tsx" code={RawCircularWithLabel} />
+
+### Цвета окружности
+
+<Canvas withSource="none">
+  <DifferentCircularLineColor />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentCircularLineColor} />
+
+### Обеспечение доступности
+
+Для обеспечения доступности дополнительно требуется использовать `aria` атрибуты,
+которые можно передать в свойства `CirularProgress`
+
+<Canvas withSource="none">
+  <AccessibleCircularProgress />
+</Canvas>
+
+<Source language="tsx" code={RawAccessibleCircularProgress} />

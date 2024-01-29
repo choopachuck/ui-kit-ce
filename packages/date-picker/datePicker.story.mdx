@@ -1,0 +1,207 @@
+import { Canvas, Meta, Source, Story } from '@storybook/addon-docs'
+import { DateLibAdapterProvider, DatePicker } from '@v-uik/date-picker'
+import {
+  COMPONENTS,
+  createTitle,
+  DocsAlert,
+  createStory,
+} from '../../docs/showroom/config'
+
+import {
+  BasicStory,
+  DisableDatesStory,
+  MinMaxDateStory,
+  RenderDay,
+  RenderInputStory,
+  TriggerOnChangeOnInvalid,
+  DatePickerCanvas,
+} from './examples'
+
+import RawBasic from '!!raw-loader!./examples/BasicStory'
+import RawRenderInputStory from '!!raw-loader!./examples/RenderInputStory'
+import RawDisableDatesStory from '!!raw-loader!./examples/DisableDates'
+import RawMinMaxDateStory from '!!raw-loader!./examples/MinMaxDateStory'
+import RawRenderDay from '!!raw-loader!./examples/RenderDay'
+import RawTriggerOnChangeOnInvalid from '!!raw-loader!./examples/TriggerOnChangeOnInvalid'
+import RawCanvas from '!!raw-loader!@v-uik/date-picker/examples/DatePickerCanvas'
+
+export const story = createStory(DatePickerCanvas, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'DatePicker', 'DatePicker'])}
+  component={DatePicker}
+/>
+
+<Story
+  name="DatePicker"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# DatePicker
+
+Компонент выбора даты.
+
+## import
+
+```ts
+import { DatePicker, DateLibAdapterProvider } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { DatePicker, DateLibAdapterProvider } from '@v-uik/date-picker'
+```
+
+## Перед началом работы
+
+<DocsAlert>
+  Для поддержки различных библиотек для работы с датами DatePicker использует
+  адаптер &nbsp;
+  <a href="https://github.com/dmtrKovalenko/date-io">date-io</a>
+  . Он позволяет использовать ту же библиотеку дат, которая уже установлена в
+  приложении.
+  <br /> <br />
+  Чтобы подключить библиотеку дат, используйте один из существующих адаптеров
+  или напишите свой.
+  <br /> <br />
+  Адаптеры поставляются вместе с пакетом @v-uik/date-picker и явная установка
+  @date-io не требуется, но выбранная для разработки библиотека для работы с
+  датами (date-fns, dayjs, luxon) должна быть установлена явно, т.е находиться в
+  разделе dependencies файла package.json разрабатываемого приложения.
+</DocsAlert>
+
+```ts
+//es modules
+import { DateFnsAdapter } from '@v-uik/date-picker/dist/adapters/esm/date-fns'
+import { DateFnsJalaliAdapter } from '@v-uik/date-picker/dist/adapters/esm/date-fns-jalali'
+import { DayjsAdapter } from '@v-uik/date-picker/dist/adapters/esm/dayjs'
+import { HijriAdapter } from '@v-uik/date-picker/dist/adapters/esm/hijri'
+import { JalaaliAdapter } from '@v-uik/date-picker/dist/adapters/esm/jalaali'
+import { LuxonAdapter } from '@v-uik/date-picker/dist/adapters/esm/luxon'
+import { MomentAdapter } from '@v-uik/date-picker/dist/adapters/esm/moment'
+
+//common js
+import { DateFnsAdapter } from '@v-uik/date-picker/dist/adapters/date-fns'
+import { DateFnsJalaliAdapter } from '@v-uik/date-picker/dist/adapters/date-fns-jalali'
+import { DayjsAdapter } from '@v-uik/date-picker/dist/adapters/dayjs'
+import { HijriAdapter } from '@v-uik/date-picker/dist/adapters/hijri'
+import { JalaaliAdapter } from '@v-uik/date-picker/dist/adapters/jalaali'
+import { LuxonAdapter } from '@v-uik/date-picker/dist/adapters/luxon'
+import { MomentAdapter } from '@v-uik/date-picker/dist/adapters/moment'
+```
+
+С помощью компонента `DateLibAdapterProvider` передается необходимый API для работы с датами для всех компонентов `DatePicker`.
+Подключить этот компонент нужно один раз в файле инициализации приложения.
+
+Подключение локалей для других адаптеров может отличаться от приведённого ниже примера.
+
+```tsx
+import * as React from 'react'
+import { DatePicker, DateLibAdapterProvider } from '@v-uik/date-picker'
+import { DateFnsAdapter } from '@v-uik/date-picker/adapters/esm/date-fns'
+import { ru } from 'date-fns/locale'
+
+export function App() {
+  return (
+    <DateLibAdapterProvider
+      dateAdapter={DateFnsAdapter}
+      options={{ locale: ru }}
+    >
+      <App />
+    </DateLibAdapterProvider>
+  )
+}
+```
+
+## Выбор времени
+
+Ниже приведен базовый пример выбора времени.
+
+<DocsAlert type="warning">
+  С помощью объекта <b>inputProps</b> можно настраивать ширину, placeholder и
+  прочие параметры текстового поля. <br /> <br />
+  Использование параметра <b>fullWidth</b> недоступно при использовании рендер-функции{' '}
+  <b>renderInput</b>
+</DocsAlert>
+
+<Canvas withSource="none">
+  <BasicStory />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+## Отключение дат
+
+Для отключения дат используются свойства `next_shouldDisableDate`, `next_shouldDisableMonth`, `next_shouldDisableMonth`.
+
+<Canvas withSource="none">
+  <DisableDatesStory />
+</Canvas>
+
+<Source language="tsx" code={RawDisableDatesStory} />
+
+## Валидация минимальной/максимальной даты
+
+<Canvas withSource="none">
+  <MinMaxDateStory />
+</Canvas>
+
+<Source language="tsx" code={RawMinMaxDateStory} />
+
+## Вызов onChange на каждое нажатие клавиши
+
+По умолчанию `onChange` срабатывает только при изменении даты через визуальные средства выбора или вводе корректной даты с клавиатуры.
+Для того чтобы `onChange` вызывался каждый раз, когда пользователь меняет дату при ручном вводе с клавиатуры,
+используйте свойство `triggerOnChangeOnInvalid`.
+
+<Canvas withSource="none">
+  <TriggerOnChangeOnInvalid />
+</Canvas>
+
+<Source language="tsx" code={RawTriggerOnChangeOnInvalid} />
+
+## Замена поля ввода времени
+
+С помощью свойства `renderInput` поле ввода можно заменить на любой другой компонент.
+В данном примере вместо поля ввода отображается кнопка, которая вызывает календарь.
+
+<Canvas withSource="none">
+  <RenderInputStory />
+</Canvas>
+
+<Source language="tsx" code={RawRenderInputStory} />
+
+## Замена плашки выбора дня
+
+В данном примере представлен вариант персонализированной настройки элемента дня через рендер-функцию
+
+<Canvas withSource="none">
+  <RenderDay />
+</Canvas>
+
+<Source language="tsx" code={RawRenderDay} />
+
+## Подкомпоненты
+
+Некоторые низкоуровневые компоненты, которые используются в пакете `@v-uik/date-picker`, можно применять для создания
+собственных компонентов работы с датами.
+
+- [DayView](?path=/docs/поля-ввода-datepicker-dayview--page)
+- [MonthView](?path=/docs/поля-ввода-datepicker-monthview--page)
+- [YearView](?path=/docs/поля-ввода-datepicker-yearview--page)
+- [CalendarPicker](?path=/docs/поля-ввода-datepicker-calendarpicker--page)
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

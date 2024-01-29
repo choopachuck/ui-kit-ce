@@ -1,0 +1,26 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { TableLayoutStory } from '@v-uik/table/examples/TableLayoutStory'
+import RawTableLayoutStory from '!!raw-loader!@v-uik/table/examples/TableLayoutStory'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Таблица с фиксированным размером ячеек',
+  ])}
+  component={Table}
+/>
+
+# Таблица с фиксированным размером ячеек
+
+С помощью свойства `tableLayout` можно зафиксировать размер ячеек в таблице.
+Также объекты массива `columns` принимают свойство `width` в виде числа пикселей
+для указания конкретной ширины столбца.
+
+<Canvas withSource="none">
+  <TableLayoutStory />
+</Canvas>
+
+<Source language="tsx" code={RawTableLayoutStory} />

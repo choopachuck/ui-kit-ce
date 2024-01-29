@@ -1,0 +1,27 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Slider } from '@v-uik/slider'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { TickDummy, ClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Slider', 'API'])}
+  component={Slider}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Slider API
+
+<ArgsTable of={Slider} />
+
+# Slider classes
+
+<ArgsTable of={ClassesDummy} />
+
+# TickItem API
+
+<ArgsTable of={TickDummy} />

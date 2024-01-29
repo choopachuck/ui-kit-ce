@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../../docs/showroom/config'
+import { BasicString } from '@v-uik/table/examples/BasicString'
+import RawBasicString from '!!raw-loader!@v-uik/table/examples/BasicString'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Таблица с шириной ячеек в виде строки',
+  ])}
+  component={Table}
+/>
+
+# Таблица с шириной ячеек в виде строки
+
+Ширина ячеек может быть передана в виде числа, строки с пикселями или строки с процентами
+
+<Canvas withSource="none">
+  <BasicString />
+</Canvas>
+
+<Source language="tsx" code={RawBasicString} />

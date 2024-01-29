@@ -1,0 +1,24 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { EventsStory } from '@v-uik/table/examples/EventsStory'
+import RawEventsStory from '!!raw-loader!@v-uik/table/examples/EventsStory'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Обработка событий таблицы, строк и ячеек',
+  ])}
+  component={Table}
+/>
+
+# Обработка событий таблицы, строк и ячеек
+
+<Canvas withSource="none">
+  <EventsStory />
+</Canvas>
+
+\*события выводятся через console.log() в консоль браузера
+
+<Source language="tsx" code={RawEventsStory} />

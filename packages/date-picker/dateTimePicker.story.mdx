@@ -1,0 +1,103 @@
+import { Canvas, Meta, Source, Story } from '@storybook/addon-docs'
+import { DateTimePicker } from '@v-uik/date-picker'
+import {
+  COMPONENTS,
+  createTitle,
+  createStory,
+} from '../../docs/showroom/config'
+
+import {
+  DateTimePickerStory,
+  DateTimePicker12Hours,
+  DateTimePickerSize,
+  DateTimePickerMilliseconds,
+  DateTimePickerCombination,
+  DatePickerCanvas,
+} from './examples'
+
+import RawDateTimePickerStory from '!!raw-loader!./examples/DateTimePicker/DateTimePickerStory'
+import RawDateTimePicker12Hours from '!!raw-loader!./examples/DateTimePicker/DateTimePicker12Hours'
+import RawDateTimePickerSize from '!!raw-loader!./examples/DateTimePicker/DateTimePickerSize'
+import RawDateTimePickerMilliseconds from '!!raw-loader!./examples/DateTimePicker/DateTimePickerMilliseconds'
+import RawDateTimePickerCombination from '!!raw-loader!./examples/DateTimePicker/DateTimePickerCombination'
+import RawCanvas from '!!raw-loader!@v-uik/date-picker/examples/DateTimePicker/DateTimePickerCanvas'
+
+export const story = createStory(DatePickerCanvas, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'DatePicker', 'DateTimePicker'])}
+  component={DateTimePicker}
+/>
+
+<Story
+  name="DateTimePicker"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# DateTimePicker
+
+Компонент выбора даты и времени.
+DateTimePicker — это вариант `DatePicker` с выбором времени.
+Общий набор свойств совпадает с компонентом `DatePicker`.
+
+## import
+
+```ts
+import { DateTimePicker } from '@v-uik/date-picker'
+```
+
+## Базовый пример
+
+<Canvas withSource="none">
+  <DateTimePickerStory />
+</Canvas>
+
+<Source language="tsx" code={RawDateTimePickerStory} />
+
+## Размеры
+
+<Canvas withSource="none">
+  <DateTimePickerSize />
+</Canvas>
+
+<Source language="tsx" code={RawDateTimePickerSize} />
+
+## Миллисекунды
+
+<Canvas withSource="none">
+  <DateTimePickerMilliseconds />
+</Canvas>
+
+<Source language="tsx" code={RawDateTimePickerMilliseconds} />
+
+## 12-ти часовой формат
+
+<Canvas withSource="none">
+  <DateTimePicker12Hours />
+</Canvas>
+
+<Source language="tsx" code={RawDateTimePicker12Hours} />
+
+## Выбор даты и времени в разных input
+
+Можно собрать `DateTimePicker` из компонентов `DatePicker` и `TimePicker`.
+
+<Canvas withSource="none">
+  <DateTimePickerCombination />
+</Canvas>
+
+<Source language="tsx" code={RawDateTimePickerCombination} />
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

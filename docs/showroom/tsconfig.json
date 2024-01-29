@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@v-uik/date-picker/adapters/*": [
+        "../../packages/date-picker/src/adapters/*"
+      ],
+      "@v-uik/*": ["../../packages/*/src"],
+      "@v-uik/*/examples": ["../../packages/*/examples"]
+    }
+  },
+
+  "include": ["stories", "./cookbook/", "./config/", "services"]
+}

@@ -1,0 +1,118 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Tooltip } from '@v-uik/tooltip'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { Multi, Single, Placement, Interactive, Accessible } from './examples'
+import RawMulti from '!!raw-loader!@v-uik/tooltip/examples/Multi'
+import RawSingle from '!!raw-loader!@v-uik/tooltip/examples/Single'
+import RawPlacement from '!!raw-loader!@v-uik/tooltip/examples/Placement'
+import RawInteractive from '!!raw-loader!@v-uik/tooltip/examples/Interactive'
+import RawAccessible from '!!raw-loader!@v-uik/tooltip/examples/Accessible'
+
+export const story = createStory(Accessible, RawAccessible)
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'Tooltip', 'Tooltip'])}
+  component={Tooltip}
+/>
+
+<Story
+  name="Tooltip"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Tooltip
+
+Tooltip — всплывающие подсказки, появляющиеся когда пользователь наводит курсор на элемент,
+фокусируется на нем или нажимает на него.
+
+## import
+
+```ts
+import { Tooltip } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Tooltip } from '@v-uik/tooltip'
+```
+
+## Подсказки, поддерживающие несколько строк (default).
+
+<Canvas withSource="none">
+  <Multi />
+</Canvas>
+
+<Source language="tsx" code={RawMulti} />
+
+### Компактное отображение содержимого подсказок в одну строку
+
+Компактное отображение подсказок выводит содержимое с уменьшенными отступами, а текст выводится одной строкой.
+
+<Canvas withSource="none">
+  <Single />
+</Canvas>
+
+<Source language="tsx" code={RawSingle} />
+
+## Позиционирование подсказок
+
+Позиционирование подсказки регулируется с помощью аттрибута `placement`.
+
+<Canvas withSource="none">
+  <Placement />
+</Canvas>
+
+<Source language="tsx" code={RawPlacement} />
+
+## Вариант с интерактивными элементами
+
+Для корректной работы тултипа с интерактивными элементами требуется использовать свойство `interactive`.
+Также элемент, к которому привязан такой тултип должен быть доступен при навигации через Tab и иметь `role='button'`.
+Не рекомендуется использовать интерактивный тултип с триггером hover.
+
+Во избежание слияния цветов компонентов в гамме `secondary` с фоном компонента tooltip,
+можно использовать темную тему или стилизовать, используя палитру токенов `theme.sys.color.inverseOnBackground*`.
+Также внутри компонента tooltip можно обращаться к `TooltipContext`, который содержит метод `close()` для его закрытия,
+если работа выполняется с неконтролируемым состоянием (без контроля свойства `open`).
+
+<Canvas withSource="none">
+  <div style={{ margin: '50px 0' }}>
+    <Interactive />
+  </div>
+</Canvas>
+
+<Source language="tsx" code={RawInteractive} />
+
+## Связанные компоненты
+
+- [Dropdown](?path=/docs/вспомогательные-компоненты-dropdown-dropdown--dropdown)
+
+## Обеспечение доступности
+
+Так как наведение мыши на некликабельный элемент недоступно для пользователей
+использующих для взаимодействия с интерфейсом только клавиатуру,
+то рекомендуется показывать тултип, когда элемент, к которому он привязан, находится в фокусе.
+Этого можно достигнуть через свойство `showOnChildFocus`, либо через кастомную реализацию
+при более сложной логике интерфейса.
+
+Для правильной работы программ чтения с экрана необходимо дополнительное использование `aria` атрибутов.
+
+<Canvas withSource="none">
+  <div style={{ margin: '24px' }}>
+    <Accessible />
+  </div>
+</Canvas>
+
+<Source language="tsx" code={RawAccessible} />

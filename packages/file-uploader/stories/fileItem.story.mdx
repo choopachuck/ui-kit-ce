@@ -1,0 +1,103 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { FileItem } from '@v-uik/file-uploader'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../../docs/showroom/config'
+
+import CanvasStory from '../examples/fileItem/Canvas'
+import RawCanvas from '!!raw-loader!../examples/fileItem/Canvas'
+
+import { BasicFileItem } from '../examples/fileItem/BasicFileItem'
+import RawBasicFileItem from '!!raw-loader!../examples/fileItem/BasicFileItem'
+
+import { FileItemStatuses } from '../examples/fileItem/FileItemStatuses'
+import RawFileItemStatuses from '!!raw-loader!../examples/fileItem/FileItemStatuses'
+
+import { ExtendedButtonIcons } from '../examples/fileItem/ExtendedButtonIcons'
+import RawExtendedButtonIcons from '!!raw-loader!../examples/fileItem/ExtendedButtonIcons'
+
+import { CustomIcons } from '../examples/fileItem/CustomIcons'
+import RawCustomIcons from '!!raw-loader!../examples/fileItem/CustomIcons'
+
+import {
+  ClassesDummy,
+  IconButtonClassesDummy,
+} from '../examples/fileItem/Classes.dummy'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'FileUploader'])}
+  component={FileItem}
+/>
+
+<Story
+  name="FileItem"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# FileItem
+
+FileItem — компонент отображает процесс загрузки, ошибку или загруженный файл, а также саму информацию о файле.
+
+## import
+
+```ts
+import { FileItem } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { FileItem } from '@v-uik/file-uploader'
+```
+
+## Базовый пример
+
+<Canvas withSource="none">
+  <BasicFileItem />
+</Canvas>
+
+<Source language="tsx" code={RawBasicFileItem} />
+
+## Разные состояния и размеры
+
+<Canvas withSource="none">
+  <FileItemStatuses />
+</Canvas>
+
+<Source language="tsx" code={RawFileItemStatuses} />
+
+## Добавление своих кнопок-иконок
+
+Дополнительные кнопки-иконки можно добавить через свойство renderIconButtons.
+Иконку необходимо обернуть в компонент FileItemIconButton.
+
+<Canvas withSource="none">
+  <ExtendedButtonIcons />
+</Canvas>
+
+<Source language="tsx" code={RawExtendedButtonIcons} />
+
+## Кастомные иконки
+
+Заменить встроенные иконки статусов или прогрессов можно через свойство components.
+
+<Canvas withSource="none">
+  <CustomIcons />
+</Canvas>
+
+<Source language="tsx" code={RawCustomIcons} />
+
+## Связанные компоненты
+
+- [Link](?path=/docs/навигация-link-link--link)

@@ -1,0 +1,82 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { InputPassword } from '@v-uik/input-password'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { BasicInputPassword } from '@v-uik/input-password/examples/BasicInputPassword'
+import RawBasicPasswordInput from '!!raw-loader!@v-uik/input-password/examples/BasicInputPassword'
+import { LeftIconExample } from '@v-uik/input-password/examples/LeftIconExample'
+import RawLeftIconExample from '!!raw-loader!@v-uik/input-password/examples/LeftIconExample'
+import { CustomIcon } from '@v-uik/input-password/examples/CustomIcon'
+import RawCustomIcon from '!!raw-loader!@v-uik/input-password/examples/CustomIcon'
+import { default as CanvasStory } from '@v-uik/input-password/examples/Canvas'
+import RawCanvas from '!!raw-loader!@v-uik/input-password/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([
+    COMPONENTS.inputFields,
+    'InputPassword',
+    'InputPassword',
+  ])}
+  component={InputPassword}
+/>
+
+<Story
+  name="InputPassword"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# InputPassword
+
+Компонент ввода пароля.
+
+## import
+
+```ts
+import { InputPassword } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { InputPassword } from '@v-uik/input-password'
+```
+
+## Пример
+
+<Canvas withSource="none">
+  <BasicInputPassword />
+</Canvas>
+
+<Source language="tsx" code={RawBasicPasswordInput} />
+
+## Иконка слева
+
+<Canvas withSource="none">
+  <LeftIconExample />
+</Canvas>
+
+<Source language="tsx" code={RawLeftIconExample} />
+
+## Настраиваемая пользователем иконка
+
+<Canvas withSource="none">
+  <CustomIcon />
+</Canvas>
+
+<Source language="tsx" code={RawCustomIcon} />
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

@@ -1,0 +1,80 @@
+import { Canvas, Meta, Source, Story } from '@storybook/addon-docs'
+import {
+  COMPONENTS,
+  createTitle,
+  createStory,
+} from '../../docs/showroom/config'
+import { TablePagination } from '@v-uik/table'
+import { PaginateTable } from '@v-uik/table/examples/PaginateTable'
+import { CustomPaginateTable } from '@v-uik/table/examples/CustomPaginateTable'
+import { DynamicPaginateTable } from '@v-uik/table/examples/DynamicPaginateTable'
+import RawPaginateTable from '!!raw-loader!@v-uik/table/examples/PaginateTable'
+import RawCustomPaginateTable from '!!raw-loader!@v-uik/table/examples/CustomPaginateTable'
+import RawDynamicPaginateTable from '!!raw-loader!@v-uik/table/examples/DynamicPaginateTable'
+import { default as CanvasStory } from '@v-uik/table/examples/PaginationCanvas'
+import RawCanvas from '!!raw-loader!@v-uik/table/examples/PaginationCanvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'TablePagination',
+    'TablePagination',
+  ])}
+  component={TablePagination}
+/>
+
+<Story
+  name="TablePagination"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# TablePagination
+
+Компонент TablePagination предназначен для представления пагинированных списков.
+
+## import
+
+```ts
+import { TablePagination } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { TablePagination } from '@v-uik/table'
+```
+
+## Базовый пример
+
+<Canvas withSource="none">
+  <PaginateTable />
+</Canvas>
+
+<Source language="tsx" code={RawPaginateTable} />
+
+## Пример персонализированной настройки компонента TablePagination
+
+<Canvas withSource="none">
+  <CustomPaginateTable />
+</Canvas>
+
+<Source language="tsx" code={RawCustomPaginateTable} />
+
+## Динамическая подгрузка данных
+
+Пример с неизвестным, результирующим количеством элементов таблицы. В примере используется setTimeout для имитации запроса на backend.
+
+<Canvas withSource="none">
+  <DynamicPaginateTable />
+</Canvas>
+
+<Source language="tsx" code={RawDynamicPaginateTable} />

@@ -1,0 +1,45 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Input } from '@v-uik/input'
+import { InputHelperText } from '@v-uik/input-helper-text'
+import { InputLabel } from '@v-uik/input-label'
+import { createTitle, COMPONENTS } from '@v-uik/showroom/config'
+import {
+  ClassesDummy,
+  InputLabelClassesDummy,
+  InputHelperTextClassesDummy,
+} from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'Input', 'API'])}
+  component={Input}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Input API
+
+<ArgsTable of={Input} />
+
+# Input classes
+
+<ArgsTable of={ClassesDummy} />
+
+# InputLabel API
+
+<ArgsTable of={InputLabel} />
+
+# InputLabel classes
+
+<ArgsTable of={InputLabelClassesDummy} />
+
+# InputHelperText API
+
+<ArgsTable of={InputHelperText} />
+
+# InputHelperText classes
+
+<ArgsTable of={InputHelperTextClassesDummy} />

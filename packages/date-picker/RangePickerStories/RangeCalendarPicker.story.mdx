@@ -1,0 +1,30 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { RangeCalendarPickerStory } from '../examples'
+import { RangeCalendarPicker } from '@v-uik/date-picker'
+import RawRangeCalendarPickerStory from '!!raw-loader!../examples/RangeCalendarPickerStory'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.inputFields,
+    'RangePicker',
+    'RangeCalendarPicker',
+  ])}
+  component={RangeCalendarPicker}
+/>
+
+# Подкомпонент RangeCalendarPicker
+
+Обертка для выбора диапазона дат, которая объединяет выбор даты, месяца и года.
+
+# RangeCalendarPicker API
+
+<ArgsTable of={RangeCalendarPicker} />
+
+# Пример использования
+
+<Canvas withSource="none">
+  <RangeCalendarPickerStory />
+</Canvas>
+
+<Source language="tsx" code={RawRangeCalendarPickerStory} />

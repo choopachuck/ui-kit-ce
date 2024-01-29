@@ -1,0 +1,31 @@
+{
+  "name": "@v-uik/slider",
+  "version": "1.10.0",
+  "description": "",
+  "sideEffects": false,
+  "module": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "typings": "dist/esm/index.d.ts",
+  "files": [
+    "/dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "yarn build:cjs && yarn build:esm",
+    "clean": "rm -rf node_modules dist",
+    "build:cjs": "tsc -d --outDir ./dist/cjs --project tsconfig.cjs.json",
+    "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json"
+  },
+  "license": "ISC",
+  "author": "UFSUI",
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "dependencies": {
+    "@v-uik/hooks": "^1.10.0",
+    "@v-uik/theme": "^1.10.0",
+    "@v-uik/tooltip": "^1.10.0",
+    "@v-uik/utils": "^1.10.0"
+  }
+}

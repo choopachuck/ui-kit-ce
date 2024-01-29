@@ -1,0 +1,30 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { RangeMonthViewStory, RangeMonthViewClassesDummy } from '../examples'
+import { RangeMonthView } from '@v-uik/date-picker'
+import RawRangeMonthViewStory from '!!raw-loader!../examples/RangeMonthViewStory'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'RangePicker', 'RangeMonthView'])}
+  component={RangeMonthView}
+/>
+
+# Подкомпонент RangeMonthView
+
+Используется для отображения диапазона месяцев.
+
+# RangeMonthView API
+
+<ArgsTable of={RangeMonthView} />
+
+## RangeMonthView classes
+
+<ArgsTable of={RangeMonthViewClassesDummy} />
+
+# Пример использования
+
+<Canvas withSource="none">
+  <RangeMonthViewStory />
+</Canvas>
+
+<Source language="tsx" code={RawRangeMonthViewStory} />

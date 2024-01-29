@@ -1,0 +1,22 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { EmptyDataStory } from '@v-uik/table/examples/EmptyDataStory'
+import RawEmptyDataStory from '!!raw-loader!@v-uik/table/examples/EmptyDataStory.tsx'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Таблица с пустыми данными',
+  ])}
+  component={Table}
+/>
+
+# Таблица с пустыми данными
+
+<Canvas withSource="none">
+  <EmptyDataStory />
+</Canvas>
+
+<Source language="tsx" code={RawEmptyDataStory} />

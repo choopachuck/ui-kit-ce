@@ -1,0 +1,204 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { TimePicker, BaseTimePicker } from '@v-uik/date-picker'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { TimePickerStory } from './examples/TimePicker/TimePickerStory'
+import RawTimePickerStory from '!!raw-loader!./examples/TimePicker/TimePickerStory'
+import { Format12Hours } from './examples/TimePicker/Format12Hours'
+import RawFormat12Hours from '!!raw-loader!./examples/TimePicker/Format12Hours'
+import { DisabledTimeStory } from './examples/TimePicker/DisabledTimeStory'
+import RawDisabledTimeStory from '!!raw-loader!./examples/TimePicker/DisabledTimeStory'
+import { BaseTimePickerStory } from './examples/TimePicker/BaseTimePickerStory'
+import RawBaseTimePickerStory from '!!raw-loader!./examples/TimePicker/BaseTimePickerStory'
+import { TimePickerSizeStory } from './examples/TimePicker/TimePickerSizeStory'
+import RawTimePickerSizeStory from '!!raw-loader!./examples/TimePicker/TimePickerSizeStory'
+import { TimePickerIconsStory } from './examples/TimePicker/TimePickerIconsStory'
+import RawTimePickerIconsStory from '!!raw-loader!./examples/TimePicker/TimePickerIconsStory'
+import { TimePickerIntervalsStory } from './examples/TimePicker/TimePickerIntervalsStory'
+import RawTimePickerIntervalsStory from '!!raw-loader!./examples/TimePicker/TimePickerIntervalsStory'
+import { TimePickerTimeCombinationStory } from './examples/TimePicker/TimePickerTimeCombinationStory'
+import RawTimePickerTimeCombinationStory from '!!raw-loader!./examples/TimePicker/TimePickerTimeCombinationStory'
+import { TimePickerMillisecondsStory } from './examples/TimePicker/TimePickerMillisecondsStory'
+import RawTimePickerMillisecondsStory from '!!raw-loader!./examples/TimePicker/TimePickerMillisecondsStory'
+import { TimePickerButtonStory } from './examples/TimePicker/TimePickerButtonStory'
+import RawTimePickerButtonStory from '!!raw-loader!./examples/TimePicker/TimePickerButtonStory'
+
+import { TimePickerClearStory } from './examples/TimePicker/TimePickerClearStory'
+import RawTimePickerClearStory from '!!raw-loader!./examples/TimePicker/TimePickerClearStory'
+
+import { TimePickerCustomDivider } from './examples/TimePicker/TimePickerCustomDivider'
+import RawTimePickerCustomDivider from '!!raw-loader!./examples/TimePicker/TimePickerCustomDivider'
+
+import { TimePickerCustomClasses } from './examples/TimePicker/TimePickerCustomClasses'
+import RawTimePickerCustomClasses from '!!raw-loader!./examples/TimePicker/TimePickerCustomClasses'
+
+import TimePickerCanvas from './examples/TimePicker/TimePickerCanvas'
+import RawCanvas from '!!raw-loader!@v-uik/date-picker/examples/TimePicker/TimePickerCanvas'
+
+export const story = createStory(TimePickerCanvas, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'TimePicker', 'TimePicker'])}
+  component={TimePicker}
+/>
+
+<Story
+  name="TimePicker"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# TimePicker
+
+Компонент выбора времени.
+
+## import
+
+```ts
+import { TimePicker } from '@v-uik/date-picker'
+```
+
+## Базовый пример
+
+<Canvas withSource="none">
+  <TimePickerStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerStory} />
+
+## Размеры
+
+<Canvas withSource="none">
+  <TimePickerSizeStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerSizeStory} />
+
+## Иконки
+
+В компонент `TimePicker` можно добавлять/изменять иконки.
+Для этого необходимо в свойство `inputProps` передать `suffix` и `prefix`.
+
+<Canvas withSource="none">
+  <TimePickerIconsStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerIconsStory} />
+
+## Заблокированные значения
+
+Для блокировки времени используется пропс `baseTimePickerProps.shouldDisableTime`.
+
+<Canvas withSource="none">
+  <DisabledTimeStory />
+</Canvas>
+
+<Source language="tsx" code={RawDisabledTimeStory} />
+
+## Шаг выбора времени
+
+Шаг выбора времени для каждой единицы времени можно задать с помощью свойств `stepHours`, `stepMinutes`, `stepSeconds`, `stepMilliseconds`.
+
+<Canvas withSource="none">
+  <TimePickerIntervalsStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerIntervalsStory} />
+
+## Комбинация времени
+
+Комбинация времени осуществляется с помощью `baseTimePickerProps.views`.
+Единицы времени нужно указать по порядку следования.
+
+<Canvas withSource="none">
+  <TimePickerTimeCombinationStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerTimeCombinationStory} />
+
+## Миллисекунды
+
+Добавление единицы времени миллисекунды осуществялется через `baseTimePickerProps.views`.
+
+<Canvas withSource="none">
+  <TimePickerMillisecondsStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerMillisecondsStory} />
+
+## Кнопка с заменой
+
+Благодаря рендер свойству renderInput можно отобразить любой компонент.
+В данном примере вместо поля ввода отображается кнопка, которая вызывает baseTimePicker.
+
+<Canvas withSource="none">
+  <TimePickerButtonStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerButtonStory} />
+
+## 12-и часовой формат времени (AM/PM)
+
+12-и часовой формат времени включается при `baseTimePickerProps.is12HoursFormat = true`.
+
+<Canvas withSource="none">
+  <Format12Hours />
+</Canvas>
+
+<Source language="tsx" code={RawFormat12Hours} />
+
+## Очистка поля
+
+<Canvas withSource="none">
+  <TimePickerClearStory />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerClearStory} />
+
+## Настройка разделителей
+
+<Canvas withSource="none">
+  <TimePickerCustomDivider />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerCustomDivider} />
+
+## Настройка классов "ячейки" и "пикера"
+
+Поменять стиль ячеек и пикера можно через `baseTimePickerProps.classes`.
+
+<Canvas withSource="none">
+  <TimePickerCustomClasses />
+</Canvas>
+
+<Source language="tsx" code={RawTimePickerCustomClasses} />
+
+## Подкомпонент BaseTimePicker
+
+Используется для отображения времени.
+
+<Canvas withSource="none">
+  <BaseTimePickerStory />
+</Canvas>
+
+<Source language="tsx" code={RawBaseTimePickerStory} />
+
+#### BaseTimePicker API
+
+<ArgsTable of={BaseTimePicker} />
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render component with default tag div and data-test attribute 1`] = `
+<div>
+  <div
+    data-test="cool!"
+  />
+</div>
+`;
+
+exports[`render component with tag h1 1`] = `
+<div>
+  <h1 />
+</div>
+`;

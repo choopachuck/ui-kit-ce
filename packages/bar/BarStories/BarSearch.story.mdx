@@ -1,0 +1,48 @@
+import { ArgsTable, Canvas, Meta } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { Bar, BarButton, BarSearch } from '@v-uik/bar'
+import { ContainerMock, BarSearchClassesDummy } from '../examples'
+import { IconBurger } from '@v-uik/bar/examples/assets/IconBurger'
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Bar', 'BarSearch'])}
+  component={BarSearch}
+/>
+
+# BarSearch
+
+Один из способов быстро найти необходимый контент на страницах приложения — глобальный поиск.
+Компонент `BarSearch` предоставляет весь набор API компонента `Input`, но уже стилизованного для панели.
+Реализация алгоритмов поиска не входит в рамки функциональности библиотеки.
+
+# BarSearch API
+
+<ArgsTable of={BarSearch} />
+
+## BarSearch classes
+
+<ArgsTable of={BarSearchClassesDummy} />
+
+# import
+
+```ts
+import { BarSearch, BarButton, Bar } from '@v-uik/bar'
+```
+
+# Пример использования
+
+<Canvas withSource="none">
+  <ContainerMock>
+    <Bar style={{ position: 'absolute' }}>
+      <BarButton icon={<IconBurger />} />
+      <BarSearch style={{ marginLeft: 'auto' }} />
+    </Bar>
+  </ContainerMock>
+</Canvas>
+
+```tsx
+<Bar>
+  <BarButton icon={<IconBurger />} />
+  <BarSearch style={{ marginLeft: 'auto' }} />
+</Bar>
+```

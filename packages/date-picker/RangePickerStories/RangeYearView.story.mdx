@@ -1,0 +1,30 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { RangeYearViewStory, RangeYearViewClassesDummy } from '../examples'
+import { RangeYearView } from '@v-uik/date-picker'
+import RawRangeYearViewStory from '!!raw-loader!../examples/RangeYearViewStory'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'RangePicker', 'RangeYearView'])}
+  component={RangeYearView}
+/>
+
+# Подкомпонент RangeYearView
+
+Используется для отображения диапазона лет.
+
+# RangeYearView API
+
+<ArgsTable of={RangeYearView} />
+
+## RangeYearView classes
+
+<ArgsTable of={RangeYearViewClassesDummy} />
+
+# Пример использования
+
+<Canvas withSource="none">
+  <RangeYearViewStory />
+</Canvas>
+
+<Source language="tsx" code={RawRangeYearViewStory} />

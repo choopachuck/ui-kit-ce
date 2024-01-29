@@ -1,0 +1,26 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Text } from '@v-uik/typography'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Typography', 'API'])}
+  component={Text}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Text API
+
+<ArgsTable of={Text} />
+
+# Classes
+
+Рекомендуем переопределять конкретные [токены typography](?path=/docs/книга-рецептов-токены--page#sys.typography)

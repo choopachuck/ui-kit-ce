@@ -1,0 +1,93 @@
+import { Meta, Story, ArgsTable, Source } from '@storybook/addon-docs'
+import { Switch } from '@v-uik/switch'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  SwitchesWithText,
+  DifferentSizeSwitches,
+  DifferentPlacement,
+  Disabled,
+  Canvas as CanvasStory,
+} from './examples'
+import RawSwitchesWithText from '!!raw-loader!@v-uik/switch/examples/Examples'
+import RawDifferentSizeSwitches from '!!raw-loader!@v-uik/switch/examples/DifferentSwitchesSize'
+import RawDifferentPlacement from '!!raw-loader!@v-uik/switch/examples/DifferentPlacement'
+import RawDisabled from '!!raw-loader!@v-uik/switch/examples/Disabled'
+
+import RawCanvas from '!!raw-loader!@v-uik/switch/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Switch', 'Switch'])}
+  component={Switch}
+/>
+
+<Story
+  name="Switch"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Switch
+
+Компонент-переключатель поля boolean-значения.
+
+## import
+
+```ts
+import { Switch } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Switch } from '@v-uik/switch'
+```
+
+## Размер
+
+<Canvas withSource="none">
+  <DifferentSizeSwitches />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentSizeSwitches} />
+
+## Компонент Switch с текстом
+
+Для использования переключателя с текстом, требуется использовать `LabelControl`
+
+<Canvas withSource="none">
+  <SwitchesWithText />
+</Canvas>
+
+<Source language="tsx" code={RawSwitchesWithText} />
+
+## Заблокированный компонент Switch
+
+<Canvas withSource="none">
+  <Disabled />
+</Canvas>
+
+<Source language="tsx" code={RawDisabled} />
+
+## Расположение
+
+<Canvas withSource="none">
+  <DifferentPlacement />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentPlacement} />
+
+## Связанные компоненты
+
+- [LabelControl](?path=/docs/вспомогательные-компоненты-labelcontrol-labelcontrol--label-control)

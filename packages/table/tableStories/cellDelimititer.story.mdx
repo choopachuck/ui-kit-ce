@@ -1,0 +1,46 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import {
+  BorderedBothStory,
+  BorderedNoneStory,
+  BorderedRowsStory,
+} from '@v-uik/table/examples/BorderedStory'
+
+import RawBorderedStory from '!!raw-loader!@v-uik/table/examples/BorderedStory'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Table', 'Разделители ячеек'])}
+  component={Table}
+/>
+
+# Разделители ячеек
+
+Ячейки таблицы могут быть визуально разделены тремя способами:
+
+## Разделение строк
+
+Вариант по умолчанию. Можно указать явно с помощью свойства `bordered` со значением `rows`.
+
+<Canvas withSource="none">
+  <BorderedRowsStory />
+</Canvas>
+
+## Разделение строк и столбцов
+
+Выставив свойству `bordered` значение `rows-columns` можно добиться более строгого вида таблицы.
+
+<Canvas withSource="none">
+  <BorderedBothStory />
+</Canvas>
+
+## Без разделителей
+
+Можно убрать границы ячеек, указав значение `none` для свойства `bordered`. В этом случае рекомендуется
+"облегчить" заголовок таблицы изменением цвета заливки.
+
+<Canvas withSource="none">
+  <BorderedNoneStory />
+</Canvas>
+
+<Source language="tsx" code={RawBorderedStory} />

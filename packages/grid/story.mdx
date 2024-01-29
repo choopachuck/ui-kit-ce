@@ -1,0 +1,112 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Grid, GridItem } from '@v-uik/grid'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Adaptive,
+  CurrentMedia,
+  AutoGrid,
+  DifferentColumnsGrid,
+  DifferentSpacing,
+  Canvas as CanvasStory,
+} from '@v-uik/grid/examples'
+import RawAdaptive from '!!raw-loader!@v-uik/grid/examples/Adaptive'
+import RawAutoGrid from '!!raw-loader!@v-uik/grid/examples/AutoGrid'
+import RawDifferentColumnsGrid from '!!raw-loader!@v-uik/grid/examples/DifferentColumnsGrid'
+import RawDifferentSpacing from '!!raw-loader!@v-uik/grid/examples/DifferentSpacing'
+import RawCanvas from '!!raw-loader!@v-uik/grid/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Grid', 'Grid'])}
+  component={Grid}
+/>
+
+<Story
+  name="Grid"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Grid
+
+Компонент-контейнер для построения разметочной сетки. Сетка состоит из 16 колонок,
+основана на flex и работает с использованием media query.
+
+## import
+
+```ts
+import { Grid, GridItem } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Grid, GridItem } from '@v-uik/grid'
+```
+
+## GridItem
+
+Элемент сетки контейнера. Ширина элемента для разных размеров экрана.
+Число означает количество полос, занимаемых элементом в 16-и колоночной сетке.
+
+## Адаптивная сетка
+
+Размеры блоков меняются вместе с размерами экрана, и элементы занимают разное пространство.
+
+<Canvas withSource="none">
+  <CurrentMedia />
+</Canvas>
+
+<Canvas withSource="none">
+  <Adaptive />
+</Canvas>
+
+<Source language="tsx" code={RawAdaptive}></Source>
+
+## Авто-сетка
+
+<Canvas withSource="none">
+  <AutoGrid />
+</Canvas>
+
+<Source language="tsx" code={RawAutoGrid}></Source>
+
+## Разное количество колонок
+
+<Canvas withSource="none">
+  <DifferentColumnsGrid />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentColumnsGrid}></Source>
+
+## Разные отступы у компонента Grid
+
+<Canvas withSource="none">
+  <DifferentSpacing />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentSpacing}></Source>
+
+## Переопределение колонок и отступов на разных контрольных точках (breakpoints)
+
+У компонента Grid существует возможность переопределить значения свойств для разных контрольных точек (breakpoints).
+Например, свойство columns может принимать фиксированное количество колонок для всех контрольных точек
+или же может принимать объект переопределений только для некоторых.
+Значения самих контрольных точек можно изменить в теме `theme.breakpoints`.
+
+<Canvas withSource="none">
+  <AutoGrid />
+</Canvas>
+
+<Source language="tsx" code={RawAutoGrid}></Source>

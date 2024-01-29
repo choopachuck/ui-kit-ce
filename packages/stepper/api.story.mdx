@@ -1,0 +1,31 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Stepper, Step } from '@v-uik/stepper'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { StepperClassesDummy, StepClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Stepper', 'API'])}
+  component={Stepper}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Stepper API
+
+<ArgsTable of={Stepper} />
+
+# Stepper classes
+
+<ArgsTable of={StepperClassesDummy} />
+
+# Step API
+
+<ArgsTable of={Step} />
+
+# Step classes
+
+<ArgsTable of={StepClassesDummy} />

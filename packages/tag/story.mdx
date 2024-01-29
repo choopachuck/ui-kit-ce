@@ -1,0 +1,117 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Tag } from '@v-uik/tag'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Basic,
+  ColorTagsExample,
+  DifferentSizeExample,
+  TagTypesExample,
+  CustomColor,
+  ColorIndicator,
+  Canvas as CanvasStory,
+} from './examples'
+import RawBasic from '!!raw-loader!@v-uik/tag/examples/Basic'
+import RawColorTagsExample from '!!raw-loader!@v-uik/tag/examples/ColorTagsExample'
+import RawDifferentSizeExample from '!!raw-loader!@v-uik/tag/examples/DifferentSizeExample'
+import RawTagTypesExample from '!!raw-loader!@v-uik/tag/examples/TagTypesExample'
+import RawCustomColor from '!!raw-loader!@v-uik/tag/examples/CustomColor'
+import RawColorIndicator from '!!raw-loader!@v-uik/tag/examples/ColorIndicator'
+import RawCanvas from '!!raw-loader!@v-uik/tag/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Tag', 'Tag'])}
+  component={Tag}
+/>
+
+<Story
+  name="Tag"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Tag
+
+Tag — это компактные элементы, представляющие входные данные, атрибут или действие.
+В зависимости от назначения они делятся на 3 типа, каждый из которых обладает собственными атрибутами.
+
+## import
+
+```ts
+import { Tag } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Tag } from '@v-uik/tag'
+```
+
+## Типы тегов
+
+Компонент может быть одним из четырех типов: `lite`, `secondary`, `primary` и `color`.
+Теги с типом `color` выполняют лишь визуальную функцию и не могут быть интерактивными
+(игнорируют значения свойств `onClick`, `onDelete` и `selected`).
+
+<Canvas withSource="none">
+  <TagTypesExample />
+</Canvas>
+
+<Source language="tsx" code={RawTagTypesExample} />
+
+## Размеры тегов
+
+<Canvas withSource="none">
+  <DifferentSizeExample />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentSizeExample} />
+
+## Цветные теги
+
+<Canvas withSource="none">
+  <ColorTagsExample />
+</Canvas>
+
+<Source language="tsx" code={RawColorTagsExample} />
+
+## Интерактивные теги
+
+Все теги, за исключением типа `color`, могут управляться с помощью свойств `selected`, `onClick`, `onDelete`
+
+<Canvas withSource="none">
+  <Basic />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+## Персонализированная настройка интерактивных тегов
+
+Немного стилизовав теги с помощью CSS, можно добиться пользовательской цветовой схемы.
+
+<Canvas withSource="none">
+  <CustomColor />
+</Canvas>
+
+<Source language="tsx" code={RawCustomColor} />
+
+## Дополнительная цветовая индикация тегов
+
+Альтернативным вариантом кастомизации палитры тегов может послужить добавление цветного индикатора.
+
+<Canvas withSource="none">
+  <ColorIndicator />
+</Canvas>
+
+<Source language="tsx" code={RawColorIndicator} />

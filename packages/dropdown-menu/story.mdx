@@ -1,0 +1,57 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { DropdownMenu, DropdownMenuItem } from '@v-uik/dropdown-menu'
+import { createTitle, COMPONENTS, createStory } from '@v-uik/showroom/config'
+import { Cascading, Canvas as CanvasStory } from '@v-uik/dropdown-menu/examples'
+import RawCascading from '!!raw-loader!@v-uik/dropdown-menu/examples/Cascading'
+import RawCanvas from '!!raw-loader!@v-uik/dropdown-menu/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'DropdownMenu', 'DropdownMenu'])}
+  component={DropdownMenu}
+/>
+
+<Story
+  name="DropdownMenu"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# DropdownMenu
+
+Компонент DropdownMenu представляет собой выпадающее меню.
+
+## import
+
+```ts
+import { DropdownMenu, DropdownMenuItem } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { DropdownMenu, DropdownMenuItem } from '@v-uik/dropdown-menu'
+```
+
+## DropdownMenuItem
+
+Внутренний компонент выпадающего меню, представляющий собой единичный элемент меню.
+
+<Canvas withSource="none">
+  <div style={{ marginBottom: '20em' }}>
+    <Cascading />
+  </div>
+</Canvas>
+
+<Source language="tsx" code={RawCascading} />
+
+## Связанные компоненты
+
+- [Dropdown](?path=/docs/вспомогательные-компоненты-dropdown-dropdown--dropdown)

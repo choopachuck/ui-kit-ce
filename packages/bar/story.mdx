@@ -1,0 +1,141 @@
+import { ArgsTable, Canvas, Meta, Source, Story } from '@storybook/addon-docs'
+import { Bar } from '@v-uik/bar'
+import {
+  COMPONENTS,
+  createTitle,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  BarAndSubBarExample,
+  BarHistoryExample,
+  Basic,
+  NestedMenuExample,
+  BarClassesDummy,
+} from '@v-uik/bar/examples'
+import RawBarAndSubBarExample from '!!raw-loader!@v-uik/bar/examples/BarAndSubBarExample'
+import RawNestedMenuExample from '!!raw-loader!@v-uik/bar/examples/NestedMenuExample'
+import RawBarHistoryExample from '!!raw-loader!@v-uik/bar/examples/BarHistoryExample'
+import RawCustomBarMenuItem from '!!raw-loader!@v-uik/bar/examples/CustomBarMenuItem'
+import * as AssetsModule from '@v-uik/bar/examples/assets'
+import RawBasicBar from '!!raw-loader!@v-uik/bar/examples/Basic'
+
+export const story = createStory(Basic, RawBasicBar, {
+  './assets': AssetsModule,
+})
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Bar', 'Bar'])}
+  component={Bar}
+/>
+
+<Story
+  name="Bar"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+      hideNoControlsWarning: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Bar и Bar\*
+
+Bar — это панель, которая располагается сверху или слева экрана и используется для быстрой навигации по основным
+разделам приложения, отображения поля поиска, кнопок быстрых действий пользователя.
+
+<ArgsTable of={Bar} />
+
+## Сlasses
+
+<ArgsTable of={BarClassesDummy} />
+
+## import
+
+```ts
+import {
+  Bar,
+  BarMenuItem,
+  BarDropdown,
+  BarDropdownItem,
+  BarSearch,
+  BarDate,
+  BarButton,
+  BarDivider,
+  SubBar,
+} from '@v-uik/base'
+```
+
+или
+
+```ts
+import {
+  Bar,
+  BarMenuItem,
+  BarDropdown,
+  BarDropdownItem,
+  BarSearch,
+  BarDate,
+  BarButton,
+  BarDivider,
+  SubBar,
+} from '@v-uik/bar'
+```
+
+## Создание пользовательских компонентов
+
+Пример пользовательского компонента для отображения иерархического меню представлен ниже.
+Данный пример может быть видоизменен: можно создать компонент, принимающий массив дочерних элементов, рекурсивно вызывающий себя,
+или использовать любой другой подход.
+
+<Source language="tsx" code={RawCustomBarMenuItem} />
+
+## Иерархическое меню
+
+Для создания иерархической вложенности использован [пользовательский компонент](?path=/docs/навигация-bar-bar--bar#создание-пользовательских-компонентов).
+В примере показан вариант переноса текста. Кроме переноса можно увеличить ширину компонента Bar.
+
+<Canvas withSource="none">
+  <NestedMenuExample />
+</Canvas>
+
+<Source language="tsx" code={RawNestedMenuExample} />
+
+## История переходов
+
+Пример создания истории просмотра страниц с использованием [пользовательского компонента](?path=/docs/навигация-bar-bar--bar#создание-пользовательских-компонентов).
+
+<Canvas withSource="none">
+  <BarHistoryExample />
+</Canvas>
+
+<Source language="tsx" code={RawBarHistoryExample} />
+
+## Возможные комбинации расположений и стилей Bar и SubBar
+
+Можно комбинировать горизонтальное и вертикальное положения Bar и SubBar с помощью соответствующих свойств
+и добавления отступов.
+
+<Canvas withSource="none">
+  <BarAndSubBarExample />
+</Canvas>
+
+<Source language="tsx" code={RawBarAndSubBarExample} />
+
+## Саб-компоненты
+
+- [Навигация при помощи BarDropdown](?path=/docs/навигация-bar-bardropdown--page)
+- [Навигация при помощи BarDropdownItem](?path=/docs/навигация-bar-bardropdownitem--page)
+- [Навигация при помощи BarMenuItem](?path=/docs/навигация-bar-barmenuitem--page)
+- [Быстрые действия пользователя — BarButton](?path=/docs/навигация-bar-barbutton--page)
+- [Пример с логотипом](?path=/docs/навигация-bar-логотип--page)
+- [API SubBar](?path=/docs/навигация-bar-subbar--page)
+- [Поиск при помощи BarSearch](?path=/docs/навигация-bar-barsearch--page)
+- [Меню выбора](?path=/docs/навигация-bar-barselect--page)
+- [Системное время](?path=/docs/навигация-bar-bardate--page)
+- [Визуальный разделитель](?path=/docs/навигация-bar-bardivider--page)

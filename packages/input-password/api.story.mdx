@@ -1,0 +1,22 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { InputPassword } from '@v-uik/input-password'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'InputPassword', 'API'])}
+  component={InputPassword}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# API
+
+<ArgsTable of={InputPassword} />
+
+# Classes
+
+Набор классов InputPassword совпадает с набором [классов Input](?path=/docs/поля-ввода-input-api--page#input-classes)

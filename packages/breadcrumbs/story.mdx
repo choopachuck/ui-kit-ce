@@ -1,0 +1,103 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs'
+import { Breadcrumbs } from '@v-uik/breadcrumbs'
+import { Link } from '@v-uik/link'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { Icon } from '@v-uik/breadcrumbs/examples/assets/Icon'
+import {
+  Accessibility,
+  ClassesDummy,
+  Canvas as CanvasStory,
+} from '@v-uik/breadcrumbs/examples'
+import RawAccessibility from '!!raw-loader!@v-uik/breadcrumbs/examples/Accessibility'
+import RawCanvas from '!!raw-loader!@v-uik/breadcrumbs/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Breadcrumbs', 'Breadcrumbs'])}
+  component={Breadcrumbs}
+/>
+
+<Story
+  name="Breadcrumbs"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Breadcrumbs
+
+Компонент Breadcrumbs показывает текущее расположение страницы в иерархии приложения.
+
+## import
+
+```ts
+import { Breadcrumbs } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Breadcrumbs } from '@v-uik/breadcrumbs'
+```
+
+В основе компонента Breadcrumbs лежит компонент Link,
+который позволяет пользователю быстро вернуться в предыдущие разделы. Для отображения текущего раздела
+(последний элемент цепочек навигации («хлебных крошек»)) используйте обычный HTML-элемент (`span` и т.п.).
+
+<Canvas>
+  <Breadcrumbs aria-label="Навигация">
+    <Link href="#">Breadcrumb</Link>
+    <Link href="#">
+      <Icon style={{ marginRight: 8 }} />
+      Breadcrumb
+    </Link>
+    <Link disabled tabIndex={-1} aria-disabled={true} href="#">
+      <Icon style={{ marginRight: 8 }} />
+      Breadcrumb disabled
+    </Link>
+    <span>Breadcrumb</span>
+  </Breadcrumbs>
+</Canvas>
+
+## Скрытие элементов в случае длинного списка
+
+<Canvas>
+  <Breadcrumbs maxItems={3} aria-label="Навигация">
+    <Link href="#">Breadcrumb 1</Link>
+    <Link href="#">Breadcrumb 2</Link>
+    <Link href="#">Breadcrumb 3</Link>
+    <Link href="#">Breadcrumb 4</Link>
+    <span>Breadcrumb 5</span>
+  </Breadcrumbs>
+</Canvas>
+
+## Доступность
+
+Для обеспечения доступности рекомендуется добавить атрибут aria-label корневому элементу и при необходимости — aria-current элементу текущей страницы.
+
+<Canvas withSource="none">
+  <Accessibility />
+</Canvas>
+
+<Source language="tsx" code={RawAccessibility} />
+
+## Полезные статьи по теме
+
+- [Breadcrumb Navigation Increasingly Useful](https://www.nngroup.com/articles/breadcrumb-navigation-useful/)
+
+## Связанные компоненты
+
+- [Link](?path=/docs/навигация-link-link--link)

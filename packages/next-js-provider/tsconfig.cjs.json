@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.cjs.json",
+  "compilerOptions": {
+    "skipLibCheck": true
+  },
+  "include": ["./src/index.ts"]
+}

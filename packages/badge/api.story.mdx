@@ -1,0 +1,24 @@
+import { Meta, Story, ArgsTable } from '@storybook/addon-docs'
+import { Badge } from '@v-uik/badge'
+import { Button } from '@v-uik/button'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { ClassesDummy } from '@v-uik/badge/examples'
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'Badge', 'API'])}
+  component={Badge}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# API
+
+<ArgsTable of={Badge} />
+
+# Classes
+
+<ArgsTable of={ClassesDummy} />

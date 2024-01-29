@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render with correct props 1`] = `
+<div
+  class="root-0-2-1 end-0-2-5 md-0-2-3 dividerTop-0-2-19"
+  data-testid="pagination"
+>
+  <div
+    class="itemsWrapper-0-2-7"
+  />
+  <div
+    class="wrapper-0-2-8"
+  >
+    <div
+      class="pages-0-2-10"
+    >
+      <div
+        class="pagesRange-0-2-11"
+      >
+        1 из 10 страниц
+      </div>
+    </div>
+    <div
+      class="buttonsWrapper-0-2-9"
+    >
+      <button
+        aria-label="предыдущая страница"
+        class="button-0-2-21 resetButton-0-2-20 disabled-0-2-22"
+        type="button"
+      >
+        <svg
+          class="disabledArrow-0-2-13"
+          fill="currentColor"
+          height="40"
+          viewBox="0 0 40 40"
+          width="40"
+        >
+          <rect
+            fill="white"
+            fill-opacity="0.01"
+            height="40"
+            width="40"
+          />
+          <path
+            clip-rule="evenodd"
+            d="M24 15.499L22.4 14L16 19.9995L22.4 26L24 24.4999L19.2 19.9995L24 15.499Z"
+            fill="black"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </button>
+      <button
+        aria-label="следующая страница"
+        class="button-0-2-21 resetButton-0-2-20"
+        type="button"
+      >
+        <svg
+          class=""
+          fill="currentColor"
+          height="40"
+          viewBox="0 0 40 40"
+          width="40"
+        >
+          <rect
+            fill="white"
+            fill-opacity="0.01"
+            height="40"
+            width="40"
+          />
+          <path
+            clip-rule="evenodd"
+            d="M16 15.499L17.6 14L24 19.9995L17.6 26L16 24.4999L20.8 19.9995L16 15.499Z"
+            fill="black"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;

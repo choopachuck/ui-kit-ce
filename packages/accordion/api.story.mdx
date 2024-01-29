@@ -1,0 +1,24 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Accordion, AccordionItem } from '@v-uik/accordion'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { ClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Accordion', 'API'])}
+  component={Accordion}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+      docs: { hidden: true },
+    },
+  }}
+/>
+
+# AccordionItem API
+
+<ArgsTable of={AccordionItem} />
+
+# Classes AccordionItem
+
+<ArgsTable of={ClassesDummy} />

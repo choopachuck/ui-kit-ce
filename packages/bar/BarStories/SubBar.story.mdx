@@ -1,0 +1,28 @@
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { SubBarClassesDummy } from '../examples'
+import { SubBar } from '@v-uik/bar'
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Bar', 'SubBar'])}
+  component={SubBar}
+/>
+
+# SubBar
+
+Вспомогательная панель для расположения дополнительных компонентов. В SubBar могут использоваться все
+компоненты Bar\*
+
+# SubBar API
+
+<ArgsTable of={SubBar} />
+
+## Сlasses
+
+<ArgsTable of={SubBarClassesDummy} />
+
+# import
+
+```ts
+import { SubBar } from '@v-uik/bar'
+```

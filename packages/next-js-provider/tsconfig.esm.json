@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.esm.json",
+  "compilerOptions": {
+    "skipLibCheck": true
+  },
+  "include": ["./src/index.ts"]
+}

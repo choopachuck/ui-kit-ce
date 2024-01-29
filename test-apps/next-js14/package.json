@@ -1,0 +1,29 @@
+{
+  "name": "nextjs-test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "parse-examples": "ts-node --project tsconfig.json ./scripts/parse-examples.js",
+    "detect-error": "npx playwright test ./scripts/detect-error.test.e2e.js"
+  },
+  "dependencies": {
+    "eslint": "8.56.0",
+    "eslint-config-next": "13.5.1",
+    "glob": "10.0.0",
+    "next": "13.5.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "ts-node": "10.9.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.23.2",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.32",
+    "@types/react-dom": "18.0.11",
+    "typescript": "4.9.4"
+  }
+}

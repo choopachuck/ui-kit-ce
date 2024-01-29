@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "allowJs": true,
+    "strict": true,
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react",
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@v-uik/*": ["packages/*/src"]
+    }
+  },
+
+  "include": ["packages"],
+  "exclude": ["node_modules"]
+}

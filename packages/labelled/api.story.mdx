@@ -1,0 +1,17 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Labelled } from '@v-uik/labelled'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { ClassesDummy } from './examples/Classes.dummy'
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Labelled', 'API'])}
+  component={Labelled}
+/>
+
+# Labelled API
+
+<ArgsTable of={Labelled} />
+
+# Labelled classes
+
+<ArgsTable of={ClassesDummy} />

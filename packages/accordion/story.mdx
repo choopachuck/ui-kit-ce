@@ -1,0 +1,79 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Accordion, AccordionItem } from '@v-uik/accordion'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Basic,
+  Collapse,
+  ClassesDummy,
+  Canvas as CanvasStory,
+} from './examples'
+import RawBasic from '!!raw-loader!@v-uik/accordion/examples/Basic'
+import RawCollapse from '!!raw-loader!@v-uik/accordion/examples/Collapse'
+import RawCanvas from '!!raw-loader!@v-uik/accordion/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Accordion', 'Accordion'])}
+  component={Accordion}
+/>
+
+<Story
+  name="Accordion"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Accordion
+
+Компонент Accordion представляет собой вертикально сложенный список элементов.
+Каждый элемент может быть «развёрнут» или «раскрыт», чтобы показать содержимое, связанное с этим элементом.
+
+## AccordionItem
+
+Для управления отображением каждого элемента используется компонент `AccordionItem`.
+Для корректной работы все элементы оборачиваются в компонент `Accordion`.
+Ниже представлена таблица со свойствами для компонента `AccordionItem`.
+
+## import
+
+```ts
+import { Accordion, AccordionItem } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Accordion, AccordionItem } from '@v-uik/accordion'
+```
+
+## Пример обычного аккордеона
+
+Обычный аккордеон не предполагает автоматического закрытия остальных элементов при выборе нового.
+
+<Canvas withSource="none">
+  <Basic />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+## Аккордеон с одним открытым элементом
+
+<Canvas withSource="none">
+  <Collapse />
+</Canvas>
+
+<Source language="tsx" code={RawCollapse} />

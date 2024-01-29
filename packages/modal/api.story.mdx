@@ -1,0 +1,45 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Modal, ModalHeader } from '@v-uik/modal'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { ClassesDummy, HeaderClassesDummy, BodyClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'Modal', 'API'])}
+  component={Modal}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Modal API
+
+<ArgsTable of={Modal} />
+
+# Modal Classes
+
+Набор стилей для персонализированной настройки через объект `classes`.
+
+<ArgsTable of={ClassesDummy} />
+
+# ModalHeader API
+
+<ArgsTable of={ModalHeader} />
+
+# ModalHeader Classes
+
+Набор стилей для персонализированной настройки через объект `classes`.
+
+<ArgsTable of={HeaderClassesDummy} />
+
+# ModalBody Classes
+
+Набор стилей для персонализированной настройки через объект `classes`.
+
+<ArgsTable of={BodyClassesDummy} />

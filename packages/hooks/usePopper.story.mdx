@@ -1,0 +1,58 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import {
+  createTitle,
+  HOOKS,
+  DocsAlert,
+  createStory,
+} from '../../docs/showroom/config'
+import { PopperExample } from './examples/PopperExample'
+import RawPopperExample from '!!raw-loader!./examples/PopperExample'
+import { Button } from '@v-uik/button'
+
+export const story = createStory(PopperExample, RawPopperExample)
+
+<Meta title={createTitle([HOOKS.root, HOOKS.usePopper])} />
+
+<Story
+  name="usePopper"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# usePopper
+
+`usePopper` это обертка вокруг [react-popper](https://popper.js.org/react-popper/v2/) и [popper.js](https://popper.js.org/docs/v2/)
+
+## usePopper API
+
+<DocsAlert>
+  Так как это всего лишь обертка, полную документацию по использованию можно
+  найти на странице &nbsp;
+  <a href="https://popper.js.org/react-popper/v2/">react-popper</a>
+</DocsAlert>
+
+## import
+
+```tsx
+import { usePopper } from '@v-uik/base'
+```
+
+или
+
+```tsx
+import { usePopper } from '@v-uik/hooks'
+```
+
+## Относительное позиционирование элементов
+
+<Canvas withSource="none">
+  <PopperExample />
+</Canvas>
+
+<Source language="tsx" code={RawPopperExample}></Source>

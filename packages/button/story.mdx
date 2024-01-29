@@ -1,0 +1,100 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs'
+import { Button } from '@v-uik/button'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  ClassesDummy,
+  FilledButtons,
+  OutlinedButtons,
+  GhostButtons,
+  IconButtons,
+  DifferentSizeButtons,
+  Canvas as CanvasStory,
+} from './examples'
+import RawFilledButtons from '!!raw-loader!./examples/FilledButtons'
+import RawOutlinedButtons from '!!raw-loader!./examples/OutlinedButtons'
+import RawGhostButtons from '!!raw-loader!./examples/GhostButtons'
+import RawIconButtons from '!!raw-loader!./examples/IconButtons'
+import RawDifferentSizeButtons from '!!raw-loader!./examples/DifferentSizeButtons'
+import RawCanvas from '!!raw-loader!@v-uik/button/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Button', 'Button'])}
+  component={Button}
+/>
+
+<Story
+  name="Button"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: { disable: true },
+  }}
+>
+  {story.component}
+</Story>
+
+# Button
+
+Кнопки позволяют пользователям выполнять действия и делать выбор одним нажатием.
+
+## import
+
+```ts
+import { Button } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Button } from '@v-uik/button'
+```
+
+## Заполненные кнопки (default)
+
+Данный тип кнопок имеет высокий акцент с точки зрения дизайна, т.е. такие кнопки сильно выделяются в пользовательском интерфейсе.
+
+<Canvas withSource="none">
+  <FilledButtons />
+</Canvas>
+
+<Source language="tsx" code={RawFilledButtons} />
+
+## Контурные кнопки
+
+<Canvas withSource="none">
+  <OutlinedButtons />
+</Canvas>
+
+<Source language="tsx" code={RawOutlinedButtons} />
+
+## Текстовые кнопки
+
+<Canvas withSource="none">
+  <GhostButtons />
+</Canvas>
+
+<Source language="tsx" code={RawGhostButtons} />
+
+## Кнопки с иконками
+
+<Canvas withSource="none">
+  <IconButtons />
+</Canvas>
+
+<Source language="tsx" code={RawIconButtons} />
+
+## Кнопки разных размеров
+
+<Canvas withSource="none">
+  <DifferentSizeButtons />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentSizeButtons} />

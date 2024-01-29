@@ -1,0 +1,82 @@
+import { Meta } from '@storybook/addon-docs'
+import { createTitle, COOKBOOK, COMPONENTS, Do } from '../config'
+
+<Meta title={createTitle([COMPONENTS.newApp, 'Установка'])} />
+
+## Создание нового приложения
+
+Если вы не знаете с чего начать создание нового приложения, то этот рецепт для вас.
+
+Для создания нового приложения, мы будем использовать официальную утилиту для создания одностраничных приложений [Create React App](https://create-react-app.dev/)
+
+## Начало работы
+
+```bash
+npx create-react-app my-app --template typescript --use-npm
+cd my-app
+npm start
+```
+
+Далее нужно установить пакет **@v-uik/base**. Этот пакет включает в себя все компоненты библиотеки **v-uik**.
+Такой способ установки и обновления компонентов является предпочтительным.
+
+### npm
+
+```bash
+npm install @v-uik/base
+```
+
+#### или yarn
+
+```bash
+yarn add @v-uik/base
+```
+
+После установки всех зависимостей, мы можем закончить наш пример.
+
+**src/App.ts**
+
+```tsx
+import { Button } from '@v-uik/base'
+
+function App() {
+  return <Button>some button</Button>
+}
+```
+
+## Выборочная установка компонентов
+
+При необходимости компоненты могут устанавливаться выборочно, например:
+
+**npm**
+
+```bash
+npm install @v-uik/theme @v-uik/button
+```
+
+**yarn**
+
+```bash
+yarn add @v-uik/theme @v-uik/button
+```
+
+**src/App.ts**
+
+```tsx
+import { Button } from '@v-uik/base'
+
+function App() {
+  return <Button>some button</Button>
+}
+```
+
+**@v-uik/button** — один из десятков доступных компонентов библиотеки **v-uik**, которые вы можете использовать.
+
+**@v-uik/theme** — пакет содержит набор токенов для вашего приложения. Вы можете использовать готовые темы,
+такие как `light` и `dark`, или построить свои собственные на основе существующих. Пакет построен на базе
+библиотеки [react-jss](https://cssinjs.org/react-jss) - это библиотека для написания стилей с использованием паттерна CSS-in-JS.
+Мы используем ее в своих компонентах. Благодаря компоненту `ThemeProvider` из пакета `@v-uik/theme`,
+который использует React Context API, мы можем легко стилизовать наши компоненты на любом уровне вложенности
+и быстро менять тему всего приложения.
+
+Более подробно примеры кастомизации представлены [тут](?path=/docs/книга-рецептов-стилизация--page)

@@ -1,0 +1,101 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Container } from '@v-uik/container'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  BasicContainer,
+  GridComp,
+  FixedContainer,
+  MaxWidthContainer,
+  ContainerPosition,
+  Canvas as CanvasStory,
+} from './examples'
+import RawBasicContainer from '!!raw-loader!./examples/BasicContainer'
+import RawFixedContainer from '!!raw-loader!./examples/FixedContainer'
+import RawMaxWidthContainer from '!!raw-loader!./examples/MaxWidthContainer'
+import RawContainerPosition from '!!raw-loader!./examples/ContainerPosition'
+import RawCanvas from '!!raw-loader!@v-uik/container/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Container', 'Container'])}
+  component={Container}
+/>
+
+<Story
+  name="Container"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Container
+
+Компонент Container центрирует контент по горизонтали.
+
+## import
+
+```ts
+import { Container } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Container } from '@v-uik/container'
+```
+
+## Пример базового компонента
+
+<Canvas withSource="none">
+  <BasicContainer />
+</Canvas>
+
+<Source language="tsx" code={RawBasicContainer} />
+
+## Контейнер с maxWidth
+
+Ширина контейнера ограничена значением breakpoint maxWidth.
+
+<Canvas withSource="none">
+  <MaxWidthContainer />
+</Canvas>
+
+<Source language="tsx" code={RawMaxWidthContainer} />
+
+## Зафиксированный контейнер
+
+Свойство `fixed` позволяет зафиксировать ширину контейнера под текущую контрольную точку.
+Максимальная ширина контейнера соответствует минимальной ширине текущей контрольной точки — breakpoint.
+
+<Canvas withSource="none">
+  <FixedContainer />
+</Canvas>
+
+<Source language="tsx" code={RawFixedContainer} />
+
+## Позиционирование контейнера
+
+<Canvas withSource="none">
+  <ContainerPosition />
+</Canvas>
+
+<Source language="tsx" code={RawContainerPosition} />
+
+## Переопределение горизонтального отступа на разных breakpoints
+
+У компонента Container существует возможность переопределить значение свойства margin для разных breakpoints.
+Margin может принимать фиксированное значение для всех контрольных точек (breakpoints) или же может принимать объект
+переопределений для некоторых. Значения самих контрольных точек можно изменить в теме `theme.breakpoints`.

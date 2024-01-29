@@ -1,0 +1,44 @@
+import { ArgsTable, Canvas, Meta } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { Bar, BarButton, BarDate, BarDivider } from '@v-uik/bar'
+import { ContainerMock } from '../examples'
+import { IconBurger } from '@v-uik/bar/examples/assets/IconBurger'
+import { BarDividerClassesDummy } from '../examples'
+
+<Meta title={createTitle([COMPONENTS.navigation, 'Bar', 'BarDivider'])} />
+
+# Визуальный разделитель
+
+Компонент-разделитель частей Bar.
+
+# BarDivider API
+
+<ArgsTable of={BarDivider} />
+
+## Сlasses
+
+<ArgsTable of={BarDividerClassesDummy} />
+
+# import
+
+```ts
+import { BarDivider } from '@v-uik/bar'
+```
+
+<Canvas withSource="none">
+  <ContainerMock>
+    <Bar style={{ position: 'absolute' }}>
+      <BarButton icon={<IconBurger />} />
+      <BarDivider />
+      <BarDate />
+    </Bar>
+  </ContainerMock>
+</Canvas>
+
+```tsx
+<Bar>
+  <BarButton icon={<IconBurger />} />
+  <BarDivider />
+  <BarDate />
+</Bar>
+```

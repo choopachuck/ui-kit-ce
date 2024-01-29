@@ -1,0 +1,29 @@
+{
+  "name": "@v-uik/badge",
+  "version": "1.10.0",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/esm/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "/dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "yarn build:cjs && yarn build:esm",
+    "rm:lock": "rm -f package-lock.json",
+    "build:cjs": "tsc -d --outDir ./dist/cjs --project tsconfig.cjs.json",
+    "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json"
+  },
+  "license": "ISC",
+  "author": "UFSUI",
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "dependencies": {
+    "@v-uik/hooks": "^1.10.0",
+    "@v-uik/theme": "^1.10.0"
+  }
+}

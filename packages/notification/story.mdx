@@ -1,0 +1,188 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import {
+  NotificationContainer,
+  notification as coreNotification,
+} from '@v-uik/notification'
+import { Button } from '@v-uik/button'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { Controls } from '../../docs/showroom/components'
+import {
+  Playground,
+  NotificationClassesDummy,
+  NotificationContainerClassesDummy,
+  NotificationOptionsDummy,
+  Canvas as CanvasStory,
+} from './examples'
+import RawPlayground from '!!raw-loader!@v-uik/notification/examples/Playground'
+import RawCanvas from '!!raw-loader!@v-uik/notification/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'Notification', 'Notification'])}
+  component={NotificationContainer}
+/>
+
+<Story
+  name="Notification"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# NotificationContainer
+
+Компонент NotificationContainer используется для отображения системных нотификаций
+(сообщений, предупреждений, ошибок и т.п.). Для корректной работы необходимо добавить его в приложение
+**в одном экземпляре** (например в корень React-дерева наряду с различными провайдерами и т.п.),
+и затем использовать объект `notification` для отправки сообщений.
+
+## import
+
+```ts
+import { NotificationContainer, notification } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { NotificationContainer, notification } from '@v-uik/notification'
+```
+
+# NotificationOptions
+
+Для отображения сообщений используйте функцию `notification`. Первым параметром она принимает
+содержимое сообщения, а вторым — объект настроек (смотрите ниже). Настройки, указанные в таблице, превалируют над
+настройками контейнера.
+
+Функция notification имеет встроенные методы для более удобного вызова различных типов сообщений:
+
+```
+notification.success('сообщение')
+notification.info('сообщение')
+notification.warning('сообщение')
+notification.error('сообщение')
+```
+
+Также функция notification возвращает идентификатор сообщения, который затем может использоваться для
+его закрытия программно с помощью метода `notification.close()`
+
+```
+const id = notification('сообщение')
+...
+notification.close(id)
+```
+
+## Интерактивный пример
+
+<Controls
+  overrideFields={[
+    {
+      key: 'position',
+      name: 'Расположение сообщений',
+      defaultValue: 'top-left',
+    },
+    {
+      key: 'status',
+      name: 'Тип сообщений',
+      type: {
+        name: 'enum',
+        value: ['default', 'error', 'success', 'info', 'warning'],
+      },
+      defaultValue: 'default',
+    },
+    {
+      key: 'autoClose',
+      name: 'Время показа сообщения (мс)',
+      type: { name: 'number' },
+      defaultValue: 5000,
+    },
+    { key: 'limit', name: 'Лимит отображаемых сообщений', defaultValue: 3 },
+    {
+      key: 'disableAutoClose',
+      name: 'Отключить автоматическое закрытие',
+      type: { name: 'boolean' },
+    },
+    {
+      key: 'closeOnEscapeKeyDown',
+      name: 'Закрывать на кнопку Escape',
+      defaultValue: true,
+    },
+    {
+      key: 'pauseOnHover',
+      name: 'Останавливать таймер закрытия при наведении курсора',
+      defaultValue: true,
+    },
+    {
+      key: 'pauseOnWindowBlur',
+      name: 'Останавливать таймер закрытия при потере фокуса окном',
+      defaultValue: true,
+    },
+    {
+      key: 'closeOnClick',
+      name: 'Закрывать при клике на сообщение',
+      defaultValue: true,
+    },
+    {
+      key: 'showCloseButton',
+      name: 'Показывать кнопку закрытия',
+      defaultValue: true,
+    },
+    {
+      key: 'showIndicator',
+      name: 'Показывать индикатор',
+      defaultValue: true,
+    },
+    {
+      key: 'showIcon',
+      name: 'Показывать иконку',
+      type: { name: 'boolean' },
+      defaultValue: true,
+    },
+    {
+      key: 'showCustomContent',
+      name: 'Показывать кастомизированный контент',
+      type: { name: 'boolean' },
+    },
+    {
+      key: 'showTitle',
+      name: 'Показывать заголовок',
+      type: { name: 'boolean' },
+      defaultValue: true,
+    },
+    {
+      key: 'showDescription',
+      name: 'Показывать описание',
+      type: { name: 'boolean' },
+      gridItem: {
+        size: 16,
+      },
+    },
+    {
+      key: 'title',
+      name: 'Заголовок',
+      type: { name: 'textarea' },
+      defaultValue: 'Очень важное сообщение',
+    },
+    {
+      key: 'description',
+      name: 'Текст описания',
+      type: { name: 'textarea' },
+      defaultValue:
+        'Сюда входят две или более строк основного текста для описания этого уведомления.',
+    },
+  ]}
+>
+  {(props) => <Playground {...props} />}
+</Controls>
+
+<Source language="tsx" code={RawPlayground} />

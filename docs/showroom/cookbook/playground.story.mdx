@@ -1,0 +1,21 @@
+import { Meta } from '@storybook/addon-docs'
+import { createTitle, COOKBOOK, COMPONENTS, createStory } from '../config'
+import RawStarter from '!!raw-loader!./playground-starter'
+import { default as Starter } from './playground-starter'
+
+<Meta title={createTitle([COMPONENTS.newApp, 'Песочница'])} />
+
+export const story = createStory(Starter, RawStarter, {}, 'Playground')
+
+<Story
+  name="Песочница"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: { disable: true },
+  }}
+>
+  {story.component}
+</Story>

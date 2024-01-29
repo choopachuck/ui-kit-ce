@@ -1,0 +1,108 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { List, ListItem, ListItemGroup } from '@v-uik/list'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+
+import {
+  Grouping,
+  Interactive,
+  MultilineDisplay,
+  Sizes,
+  InteractiveGroup,
+  ClassesDummy,
+  Canvas as CanvasStory,
+} from '@v-uik/list/examples'
+
+import RawInteractive from '!!raw-loader!@v-uik/list/examples/Interactive'
+import RawSizes from '!!raw-loader!@v-uik/list/examples/Sizes'
+import RawMultilineDisplay from '!!raw-loader!@v-uik/list/examples/MultilineDisplay'
+import RawGrouping from '!!raw-loader!@v-uik/list/examples/Grouping'
+import RawCanvas from '!!raw-loader!@v-uik/list/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'List', 'List'])}
+  component={List}
+/>
+
+<Story
+  name="List"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# List
+
+Компонент List используется для отображения списков.
+
+## ListItem API
+
+Компонент ListItem используется для отображения элементы списка.
+
+## Classes ListItem
+
+## ListItemGroup API
+
+Группировка элементов списка. Заголовок группы устанавливается с помощью свойства `label`.
+
+## import
+
+```ts
+import { List, ListItem, ListItemGroup } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { List, ListItem, ListItemGroup } from '@v-uik/list'
+```
+
+## Пример с интерактивными элементами
+
+Рекомендуется для построения меню. Управление с клавиатуры осуществляется через нажатие стрелок.
+
+<Canvas withSource="none">
+  <Interactive />
+</Canvas>
+
+<Source language="tsx" code={RawInteractive} />
+
+## Пример с многострочными опциями
+
+<Canvas withSource="none">
+  <MultilineDisplay />
+</Canvas>
+
+<Source language="tsx" code={RawMultilineDisplay} />
+
+## Пример с разными размерами элементов
+
+<Canvas withSource="none">
+  <Sizes />
+</Canvas>
+
+<Source language="tsx" code={RawSizes} />
+
+## Группировка
+
+<Canvas withSource="none">
+  <Grouping />
+</Canvas>
+
+<Source language="tsx" code={RawGrouping} />
+
+## Интерактивная группировка
+
+<Canvas>
+  <InteractiveGroup />
+</Canvas>

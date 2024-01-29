@@ -1,0 +1,42 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import {
+  TreeExpandableCustomizedStory,
+  TreeExpandableStory,
+} from '@v-uik/table/examples/TreeExpandableStory'
+import RawTreeExpandableStory from '!!raw-loader!@v-uik/table/examples/TreeExpandableStory.tsx'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.dataDisplay,
+    'Table',
+    'Таблица с древовидной структурой (TreeData)',
+  ])}
+  component={Table}
+/>
+
+# Таблица с древовидной структурой (TreeData)
+
+Для отображения таблицы с древовидной структурой (в которой строки могут иметь подстроки и
+показывать/скрывать их по необходимости), необходимо чтобы объекты `dataSource` содержали поле
+`children`, в котором должен находиться массив таких же объектов. Также требуется, чтобы объект
+конфигуратора столбцов `columns` содержал поле `kind` co значением `tree` и поле `isRowExpanded`,
+которое является функцией, вызываемой для каждой ячейки этого столбца. Эта функция должна возвращать
+булеву переменную, указывающую раскрыта строка или нет.
+
+На данный момент реализован только контролируемый вариант такой таблицы, то есть вам придется
+самостоятельно обрабатывать состояние открытых/закрытых строк. В этом вам поможет обработка события с типом
+`treeExpand` в обработчике onChange (см. пример ниже).
+
+<Canvas withSource="none">
+  <TreeExpandableStory />
+</Canvas>
+
+Кастомизированный вариант:
+
+<Canvas withSource="none">
+  <TreeExpandableCustomizedStory />
+</Canvas>
+
+<Source language="tsx" code={RawTreeExpandableStory} />

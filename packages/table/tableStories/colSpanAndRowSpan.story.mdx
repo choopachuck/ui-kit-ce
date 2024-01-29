@@ -1,0 +1,22 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { ColSpanAndRowSpanStory } from '@v-uik/table/examples/ColSpanAndRowSpanStory'
+import RawColSpanAndRowSpanStory from '!!raw-loader!@v-uik/table/examples/ColSpanAndRowSpanStory'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Table', 'colSpan и rowSpan'])}
+  component={Table}
+/>
+
+# colSpan и rowSpan
+
+Если требуется объединить ячейки по вертикали или горизонтали, воспользуйтесь атрибутами `colSpan` и `rowSpan`,
+которые можно задать для каждой ячейки с помощью функции `setCellProps`. Для этого необходимо вернуть объект
+с полями `colSpan` и `rowSpan`. Чтобы не отображать ячейку, верните для каждого свойства `0`.
+
+<Canvas withSource="none">
+  <ColSpanAndRowSpanStory />
+</Canvas>
+
+<Source language="tsx" code={RawColSpanAndRowSpanStory} />

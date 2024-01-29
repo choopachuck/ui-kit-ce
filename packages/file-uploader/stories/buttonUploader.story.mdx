@@ -1,0 +1,75 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { ButtonUploader } from '@v-uik/file-uploader'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../../docs/showroom/config'
+
+import CanvasStory from '../examples/buttonUploader/Canvas'
+import RawCanvas from '!!raw-loader!../examples/buttonUploader/Canvas'
+import { BasicButtonUploader } from '../examples/buttonUploader/BasicFileUploader'
+import RawBasicButtonUploader from '!!raw-loader!../examples/buttonUploader/BasicFileUploader'
+
+import { MaxFiles } from '../examples/buttonUploader/MaxFiles'
+import RawMaxFiles from '!!raw-loader!../examples/buttonUploader/MaxFiles'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'FileUploader'])}
+  component={ButtonUploader}
+/>
+
+<Story
+  name="ButtonUploader"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# ButtonUploader
+
+ButtonUploader — это компонент интерфейса, который отображает возможность загрузки файла на сервер.
+Он обычно представляет собой кнопку «Загрузить».
+
+### ButtonUploader classes
+
+Набор классов ButtonUploader совпадает с набором [классов компонента Button](?path=/docs/элементы-управления-button-api--page#classes).
+
+### import
+
+```ts
+import { ButtonUploader } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { ButtonUploader } from '@v-uik/file-uploader'
+```
+
+## Базовый пример
+
+<Canvas withSource="none">
+  <BasicButtonUploader />
+</Canvas>
+
+<Source language="tsx" code={RawBasicButtonUploader} />
+
+## Ограничение по количеству файлов
+
+<Canvas withSource="none">
+  <MaxFiles />
+</Canvas>
+
+<Source language="tsx" code={RawMaxFiles} />
+
+## Связанные компоненты
+
+- [Button](?path=/docs/элементы-управления-button-button--button)

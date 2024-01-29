@@ -1,0 +1,112 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Checkbox } from '@v-uik/checkbox'
+import { CheckboxGroup } from '@v-uik/checkbox-group'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+
+import {
+  WithLabel,
+  Disabled,
+  Indeterminate,
+  LabelPosition,
+  CheckboxGroupVertical,
+  Canvas as CanvasStory,
+} from '@v-uik/checkbox/examples'
+import RawWithLabel from '!!raw-loader!@v-uik/checkbox/examples/WithLabel'
+import RawDisabled from '!!raw-loader!@v-uik/checkbox/examples/Disabled'
+import RawIndeterminate from '!!raw-loader!@v-uik/checkbox/examples/Indeterminate'
+import RawLabelPosition from '!!raw-loader!@v-uik/checkbox/examples/LabelPosition'
+import RawCheckboxGroupVertical from '!!raw-loader!@v-uik/checkbox/examples/CheckboxGroupVertical'
+import RawCanvas from '!!raw-loader!@v-uik/checkbox/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Checkbox', 'Checkbox'])}
+  component={Checkbox}
+/>
+
+<Story
+  name="Checkbox"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Checkbox
+
+Чекбокс используется для включения или выключения нескольких опций.
+
+## import
+
+```ts
+import { CheckboxGroup, Checkbox } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Checkbox } from '@v-uik/checkbox'
+import { CheckboxGroup } from '@v-uik/checkbox-group'
+```
+
+## Чекбокс с ярлыком
+
+<Canvas withSource="none">
+  <WithLabel />
+</Canvas>
+
+<Source language="tsx" code={RawWithLabel} />
+
+## Вертикальный список чекбоксов
+
+<Canvas withSource="none">
+  <CheckboxGroupVertical />
+</Canvas>
+
+<Source language="tsx" code={RawCheckboxGroupVertical} />
+
+## Неопределенное состояние
+
+Эта опция включает режим отображения, при котором не все элементы внутри группы выбраны.
+
+<Canvas withSource="none">
+  <Indeterminate />
+</Canvas>
+
+<Source language="tsx" code={RawIndeterminate} />
+
+## Местоположение метки относительно чекбокса
+
+Метка может располагаться относительно чекбокса в начале, сверху, снизу или в конце.
+
+<Canvas withSource="none">
+  <LabelPosition />
+</Canvas>
+
+<Source language="tsx" code={RawLabelPosition} />
+
+## Состояние disabled
+
+С компонентом в состоянии disabled взаимодействовать невозможно.
+
+<Canvas withSource="none">
+  <Disabled />
+</Canvas>
+
+<Source language="tsx" code={RawDisabled} />
+
+## Связанные компоненты
+
+- [LabelControl](?path=/docs/вспомогательные-компоненты-labelcontrol-labelcontrol--label-control)

@@ -1,0 +1,83 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Stepper, Step } from '@v-uik/stepper'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { CustomIcons, Mini, VerticalStepper, Basic } from './examples'
+import RawCustomIcons from '!!raw-loader!@v-uik/stepper/examples/CustomIcons'
+import RawMini from '!!raw-loader!@v-uik/stepper/examples/Mini'
+import RawVerticalStepper from '!!raw-loader!@v-uik/stepper/examples/VerticalStepper'
+import RawBasic from '!!raw-loader!@v-uik/stepper/examples/Basic'
+
+export const story = createStory(Basic, RawBasic)
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Stepper', 'Stepper'])}
+  component={Stepper}
+/>
+
+<Story
+  name="Stepper"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Stepper
+
+Компонент используется для отображения пошаговой навигации в некотором процессе.
+
+# Step
+
+Для управления отображением каждой конкретного шага используется компонент `Step`.
+
+## import
+
+```ts
+import { Stepper, Step } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Stepper, Step } from '@v-uik/stepper'
+```
+
+## Базовый пример
+
+<Canvas withSource="none">
+  <Basic />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+## Пример с пользовательскими иконками
+
+<Canvas withSource="none">
+  <CustomIcons />
+</Canvas>
+
+<Source language="tsx" code={RawCustomIcons} />
+
+## Пример с вертикальным расположением
+
+<Canvas withSource="none">
+  <VerticalStepper />
+</Canvas>
+
+<Source language="tsx" code={RawVerticalStepper} />
+
+## Настройка с пользовательскими стилями
+
+<Canvas withSource="none">
+  <Mini />
+</Canvas>
+
+<Source language="tsx" code={RawMini} />

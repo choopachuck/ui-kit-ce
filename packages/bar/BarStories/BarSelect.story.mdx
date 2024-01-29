@@ -1,0 +1,36 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { BarSelect } from '@v-uik/bar'
+import { BarSelectExample, BarSelectClassesDummy } from '../examples'
+import RawBarSelectExample from '!!raw-loader!@v-uik/bar/examples/BarSelectExample'
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Bar', 'BarSelect'])}
+  component={BarSelect}
+/>
+
+# BarSelect
+
+BarSelect используется для переключения настроек из выбора возможных опций, которые влияют на отображение страницы, например, изменение языка интерфейса.
+
+# BarSelect API
+
+<ArgsTable of={BarSelect} />
+
+## Сlasses
+
+<ArgsTable of={BarSelectClassesDummy} />
+
+# import
+
+```ts
+import { BarSelect } from '@v-uik/bar'
+```
+
+# Пример использования
+
+<Canvas withSource="none">
+  <BarSelectExample />
+</Canvas>
+
+<Source language="tsx" code={RawBarSelectExample} />

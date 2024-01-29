@@ -1,0 +1,14 @@
+'use client'
+
+import * as React from 'react'
+<% importDefs.forEach(function({ variable, idx, path }) { %>
+  import {<%= variable %> as Component<%= idx %>} from '<%= path %>'
+<% }) %>
+
+export const App = () => {
+  return <>
+    <% componentDefs.forEach(function({ idx }) { %>
+      <div><Component<%= idx %> /></div>
+    <% }) %>
+  </>
+}

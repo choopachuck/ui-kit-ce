@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.esm.json",
+
+  "compilerOptions": {
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@v-uik/*": ["packages/*"]
+    },
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true
+  },
+
+  "include": ["packages/*/examples"],
+  "exclude": ["node_modules"]
+}

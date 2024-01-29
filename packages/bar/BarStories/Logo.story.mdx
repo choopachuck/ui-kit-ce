@@ -1,0 +1,38 @@
+import { Canvas, Meta } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { Bar, BarButton } from '@v-uik/bar'
+import { ContainerMock } from '../examples'
+import { IconBurger } from '@v-uik/bar/examples/assets/IconBurger'
+import { LogoPlatformV } from '@v-uik/bar/examples/assets/LogoPlatformV'
+
+<Meta title={createTitle([COMPONENTS.navigation, 'Bar', 'Логотип'])} />
+
+# Логотип
+
+Для продвижения бренда продукта или быстрого перехода на главную страницу, можно добавить логотип на панель.
+
+<Canvas withSource="none">
+  <ContainerMock>
+    <Bar style={{ position: 'absolute' }}>
+      <BarButton icon={<IconBurger />} />
+      <LogoPlatformV
+        style={{
+          margin: '12px 16px',
+          fill: 'white',
+        }}
+      />
+    </Bar>
+  </ContainerMock>
+</Canvas>
+
+```tsx
+<Bar>
+  <BarButton icon={<IconBurger />} />
+  <LogoPlatformV
+    style={{
+      margin: '12px 16px',
+      fill: 'white',
+    }}
+  />
+</Bar>
+```

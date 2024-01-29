@@ -1,0 +1,75 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Popup } from '@v-uik/popup'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { Basic } from './examples/Basic'
+import RawBasic from '!!raw-loader!./examples/Basic'
+import { Placement } from '@v-uik/popup/examples/Placement'
+import RawPlacement from '!!raw-loader!./examples/Placement'
+import { Accessibility } from './examples/Accessibility'
+import RawAccessibility from '!!raw-loader!./examples/Accessibility'
+
+export const story = createStory(Basic, RawBasic)
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Popup', 'Popup'])}
+  component={Popup}
+/>
+
+<Story
+  name="Popup"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Popup
+
+Компонент Popup позволяет отображать контент поверх других элементов и позиционировать его относительно какого либо элемента, переданного в свойство anchor.
+Компонент реализован с помощью сторонней библиотеки [Popper.js](https://github.com/popperjs/popper-core)
+
+## import
+
+```ts
+import { Popup } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Popup } from '@v-uik/popup'
+```
+
+<Canvas>
+  <Basic />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+## Позиционирование
+
+Позиционирование Popup регулируется с помощью аттрибута `placement`.
+
+<Canvas withSource="none">
+  <Placement />
+</Canvas>
+
+<Source language="tsx" code={RawPlacement} />
+
+## Обеспечение доступности
+
+Доступность регулируется `aria` параметрами.
+
+<Canvas withSource="none">
+  <Accessibility />
+</Canvas>
+
+<Source language="tsx" code={RawAccessibility} />

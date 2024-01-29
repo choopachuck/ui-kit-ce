@@ -1,0 +1,67 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { TagInput } from '@v-uik/tag'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { BasicTagInput } from './examples'
+import RawBasic from '!!raw-loader!./examples/BasicTagInput'
+
+export const story = createStory(BasicTagInput, RawBasic)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'TagInput', 'TagInput'])}
+  component={TagInput}
+/>
+
+<Story
+  name="TagInput"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# TagInput
+
+TagInput — элемент для добавления новых тегов.
+
+## import
+
+```ts
+import { TagInput } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { TagInput } from '@v-uik/tag'
+```
+
+## Стандартное поле ввода
+
+<Canvas withSource="none">
+  <BasicTagInput />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+## Размеры тега
+
+<Canvas>
+  <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+    <TagInput size="sm">small</TagInput>
+    <TagInput size="md">medium</TagInput>
+  </div>
+</Canvas>
+
+## Поле заблокировано для ввода
+
+<Canvas>
+  <TagInput disabled>Add</TagInput>
+</Canvas>

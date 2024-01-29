@@ -1,0 +1,27 @@
+{
+  "name": "@v-uik/common",
+  "version": "1.10.0",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "typings": "dist/esm/index.d.ts",
+  "files": [
+    "/dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rm -rf node_modules dist",
+    "build": "yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc -d --outDir ./dist/cjs --project tsconfig.cjs.json",
+    "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json"
+  },
+  "dependencies": {
+    "@v-uik/hooks": "^1.10.0",
+    "@v-uik/theme": "^1.10.0",
+    "@v-uik/utils": "^1.10.0"
+  },
+  "author": "UFSUI",
+  "license": "ISC",
+  "sideEffects": false,
+  "module": "dist/esm/index.js"
+}

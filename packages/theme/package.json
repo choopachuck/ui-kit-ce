@@ -1,0 +1,29 @@
+{
+  "name": "@v-uik/theme",
+  "version": "1.10.0",
+  "description": "",
+  "main": "dist/cjs/index.js",
+  "typings": "dist/esm/index.d.ts",
+  "files": [
+    "/dist/",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rm -rf node_modules dist",
+    "build": "yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc -d --outDir ./dist/cjs --project tsconfig.cjs.json",
+    "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json"
+  },
+  "author": "UFSUI",
+  "license": "ISC",
+  "dependencies": {
+    "@v-uik/utils": "^1.10.0",
+    "clsx": "^1.0.0",
+    "jss": "^10.6.0",
+    "react-jss": "^10.9.0",
+    "react-transition-group": "^4.4.2"
+  },
+  "sideEffects": false,
+  "module": "dist/esm/index.js"
+}

@@ -1,0 +1,45 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import {
+  LargeSizeStory,
+  MediumSizeStory,
+  SmallSizeStory,
+} from '@v-uik/table/examples/SizeStory'
+import RawSizeStory from '!!raw-loader!@v-uik/table/examples/SizeStory'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Table', 'Размеры таблиц'])}
+  component={Table}
+/>
+
+# Размеры таблиц
+
+Таблицы имеют три размера ячеек, которые используются в зависимости от необходимой плотности данных.
+
+## Стандартный размер (medium)
+
+Подходит для большинства случаев. Можно не передавать свойство `size`, и тогда значение `medium` будет выставлено по умолчанию.
+Другой вариант — явно передать `size="medium"`.
+
+<Canvas withSource="none">
+  <MediumSizeStory />
+</Canvas>
+
+## Таблицы повышенной плотности (small)
+
+Если нужно вывести много данных, можно использовать таблицы высокой плотности. Для этого установите `size="small"`.
+
+<Canvas withSource="none">
+  <SmallSizeStory />
+</Canvas>
+
+## Разреженная таблица (large)
+
+Широкие ячейки, чтобы снизить когнитивную нагрузку при работе с табличными данными.
+
+<Canvas withSource="none">
+  <LargeSizeStory />
+</Canvas>
+
+<Source language="tsx" code={RawSizeStory} />

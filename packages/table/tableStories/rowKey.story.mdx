@@ -1,0 +1,21 @@
+import { Canvas, Meta, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { RowKeyStory } from '@v-uik/table/examples/RowKeyStory.tsx'
+import RawRowKeyStory from '!!raw-loader!@v-uik/table/examples/RowKeyStory.tsx'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Table', 'Таблица с rowKey'])}
+  component={Table}
+/>
+
+# Таблица с rowKey
+
+Если dataSource[i].key не указан, вы должны указать первичный ключ значения dataSource через rowKey.
+rowKey может быть строкой или функцией, которая возвращает React.Key.
+
+<Canvas withSource="none">
+  <RowKeyStory />
+</Canvas>
+
+<Source language="tsx" code={RawRowKeyStory} />

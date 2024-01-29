@@ -1,0 +1,68 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Text } from '@v-uik/typography'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { BasicExample } from '@v-uik/typography/examples/BasicExample'
+import { BasicExampleV2 } from '@v-uik/typography/examples/BasicExampleV2'
+import RawBasicExample from '!!raw-loader!@v-uik/typography/examples/BasicExample'
+import RawBasicExampleV2 from '!!raw-loader!@v-uik/typography/examples/BasicExampleV2'
+import { default as CanvasStory } from '@v-uik/typography/examples/Canvas'
+import RawCanvas from '!!raw-loader!@v-uik/typography/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Typography', 'Typography'])}
+  component={Text}
+/>
+
+<Story
+  name="Typography"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Text
+
+Компонент для отображения текста
+
+## import
+
+```ts
+import { Text } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Text } from '@v-uik/typography'
+```
+
+## Примеры использования
+
+Компонент «Типографика» позволяет легко применить в приложении набор значений толщины и размера шрифта по умолчанию.
+
+<Canvas withSource="none">
+  <BasicExampleV2 />
+</Canvas>
+
+<Source language="tsx" code={RawBasicExampleV2} />
+
+## Устаревшие примеры использования
+
+Варианты использования, указанные ниже, считаются устаревшими и будут удалены в следующей мажорной версии.
+
+<Canvas withSource="none">
+  <BasicExample />
+</Canvas>
+
+<Source language="tsx" code={RawBasicExample} />

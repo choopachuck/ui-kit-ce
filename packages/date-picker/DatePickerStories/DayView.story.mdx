@@ -1,0 +1,30 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { DayViewStory, DayViewClassesDummy } from '../examples'
+import { DayView } from '@v-uik/date-picker'
+import RawDayViewStory from '!!raw-loader!../examples/DayViewStory'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'DatePicker', 'DayView'])}
+  component={DayView}
+/>
+
+# Подкомпонент DayView
+
+Используется для отображения календаря.
+
+# DayView API
+
+<ArgsTable of={DayView} />
+
+## DayView classes
+
+<ArgsTable of={DayViewClassesDummy} />
+
+# Пример использования
+
+<Canvas withSource="none">
+  <DayViewStory />
+</Canvas>
+
+<Source language="tsx" code={RawDayViewStory} />

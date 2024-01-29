@@ -1,0 +1,33 @@
+import { Meta, Story } from '@storybook/addon-docs'
+import { UploaderLabel } from '@v-uik/file-uploader'
+import { ClassesDummy } from '../examples/uploaderLabel/Classes.dummy'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../../docs/showroom/config'
+import CanvasStory from '../examples/uploaderLabel/Canvas'
+import RawCanvas from '!!raw-loader!../examples/uploaderLabel/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'FileUploader'])}
+  component={UploaderLabel}
+/>
+
+<Story
+  name="UploaderLabel"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# UploaderLabel
+
+UploaderLabel — подкомпонент для отображения лейбла, описания, ошибки у компонентов Dropzone и ButtonUploader.

@@ -1,0 +1,47 @@
+import { ArgsTable, Canvas, Meta } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { ContainerMock, BarButtonClassesDummy } from '../examples'
+import { Bar, BarButton } from '@v-uik/bar'
+import { IconBurger } from '@v-uik/bar/examples/assets/IconBurger'
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Bar', 'BarButton'])}
+  component={BarButton}
+/>
+
+# BarButton — быстрые действия пользователя
+
+Для быстрых действий пользователя, например, изменения состояния боковой панели можно использовать компонент `BarButton`.
+Компонент поддерживает отображение иконки с помощью свойства `icon`.
+
+# BarButton API
+
+<ArgsTable of={BarButton} />
+
+## Сlasses
+
+<ArgsTable of={BarButtonClassesDummy} />
+
+# import
+
+```ts
+import { BarButton } from '@v-uik/bar'
+```
+
+# Пример использования
+
+Для продвижения бренда продукта или быстрого перехода на главную страницу можно добавить логотип на панель.
+
+<Canvas withSource="none">
+  <ContainerMock>
+    <Bar style={{ position: 'absolute' }}>
+      <BarButton icon={<IconBurger />} />
+    </Bar>
+  </ContainerMock>
+</Canvas>
+
+```tsx
+<Bar>
+  <BarButton icon={<IconBurger />} />
+</Bar>
+```

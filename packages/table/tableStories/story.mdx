@@ -1,0 +1,52 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Table } from '@v-uik/table'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../../docs/showroom/config'
+import { Basic } from '@v-uik/table/examples/Basic'
+import RawBasic from '!!raw-loader!@v-uik/table/examples/Basic'
+
+export const story = createStory(Basic, RawBasic)
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Table'])}
+  component={Table}
+/>
+
+<Story
+  name="Table"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Table
+
+Компонент таблиц.
+
+## import
+
+```ts
+import { Table } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Table } from '@v-uik/table'
+```
+
+## Обычная таблица с данными
+
+<Canvas withSource="none">
+  <Basic />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />

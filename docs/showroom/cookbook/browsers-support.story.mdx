@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/addon-docs'
+import { createTitle, COOKBOOK } from '../config'
+
+<Meta title={createTitle([COOKBOOK.root, COOKBOOK.browsersSupport])} />
+
+## Поддержка браузеров
+
+Последние версии популярных браузеров поддерживают работу библиотеки без дополнительных настроек.
+
+### Поддержка IE 11
+
+Для корректной работы библиотеки в браузере Internet Explorer 11 используется **временное** решение
+в виде добавления полифилов из пакета `@v-uik/polyfills`. Чтобы подключить их в проект, добавьте импорт
+пакета в файле точки входа вашего приложения.
+
+```ts
+import '@v-uik/polyfills'
+```
+
+### Поддержка IE 11 в Create-React-App
+
+**create-react-app не поддерживает работу в IE 11 из коробки.** Чтобы это исправить, выполните следующие действия:
+
+1. Установите пакет react-app-polyfill `npm i react-app-polyfill --save`
+2. Добавьте строку `import 'react-app-polyfill/ie11` на первую строку файла точки входа вашего приложения (index.js)
+3. Добавьте строку `ie 11` в поля development и production секции browserslist в package.json, чтобы получилось
+   следующее:
+
+```json
+"browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "ie 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "ie 11"
+    ]
+  }
+```
+
+4. Удалите папку `node_modules/.cache`

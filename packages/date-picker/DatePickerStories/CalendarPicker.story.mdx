@@ -1,0 +1,26 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { CalendarPickerStory } from '../examples'
+import { CalendarPicker } from '@v-uik/date-picker'
+import RawCalendarPickerStory from '!!raw-loader!../examples/CalendarPickerStory'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'DatePicker', 'CalendarPicker'])}
+  component={CalendarPicker}
+/>
+
+# Подкомпонент CalendarPicker
+
+Обертка для выбора даты, которая объединяет выбор даты, месяца и года.
+
+# CalendarPicker API
+
+<ArgsTable of={CalendarPicker} />
+
+# Пример использования
+
+<Canvas withSource="none">
+  <CalendarPickerStory />
+</Canvas>
+
+<Source language="tsx" code={RawCalendarPickerStory} />

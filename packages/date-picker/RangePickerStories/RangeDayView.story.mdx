@@ -1,0 +1,30 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { RangeDayViewStory, RangeDayViewClassesDummy } from '../examples'
+import { RangeDayView } from '@v-uik/date-picker'
+import RawRangeDayViewStory from '!!raw-loader!../examples/RangeDayViewStory'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'RangePicker', 'RangeDayView'])}
+  component={RangeDayView}
+/>
+
+# Подкомпонент RangeDayView
+
+Используется для отображения календаря с диапазоном выбора дат.
+
+# RangeDayView API
+
+<ArgsTable of={RangeDayView} />
+
+## RangeDayView classes
+
+<ArgsTable of={RangeDayViewClassesDummy} />
+
+# Пример использования
+
+<Canvas withSource="none">
+  <RangeDayViewStory />
+</Canvas>
+
+<Source language="tsx" code={RawRangeDayViewStory} />

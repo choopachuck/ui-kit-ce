@@ -1,0 +1,112 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Radio } from '@v-uik/radio'
+import { RadioGroup } from '@v-uik/radio-group'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Vertical,
+  Horizontal,
+  DisabledRadio,
+  DifferentPositionRadio,
+  Canvas as CanvasStory,
+} from './examples'
+import RawVertical from '!!raw-loader!@v-uik/radio/examples/Vertical'
+import RawHorizontal from '!!raw-loader!@v-uik/radio/examples/Horizontal'
+import RawDifferentPositionRadio from '!!raw-loader!@v-uik/radio/examples/DifferentPositionRadio'
+import RawDisabledRadio from '!!raw-loader!@v-uik/radio/examples/DisabledRadio'
+import RawCanvas from '!!raw-loader!@v-uik/radio/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Radio', 'Radio'])}
+  component={RadioGroup}
+/>
+
+<Story
+  name="Radio"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Radio
+
+Радиокнопки позволяют пользователю выбрать один вариант из набора.
+
+## imports
+
+```tsx
+import { Radio, RadioGroup } from '@v-uik/base'
+```
+
+или
+
+```tsx
+import { Radio } from '@v-uik/radio'
+import { RadioGroup } from '@v-uik/radio-group'
+```
+
+## Автономная радиокнопка и ее свойства
+
+Радиокнопка — это обертка вокруг `<input type="radio">`, которая обычно используется для создания [группы радиокнопок](#группа-радиокнопок),
+списков с единичным выбором и тому подобного.
+Одновременно пользователь может выбрать лишь одну радиокнопку из предложенных.
+
+Далее представлены состояния радиокнопки — не выбрано, выбрано и неактивная.
+
+<Canvas>
+  <Radio value="normal" />
+  <Radio value="normal" checked />
+  <Radio value="active" disabled />
+</Canvas>
+
+## Группа радиокнопок
+
+Обертка `RadioGroup` упрощает работу с группой радиокнопок, а также реализует управление радиокнопками с клавиатуры.
+
+<Canvas withSource="none">
+  <Vertical />
+</Canvas>
+
+<Source language="tsx" code={RawVertical} />
+
+## Горизонтальная группа
+
+<Canvas withSource="none">
+  <Horizontal />
+</Canvas>
+
+<Source language="tsx" code={RawHorizontal} />
+
+## Группа радиокнопок с разным расположением
+
+<Canvas withSource="none">
+  <DifferentPositionRadio />
+</Canvas>
+
+<Source language="tsx" code={RawDifferentPositionRadio} />
+
+## Заблокированная радиокнопка
+
+<Canvas withSource="none">
+  <DisabledRadio />
+</Canvas>
+
+<Source language="tsx" code={RawDisabledRadio} />
+
+## Связанные компоненты
+
+- [LabelControl](?path=/docs/вспомогательные-компоненты-labelcontrol-labelcontrol--label-control)
+
+## Полезные ссылки
+
+- [Доступность](https://www.w3.org/TR/wai-aria-practices/#radiobutton)

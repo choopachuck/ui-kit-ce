@@ -1,0 +1,90 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { InputNumber } from '@v-uik/input-number'
+import {
+  createTitle,
+  COMPONENTS,
+  DocsAlert,
+  createStory,
+} from '../../docs/showroom/config'
+import { Example } from '@v-uik/input-number/examples/Example'
+import RawExample from '!!raw-loader!@v-uik/input-number/examples/Example'
+import { default as CanvasStory } from '@v-uik/input-number/examples/Canvas'
+
+import { BigNumberExample } from '@v-uik/input-number/examples/BigNumberExample'
+import RawBigNumberExample from '!!raw-loader!@v-uik/input-number/examples/BigNumberExample'
+import { MinAndMaxExample } from '@v-uik/input-number/examples/MinAndMaxExample'
+import RawMinAndMaxExample from '!!raw-loader!@v-uik/input-number/examples/MinAndMaxExample'
+import RawCanvas from '!!raw-loader!@v-uik/input-number/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'InputNumber', 'InputNumber'])}
+  component={InputNumber}
+/>
+
+<Story
+  name="InputNumber"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# InputNumber
+
+Компонент поля ввода числовых значений
+
+<DocsAlert>
+  Числа больше Number.MAX_SAFE_INTEGER и меньше Number.MIX_SAFE_INTEGER В
+  InputNumber вводиться и отображаться не будут. Используйте valueType="string"
+  для работы с большими числами.
+</DocsAlert>
+
+## import
+
+```ts
+import { InputNumber } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { InputNumber } from '@v-uik/input-number'
+```
+
+## Отображение дробного числа
+
+<Canvas withSource="none">
+  <Example />
+</Canvas>
+
+<Source language="tsx" code={RawExample} />
+
+## Отображение больших чисел
+
+Для отображения больших чисел, которые больше `Number.MAX_SAFE_INTEGER`, используйте `valueType='string'`,
+а также передавайте `value` типа `string` и `onChange` типа `(value: string | null, event: ChangeEvent<HTMLInputElement>) => void)` .
+
+<Canvas withSource="none">
+  <BigNumberExample />
+</Canvas>
+
+<Source language="tsx" code={RawBigNumberExample} />
+
+## Обработка max и min
+
+<Canvas withSource="none">
+  <MinAndMaxExample />
+</Canvas>
+
+<Source language="tsx" code={RawMinAndMaxExample} />
+
+## Связанные компоненты
+
+- [Input](?path=/docs/поля-ввода-input-input--input)
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

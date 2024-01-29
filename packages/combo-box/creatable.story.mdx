@@ -1,0 +1,91 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Creatable } from '@v-uik/combo-box'
+import { DocsCreatable } from './examples/assets/DocsCreatable'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+
+import {
+  SingleCreatable,
+  MultipleCreatable,
+  CreatableWithUpdatedOptions,
+  CreatableCanvas,
+} from './examples'
+
+import RawSingleCreatable from '!!raw-loader!./examples/SingleCreatable'
+import RawMultipleCreatable from '!!raw-loader!./examples/MultipleCreatable'
+import RawCreatableWithUpdatedOptions from '!!raw-loader!./examples/CreatableWithUpdatedOptions'
+import RawCanvas from '!!raw-loader!@v-uik/combo-box/examples/CreatableCanvas'
+
+export const story = createStory(CreatableCanvas, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'ComboBox', 'Creatable'])}
+  component={Creatable}
+/>
+
+<Story
+  name="Creatable"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Creatable
+
+Creatable — это вариант ComboBox с возможностью создания пользовательских опций.
+Общий набор свойств совпадает с компонентом [ComboBox](?path=/docs/поля-ввода-combobox-combobox--combo-box),
+но есть дополнительные свойства, перечисленные в таблице ниже.
+
+## Classes
+
+Набор классов Creatable совпадает с набором [классов ComboBox](?path=/docs/поля-ввода-combobox-api--page#classes)
+
+## import
+
+```ts
+import { Creatable } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Creatable } from '@v-uik/combo-box'
+```
+
+## Единичный выбор
+
+<Canvas withSource="none">
+  <SingleCreatable />
+</Canvas>
+
+<Source language="tsx" code={RawSingleCreatable} />
+
+## Множественный выбор
+
+<Canvas withSource="none">
+  <MultipleCreatable />
+</Canvas>
+
+<Source language="tsx" code={RawMultipleCreatable} />
+
+## Обновляемый массив опций
+
+В этом примере используется свойство `onCreateOption` для создания новых опций. Чтобы имитировать создание новой опции на бэкенд,
+ввод блокируется на секунду прежде, чем новая опция будет добавлена в список всех доступных опций.
+
+<Canvas withSource="none">
+  <CreatableWithUpdatedOptions />
+</Canvas>
+
+<Source language="tsx" code={RawCreatableWithUpdatedOptions} />

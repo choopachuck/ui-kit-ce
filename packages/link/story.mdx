@@ -1,0 +1,89 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Link } from '@v-uik/link'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { SimpleExample } from '@v-uik/link/examples/SimpleExample'
+import RawSimpleExample from '!!raw-loader!@v-uik/link/examples/SimpleExample'
+import { Disabled } from '@v-uik/link/examples/Disabled'
+import RawDisabled from '!!raw-loader!@v-uik/link/examples/Disabled'
+import { UnderlineExample } from '@v-uik/link/examples/UnderlineExample'
+import { ClassesDummy } from '@v-uik/link/examples/Classes.dummy'
+import RawUnderlineExample from '!!raw-loader!@v-uik/link/examples/UnderlineExample'
+import RawLinkWithComponent from '!!raw-loader!@v-uik/link/examples/LinkWithComponent'
+import { default as CanvasStory } from '@v-uik/link/examples/Canvas'
+import RawCanvas from '!!raw-loader!@v-uik/link/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Link', 'Link'])}
+  component={Link}
+/>
+
+<Story
+  name="Link"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Link
+
+Компонент Link используется для обозначения ссылок.
+
+<ArgsTable of={Link} />
+
+# Classes Link
+
+<ArgsTable of={ClassesDummy} />
+
+## import
+
+```ts
+import { Link } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Link } from '@v-uik/link'
+```
+
+## Ссылка в тексте
+
+<Canvas withSource="none">
+  <SimpleExample />
+</Canvas>
+
+<Source language="tsx" code={RawSimpleExample} />
+
+## Ссылка с подчеркиванием
+
+<Canvas withSource="none">
+  <UnderlineExample />
+</Canvas>
+
+<Source language="tsx" code={RawUnderlineExample} />
+
+## Отключенная ссылка
+
+<Canvas withSource="none">
+  <Disabled />
+</Canvas>
+
+<Source language="tsx" code={RawDisabled} />
+
+## Примеры работы с библиотеками маршрутизации
+
+Демонстрация работы компонента с библиотекой [react-router](https://v5.reactrouter.com/web/guides/quick-start).
+Для интеграции со сторонними библиотеками рекомендуется использовать параметр `as`.
+
+<Source language="tsx" code={RawLinkWithComponent} />

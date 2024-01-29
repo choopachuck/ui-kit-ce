@@ -1,0 +1,143 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Drawer, DrawerHeader, DrawerFooter } from '@v-uik/drawer'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  BasicDrawer,
+  PositionsExample,
+  NonModalExample,
+  ContainerExample,
+  ContainerOverflowExample,
+  MultiLevelExample,
+} from '@v-uik/drawer/examples'
+import RawBasicDrawer from '!!raw-loader!@v-uik/drawer/examples/BasicDrawer'
+import RawPositionsExample from '!!raw-loader!@v-uik/drawer/examples/PositionsExample'
+import RawNonModalExample from '!!raw-loader!@v-uik/drawer/examples/NonModalExample'
+import RawContainerExample from '!!raw-loader!@v-uik/drawer/examples/ContainerExample'
+import RawContainerOverflowExample from '!!raw-loader!@v-uik/drawer/examples/ContainerOverflowExample'
+import RawMultiLevelExample from '!!raw-loader!@v-uik/drawer/examples/MultiLevelExample'
+
+export const story = createStory(BasicDrawer, RawBasicDrawer)
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Drawer', 'Drawer'])}
+  component={Drawer}
+/>
+
+<Story
+  name="Drawer"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Drawer
+
+Drawer — это боковая панель для предоставления какой-либо информации, не требующей постоянного отображения на странице.
+
+## import
+
+```ts
+import { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Drawer, DrawerHeader, DrawerBody, DrawerFooter } from '@v-uik/drawer'
+```
+
+## DrawerHeader
+
+Компонент DrawerHeader используется для отображения заголовка боковой панели.
+
+## DrawerBody
+
+Компонент DrawerBody используется для отображения содержимого боковой панели.
+
+## DrawerFooter
+
+Компонент DrawerFooter используется для отображения футера боковой панели.
+
+## Базовый пример
+
+<Canvas withSource="none">
+  <BasicDrawer />
+</Canvas>
+
+<Source language="tsx" code={RawBasicDrawer} />
+
+## Варианты расположения на странице
+
+С помощью свойства position можно выбрать, с какой стороны экрана будет появляться боковая панель: сверху, снизу, справа или слева.
+
+<Canvas withSource="none">
+  <PositionsExample />
+</Canvas>
+
+<Source language="tsx" code={RawPositionsExample} />
+
+## Пример без блокировки страницы
+
+Установив свойству `backdrop` значение `false`, можно отключить затемнение фона.
+При указании свойства `bodyScrollLock = false` отключается блокировка прокрутки страницы.
+Заметьте, что компонент будет помещен в текущее место в DOM-дереве,
+тогда как вариант по умолчанию помещает панель в конце документа.
+
+<Canvas withSource="none">
+  <NonModalExample />
+</Canvas>
+
+<Source language="tsx" code={RawNonModalExample} />
+
+## Панель для пользовательского элемента
+
+С помощью свойства `container` можно отобразить боковую панель внутри любого элемента DOM-дерева.
+
+<Canvas withSource="none">
+  <ContainerExample />
+</Canvas>
+
+<Source language="tsx" code={RawContainerExample} />
+
+## Панель для пользовательского элемента с полосой прокрутки
+
+Для того чтобы использовать Drawer на элементе, у которого есть полоса прокрутки, рекомендуется обернуть его каким-либо
+элементом-контейнером, и уже его передавать свойству `container`.
+
+<Canvas withSource="none">
+  <ContainerOverflowExample />
+</Canvas>
+
+<Source language="tsx" code={RawContainerOverflowExample} />
+
+## Многоуровневая панель
+
+Немного стилизовав компоненты Drawer, можно добиться эффекта вложенности панелей.
+
+<Canvas withSource="none">
+  <MultiLevelExample />
+</Canvas>
+
+<Source language="tsx" code={RawMultiLevelExample} />
+
+## Доступность
+
+Компонент проставляет необходимые ARIA-атрибуты (`role`, `aria-modal`) по умолчанию для варианта
+с затемнением фона. Это можно изменить с помощью свойства `contentProps`.
+При открытии меню фокус выставляется на скрытый статичный элемент, от которого затем
+можно переходить к последующим фокусируемым элементам.
+На текущий момент не выставляется фокус какому-либо видимому элементу, так как рекомендации
+по работе с фокусом сильно зависят от содержимого компонента (семантика, прокрутка), поэтому при
+необходимости установите фокус на нужном элементе самостоятельно.

@@ -1,0 +1,105 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Autocomplete } from '@v-uik/autocomplete'
+import { DocsAutocomplete } from './examples/assets/DocsAutocomplete'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+
+import {
+  BasicAutocomplete,
+  SearchAutocomplete,
+  AsyncAutocomplete,
+  Canvas as CanvasStory,
+  EnterKeyPressAutocomplete,
+} from './examples'
+
+import RawBasicAutocomplete from '!!raw-loader!./examples/BasicAutocomplete'
+import RawSearchAutocomplete from '!!raw-loader!./examples/SearchAutocomplete'
+import RawAsyncAutocomplete from '!!raw-loader!./examples/AsyncAutocomplete'
+import RawCanvas from '!!raw-loader!@v-uik/autocomplete/examples/Canvas'
+import RawEnterKeyPressAutocomplete from '!!raw-loader!@v-uik/autocomplete/examples/EnterKeyPressAutocomplete'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'Autocomplete'])}
+  component={Autocomplete}
+/>
+
+<Story
+  name="Autocomplete"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Autocomplete
+
+Autocomplete — это разновидность компонента ComboBox с возможностью автоматического заполнения поля ввода опциями.
+Кроме стандартных [ComboBox](?path=/docs/поля-ввода-combobox-combobox--combo-box) Props к нему можно добавить следующие:
+
+<ArgsTable of={DocsAutocomplete} />
+
+## Classes
+
+Набор классов компонента Autocomplete совпадает с набором [классов ComboBox](?path=/docs/поля-ввода-combobox-api--page#classes)
+
+## import
+
+```ts
+import { Autocomplete } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Autocomplete } from '@v-uik/autocomplete'
+```
+
+## Автозаполнение
+
+<Canvas withSource="none">
+  <BasicAutocomplete />
+</Canvas>
+
+<Source language="tsx" code={RawBasicAutocomplete} />
+
+## Поиск с иконками
+
+<Canvas withSource="none">
+  <SearchAutocomplete />
+</Canvas>
+
+<Source language="tsx" code={RawSearchAutocomplete} />
+
+## Поиск с запросом
+
+В этом примере используется свойство 'loading' для показа загрузки. Чтобы имитировать запросы к бэкенду, после ввода 3 символов включается загрузка и отключается через 3 секунды.
+
+<Canvas withSource="none">
+  <AsyncAutocomplete />
+</Canvas>
+
+<Source language="tsx" code={RawAsyncAutocomplete} />
+
+## Обработка Submit и нажатия клавиши Enter
+
+<Canvas withSource="none">
+  <EnterKeyPressAutocomplete />
+</Canvas>
+
+<Source language="tsx" code={RawEnterKeyPressAutocomplete} />
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

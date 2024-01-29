@@ -1,0 +1,58 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import {
+  ButtonUploader,
+  FileUploader,
+  Dropzone,
+  FileItem,
+  UploaderLabel,
+} from '@v-uik/file-uploader'
+import { createTitle, COMPONENTS } from '../../../docs/showroom/config'
+import { ClassesDummy as DropzoneClassesDummy } from '../examples/dropzone/Classes.dummy'
+import {
+  ClassesDummy as FileItemClassesDummy,
+  IconButtonClassesDummy,
+} from '../examples/fileItem/Classes.dummy'
+import { ClassesDummy as UploaderLabelClassesDummy } from '../examples/uploaderLabel/Classes.dummy'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'FileUploader', 'API'])}
+  component={FileUploader}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# ButtonUploader API
+
+<ArgsTable of={ButtonUploader} />
+
+# Dropzone API
+
+<ArgsTable of={Dropzone} />
+
+# Dropzone classes
+
+<ArgsTable of={DropzoneClassesDummy} />
+
+# FileItem API
+
+<ArgsTable of={FileItem} />
+
+# FileItem classes
+
+<ArgsTable of={FileItemClassesDummy} />
+
+# FileItemIconButton Classes
+
+<ArgsTable of={IconButtonClassesDummy} />
+
+# UploaderLabel API
+
+<ArgsTable of={UploaderLabel} />
+
+# UploaderLabel сlasses
+
+<ArgsTable of={UploaderLabelClassesDummy} />

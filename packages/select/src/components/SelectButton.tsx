@@ -1,0 +1,253 @@
+'use client'
+
+import * as React from 'react'
+import { clsx, createUseStyles } from '@v-uik/theme'
+import { useClassList } from '@v-uik/hooks'
+import { ElementSize, ElementSizeType } from '@v-uik/common'
+import { useText } from '@v-uik/typography'
+import { Tooltip, TooltipProps } from '@v-uik/tooltip'
+import { useButtonReset } from '@v-uik/button'
+import { SelectIcon } from '../assets/SelectIcon'
+import { ErrorIcon } from '../assets/ErrorIcon'
+
+const useStyles = createUseStyles((theme) => ({
+  button: {
+    position: 'relative',
+    cursor: 'pointer',
+    outline: 'none',
+    width: '100%',
+    maxWidth: '100%',
+    boxSizing: 'border-box',
+    padding: [8, 16],
+    color: theme.comp.select.inputColorText,
+    backgroundColor: theme.comp.select.inputColorBackground,
+    borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomRightMd,
+
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      zIndex: 1,
+      borderRadius: 'inherit',
+      borderColor: theme.comp.select.inputColorBorder,
+      borderStyle: theme.shape.borderStyle,
+      borderWidth: theme.shape.borderWidth,
+    },
+
+    '&:hover': {
+      backgroundColor: theme.comp.select.inputColorBackgroundHover,
+
+      '&::after': {
+        borderColor: theme.comp.select.inputColorBorderHover,
+      },
+    },
+
+    '&:focus-visible': {
+      boxShadow: `0 0 0 2px ${theme.comp.select.inputColorShadowFocus}`,
+
+      '&::after': {
+        borderWidth: 0,
+      },
+    },
+
+    '&$small': {
+      padding: [4, 16],
+      borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftSm,
+      borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightSm,
+      borderBottomLeftRadius:
+        theme.comp.select.inputShapeBorderRadiusBottomLeftSm,
+      borderBottomRightRadius:
+        theme.comp.select.inputShapeBorderRadiusBottomRightSm,
+    },
+
+    '&$large': {
+      padding: [12, 16],
+      borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftLg,
+      borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightLg,
+      borderBottomLeftRadius:
+        theme.comp.select.inputShapeBorderRadiusBottomLeftLg,
+      borderBottomRightRadius:
+        theme.comp.select.inputShapeBorderRadiusBottomRightLg,
+    },
+
+    '&$error:not(:focus-visible)': {
+      '&::after': {
+        borderColor: theme.comp.select.inputColorBorderError,
+      },
+    },
+
+    '&:disabled': {
+      cursor: 'default',
+      pointerEvents: 'none',
+      color: theme.comp.select.inputColorTextDisabled,
+      backgroundColor: theme.comp.select.inputColorBackgroundDisabled,
+
+      '&::after': {
+        borderColor: theme.comp.select.inputColorBorderDisabled,
+      },
+    },
+  },
+
+  small: {
+    '& $arrowIcon': {
+      width: 16,
+      height: 16,
+    },
+
+    '& $errorIcon': {
+      width: 16,
+      height: 16,
+    },
+  },
+
+  large: {},
+
+  opened: {
+    '& $arrowIcon': {
+      transform: 'rotate(180deg)',
+    },
+  },
+
+  error: {},
+
+  empty: {
+    color: theme.comp.select.placeholderColorText,
+  },
+
+  text: {
+    flex: 1,
+    textAlign: 'left',
+    position: 'relative',
+    boxSizing: 'border-box',
+    padding: 0,
+
+    fontFamily: theme.comp.select.inputTypographyFontFamily,
+    fontSize: theme.comp.select.inputTypographyFontSize,
+    lineHeight: theme.comp.select.inputTypographyLineHeight,
+    letterSpacing: theme.comp.select.inputTypographyLetterSpacing,
+    fontWeight: theme.comp.select.inputTypographyFontWeight,
+  },
+
+  content: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    minHeight: 24,
+    zIndex: 2,
+  },
+
+  errorIcon: {
+    color: theme.comp.select.alertIconColorText,
+    marginLeft: 8,
+    zIndex: 2,
+  },
+
+  arrowIcon: {
+    marginLeft: 8,
+  },
+}))
+
+type Classes = Partial<
+  Record<
+    'button' | 'empty' | 'content' | 'text' | 'errorIcon' | 'arrowIcon',
+    string
+  >
+>
+
+export interface SelectButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  /**
+   * JSS-классы для стилизации
+   */
+  classes?: Classes
+  /**
+   * Флаг открытия селекта
+   */
+  isOpen?: boolean
+  /**
+   * Размер поля
+   */
+  size?: ElementSizeType
+  /**
+   * Индикатор ошибки
+   */
+  error?: boolean
+  /**
+   * Показать дополнительную иконку ошибки
+   */
+  showErrorIcon?: boolean
+  /**
+   * Свойства компонента Tooltip для иконки ошибки
+   */
+  errorIconTooltipProps?: Omit<TooltipProps, 'children'>
+  /**
+   * Индикатор отсутствия значения
+   */
+  emptyValue?: boolean
+}
+
+export const SelectButton = React.forwardRef(
+  (
+    {
+      classes,
+      className: classNameProp,
+      size = ElementSize.md,
+      isOpen,
+      error,
+      showErrorIcon,
+      errorIconTooltipProps,
+      emptyValue,
+      children,
+      ...rest
+    }: SelectButtonProps,
+    ref: React.Ref<HTMLButtonElement>
+  ) => {
+    const buttonClasses = useButtonReset()
+    const classesList = useStyles()
+    const classesMap = useClassList(classesList, classes)
+    const className = clsx(
+      buttonClasses.resetButton,
+      classesMap.button,
+      classNameProp,
+      {
+        [classesMap.small]: size === ElementSize.sm,
+        [classesMap.large]: size === ElementSize.lg,
+        [classesMap.opened]: isOpen,
+        [classesMap.error]: error,
+      }
+    )
+    const { ellipsis } = useText()
+
+    const textClassName = clsx(classesMap.text, ellipsis, {
+      [classesMap.empty ?? '']: !rest.disabled && emptyValue,
+    })
+
+    const errorIcon = <ErrorIcon className={classesMap.errorIcon} />
+
+    return (
+      <button {...rest} ref={ref} className={className} type="button">
+        <span className={classesMap.content}>
+          <span className={textClassName}>{children}</span>
+          {showErrorIcon &&
+            error &&
+            (errorIconTooltipProps ? (
+              <Tooltip single indicator {...errorIconTooltipProps}>
+                {errorIcon}
+              </Tooltip>
+            ) : (
+              errorIcon
+            ))}
+          <SelectIcon className={classesMap.arrowIcon} />
+        </span>
+      </button>
+    )
+  }
+)

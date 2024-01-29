@@ -1,0 +1,96 @@
+import { Canvas, Meta, Source, Story } from '@storybook/addon-docs'
+import { RangePicker } from '@v-uik/date-picker'
+import {
+  COMPONENTS,
+  createTitle,
+  DocsAlert,
+  createStory,
+} from '../../docs/showroom/config'
+import { RenderInput, RestrictedDays, RangePickerCanvas } from './examples'
+import RawRestrictedDays from '!!raw-loader!./examples/RestrictedDays'
+import RawRenderInput from '!!raw-loader!./examples/RenderInput'
+import RawCanvas from '!!raw-loader!@v-uik/date-picker/examples/RangePickerCanvas'
+
+export const story = createStory(RangePickerCanvas, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'RangePicker', 'RangePicker'])}
+  component={RangePicker}
+/>
+
+<Story
+  name="RangePicker"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# RangePicker
+
+Компонент выбора диапазона дат.
+
+<DocsAlert type="warning">
+  Для обеспечения корректной работы компонент RangePicker необходимо обернуть в
+  DateLibAdapterProvider (можно обернуть всё приложение для всех компонентов
+  RangePicker в нем), которому необходимо передать в свойство dateAdapter
+  экземпляр адаптера библиотеки по работе с датами, находящегося в{' '}
+  <b>@v-uik/date-picker/adapters</b> (или же собственный адаптер,
+  имплементирующий его интерфейс). Таким образом, компонент не зависит от
+  конкретной библиотеки обработки дат. Подключение локалей для разных адаптеров
+  может отличаться от нашего примера.
+</DocsAlert>
+
+## import
+
+```ts
+import { RangePicker } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { RangePicker } from '@v-uik/date-picker'
+```
+
+## Пример, показывающий возможности ограничения выбора дат
+
+В примере заблокированы даты будущего и выходные.
+
+<Canvas withSource="none">
+  <RestrictedDays />
+</Canvas>
+
+<Source language="tsx" code={RawRestrictedDays} />
+
+## Пример использования RangePicker на пользовательском компоненте
+
+Можно использовать RangePicker на любых компонентах с помощью свойства `renderInput`. В случае использования
+пользовательских полей ввода не забудьте добавить свойства `inputRef`, `inputProps`, `value` и `onChange`.
+
+<Canvas withSource="none">
+  <RenderInput />
+</Canvas>
+
+<Source language="tsx" code={RawRenderInput} />
+
+## Подкомпоненты
+
+Некоторые низкоуровневые компоненты, которые используется в пакете `@v-uik/date-picker`, можно
+использовать для создания собственных компонентов работы с датами.
+
+- [RangeCalendarPicker](?path=/docs/поля-ввода-rangepicker-rangecalendarpicker--page)
+- [RangeDayView](?path=/docs/поля-ввода-rangepicker-rangedayview--page)
+- [RangeMonthView](?path=/docs/поля-ввода-rangepicker-rangemonthview--page)
+- [RangeYearView](?path=/docs/поля-ввода-rangepicker-rangeyearview--page)
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

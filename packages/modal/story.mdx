@@ -1,0 +1,115 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Modal, ModalHeader } from '@v-uik/modal'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Basic,
+  CustomWidth,
+  BodyOverflow,
+  DisabledHandle,
+  Canvas as CanvasStory,
+} from './examples'
+import RawBasic from '!!raw-loader!@v-uik/modal/examples/Basic'
+import RawCustomWidth from '!!raw-loader!@v-uik/modal/examples/CustomWidth'
+import RawBodyOverflow from '!!raw-loader!@v-uik/modal/examples/BodyOverflow'
+import RawDisabledHandle from '!!raw-loader!@v-uik/modal/examples/DisabledHandle'
+import RawCanvas from '!!raw-loader!@v-uik/modal/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'Modal', 'Modal'])}
+  component={Modal}
+/>
+
+<Story
+  name="Modal"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Modal
+
+Компонент Modal используется для отображения модальных окон.
+
+## import
+
+```ts
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Modal, ModalHeader, ModalBody, ModalFooter } from '@v-uik/modal'
+```
+
+## ModalHeader
+
+Компонент ModalHeader используется для отображения заголовка модального окна.
+
+## ModalBody
+
+Компонент ModalBody используется для отображения содержимого модального окна.
+
+## ModalFooter
+
+Компонент ModalFooter используется для отображения футера модального окна.
+
+## Простой пример
+
+<Canvas withSource="none">
+  <Basic />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+## Пример с изменением ширины окна
+
+Можно указать ширину модального окна, используя свойство `width`.
+
+<Canvas withSource="none">
+  <CustomWidth />
+</Canvas>
+
+<Source language="tsx" code={RawCustomWidth} />
+
+## Пример с ограничением по высоте
+
+Модальное окно не превышает размеры окна браузера, поэтому содержимое `ModalBody` будет прокручиваться.
+
+<Canvas withSource="none">
+  <BodyOverflow />
+</Canvas>
+
+<Source language="tsx" code={RawBodyOverflow} />
+
+## Пример с отключением обработчиков закрытия
+
+По умолчанию обработчик `onClose` сработает при нажатии клавиши Esc и при клике за пределы модального окна.
+Это поведение можно отключить с помощью свойств `disableEscapePressHandler` и `disableBackdropClickHandler`.
+
+<Canvas withSource="none">
+  <DisabledHandle />
+</Canvas>
+
+<Source language="tsx" code={RawDisabledHandle} />
+
+## Доступность
+
+Компонент по умолчанию проставляет необходимые ARIA-атрибуты (role, aria-modal, aria-labelledby).
+Это можно изменить с помощью свойства contentProps. При открытии модального окна фокус выставляется на скрытый статичный
+элемент, от которого затем можно переходить к последующим фокусируемым элементам.
+
+На текущий момент фокус какому-либо видимому элементу не выставляется, так как рекомендации по работе с фокусом
+сильно зависят от содержимого модального окна (семантика, прокрутка), поэтому при необходимости установите фокус на нужном
+элементе самостоятельно.

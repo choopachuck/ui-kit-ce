@@ -1,0 +1,24 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Breadcrumbs } from '@v-uik/breadcrumbs'
+
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { ClassesDummy } from '@v-uik/breadcrumbs/examples'
+
+<Meta
+  title={createTitle([COMPONENTS.navigation, 'Breadcrumbs', 'API'])}
+  component={Breadcrumbs}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# API
+
+<ArgsTable of={Breadcrumbs} />
+
+# Classes
+
+<ArgsTable of={ClassesDummy} />

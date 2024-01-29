@@ -1,0 +1,212 @@
+import { Meta, Canvas, Source } from '@storybook/addon-docs'
+import { Text } from '@v-uik/base'
+import { createTitle, COOKBOOK } from '../../config'
+import { JssExample } from './JssExample'
+import RawJssExample from '!!raw-loader!./JssExample'
+
+import imgCompLevel from './assets/comp-level.jpg'
+import imgRefLevel from './assets/ref-level.jpg'
+import imgSysLevel from './assets/sys-level.jpg'
+import imgThreeLevels from './assets/three-levels.jpg'
+
+import { TokensExample, CustomizedTokensExample } from './CustomTheme'
+import RawCustomTheme from '!!raw-loader!./CustomTheme'
+import { BackwardExample } from './BackwardExample'
+import RawBackwardExample from '!!raw-loader!./BackwardExample'
+
+import { CustomTokens } from './CustomTokens'
+import RawCustomTokens from '!!raw-loader!./CustomTokens'
+
+<Meta title={createTitle([COOKBOOK.root, COOKBOOK.stylization])} />
+
+# Стилизация
+
+## Расширенная система токенов (рекомендуемое)
+
+В версии 1.3 была представлена расширенная система токенов для кастомизации компонентов. Она добавляет 3 уровня, которые логически связаны между собой.
+
+<img src={imgThreeLevels} alt="3 уровня токенов для стилизации компонентов" />
+
+Разберем каждый уровень детальнее.
+
+### Ref (референсный) уровень
+
+`ref` уровень описывает базовые значения палитры цветов, форм, теней и т.п.
+
+<img src={imgRefLevel} alt="Структура референсного уровня токенов" />
+
+### Sys (системный) уровень
+
+`sys` уровень создает токены для групп компонентов, задает акцентные цвета,
+определяет общие формы, скругления, размеры компонентов, и наделяет их семантикой. Этот уровень
+зависит от ref уровня. Например, чтобы изменить акцентный цвет, нужно будет задать токены `sys.primary*` группы.
+
+<img src={imgSysLevel} alt="Структура системного уровня токенов" />
+
+### Comp (компонентный) уровень
+
+`comp` уровень токенов позволяет определить свойства для конкретных компонентов, такие как цвета,
+отступы и т.п. Этот уровень зависит от `sys` уровня. Например, чтобы изменить акцентный
+цвет только для кнопок, нужно будет задать токены `comp.button.color*` группы.
+
+<img src={imgCompLevel} alt="Структура компонентного уровня токенов" />
+
+### Переопределение токенов
+
+Перед началом работы установите пакет `@v-uik/theme` с помощью команды. Устанавливайте ту же версию, что и ваши
+компоненты. Если вы используете пакет `@v-uik/base`, то пропустите этот шаг.
+
+```bash
+yarn add @v-uik/theme
+```
+
+Чтобы установить собственные значения для системы токенов, создайте новый инстанс темы с помощью конструктора
+`createTheme` из пакета `@v-uik/theme`. В качестве параметра он принимает объект с типом соответствующим
+структуре темы, в котором вы можете переопределить необходимые токены или добавить новые.
+
+```ts
+import { createTheme } from '@v-uik/theme'
+// или import { createTheme } from '@v-uik/base'
+
+const theme = createTheme({
+  sys: {
+    color: {
+      primaryAlpha: 'red',
+    },
+  },
+})
+```
+
+Чтобы компоненты знали про новую тему, нужно передать ее через свойство `theme` компонента `ThemeProvider`.
+`ThemeProvider` использует механизм [React Context](https://ru.reactjs.org/docs/context.html) чтобы передавать
+объект темы на все уровни вложенности, без необходимости передавать тему через промежуточные уровни.
+
+Ниже представлены два примера: в первом компоненты используют тему по-умолчанию, а во втором - кастомизированную
+тему с переопределенными системными токенами `primary` и `secondary`. Также, для примера, изменены токены
+компонентного уровня для `Button` типа `contained`.
+
+<Canvas withSource="none">
+  <TokensExample />
+</Canvas>
+
+<Canvas withSource="none">
+  <CustomizedTokensExample />
+</Canvas>
+
+<Source language="tsx" code={RawCustomTheme} />
+
+### Режим обратной совместимости
+
+Для плавного перехода на новые токены, добавлен режим обратной совместимости со старыми токенами.
+**Он включен по-умолчанию**, поэтому при обновлении библиотеки вы не заметите визуальных изменений.
+Чтобы его отключить и воспользоваться новыми токенами, в `ThemeProvider` добавлено общее свойство
+`comp.backwardCompatibilityMode` (для отключения во всех компонентах сразу)
+и `comp.${packageName}.backwardCompatibilityMode` для каждого компонента по отдельности (имеет приоритет над общим свойством).
+Установив этим параметрам значение `false`, вы переключите компоненты на новую систему токенов.
+
+<Canvas withSource="none">
+  <BackwardExample />
+</Canvas>
+
+Откройте консоль браузера, чтобы убедиться, что кнопки используют разные токены для заливки фона.
+
+<Source language="tsx" code={RawBackwardExample} />
+
+### Добавление собственных токенов
+
+Тема может быть расширена собственными значениями, которые могут понадобиться в разных местах разрабатываемого приложения.
+Например:
+
+```ts
+import { createTheme } from '@v-uik/theme'
+// или import { createTheme } from '@v-uik/base'
+
+const theme = createTheme({
+  additionalColors: {
+    burgundy: '#800020',
+  },
+})
+```
+
+Если вы используете TypeScript, вам также потребуется расширить типизацию модуля темы, чтобы использовать собственные значения:
+
+```ts
+declare module '@v-uik/theme' {
+  // declare module '@v-uik/base' {
+  interface Theme {
+    additionalColors: {
+      burgundy: string
+    }
+  }
+}
+```
+
+<Canvas withSource="none">
+  <CustomTokens />
+</Canvas>
+
+<Source language="tsx" code={RawCustomTokens} />
+
+## Альтернативные способы темизации
+
+Большинство кейсов можно сделать с помощью системы токенов. Но если требуется тонкая настройка стилей, воспользуйтесь
+одним из следующих способов.
+
+### С помощью JSS
+
+В библиотеке используется CSS-in-JS решение на базе библиотеки `react-jss`.
+Используйте утилиты пакета `@v-uik/theme` для создания и применения стилей данным способом.
+
+<Canvas withSource="none">
+  <JssExample />
+</Canvas>
+
+<Source language="tsx" code={RawJssExample} />
+
+### С помощью стандартного CSS
+
+<Canvas>
+  <Text className="v-uik-test-override">Пример стилизованного текста</Text>
+</Canvas>
+
+Основной проблемой при использовании CSS-решений (CSS modules, SCSS и т.п.) вместе с CSS-in-JS решениями
+становится невозможность переопределить стили компонентов библиотеки, не прибегая к повышению веса селектора.
+Это происходит из-за того, что, по-умолчанию, JSS вставляет стили в конец HTML-элемента head, тогда как
+импорт CSS-файлов обычно происходит ранее, в начале head. А мы знаем, что при равном весе селекторов
+будут применены стили последнего объявленного. Чтобы этого избежать, вам необходимо, чтобы JSS-стили
+компонентов библиотеки объявлялись раньше ваших пользовательских стилей.
+Для этого в JSS предусмотрена [настройка позиции вставки стилей](https://cssinjs.org/setup/?v=v10.8.1#specify-the-dom-insertion-point):
+
+1. Необходимо вставить HTML-комментарий внутрь элемента head перед импортом пользовательских стилей
+
+```html
+<head>
+  <!-- jss-insertion-point -->
+  <link rel="stylesheet" href="/custom.css" />
+</head>
+```
+
+2. В точке входа вашего приложения (index.js) добавить настройку jss
+   (insertionPoint, который будет равен содержимому комментария)
+
+```jsx
+import { jss } from 'react-jss'
+
+jss.setup({ insertionPoint: 'jss-insertion-point' })
+```
+
+### Атрибут style
+
+Большинство компонентов поддерживают атрибут `style` для быстрого и простого задания стилей
+корневому html-элементу.
+
+<Canvas>
+  <Text style={{ color: '#2A72F8' }}>Пример стилизованного текста</Text>
+</Canvas>
+
+### Стилизация в Create-React-App
+
+По-умолчанию, в create-react-app стили, импортированные в js файлах (как модули, так и обычные),
+добавляются с помощью тегов style в конец элемента head. Вам необходимо воспользоваться алгоритмом выше,
+чтобы JSS-стили библиотеки были вставлены до этих тегов (соответствующие изменения необходимо внести в
+файлах `public/index.html` и `src/index.js`)

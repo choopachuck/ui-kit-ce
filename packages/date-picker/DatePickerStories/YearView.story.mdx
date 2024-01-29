@@ -1,0 +1,30 @@
+import { ArgsTable, Canvas, Meta, Source } from '@storybook/addon-docs'
+import { COMPONENTS, createTitle } from '../../../docs/showroom/config'
+import { YearViewStory, YearViewClassesDummy } from '../examples'
+import { YearView } from '@v-uik/date-picker'
+import RawYearViewStory from '!!raw-loader!../examples/YearViewStory'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'DatePicker', 'YearView'])}
+  component={YearView}
+/>
+
+# Подкомпонент YearView
+
+Используется для отображения лет.
+
+# YearView API
+
+<ArgsTable of={YearView} />
+
+## YearView classes
+
+<ArgsTable of={YearViewClassesDummy} />
+
+# Пример использования
+
+<Canvas withSource="none">
+  <YearViewStory />
+</Canvas>
+
+<Source language="tsx" code={RawYearViewStory} />

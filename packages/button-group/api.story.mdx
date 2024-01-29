@@ -1,0 +1,23 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { ButtonGroup } from '@v-uik/button-group'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { ClassesDummy } from '@v-uik/button-group/examples'
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'ButtonGroup', 'API'])}
+  component={ButtonGroup}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# API
+
+<ArgsTable of={ButtonGroup} />
+
+# Classes
+
+<ArgsTable of={ClassesDummy} />

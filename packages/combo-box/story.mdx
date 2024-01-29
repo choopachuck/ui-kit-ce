@@ -1,0 +1,363 @@
+import { Canvas, Meta, Source, Story } from '@storybook/addon-docs'
+import { ComboBox, Creatable } from '@v-uik/combo-box'
+import {
+  COMPONENTS,
+  createTitle,
+  createStory,
+} from '../../docs/showroom/config'
+
+import {
+  AdvancedSearch,
+  CompactTags,
+  DividerOptions,
+  Error,
+  Grouping,
+  MultipleSelect,
+  OptionsWithIcon,
+  OutsideTags,
+  ReplaceDelimiter,
+  ReplaceLabel,
+  Searchable,
+  SingleSelect,
+  TermDisabled,
+  ClassesDummy,
+  Sizes,
+  WithTags,
+  SingleSearchable,
+  Collapsible,
+  Stretchable,
+  Counter,
+  DropdownSubscribe,
+  Canvas as CanvasStory,
+  Virtualized,
+  Reasons,
+  OverflowingOption,
+  OverflowingOptionWithTooltip,
+} from './examples'
+
+import RawCompactTags from '!!raw-loader!./examples/CompactTags'
+import RawDividerOptions from '!!raw-loader!./examples/DividerOptions'
+import RawError from '!!raw-loader!./examples/Error'
+import RawMultipleSelect from '!!raw-loader!./examples/MultipleSelect'
+import RawOptionsWithIcon from '!!raw-loader!./examples/OptionsWithIcon'
+import RawOutsideTags from '!!raw-loader!./examples/OutsideTags'
+import RawSingleSelect from '!!raw-loader!./examples/SingleSelect'
+import RawSizes from '!!raw-loader!./examples/Sizes'
+import RawSearchable from '!!raw-loader!./examples/Searchable'
+import RawGrouping from '!!raw-loader!./examples/Grouping'
+import RawAdvancedSearch from '!!raw-loader!./examples/AdvancedSearch'
+import RawReplaceLabel from '!!raw-loader!./examples/ReplaceLabel'
+import RawTermDisabled from '!!raw-loader!./examples/TermDisabled'
+import RawReplaceDelimiter from '!!raw-loader!./examples/ReplaceDelimiter'
+import RawWithTags from '!!raw-loader!./examples/WithTags'
+import RawSingleSearchable from '!!raw-loader!./examples/SingleSearchable'
+import RawCollapsible from '!!raw-loader!./examples/Collapsible'
+import RawStretchable from '!!raw-loader!./examples/Stretchable'
+import RawCounter from '!!raw-loader!./examples/Counter'
+import RawCanvas from '!!raw-loader!@v-uik/combo-box/examples/Canvas'
+import RawDropdownSubscribe from '!!raw-loader!@v-uik/combo-box/examples/DropdownSubscribe'
+import RawVirtualized from '!!raw-loader!@v-uik/combo-box/examples/Virtualized'
+import RawReasons from '!!raw-loader!@v-uik/combo-box/examples/Reasons'
+import RawOverflowingOption from '!!raw-loader!@v-uik/combo-box/examples/OverflowingOption'
+import RawOverflowingOptionWithTooltip from '!!raw-loader!@v-uik/combo-box/examples/OverflowingOptionWithTooltip'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'ComboBox', 'ComboBox'])}
+  component={ComboBox}
+/>
+
+<Story
+  name="ComboBox"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# ComboBox
+
+ComboBox — это усложненный вариант базового компонента Select. Имеет в себе функциональность фильтрации, множественного выбора, очистки поля.
+Одиночный выбор рекомендуется использовать, когда нужна фильтрация по полю.
+В остальных случаях рекомендуется использовать [Select](?path=/docs/поля-ввода-select-select--select)
+
+## import
+
+```ts
+import { ComboBox } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { ComboBox } from '@v-uik/combo-box'
+```
+
+## Единичный выбор
+
+За открытие выпадающего списка при фокусе на элементе отвечает свойство `openOnFocus`.
+
+<Canvas withSource="none">
+  <SingleSelect />
+</Canvas>
+
+<Source language="tsx" code={RawSingleSelect} />
+
+## Виртуализированный список
+
+Виртуализация помогает решить проблемы с производительностью при отрисовки больших данных.
+В качестве библиотеки для виртуализации была выбрана [react-window](https://github.com/bvaughn/react-window).
+Для реализации виртуализации необходимо заменить компонент `List` на кастомизированный компонент с виртуализацией и передать в `components` (см. пример ниже).
+
+<Canvas withSource="none">
+  <Virtualized />
+</Canvas>
+
+<Source language="tsx" code={RawVirtualized} />
+
+## Множественный выбор
+
+Для множественного выбора используется параметр `multiple`. За открытие выпадающего списка при фокусе на элементе отвечает свойство `openOnFocus`.
+
+Чтобы выпадающий список не закрывался при выборе нескольких значений, используйте свойство `disableCloseOnSelect`.
+В этом случае список закрывается по клику за его пределами.
+
+<Canvas withSource="none">
+  <MultipleSelect />
+</Canvas>
+
+<Source language="tsx" code={RawMultipleSelect} />
+
+## Размеры
+
+Разные размеры ComboBox
+
+<Canvas withSource="none">
+  <Sizes />
+</Canvas>
+
+<Source language="tsx" code={RawSizes} />
+
+## Единичный выбор с поиском
+
+<Canvas withSource="none">
+  <SingleSearchable />
+</Canvas>
+
+<Source language="tsx" code={RawSingleSearchable} />
+
+## Множественный выбор с поиском
+
+<Canvas withSource="none">
+  <Searchable />
+</Canvas>
+
+<Source language="tsx" code={RawSearchable} />
+
+## Конфигурация поиска
+
+Из пакета `@v-uik/combo-box` поставляется функция-конфигуратор createFilter, с помощью которой можно легко конфигурировать поиск.
+Также можно настроить поиск самостоятельно.
+
+<Canvas withSource="none">
+  <AdvancedSearch />
+</Canvas>
+
+<Source language="tsx" code={RawAdvancedSearch} />
+
+## Множественный выбор с тегами
+
+<Canvas withSource="none">
+  <WithTags />
+</Canvas>
+
+<Source language="tsx" code={RawWithTags} />
+
+## Компактное отображение тегов
+
+Для компактных интерфейсов существует решение по отображению n-тегов.
+В случае 0 просто отображается счетчик. За это отвечает параметр limitTags.
+
+Положительное число показывает определенное количество тегов.
+Отрицательное значение или undefined будет считаться как отсутствие счетчика.
+При 0 будет показываться только счетчик.
+Существует три состояния: Collapsible, Stretchable и Counter.
+О них подробнее будет рассказано чуть ниже.
+
+<Canvas withSource="none">
+  <CompactTags />
+</Canvas>
+
+<Source language="tsx" code={RawCompactTags} />
+
+### Collapsible
+
+В данном примере необходимо самому контролировать ширину компонента ComboBox и допустимое количество limitTags,
+чтобы все умещалось в одну строчку.
+
+<Canvas withSource="none">
+  <Collapsible />
+</Canvas>
+
+<Source language="tsx" code={RawCollapsible} />
+
+### Stretchable
+
+<Canvas withSource="none">
+  <Stretchable />
+</Canvas>
+
+<Source language="tsx" code={RawStretchable} />
+
+### Counter
+
+<Canvas withSource="none">
+  <Counter />
+</Canvas>
+
+<Source language="tsx" code={RawCounter} />
+
+## Ошибка валидации
+
+<Canvas withSource="none">
+  <Error />
+</Canvas>
+
+<Source language="tsx" code={RawError} />
+
+## Отображение опций за пределами компонента ComboBox
+
+Если выбранные значения нужно отобразить за пределами поля выбора, воспользуйтесь параметром `disableVisibleData`.
+В этом случае данные не отобразятся внутри поля. После чего можно отобразить value в любом удобном формате, например, в тегах.
+
+<Canvas withSource="none">
+  <OutsideTags />
+</Canvas>
+
+<Source language="tsx" code={RawOutsideTags} />
+
+## Замена разделителя в строчном отображении
+
+<Canvas withSource="none">
+  <ReplaceDelimiter />
+</Canvas>
+
+<Source language="tsx" code={RawReplaceDelimiter} />
+
+## Подписка на изменение состояния Dropdown
+
+Для подписки на открытие/закрытие выпадающего меню используете метод `dropdownProps.onStateChange`.
+
+<Canvas withSource="none">
+  <DropdownSubscribe />
+</Canvas>
+
+<Source language="tsx" code={RawDropdownSubscribe} />
+
+## Настройки опций внутри компонента List
+
+Для отображения опций используется компонент [List](?path=/docs/отображение-данных-list-list--list).
+
+Ниже приведено несколько примеров по настройке.
+
+### Разделитель между опциями
+
+Разделители опций можно настроить через объект `listProps` с помощью параметра `stripe`.
+
+<Canvas withSource="none">
+  <DividerOptions />
+</Canvas>
+
+<Source language="tsx" code={RawDividerOptions} />
+
+### Замена содержимого опций
+
+Внутри опций выпадающего списка можно размещать любое содержимое. За это поведение отвечают свойства
+`prefix` и `suffix` массива с опциями.
+
+<Canvas withSource="none">
+  <OptionsWithIcon />
+</Canvas>
+
+<Source language="tsx" code={RawOptionsWithIcon} />
+
+### Замена заголовка опции и значения опции
+
+При помощи параметра `getOptionLabel` можно конфигурировать отображаемое значение из объекта, а при помощи
+`getOptionValue` — заменять исходное значение value.
+
+<Canvas withSource="none">
+  <ReplaceLabel />
+</Canvas>
+
+<Source language="tsx" code={RawReplaceLabel} />
+
+### Группировка
+
+Группирует элементы с помощью свойства `groupBy`.
+
+<Canvas withSource="none">
+  <Grouping />
+</Canvas>
+
+<Source language="tsx" code={RawGrouping} />
+
+### Условие блокировки опции
+
+При помощи параметра `isOptionDisabled` можно настраивать блокировку опций.
+
+<Canvas withSource="none">
+  <TermDisabled />
+</Canvas>
+
+<Source language="tsx" code={RawTermDisabled} />
+
+### Опция в несколько строчек
+
+<Canvas withSource="none">
+  <OverflowingOption />
+</Canvas>
+
+<Source language="tsx" code={RawOverflowingOption} />
+
+### Переполнение контента опции с тултпом
+
+Для этого необходимо переопределить `OptionItem` и обернуть его в `Tooltip`.
+
+<Canvas withSource="none">
+  <OverflowingOptionWithTooltip />
+</Canvas>
+
+<Source language="tsx" code={RawOverflowingOptionWithTooltip} />
+
+## Типы изменений значения поля
+
+Обработчик события `onChange` принимает необязательный аргумент `reason`, представляющий из себя примененный тип изменения значения поля. <br/>
+Аргумент принимает следующие значения:
+
+| Тип изменения | Описание                                                                                                                                             |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| select        | Выбор значения с помощью нажатия кнопки мыши                                                                                                         |
+| select-enter  | Выбор значения с помощью нажатия клавиши `Enter` на пункт списка                                                                                     |
+| select-arrows | Выбор значения с помощью нажатия кнопок "Стрелка вверх" или "Стрелка вниз" (см. [`Autocomplete`](?path=/docs/поля-ввода-autocomplete--autocomplete)) |
+| delete        | Удаление одного из выбранных значений (для свойства `multiple` в значении `true`)                                                                    |
+| clear         | Сброс поля с помощью нажатия на кнопку очистки (для свойства `canClear` в значении `true`)                                                           |
+| force-clear   | Сброс поля с помощью нажатия на клавиши `Delete` или `Backspace` (для свойства `canClear` в значении `true`)                                         |
+
+<Canvas withSource="none">
+  <Reasons />
+</Canvas>
+
+<Source language="tsx" code={RawReasons} />
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

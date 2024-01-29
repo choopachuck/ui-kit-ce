@@ -1,0 +1,84 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Box } from '@v-uik/box'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Heading,
+  HeadingWithRef,
+  Canvas as CanvasStory,
+} from '@v-uik/box/examples'
+import RawHeading from '!!raw-loader!@v-uik/box/examples/AsHeadingStory'
+import RawHeadingWithRef from '!!raw-loader!@v-uik/box/examples/AsHeadingWithRef'
+import RawCanvas from '!!raw-loader!@v-uik/box/examples/Canvas'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta title={createTitle([COMPONENTS.utility, 'Box', 'Box'])} component={Box} />
+
+<Story
+  name="Box"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+    controls: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Box
+
+Компонент Box решает проблему типизации компонентов, которые динамически отображают HTML-тег компонента.
+
+## import
+
+```tsx
+import { Box } from '@v-uik/base'
+import type {
+  PolymorphicComponentProps,
+  PolymorphicComponent,
+} from '@v-uik/base'
+```
+
+или
+
+```tsx
+import { Box } from '@v-uik/box'
+import type {
+  PolymorphicComponentProps,
+  PolymorphicComponent,
+} from '@v-uik/box'
+```
+
+## Собственный полиморфный компонент на основе компонента Box
+
+Типы-утилиты для создания собственных полиморфных компонентов на основе компонента Box.
+
+<Canvas>
+  <Heading variant="h1">Heading 1</Heading>
+</Canvas>
+
+<Source language="tsx" code={RawHeading} />
+
+## Собственный полиморфный компонент на основе компонента Box c пробросом ref
+
+Если нужно использовать передачу `ref` к полиморфному компоненту, то это можно сделать так —
+
+<Canvas>
+  <HeadingWithRef variant="h1">Heading 1 with ref</HeadingWithRef>
+</Canvas>
+
+<Source language="tsx" code={RawHeadingWithRef} />
+
+## Полезные статьи по теме
+
+- [NPM react-polymorphic-box](https://github.com/kripod/react-polymorphic-box)
+- [Статья про PRC](https://blog.andrewbran.ch/polymorphic-react-components/)
+- [Статья про PRC with forwardRef](https://www.benmvp.com/blog/forwarding-refs-polymorphic-react-component-typescript/)

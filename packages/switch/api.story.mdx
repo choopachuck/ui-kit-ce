@@ -1,0 +1,23 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Switch } from '@v-uik/switch'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { ClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Switch', 'API'])}
+  component={Switch}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Switch API
+
+<ArgsTable of={Switch} />
+
+# Switch classes
+
+<ArgsTable of={ClassesDummy} />

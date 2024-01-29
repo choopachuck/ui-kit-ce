@@ -1,0 +1,130 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Textarea } from '@v-uik/textarea'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Basic,
+  Disabled,
+  WithError,
+  FullWidth,
+  WithRows,
+  WithMaxLength,
+  TextareaAutosize,
+} from './examples'
+import RawBasic from '!!raw-loader!@v-uik/textarea/examples/Basic'
+import RawDisabled from '!!raw-loader!@v-uik/textarea/examples/Disabled'
+import RawWithError from '!!raw-loader!@v-uik/textarea/examples/WithError'
+import RawFullWidth from '!!raw-loader!@v-uik/textarea/examples/FullWidth'
+import RawWithRows from '!!raw-loader!@v-uik/textarea/examples/WithRows'
+import RawTextareaAutosize from '!!raw-loader!@v-uik/textarea/examples/TextareaAutosize'
+import RawWithMaxLength from '!!raw-loader!@v-uik/textarea/examples/WithMaxLength'
+
+export const story = createStory(Basic, RawBasic)
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'Textarea', 'Textarea'])}
+  component={Textarea}
+/>
+
+<Story
+  name="Textarea"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Textarea
+
+Компонент ввода многострочного текста
+
+## import
+
+```ts
+import { Textarea } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Textarea } from '@v-uik/textarea'
+```
+
+## Стандартное поле ввода
+
+<Canvas withSource="none">
+  <Basic />
+</Canvas>
+
+<Source language="tsx" code={RawBasic} />
+
+export const onChange = () => {}
+
+## Поле заблокировано для ввода
+
+<Canvas withSource="none">
+  <Disabled />
+</Canvas>
+
+<Source language="tsx" code={RawDisabled} />
+
+## Поле содержит ошибку
+
+<Canvas withSource="none">
+  <WithError />
+</Canvas>
+
+<Source language="tsx" code={RawWithError} />
+
+## Растягивание поля на всю ширину контейнера
+
+<Canvas withSource="none">
+  <FullWidth />
+</Canvas>
+
+<Source language="tsx" code={RawFullWidth} />
+
+## Изменение высоты поля
+
+В этом примере задаётся количество строк с помощью свойства rows.
+
+<Canvas withSource="none">
+  <WithRows />
+</Canvas>
+
+<Source language="tsx" code={RawWithRows} />
+
+## Поле с подсчетом введенных символов
+
+Если необходим счетчик введенных символов, можно использовать свойство showCount.
+Чтобы указать лимит символов, используете внутреннее свойство инпута - textareaProps.maxLength
+
+<Canvas withSource="none">
+  <WithMaxLength />
+</Canvas>
+
+<Source language="tsx" code={RawWithMaxLength} />
+
+## Автоматическое регулирование высоты
+
+В данном примере используется свойство **components**, которое позволяет заменить текущий компонент textarea на собственный
+или сторонний со своей логикой.
+
+Для реализации автоматического регулирования высоты рекомендуется использовать библиотеку [react-textarea-autosize](https://www.npmjs.com/package/react-textarea-autosize).
+
+<Canvas withSource="none">
+  <TextareaAutosize />
+</Canvas>
+
+<Source language="tsx" code={RawTextareaAutosize} />
+
+## Связанные компоненты
+
+- [Labelled](?path=/docs/вспомогательные-компоненты-labelled-labelled--labelled)

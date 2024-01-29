@@ -1,0 +1,23 @@
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { Divider } from './src'
+import { COMPONENTS, createTitle } from '../../docs/showroom/config'
+import { ClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.utility, 'Divider', 'API'])}
+  component={Divider}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# API
+
+<ArgsTable of={Divider} />
+
+# Classes
+
+<ArgsTable of={ClassesDummy} />

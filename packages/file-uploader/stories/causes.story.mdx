@@ -1,0 +1,66 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { ButtonUploader } from '@v-uik/file-uploader'
+import { createTitle, COMPONENTS } from '../../../docs/showroom/config'
+
+import { DropzoneCause } from '../examples/causes/DropzoneCause'
+import RawDropzoneCause from '!!raw-loader!../examples/causes/DropzoneCause'
+
+import { RestrictedUploadDropzone } from '../examples/causes/RestrictedUploadDropzone'
+import RawRestrictedUploadDropzone from '!!raw-loader!../examples/causes/RestrictedUploadDropzone'
+
+import { SingleFileUploaderCause } from '../examples/causes/SingleFileUploaderCause'
+import RawSingleFileUploaderCause from '!!raw-loader!../examples/causes/SingleFileUploaderCause'
+
+import { IncreaseAccent } from '../examples/causes/IncreaseAccent'
+import RawIncreaseAccent from '!!raw-loader!../examples/causes/IncreaseAccent'
+
+<Meta
+  title={createTitle([COMPONENTS.inputFields, 'FileUploader', 'FileUploader'])}
+  component={ButtonUploader}
+/>
+
+# FileUploader
+
+Пакет @v-uik/file-uploader состоит из визуальных компонентов, необходимых для построения интерфейсов загрузки файлов.
+Данные компоненты могут быть скомбинированы в различных вариациях, поэтому в них не заложена логика обращения к серверу.
+
+- [ButtonUploader](?path=/docs/поля-ввода-fileuploader--button-uploader)
+- [Dropzone](?path=/docs/поля-ввода-fileuploader--dropzone)
+- [FileItem](?path=/docs/поля-ввода-fileuploader--file-item)
+- [UploaderLabel](?path=/docs/поля-ввода-fileuploader--uploader-label)
+
+## Базовый пример загрузчика Dropzone
+
+<Canvas withSource="none">
+  <DropzoneCause />
+</Canvas>
+
+<Source language="tsx" code={RawDropzoneCause} />
+
+## Загрузка с ограничениями
+
+Ограничение на загружаемые файлы может быть реализовано с помощью свойства accept компонентов Dropzone и ButtonUpload,
+а также возможно написание собственной логики в обработчике onUpload. В onUpload передается UploaderFile[],
+где `UploaderFile.error` — ошибка, связанная с ограничениями по свойству accept.
+
+<Canvas withSource="none">
+  <RestrictedUploadDropzone />
+</Canvas>
+
+<Source language="tsx" code={RawRestrictedUploadDropzone} />
+
+## Усиление акцента
+
+<Canvas withSource="none">
+  <IncreaseAccent />
+</Canvas>
+
+<Source language="tsx" code={RawIncreaseAccent} />
+
+## Загрузка одного файла (SingleFileUploader)
+
+<Canvas withSource="none">
+  <SingleFileUploaderCause />
+</Canvas>
+
+<Source language="tsx" code={RawSingleFileUploaderCause} />
