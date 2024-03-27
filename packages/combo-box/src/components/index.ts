@@ -74,3 +74,14 @@ export const getComponents = <
     ...defaultComboboxComponents,
     ...componentProp,
   } as ComboBoxComponentsGeneric)
+
+export type {
+  ControlProps,
+  DropdownIndicatorProps,
+  IndicatorContainerProps,
+  MultiValueProps,
+  PlaceholderProps,
+  SelectContainerProps,
+  SingleValueProps,
+  ValueContainerProps,
+}

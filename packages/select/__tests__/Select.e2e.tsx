@@ -6,6 +6,7 @@ import {
   MultiSelectExample,
   ErrorExample,
   ErrorMultiSelectExample,
+  CustomIcon,
 } from '../examples'
 import { Select } from '../src'
 import { createTheme } from '@v-uik/theme'
@@ -163,5 +164,10 @@ test.describe('Select', () => {
     )
 
     await expect(component).toHaveScreenshot()
+  })
+  test('with custom icon', async ({ mount, page }) => {
+    await mount(<CustomIcon />)
+
+    await expect(page).toHaveScreenshot()
   })
 })

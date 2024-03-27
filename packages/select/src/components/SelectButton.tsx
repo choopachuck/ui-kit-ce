@@ -7,7 +7,6 @@ import { ElementSize, ElementSizeType } from '@v-uik/common'
 import { useText } from '@v-uik/typography'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
 import { useButtonReset } from '@v-uik/button'
-import { SelectIcon } from '../assets/SelectIcon'
 import { ErrorIcon } from '../assets/ErrorIcon'
 
 const useStyles = createUseStyles((theme) => ({
@@ -79,10 +78,6 @@ const useStyles = createUseStyles((theme) => ({
       theme.comp.select.inputShapeBorderRadiusBottomLeftSm,
     borderBottomRightRadius:
       theme.comp.select.inputShapeBorderRadiusBottomRightSm,
-    '& $arrowIcon': {
-      width: 16,
-      height: 16,
-    },
 
     '& $errorIcon': {
       width: 16,
@@ -110,11 +105,7 @@ const useStyles = createUseStyles((theme) => ({
       theme.comp.select.inputShapeBorderRadiusBottomRightLg,
   },
 
-  opened: {
-    '& $arrowIcon': {
-      transform: 'rotate(180deg)',
-    },
-  },
+  opened: {},
 
   error: {},
 
@@ -174,8 +165,11 @@ const useStyles = createUseStyles((theme) => ({
     zIndex: 2,
   },
 
-  arrowIcon: {
+  arrowIconContainer: {
     marginLeft: 8,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   disabled: {},
@@ -183,13 +177,7 @@ const useStyles = createUseStyles((theme) => ({
 
 type Classes = Partial<
   Record<
-    | 'button'
-    | 'empty'
-    | 'content'
-    | 'text'
-    | 'errorIcon'
-    | 'arrowIcon'
-    | 'disabled',
+    'button' | 'empty' | 'content' | 'text' | 'errorIcon' | 'disabled',
     string
   >
 >
@@ -224,6 +212,10 @@ export interface SelectButtonProps
    * Индикатор отсутствия значения
    */
   emptyValue?: boolean
+  /**
+   * Иконка открытия/закрытия компонента `Select`
+   */
+  dropdownIndicator?: React.ReactNode
 }
 
 export const SelectButton = React.forwardRef(
@@ -239,6 +231,7 @@ export const SelectButton = React.forwardRef(
       errorIconTooltipProps,
       emptyValue,
       children,
+      dropdownIndicator,
       ...rest
     }: SelectButtonProps,
     ref: React.Ref<HTMLButtonElement>
@@ -292,7 +285,9 @@ export const SelectButton = React.forwardRef(
             ) : (
               errorIcon
             ))}
-          <SelectIcon className={classesMap.arrowIcon} />
+          <span className={classesMap.arrowIconContainer}>
+            {dropdownIndicator}
+          </span>
         </span>
       </button>
     )

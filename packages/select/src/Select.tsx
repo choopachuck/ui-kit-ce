@@ -15,7 +15,12 @@ import {
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
 import { List, ListItem, ListItemProps, ListItemGroup } from '@v-uik/list'
 import { useSelect } from './hooks'
-import { SelectButton, SelectButtonProps } from './components'
+import {
+  SelectButton,
+  SelectButtonProps,
+  SelectComponents,
+  getComponents,
+} from './components'
 import { SelectOptionIcon } from './assets/SelectOptionIcon'
 import { BaseSelectProps, Option, Classes } from './interfaces'
 import { isEqualKeyboardKeys, includesKeyboardKey } from '@v-uik/utils'
@@ -196,6 +201,10 @@ export type SelectProps<
      * JSS-классы для стилизации
      */
     classes?: Partial<Classes>
+    /**
+     * Свойство для переопределения компонентов `Select`
+     */
+    components?: SelectComponents<T, A>
   }
 
 const defaultListElement = 'ul'
@@ -238,6 +247,7 @@ export const Select = React.forwardRef(
       labelledClasses,
       keepHelperTextMinHeight,
       required,
+      components,
       ...rest
     }: SelectProps<ListElement, ListItemElement>,
     ref: React.Ref<HTMLDivElement>
@@ -256,15 +266,16 @@ export const Select = React.forwardRef(
       [classesMap?.large ?? '']: isLarge,
       [classesMap?.error ?? '']: error,
     })
-    const buttonClasses: SelectButtonProps['classes'] = {
-      button: classesMap?.button,
-      empty: classesMap?.buttonEmpty,
-      content: classesMap?.buttonContent,
-      text: classesMap?.buttonText,
-      errorIcon: classesMap?.buttonErrorIcon,
-      arrowIcon: classesMap?.buttonArrowIcon,
-      disabled: classesMap?.disabled,
-    }
+    const buttonClasses: SelectButtonProps['classes'] = classes
+      ? {
+          button: classesMap?.button,
+          empty: classesMap?.buttonEmpty,
+          content: classesMap?.buttonContent,
+          text: classesMap?.buttonText,
+          errorIcon: classesMap?.buttonErrorIcon,
+          disabled: classesMap?.disabled,
+        }
+      : undefined
     const listItemClasses: ListItemProps<ListItemElement>['classes'] = {
       listItem: classesMap.option,
       text: classesMap.optionText,
@@ -296,12 +307,39 @@ export const Select = React.forwardRef(
       value,
     })
 
+    const [isOpen, setIsOpen] = React.useState(false)
+
+    const selectProps = {
+      value,
+      label,
+      options,
+      limitByWidth,
+      size,
+      error,
+      showErrorIcon,
+      errorIconTooltipProps,
+      dropdownProps,
+      listProps,
+      disabled,
+      groupBy,
+      hideDropdownOnOutsideScroll,
+      placeholder,
+      labelledClasses,
+      classes: classesMap,
+      onChange,
+      multiple,
+      selectButtonProps,
+      opened: isOpen,
+    }
+
     const popperOptions: DropdownProps['popperOptions'] = {
       strategy: 'fixed',
       ...dropdownProps?.popperOptions,
     }
 
-    const [isOpen, setIsOpen] = React.useState(false)
+    const { DropdownIndicator } = getComponents<ListElement, ListItemElement>(
+      components
+    )
 
     const renderSelectButtonText = () => {
       if (
@@ -674,6 +712,7 @@ export const Select = React.forwardRef(
               emptyValue={
                 !Array.isArray(selectedOption) && !selectedOption?.value
               }
+              dropdownIndicator={<DropdownIndicator {...selectProps} />}
               onClick={toggleOpen}
               onKeyDown={preventOnKeyDownSpace}
             >
