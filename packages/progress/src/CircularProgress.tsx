@@ -120,6 +120,10 @@ export interface CircularProgressProps
    */
   size?: ProgressSizeProps
   /**
+   * Настройка размеров прогресс бара
+   */
+  sizesConfig?: Record<ProgressSizeProps, number>
+  /**
    * Скрыть задний фон прогресс бара
    */
   hideTrack?: boolean
@@ -145,6 +149,7 @@ export const CircularProgress = React.forwardRef(
       value,
       max = 100,
       size = ProgressSize.lg,
+      sizesConfig = SIZES,
       hideTrack = false,
       thickness = STROKE_WIDTH,
       percentageInsideCircle,
@@ -154,7 +159,7 @@ export const CircularProgress = React.forwardRef(
     ref: React.Ref<HTMLDivElement>
   ) => {
     // рассчитываем радиус
-    const radius = SIZES[size] / 2 - thickness / 2
+    const radius = sizesConfig[size] / 2 - thickness / 2
 
     // цифра 6.2 дает нужный эффект при расчете strokeDashoffset
     const animationRadius = (radius * 6.2).toFixed()
