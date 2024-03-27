@@ -87,7 +87,9 @@ export type Classes = {
   root?: string
   /** Стиль, применяемый к элементу с `size='sm'` */
   small?: string
-  /** Стиль, применяемый к элементу с `size='sm'` */
+  /** Стиль, применяемый к элементу с `size='md'` */
+  medium?: string
+  /** Стиль, применяемый к элементу с `size='lg'` */
   large?: string
   /** Стиль, применяемый к элементу с `error='true'` */
   error?: string
@@ -107,6 +109,12 @@ export type Classes = {
   list?: string
   /** Стиль, применяемый к опции */
   option?: string
+  /** Стиль, применяемый к опции с `size='sm'` */
+  optionSm?: string
+  /** Стиль, применяемый к опции с `size='md'` */
+  optionMd?: string
+  /** Стиль, применяемый к опции с `size='lg'` */
+  optionLg?: string
   /** Стиль, применяемый к активной опции (hover) */
   optionActive?: string
   /** Стиль, применяемый к выбранной опции */

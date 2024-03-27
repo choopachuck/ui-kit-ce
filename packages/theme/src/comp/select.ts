@@ -100,21 +100,50 @@ export const createSelect = (theme: Theme, compatibilityMode?: boolean) => ({
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusLg,
 
+  //typography (base)
   inputTypographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.bodyMd.fontFamily,
   inputTypographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.regular
     : theme.sys.typography.bodyMd.fontWeight,
-  inputTypographyFontSize: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  inputTypographyLineHeight: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
   inputTypographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,
+
+  //typography sm
+  inputTypographyFontSizeSm: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  inputTypographyLineHeightSm: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography md
+  inputTypographyFontSizeMd: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  inputTypographyLineHeightMd: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography lg
+  inputTypographyFontSizeLg: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  inputTypographyLineHeightLg: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography (old)
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `inputTypographyFontSizeSm`, `inputTypographyFontSizeMd` или `inputTypographyFontSizeLg`
+   */
+  inputTypographyFontSize: '',
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `inputTypographyLineHeightSm`, `inputTypographyLineHeightMd` или `inputTypographyLineHeightLg`
+   */
+  inputTypographyLineHeight: '',
 
   optionShapeBorderRadiusTopLeftMd: compatibilityMode
     ? 0

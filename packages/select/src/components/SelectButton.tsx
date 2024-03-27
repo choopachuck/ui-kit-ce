@@ -18,15 +18,8 @@ const useStyles = createUseStyles((theme) => ({
     width: '100%',
     maxWidth: '100%',
     boxSizing: 'border-box',
-    padding: [8, 16],
     color: theme.comp.select.inputColorText,
     backgroundColor: theme.comp.select.inputColorBackground,
-    borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius:
-      theme.comp.select.inputShapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius:
-      theme.comp.select.inputShapeBorderRadiusBottomRightMd,
 
     '&::after': {
       content: '""',
@@ -58,26 +51,6 @@ const useStyles = createUseStyles((theme) => ({
       },
     },
 
-    '&$small': {
-      padding: [4, 16],
-      borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftSm,
-      borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightSm,
-      borderBottomLeftRadius:
-        theme.comp.select.inputShapeBorderRadiusBottomLeftSm,
-      borderBottomRightRadius:
-        theme.comp.select.inputShapeBorderRadiusBottomRightSm,
-    },
-
-    '&$large': {
-      padding: [12, 16],
-      borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftLg,
-      borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightLg,
-      borderBottomLeftRadius:
-        theme.comp.select.inputShapeBorderRadiusBottomLeftLg,
-      borderBottomRightRadius:
-        theme.comp.select.inputShapeBorderRadiusBottomRightLg,
-    },
-
     '&$error:not(:focus-visible)': {
       '&::after': {
         borderColor: theme.comp.select.inputColorBorderError,
@@ -97,6 +70,13 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   small: {
+    padding: [4, 16],
+    borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftSm,
+    borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightSm,
+    borderBottomLeftRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomLeftSm,
+    borderBottomRightRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomRightSm,
     '& $arrowIcon': {
       width: 16,
       height: 16,
@@ -108,7 +88,25 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
-  large: {},
+  medium: {
+    padding: [8, 16],
+    borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomRightMd,
+  },
+
+  large: {
+    padding: [12, 16],
+    borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftLg,
+    borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightLg,
+    borderBottomLeftRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomLeftLg,
+    borderBottomRightRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomRightLg,
+  },
 
   opened: {
     '& $arrowIcon': {
@@ -128,12 +126,36 @@ const useStyles = createUseStyles((theme) => ({
     position: 'relative',
     boxSizing: 'border-box',
     padding: 0,
-
     fontFamily: theme.comp.select.inputTypographyFontFamily,
-    fontSize: theme.comp.select.inputTypographyFontSize,
-    lineHeight: theme.comp.select.inputTypographyLineHeight,
     letterSpacing: theme.comp.select.inputTypographyLetterSpacing,
     fontWeight: theme.comp.select.inputTypographyFontWeight,
+  },
+
+  textSmall: {
+    fontSize:
+      theme.comp.select.inputTypographyFontSize ||
+      theme.comp.select.inputTypographyFontSizeSm,
+    lineHeight:
+      theme.comp.select.inputTypographyLineHeight ||
+      theme.comp.select.inputTypographyLineHeightSm,
+  },
+
+  textMedium: {
+    fontSize:
+      theme.comp.select.inputTypographyFontSize ||
+      theme.comp.select.inputTypographyFontSizeMd,
+    lineHeight:
+      theme.comp.select.inputTypographyLineHeight ||
+      theme.comp.select.inputTypographyLineHeightMd,
+  },
+
+  textLarge: {
+    fontSize:
+      theme.comp.select.inputTypographyFontSize ||
+      theme.comp.select.inputTypographyFontSizeLg,
+    lineHeight:
+      theme.comp.select.inputTypographyLineHeight ||
+      theme.comp.select.inputTypographyLineHeightLg,
   },
 
   content: {
@@ -213,13 +235,17 @@ export const SelectButton = React.forwardRef(
     const buttonClasses = useButtonReset()
     const classesList = useStyles()
     const classesMap = useClassList(classesList, classes)
+    const isSmall = size === ElementSize.sm
+    const isMedium = size === ElementSize.md
+    const isLarge = size === ElementSize.lg
     const className = clsx(
       buttonClasses.resetButton,
       classesMap.button,
       classNameProp,
       {
-        [classesMap.small]: size === ElementSize.sm,
-        [classesMap.large]: size === ElementSize.lg,
+        [classesMap.small]: isSmall,
+        [classesMap.medium]: isMedium,
+        [classesMap.large]: isLarge,
         [classesMap.opened]: isOpen,
         [classesMap.error]: error,
       }
@@ -228,6 +254,9 @@ export const SelectButton = React.forwardRef(
 
     const textClassName = clsx(classesMap.text, ellipsis, {
       [classesMap.empty ?? '']: !rest.disabled && emptyValue,
+      [classesMap.textSmall]: isSmall,
+      [classesMap.textMedium]: isMedium,
+      [classesMap.textLarge]: isLarge,
     })
 
     const errorIcon = <ErrorIcon className={classesMap.errorIcon} />

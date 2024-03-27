@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { test, expect } from '../../../playwright/fixtures/customMount'
+import { test as testWithTheme } from '../../../playwright/fixtures/withThemeProviderInjected'
 import {
   LimitExample,
   MultiSelectExample,
@@ -7,6 +8,7 @@ import {
   ErrorMultiSelectExample,
 } from '../examples'
 import { Select } from '../src'
+import { createTheme } from '@v-uik/theme'
 
 const options = [
   { value: '', label: 'Выберите опцию' },
@@ -119,5 +121,47 @@ test.describe('Select', () => {
     await page.evaluate(() => (document.body.style.height = '1000px'))
     await page.evaluate(() => window.scrollTo(0, 1))
     await expect(dropdown).toBeVisible()
+  })
+
+  testWithTheme('sizes with custom typography', async ({ mountWithTheme }) => {
+    const theme = createTheme({
+      comp: {
+        backwardCompatibilityMode: false,
+        select: {
+          inputTypographyFontSizeSm: '10px',
+          inputTypographyLineHeightSm: '14px',
+          inputTypographyFontSizeMd: '25px',
+          inputTypographyLineHeightMd: '30px',
+          inputTypographyFontSizeLg: '60px',
+          inputTypographyLineHeightLg: '90px',
+        },
+      },
+    })
+
+    const component = await mountWithTheme(
+      <div style={{ padding: 5 }}>
+        <Select
+          size="sm"
+          style={{ marginBottom: 10 }}
+          options={options}
+          value={options[0].value}
+        />
+        <Select
+          size="md"
+          style={{ marginBottom: 10 }}
+          options={options}
+          value={options[0].value}
+        />
+        <Select
+          style={{ marginBottom: 10 }}
+          options={options}
+          value={options[0].value}
+        />
+        <Select size="lg" options={options} value={options[0].value} />
+      </div>,
+      theme
+    )
+
+    await expect(component).toHaveScreenshot()
   })
 })

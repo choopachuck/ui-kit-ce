@@ -79,13 +79,6 @@ const useStyles = createUseStyles((theme) => ({
 
   option: {
     minWidth: 0,
-    borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius:
-      theme.comp.select.optionShapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius:
-      theme.comp.select.optionShapeBorderRadiusBottomRightMd,
-
     '&:hover': {
       cursor: 'pointer',
       backgroundColor: theme.comp.select.optionColorBackgroundHover,
@@ -95,6 +88,33 @@ const useStyles = createUseStyles((theme) => ({
         backgroundColor: theme.comp.select.listColorBackground,
       },
     },
+  },
+
+  optionSmall: {
+    borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftSm,
+    borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightSm,
+    borderBottomLeftRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomLeftSm,
+    borderBottomRightRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomRightSm,
+  },
+
+  optionMedium: {
+    borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomRightMd,
+  },
+
+  optionLarge: {
+    borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftLg,
+    borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightLg,
+    borderBottomLeftRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomLeftLg,
+    borderBottomRightRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomRightLg,
   },
 
   listError: {
@@ -114,27 +134,11 @@ const useStyles = createUseStyles((theme) => ({
     backgroundColor: theme.comp.select.optionColorBackgroundHover,
   },
 
-  small: {
-    '& $option': {
-      borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftSm,
-      borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightSm,
-      borderBottomLeftRadius:
-        theme.comp.select.optionShapeBorderRadiusBottomLeftSm,
-      borderBottomRightRadius:
-        theme.comp.select.optionShapeBorderRadiusBottomRightSm,
-    },
-  },
+  small: {},
 
-  large: {
-    '& $option': {
-      borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftLg,
-      borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightLg,
-      borderBottomLeftRadius:
-        theme.comp.select.optionShapeBorderRadiusBottomLeftLg,
-      borderBottomRightRadius:
-        theme.comp.select.optionShapeBorderRadiusBottomRightLg,
-    },
-  },
+  medium: {},
+
+  large: {},
 
   disabled: {
     cursor: 'default',
@@ -243,9 +247,13 @@ export const Select = React.forwardRef(
     const classesList = useStyles()
 
     const classesMap = useClassList(classesList, classes)
+    const isSmall = size === ElementSize.sm
+    const isMedium = size === ElementSize.md
+    const isLarge = size === ElementSize.lg
     const className = clsx(classNameProp, classesMap.root, {
-      [classesMap?.small ?? '']: size === ElementSize.sm,
-      [classesMap?.large ?? '']: size === ElementSize.lg,
+      [classesMap?.small ?? '']: isSmall,
+      [classesMap?.medium ?? '']: isMedium,
+      [classesMap?.large ?? '']: isLarge,
       [classesMap?.error ?? '']: error,
     })
     const buttonClasses: SelectButtonProps['classes'] = classes
@@ -523,6 +531,9 @@ export const Select = React.forwardRef(
           {...restOptionProps}
           interactive={false}
           className={clsx(option.className, classesMap.option, {
+            [classesMap.optionSmall]: isSmall,
+            [classesMap.optionMedium]: isMedium,
+            [classesMap.optionLarge]: isLarge,
             [classesMap.optionSelected ?? '']: multiple && isSelected,
             [classesMap.optionActive ?? '']: optionValue === active?.value,
           })}
