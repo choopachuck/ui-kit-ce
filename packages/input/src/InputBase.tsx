@@ -191,6 +191,8 @@ const useStyles = createUseStyles((theme) => ({
       },
 
       '&$error': {
+        backgroundColor: theme.comp.input.colorBackgroundError,
+
         '&::after': {
           borderColor: theme.comp.input.colorBorderError,
         },

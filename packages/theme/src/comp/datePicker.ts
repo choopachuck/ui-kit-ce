@@ -46,6 +46,12 @@ export const createRangePicker = (
   inputColorBackground: compatibilityMode
     ? theme.colourway.backgroundComponent
     : theme.sys.color.backgroundComponent,
+  inputColorBackgroundError: compatibilityMode
+    ? theme.colourway.backgroundComponent
+    : theme.sys.color.backgroundComponent,
+  inputColorBackgroundDisabled: compatibilityMode
+    ? theme.colourway.backgroundComponent
+    : theme.sys.color.disabledLow,
   inputColorBorder: compatibilityMode
     ? theme.colourway.mono05
     : theme.sys.color.neutralAlpha,

@@ -59,6 +59,14 @@ const useStyles = createUseStyles((theme) => ({
       },
     },
 
+    '&$error': {
+      backgroundColor: theme.comp.comboBox.inputColorBackgroundError,
+
+      '&::after': {
+        borderColor: theme.comp.comboBox.inputColorBorderError,
+      },
+    },
+
     '&$disabled': {
       cursor: 'default',
       pointerEvents: 'none',
@@ -75,12 +83,6 @@ const useStyles = createUseStyles((theme) => ({
         '&::after': {
           borderWidth: theme.shape.borderWidth,
         },
-      },
-    },
-
-    '&$error': {
-      '&::after': {
-        borderColor: theme.comp.comboBox.inputColorBorderError,
       },
     },
   },

@@ -105,6 +105,7 @@ const useStyles = createUseStyles((theme) => ({
 
     '&$disabled': {
       cursor: 'default',
+      backgroundColor: theme.comp.rangePicker.inputColorBackgroundDisabled,
 
       '&::after': {
         borderColor: theme.comp.rangePicker.inputColorBorderDisabled,
@@ -127,6 +128,8 @@ const useStyles = createUseStyles((theme) => ({
       },
 
       '&$error': {
+        backgroundColor: theme.comp.rangePicker.inputColorBackgroundError,
+
         '&::after': {
           borderColor: theme.comp.rangePicker.inputColorBorderError,
         },

@@ -52,6 +52,8 @@ const useStyles = createUseStyles((theme) => ({
     },
 
     '&$error:not(:focus-visible)': {
+      backgroundColor: theme.comp.select.inputColorBackgroundError,
+
       '&::after': {
         borderColor: theme.comp.select.inputColorBorderError,
       },

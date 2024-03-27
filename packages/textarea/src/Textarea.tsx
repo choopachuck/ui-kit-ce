@@ -157,6 +157,8 @@ const useStyles = createUseStyles((theme) => ({
       },
 
       '&$textareaContainerError': {
+        backgroundColor: theme.comp.textarea.colorBackgroundError,
+
         '&::after': {
           borderColor: theme.comp.textarea.colorBorderError,
         },

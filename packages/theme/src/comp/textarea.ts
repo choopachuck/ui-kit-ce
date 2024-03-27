@@ -8,6 +8,9 @@ export const createTextarea = (theme: Theme, compatibilityMode?: boolean) => ({
   colorBackgroundDisabled: compatibilityMode
     ? theme.colourway.backgroundComponent
     : theme.sys.color.disabledLow,
+  colorBackgroundError: compatibilityMode
+    ? theme.colourway.backgroundComponent
+    : theme.sys.color.backgroundComponent,
   colorBorder: compatibilityMode
     ? theme.colourway.mono05
     : theme.sys.color.neutralAlpha,

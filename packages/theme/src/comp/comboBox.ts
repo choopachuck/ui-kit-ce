@@ -16,6 +16,9 @@ export const createComboBox = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.color.disabledLow,
   inputColorBackgroundHover: '#dadada', // TODO: after implementing overlay add backgroundComponent
   inputColorBackgroundSearchableHover: '#f2f2f2', // TODO: after implementing overlay add backgroundComponent
+  inputColorBackgroundError: compatibilityMode
+    ? theme.colourway.backgroundComponent
+    : theme.sys.color.backgroundComponent,
   inputColorBorder: compatibilityMode
     ? theme.colourway.mono05
     : theme.sys.color.neutralAlpha,
