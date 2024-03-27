@@ -1307,7 +1307,7 @@ export const ComboBox = React.forwardRef(
           createAriaActiveDescendantId={createAriaActiveDescendantId}
           commonOptionItemProps={{
             interactive: false,
-            classes: { optionDisabled: classesMap.optionDisabled },
+            classes: { disabled: classesMap.optionDisabled },
             role: 'option',
             size,
           }}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { ListItemProps, ListItem } from '@v-uik/list'
 import { clsx } from '@v-uik/theme'
-import { ComboboxEvent } from '../interfaces'
+import type { ComboboxEvent } from '../interfaces'
 import { Divider } from '@v-uik/divider'
 import { defaultOptionItemElement } from '../config'
 
@@ -77,6 +77,10 @@ export const OptionItem = <
       className,
       commonOptionItemProps,
     } = props
+    const {
+      classes: classesCommonOptionItemProps,
+      ...restCommonOptionItemProps
+    } = commonOptionItemProps as ListItemProps<E>
 
     const label = getOptionLabel(option)
     const optionValue = getOptionValue(option)
@@ -107,7 +111,10 @@ export const OptionItem = <
       large: optionClasses.optionLarge,
       disabled: optionClasses.optionDisabled,
       selected: optionClasses.selectedOption,
+      ...classesCommonOptionItemProps,
     }
+
+    console.log(classes)
 
     return (
       <>
@@ -130,7 +137,7 @@ export const OptionItem = <
           onKeyDown={() => setActive(option)}
           // @ts-ignore
           onMouseDown={(event) => onSelectOption(option, event)}
-          {...(commonOptionItemProps as ListItemProps<E>)}
+          {...(restCommonOptionItemProps as ListItemProps<E>)}
         >
           {formatOptionLabel ? formatOptionLabel(label, inputValue) : label}
         </ListItem>
