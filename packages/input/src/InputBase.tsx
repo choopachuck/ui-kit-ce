@@ -151,13 +151,8 @@ const useStyles = createUseStyles((theme) => ({
     alignItems: 'center',
     boxSizing: 'border-box',
     position: 'relative',
-    paddingLeft: 16,
-    paddingRight: 16,
+    padding: [0, 16],
     color: theme.comp.input.colorText,
-    borderTopLeftRadius: theme.comp.input.shapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.input.shapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius: theme.comp.input.shapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius: theme.comp.input.shapeBorderRadiusBottomRightMd,
     backgroundColor: theme.comp.input.colorBackground,
     cursor: 'text',
 
@@ -225,11 +220,6 @@ const useStyles = createUseStyles((theme) => ({
     borderBottomLeftRadius: theme.comp.input.shapeBorderRadiusBottomLeftSm,
     borderBottomRightRadius: theme.comp.input.shapeBorderRadiusBottomRightSm,
 
-    '& $input': {
-      marginTop: 4,
-      marginBottom: 4,
-    },
-
     '& $prefix': {
       '& svg': {
         width: 16,
@@ -252,16 +242,18 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
+  medium: {
+    borderTopLeftRadius: theme.comp.input.shapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.input.shapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius: theme.comp.input.shapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius: theme.comp.input.shapeBorderRadiusBottomRightMd,
+  },
+
   large: {
     borderTopLeftRadius: theme.comp.input.shapeBorderRadiusTopLeftLg,
     borderTopRightRadius: theme.comp.input.shapeBorderRadiusTopRightLg,
     borderBottomLeftRadius: theme.comp.input.shapeBorderRadiusBottomLeftLg,
     borderBottomRightRadius: theme.comp.input.shapeBorderRadiusBottomRightLg,
-
-    '& $input': {
-      marginTop: 12,
-      marginBottom: 12,
-    },
   },
 
   input: {
@@ -276,11 +268,8 @@ const useStyles = createUseStyles((theme) => ({
     zIndex: 2,
     color: 'inherit',
     backgroundColor: 'transparent',
-
     fontFamily: theme.comp.input.typographyFontFamily,
     fontWeight: theme.comp.input.typographyFontWeight,
-    fontSize: theme.comp.input.typographyFontSize,
-    lineHeight: theme.comp.input.typographyLineHeight,
     letterSpacing: theme.comp.input.typographyLetterSpacing,
     textOverflow: 'ellipsis',
 
@@ -311,6 +300,35 @@ const useStyles = createUseStyles((theme) => ({
     '&:focus': {
       outline: 0,
     },
+  },
+
+  inputSmall: {
+    fontSize:
+      theme.comp.input.typographyFontSize ||
+      theme.comp.input.typographyFontSizeSm,
+    lineHeight:
+      theme.comp.input.typographyLineHeight ||
+      theme.comp.input.typographyLineHeightSm,
+    margin: [4, 0],
+  },
+
+  inputMedium: {
+    fontSize:
+      theme.comp.input.typographyFontSize ||
+      theme.comp.input.typographyFontSizeMd,
+    lineHeight:
+      theme.comp.input.typographyLineHeight ||
+      theme.comp.input.typographyLineHeightMd,
+  },
+
+  inputLarge: {
+    fontSize:
+      theme.comp.input.typographyFontSize ||
+      theme.comp.input.typographyFontSizeLg,
+    lineHeight:
+      theme.comp.input.typographyLineHeight ||
+      theme.comp.input.typographyLineHeightLg,
+    margin: [12, 0],
   },
 
   prefix: {
@@ -372,12 +390,18 @@ const _InputBase = React.forwardRef(
 
     const classesList = useStyles()
     const classesMap = useClassList(classesList, classes)
+
+    const isSmall = size === ElementSize.sm
+    const isMedium = size === ElementSize.md
+    const isLarge = size === ElementSize.lg
+
     const className = clsx(classNameProp, classesMap.root, {
       [classesMap.focused]: !disabled && focused,
       [classesMap.disabled]: disabled,
       [classesMap.error]: error,
-      [classesMap.small]: size === ElementSize.sm,
-      [classesMap.large]: size === ElementSize.lg,
+      [classesMap.small]: isSmall,
+      [classesMap.medium]: isMedium,
+      [classesMap.large]: isLarge,
       [classesMap.fullWidth]: fullWidth,
     })
 
@@ -440,7 +464,11 @@ const _InputBase = React.forwardRef(
         <input
           {...inputProps}
           ref={mergedInputRef}
-          className={classesMap.input}
+          className={clsx(classesMap.input, {
+            [classesMap.inputSmall]: isSmall,
+            [classesMap.inputMedium]: isMedium,
+            [classesMap.inputLarge]: isLarge,
+          })}
           disabled={disabled}
           placeholder={placeholder}
           value={value}

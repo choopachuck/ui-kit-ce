@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { test, expect } from '../../../playwright/fixtures/customMount'
+import { test as testWithTheme } from '../../../playwright/fixtures/withThemeProviderInjected'
 import { Input } from '../src'
 import { ErrorIndication } from '../examples/ErrorIndication'
+import { createTheme } from '@v-uik/theme'
 
 test.describe('Input', () => {
   test('enabled', async ({ mount }) => {
@@ -139,6 +141,34 @@ test.describe('Input', () => {
         <Input size="md" style={{ marginRight: 10 }} />
         <Input size="lg" />
       </div>
+    )
+
+    await expect(component).toHaveScreenshot()
+  })
+
+  testWithTheme('sizes with custom typography', async ({ mountWithTheme }) => {
+    const theme = createTheme({
+      comp: {
+        backwardCompatibilityMode: false,
+        input: {
+          typographyFontSizeSm: '9px',
+          typographyLineHeightSm: '1px',
+          typographyFontSizeMd: '25px',
+          typographyLineHeightMd: '30px',
+          typographyFontSizeLg: '60px',
+          typographyLineHeightLg: '90px',
+        },
+      },
+    })
+
+    const component = await mountWithTheme(
+      <div style={{ padding: 5 }}>
+        <Input size="sm" style={{ marginRight: 10 }} value="value" />
+        <Input size="md" style={{ marginRight: 10 }} value="value" />
+        <Input style={{ marginRight: 10 }} value="value" />
+        <Input size="lg" value="value" />
+      </div>,
+      theme
     )
 
     await expect(component).toHaveScreenshot()

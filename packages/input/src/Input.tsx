@@ -78,18 +78,23 @@ const _Input = React.forwardRef(
 
     const classesList = useStyles()
     const classesMap = useClassList(classesList, classes)
+
     const containerClassName = clsx(classesMap.container, className, {
       [classesMap.fullWidth]: fullWidth,
       [classesMap?.disabled ?? '']: disabled,
       [classesMap?.error ?? '']: error,
       [classesMap?.focused ?? '']: focused,
       [classesMap?.small ?? '']: size === ElementSize.sm,
+      [classesMap?.medium ?? '']: size === ElementSize.md,
       [classesMap?.large ?? '']: size === ElementSize.lg,
     })
     const inputBaseClasses = classes
       ? {
           root: classesMap?.inputContainer,
           input: classesMap?.input,
+          inputSmall: classesMap?.inputSmall,
+          inputMedium: classesMap?.inputMedium,
+          inputLarge: classesMap?.inputLarge,
           prefix: classesMap?.prefix,
           suffix: classesMap?.suffix,
           clearButton: classesMap?.clearButton,
