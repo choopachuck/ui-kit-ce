@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { test, expect } from '../../../playwright/fixtures/customMount'
 import { Accordion, AccordionItem } from '../src'
+import { CustomIcon } from '../examples'
 
 test.describe('Accordion', () => {
   test('enabled', async ({ mount }) => {
@@ -107,6 +108,14 @@ test.describe('Accordion', () => {
         </AccordionItem>
       </Accordion>
     )
+
+    await component.locator('button').first().focus()
+
+    await expect(component).toHaveScreenshot()
+  })
+
+  test('with custom icon', async ({ mount }) => {
+    const component = await mount(<CustomIcon />)
 
     await component.locator('button').first().focus()
 
