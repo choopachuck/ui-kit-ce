@@ -115,6 +115,10 @@ export type Classes = {
   optionMd?: string
   /** Стиль, применяемый к опции с `size='lg'` */
   optionLg?: string
+  /** Стиль, применяемый к тексту опции` */
+  optionText?: string
+  /** Стиль, применяемый к типографии текста опции` */
+  optionTextTypography?: string
   /** Стиль, применяемый к активной опции (hover) */
   optionActive?: string
   /** Стиль, применяемый к выбранной опции */
@@ -127,4 +131,6 @@ export type Classes = {
   single?: string
   /** Стиль, применяемый к выпадашке с `error='true'` */
   listError?: string
+  /** Стиль, применяемый к элементу выбора с `disabled='true'` */
+  disabled?: string
 }

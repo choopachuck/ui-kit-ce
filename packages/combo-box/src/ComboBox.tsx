@@ -6,7 +6,7 @@ import { ElementSize } from '@v-uik/common'
 import { InputAffix, InputAffixType } from '@v-uik/input'
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
 import { CircularProgress } from '@v-uik/progress'
-import { ListItemProps, ListProps, scrollElement } from '@v-uik/list'
+import { ListProps, scrollElement } from '@v-uik/list'
 import { includesKeyboardKey, isEqualKeyboardKeys, warning } from '@v-uik/utils'
 import { useSelectModifiers } from '@v-uik/popup'
 import {
@@ -317,26 +317,29 @@ export const ComboBox = React.forwardRef(
       selectedOption: clsx(classList.selectedOption, classes?.selectedOption),
       optionActive: clsx(classList.optionActive, classes?.optionActive),
       optionDisabled: clsx(classList.optionDisabled, classes?.optionDisabled),
+      optionText: classes?.optionText,
+      optionTextTypography: classes?.optionTextTypography,
       errorIcon: clsx(
         classList.errorIcon,
         classes?.errorIcon,
         classes?.inputErrorIcon
       ),
       text: clsx(classList.text, classes?.text),
-      input: clsx(classes?.input),
-      inputArrowIcon: clsx(classes?.inputArrowIcon),
-      inputContent: clsx(classes?.inputContent),
-      inputRoot: clsx(classes?.inputRoot),
-      tag: clsx(classes?.tag),
+      input: classes?.input,
+      inputArrowIcon: classes?.inputArrowIcon,
+      inputContent: classes?.inputContent,
+      inputRoot: classes?.inputRoot,
+      inputDisabled: classes?.inputDisabled,
+      tag: classes?.tag,
       counter: clsx(classes?.counter, classList.counter),
       small: clsx(classList.small, classes?.small),
       medium: clsx(classList.medium, classes?.medium),
       large: clsx(classList.large, classes?.large),
-      root: clsx(classes?.root),
       error: clsx(classes?.error),
-      inputPrefix: clsx(classes?.inputPrefix),
-      inputSuffix: clsx(classes?.inputSuffix),
-      loading: clsx(classes?.loading),
+      root: classes?.root,
+      inputPrefix: classes?.inputPrefix,
+      inputSuffix: classes?.inputSuffix,
+      loading: classes?.loading,
       creatableDivider: clsx(
         classes?.creatableDivider,
         classList.creatableDivider
@@ -353,10 +356,6 @@ export const ComboBox = React.forwardRef(
       [classesMap.medium]: isMedium,
       [classesMap.large]: isLarge,
     })
-
-    const listItemClasses: ListItemProps<ListElement>['classes'] = {
-      disabled: classesMap.optionDisabled,
-    }
 
     const className = clsx(classNameProp, classesMap.root, {
       [classesMap.small]: isSmall,
@@ -433,7 +432,7 @@ export const ComboBox = React.forwardRef(
     // костыль на срабатывание onStateChange
     React.useEffect(() => {
       dropdownProps?.onStateChange?.(isPopupOpen)
-    }, [dropdownProps?.onStateChange, isPopupOpen])
+    }, [dropdownProps?.onStateChange, isPopupOpen]) // eslint-disable-line
 
     const popupModifiers = useSelectModifiers<Option>({
       modifiers: dropdownProps?.modifiers,
@@ -936,7 +935,7 @@ export const ComboBox = React.forwardRef(
               }
             }
 
-            // возврат с исходному введенному значению
+            // возврат к исходному введенному значению
             recoveryBackfillInputValue?.((inputValue: string) => {
               if (currIndex === nextIndex) {
                 handleChangeValues(
@@ -1308,7 +1307,7 @@ export const ComboBox = React.forwardRef(
           createAriaActiveDescendantId={createAriaActiveDescendantId}
           commonOptionItemProps={{
             interactive: false,
-            classes: listItemClasses,
+            classes: { optionDisabled: classesMap.optionDisabled },
             role: 'option',
             size,
           }}
@@ -1317,11 +1316,14 @@ export const ComboBox = React.forwardRef(
             optionSmall: classesMap.optionSmall,
             optionMedium: classesMap.optionMedium,
             optionLarge: classesMap.optionLarge,
+            optionText: classesMap.optionText,
+            optionTextTypography: classesMap.optionTextTypography,
             selectedOption: classesMap.selectedOption,
             optionActive: classesMap.optionActive,
             creatableDivider: classesMap.creatableDivider,
             noOptionsText: classesMap.option,
             optionLoading: classesMap.option,
+            optionDisabled: classesMap.optionDisabled,
           }}
           formatOptionLabel={formatOptionLabel}
           inputValue={inputValue}
@@ -1384,7 +1386,10 @@ export const ComboBox = React.forwardRef(
               {...commonProps}
               isFocused={focused}
               size={size}
-              classes={{ rootControl: classesMap.inputRoot }}
+              classes={{
+                rootControl: classesMap.inputRoot,
+                disabled: classesMap.inputDisabled,
+              }}
               isDisabled={disabled}
               innerProps={{
                 'aria-activedescendant': getActiveDescendant(),

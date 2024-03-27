@@ -177,11 +177,19 @@ const useStyles = createUseStyles((theme) => ({
   arrowIcon: {
     marginLeft: 8,
   },
+
+  disabled: {},
 }))
 
 type Classes = Partial<
   Record<
-    'button' | 'empty' | 'content' | 'text' | 'errorIcon' | 'arrowIcon',
+    | 'button'
+    | 'empty'
+    | 'content'
+    | 'text'
+    | 'errorIcon'
+    | 'arrowIcon'
+    | 'disabled',
     string
   >
 >
@@ -226,6 +234,7 @@ export const SelectButton = React.forwardRef(
       size = ElementSize.md,
       isOpen,
       error,
+      disabled,
       showErrorIcon,
       errorIconTooltipProps,
       emptyValue,
@@ -250,12 +259,13 @@ export const SelectButton = React.forwardRef(
         [classesMap.large]: isLarge,
         [classesMap.opened]: isOpen,
         [classesMap.error]: error,
+        [classesMap.disabled]: disabled,
       }
     )
     const { ellipsis } = useText()
 
     const textClassName = clsx(classesMap.text, ellipsis, {
-      [classesMap.empty ?? '']: !rest.disabled && emptyValue,
+      [classesMap.empty]: !disabled && emptyValue,
       [classesMap.textSmall]: isSmall,
       [classesMap.textMedium]: isMedium,
       [classesMap.textLarge]: isLarge,
@@ -264,7 +274,13 @@ export const SelectButton = React.forwardRef(
     const errorIcon = <ErrorIcon className={classesMap.errorIcon} />
 
     return (
-      <button {...rest} ref={ref} className={className} type="button">
+      <button
+        {...rest}
+        ref={ref}
+        className={className}
+        disabled={disabled}
+        type="button"
+      >
         <span className={classesMap.content}>
           <span className={textClassName}>{children}</span>
           {showErrorIcon &&

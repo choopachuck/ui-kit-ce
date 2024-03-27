@@ -92,6 +92,8 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
+  medium: {},
+
   large: {
     minHeight: 48,
     padding: [12, 16],
@@ -194,7 +196,7 @@ export const ListItem = React.forwardRef(
       selected,
       disabled,
       critical,
-      size: sizeProp,
+      size: sizeProp = 'md',
       textProps,
       prefix,
       suffix,
@@ -229,6 +231,7 @@ export const ListItem = React.forwardRef(
       [classesMap.critical]: critical,
       [classesMap.selected]: selected,
       [classesMap.small]: size === ElementSize.sm,
+      [classesMap.medium]: size === ElementSize.md,
       [classesMap.large]: size === ElementSize.lg,
     })
 

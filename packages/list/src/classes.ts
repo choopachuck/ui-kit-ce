@@ -7,8 +7,6 @@ export type Classes = {
   disabled?: string
   /** Стиль, применяемый к элементу с `interactive='true'` */
   interactive?: string
-  /** Стиль, применяемый к элементу с `size='lg'` */
-  large?: string
   /** Стиль, применяемый к основному элементу */
   listItem?: string
   /** Стиль, применяемый к элементу prefix */
@@ -17,6 +15,10 @@ export type Classes = {
   selected?: string
   /** Стиль, применяемый к элементу с `size='sm'` */
   small?: string
+  /** Стиль, применяемый к элементу с `size='md'` */
+  medium?: string
+  /** Стиль, применяемый к элементу с `size='lg'` */
+  large?: string
   /** Стиль, применяемый к элементу с `stripe='true'` */
   stripe?: string
   /** Стиль, применяемый к элементу suffix */

@@ -4,15 +4,17 @@ import { clsx } from '@v-uik/theme'
 import { ComboboxEvent } from '../interfaces'
 import { Divider } from '@v-uik/divider'
 import { defaultOptionItemElement } from '../config'
-import { ElementSize } from '@v-uik/common'
 
 type OptionClasses = {
   option?: string
   optionSmall?: string
   optionMedium?: string
   optionLarge?: string
+  optionText?: string
+  optionTextTypography?: string
   selectedOption?: string
   optionActive?: string
+  optionDisabled?: string
   noOptionsText?: string
   optionLoading?: string
   creatableDivider?: string
@@ -91,9 +93,21 @@ export const OptionItem = <
     const isDivided =
       isCreating && isCreatableDivided && filteredOptions.length > 1
 
-    const isSmall = commonOptionItemProps?.size === ElementSize.sm
-    const isMedium = commonOptionItemProps?.size === ElementSize.md
-    const isLarge = commonOptionItemProps?.size === ElementSize.lg
+    const rootClassName = clsx(
+      className,
+      isOptionActive && optionClasses.optionActive
+    )
+
+    const classes: ListItemProps<E>['classes'] = {
+      listItem: optionClasses.option,
+      text: optionClasses.optionText,
+      textTypography: optionClasses.optionTextTypography,
+      small: optionClasses.optionSmall,
+      medium: optionClasses.optionMedium,
+      large: optionClasses.optionLarge,
+      disabled: optionClasses.optionDisabled,
+      selected: optionClasses.selectedOption,
+    }
 
     return (
       <>
@@ -104,19 +118,14 @@ export const OptionItem = <
           />
         )}
         <ListItem<E>
+          classes={classes}
           id={listId}
           role="option"
           aria-selected={isSelected}
           disabled={isDisabled}
           suffix={renderOptionSuffix(option)}
           prefix={renderOptionPrefix(option, isCreating)}
-          className={clsx(className, optionClasses.option, {
-            [optionClasses.selectedOption ?? '']: isSelected,
-            [optionClasses.optionActive ?? '']: isOptionActive,
-            [optionClasses.optionSmall ?? '']: isSmall,
-            [optionClasses.optionMedium ?? '']: isMedium,
-            [optionClasses.optionLarge ?? '']: isLarge,
-          })}
+          className={rootClassName}
           onMouseEnter={() => setActive(option)}
           onKeyDown={() => setActive(option)}
           // @ts-ignore

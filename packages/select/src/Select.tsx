@@ -256,18 +256,24 @@ export const Select = React.forwardRef(
       [classesMap?.large ?? '']: isLarge,
       [classesMap?.error ?? '']: error,
     })
-    const buttonClasses: SelectButtonProps['classes'] = classes
-      ? {
-          button: classesMap?.button,
-          empty: classesMap?.buttonEmpty,
-          content: classesMap?.buttonContent,
-          text: classesMap?.buttonText,
-          errorIcon: classesMap?.buttonErrorIcon,
-          arrowIcon: classesMap?.buttonArrowIcon,
-        }
-      : undefined
+    const buttonClasses: SelectButtonProps['classes'] = {
+      button: classesMap?.button,
+      empty: classesMap?.buttonEmpty,
+      content: classesMap?.buttonContent,
+      text: classesMap?.buttonText,
+      errorIcon: classesMap?.buttonErrorIcon,
+      arrowIcon: classesMap?.buttonArrowIcon,
+      disabled: classesMap?.disabled,
+    }
     const listItemClasses: ListItemProps<ListItemElement>['classes'] = {
+      listItem: classesMap.option,
+      text: classesMap.optionText,
+      textTypography: classesMap.optionTextTypography,
+      small: classesMap.optionSmall,
+      medium: classesMap.optionMedium,
+      large: classesMap.optionLarge,
       disabled: classesMap.optionDisabled,
+      selected: classesMap.optionSelected,
     }
 
     const buttonRef = React.useRef<HTMLButtonElement>(null)
@@ -530,11 +536,7 @@ export const Select = React.forwardRef(
           disabled={isOptionDisabled}
           {...restOptionProps}
           interactive={false}
-          className={clsx(option.className, classesMap.option, {
-            [classesMap.optionSmall]: isSmall,
-            [classesMap.optionMedium]: isMedium,
-            [classesMap.optionLarge]: isLarge,
-            [classesMap.optionSelected ?? '']: multiple && isSelected,
+          className={clsx(option.className, {
             [classesMap.optionActive ?? '']: optionValue === active?.value,
           })}
           classes={listItemClasses}
@@ -653,7 +655,7 @@ export const Select = React.forwardRef(
               {...commonSelectAriaProps}
               {...selectButtonProps}
               ref={mergedButtonRefs}
-              // id шник активного элемента (по которму перемещаются кнопками )
+              // id-шник активного элемента (по которому перемещаются кнопками )
               aria-activedescendant={
                 isOpen && active
                   ? createAriaActiveDescendantId(active.value)
