@@ -4,9 +4,13 @@ import { clsx } from '@v-uik/theme'
 import { ComboboxEvent } from '../interfaces'
 import { Divider } from '@v-uik/divider'
 import { defaultOptionItemElement } from '../config'
+import { ElementSize } from '@v-uik/common'
 
 type OptionClasses = {
   option?: string
+  optionSmall?: string
+  optionMedium?: string
+  optionLarge?: string
   selectedOption?: string
   optionActive?: string
   noOptionsText?: string
@@ -87,6 +91,10 @@ export const OptionItem = <
     const isDivided =
       isCreating && isCreatableDivided && filteredOptions.length > 1
 
+    const isSmall = commonOptionItemProps?.size === ElementSize.sm
+    const isMedium = commonOptionItemProps?.size === ElementSize.md
+    const isLarge = commonOptionItemProps?.size === ElementSize.lg
+
     return (
       <>
         {isDivided && (
@@ -105,6 +113,9 @@ export const OptionItem = <
           className={clsx(className, optionClasses.option, {
             [optionClasses.selectedOption ?? '']: isSelected,
             [optionClasses.optionActive ?? '']: isOptionActive,
+            [optionClasses.optionSmall ?? '']: isSmall,
+            [optionClasses.optionMedium ?? '']: isMedium,
+            [optionClasses.optionLarge ?? '']: isLarge,
           })}
           onMouseEnter={() => setActive(option)}
           onKeyDown={() => setActive(option)}

@@ -68,6 +68,7 @@ export const OptionList = <
         <OptionItemComponent
           isInfoOption
           className={optionClasses.noOptionsText}
+          commonOptionItemProps={commonOptionItemProps}
         >
           {noOptionsText}
         </OptionItemComponent>
@@ -85,6 +86,7 @@ export const OptionList = <
         key={optionValue}
         option={option}
         optionClasses={optionClasses}
+        commonOptionItemProps={commonOptionItemProps}
         {...props}
       />
     )
@@ -92,7 +94,11 @@ export const OptionList = <
 
   const renderLoadingLabel = () => {
     return (
-      <OptionItemComponent isInfoOption className={optionClasses.optionLoading}>
+      <OptionItemComponent
+        isInfoOption
+        className={optionClasses.optionLoading}
+        commonOptionItemProps={commonOptionItemProps}
+      >
         {loadingLabel}
       </OptionItemComponent>
     )

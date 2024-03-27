@@ -85,43 +85,13 @@ const useStyles = createUseStyles((theme) => ({
     overflowY: 'auto',
     overflowX: 'hidden',
     boxSizing: 'border-box',
-    borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius:
-      theme.comp.comboBox.listShapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius:
-      theme.comp.comboBox.listShapeBorderRadiusBottomRightMd,
     backgroundColor: theme.comp.comboBox.listColorBackground,
     boxShadow: theme.comp.comboBox.listElevationShadow,
     border: `1px solid ${theme.comp.comboBox.listColorBorder}`,
-
-    '&$small': {
-      borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftSm,
-      borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightSm,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.listShapeBorderRadiusBottomLeftSm,
-      borderBottomRightRadius:
-        theme.comp.comboBox.listShapeBorderRadiusBottomRightSm,
-    },
-
-    '&$large': {
-      borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftLg,
-      borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightLg,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.listShapeBorderRadiusBottomLeftLg,
-      borderBottomRightRadius:
-        theme.comp.comboBox.listShapeBorderRadiusBottomRightLg,
-    },
   },
 
   option: {
     minWidth: 0,
-    borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.comboBox.optionShapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius:
-      theme.comp.comboBox.optionShapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius:
-      theme.comp.comboBox.optionShapeBorderRadiusBottomRightMd,
 
     '&:hover': {
       cursor: 'pointer',
@@ -132,6 +102,33 @@ const useStyles = createUseStyles((theme) => ({
         backgroundColor: theme.comp.comboBox.listColorBackground,
       },
     },
+  },
+
+  optionSmall: {
+    borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftSm,
+    borderTopRightRadius: theme.comp.comboBox.optionShapeBorderRadiusTopRightSm,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomLeftSm,
+    borderBottomRightRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomRightSm,
+  },
+
+  optionMedium: {
+    borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.comboBox.optionShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomRightMd,
+  },
+
+  optionLarge: {
+    borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftLg,
+    borderTopRightRadius: theme.comp.comboBox.optionShapeBorderRadiusTopRightLg,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomLeftLg,
+    borderBottomRightRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomRightLg,
   },
 
   selectedOption: {
@@ -163,15 +160,12 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   small: {
-    '& $option': {
-      borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftSm,
-      borderTopRightRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusTopRightSm,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusBottomLeftSm,
-      borderBottomRightRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusBottomRightSm,
-    },
+    borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftSm,
+    borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightSm,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomLeftSm,
+    borderBottomRightRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomRightSm,
 
     '& $errorIcon': {
       width: 16,
@@ -179,16 +173,22 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
+  medium: {
+    borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomRightMd,
+  },
+
   large: {
-    '& $option': {
-      borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftLg,
-      borderTopRightRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusTopRightLg,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusBottomLeftLg,
-      borderBottomRightRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusBottomRightLg,
-    },
+    borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftLg,
+    borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightLg,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomLeftLg,
+    borderBottomRightRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomRightLg,
   },
 
   counter: {
@@ -311,6 +311,9 @@ export const ComboBox = React.forwardRef(
     const classesMap = {
       list: clsx(classList.list, classes?.list),
       option: clsx(classList.option, classes?.option),
+      optionSmall: clsx(classList.optionSmall, classes?.optionSmall),
+      optionMedium: clsx(classList.optionMedium, classes?.optionMedium),
+      optionLarge: clsx(classList.optionLarge, classes?.optionLarge),
       selectedOption: clsx(classList.selectedOption, classes?.selectedOption),
       optionActive: clsx(classList.optionActive, classes?.optionActive),
       optionDisabled: clsx(classList.optionDisabled, classes?.optionDisabled),
@@ -327,6 +330,7 @@ export const ComboBox = React.forwardRef(
       tag: clsx(classes?.tag),
       counter: clsx(classes?.counter, classList.counter),
       small: clsx(classList.small, classes?.small),
+      medium: clsx(classList.medium, classes?.medium),
       large: clsx(classList.large, classes?.large),
       root: clsx(classes?.root),
       error: clsx(classes?.error),
@@ -340,9 +344,14 @@ export const ComboBox = React.forwardRef(
       focused: classes?.focused,
     }
 
+    const isSmall = size === ElementSize.sm
+    const isMedium = size === ElementSize.md
+    const isLarge = size === ElementSize.lg
+
     classesMap.list = clsx(classesMap.list, {
-      [classesMap.small]: size === ElementSize.sm,
-      [classesMap.large]: size === ElementSize.lg,
+      [classesMap.small]: isSmall,
+      [classesMap.medium]: isMedium,
+      [classesMap.large]: isLarge,
     })
 
     const listItemClasses: ListItemProps<ListElement>['classes'] = {
@@ -350,8 +359,9 @@ export const ComboBox = React.forwardRef(
     }
 
     const className = clsx(classNameProp, classesMap.root, {
-      [classesMap.small]: size === ElementSize.sm,
-      [classesMap.large]: size === ElementSize.lg,
+      [classesMap.small]: isSmall,
+      [classesMap.medium]: isMedium,
+      [classesMap.large]: isLarge,
       [classesMap.error]: error,
     })
 
@@ -1304,6 +1314,9 @@ export const ComboBox = React.forwardRef(
           }}
           optionClasses={{
             option: classesMap.option,
+            optionSmall: classesMap.optionSmall,
+            optionMedium: classesMap.optionMedium,
+            optionLarge: classesMap.optionLarge,
             selectedOption: classesMap.selectedOption,
             optionActive: classesMap.optionActive,
             creatableDivider: classesMap.creatableDivider,
