@@ -3,7 +3,8 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useMergedRefs, useClassList } from '@v-uik/hooks'
-import { Classes } from './interfaces'
+import type { Classes } from './interfaces'
+import { ElementSize, ElementSizeType } from '@v-uik/common'
 import { getTextLength } from '@v-uik/utils'
 import { Labelled, LabelledProps } from '@v-uik/labelled'
 import { ElementSize } from '@v-uik/common'
@@ -47,6 +48,10 @@ export interface TextareaProps<
    * Поле содержит ошибку
    */
   error?: boolean
+  /**
+   * Размер поля
+   */
+  size?: ElementSizeType
   /**
    * Поле заблокировано для ввода
    */
@@ -177,10 +182,7 @@ const useStyles = createUseStyles((theme) => ({
     boxShadow: 'none',
     color: theme.comp.textarea.colorText,
     backgroundColor: 'transparent',
-
     fontFamily: theme.comp.textarea.typographyFontFamily,
-    fontSize: theme.comp.textarea.typographyFontSize,
-    lineHeight: theme.comp.textarea.typographyLineHeight,
     letterSpacing: theme.comp.textarea.typographyLetterSpacing,
     fontWeight: theme.comp.textarea.typographyFontWeight,
 
@@ -199,6 +201,33 @@ const useStyles = createUseStyles((theme) => ({
     '&:focus': {
       outline: 0,
     },
+  },
+
+  textareaSmall: {
+    fontSize:
+      theme.comp.textarea.typographyFontSize ||
+      theme.comp.textarea.typographyFontSizeSm,
+    lineHeight:
+      theme.comp.textarea.typographyLineHeight ||
+      theme.comp.textarea.typographyLineHeightSm,
+  },
+
+  textareaMedium: {
+    fontSize:
+      theme.comp.textarea.typographyFontSize ||
+      theme.comp.textarea.typographyFontSizeMd,
+    lineHeight:
+      theme.comp.textarea.typographyLineHeight ||
+      theme.comp.textarea.typographyLineHeightMd,
+  },
+
+  textareaLarge: {
+    fontSize:
+      theme.comp.textarea.typographyFontSize ||
+      theme.comp.textarea.typographyFontSizeLg,
+    lineHeight:
+      theme.comp.textarea.typographyLineHeight ||
+      theme.comp.textarea.typographyLineHeightLg,
   },
 }))
 
@@ -219,6 +248,7 @@ export const Textarea = React.forwardRef(
       fullWidth,
       disabled,
       error,
+      size = ElementSize.md,
       rows = 3,
       components,
       showCount,
@@ -249,6 +279,11 @@ export const Textarea = React.forwardRef(
       [classesMap.textareaContainerDisabled]: disabled,
       [classesMap.textareaContainerError]: error,
     })
+    const textareaClassName = clsx(classesMap.textarea, {
+      [classesMap?.textareaSmall ?? '']: size === ElementSize.sm,
+      [classesMap?.textareaMedium ?? '']: size === ElementSize.md,
+      [classesMap?.textareaLarge ?? '']: size === ElementSize.lg,
+    })
 
     const handleFocus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
       setFocused(true)
@@ -277,7 +312,7 @@ export const Textarea = React.forwardRef(
     const innerProps = {
       ref: mergedTextAreaRef,
       rows,
-      className: classesMap.textarea,
+      className: textareaClassName,
       disabled,
       placeholder,
       value,
