@@ -250,20 +250,48 @@ export const createButton = (theme: Theme, compatibilityMode?: boolean) => ({
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusLg,
 
-  //typography
+  //typography (base)
   typographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.uiTextMd.fontFamily,
   typographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.semibold
     : theme.sys.typography.uiTextMd.fontWeight,
-  typographyFontSize: compatibilityMode
-    ? theme.typography.fontSize.button
-    : theme.sys.typography.uiTextMd.fontSize,
-  typographyLineHeight: compatibilityMode
-    ? theme.typography.lineHeight.button
-    : theme.sys.typography.uiTextMd.lineHeight,
   typographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.button
     : theme.sys.typography.uiTextMd.letterSpacing,
+
+  //typography lg
+  typographyFontSizeLg: compatibilityMode
+    ? theme.typography.fontSize.button
+    : theme.sys.typography.uiTextMd.fontSize,
+  typographyLineHeightLg: compatibilityMode
+    ? theme.typography.lineHeight.button
+    : theme.sys.typography.uiTextMd.lineHeight,
+
+  //typography md
+  typographyFontSizeMd: compatibilityMode
+    ? theme.typography.fontSize.button
+    : theme.sys.typography.uiTextMd.fontSize,
+  typographyLineHeightMd: compatibilityMode
+    ? theme.typography.lineHeight.button
+    : theme.sys.typography.uiTextMd.lineHeight,
+
+  //typography sm
+  typographyFontSizeSm: compatibilityMode
+    ? theme.typography.fontSize.button
+    : theme.sys.typography.uiTextMd.fontSize,
+  typographyLineHeightSm: compatibilityMode
+    ? theme.typography.lineHeight.button
+    : theme.sys.typography.uiTextMd.lineHeight,
+
+  //typography (old)
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyFontSizeSm`, `typographyFontSizeMd` или `typographyFontSizeLg`
+   */
+  typographyFontSize: '',
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyLineHeightSm`, `typographyLineHeightMd` или `typographyLineHeightLg`
+   */
+  typographyLineHeight: '',
 })

@@ -85,6 +85,9 @@ export const Button = React.forwardRef(
     const buttonClasses = useButtonReset()
     const classesList = useStyles()
     const classesMap = useClassList(classesList, classes)
+    const isSmall = size === ElementSize.sm
+    const isMedium = size === ElementSize.md
+    const isLarge = size === ElementSize.lg
     const className = clsx(
       buttonClasses.resetButton,
       classNameProp,
@@ -96,14 +99,17 @@ export const Button = React.forwardRef(
         [classesMap.primary]: color === ButtonColor.primary,
         [classesMap.error]: color === ButtonColor.error,
         [classesMap.secondary]: color === ButtonColor.secondary,
-        [classesMap.small]: size === ElementSize.sm,
-        [classesMap.medium]: size === ElementSize.md,
-        [classesMap.large]: size === ElementSize.lg,
+        [classesMap.small]: isSmall,
+        [classesMap.medium]: isMedium,
+        [classesMap.large]: isLarge,
         [classesMap.fullWidth]: fullWidth,
       }
     )
     const textClassName = clsx(textProps?.className, classesMap.text, {
       [classesList.textTypography]: !textProps?.kind,
+      [classesMap.textSm]: isSmall,
+      [classesMap.textMd]: isMedium,
+      [classesMap.textLg]: isLarge,
     })
 
     return (
