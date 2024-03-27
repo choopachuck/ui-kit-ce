@@ -7,7 +7,6 @@ import type { Classes } from './interfaces'
 import { ElementSize, ElementSizeType } from '@v-uik/common'
 import { getTextLength } from '@v-uik/utils'
 import { Labelled, LabelledProps } from '@v-uik/labelled'
-import { ElementSize } from '@v-uik/common'
 
 type TextareaAttributesWithRef =
   React.TextareaHTMLAttributes<HTMLTextAreaElement> &
@@ -256,7 +255,6 @@ export const Textarea = React.forwardRef(
       labelledClasses,
       keepHelperTextMinHeight,
       required,
-      size = ElementSize.md,
       ...rest
     }: TextareaProps<InnerProps>,
     ref: React.Ref<HTMLDivElement>
