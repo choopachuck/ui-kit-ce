@@ -260,22 +260,58 @@ export const createTag = (theme: Theme, compatibilityMode?: boolean) => ({
     ? '50%'
     : theme.sys.shape.borderRadiusCircle,
 
-  // typography
+  //typography (base)
   typographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.bodyMd.fontFamily,
   typographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.regular
     : theme.sys.typography.bodyMd.fontWeight,
-  typographyFontSize: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeight: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
   typographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,
+
+  //typography xs
+  typographyFontSizeXs: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  typographyLineHeightXs: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography sm
+  typographyFontSizeSm: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  typographyLineHeightSm: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography md
+  typographyFontSizeMd: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  typographyLineHeightMd: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography lg
+  typographyFontSizeLg: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  typographyLineHeightLg: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography (old)
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyFontSizeXs`, `typographyFontSizeSm`, `typographyFontSizeMd` или `typographyFontSizeLg`
+   */
+  typographyFontSize: '',
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyLineHeightXs`, `typographyLineHeightSm`, `typographyLineHeightMd` или `typographyLineHeightLg`
+   */
+  typographyLineHeight: '',
 })
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -343,20 +379,56 @@ export const createTagInput = (theme: Theme, compatibilityMode?: boolean) => ({
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusSm,
 
-  // typography
+  //typography (base)
   typographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.bodyMd.fontFamily,
   typographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.regular
     : theme.sys.typography.bodyMd.fontWeight,
-  typographyFontSize: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeight: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
   typographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,
+
+  //typography xs
+  typographyFontSizeXs: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  typographyLineHeightXs: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography sm
+  typographyFontSizeSm: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  typographyLineHeightSm: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography xs
+  typographyFontSizeMd: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  typographyLineHeightMd: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography xs
+  typographyFontSizeLg: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  typographyLineHeightLg: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
+
+  //typography (old)
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyFontSizeXs`, `typographyFontSizeSm`, `typographyFontSizeMd` или `typographyFontSizeLg`
+   */
+  typographyFontSize: '',
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyLineHeightXs`, `typographyLineHeightSm`, `typographyLineHeightMd` или `typographyLineHeightLg`
+   */
+  typographyLineHeight: '',
 })

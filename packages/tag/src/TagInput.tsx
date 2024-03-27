@@ -3,12 +3,12 @@
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
 import { useClassList, useMergedRefs } from '@v-uik/hooks'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
 import { useText } from '@v-uik/typography'
 import { useButtonReset } from '@v-uik/button'
 import { AddIcon } from './assets/AddIcon'
 import { isEqualKeyboardKeys } from '@v-uik/utils'
 import { TagInputClasses } from './interfaces'
+import { TTagElementSizeType, TagElementSize } from './TTagElementSizeType'
 
 export interface TagInputProps
   extends Omit<
@@ -35,9 +35,9 @@ export interface TagInputProps
    */
   disabled?: boolean
   /**
-   * Поле заблокировано для ввода
+   * Размер поля
    */
-  size?: Exclude<ElementSizeType, 'lg'>
+  size?: TTagElementSizeType
   /**
    * Подсказка внутри поля, если не введен текст
    */
@@ -124,6 +124,22 @@ const useStyles = createUseStyles((theme) => ({
 
   disabled: {},
 
+  extraSmall: {
+    '& $tag': {
+      padding: [2, 8],
+    },
+
+    '& $text': {
+      '& $addIcon': {
+        marginLeft: 4,
+      },
+    },
+
+    '& > $addIcon': {
+      right: 4,
+    },
+  },
+
   small: {
     '& $tag': {
       padding: [2, 8],
@@ -135,12 +151,20 @@ const useStyles = createUseStyles((theme) => ({
       },
     },
 
-    '& $input': {
-      padding: [2, 24, 2, 8],
-    },
-
     '& > $addIcon': {
       right: 4,
+    },
+  },
+
+  medium: {
+    '& $tag': {
+      padding: [6, 8, 6, 12],
+    },
+  },
+
+  large: {
+    '& $tag': {
+      padding: [6, 8, 6, 12],
     },
   },
 
@@ -166,8 +190,6 @@ const useStyles = createUseStyles((theme) => ({
   text: {
     fontFamily: theme.comp.tagInput.typographyFontFamily,
     fontWeight: theme.comp.tagInput.typographyFontWeight,
-    fontSize: theme.comp.tagInput.typographyFontSize,
-    lineHeight: theme.comp.tagInput.typographyLineHeight,
     letterSpacing: theme.comp.tagInput.typographyLetterSpacing,
 
     width: '100%',
@@ -181,6 +203,42 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
+  textExtraSmall: {
+    fontSize:
+      theme.comp.tagInput.typographyFontSize ||
+      theme.comp.tagInput.typographyFontSizeXs,
+    lineHeight:
+      theme.comp.tagInput.typographyLineHeight ||
+      theme.comp.tagInput.typographyLineHeightXs,
+  },
+
+  textSmall: {
+    fontSize:
+      theme.comp.tagInput.typographyFontSize ||
+      theme.comp.tagInput.typographyFontSizeSm,
+    lineHeight:
+      theme.comp.tagInput.typographyLineHeight ||
+      theme.comp.tagInput.typographyLineHeightSm,
+  },
+
+  textMedium: {
+    fontSize:
+      theme.comp.tagInput.typographyFontSize ||
+      theme.comp.tagInput.typographyFontSizeMd,
+    lineHeight:
+      theme.comp.tagInput.typographyLineHeight ||
+      theme.comp.tagInput.typographyLineHeightMd,
+  },
+
+  textLarge: {
+    fontSize:
+      theme.comp.tagInput.typographyFontSize ||
+      theme.comp.tagInput.typographyFontSizeLg,
+    lineHeight:
+      theme.comp.tagInput.typographyLineHeight ||
+      theme.comp.tagInput.typographyLineHeightLg,
+  },
+
   addIcon: {
     color: theme.comp.tagInput.iconColorText,
   },
@@ -188,7 +246,6 @@ const useStyles = createUseStyles((theme) => ({
   input: {
     width: '100%',
     margin: 0,
-    padding: [6, 28, 6, 12],
     outline: 0,
     border: 0,
     boxShadow: 'none',
@@ -198,8 +255,6 @@ const useStyles = createUseStyles((theme) => ({
 
     fontFamily: theme.comp.tagInput.typographyFontFamily,
     fontWeight: theme.comp.tagInput.typographyFontWeight,
-    fontSize: theme.comp.tagInput.typographyFontSize,
-    lineHeight: theme.comp.tagInput.typographyLineHeight,
     letterSpacing: theme.comp.tagInput.typographyLetterSpacing,
 
     '&::placeholder': {
@@ -209,6 +264,46 @@ const useStyles = createUseStyles((theme) => ({
     '&:focus': {
       outline: 0,
     },
+  },
+
+  inputExtraSmall: {
+    padding: [2, 24, 2, 8],
+    fontSize:
+      theme.comp.tagInput.typographyFontSize ||
+      theme.comp.tagInput.typographyFontSizeXs,
+    lineHeight:
+      theme.comp.tagInput.typographyLineHeight ||
+      theme.comp.tagInput.typographyLineHeightXs,
+  },
+
+  inputSmall: {
+    padding: [2, 24, 2, 8],
+    fontSize:
+      theme.comp.tagInput.typographyFontSize ||
+      theme.comp.tagInput.typographyFontSizeSm,
+    lineHeight:
+      theme.comp.tagInput.typographyLineHeight ||
+      theme.comp.tagInput.typographyLineHeightSm,
+  },
+
+  inputMedium: {
+    padding: [6, 28, 6, 12],
+    fontSize:
+      theme.comp.tagInput.typographyFontSize ||
+      theme.comp.tagInput.typographyFontSizeMd,
+    lineHeight:
+      theme.comp.tagInput.typographyLineHeight ||
+      theme.comp.tagInput.typographyLineHeightMd,
+  },
+
+  inputLarge: {
+    padding: [6, 28, 6, 12],
+    fontSize:
+      theme.comp.tagInput.typographyFontSize ||
+      theme.comp.tagInput.typographyFontSizeLg,
+    lineHeight:
+      theme.comp.tagInput.typographyLineHeight ||
+      theme.comp.tagInput.typographyLineHeightLg,
   },
 
   empty: {
@@ -230,7 +325,7 @@ export const TagInput = React.forwardRef(
       inputProps,
       inputRef: inputRefProp = null,
       disabled,
-      size = ElementSize.md,
+      size = TagElementSize.md,
       children,
       onClick,
       onSubmit,
@@ -251,16 +346,32 @@ export const TagInput = React.forwardRef(
     const { ellipsis } = useText()
     const classesList = useStyles()
     const classesMap = useClassList(classesList, classes)
+    const isExtraSmall = size === TagElementSize.xs
+    const isSmall = size === TagElementSize.sm
+    const isMedium = size === TagElementSize.md
+    const isLarge = size === TagElementSize.lg
     const containerClassName = clsx(classesMap.container, className, {
       [classesMap.focused]: focused,
       [classesMap.disabled]: disabled,
-      [classesMap.small]: size === ElementSize.sm,
+      [classesMap.extraSmall]: isExtraSmall,
+      [classesMap.small]: isSmall,
+      [classesMap.medium]: isMedium,
+      [classesMap.large]: isLarge,
     })
     const inputClassName = clsx(classesMap.input, {
       [classesMap.empty]: typeof value !== 'number' && !value?.trim(),
+      [classesMap.inputExtraSmall]: isExtraSmall,
+      [classesMap.inputSmall]: isSmall,
+      [classesMap.inputMedium]: isMedium,
+      [classesMap.inputLarge]: isLarge,
     })
 
-    const textClassName = clsx(ellipsis, classesMap.text)
+    const textClassName = clsx(ellipsis, classesMap.text, {
+      [classesMap.textExtraSmall]: isExtraSmall,
+      [classesMap.textSmall]: isSmall,
+      [classesMap.textMedium]: isMedium,
+      [classesMap.textLarge]: isLarge,
+    })
 
     React.useEffect(() => {
       if (focused) {
