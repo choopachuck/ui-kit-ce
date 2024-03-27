@@ -4,17 +4,32 @@ import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
+import { ElementSizeType, ElementSize } from '@v-uik/common'
 import { InfoIcon } from './icons'
 
 export type Classes = {
   /** Стиль, применяемый к основному элементу */
   label?: string
+  /** Стиль, применяемый к элементу `span` */
+  text?: string
+  /** Стиль, применяемый к элементу `span` с `size='sm'` */
+  textSmall?: string
+  /** Стиль, применяемый к элементу `span` с `size='md'` */
+  textMedium?: string
+  /** Стиль, применяемый к элементу `span` с `size='lg'` */
+  textLarge?: string
   /** Стиль, применяемый к элементу с `disabled='true'` */
   disabled?: string
   /** Стиль, применяемый к элементу иконки в Tooltip */
   tooltipIcon?: string
   /** Стиль, применяемый к контейнеру suffix */
   suffix?: string
+  /** Стиль, применяемый к контейнеру suffix с `size='sm'` */
+  suffixSmall?: string
+  /** Стиль, применяемый к контейнеру suffix с `size='md'` */
+  suffixMedium?: string
+  /** Стиль, применяемый к контейнеру suffix с `size='lg'` */
+  suffixLarge?: string
 }
 
 export interface InputLabelProps
@@ -39,6 +54,10 @@ export interface InputLabelProps
    * Вспомогательный элемент после текста
    */
   suffix?: React.ReactNode
+  /**
+   * Размер надписи
+   */
+  size?: ElementSizeType
 }
 
 const useStyles = createUseStyles((theme) => ({
@@ -61,9 +80,34 @@ const useStyles = createUseStyles((theme) => ({
   text: {
     fontFamily: theme.comp.inputLabel.typographyFontFamily,
     fontWeight: theme.comp.inputLabel.typographyFontWeight,
-    fontSize: theme.comp.inputLabel.typographyFontSize,
-    lineHeight: theme.comp.inputLabel.typographyLineHeight,
     letterSpacing: theme.comp.inputLabel.typographyLetterSpacing,
+  },
+
+  textSmall: {
+    fontSize:
+      theme.comp.inputLabel.typographyFontSize ||
+      theme.comp.inputLabel.typographyFontSizeSm,
+    lineHeight:
+      theme.comp.inputLabel.typographyLineHeight ||
+      theme.comp.inputLabel.typographyLineHeightSm,
+  },
+
+  textMedium: {
+    fontSize:
+      theme.comp.inputLabel.typographyFontSize ||
+      theme.comp.inputLabel.typographyFontSizeMd,
+    lineHeight:
+      theme.comp.inputLabel.typographyLineHeight ||
+      theme.comp.inputLabel.typographyLineHeightMd,
+  },
+
+  textLarge: {
+    fontSize:
+      theme.comp.inputLabel.typographyFontSize ||
+      theme.comp.inputLabel.typographyFontSizeLg,
+    lineHeight:
+      theme.comp.inputLabel.typographyLineHeight ||
+      theme.comp.inputLabel.typographyLineHeightLg,
   },
 
   disabled: {},
@@ -78,10 +122,35 @@ const useStyles = createUseStyles((theme) => ({
   suffix: {
     fontFamily: theme.comp.inputLabel.typographyFontFamily,
     fontWeight: theme.comp.inputLabel.typographyFontWeight,
-    fontSize: theme.comp.inputLabel.typographyFontSize,
-    lineHeight: theme.comp.inputLabel.typographyLineHeight,
     letterSpacing: theme.comp.inputLabel.typographyLetterSpacing,
     marginLeft: 'auto',
+  },
+
+  suffixSmall: {
+    fontSize:
+      theme.comp.inputLabel.typographyFontSize ||
+      theme.comp.inputLabel.typographyFontSizeSm,
+    lineHeight:
+      theme.comp.inputLabel.typographyLineHeight ||
+      theme.comp.inputLabel.typographyLineHeightSm,
+  },
+
+  suffixMedium: {
+    fontSize:
+      theme.comp.inputLabel.typographyFontSize ||
+      theme.comp.inputLabel.typographyFontSizeMd,
+    lineHeight:
+      theme.comp.inputLabel.typographyLineHeight ||
+      theme.comp.inputLabel.typographyLineHeightMd,
+  },
+
+  suffixLarge: {
+    fontSize:
+      theme.comp.inputLabel.typographyFontSize ||
+      theme.comp.inputLabel.typographyFontSizeLg,
+    lineHeight:
+      theme.comp.inputLabel.typographyLineHeight ||
+      theme.comp.inputLabel.typographyLineHeightLg,
   },
 
   hasSuffix: {},
@@ -98,21 +167,36 @@ export const InputLabel = React.forwardRef(
       tooltipProps,
       suffix,
       children,
+      size = ElementSize.md,
       ...rest
     }: InputLabelProps,
     ref: React.Ref<HTMLLabelElement>
   ) => {
     const classesList = useStyles()
     const classesMap = useClassList(classesList, classes)
+    const isSmall = size === ElementSize.sm
+    const isMedium = size === ElementSize.md
+    const isLarge = size === ElementSize.lg
+
     const className = clsx(classesMap.label, classNameProp, {
       [classesMap.disabled]: disabled,
       [classesMap.labelPointer]: htmlFor,
       [classesMap.hasSuffix]: !!suffix,
     })
+    const textClassName = clsx(classesMap.text, {
+      [classesMap.textSmall]: isSmall,
+      [classesMap.textMedium]: isMedium,
+      [classesMap.textLarge]: isLarge,
+    })
+    const suffixClassName = clsx(classesMap.suffix, {
+      [classesMap.suffixSmall]: isSmall,
+      [classesMap.suffixMedium]: isMedium,
+      [classesMap.suffixLarge]: isLarge,
+    })
 
     return (
       <label {...rest} ref={ref} htmlFor={htmlFor} className={className}>
-        <span className={classesMap.text}>{children}</span>
+        <span className={textClassName}>{children}</span>
         {tooltipText && (
           <Tooltip
             {...tooltipProps}
@@ -135,7 +219,7 @@ export const InputLabel = React.forwardRef(
             />
           </Tooltip>
         )}
-        {suffix && <div className={classesMap.suffix}>{suffix}</div>}
+        {suffix && <div className={suffixClassName}>{suffix}</div>}
       </label>
     )
   }

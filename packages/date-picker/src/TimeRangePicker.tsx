@@ -669,6 +669,7 @@ export const TimeRangePicker = React.forwardRef(
         ref={ref}
       >
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}

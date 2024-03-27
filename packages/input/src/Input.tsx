@@ -104,6 +104,7 @@ const _Input = React.forwardRef(
     return (
       <div {...rest} ref={ref} className={containerClassName}>
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label || showCount}
           helperText={helperText}

@@ -244,6 +244,7 @@ export const TimePicker = React.forwardRef(
     return (
       <div className={timepickerClassName} {...rest} ref={ref}>
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}

@@ -590,6 +590,7 @@ export const Select = React.forwardRef(
     if (multiple) {
       return (
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}
@@ -612,6 +613,7 @@ export const Select = React.forwardRef(
     return (
       <div {...rest} ref={ref} className={className} onKeyDown={handleKeyDown}>
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}

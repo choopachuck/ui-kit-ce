@@ -473,6 +473,7 @@ export const DatePicker = React.forwardRef(
       <ComponentIdContext.Provider value={componentSystemId}>
         <div {...rest} ref={mergedRootRefs} className={className}>
           <Labelled
+            size={size}
             keepHelperTextMinHeight={keepHelperTextMinHeight}
             required={required}
             classes={labelledClasses}

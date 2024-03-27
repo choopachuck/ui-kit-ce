@@ -717,6 +717,7 @@ export const RangePicker = React.forwardRef(
     return (
       <div {...rest} ref={mergedRootRefs} className={className}>
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}

@@ -1336,6 +1336,7 @@ export const ComboBox = React.forwardRef(
         }}
       >
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}
