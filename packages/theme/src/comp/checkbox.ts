@@ -82,12 +82,20 @@ export const createCheckbox = (theme: Theme, compatibilityMode?: boolean) => ({
   /**
    * Indeterminate
    */
+  colorBackgroundIndeterminate: 'transparent',
+  colorBorderIndeterminate: compatibilityMode
+    ? theme.colourway.secondary
+    : theme.sys.color.secondaryAlpha,
   /**
    * @deprecated будет удалено, используйте `colorMarkIndeterminate`
    */
   iconColorTextIndeterminate: compatibilityMode
     ? theme.colourway.secondary
     : theme.sys.color.secondaryAlpha,
+  colorBackgroundIndeterminateHover: 'transparent',
+  colorBorderIndeterminateHover: compatibilityMode
+    ? theme.colourway.secondaryHover
+    : theme.sys.color.secondaryBeta,
   colorMarkIndeterminate: '',
   /**
    * @deprecated будет удалено, используйте `colorMarkIndeterminateHover`
@@ -95,6 +103,10 @@ export const createCheckbox = (theme: Theme, compatibilityMode?: boolean) => ({
   iconColorTextIndeterminateHover: compatibilityMode
     ? theme.colourway.secondaryHover
     : theme.sys.color.secondaryBeta,
+  colorBackgroundIndeterminateActive: 'transparent',
+  colorBorderIndeterminateActive: compatibilityMode
+    ? theme.colourway.secondaryActive
+    : theme.sys.color.secondaryGamma,
   colorMarkIndeterminateHover: '',
   /**
    * @deprecated будет удалено, используйте `colorMarkIndeterminateActive`
@@ -102,6 +114,10 @@ export const createCheckbox = (theme: Theme, compatibilityMode?: boolean) => ({
   iconColorTextIndeterminateActive: compatibilityMode
     ? theme.colourway.secondaryActive
     : theme.sys.color.secondaryGamma,
+  colorBackgroundIndeterminateDisabled: 'transparent',
+  colorBorderIndeterminateDisabled: compatibilityMode
+    ? theme.colourway.disabledMajor
+    : theme.sys.color.disabledHigh,
   colorMarkIndeterminateActive: '',
   /**
    * @deprecated будет удалено, используйте `colorMarkIndeterminateDisabled`

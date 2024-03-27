@@ -121,6 +121,8 @@ const useStyles = createUseStyles((theme) => ({
   indeterminate: {
     '& $input': {
       '& ~ $checkbox': {
+        borderColor: theme.comp.checkbox.colorBorderIndeterminate,
+        backgroundColor: theme.comp.checkbox.colorBackgroundIndeterminate,
         '& $checkboxIcon': {
           stroke:
             theme.comp.checkbox.colorMarkIndeterminate ||
@@ -130,6 +132,9 @@ const useStyles = createUseStyles((theme) => ({
 
       '&:disabled': {
         '& ~ $checkbox': {
+          borderColor: theme.comp.checkbox.colorBorderIndeterminateDisabled,
+          backgroundColor:
+            theme.comp.checkbox.colorBackgroundIndeterminateDisabled,
           '& $checkboxIcon': {
             stroke:
               theme.comp.checkbox.colorMarkIndeterminateDisabled ||
@@ -141,6 +146,9 @@ const useStyles = createUseStyles((theme) => ({
       '&:not(:disabled)': {
         '&:hover': {
           '& ~ $checkbox': {
+            borderColor: theme.comp.checkbox.colorBorderIndeterminateHover,
+            backgroundColor:
+              theme.comp.checkbox.colorBackgroundIndeterminateHover,
             '& $checkboxIcon': {
               stroke:
                 theme.comp.checkbox.colorMarkIndeterminateHover ||
@@ -151,6 +159,9 @@ const useStyles = createUseStyles((theme) => ({
 
         '&:hover:active': {
           '& ~ $checkbox': {
+            borderColor: theme.comp.checkbox.colorBorderIndeterminateActive,
+            backgroundColor:
+              theme.comp.checkbox.colorBackgroundIndeterminateActive,
             '& $checkboxIcon': {
               stroke:
                 theme.comp.checkbox.colorMarkIndeterminateActive ||
