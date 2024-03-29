@@ -6,6 +6,7 @@ module.exports = {
       'always',
       [
         'accordion',
+        'avatar',
         'badge',
         'bar',
         'box',

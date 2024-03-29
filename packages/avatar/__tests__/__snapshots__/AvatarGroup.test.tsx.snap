@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`avatar group renders custom avatar correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "alt": "UN",
+        "className": "avatarGroup-item-0-2-1",
+        "src": "./broken_image.png",
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": null,
+    },
+  ],
+}
+`;
+
+exports[`avatar group renders custom extra correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "avatarProps": Object {
+          "classes": Object {
+            "root": "avatarGroup-item-0-2-1",
+          },
+          "kind": "circle",
+          "size": "md",
+          "style": Object {
+            "marginLeft": -6,
+          },
+        },
+        "children": "+1",
+        "classes": Object {
+          "extraSmall": "avatarGroup-extraSmall-0-2-3",
+          "item": "avatarGroup-item-0-2-1",
+          "medium": "avatarGroup-medium-0-2-5",
+          "root": "avatarGroup-root-0-2-2",
+          "small": "avatarGroup-small-0-2-4",
+        },
+        "gap": 6,
+        "hiddenItems": Array [
+          Object {
+            "alt": "User Name",
+            "children": "UN",
+            "className": "",
+            "color": "red",
+            "kind": "rounded",
+            "size": "sm",
+            "src": "./broken-image",
+          },
+        ],
+        "kind": "circle",
+        "max": 5,
+        "showExtra": false,
+        "size": "md",
+        "visibleItems": Array [
+          Object {
+            "alt": "User Name",
+            "children": "UN",
+            "className": "avatarGroup-item-0-2-1",
+            "color": "red",
+            "kind": "rounded",
+            "size": "sm",
+            "src": "./broken-image",
+          },
+          Object {
+            "alt": "User Name",
+            "children": "UN",
+            "className": "avatarGroup-item-0-2-1",
+            "color": "red",
+            "kind": "rounded",
+            "size": "sm",
+            "src": "./broken-image",
+            "style": Object {
+              "marginLeft": -6,
+            },
+          },
+          Object {
+            "alt": "User Name",
+            "children": "UN",
+            "className": "avatarGroup-item-0-2-1",
+            "color": "red",
+            "kind": "rounded",
+            "size": "sm",
+            "src": "./broken-image",
+            "style": Object {
+              "marginLeft": -6,
+            },
+          },
+          Object {
+            "alt": "User Name",
+            "children": "UN",
+            "className": "avatarGroup-item-0-2-1",
+            "color": "red",
+            "kind": "rounded",
+            "size": "sm",
+            "src": "./broken-image",
+            "style": Object {
+              "marginLeft": -6,
+            },
+          },
+          Object {
+            "alt": "User Name",
+            "children": "UN",
+            "className": "avatarGroup-item-0-2-1",
+            "color": "red",
+            "kind": "rounded",
+            "size": "sm",
+            "src": "./broken-image",
+            "style": Object {
+              "marginLeft": -6,
+            },
+          },
+        ],
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": null,
+    },
+  ],
+}
+`;

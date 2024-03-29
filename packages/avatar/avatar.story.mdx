@@ -1,0 +1,307 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs'
+import { Avatar } from '@v-uik/avatar'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  AvatarCanvas,
+  AvatarBase,
+  AvatarSizes,
+  AvatarText,
+  Playground,
+  AvatarIcon,
+  AvatarFallback,
+  AvatarCustomSize,
+  AvatarSrcSet,
+  AvatarBorderAndShadow,
+  AvatarActionHover,
+  AvatarActionFocus,
+  AvatarActionSelect,
+  AvatarTooltip,
+  AvatarIndicators,
+  AvatarUnion,
+  AvatarWithText,
+  AvatarKinds,
+  AvatarColors,
+  AvatarActionIndicators,
+  AvatarDisabled,
+} from './examples'
+
+import RawCanvas from '!!raw-loader!@v-uik/avatar/examples/AvatarCanvas'
+import RawAvatarBase from '!!raw-loader!@v-uik/avatar/examples/AvatarBase'
+import RawAvatarSizes from '!!raw-loader!@v-uik/avatar/examples/AvatarSizes'
+import RawAvatarText from '!!raw-loader!@v-uik/avatar/examples/AvatarText'
+import RawPlayground from '!!raw-loader!@v-uik/avatar/examples/Playground'
+import RawAvatarIcon from '!!raw-loader!@v-uik/avatar/examples/AvatarIcon'
+import RawAvatarFallback from '!!raw-loader!@v-uik/avatar/examples/AvatarFallback'
+import RawAvatarCustomSize from '!!raw-loader!@v-uik/avatar/examples/AvatarCustomSize'
+import RawAvatarSrcSet from '!!raw-loader!@v-uik/avatar/examples/AvatarSrcSet'
+import RawAvatarBorderAndShadow from '!!raw-loader!@v-uik/avatar/examples/AvatarBorderAndShadow'
+import RawAvatarActionHover from '!!raw-loader!@v-uik/avatar/examples/AvatarActionHover'
+import RawAvatarActionFocus from '!!raw-loader!@v-uik/avatar/examples/AvatarActionFocus'
+import RawAvatarActionSelect from '!!raw-loader!@v-uik/avatar/examples/AvatarActionSelect'
+import RawAvatarTooltip from '!!raw-loader!@v-uik/avatar/examples/AvatarTooltip'
+import RawAvatarIndicators from '!!raw-loader!@v-uik/avatar/examples/AvatarIndicators'
+import RawAvatarUnion from '!!raw-loader!@v-uik/avatar/examples/AvatarUnion'
+import RawAvatarWithText from '!!raw-loader!@v-uik/avatar/examples/AvatarWithText'
+import RawAvatarKinds from '!!raw-loader!@v-uik/avatar/examples/AvatarKinds'
+import RawAvatarColors from '!!raw-loader!@v-uik/avatar/examples/AvatarColors'
+import RawAvatarActionIndicators from '!!raw-loader!@v-uik/avatar/examples/AvatarActionIndicators'
+import RawAvatarDisabled from '!!raw-loader!@v-uik/avatar/examples/AvatarDisabled'
+import * as AssetsModule from '@v-uik/avatar/examples/assets'
+
+export const story = createStory(AvatarCanvas, RawCanvas, {
+  './assets': AssetsModule,
+})
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Avatar', 'Avatar'])}
+  component={Avatar}
+/>
+
+<Story
+  name="Avatar"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: { disable: true },
+  }}
+>
+  {story.component}
+</Story>
+
+# Avatar
+
+Компонент для визуального представления пользователя в интерфейсе.
+
+## import
+
+```ts
+import { Avatar } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Avatar } from '@v-uik/avatar'
+```
+
+## Базовое использование
+
+Ниже представлен пример базового использования компонента с указанием изображения и подписи
+
+<Canvas withSource="none">
+  <AvatarBase />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarBase} />
+
+## Аватар с текстом
+
+Для указания текста в аватаре нужно передать соответствующее значене в `children` компонента
+
+<Canvas withSource="none">
+  <AvatarText />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarText} />
+
+## Аватар с пользовательским цветом
+
+Для того, чтобы задать пользовательский цвет аватара, достаточно указать значение цвета в свойстве `color`
+
+<Canvas withSource="none">
+  <AvatarColors />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarColors} />
+
+## Аватар с иконками
+
+Для указания иконки нужно передать `svg` или любой необходимый `JSX` в свойство `icon` или напрямую в `children`
+
+<Canvas withSource="none">
+  <AvatarIcon />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarIcon} />
+
+## Аватар с предзаложенным скруглением
+
+Скругление аватара может быть изменено в свойстве `kind` с помощью следующих предзаложенных вариантов:
+
+| Значение             | Описание             |
+| -------------------- | -------------------- |
+| <code>circle</code>  | Полное скругление    |
+| <code>rounded</code> | Небольшое скругление |
+| <code>square</code>  | Без скругления       |
+
+По умолчанию аватар имеет скругление `circle`
+
+<Canvas withSource="none">
+  <AvatarKinds />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarKinds} />
+
+## Размеры аватара
+
+### Предзаложенный размер
+
+Аватар предоставляет возможность задавать предзаложенный размер компонента через свойство `size`. В зависимости от этого значения меняется размер иконок в свойстве `icon` и размер шрифта в `children` компонента.
+Предзаложены следующие размеры аватара:
+
+| Значение        | Описание               |
+| --------------- | ---------------------- |
+| <code>xs</code> | Очень маленький размер |
+| <code>sm</code> | Маленький размер       |
+| <code>md</code> | Средний размер         |
+| <code>lg</code> | Большой размер         |
+| <code>xl</code> | Очень большой размер   |
+
+По умолчанию аватар имеет размер `md`
+
+<Canvas withSource="none">
+  <AvatarSizes />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarSizes} />
+
+### Пользовательский размер
+
+Для указания пользовательского размера аватара необходимо в свойство `size` указать нужное числовое значение в пикселях. При этом размеры иконки в свойстве `icon` и размер шрифта в `children` не изменяются и остаются как в значении для размера `md`
+
+<Canvas withSource="none">
+  <AvatarCustomSize />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarCustomSize} />
+
+## Аватар с обводкой и тенью
+
+Чтобы выделить аватар на заднем фоне, можно указать флаг `withBorder`, для добавления обводки, или флаг `withShadow`, для добавления тени
+
+<Canvas withSource="none">
+  <AvatarBorderAndShadow />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarBorderAndShadow} />
+
+## Заглушки аватара
+
+В случае, когда изображение не было указано или оно не было загружено, то, в качестве заглушки вместо изображения, отображаются элемены в следующем порядке:
+
+<ol>
+  <li>
+    Иконка, указанная в свойстве <code>icon</code>;
+  </li>
+  <li>
+    Контент, указанный в <code>children</code>;
+  </li>
+  <li>
+    Первая буква из первых двух слов в свойстве <code>alt</code> (или{' '}
+    <code>imgProp.alt</code>);
+  </li>
+  <li>
+    Пользовательская заглушка, указанная в свойстве <code>fallback</code>;
+  </li>
+  <li>Заглушка по умолчанию.</li>
+</ol>
+
+<Canvas withSource="none">
+  <AvatarFallback />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarFallback} />
+
+## Примеры использования
+
+### Аватар с адаптивным изображением
+
+Пример реализации аватара с адаптивным изображением на основе концепции [адаптивного дизайна](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
+
+<Canvas withSource="none">
+  <AvatarSrcSet />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarSrcSet} />
+
+### Аватар с действиями
+
+#### Наведение и нажатие
+
+<Canvas withSource="none">
+  <AvatarActionHover />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarActionHover} />
+
+#### Фокус элементов
+
+Для фокуса аватара используйте кнопки `tab` и `shift + tab`
+
+<Canvas withSource="none">
+  <AvatarActionFocus />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarActionFocus} />
+
+#### Выбор и изменение
+
+<Canvas withSource="none">
+  <AvatarActionSelect />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarActionSelect} />
+
+### Неактивный аватар
+
+<Canvas withSource="none">
+  <AvatarDisabled />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarDisabled} />
+
+### Аватар с тултипом
+
+<Canvas withSource="none">
+  <AvatarTooltip />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarTooltip} />
+
+### Маркеры и статусы
+
+<Canvas withSource="none">
+  <AvatarIndicators />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarIndicators} />
+
+### Побуждения к действию
+
+<Canvas withSource="none">
+  <AvatarActionIndicators />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarActionIndicators} />
+
+### Наложение аватаров
+
+<Canvas withSource="none">
+  <AvatarUnion />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarUnion} />
+
+### Комбинации аватара и текста
+
+<Canvas withSource="none">
+  <AvatarWithText />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarWithText} />

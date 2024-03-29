@@ -55,12 +55,14 @@ import { createDivider } from './divider'
 import { createDropzone } from './dropzone'
 import { createFileItem } from './fileItem'
 import { createUnderlay } from './underlay'
+import { createAvatar } from './avatar'
 
 // пришлось описать ключи компонентного слоя отдельным типом, потому что вывести
 // не удается из-за циклической зависимости в createComp.
 type ComponentLayerKeys =
   | 'accordion'
   | 'accordionItem'
+  | 'avatar'
   | 'badge'
   | 'bar'
   | 'barButton'
@@ -125,6 +127,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
   compatibilityMap = {
     accordion: checkCompatibilityMode(customProps, 'accordion'),
     accordionItem: checkCompatibilityMode(customProps, 'accordionItem'),
+    avatar: checkCompatibilityMode(customProps, 'avatar'),
     badge: checkCompatibilityMode(customProps, 'badge'),
     bar: checkCompatibilityMode(customProps, 'bar'),
     barButton: checkCompatibilityMode(customProps, 'barButton'),
@@ -186,6 +189,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
   return {
     accordion: createAccordion(theme, compatibilityMap.accordion),
     accordionItem: createAccordionItem(theme, compatibilityMap.accordionItem),
+    avatar: createAvatar(theme, compatibilityMap.avatar),
     badge: createBadge(theme, compatibilityMap.badge),
     bar: createBar(theme, compatibilityMap.bar),
     barButton: createBarButton(theme, compatibilityMap.barButton),

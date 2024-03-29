@@ -63,7 +63,12 @@ export const renderControlByType = ({
       )
     default:
       return (
-        <Input label={label} value={value as string} onChange={handleChange} />
+        <Input
+          label={label}
+          value={value as string}
+          onChange={handleChange}
+          fullWidth
+        />
       )
   }
 }

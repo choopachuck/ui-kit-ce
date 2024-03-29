@@ -1,0 +1,211 @@
+import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs'
+import { Avatar, AvatarGroup } from '@v-uik/avatar'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  AvatarGroupCanvas,
+  AvatarGroupBase,
+  AvatarGroupSize,
+  AvatarGroupKind,
+  AvatarGroupGap,
+  AvatarGroupMax,
+  AvatarGroupExtra,
+  AvatarGroupColoring,
+  AvatarGroupCustomColoring,
+  AvatarGroupBorderAndShadow,
+  AvatarGroupDropdown,
+  AvatarGroupTooltip,
+} from './examples'
+
+import RawCanvas from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupCanvas'
+import RawAvatarGroupBase from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupBase'
+import RawAvatarGroupSize from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupSize'
+import RawAvatarGroupKind from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupKind'
+import RawAvatarGroupGap from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupGap'
+import RawAvatarGroupMax from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupMax'
+import RawAvatarGroupExtra from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupExtra'
+import RawAvatarGroupColoring from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupColoring'
+import RawAvatarGroupCustomColoring from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupCustomColoring'
+import RawAvatarGroupBorderAndShadow from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupBorderAndShadow'
+import RawAvatarGroupDropdown from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupDropdown'
+import RawAvatarGroupTooltip from '!!raw-loader!@v-uik/avatar/examples/AvatarGroupTooltip'
+import * as AssetsModule from '@v-uik/avatar/examples/assets'
+
+export const story = createStory(AvatarGroupCanvas, RawCanvas, {
+  './assets': AssetsModule,
+})
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Avatar', 'AvatarGroup'])}
+  component={Avatar}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# AvatarGroup
+
+Компонент для группирования аватаров. Он отображает переданные аватары в виде стека и добавляет для каждого аватара обводку
+
+## import
+
+```ts
+import { AvatarGroup } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { AvatarGroup } from '@v-uik/avatar'
+```
+
+## Базовое использование
+
+Ниже представлен пример базового использования компонента с указанием нескольких аватаров с изображением и подписью
+
+<Canvas withSource="none">
+  <AvatarGroupBase />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupBase} />
+
+## Размер группы
+
+Группа аватаров предоставляет возможность задавать предзаложенный размер компонента через свойство `size`. В зависимости от этого значения меняется размер аватаров внутри группы, а также отступ между ними.
+Предзаложены следующие размеры группы аватаров:
+
+| Значение        | Описание               |
+| --------------- | ---------------------- |
+| <code>xs</code> | Очень маленький размер |
+| <code>sm</code> | Маленький размер       |
+| <code>md</code> | Средний размер         |
+
+По умолчанию группа аватаров имеет размер `md`
+
+<Canvas withSource="none">
+  <AvatarGroupSize />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupSize} />
+
+## Пользовательский отступ внутри группы
+
+С помощью свойства `gap` можно указать пользовательский отступ между аватарами внутри группы в пикселях
+
+<Canvas withSource="none">
+  <AvatarGroupGap />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupGap} />
+
+## Скругление группы
+
+Скругление аватара может быть изменено с помощью предзаложенных размеров через свойство `kind`. Предзаложенные размеры имеют значения
+аналогичные свойству `kind` у компонента `Avatar`
+
+<Canvas withSource="none">
+  <AvatarGroupKind />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupKind} />
+
+## Обводка и тень группы
+
+Чтобы выделить аватары в группе на заднем фоне, можно указать флаг `withBorder`, для добавления обводки, или флаг `withShadow`, для добавления тени
+
+<Canvas withSource="none">
+  <AvatarGroupBorderAndShadow />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupBorderAndShadow} />
+
+## Максимальное количество аватаров
+
+С помощью свойства `max` можно ограничивать максимальное количество аватаров в группе. В компоненте будет отображено
+максимально допустимое количество аватаров, а последним элементом группы будет являться дополнительный компонент `Avatar` с указанием количества оставшихся аватаров
+
+<Canvas withSource="none">
+  <AvatarGroupMax />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupMax} />
+
+## Дополнительный контент в группе
+
+Дополнительный контент - это компонент `Extra`, который отображается справа от группы аватаров. `Extra` отображается если:
+
+<ol>
+  <li>
+    Указано свойство <code>max</code> больше 0 и количество переданных аватаров
+    превышает это значение;
+  </li>
+  <li>
+    Указано свойство <code>showExtra</code>. Тогда значение <code>max</code>{' '}
+    игнорируется.
+  </li>
+</ol>
+
+По умолчанию `Extra` представляет из себя базовый компонент `Avatar` с указанием количества оставшихся аватаров. <br/>
+Для того, чтобы переопределить компонент `Extra`, необходимо передать соответствующий компонент в свойство `components`
+
+<Canvas withSource="none">
+  <AvatarGroupExtra />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupExtra} />
+
+## Автоматическое окрашивание аватаров
+
+Компонент предоставляет возможность автоматически добавлять цвет для каждого аватара из палитры, у которого не указано свойство `color`. Если количество аватаров превышает количество цветов в палитре, то получение нового цвета для следующего аватара начинается с начала палитры.
+
+Компонент поддерживает следующие типы автоматического окрашивания:
+
+| Значение            | Описание                                                                                                                                           |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <code>static</code> | Каждый аватар окрашивается в один и тот же цвет из палитры при каждом ререндере и перезагрузке страницы                                            |
+| <code>random</code> | Каждый аватар окрашивается в случайный цвет из палитры. При каждом ререндере цвета остаются, но при перезагрузке страницы цвета снова будут разные |
+| <code>none</code>   | Автоматическое окрашивание отключено                                                                                                               |
+
+### Предзаложенная палитра
+
+`AvatarGroup` окрашивает аватары из предзаложенной палитры на `ref`-уровне светлой темы. По умолчанию используются цвета из палитры с 50 шагом цвета
+
+<Canvas withSource="none">
+  <AvatarGroupColoring />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupColoring} />
+
+### Пользовательская палитра
+
+`AvatarGroup` окрашивает аватары из предзаложенной палитры на `ref`-уровне светлой темы. По умолчанию используются цвета из палитры с 50 шагом цвета
+
+<Canvas withSource="none">
+  <AvatarGroupCustomColoring />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupCustomColoring} />
+
+## Примеры использования
+
+### Группа аватаров с выпадающим списком
+
+<Canvas withSource="none">
+  <AvatarGroupDropdown />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupDropdown} />
+
+### Группа аватаров с тултипами
+
+<Canvas withSource="none">
+  <AvatarGroupTooltip />
+</Canvas>
+
+<Source language="tsx" code={RawAvatarGroupTooltip} />

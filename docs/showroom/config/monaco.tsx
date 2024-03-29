@@ -8,6 +8,7 @@ const packages = [
   'base',
   'accordion',
   'autocomplete',
+  'avatar',
   'badge',
   'bar',
   'box',
