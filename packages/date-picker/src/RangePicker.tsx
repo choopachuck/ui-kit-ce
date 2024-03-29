@@ -196,6 +196,9 @@ const useStyles = createUseStyles((theme) => ({
     '&$inputDisabled': {
       backgroundColor: 'transparent',
     },
+    '&$inputError:not($inputDisabled)': {
+      backgroundColor: 'transparent',
+    },
     '&::after': {
       borderWidth: 0,
     },
@@ -208,6 +211,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   inputFocused: {},
+  inputError: {},
 
   inputStart: {
     paddingRight: 8,
@@ -554,6 +558,7 @@ export const RangePicker = React.forwardRef(
         classesList.inputDisabled,
         startInputProps?.classes?.disabled
       ),
+      error: clsx(classesList.inputError, startInputProps?.classes?.error),
     }
 
     const endInputClasses: InputBaseProps['classes'] = {
@@ -568,6 +573,7 @@ export const RangePicker = React.forwardRef(
         classesList.inputDisabled,
         endInputProps?.classes?.disabled
       ),
+      error: clsx(classesList.inputError, endInputProps?.classes?.error),
     }
 
     const nativeInputPropsStart: InputBaseProps['inputProps'] = {
