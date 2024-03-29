@@ -196,7 +196,7 @@ export const ListItem = React.forwardRef(
       selected,
       disabled,
       critical,
-      size: sizeProp = 'md',
+      size: sizeProp,
       textProps,
       prefix,
       suffix,
@@ -216,7 +216,7 @@ export const ListItem = React.forwardRef(
     ])
 
     const interactive = listContext.interactive || interactiveProp
-    const size = sizeProp || listContext.size
+    const size = sizeProp || listContext.size || 'md'
     const stripe = listContext.stripe || stripeProp
 
     const classesList = useStyles()
