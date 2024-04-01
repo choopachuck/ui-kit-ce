@@ -114,8 +114,6 @@ export const OptionItem = <
       ...classesCommonOptionItemProps,
     }
 
-    console.log(classes)
-
     return (
       <>
         {isDivided && (
