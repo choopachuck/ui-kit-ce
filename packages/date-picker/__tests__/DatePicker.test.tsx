@@ -128,7 +128,7 @@ it.each(adapterKeys)(
 it.each(adapterKeys)(
   '[Adapter: %s] days in the past are disabled correctly',
   (adapterKey) => {
-    const { getByRole, getAllByRole } = render(
+    const { getByRole, queryAllByRole } = render(
       <Component disablePast adapterKey={adapterKey} />
     )
 
@@ -138,7 +138,7 @@ it.each(adapterKeys)(
 
     fireEvent.click(input)
 
-    const yesterday = getPrevDay(currentDate, getAllByRole, adapterKey)
+    const yesterday = getPrevDay(currentDate, queryAllByRole, adapterKey)
 
     if (yesterday) {
       expect(yesterday).toHaveAttribute('aria-disabled', 'true')
@@ -339,7 +339,7 @@ it.each(adapterKeys)(
   '[Adapter: %s] handles minDate correctly',
   (adapterKey) => {
     const currentDate = new Date()
-    const { getByRole, getAllByRole, queryByText } = render(
+    const { getByRole, queryByText, queryAllByRole } = render(
       <Component
         format="dd.MM.yyyy"
         minDate={currentDate}
@@ -351,7 +351,7 @@ it.each(adapterKeys)(
 
     fireEvent.click(input)
 
-    const dayBeforeMinDate = getPrevDay(currentDate, getAllByRole, adapterKey)
+    const dayBeforeMinDate = getPrevDay(currentDate, queryAllByRole, adapterKey)
 
     if (dayBeforeMinDate) {
       expect(dayBeforeMinDate).toHaveAttribute('aria-disabled', 'true')
