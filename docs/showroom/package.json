@@ -65,6 +65,7 @@
     "@v-uik/theme": "^1.10.0",
     "@v-uik/tooltip": "^1.10.0",
     "@v-uik/typography": "^1.10.0",
+    "@v-uik/underlay": "^1.10.0",
     "@v-uik/utils": "^1.10.0",
     "babel-loader": "8.1.0",
     "copy-webpack-plugin": "^6.3.0",

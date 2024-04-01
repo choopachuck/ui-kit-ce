@@ -44,6 +44,7 @@ import * as TagPackage from '@v-uik/tag'
 import * as TextareaPackage from '@v-uik/textarea'
 import * as ThemePackage from '@v-uik/theme'
 import * as TooltipPackage from '@v-uik/tooltip'
+import * as UnderlayPackage from '@v-uik/underlay'
 import * as TypographyPackage from '@v-uik/typography'
 import * as UtilsPackage from '@v-uik/utils'
 import React from 'react'
@@ -142,6 +143,7 @@ export const createLiveEditStory = (
       '@v-uik/textarea': TextareaPackage,
       '@v-uik/theme': ThemePackage,
       '@v-uik/tooltip': TooltipPackage,
+      '@v-uik/underlay': UnderlayPackage,
       '@v-uik/typography': TypographyPackage,
       '@v-uik/utils': UtilsPackage,
     },

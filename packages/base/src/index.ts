@@ -66,6 +66,7 @@ export * from '@v-uik/tooltip'
 export type { Classes as TooltipClasses } from '@v-uik/tooltip'
 
 export * from '@v-uik/typography'
+export * from '@v-uik/underlay'
 export * from '@v-uik/utils'
 export * from '@v-uik/labelled'
 

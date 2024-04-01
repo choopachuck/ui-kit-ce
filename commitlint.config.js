@@ -55,6 +55,7 @@ module.exports = {
         'theme',
         'tooltip',
         'typography',
+        'underlay',
         'utils',
         'fonts',
         'divider',

@@ -1,0 +1,23 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Underlay } from '@v-uik/underlay'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { ClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'Underlay', 'API'])}
+  component={Underlay}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Underlay API
+
+<ArgsTable of={Underlay} />
+
+# Classes
+
+<ArgsTable of={ClassesDummy} />
