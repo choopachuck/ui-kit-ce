@@ -68,9 +68,11 @@ const useStyles = createUseStyles((theme) => ({
 
     '&$top': {
       bottom: 'auto',
+      width: 'auto',
     },
     '&$bottom': {
       top: 'auto',
+      width: 'auto',
     },
     '&$left': {
       right: 'auto',
