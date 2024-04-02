@@ -37,7 +37,7 @@ export interface BaseComboBoxProps<
    */
   labelledClasses?: LabelledProps['classes']
   /**
-   * Можно ли очищать всё поле
+   * Можно ли очищать всё поле (нажатием по крестику, через Backspace, повторным нажатием на выбранную опцию)
    */
   canClear?: boolean
   /**
