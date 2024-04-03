@@ -1,0 +1,28 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Card } from '@v-uik/card'
+
+import { ClassesDummy } from './examples/Classes.dummy'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Card', 'API'])}
+  component={Card}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# API
+
+<ArgsTable of={Card} />
+
+# Classes
+
+<ArgsTable of={ClassesDummy} />

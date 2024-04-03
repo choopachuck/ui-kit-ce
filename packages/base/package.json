@@ -28,6 +28,7 @@
     "@v-uik/breadcrumbs": "^1.10.0",
     "@v-uik/button": "^1.10.0",
     "@v-uik/button-group": "^1.10.0",
+    "@v-uik/card": "^1.10.0",
     "@v-uik/checkbox": "^1.10.0",
     "@v-uik/checkbox-group": "^1.10.0",
     "@v-uik/combo-box": "^1.10.0",

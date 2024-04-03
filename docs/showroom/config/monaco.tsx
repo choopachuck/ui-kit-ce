@@ -15,6 +15,7 @@ const packages = [
   'breadcrumbs',
   'button-group',
   'button',
+  'card',
   'checkbox-group',
   'checkbox',
   'combo-box',

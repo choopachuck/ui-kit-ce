@@ -56,6 +56,7 @@ import { createDropzone } from './dropzone'
 import { createFileItem } from './fileItem'
 import { createUnderlay } from './underlay'
 import { createAvatar } from './avatar'
+import { createCard } from './card'
 
 // пришлось описать ключи компонентного слоя отдельным типом, потому что вывести
 // не удается из-за циклической зависимости в createComp.
@@ -77,6 +78,7 @@ type ComponentLayerKeys =
   | 'breadcrumbs'
   | 'button'
   | 'buttonGroup'
+  | 'card'
   | 'checkbox'
   | 'comboBox'
   | 'datePicker'
@@ -142,6 +144,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     breadcrumbs: checkCompatibilityMode(customProps, 'breadcrumbs'),
     button: checkCompatibilityMode(customProps, 'button'),
     buttonGroup: checkCompatibilityMode(customProps, 'buttonGroup'),
+    card: checkCompatibilityMode(customProps, 'card'),
     checkbox: checkCompatibilityMode(customProps, 'checkbox'),
     comboBox: checkCompatibilityMode(customProps, 'comboBox'),
     datePicker: checkCompatibilityMode(customProps, 'datePicker'),
@@ -207,6 +210,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     breadcrumbs: createBreadcrumbs(theme, compatibilityMap.breadcrumbs),
     button: createButton(theme, compatibilityMap.button),
     buttonGroup: createButtonGroup(theme, compatibilityMap.buttonGroup),
+    card: createCard(theme, compatibilityMap.card),
     checkbox: createCheckbox(theme, compatibilityMap.checkbox),
     comboBox: createComboBox(theme, compatibilityMap.comboBox),
     datePicker: createDatePicker(theme, compatibilityMap.datePicker),

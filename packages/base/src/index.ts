@@ -6,6 +6,7 @@ export * from '@v-uik/box'
 export * from '@v-uik/breadcrumbs'
 export * from '@v-uik/button'
 export * from '@v-uik/button-group'
+export * from '@v-uik/card'
 export * from '@v-uik/checkbox'
 export * from '@v-uik/checkbox-group'
 

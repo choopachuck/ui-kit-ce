@@ -7,6 +7,7 @@ import * as BoxPackage from '@v-uik/box'
 import * as BreadcrumbsPackage from '@v-uik/breadcrumbs'
 import * as ButtonPackage from '@v-uik/button'
 import * as ButtonGroupPackage from '@v-uik/button-group'
+import * as CardPackage from '@v-uik/card'
 import * as CheckBoxPackage from '@v-uik/checkbox'
 import * as CheckBoxGroupPackage from '@v-uik/checkbox-group'
 import * as ComboBoxPackage from '@v-uik/combo-box'
@@ -47,6 +48,7 @@ import * as TooltipPackage from '@v-uik/tooltip'
 import * as UnderlayPackage from '@v-uik/underlay'
 import * as TypographyPackage from '@v-uik/typography'
 import * as UtilsPackage from '@v-uik/utils'
+
 import React from 'react'
 
 const LS_KEY_BASE = 'v-uik-storybook-liveedit_'
@@ -106,6 +108,7 @@ export const createLiveEditStory = (
       '@v-uik/breadcrumbs': BreadcrumbsPackage,
       '@v-uik/button': ButtonPackage,
       '@v-uik/button-group': ButtonGroupPackage,
+      '@v-uik/card': CardPackage,
       '@v-uik/checkbox': CheckBoxPackage,
       '@v-uik/checkbox-group': CheckBoxGroupPackage,
       '@v-uik/combo-box': ComboBoxPackage,

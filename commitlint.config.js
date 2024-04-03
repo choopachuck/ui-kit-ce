@@ -13,6 +13,7 @@ module.exports = {
         'breadcrumbs',
         'button',
         'button-group',
+        'card',
         'checkbox',
         'checkbox-group',
         'combo-box',
