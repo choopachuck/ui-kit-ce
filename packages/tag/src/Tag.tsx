@@ -2,9 +2,8 @@
 
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 import { useText } from '@v-uik/typography'
-import { useButtonReset } from '@v-uik/button'
 import type { TagClasses } from './interfaces'
 import { TTagElementSizeType, TagElementSize } from './TTagElementSizeType'
 import type { TagComponentsConfig } from './components'

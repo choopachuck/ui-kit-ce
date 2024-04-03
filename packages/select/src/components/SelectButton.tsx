@@ -2,11 +2,10 @@
 
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 import { ElementSize, ElementSizeType } from '@v-uik/common'
 import { useText } from '@v-uik/typography'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
-import { useButtonReset } from '@v-uik/button'
 import { ErrorIcon } from '../assets/ErrorIcon'
 
 const useStyles = createUseStyles((theme) => ({

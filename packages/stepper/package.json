@@ -23,7 +23,6 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@v-uik/button": "^1.10.0",
     "@v-uik/common": "^1.10.0",
     "@v-uik/hooks": "^1.10.0",
     "@v-uik/theme": "^1.10.0"

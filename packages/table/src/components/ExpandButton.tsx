@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
-import { useButtonReset } from '@v-uik/button'
+import { useButtonReset } from '@v-uik/hooks'
 import { ExpandChevronIcon } from '../assets/ExpandChevronIcon'
 
 const useStyles = createUseStyles((theme) => ({

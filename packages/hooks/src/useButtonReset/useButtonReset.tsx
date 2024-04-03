@@ -2,7 +2,6 @@
 
 import { createUseStyles } from '@v-uik/theme'
 
-/** @deprecated Используйте useButtonReset из @v-uik/hooks */
 export const useButtonReset = createUseStyles({
   resetButton: {
     border: 'none',

@@ -1,10 +1,9 @@
 'use client'
 
 import * as React from 'react'
-import { clsx, createUseStyles } from '@v-uik/theme'
+import { clsx, createUseStyles, useButtonReset } from '@v-uik/theme'
 import { useClassList, useMergedRefs } from '@v-uik/hooks'
 import { useText } from '@v-uik/typography'
-import { useButtonReset } from '@v-uik/button'
 import { AddIcon } from './assets/AddIcon'
 import { isEqualKeyboardKeys } from '@v-uik/utils'
 import { TagInputClasses } from './interfaces'

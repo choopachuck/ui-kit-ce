@@ -2,8 +2,7 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
-import { useGeneratedId, useClassList } from '@v-uik/hooks'
-import { useButtonReset } from '@v-uik/button'
+import { useGeneratedId, useClassList, useButtonReset } from '@v-uik/hooks'
 import { AccordionComponentsConfig, getComponents } from './components'
 import { Classes } from './classes'
 

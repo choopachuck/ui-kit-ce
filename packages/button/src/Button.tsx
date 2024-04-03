@@ -2,10 +2,9 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 import { ElementSize, ElementSizeType } from '@v-uik/common'
 import { Text, TextKinds, TextProps } from '@v-uik/typography'
-import { useButtonReset } from './useButtonReset'
 import { Classes } from './classes'
 
 import { getStyles } from './styles'

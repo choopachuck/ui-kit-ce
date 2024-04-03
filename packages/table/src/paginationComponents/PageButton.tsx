@@ -2,8 +2,7 @@
 
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
-import { useButtonReset } from '@v-uik/button'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 
 const useStyles = createUseStyles({
   button: {

@@ -2,9 +2,8 @@
 
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 import { Direction } from '@v-uik/common'
-import { useButtonReset } from '@v-uik/button'
 import { StepperContext } from './StepperContext'
 import { NumberIconCompleted } from './assets/NumberIconCompleted'
 import { CompletedBadgeIcon } from './assets/CompletedBadgeIcon'

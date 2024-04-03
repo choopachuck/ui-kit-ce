@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { DayPart } from '../../interfaces/time'
-import { useButtonReset } from '@v-uik/button'
+import { useButtonReset } from '@v-uik/hooks'
 
 export type OptionClasses = {
   option?: string

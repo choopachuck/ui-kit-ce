@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { clsx } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
-import { useButtonReset } from '@v-uik/button'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 import { useNowDate } from '../hooks/useNowDate'
 import { useDateLibAdapter } from '../hooks/useDateLibAdapter'
 import { useDayViewStyles } from '../hooks/useDayViewStyles'
