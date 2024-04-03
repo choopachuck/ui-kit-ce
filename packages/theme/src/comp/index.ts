@@ -57,6 +57,7 @@ import { createFileItem } from './fileItem'
 import { createUnderlay } from './underlay'
 import { createAvatar } from './avatar'
 import { createCard } from './card'
+import { createCloseButton } from './closeButton'
 
 // пришлось описать ключи компонентного слоя отдельным типом, потому что вывести
 // не удается из-за циклической зависимости в createComp.
@@ -121,6 +122,7 @@ type ComponentLayerKeys =
   | 'dropzone'
   | 'fileItem'
   | 'underlay'
+  | 'closeButton'
 
 let compatibilityMap: { [key in ComponentLayerKeys]: boolean | undefined }
 
@@ -187,6 +189,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     textarea: checkCompatibilityMode(customProps, 'textarea'),
     tooltip: checkCompatibilityMode(customProps, 'tooltip'),
     underlay: checkCompatibilityMode(customProps, 'underlay'),
+    closeButton: checkCompatibilityMode(customProps, 'closeButton'),
   }
 
   return {
@@ -272,6 +275,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     timeView: createTimeView(),
     tooltip: createTooltip(theme, compatibilityMap.tooltip),
     underlay: createUnderlay(theme, compatibilityMap.underlay),
+    closeButton: createCloseButton(theme, compatibilityMap.closeButton),
   }
 }
 

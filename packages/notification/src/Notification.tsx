@@ -1,9 +1,8 @@
 'use client'
 
 import * as React from 'react'
-import { clsx, createUseStyles } from '@v-uik/theme'
+import { clsx, createUseStyles, useTheme, Theme } from '@v-uik/theme'
 import { useClassList, useMergedRefs } from '@v-uik/hooks'
-import { useButtonReset } from '@v-uik/button'
 import {
   NotificationClasses,
   NotificationProps,
@@ -11,8 +10,9 @@ import {
   TNotificationStatus,
 } from './types'
 import { Transition } from './components/Transition'
-import { IconClose, IconError, IconInfo, IconSuccess } from './assets'
-import { isEqualKeyboardKeys } from '@v-uik/utils'
+import { IconError, IconInfo, IconSuccess } from './assets'
+import { isEqualKeyboardKeys, getClassnameByStatus, pick } from '@v-uik/utils'
+import { CloseButton, Direction } from '@v-uik/common'
 
 const iconByStatus: Record<TNotificationStatus, React.ReactElement> = {
   default: <IconInfo />,
@@ -110,31 +110,6 @@ const useStyles = createUseStyles((theme) => ({
     fontWeight: theme.comp.notification.contentTypographyFontWeight,
   },
 
-  closeButton: {
-    flex: '0 0 40px',
-    height: 40,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: theme.shape.borderRadius,
-    color: theme.comp.notification.closeButtonColorText,
-    cursor: 'pointer',
-
-    '&:hover': {
-      color: theme.comp.notification.closeButtonColorTextHover,
-      backgroundColor: theme.comp.notification.closeButtonColorBackgroundHover,
-    },
-
-    '&:active': {
-      color: theme.comp.notification.closeButtonColorTextActive,
-      backgroundColor: theme.comp.notification.closeButtonColorBackgroundActive,
-    },
-
-    '&:focus-visible': {
-      boxShadow: `0 0 0 2px ${theme.comp.notification.closeButtonColorShadowFocus}`,
-    },
-  },
-
   '@keyframes fakeProgress': {
     from: {
       opacity: 0,
@@ -196,9 +171,16 @@ export const Notification = React.forwardRef(
 
     const classesList = useStyles()
 
-    const buttonClasses = useButtonReset()
-
     const classesMap = useClassList(classesList, classes)
+    const notificationComp = useTheme().comp.notification
+    const closeButtonTokens = pick<
+      typeof notificationComp,
+      Theme['comp']['closeButton']
+    >(notificationComp, /^closeButton/, (v) =>
+      v.replace(/^(closeButton)([A-Z])/, (_$1, _$2, $3: string) =>
+        $3.toLowerCase()
+      )
+    )
 
     const className = clsx(classesMap.root, classNameProp, {
       [classesMap.clickable]: closeOnClick,
@@ -311,17 +293,11 @@ export const Notification = React.forwardRef(
           <div className={classesMap.content}>{children}</div>
 
           {showCloseButton && (
-            <button
-              type="button"
-              className={clsx(
-                buttonClasses.resetButton,
-                classesMap.closeButton
-              )}
+            <CloseButton
+              tokens={closeButtonTokens}
               aria-label={closeButtonAriaLabel}
               onClick={closeNotification}
-            >
-              <IconClose />
-            </button>
+            />
           )}
 
           {!!autoClose && (

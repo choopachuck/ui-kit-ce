@@ -80,21 +80,27 @@ export const createDrawerHeader = (
   subtitleColorText: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorText: compatibilityMode
     ? theme.colourway.onBackgroundHigh
     : theme.sys.color.onBackgroundHigh,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorTextHover: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorTextActive: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorBackgroundHover: compatibilityMode
     ? theme.colourway.mono02
     : theme.sys.color.onBackgroundOverlayHover,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorBackgroundActive: compatibilityMode
     ? theme.colourway.mono04
     : theme.sys.color.onBackgroundOverlayActive,
+
   dividerColorBorder: compatibilityMode
     ? theme.colourway.mono02
     : theme.sys.color.separationMinor,
