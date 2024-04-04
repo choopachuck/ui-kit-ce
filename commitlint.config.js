@@ -26,6 +26,7 @@ module.exports = {
         'file-uploader',
         'grid',
         'hooks',
+        'inline-notification',
         'input',
         'input-helper-text',
         'input-label',

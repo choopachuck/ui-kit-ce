@@ -42,6 +42,7 @@
     "@v-uik/file-uploader": "1.10.0",
     "@v-uik/grid": "1.10.0",
     "@v-uik/hooks": "1.10.0",
+    "@v-uik/inline-notification": "1.10.0",
     "@v-uik/input": "1.10.0",
     "@v-uik/input-helper-text": "1.10.0",
     "@v-uik/input-label": "1.10.0",

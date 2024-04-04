@@ -20,6 +20,7 @@ import * as DropdownPackage from '@v-uik/dropdown'
 import * as DropdownMenuPackage from '@v-uik/dropdown-menu'
 import * as GridPackage from '@v-uik/grid'
 import * as HooksPackage from '@v-uik/hooks'
+import * as InlineNotificationPackage from '@v-uik/inline-notification'
 import * as InputPackage from '@v-uik/input'
 import * as InputHelperTextPackage from '@v-uik/input-helper-text'
 import * as InputLabelPackage from '@v-uik/input-label'
@@ -121,6 +122,7 @@ export const createLiveEditStory = (
       '@v-uik/dropdown-menu': DropdownMenuPackage,
       '@v-uik/grid': GridPackage,
       '@v-uik/hooks': HooksPackage,
+      '@v-uik/inline-notification': InlineNotificationPackage,
       '@v-uik/input': InputPackage,
       '@v-uik/input-helper-text': InputHelperTextPackage,
       '@v-uik/input-label': InputLabelPackage,

@@ -29,6 +29,7 @@ const packages = [
   'file-uploader',
   'grid',
   'hooks',
+  'inline-notification',
   'input-helper-text',
   'input-label',
   'input-number',

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
-import { useButtonReset } from '../src'
+import { useButtonReset } from './useButtonReset'
 
 const Component = () => {
   const buttonClasses = useButtonReset()

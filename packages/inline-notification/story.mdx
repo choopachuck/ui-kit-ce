@@ -1,0 +1,217 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { InlineNotification } from '@v-uik/inline-notification'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Canvas as CanvasStory,
+  Filled,
+  Outlined,
+  Direction,
+  Elements,
+  LongText,
+  Customized,
+  Playground,
+  StylingOptions,
+} from './examples'
+import RawCanvas from '!!raw-loader!@v-uik/inline-notification/examples/Canvas'
+import RawFilled from '!!raw-loader!@v-uik/inline-notification/examples/Filled'
+import RawOutlined from '!!raw-loader!@v-uik/inline-notification/examples/Outlined'
+import RawDirection from '!!raw-loader!@v-uik/inline-notification/examples/Direction'
+import RawElements from '!!raw-loader!@v-uik/inline-notification/examples/Elements'
+import RawLongText from '!!raw-loader!@v-uik/inline-notification/examples/LongText'
+import RawCustomized from '!!raw-loader!@v-uik/inline-notification/examples/Customized'
+import RawPlayground from '!!raw-loader!@v-uik/inline-notification/examples/Playground'
+import RawStylingOptions from '!!raw-loader!@v-uik/inline-notification/examples/StylingOptions'
+import { Controls } from '../../docs/showroom/components'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([
+    COMPONENTS.feedback,
+    'InlineNotification',
+    'InlineNotification',
+  ])}
+  component={InlineNotification}
+/>
+
+<Story
+  name="InlineNotification"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# InlineNotification
+
+InlineNotification - компонент для отображения сообщений пользователю внутри основного контента.
+
+## import
+
+```ts
+import { InlineNotification } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { InlineNotification } from '@v-uik/inline-notification'
+```
+
+## Интерактивный пример
+
+<Controls
+  overrideFields={[
+    {
+      key: 'status',
+      name: 'Статус',
+      type: {
+        name: 'enum',
+        value: ['neutral', 'error', 'success', 'info', 'warning'],
+      },
+      defaultValue: 'info',
+    },
+    {
+      key: 'kind',
+      name: 'Вид',
+      type: {
+        name: 'enum',
+        value: ['filled', 'outlined'],
+      },
+      defaultValue: 'filled',
+    },
+    {
+      key: 'showTitle',
+      name: 'Заголовок',
+      type: { name: 'boolean' },
+      defaultValue: true,
+    },
+    {
+      key: 'showBody',
+      name: 'Описание',
+      type: { name: 'boolean' },
+      defaultValue: true,
+    },
+    {
+      key: 'showIndicator',
+      name: 'Индикатор',
+      type: { name: 'boolean' },
+      defaultValue: true,
+    },
+    {
+      key: 'showIcon',
+      name: 'Иконка',
+      type: { name: 'boolean' },
+      defaultValue: true,
+    },
+    {
+      key: 'showCloseButton',
+      name: 'Кнопка закрытия',
+      type: { name: 'boolean' },
+      defaultValue: false,
+    },
+    {
+      key: 'showActions',
+      name: 'Кнопки действия',
+      type: { name: 'boolean' },
+      defaultValue: true,
+    },
+    {
+      key: 'borders',
+      name: 'Углы',
+      type: {
+        name: 'enumRadio',
+        value: ['Скругленные', 'Прямые'],
+      },
+      defaultValue: 'Скругленные',
+    },
+  ]}
+>
+  {(props) => <Playground {...props} />}
+</Controls>
+
+<Source language="tsx" code={RawPlayground} />
+
+## C заливкой
+
+InlineNotification c kind = `filled`.
+
+<Canvas withSource="none">
+  <Filled />
+</Canvas>
+
+<Source language="tsx" code={RawFilled} />
+
+## C обводкой
+
+InlineNotification c kind = `outlined`.
+
+<Canvas withSource="none">
+  <Outlined />
+</Canvas>
+
+<Source language="tsx" code={RawOutlined} />
+
+## Вертикальный и горизонтальный
+
+Направлением InlineNotification можно управлять свойством `direction`.
+
+<Canvas withSource="none">
+  <Direction />
+</Canvas>
+
+<Source language="tsx" code={RawDirection} />
+
+## Элементы
+
+<Canvas withSource="none">
+  <Elements />
+</Canvas>
+
+<Source language="tsx" code={RawElements} />
+
+## Длинный текст
+
+Текст уходит в троеточие, если не помещается контейнере.
+
+Вы можете:
+
+- изменить ширину компонента;
+- изменить текст;
+- поменять вид отображение на вертикальный (`direction="vertical"`).
+
+<Canvas withSource="none">
+  <LongText />
+</Canvas>
+
+<Source language="tsx" code={RawLongText} />
+
+## Произвольное содержимое
+
+Если встроенная композиция элементов не подходит, можно передать произвольное содержимое в `children` InlineNotification
+
+<Canvas withSource="none">
+  <Customized />
+</Canvas>
+
+<Source language="tsx" code={RawCustomized} />
+
+## Стилизация
+
+Чтобы достичь внешнего вида компонента, который не заложен в него по-умолчанию, например,
+убрать скругления или выровнять содержимое по центру, можно применить собственные стили
+к соответсвующим элементам компонента через свойство `classes`.
+
+<Canvas withSource="none">
+  <StylingOptions />
+</Canvas>
+
+<Source language="tsx" code={RawStylingOptions} />

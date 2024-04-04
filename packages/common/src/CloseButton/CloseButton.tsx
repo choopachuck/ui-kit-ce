@@ -51,6 +51,7 @@ export type CloseButtonProps = {
 export const CloseButton: FC<CloseButtonProps> = ({
   tokens,
   className,
+  children,
   ...props
 }) => {
   const defaultComp: CloseButtonTokens = useTheme().comp.closeButton
@@ -68,7 +69,7 @@ export const CloseButton: FC<CloseButtonProps> = ({
       )}
       {...props}
     >
-      <IconClose />
+      {children || <IconClose />}
     </button>
   )
 }

@@ -31,6 +31,7 @@ import {
 } from './datePicker'
 import { createDrawer, createDrawerHeader, createDrawerFooter } from './drawer'
 import { createDropdownMenu, createDropdownMenuItem } from './dropdownMenu'
+import { createInlineNotification } from './inlineNotification'
 import { createInput } from './input'
 import { createInputHelperText } from './inputHelperText'
 import { createInputPassword } from './inputPassword'
@@ -94,6 +95,7 @@ type ComponentLayerKeys =
   | 'drawerFooter'
   | 'dropdownMenu'
   | 'dropdownMenuItem'
+  | 'inlineNotification'
   | 'input'
   | 'inputHelperText'
   | 'inputPassword'
@@ -164,6 +166,10 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     dropdownMenuItem: checkCompatibilityMode(customProps, 'dropdownMenuItem'),
     dropzone: checkCompatibilityMode(customProps, 'dropzone'),
     fileItem: checkCompatibilityMode(customProps, 'fileItem'),
+    inlineNotification: checkCompatibilityMode(
+      customProps,
+      'inlineNotification'
+    ),
     input: checkCompatibilityMode(customProps, 'input'),
     inputHelperText: checkCompatibilityMode(customProps, 'inputHelperText'),
     inputPassword: checkCompatibilityMode(customProps, 'inputPassword'),
@@ -240,6 +246,10 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     ),
     dropzone: createDropzone(theme, compatibilityMap.dropzone),
     fileItem: createFileItem(theme, compatibilityMap.fileItem),
+    inlineNotification: createInlineNotification(
+      theme,
+      compatibilityMap.inlineNotification
+    ),
     input: createInput(theme, compatibilityMap.input),
     inputHelperText: createInputHelperText(
       theme,
