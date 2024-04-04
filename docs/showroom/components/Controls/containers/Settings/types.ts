@@ -11,7 +11,7 @@ import { GridItemProps } from '@v-uik/base'
 export type ControlBaseStrictInputType =
   | (Omit<StrictInputType, 'type'> & {
       type: {
-        name: SBType['name'] | 'textarea'
+        name: SBType['name'] | 'textarea' | 'enumRadio'
         value?: SBType
       }
     })

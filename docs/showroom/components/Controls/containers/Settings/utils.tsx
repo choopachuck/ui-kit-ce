@@ -1,19 +1,13 @@
 import React from 'react'
 import { Args } from '@storybook/csf'
-import { EnumControls } from '../../components'
+import { EnumControls, EnumRadio } from '../../components'
 import {
   RenderControlByTypeProps,
   ComputeFieldsProps,
   BaseControlFields,
   ControlStrictInputType,
 } from './types'
-import {
-  InputNumber,
-  LabelControl,
-  Checkbox,
-  Input,
-  Textarea,
-} from '@v-uik/base'
+import { InputNumber, LabelControl, Input, Textarea, Switch } from '@v-uik/base'
 
 export const renderControlByType = ({
   strictInput: { label, name, type },
@@ -25,6 +19,15 @@ export const renderControlByType = ({
   }
 
   switch (type?.name) {
+    case 'enumRadio':
+      return (
+        <EnumRadio
+          label={label}
+          values={type.value as unknown as (string | number)[]}
+          value={value as string | number}
+          onChange={handleChange}
+        />
+      )
     case 'enum':
       return (
         <EnumControls
@@ -37,17 +40,20 @@ export const renderControlByType = ({
     case 'number':
       return (
         <InputNumber
+          fullWidth
           label={label}
           value={value as number}
           precision={0}
+          size="sm"
           onChange={handleChange}
         />
       )
     case 'boolean':
       return (
         <LabelControl
+          size="sm"
           checked={value as boolean}
-          control={<Checkbox />}
+          control={<Switch />}
           label={label}
           onChange={() => handleChange(!value)}
         />
@@ -64,10 +70,11 @@ export const renderControlByType = ({
     default:
       return (
         <Input
+          fullWidth
           label={label}
           value={value as string}
+          size="sm"
           onChange={handleChange}
-          fullWidth
         />
       )
   }
@@ -87,6 +94,7 @@ export const computeInputs = <TComponentProps extends Args = Args>({
   const defaultValues = {}
 
   overrideFields?.forEach(({ key, ...rest }) => {
+    // @ts-ignore
     strictInputs[key] = {
       ...storyFields?.[key],
       ...rest,
