@@ -5,9 +5,10 @@ import { clsx, createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { useText } from '@v-uik/typography'
 import { useButtonReset } from '@v-uik/button'
-import { DeleteIcon } from './assets/DeleteIcon'
-import { TagClasses } from './interfaces'
+import type { TagClasses } from './interfaces'
 import { TTagElementSizeType, TagElementSize } from './TTagElementSizeType'
+import type { TagComponentsConfig } from './components'
+import { getComponents } from './components'
 
 export const TagKinds = {
   lite: 'lite',
@@ -39,6 +40,10 @@ export interface CommonProps extends React.ComponentPropsWithRef<'button'> {
    * Размер тэга
    */
   size?: TTagElementSizeType
+  /**
+   * Свойство для переопределения элементов Tag
+   */
+  components?: TagComponentsConfig
 }
 
 /**
@@ -535,12 +540,15 @@ export const Tag = React.forwardRef(
       children,
       onDelete,
       onClick,
+      components,
       ...rest
     }: TagProps,
     ref: React.Ref<HTMLButtonElement>
   ) => {
     const isColorTag = kind === TagKinds.color
     const isClickable = !isColorTag && !!onClick && !disabled
+
+    const { DeleteIcon } = getComponents(components)
 
     const buttonClasses = useButtonReset()
     const { ellipsis } = useText()
