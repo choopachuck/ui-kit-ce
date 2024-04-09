@@ -10,8 +10,8 @@ import {
   valueToPercent,
 } from '@v-uik/utils'
 import { useClassList, useThrottle } from '@v-uik/hooks'
-import { SliderMarker, Tick, TickLabel } from './components'
-import { TickItem, Classes } from './interfaces'
+import { SliderMarker, SliderMarkerProps, Tick, TickLabel } from './components'
+import type { TickItem, Classes } from './interfaces'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
 
 const DECREASE_ARROW_KEYS = ['ArrowDown', 'ArrowLeft']
@@ -71,7 +71,7 @@ export interface SliderProps
   /**
    * Свойства элемента marker
    */
-  markerProps?: React.InputHTMLAttributes<HTMLDivElement>
+  markerProps?: Omit<SliderMarkerProps, 'isActive' | 'isFocused' | 'disabled'>
 }
 
 interface ExtendedSliderStylesProps extends SliderStylesProps {
