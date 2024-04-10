@@ -24,6 +24,7 @@ export const HOOKS = {
 
   // stories
   usePopper: 'usePopper',
+  useResetCss: 'useResetCss',
 }
 
 /**
