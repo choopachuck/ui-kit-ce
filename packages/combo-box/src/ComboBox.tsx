@@ -1387,6 +1387,7 @@ export const ComboBox = React.forwardRef(
               isFocused={focused}
               size={size}
               classes={{
+                focused: classesMap.focused,
                 rootControl: classesMap.inputRoot,
                 disabled: classesMap.inputDisabled,
               }}
