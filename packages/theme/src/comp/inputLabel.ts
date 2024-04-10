@@ -40,67 +40,51 @@ export const createInputLabel = (
     : theme.sys.typography.bodySm.letterSpacing,
 
   //typography sm
-  typographyFontSizeSm: compatibilityMode
-    ? theme.typography.fontSize.caption
-    : theme.sys.typography.bodySm.fontSize,
-  typographyLineHeightSm: compatibilityMode
-    ? theme.typography.lineHeight.caption
-    : theme.sys.typography.bodySm.lineHeight,
+  typographyFontSizeSm: '',
+  typographyLineHeightSm: '',
 
-  descriptionTypographyFontSizeSm: compatibilityMode
-    ? theme.typography.fontSize.caption
-    : theme.sys.typography.bodySm.fontSize,
-  descriptionTypographyLineHeightSm: compatibilityMode
-    ? theme.typography.lineHeight.caption
-    : theme.sys.typography.bodySm.lineHeight,
+  descriptionTypographyFontSizeSm: '',
+  descriptionTypographyLineHeightSm: '',
 
   //typography md
-  typographyFontSizeMd: compatibilityMode
-    ? theme.typography.fontSize.caption
-    : theme.sys.typography.bodySm.fontSize,
-  typographyLineHeightMd: compatibilityMode
-    ? theme.typography.lineHeight.caption
-    : theme.sys.typography.bodySm.lineHeight,
+  typographyFontSizeMd: '',
+  typographyLineHeightMd: '',
 
-  descriptionTypographyFontSizeMd: compatibilityMode
-    ? theme.typography.fontSize.caption
-    : theme.sys.typography.bodySm.fontSize,
-  descriptionTypographyLineHeightMd: compatibilityMode
-    ? theme.typography.lineHeight.caption
-    : theme.sys.typography.bodySm.lineHeight,
+  descriptionTypographyFontSizeMd: '',
+  descriptionTypographyLineHeightMd: '',
 
   //typography lg
-  typographyFontSizeLg: compatibilityMode
-    ? theme.typography.fontSize.caption
-    : theme.sys.typography.bodySm.fontSize,
-  typographyLineHeightLg: compatibilityMode
-    ? theme.typography.lineHeight.caption
-    : theme.sys.typography.bodySm.lineHeight,
+  typographyFontSizeLg: '',
+  typographyLineHeightLg: '',
 
-  descriptionTypographyFontSizeLg: compatibilityMode
-    ? theme.typography.fontSize.caption
-    : theme.sys.typography.bodySm.fontSize,
-  descriptionTypographyLineHeightLg: compatibilityMode
-    ? theme.typography.lineHeight.caption
-    : theme.sys.typography.bodySm.lineHeight,
+  descriptionTypographyFontSizeLg: '',
+  descriptionTypographyLineHeightLg: '',
 
   //typography (old)
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyFontSizeSm`, `typographyFontSizeMd` или `typographyFontSizeLg`
    */
-  typographyFontSize: '',
+  typographyFontSize: compatibilityMode
+    ? theme.typography.fontSize.caption
+    : theme.sys.typography.bodySm.fontSize,
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `descriptionTypographyFontSizeSm`, `descriptionTypographyFontSizeMd` или `descriptionTypographyFontSizeLg`
    */
-  descriptionTypographyFontSize: '',
+  descriptionTypographyFontSize: compatibilityMode
+    ? theme.typography.fontSize.caption
+    : theme.sys.typography.bodySm.fontSize,
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyLineHeightSm`, `typographyLineHeightMd` или `typographyLineHeightLg`
    */
-  typographyLineHeight: '',
+  typographyLineHeight: compatibilityMode
+    ? theme.typography.lineHeight.caption
+    : theme.sys.typography.bodySm.lineHeight,
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `descriptionTypographyLineHeightSm`, `descriptionTypographyLineHeightMd` или `descriptionTypographyLineHeightLg`
    */
-  descriptionTypographyLineHeight: '',
+  descriptionTypographyLineHeight: compatibilityMode
+    ? theme.typography.lineHeight.caption
+    : theme.sys.typography.bodySm.lineHeight,
 
   requiredColorText: theme.sys.color.errorAlpha,
 })

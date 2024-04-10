@@ -480,34 +480,34 @@ const useStyles = createUseStyles((theme) => ({
 
   textExtraSmall: {
     fontSize:
-      theme.comp.tag.typographyFontSize || theme.comp.tag.typographyFontSizeXs,
+      theme.comp.tag.typographyFontSizeXs || theme.comp.tag.typographyFontSize,
     lineHeight:
-      theme.comp.tag.typographyLineHeight ||
-      theme.comp.tag.typographyLineHeightXs,
+      theme.comp.tag.typographyLineHeightXs ||
+      theme.comp.tag.typographyLineHeight,
   },
 
   textSmall: {
     fontSize:
-      theme.comp.tag.typographyFontSize || theme.comp.tag.typographyFontSizeSm,
+      theme.comp.tag.typographyFontSizeSm || theme.comp.tag.typographyFontSize,
     lineHeight:
-      theme.comp.tag.typographyLineHeight ||
-      theme.comp.tag.typographyLineHeightSm,
+      theme.comp.tag.typographyLineHeightSm ||
+      theme.comp.tag.typographyLineHeight,
   },
 
   textMedium: {
     fontSize:
-      theme.comp.tag.typographyFontSize || theme.comp.tag.typographyFontSizeMd,
+      theme.comp.tag.typographyFontSizeMd || theme.comp.tag.typographyFontSize,
     lineHeight:
-      theme.comp.tag.typographyLineHeight ||
-      theme.comp.tag.typographyLineHeightMd,
+      theme.comp.tag.typographyLineHeightMd ||
+      theme.comp.tag.typographyLineHeight,
   },
 
   textLarge: {
     fontSize:
-      theme.comp.tag.typographyFontSize || theme.comp.tag.typographyFontSizeLg,
+      theme.comp.tag.typographyFontSizeLg || theme.comp.tag.typographyFontSize,
     lineHeight:
-      theme.comp.tag.typographyLineHeight ||
-      theme.comp.tag.typographyLineHeightLg,
+      theme.comp.tag.typographyLineHeightLg ||
+      theme.comp.tag.typographyLineHeight,
   },
 
   closeButton: {

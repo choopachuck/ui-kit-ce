@@ -56,29 +56,29 @@ const useStyles = createUseStyles((theme) => ({
 
   helperTextSmall: {
     fontSize:
-      theme.comp.inputHelperText.typographyFontSize ||
-      theme.comp.inputHelperText.typographyFontSizeSm,
+      theme.comp.inputHelperText.typographyFontSizeSm ||
+      theme.comp.inputHelperText.typographyFontSize,
     lineHeight:
-      theme.comp.inputHelperText.typographyLineHeight ||
-      theme.comp.inputHelperText.typographyLineHeightSm,
+      theme.comp.inputHelperText.typographyLineHeightSm ||
+      theme.comp.inputHelperText.typographyLineHeight,
   },
 
   helperTextMedium: {
     fontSize:
-      theme.comp.inputHelperText.typographyFontSize ||
-      theme.comp.inputHelperText.typographyFontSizeMd,
+      theme.comp.inputHelperText.typographyFontSizeMd ||
+      theme.comp.inputHelperText.typographyFontSize,
     lineHeight:
-      theme.comp.inputHelperText.typographyLineHeight ||
-      theme.comp.inputHelperText.typographyLineHeightMd,
+      theme.comp.inputHelperText.typographyLineHeightMd ||
+      theme.comp.inputHelperText.typographyLineHeight,
   },
 
   helperTextLarge: {
     fontSize:
-      theme.comp.inputHelperText.typographyFontSize ||
-      theme.comp.inputHelperText.typographyFontSizeLg,
+      theme.comp.inputHelperText.typographyFontSizeLg ||
+      theme.comp.inputHelperText.typographyFontSize,
     lineHeight:
-      theme.comp.inputHelperText.typographyLineHeight ||
-      theme.comp.inputHelperText.typographyLineHeightLg,
+      theme.comp.inputHelperText.typographyLineHeightLg ||
+      theme.comp.inputHelperText.typographyLineHeight,
   },
 
   disabled: {},

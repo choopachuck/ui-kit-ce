@@ -12,18 +12,18 @@ const useStyles = createUseStyles((theme) => ({
   helperTextMinHeight: {},
   helperTextMinHeightSmall: {
     minHeight:
-      theme.comp.inputHelperText.typographyLineHeight ||
-      theme.comp.inputHelperText.typographyLineHeightSm,
+      theme.comp.inputHelperText.typographyLineHeightSm ||
+      theme.comp.inputHelperText.typographyLineHeight,
   },
   helperTextMinHeightMedium: {
     minHeight:
-      theme.comp.inputHelperText.typographyLineHeight ||
-      theme.comp.inputHelperText.typographyLineHeightMd,
+      theme.comp.inputHelperText.typographyLineHeightMd ||
+      theme.comp.inputHelperText.typographyLineHeight,
   },
   helperTextMinHeightLarge: {
     minHeight:
-      theme.comp.inputHelperText.typographyLineHeight ||
-      theme.comp.inputHelperText.typographyLineHeightLg,
+      theme.comp.inputHelperText.typographyLineHeightLg ||
+      theme.comp.inputHelperText.typographyLineHeight,
   },
   description: {
     color: theme.comp.inputLabel.descriptionColorText,
@@ -33,27 +33,27 @@ const useStyles = createUseStyles((theme) => ({
   },
   descriptionSmall: {
     fontSize:
-      theme.comp.inputLabel.descriptionTypographyFontSize ||
-      theme.comp.inputLabel.descriptionTypographyFontSizeSm,
+      theme.comp.inputLabel.descriptionTypographyFontSizeSm ||
+      theme.comp.inputLabel.descriptionTypographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.descriptionTypographyLineHeight ||
-      theme.comp.inputLabel.descriptionTypographyLineHeightSm,
+      theme.comp.inputLabel.descriptionTypographyLineHeightSm ||
+      theme.comp.inputLabel.descriptionTypographyLineHeight,
   },
   descriptionMedium: {
     fontSize:
-      theme.comp.inputLabel.descriptionTypographyFontSize ||
-      theme.comp.inputLabel.descriptionTypographyFontSizeMd,
+      theme.comp.inputLabel.descriptionTypographyFontSizeMd ||
+      theme.comp.inputLabel.descriptionTypographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.descriptionTypographyLineHeight ||
-      theme.comp.inputLabel.descriptionTypographyLineHeightMd,
+      theme.comp.inputLabel.descriptionTypographyLineHeightMd ||
+      theme.comp.inputLabel.descriptionTypographyLineHeight,
   },
   descriptionLarge: {
     fontSize:
-      theme.comp.inputLabel.descriptionTypographyFontSize ||
-      theme.comp.inputLabel.descriptionTypographyFontSizeLg,
+      theme.comp.inputLabel.descriptionTypographyFontSizeLg ||
+      theme.comp.inputLabel.descriptionTypographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.descriptionTypographyLineHeight ||
-      theme.comp.inputLabel.descriptionTypographyLineHeightLg,
+      theme.comp.inputLabel.descriptionTypographyLineHeightLg ||
+      theme.comp.inputLabel.descriptionTypographyLineHeight,
   },
   descriptionDisabled: {
     color: theme.comp.inputLabel.descriptionColorTextDisabled,
@@ -80,29 +80,29 @@ const useStyles = createUseStyles((theme) => ({
 
   requiredSmall: {
     fontSize:
-      theme.comp.inputLabel.typographyFontSize ||
-      theme.comp.inputLabel.typographyFontSizeSm,
+      theme.comp.inputLabel.typographyFontSizeSm ||
+      theme.comp.inputLabel.typographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.typographyLineHeight ||
-      theme.comp.inputLabel.typographyLineHeightSm,
+      theme.comp.inputLabel.typographyLineHeightSm ||
+      theme.comp.inputLabel.typographyLineHeight,
   },
 
   requiredMedium: {
     fontSize:
-      theme.comp.inputLabel.typographyFontSize ||
-      theme.comp.inputLabel.typographyFontSizeMd,
+      theme.comp.inputLabel.typographyFontSizeMd ||
+      theme.comp.inputLabel.typographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.typographyLineHeight ||
-      theme.comp.inputLabel.typographyLineHeightMd,
+      theme.comp.inputLabel.typographyLineHeightMd ||
+      theme.comp.inputLabel.typographyLineHeight,
   },
 
   requiredLarge: {
     fontSize:
-      theme.comp.inputLabel.typographyFontSize ||
-      theme.comp.inputLabel.typographyFontSizeLg,
+      theme.comp.inputLabel.typographyFontSizeLg ||
+      theme.comp.inputLabel.typographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.typographyLineHeight ||
-      theme.comp.inputLabel.typographyLineHeightLg,
+      theme.comp.inputLabel.typographyLineHeightLg ||
+      theme.comp.inputLabel.typographyLineHeight,
   },
 }))
 

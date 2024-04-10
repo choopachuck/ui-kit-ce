@@ -111,38 +111,30 @@ export const createComboBox = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.typography.bodyMd.letterSpacing,
 
   // Input (Control) typography tokens sm
-  inputTypographyFontSizeSm: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  inputTypographyLineHeightSm: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  inputTypographyFontSizeSm: '',
+  inputTypographyLineHeightSm: '',
 
   // Input (Control) typography tokens md
-  inputTypographyFontSizeMd: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  inputTypographyLineHeightMd: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  inputTypographyFontSizeMd: '',
+  inputTypographyLineHeightMd: '',
 
   // Input (Control) typography tokens lg
-  inputTypographyFontSizeLg: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  inputTypographyLineHeightLg: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  inputTypographyFontSizeLg: '',
+  inputTypographyLineHeightLg: '',
 
   // Input (Control) typography tokens (old)
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `inputTypographyFontSizeSm`, `inputTypographyFontSizeMd` или `inputTypographyFontSizeLg`
    */
-  inputTypographyFontSize: '',
+  inputTypographyFontSize: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `inputTypographyLineHeightSm`, `inputTypographyLineHeightMd` или `inputTypographyLineHeightLg`
    */
-  inputTypographyLineHeight: '',
+  inputTypographyLineHeight: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
 
   optionShapeBorderRadiusTopLeftMd: compatibilityMode
     ? 0

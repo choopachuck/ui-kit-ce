@@ -102,11 +102,11 @@ const useStyles = createUseStyles((theme) => ({
     borderBottomRightRadius:
       theme.comp.comboBox.inputShapeBorderRadiusBottomRightSm,
     fontSize:
-      theme.comp.comboBox.inputTypographyFontSize ||
-      theme.comp.comboBox.inputTypographyFontSizeSm,
+      theme.comp.comboBox.inputTypographyFontSizeSm ||
+      theme.comp.comboBox.inputTypographyFontSize,
     lineHeight:
-      theme.comp.comboBox.inputTypographyLineHeight ||
-      theme.comp.comboBox.inputTypographyLineHeightSm,
+      theme.comp.comboBox.inputTypographyLineHeightSm ||
+      theme.comp.comboBox.inputTypographyLineHeight,
   },
 
   medium: {
@@ -118,11 +118,11 @@ const useStyles = createUseStyles((theme) => ({
     borderBottomRightRadius:
       theme.comp.comboBox.inputShapeBorderRadiusBottomRightMd,
     fontSize:
-      theme.comp.comboBox.inputTypographyFontSize ||
-      theme.comp.comboBox.inputTypographyFontSizeMd,
+      theme.comp.comboBox.inputTypographyFontSizeMd ||
+      theme.comp.comboBox.inputTypographyFontSize,
     lineHeight:
-      theme.comp.comboBox.inputTypographyLineHeight ||
-      theme.comp.comboBox.inputTypographyLineHeightMd,
+      theme.comp.comboBox.inputTypographyLineHeightMd ||
+      theme.comp.comboBox.inputTypographyLineHeight,
   },
 
   large: {
@@ -134,11 +134,11 @@ const useStyles = createUseStyles((theme) => ({
     borderBottomRightRadius:
       theme.comp.comboBox.inputShapeBorderRadiusBottomRightLg,
     fontSize:
-      theme.comp.comboBox.inputTypographyFontSize ||
-      theme.comp.comboBox.inputTypographyFontSizeLg,
+      theme.comp.comboBox.inputTypographyFontSizeLg ||
+      theme.comp.comboBox.inputTypographyFontSize,
     lineHeight:
-      theme.comp.comboBox.inputTypographyLineHeight ||
-      theme.comp.comboBox.inputTypographyLineHeightLg,
+      theme.comp.comboBox.inputTypographyLineHeightLg ||
+      theme.comp.comboBox.inputTypographyLineHeight,
   },
 
   isSearchable: {},

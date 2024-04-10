@@ -126,29 +126,29 @@ const useStyles = createUseStyles((theme) => ({
 
   textSmall: {
     fontSize:
-      theme.comp.select.inputTypographyFontSize ||
-      theme.comp.select.inputTypographyFontSizeSm,
+      theme.comp.select.inputTypographyFontSizeSm ||
+      theme.comp.select.inputTypographyFontSize,
     lineHeight:
-      theme.comp.select.inputTypographyLineHeight ||
-      theme.comp.select.inputTypographyLineHeightSm,
+      theme.comp.select.inputTypographyLineHeightSm ||
+      theme.comp.select.inputTypographyLineHeight,
   },
 
   textMedium: {
     fontSize:
-      theme.comp.select.inputTypographyFontSize ||
-      theme.comp.select.inputTypographyFontSizeMd,
+      theme.comp.select.inputTypographyFontSizeMd ||
+      theme.comp.select.inputTypographyFontSize,
     lineHeight:
-      theme.comp.select.inputTypographyLineHeight ||
-      theme.comp.select.inputTypographyLineHeightMd,
+      theme.comp.select.inputTypographyLineHeightMd ||
+      theme.comp.select.inputTypographyLineHeight,
   },
 
   textLarge: {
     fontSize:
-      theme.comp.select.inputTypographyFontSize ||
-      theme.comp.select.inputTypographyFontSizeLg,
+      theme.comp.select.inputTypographyFontSizeLg ||
+      theme.comp.select.inputTypographyFontSize,
     lineHeight:
-      theme.comp.select.inputTypographyLineHeight ||
-      theme.comp.select.inputTypographyLineHeightLg,
+      theme.comp.select.inputTypographyLineHeightLg ||
+      theme.comp.select.inputTypographyLineHeight,
   },
 
   content: {

@@ -105,36 +105,28 @@ export const createInput = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.typography.bodyMd.letterSpacing,
 
   //typography lg
-  typographyFontSizeLg: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeightLg: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  typographyFontSizeLg: '',
+  typographyLineHeightLg: '',
 
   //typography md
-  typographyFontSizeMd: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeightMd: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  typographyFontSizeMd: '',
+  typographyLineHeightMd: '',
 
   //typography sm
-  typographyFontSizeSm: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeightSm: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  typographyFontSizeSm: '',
+  typographyLineHeightSm: '',
 
   //typography (old)
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyFontSizeSm`, `typographyFontSizeMd` или `typographyFontSizeLg`
    */
-  typographyFontSize: '',
+  typographyFontSize: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyLineHeightSm`, `typographyLineHeightMd` или `typographyLineHeightLg`
    */
-  typographyLineHeight: '',
+  typographyLineHeight: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
 })

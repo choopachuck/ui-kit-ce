@@ -85,29 +85,29 @@ const useStyles = createUseStyles((theme) => ({
 
   textSmall: {
     fontSize:
-      theme.comp.inputLabel.typographyFontSize ||
-      theme.comp.inputLabel.typographyFontSizeSm,
+      theme.comp.inputLabel.typographyFontSizeSm ||
+      theme.comp.inputLabel.typographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.typographyLineHeight ||
-      theme.comp.inputLabel.typographyLineHeightSm,
+      theme.comp.inputLabel.typographyLineHeightSm ||
+      theme.comp.inputLabel.typographyLineHeight,
   },
 
   textMedium: {
     fontSize:
-      theme.comp.inputLabel.typographyFontSize ||
-      theme.comp.inputLabel.typographyFontSizeMd,
+      theme.comp.inputLabel.typographyFontSizeMd ||
+      theme.comp.inputLabel.typographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.typographyLineHeight ||
-      theme.comp.inputLabel.typographyLineHeightMd,
+      theme.comp.inputLabel.typographyLineHeightMd ||
+      theme.comp.inputLabel.typographyLineHeight,
   },
 
   textLarge: {
     fontSize:
-      theme.comp.inputLabel.typographyFontSize ||
-      theme.comp.inputLabel.typographyFontSizeLg,
+      theme.comp.inputLabel.typographyFontSizeLg ||
+      theme.comp.inputLabel.typographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.typographyLineHeight ||
-      theme.comp.inputLabel.typographyLineHeightLg,
+      theme.comp.inputLabel.typographyLineHeightLg ||
+      theme.comp.inputLabel.typographyLineHeight,
   },
 
   disabled: {},
@@ -128,29 +128,29 @@ const useStyles = createUseStyles((theme) => ({
 
   suffixSmall: {
     fontSize:
-      theme.comp.inputLabel.typographyFontSize ||
-      theme.comp.inputLabel.typographyFontSizeSm,
+      theme.comp.inputLabel.typographyFontSizeSm ||
+      theme.comp.inputLabel.typographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.typographyLineHeight ||
-      theme.comp.inputLabel.typographyLineHeightSm,
+      theme.comp.inputLabel.typographyLineHeightSm ||
+      theme.comp.inputLabel.typographyLineHeight,
   },
 
   suffixMedium: {
     fontSize:
-      theme.comp.inputLabel.typographyFontSize ||
-      theme.comp.inputLabel.typographyFontSizeMd,
+      theme.comp.inputLabel.typographyFontSizeMd ||
+      theme.comp.inputLabel.typographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.typographyLineHeight ||
-      theme.comp.inputLabel.typographyLineHeightMd,
+      theme.comp.inputLabel.typographyLineHeightMd ||
+      theme.comp.inputLabel.typographyLineHeight,
   },
 
   suffixLarge: {
     fontSize:
-      theme.comp.inputLabel.typographyFontSize ||
-      theme.comp.inputLabel.typographyFontSizeLg,
+      theme.comp.inputLabel.typographyFontSizeLg ||
+      theme.comp.inputLabel.typographyFontSize,
     lineHeight:
-      theme.comp.inputLabel.typographyLineHeight ||
-      theme.comp.inputLabel.typographyLineHeightLg,
+      theme.comp.inputLabel.typographyLineHeightLg ||
+      theme.comp.inputLabel.typographyLineHeight,
   },
 
   hasSuffix: {},

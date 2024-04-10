@@ -206,29 +206,29 @@ const useStyles = createUseStyles((theme) => ({
 
   textareaSmall: {
     fontSize:
-      theme.comp.textarea.typographyFontSize ||
-      theme.comp.textarea.typographyFontSizeSm,
+      theme.comp.textarea.typographyFontSizeSm ||
+      theme.comp.textarea.typographyFontSize,
     lineHeight:
-      theme.comp.textarea.typographyLineHeight ||
-      theme.comp.textarea.typographyLineHeightSm,
+      theme.comp.textarea.typographyLineHeightSm ||
+      theme.comp.textarea.typographyLineHeight,
   },
 
   textareaMedium: {
     fontSize:
-      theme.comp.textarea.typographyFontSize ||
-      theme.comp.textarea.typographyFontSizeMd,
+      theme.comp.textarea.typographyFontSizeMd ||
+      theme.comp.textarea.typographyFontSize,
     lineHeight:
-      theme.comp.textarea.typographyLineHeight ||
-      theme.comp.textarea.typographyLineHeightMd,
+      theme.comp.textarea.typographyLineHeightMd ||
+      theme.comp.textarea.typographyLineHeight,
   },
 
   textareaLarge: {
     fontSize:
-      theme.comp.textarea.typographyFontSize ||
-      theme.comp.textarea.typographyFontSizeLg,
+      theme.comp.textarea.typographyFontSizeLg ||
+      theme.comp.textarea.typographyFontSize,
     lineHeight:
-      theme.comp.textarea.typographyLineHeight ||
-      theme.comp.textarea.typographyLineHeightLg,
+      theme.comp.textarea.typographyLineHeightLg ||
+      theme.comp.textarea.typographyLineHeight,
   },
 }))
 

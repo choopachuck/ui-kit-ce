@@ -306,30 +306,30 @@ const useStyles = createUseStyles((theme) => ({
 
   inputSmall: {
     fontSize:
-      theme.comp.input.typographyFontSize ||
-      theme.comp.input.typographyFontSizeSm,
+      theme.comp.input.typographyFontSizeSm ||
+      theme.comp.input.typographyFontSize,
     lineHeight:
-      theme.comp.input.typographyLineHeight ||
-      theme.comp.input.typographyLineHeightSm,
+      theme.comp.input.typographyLineHeightSm ||
+      theme.comp.input.typographyLineHeight,
     margin: [4, 0],
   },
 
   inputMedium: {
     fontSize:
-      theme.comp.input.typographyFontSize ||
-      theme.comp.input.typographyFontSizeMd,
+      theme.comp.input.typographyFontSizeMd ||
+      theme.comp.input.typographyFontSize,
     lineHeight:
-      theme.comp.input.typographyLineHeight ||
-      theme.comp.input.typographyLineHeightMd,
+      theme.comp.input.typographyLineHeightMd ||
+      theme.comp.input.typographyLineHeight,
   },
 
   inputLarge: {
     fontSize:
-      theme.comp.input.typographyFontSize ||
-      theme.comp.input.typographyFontSizeLg,
+      theme.comp.input.typographyFontSizeLg ||
+      theme.comp.input.typographyFontSize,
     lineHeight:
-      theme.comp.input.typographyLineHeight ||
-      theme.comp.input.typographyLineHeightLg,
+      theme.comp.input.typographyLineHeightLg ||
+      theme.comp.input.typographyLineHeight,
     margin: [12, 0],
   },
 

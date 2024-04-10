@@ -61,29 +61,29 @@ export const getStyles = (theme: Theme): Styles => ({
 
   textSm: {
     fontSize:
-      theme.comp.button.typographyFontSize ||
-      theme.comp.button.typographyFontSizeSm,
+      theme.comp.button.typographyFontSizeSm ||
+      theme.comp.button.typographyFontSize,
     lineHeight:
-      theme.comp.button.typographyLineHeight ||
-      theme.comp.button.typographyLineHeightSm,
+      theme.comp.button.typographyLineHeightSm ||
+      theme.comp.button.typographyLineHeight,
   },
 
   textMd: {
     fontSize:
-      theme.comp.button.typographyFontSize ||
-      theme.comp.button.typographyFontSizeMd,
+      theme.comp.button.typographyFontSizeMd ||
+      theme.comp.button.typographyFontSize,
     lineHeight:
-      theme.comp.button.typographyLineHeight ||
-      theme.comp.button.typographyLineHeightMd,
+      theme.comp.button.typographyLineHeightMd ||
+      theme.comp.button.typographyLineHeight,
   },
 
   textLg: {
     fontSize:
-      theme.comp.button.typographyFontSize ||
-      theme.comp.button.typographyFontSizeLg,
+      theme.comp.button.typographyFontSizeLg ||
+      theme.comp.button.typographyFontSize,
     lineHeight:
-      theme.comp.button.typographyLineHeight ||
-      theme.comp.button.typographyLineHeightLg,
+      theme.comp.button.typographyLineHeightLg ||
+      theme.comp.button.typographyLineHeight,
   },
 
   textTypography: {},
