@@ -82,34 +82,34 @@ export const createInlineNotification = (
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,
 
-  bodyColorTextError: compatibilityMode
+  contentColorTextError: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
-  bodyColorTextWarning: compatibilityMode
+  contentColorTextWarning: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
-  bodyColorTextSuccess: compatibilityMode
+  contentColorTextSuccess: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
-  bodyColorTextNeutral: compatibilityMode
+  contentColorTextNeutral: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
-  bodyColorTextInfo: compatibilityMode
+  contentColorTextInfo: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
-  bodyTypographyFontFamily: compatibilityMode
+  contentTypographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.bodyMd.fontFamily,
-  bodyTypographyFontWeight: compatibilityMode
+  contentTypographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.regular
     : theme.sys.typography.bodyMd.fontWeight,
-  bodyTypographyFontSize: compatibilityMode
+  contentTypographyFontSize: compatibilityMode
     ? theme.typography.fontSize.body2
     : theme.sys.typography.bodyMd.fontSize,
-  bodyTypographyLineHeight: compatibilityMode
+  contentTypographyLineHeight: compatibilityMode
     ? theme.typography.lineHeight.body2
     : theme.sys.typography.bodyMd.lineHeight,
-  bodyTypographyLetterSpacing: compatibilityMode
+  contentTypographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,
   //#endregion shared

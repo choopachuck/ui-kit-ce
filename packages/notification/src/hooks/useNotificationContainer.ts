@@ -117,6 +117,10 @@ export const useNotificationContainer = (
           classes2: options.classes || {},
           mergeCallback: clsx,
         }),
+        closeButtonProps:
+          options.closeButtonProps || propsRef.current.closeButtonProps,
+        nextNotification:
+          options.nextNotification || propsRef.current.nextNotification,
         closeButtonAriaLabel:
           options.closeButtonAriaLabel || propsRef.current.closeButtonAriaLabel,
         closeOnEscapeKeyDown:

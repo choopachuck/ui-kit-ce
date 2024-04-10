@@ -4,7 +4,7 @@ import React from 'react'
 import { createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { InlineNotificationStatusType } from '../types'
-import { getClassnameByStatus } from '../utils/getClassnameByStatus'
+import { getClassnameByStatus } from '@v-uik/utils'
 
 const useStyles = createUseStyles((theme) => ({
   indicator: {
@@ -58,14 +58,17 @@ type IndicatorProps = {
 export const Indicator: React.FC<IndicatorProps> = ({ classes, status }) => {
   const classList = useStyles()
   const classesMap = useClassList(classList, classes)
-  const className = getClassnameByStatus(status, {
-    root: classesMap.indicator,
-    error: classesMap.indicatorError,
-    warning: classesMap.indicatorWarning,
-    success: classesMap.indicatorSuccess,
-    info: classesMap.indicatorInfo,
-    neutral: classesMap.indicatorNeutral,
-  })
+  const className = getClassnameByStatus(
+    status,
+    {
+      error: classesMap.indicatorError,
+      warning: classesMap.indicatorWarning,
+      success: classesMap.indicatorSuccess,
+      info: classesMap.indicatorInfo,
+      neutral: classesMap.indicatorNeutral,
+    },
+    classesMap.indicator
+  )
 
   return <div className={className} aria-hidden="true" />
 }

@@ -9,13 +9,11 @@ import {
   InlineNotificationStatusType,
   InlineNotificationKind,
   InlineNotificationStatus,
-  InlineNotificationDirection,
-  InlineNotificationDirectionType,
 } from './types'
 import { IconClasses, Icon } from './components/Icon'
 import { IndicatorClasses, Indicator } from './components/Indicator'
-import { getClassnameByStatus } from './utils/getClassnameByStatus'
-import { CloseButton } from '@v-uik/common'
+import { CloseButton, Direction, DirectionType } from '@v-uik/common'
+import { getClassnameByStatus } from '@v-uik/utils'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -48,7 +46,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   horizontal: {
-    '& $contentWrapper': {
+    '& $bodyWrapper': {
       // компенсация отрицательных margin
       padding: [12, 8],
       alignItems: 'center',
@@ -57,7 +55,7 @@ const useStyles = createUseStyles((theme) => ({
       marginTop: -8,
       marginBottom: -8,
     },
-    '& $content': {
+    '& $body': {
       alignItems: 'center',
       gap: 16,
       overflow: 'hidden',
@@ -73,7 +71,7 @@ const useStyles = createUseStyles((theme) => ({
       textOverflow: 'ellipsis',
     },
 
-    '& $body': {
+    '& $content': {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
@@ -86,14 +84,14 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   vertical: {
-    '& $contentWrapper': {
+    '& $bodyWrapper': {
       padding: 8,
     },
     '& $textContainer': {
       flexDirection: 'column',
       gap: 8,
     },
-    '& $content': {
+    '& $body': {
       marginTop: 2,
       flexDirection: 'column',
       gap: 16,
@@ -105,7 +103,7 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
-  contentWrapper: {
+  bodyWrapper: {
     display: 'flex',
     flexWrap: 'nowrap',
     gap: 16,
@@ -113,7 +111,7 @@ const useStyles = createUseStyles((theme) => ({
     zIndex: 2,
   },
 
-  content: {
+  body: {
     display: 'flex',
     flexGrow: 1,
   },
@@ -145,28 +143,28 @@ const useStyles = createUseStyles((theme) => ({
     color: theme.comp.inlineNotification.titleColorTextInfo,
   },
 
-  body: {
+  content: {
     flexGrow: 1,
-    fontFamily: theme.comp.inlineNotification.bodyTypographyFontFamily,
-    fontWeight: theme.comp.inlineNotification.bodyTypographyFontWeight,
-    fontSize: theme.comp.inlineNotification.bodyTypographyFontSize,
-    lineHeight: theme.comp.inlineNotification.bodyTypographyLineHeight,
-    letterSpacing: theme.comp.inlineNotification.bodyTypographyLetterSpacing,
+    fontFamily: theme.comp.inlineNotification.contentTypographyFontFamily,
+    fontWeight: theme.comp.inlineNotification.contentTypographyFontWeight,
+    fontSize: theme.comp.inlineNotification.contentTypographyFontSize,
+    lineHeight: theme.comp.inlineNotification.contentTypographyLineHeight,
+    letterSpacing: theme.comp.inlineNotification.contentTypographyLetterSpacing,
   },
-  bodyError: {
-    color: theme.comp.inlineNotification.bodyColorTextError,
+  contentError: {
+    color: theme.comp.inlineNotification.contentColorTextError,
   },
-  bodyWarning: {
-    color: theme.comp.inlineNotification.bodyColorTextWarning,
+  contentWarning: {
+    color: theme.comp.inlineNotification.contentColorTextWarning,
   },
-  bodySuccess: {
-    color: theme.comp.inlineNotification.bodyColorTextSuccess,
+  contentSuccess: {
+    color: theme.comp.inlineNotification.contentColorTextSuccess,
   },
-  bodyNeutral: {
-    color: theme.comp.inlineNotification.bodyColorTextNeutral,
+  contentNeutral: {
+    color: theme.comp.inlineNotification.contentColorTextNeutral,
   },
-  bodyInfo: {
-    color: theme.comp.inlineNotification.bodyColorTextInfo,
+  contentInfo: {
+    color: theme.comp.inlineNotification.contentColorTextInfo,
   },
 
   actions: {},
@@ -258,27 +256,30 @@ export type InlineNotificationClasses = {
   /** Стиль title при status: info */
   titleInfo?: string
 
-  /** Стиль body (стилизуется как потомок horizontal/vertical) */
-  body?: string
-  /** Стиль body при status: error */
-  bodyError?: string
-  /** Стиль body при status: warning */
-  bodyWarning?: string
-  /** Стиль body при status: success */
-  bodySuccess?: string
-  /** Стиль body при status: neutral */
-  bodyNeutral?: string
-  /** Стиль body при status: info */
-  bodyInfo?: string
+  /** Стиль content (стилизуется как потомок horizontal/vertical) */
+  content?: string
+  /** Стиль content при status: error */
+  contentError?: string
+  /** Стиль content при status: warning */
+  contentWarning?: string
+  /** Стиль content при status: success */
+  contentSuccess?: string
+  /** Стиль content при status: neutral */
+  contentNeutral?: string
+  /** Стиль content при status: info */
+  contentInfo?: string
+
+  /** Стиль обертки title и content (стилизуется как потомок horizontal/vertical) */
+  textContainer?: string
 
   /** Стиль контейнера actions (стилизуется как потомок horizontal/vertical) */
   actions?: string
 
   /** Стиль обёртки контента (стилизуется как потомок horizontal/vertical) */
-  contentWrapper?: string
+  bodyWrapper?: string
 
   /** Стиль контейнера контента (стилизуется как потомок horizontal/vertical) */
-  content?: string
+  body?: string
 
   /** Стиль кнопки закрытия уведомления (стилизуется как потомок horizontal/vertical) */
   closeButton?: string
@@ -325,7 +326,7 @@ type InlineNotificationBaseProps = {
   /**
    * направление размещения элементов
    */
-  direction?: InlineNotificationDirectionType
+  direction?: DirectionType
   /**
    * CSS классы компонента
    */
@@ -346,7 +347,7 @@ export const InlineNotification = React.forwardRef(
       classes,
       kind = InlineNotificationKind.filled,
       status = InlineNotificationStatus.neutral,
-      direction = InlineNotificationDirection.horizontal,
+      direction = Direction.horizontal,
       title,
       children,
       actions,
@@ -363,49 +364,60 @@ export const InlineNotification = React.forwardRef(
     const classList = useStyles()
     const classesMap = useClassList(classList, classes)
 
-    const filledClassName = getClassnameByStatus(status, {
-      root: classesMap.filled,
-      error: classesMap.filledError,
-      warning: classesMap.filledWarning,
-      success: classesMap.filledSuccess,
-      info: classesMap.filledInfo,
-      neutral: classesMap.filledNeutral,
-    })
+    const filledClassName = getClassnameByStatus(
+      status,
+      {
+        error: classesMap.filledError,
+        warning: classesMap.filledWarning,
+        success: classesMap.filledSuccess,
+        info: classesMap.filledInfo,
+        neutral: classesMap.filledNeutral,
+      },
+      classesMap.filled
+    )
 
-    const outlinedClassName = getClassnameByStatus(status, {
-      root: classesMap.outlined,
-      error: classesMap.outlinedError,
-      warning: classesMap.outlinedWarning,
-      success: classesMap.outlinedSuccess,
-      info: classesMap.outlinedInfo,
-      neutral: classesMap.outlinedNeutral,
-    })
+    const outlinedClassName = getClassnameByStatus(
+      status,
+      {
+        error: classesMap.outlinedError,
+        warning: classesMap.outlinedWarning,
+        success: classesMap.outlinedSuccess,
+        info: classesMap.outlinedInfo,
+        neutral: classesMap.outlinedNeutral,
+      },
+      classesMap.outlined
+    )
 
     const className = clsx(classesMap.root, propsClassName, {
       [outlinedClassName]: kind === InlineNotificationKind.outlined,
       [filledClassName]: kind === InlineNotificationKind.filled,
-      [classesMap.horizontal]:
-        direction === InlineNotificationDirection.horizontal,
-      [classesMap.vertical]: direction === InlineNotificationDirection.vertical,
+      [classesMap.horizontal]: direction === Direction.horizontal,
+      [classesMap.vertical]: direction === Direction.vertical,
     })
 
-    const titleClassName = getClassnameByStatus(status, {
-      root: classesMap.title,
-      error: classesMap.titleError,
-      warning: classesMap.titleWarning,
-      success: classesMap.titleSuccess,
-      info: classesMap.titleInfo,
-      neutral: classesMap.titleNeutral,
-    })
+    const titleClassName = getClassnameByStatus(
+      status,
+      {
+        error: classesMap.titleError,
+        warning: classesMap.titleWarning,
+        success: classesMap.titleSuccess,
+        info: classesMap.titleInfo,
+        neutral: classesMap.titleNeutral,
+      },
+      classesMap.title
+    )
 
-    const bodyClassName = getClassnameByStatus(status, {
-      root: classesMap.body,
-      error: classesMap.bodyError,
-      warning: classesMap.bodyWarning,
-      success: classesMap.bodySuccess,
-      info: classesMap.bodyInfo,
-      neutral: classesMap.bodyNeutral,
-    })
+    const contentClassName = getClassnameByStatus(
+      status,
+      {
+        error: classesMap.contentError,
+        warning: classesMap.contentWarning,
+        success: classesMap.contentSuccess,
+        info: classesMap.contentInfo,
+        neutral: classesMap.contentNeutral,
+      },
+      classesMap.content
+    )
 
     return (
       <Box
@@ -415,16 +427,16 @@ export const InlineNotification = React.forwardRef(
         {...(props as PolymorphicComponentProps<E, Record<string, unknown>>)}
       >
         {showIndicator && <Indicator classes={classes} status={status} />}
-        <div className={classesMap.contentWrapper}>
+        <div className={classesMap.bodyWrapper}>
           {icon && (
             <Icon status={status} classes={classes}>
               {icon}
             </Icon>
           )}
-          <div className={classesMap.content}>
+          <div className={classesMap.body}>
             <div className={classesMap.textContainer}>
               {title && <div className={titleClassName}>{title}</div>}
-              {children && <div className={bodyClassName}>{children}</div>}
+              {children && <div className={contentClassName}>{children}</div>}
             </div>
             {actions && <div className={classesMap.actions}>{actions}</div>}
           </div>

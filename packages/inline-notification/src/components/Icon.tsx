@@ -5,7 +5,7 @@ import { createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { IconError } from '../assets'
 import { InlineNotificationStatusType } from '../types'
-import { getClassnameByStatus } from '../utils/getClassnameByStatus'
+import { getClassnameByStatus } from '@v-uik/utils'
 
 const useStyles = createUseStyles((theme) => ({
   icon: {
@@ -55,14 +55,17 @@ type IconProps = {
 export const Icon: React.FC<IconProps> = ({ classes, status, children }) => {
   const classList = useStyles()
   const classesMap = useClassList(classList, classes)
-  const className = getClassnameByStatus(status, {
-    root: classesMap.icon,
-    error: classesMap.iconError,
-    warning: classesMap.iconWarning,
-    success: classesMap.iconSuccess,
-    info: classesMap.iconInfo,
-    neutral: classesMap.iconNeutral,
-  })
+  const className = getClassnameByStatus(
+    status,
+    {
+      error: classesMap.iconError,
+      warning: classesMap.iconWarning,
+      success: classesMap.iconSuccess,
+      info: classesMap.iconInfo,
+      neutral: classesMap.iconNeutral,
+    },
+    classesMap.icon
+  )
 
   return (
     <div className={className} aria-hidden="true">

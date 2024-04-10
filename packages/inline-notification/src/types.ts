@@ -14,11 +14,3 @@ export const InlineNotificationStatus = {
 } as const
 
 export type InlineNotificationStatusType = keyof typeof InlineNotificationStatus
-
-export const InlineNotificationDirection = {
-  horizontal: 'horizontal',
-  vertical: 'vertical',
-} as const
-
-export type InlineNotificationDirectionType =
-  keyof typeof InlineNotificationDirection

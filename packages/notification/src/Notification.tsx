@@ -38,11 +38,115 @@ const useStyles = createUseStyles((theme) => ({
     color: theme.comp.notification.colorText,
   },
 
+  horizontal: {
+    '& $body': {
+      alignItems: 'center',
+      gap: 16,
+      overflow: 'hidden',
+    },
+    '& $textContainer': {
+      flexGrow: 1,
+      gap: 4,
+      overflow: 'hidden',
+    },
+    '& $title': {
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    },
+
+    '& $content': {
+      margin: 0,
+      display: 'block',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      flex: 1,
+      minWidth: 0,
+    },
+  },
+
+  vertical: {
+    '& $content': {
+      margin: 0,
+      display: 'block',
+    },
+    '& $textContainer': {
+      flexDirection: 'column',
+      gap: 8,
+    },
+    '& $body': {
+      marginTop: 10,
+      marginBottom: 8,
+      flexDirection: 'column',
+      gap: 16,
+    },
+  },
+
+  next_content: {
+    fontFamily: theme.comp.notification.next_contentTypographyFontFamily,
+    fontSize: theme.comp.notification.next_contentTypographyFontSize,
+    lineHeight: theme.comp.notification.next_contentTypographyLineHeight,
+    letterSpacing: theme.comp.notification.next_contentTypographyLetterSpacing,
+    fontWeight: theme.comp.notification.next_contentTypographyFontWeight,
+  },
+
+  contentError: {
+    color: theme.comp.notification.contentColorTextError,
+  },
+  contentWarning: {
+    color: theme.comp.notification.contentColorTextWarning,
+  },
+  contentSuccess: {
+    color: theme.comp.notification.contentColorTextSuccess,
+  },
+  contentNeutral: {
+    color: theme.comp.notification.contentColorTextNeutral,
+  },
+  contentInfo: {
+    color: theme.comp.notification.contentColorTextInfo,
+  },
+
+  body: {
+    display: 'flex',
+    flexGrow: 1,
+    marginLeft: 16,
+    marginRight: 8,
+  },
+  textContainer: {
+    display: 'flex',
+  },
+
+  title: {
+    fontFamily: theme.comp.notification.titleTypographyFontFamily,
+    fontWeight: theme.comp.notification.titleTypographyFontWeight,
+    fontSize: theme.comp.notification.titleTypographyFontSize,
+    lineHeight: theme.comp.notification.titleTypographyLineHeight,
+    letterSpacing: theme.comp.notification.titleTypographyLetterSpacing,
+  },
+  titleError: {
+    color: theme.comp.notification.titleColorTextError,
+  },
+  titleWarning: {
+    color: theme.comp.notification.titleColorTextWarning,
+  },
+  titleSuccess: {
+    color: theme.comp.notification.titleColorTextSuccess,
+  },
+  titleNeutral: {
+    color: theme.comp.notification.titleColorTextNeutral,
+  },
+  titleInfo: {
+    color: theme.comp.notification.titleColorTextInfo,
+  },
+  actions: {},
+
   indicator: {
     backgroundColor: theme.comp.notification.indicatorColorBackgroundNeutral,
     width: 4,
     marginLeft: 8,
     borderRadius: 1,
+    flexShrink: 0,
   },
 
   clickable: {
@@ -143,6 +247,10 @@ export const Notification = React.forwardRef(
       className: classNameProp,
       position,
       status = NotificationStatus.default,
+      nextNotification,
+      direction: propDirection,
+      title,
+      actions,
       isActive,
       autoClose,
       closeOnClick,
@@ -159,6 +267,7 @@ export const Notification = React.forwardRef(
       showIndicator = true,
       closeOnEscapeKeyDown = true,
       closeButtonAriaLabel,
+      closeButtonProps,
       ...rest
     }: NotificationPropsWithClasses,
     ref: React.Ref<HTMLDivElement>
@@ -182,13 +291,25 @@ export const Notification = React.forwardRef(
       )
     )
 
-    const className = clsx(classesMap.root, classNameProp, {
-      [classesMap.clickable]: closeOnClick,
-      [classesMap.success]: status === NotificationStatus.success,
-      [classesMap.info]: status === NotificationStatus.info,
-      [classesMap.warning]: status === NotificationStatus.warning,
-      [classesMap.error]: status === NotificationStatus.error,
-    })
+    const direction = nextNotification
+      ? propDirection || Direction.horizontal
+      : undefined
+
+    const className = clsx(
+      classesMap.root,
+      classNameProp,
+      getClassnameByStatus(status, {
+        success: classesMap.success,
+        info: classesMap.info,
+        warning: classesMap.warning,
+        error: classesMap.error,
+      }),
+      {
+        [classesMap.horizontal]: direction === Direction.horizontal,
+        [classesMap.vertical]: direction === Direction.vertical,
+        [classesMap.clickable]: closeOnClick,
+      }
+    )
 
     const [isRunning, setIsRunning] = React.useState(true)
 
@@ -261,6 +382,35 @@ export const Notification = React.forwardRef(
 
     const shouldListenHoverEvent = autoClose && pauseOnHover
 
+    const titleClassName = getClassnameByStatus(
+      status,
+      {
+        success: classesMap.titleSuccess,
+        info: classesMap.titleInfo,
+        warning: classesMap.titleWarning,
+        error: classesMap.titleError,
+        default: classesMap.titleNeutral,
+      },
+      classesMap.title
+    )
+
+    const contentClassName = clsx(
+      getClassnameByStatus(
+        status,
+        {
+          success: classesMap.contentSuccess,
+          info: classesMap.contentInfo,
+          warning: classesMap.contentWarning,
+          error: classesMap.contentError,
+          default: classesMap.contentNeutral,
+        },
+        classesMap.content
+      ),
+      {
+        [classesMap.next_content]: nextNotification,
+      }
+    )
+
     return (
       <Transition
         position={position}
@@ -290,12 +440,23 @@ export const Notification = React.forwardRef(
             </div>
           )}
 
-          <div className={classesMap.content}>{children}</div>
+          {nextNotification ? (
+            <div className={classesMap.body}>
+              <div className={classesMap.textContainer}>
+                {title && <div className={titleClassName}>{title}</div>}
+                {children && <div className={contentClassName}>{children}</div>}
+              </div>
+              {actions && <div className={classesMap.actions}>{actions}</div>}
+            </div>
+          ) : (
+            <div className={contentClassName}>{children}</div>
+          )}
 
           {showCloseButton && (
             <CloseButton
               tokens={closeButtonTokens}
               aria-label={closeButtonAriaLabel}
+              {...closeButtonProps}
               onClick={closeNotification}
             />
           )}

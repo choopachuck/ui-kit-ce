@@ -6,7 +6,6 @@ import { useClassList } from '@v-uik/hooks'
 import { Text, TextProps, TextKinds } from '@v-uik/typography'
 import { ButtonProps } from '@v-uik/button'
 import { defaultPadding } from './constants'
-import { IconClose } from './assets/IconClose'
 import { CloseButton } from '@v-uik/common'
 import { pick } from '@v-uik/utils'
 
@@ -185,9 +184,7 @@ export const DrawerHeader = React.forwardRef(
                 classesMap.closeButton,
                 closeButtonProps?.className
               )}
-            >
-              <IconClose />
-            </CloseButton>
+            />
           )}
         </div>
 
