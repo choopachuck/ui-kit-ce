@@ -2,28 +2,23 @@
 
 import * as React from 'react'
 import { createUseStyles } from '@v-uik/theme'
-import { ClearIcon } from '../../assets/ClearIcon'
+import { ClearButton } from '@v-uik/common'
 import { PositiveInfinityIcon } from '../../assets/PositiveInfinityIcon'
 import { NegativeInfinityIcon } from '../../assets/NegativeInfinityIcon'
 
 const useStyles = createUseStyles({
-  root: {
+  clearButton: {
     display: 'flex',
-    cursor: 'pointer',
   },
 })
 
-export interface Props extends React.ComponentPropsWithoutRef<'div'> {
+export interface Props {
   isInfinity: boolean
   index: 0 | 1
   setSelectedRangeByIndex: (date: number | null, index: 0 | 1) => void
 }
 
-const getIcon = (isInfinity: boolean, index: 0 | 1): JSX.Element => {
-  if (isInfinity) {
-    return <ClearIcon />
-  }
-
+const getIcon = (index: 0 | 1): React.ReactNode => {
   if (index) {
     return <PositiveInfinityIcon />
   }
@@ -31,8 +26,8 @@ const getIcon = (isInfinity: boolean, index: 0 | 1): JSX.Element => {
   return <NegativeInfinityIcon />
 }
 
-export const InputInfinityIcon = (props: Props): JSX.Element => {
-  const { isInfinity, index, setSelectedRangeByIndex, ...rest } = props
+export const InputInfinityButton = (props: Props): JSX.Element => {
+  const { isInfinity, index, setSelectedRangeByIndex } = props
 
   const classesList = useStyles()
 
@@ -46,10 +41,12 @@ export const InputInfinityIcon = (props: Props): JSX.Element => {
   }
 
   return (
-    <div {...rest} className={classesList.root} onClick={handleClick}>
-      {getIcon(isInfinity, index)}
-    </div>
+    <ClearButton
+      clearIcon={isInfinity ? undefined : getIcon(index)}
+      classes={classesList}
+      innerProps={{ onClick: handleClick }}
+    />
   )
 }
 
-InputInfinityIcon.displayName = 'InputInfinityIcon'
+InputInfinityButton.displayName = 'InputInfinityButton'

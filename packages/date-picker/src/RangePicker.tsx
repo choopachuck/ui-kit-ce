@@ -18,7 +18,7 @@ import { RangeDatePanel } from './components/RangeDatePanel/RangeDatePanel'
 import { RangeDatePanelMulti } from './components/RangeDatePanel/RangeDatePanelMulti'
 import { RangeDatePanelMultiDivided } from './components/RangeDatePanel/RangeDatePanelMultiDivided'
 import { CalendarIcon } from './components/CalendarIcon/CalendarIcon'
-import { InputInfinityIcon } from './components/InputInfinityIcon/InputInfinityIcon'
+import { InputInfinityButton } from './components/InputInfinityButton/InputInfinityButton'
 import { RangeInputStyle, RangeDatePanelStyle } from './constants/range'
 import {
   defaultValidationErrorMessages,
@@ -664,7 +664,7 @@ export const RangePicker = React.forwardRef(
     )
 
     const startSuffix = allowInfinity ? (
-      <InputInfinityIcon
+      <InputInfinityButton
         isInfinity={isStartInfinity}
         index={0}
         setSelectedRangeByIndex={
@@ -678,7 +678,7 @@ export const RangePicker = React.forwardRef(
     )
 
     const endSuffix = allowInfinity ? (
-      <InputInfinityIcon
+      <InputInfinityButton
         isInfinity={isEndInfinity}
         index={1}
         setSelectedRangeByIndex={
