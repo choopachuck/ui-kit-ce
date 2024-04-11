@@ -50,6 +50,7 @@ export const RangeDatePanelMulti = React.forwardRef(
       shouldDisableDate,
       header,
       allowInfinity,
+      calendarViewClasses,
       ...rest
     } = props
 
@@ -143,6 +144,7 @@ export const RangeDatePanelMulti = React.forwardRef(
             {currentView === DatePickerView.day && (
               <>
                 <CalendarView<TDate>
+                  classes={calendarViewClasses}
                   currentViewDate={currentViewDate}
                   isDateDisabled={isDateDisabled}
                   isDateSelected={isDateSelected}
@@ -155,6 +157,7 @@ export const RangeDatePanelMulti = React.forwardRef(
                 <div className={classesList.divider} />
 
                 <CalendarView<TDate>
+                  classes={calendarViewClasses}
                   currentViewDate={currentViewDateNext}
                   isDateDisabled={isDateDisabled}
                   isDateSelected={isDateSelected}

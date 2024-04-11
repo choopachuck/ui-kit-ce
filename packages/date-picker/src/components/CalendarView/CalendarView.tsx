@@ -9,6 +9,8 @@ import {
   CheckDateStateResult,
   FunctionComponentCommonFields,
 } from '../../interfaces/common'
+import { CalendarViewClasses as Classes } from '../../interfaces/classes'
+import { useClassList } from '@v-uik/hooks'
 
 const useStyles = createUseStyles((theme) => ({
   row: {
@@ -354,6 +356,10 @@ const useStyles = createUseStyles((theme) => ({
 export interface Props<TDate = unknown>
   extends React.HTMLAttributes<HTMLDivElement> {
   /**
+   * CSS классы для стилизации
+   */
+  classes?: Classes
+  /**
    * Текущая дата просмотра календаря
    */
   currentViewDate: TDate
@@ -394,6 +400,7 @@ export const CalendarView: CalendarViewProps = <TDate extends unknown>(
   props: Props<TDate>
 ) => {
   const {
+    classes,
     currentViewDate,
     onClickDate,
     isDateDisabled,
@@ -405,6 +412,7 @@ export const CalendarView: CalendarViewProps = <TDate extends unknown>(
   } = props
 
   const classesList = useStyles()
+  const classesMap = useClassList(classesList, classes)
   const buttonClasses = useButtonReset()
 
   const adapter = useDateLibAdapter<TDate>()
@@ -415,15 +423,15 @@ export const CalendarView: CalendarViewProps = <TDate extends unknown>(
     const weekDaysArray = adapter.getWeekdaysStartOfMon()
 
     return (
-      <div className={classesList.row}>
+      <div className={classesMap.row}>
         {weekDaysArray.map((weekDay, index) => (
-          <div key={`day=${index}`} className={classesList.weekDay}>
+          <div key={`day=${index}`} className={classesMap.weekDay}>
             {weekDay}
           </div>
         ))}
       </div>
     )
-  }, [adapter, classesList.row, classesList.weekDay])
+  }, [adapter, classesMap.row, classesMap.weekDay])
 
   const renderDays = () => {
     const isCurrentMonth = adapter.isSameMonth(nowDate, currentViewDate)
@@ -529,32 +537,29 @@ export const CalendarView: CalendarViewProps = <TDate extends unknown>(
               hoveredPosition = inHoverRangeResult.position
             }
 
+            const selectedEndStart =
+              selectedPosition === 'end' ? 'selected-end' : 'selected-start'
+            const hoveredEndStart =
+              selectedPosition === 'end' ? 'hovered-end' : 'hovered-start'
+
             return (
               <button
                 key={`day-${index}-${dayIndex}`}
                 className={clsx(
                   buttonClasses.resetButton,
-                  classesList.dayButton,
+                  classesMap.dayButton,
                   {
-                    [classesList.todayButton]: isToday,
-                    [classesList.selected]: isSelected,
-                    [classesList[
-                      `selected-${
-                        selectedPosition as string
-                      }` as keyof typeof classesList
-                    ]]: selectedPosition,
-                    [classesList.notInMonth]: !isInCurrentMonth,
-                    [classesList.startOfMonth]: isStartOfMonth,
-                    [classesList.endOfMonth]: isEndOfMonth,
-                    [classesList.startOfWeek]: dayIndex === 0,
-                    [classesList.endOfWeek]: dayIndex === 6,
-                    [classesList.inRange]: inRange,
-                    [classesList.hovered]: inHoverRange,
-                    [classesList[
-                      `hovered-${
-                        hoveredPosition as string
-                      }` as keyof typeof classesList
-                    ]]: hoveredPosition,
+                    [classesMap.todayButton]: isToday,
+                    [classesMap.selected]: isSelected,
+                    [classesMap[selectedEndStart]]: selectedPosition,
+                    [classesMap.notInMonth]: !isInCurrentMonth,
+                    [classesMap.startOfMonth]: isStartOfMonth,
+                    [classesMap.endOfMonth]: isEndOfMonth,
+                    [classesMap.startOfWeek]: dayIndex === 0,
+                    [classesMap.endOfWeek]: dayIndex === 6,
+                    [classesMap.inRange]: inRange,
+                    [classesMap.hovered]: inHoverRange,
+                    [classesMap[hoveredEndStart]]: hoveredPosition,
                   }
                 )}
                 //aria-disabled вместо disabled, чтобы работала навигация с клавиатуры
@@ -570,7 +575,7 @@ export const CalendarView: CalendarViewProps = <TDate extends unknown>(
                 onFocus={setHoverDate ? () => setHoverDate(day) : undefined}
                 onBlur={setHoverDate ? () => setHoverDate(null) : undefined}
               >
-                <span className={classesList.dayText}>
+                <span className={classesMap.dayText}>
                   {adapter.format(day, 'dayOfMonth')}
                 </span>
               </button>

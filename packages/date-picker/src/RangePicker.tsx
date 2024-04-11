@@ -33,7 +33,10 @@ import { defaultViews } from './constants/common'
 import { useDateLibAdapter } from './hooks/useDateLibAdapter'
 import { useShouldDisableDate } from './hooks/useShouldDisableDate'
 import { useSafeRangeValue } from './hooks/useSafeValue'
-import { RangePickerClasses as Classes } from './interfaces/classes'
+import {
+  RangePickerClasses as Classes,
+  CalendarViewClasses,
+} from './interfaces/classes'
 import {
   useOutsideScroll,
   useMergedRefs,
@@ -289,6 +292,14 @@ export interface RangePickerProps<TDate = unknown>
    * Скрывать дропдаун при скроле вне дропдауна
    */
   hideDropdownOnOutsideScroll?: boolean
+  /**
+   * Вспомогательный элемент после поля ввода
+   */
+  suffix?: React.ReactNode
+  /**
+   * CSS классы для стилизации сетки календаря
+   */
+  calendarViewClasses?: CalendarViewClasses
 }
 
 interface IRangePicker
@@ -356,8 +367,10 @@ export const RangePicker = React.forwardRef(
       hideDropdownOnOutsideScroll = false,
       description,
       labelledClasses,
+      calendarViewClasses,
       keepHelperTextMinHeight,
       required,
+      suffix,
       ...rest
     } = props
 
@@ -649,6 +662,7 @@ export const RangePicker = React.forwardRef(
     const content = (
       <RangeDatePanelComponent<TDate>
         ref={panelRef}
+        calendarViewClasses={calendarViewClasses}
         existedViews={existedViews}
         range={selectedRange}
         activeInputIndex={activeInputIndex}
@@ -792,7 +806,7 @@ export const RangePicker = React.forwardRef(
                         />
                       )
                     : null}
-                  <CalendarIcon />
+                  {suffix ?? <CalendarIcon />}
                 </div>
               </div>
             )}

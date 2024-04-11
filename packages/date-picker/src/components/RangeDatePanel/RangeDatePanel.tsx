@@ -21,10 +21,15 @@ import {
 } from '../../interfaces/common'
 import { useRangeDateCheckState } from '../../hooks/useRangeDateCheckState'
 import { useHoverState } from '../../hooks/useHoverState'
+import { CalendarViewClasses } from '../../interfaces/classes'
 
 export interface Props<TDate = unknown>
   extends ValidateDateProps<TDate>,
     Omit<PanelWrapperProps, 'onChange'> {
+  /**
+   * CSS классы для стилизации
+   */
+  calendarViewClasses?: CalendarViewClasses
   /**
    * Выбранный промежуток
    */
@@ -80,6 +85,7 @@ export const RangeDatePanel = React.forwardRef(
       shouldDisableDate,
       header,
       allowInfinity,
+      calendarViewClasses,
       ...rest
     } = props
 
@@ -158,6 +164,7 @@ export const RangeDatePanel = React.forwardRef(
 
           {currentView === DatePickerView.day && (
             <CalendarView<TDate>
+              classes={calendarViewClasses}
               currentViewDate={currentViewDate}
               isDateDisabled={isDateDisabled}
               isDateSelected={isDateSelected}

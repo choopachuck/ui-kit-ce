@@ -17,10 +17,16 @@ import {
   DisableDateProps,
 } from '../interfaces'
 import { getExternalComponentsProps } from '../utils/getExternalComponentProps'
+import { CalendarPickerClasses } from '../interfaces/classes'
+import { useClassList } from '@v-uik/hooks'
 
 export interface CalendarPickerProps<TDate>
   extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
     Pick<DisableDateProps<TDate>, 'minDate' | 'maxDate' | 'shouldDisableDate'> {
+  /**
+   * CSS классы для стилизации
+   */
+  classes?: CalendarPickerClasses
   /**
    * Выбранная дата.
    */
@@ -41,6 +47,7 @@ export interface CalendarPickerProps<TDate>
    * Событие изменения даты. Срабатывает когда пользователь выбирает день,
    * месяц или год.
    */
+
   onChange: (date: TDate) => void
   /**
    * Событие изменения даты. Срабатывает ТОЛЬКО когда пользователь выбирает день.
@@ -74,6 +81,7 @@ export const CalendarPicker = React.forwardRef(
   <TDate,>(
     {
       className: classNameProp,
+      classes,
       value,
       onChange,
       onChangeDay,
@@ -91,7 +99,10 @@ export const CalendarPicker = React.forwardRef(
     ref: React.Ref<HTMLDivElement>
   ) => {
     const classesList = useCalendarPickerStyles()
-    const className = clsx(classNameProp, classesList.root)
+
+    const classesMap = useClassList(classesList, classes)
+
+    const className = clsx(classNameProp, classesMap.root)
 
     const adapter = useDateLibAdapter<TDate>()
 
@@ -121,11 +132,11 @@ export const CalendarPicker = React.forwardRef(
 
     return (
       <div ref={ref} {...rest} className={className}>
-        <div className={clsx(classNameProp, classesList.calendarBar)}>
+        <div className={clsx(classNameProp, classesMap.calendarBar)}>
           <Button
             kind={ButtonKinds.ghost}
             color={ButtonColor.secondary}
-            className={classesList.chevron}
+            className={classesMap.chevron}
             onClick={() =>
               setDisplayedDate(adapter.getPreviousMonth(computedDisplayedDate))
             }
@@ -137,8 +148,8 @@ export const CalendarPicker = React.forwardRef(
           <Button
             kind={ButtonKinds.ghost}
             color={ButtonColor.secondary}
-            className={clsx(classesList.month, {
-              [classesList.selected]: currentView === CalendarPickerViews.month,
+            className={clsx(classesMap.month, {
+              [classesMap.selected]: currentView === CalendarPickerViews.month,
             })}
             onClick={() => setCurrentView(CalendarPickerViews.month)}
             {...externalProps.monthBarButtonProps}
@@ -149,7 +160,7 @@ export const CalendarPicker = React.forwardRef(
           <Button
             kind={ButtonKinds.ghost}
             color={ButtonColor.secondary}
-            className={classesList.chevron}
+            className={classesMap.chevron}
             {...externalProps.nextNavigationBarButtonProps}
             onClick={() =>
               setDisplayedDate(adapter.getNextMonth(computedDisplayedDate))
@@ -161,8 +172,8 @@ export const CalendarPicker = React.forwardRef(
           <Button
             kind={ButtonKinds.ghost}
             color={ButtonColor.secondary}
-            className={clsx(classesList.year, {
-              [classesList.selected]: currentView === CalendarPickerViews.year,
+            className={clsx(classesMap.year, {
+              [classesMap.selected]: currentView === CalendarPickerViews.year,
             })}
             onClick={() => setCurrentView(CalendarPickerViews.year)}
             {...externalProps.yearBarButtonProps}
