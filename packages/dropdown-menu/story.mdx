@@ -1,9 +1,19 @@
 import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
 import { DropdownMenu, DropdownMenuItem } from '@v-uik/dropdown-menu'
-import { createTitle, COMPONENTS, createStory } from '@v-uik/showroom/config'
-import { Cascading, Canvas as CanvasStory } from '@v-uik/dropdown-menu/examples'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+  DocsAlert,
+} from '@v-uik/showroom/config'
+import {
+  Cascading,
+  Canvas as CanvasStory,
+  CloneElement,
+} from '@v-uik/dropdown-menu/examples'
 import RawCascading from '!!raw-loader!@v-uik/dropdown-menu/examples/Cascading'
 import RawCanvas from '!!raw-loader!@v-uik/dropdown-menu/examples/Canvas'
+import RawCloneElement from '!!raw-loader!@v-uik/dropdown-menu/examples/CloneElement'
 
 export const story = createStory(CanvasStory, RawCanvas)
 
@@ -40,6 +50,12 @@ import { DropdownMenu, DropdownMenuItem } from '@v-uik/base'
 import { DropdownMenu, DropdownMenuItem } from '@v-uik/dropdown-menu'
 ```
 
+<DocsAlert type="warning">
+  Компонент использует <code>React.CloneElement</code>. Перейдите к разделу{' '}
+  <a href="#механизм-reactcloneelement">Механизм React.CloneElement</a> чтобы
+  узнать подробнее
+</DocsAlert>
+
 ## DropdownMenuItem
 
 Внутренний компонент выпадающего меню, представляющий собой единичный элемент меню.
@@ -51,6 +67,29 @@ import { DropdownMenu, DropdownMenuItem } from '@v-uik/dropdown-menu'
 </Canvas>
 
 <Source language="tsx" code={RawCascading} />
+
+## Механизм `React.CloneElement`
+
+Компонент `DropdownMenu` использует механизм `React.CloneElement` для передаваемого `children` и ожидает в качестве `children` один `Child`.
+Для него он задает следующие свойства:
+
+| Свойство        | Описание                                                                                        |
+| --------------- | ----------------------------------------------------------------------------------------------- |
+| `ref`           | Ссылка на DOM-узел                                                                              |
+| `role`          | Aria-атрибут. Всегда равен `button`                                                             |
+| `aria-haspopup` | Aria-атрибут. Равен `true`, если меню раскрыто, или `false`, если меню закрыто                  |
+| `aria-expanded` | Aria-атрибут. Равен `true`, если меню раскрыто, или `undefined`, если меню закрыто              |
+| `onKeyDown`     | Функция обратного вызова, которая обрабатывает нажатия клавиш и вызывает обработчики `Dropdown` |
+
+`DropdownMenu` накладывает ограничения на количество компонентов в `children`, так как он ожидает только один `Child`
+
+Ниже представлен пример как передать в качестве `children` пользовательский компонент
+
+<Canvas withSource="none">
+  <CloneElement />
+</Canvas>
+
+<Source language="tsx" code={RawCloneElement} />
 
 ## Связанные компоненты
 

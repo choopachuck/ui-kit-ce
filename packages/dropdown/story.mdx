@@ -5,9 +5,12 @@ import {
   createTitle,
   COMPONENTS,
   createStory,
+  DocsAlert,
 } from '../../docs/showroom/config'
 import { Basic } from './examples/Basic'
+import { CloneElement } from './examples/CloneElement'
 import RawBasic from '!!raw-loader!./examples/Basic'
+import RawCloneElement from '!!raw-loader!./examples/CloneElement'
 
 export const story = createStory(Basic, RawBasic)
 
@@ -47,6 +50,12 @@ import { Dropdown } from '@v-uik/base'
 import { Dropdown } from '@v-uik/dropdown'
 ```
 
+<DocsAlert type="warning">
+  Компонент использует <code>React.CloneElement</code>. Перейдите к разделу{' '}
+  <a href="#механизм-reactcloneelement">Механизм React.CloneElement</a> чтобы
+  узнать подробнее
+</DocsAlert>
+
 ## Dropdown, выпадающий при на нажатии на кнопку
 
 Его доступность можно настраивать аналогично компонентам Popup и Tooltip через `aria` атрибуты
@@ -56,6 +65,31 @@ import { Dropdown } from '@v-uik/dropdown'
 </Canvas>
 
 <Source language="tsx" code={RawBasic} />
+
+## Механизм `React.CloneElement`
+
+Компонент `Dropdown` использует механизм `React.CloneElement` для передаваемого `children` и ожидает в качестве `children` один `Child`.
+Для него он задает следующие свойства:
+
+| Свойство        | Описание                                                                                           |
+| --------------- | -------------------------------------------------------------------------------------------------- |
+| `key`           | Значение всегда равно `trigger`                                                                    |
+| `ref`           | Ссылка на DOM-узел                                                                                 |
+| `onContextMenu` | Функция обратного вызова, необходимая для работы `Dropdown`                                        |
+| `onKeyDown`     | Функция обратного вызова, которая обрабатывает нажатия клавиш и вызывает обработчики `Dropdown`    |
+| `onMouseEnter`  | Функция обратного вызова, которая обрабатывает события мыши и вызывает обработчики `Dropdown`      |
+| `onMouseLeave`  | Функция обратного вызова, которая обрабатывает события мыши и вызывает обработчики `Dropdown`      |
+| `onClick`       | Функция обратного вызова, которая обрабатывает нажатие на кнопку и вызывает обработчики `Dropdown` |
+
+`Dropdown` накладывает ограничения на количество компонентов в `children`, так как он ожидает только один `Child`
+
+Ниже представлен пример как передать в качестве `children` пользовательскую обертку над компонентом `Button`
+
+<Canvas withSource="none">
+  <CloneElement />
+</Canvas>
+
+<Source language="tsx" code={RawCloneElement} />
 
 ## Связанные компоненты
 

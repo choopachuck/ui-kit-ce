@@ -15,6 +15,8 @@ export const ButtonGroupKinds = {
 
 export type TButtonGroupKinds = keyof typeof ButtonGroupKinds
 
+type GetChildButtonOptions = { isFirst: boolean; isLast: boolean }
+
 export interface ButtonGroupProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
@@ -57,20 +59,28 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   button: {
-    '&:not(:first-child)': {
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
-      marginLeft: -1,
-    },
-
-    '&:not(:last-child)': {
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-    },
-
     '&:focus-visible': {
       zIndex: 2,
     },
+  },
+
+  buttonMiddle: {
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    marginLeft: -1,
+  },
+
+  buttonFirst: {
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+  },
+
+  buttonLast: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    marginLeft: -1,
   },
 
   selected: {},
@@ -172,7 +182,8 @@ export const ButtonGroup = React.forwardRef(
     }
 
     const getChildButtonProps = (
-      childButton: React.ReactElement<ButtonProps>
+      childButton: React.ReactElement<ButtonProps>,
+      { isFirst, isLast }: GetChildButtonOptions
     ) => {
       const name = childButton.props.name
       const isSelected =
@@ -188,6 +199,9 @@ export const ButtonGroup = React.forwardRef(
         disabled: disabled || childButton.props.disabled,
         className: clsx(childButton.props.className, classesMap.button, {
           [classesMap.selected]: isSelected,
+          [classesMap.buttonFirst]: isFirst,
+          [classesMap.buttonLast]: isLast,
+          [classesMap.buttonMiddle]: !isFirst && !isLast,
         }),
         classes: mergeClasses({
           classes1: childButton.props.classes || {},
@@ -201,11 +215,18 @@ export const ButtonGroup = React.forwardRef(
       }
     }
 
-    const children = React.Children.toArray(childrenProp)
-      .map((item) => {
+    const childrenArray = React.Children.toArray(childrenProp)
+
+    const children = childrenArray
+      .map((item, index) => {
         if (React.isValidElement(item)) {
+          const isFirst = index === 0
+          const isLast = index === childrenArray.length - 1
           if (item.type === Button) {
-            return React.cloneElement(item, getChildButtonProps(item))
+            return React.cloneElement(
+              item,
+              getChildButtonProps(item, { isFirst, isLast })
+            )
           }
 
           const childOfAChild = (
@@ -219,7 +240,8 @@ export const ButtonGroup = React.forwardRef(
               children: React.cloneElement(
                 childOfAChild as React.ReactElement<ButtonProps>,
                 getChildButtonProps(
-                  childOfAChild as React.ReactElement<ButtonProps>
+                  childOfAChild as React.ReactElement<ButtonProps>,
+                  { isFirst, isLast }
                 )
               ),
             })

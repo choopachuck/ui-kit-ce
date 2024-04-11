@@ -1,13 +1,15 @@
-import { Meta, Story } from '@storybook/addon-docs'
+import { Meta, Story, Source } from '@storybook/addon-docs'
 import { LabelControl } from '@v-uik/label-control'
 import { Checkbox } from '@v-uik/checkbox'
 import {
   createTitle,
   COMPONENTS,
   createStory,
+  DocsAlert,
 } from '../../docs/showroom/config'
-import { Canvas as CanvasStory } from './examples'
+import { Canvas as CanvasStory, CloneElement } from './examples'
 import RawCanvas from '!!raw-loader!@v-uik/label-control/examples/Canvas'
+import RawCloneElement from '!!raw-loader!@v-uik/label-control/examples/CloneElement'
 
 export const story = createStory(CanvasStory, RawCanvas)
 
@@ -43,6 +45,37 @@ import { LabelControl } from '@v-uik/base'
 ```ts
 import { LabelControl } from '@v-uik/label-control'
 ```
+
+<DocsAlert type="warning">
+  Компонент использует <code>React.CloneElement</code>. Перейдите к разделу{' '}
+  <a href="#механизм-reactcloneelement">Механизм React.CloneElement</a> чтобы
+  узнать подробнее
+</DocsAlert>
+
+## Механизм `React.CloneElement`
+
+Компонент `LabelControl` использует механизм `React.CloneElement` для передаваемого компонента в свойство `control` и ожидает в качестве `children` компонент `Radio`, `Checkbox` и `Swith`.
+Для него он задает следующие свойства:
+
+| Свойство     | Описание                                                                                                      |
+| ------------ | ------------------------------------------------------------------------------------------------------------- |
+| `disabled`   | Флаг заблокированного элемента, равное значению `disabled` из `LabelControl`                                  |
+| `inputProps` | Свойства для `HtmlInputElement`, равное значению `inputProps` из `LabelControl`                               |
+| `checked`    | Флаг выбранного элемента, равное значению `checked` из `LabelControl`                                         |
+| `size`       | Размер элемента, равное значению `disabled` из `LabelControl`                                                 |
+| `onChange`   | Функция обратного вызова, которая обрабатывает нажатие на `control`, равное значению `size` из `LabelControl` |
+| `value`      | Значение элемента, равное `value` из `LabelControl`                                                           |
+| `name`       | Атрибут, равное значению `name` из `LabelControl`                                                             |
+
+`LabelControl` накладывает ограничения на использование компонентов в `control`, так как он передает свойства для элементов `radio` и `checkbox`, а также свойства `inputProps` и `size` для компонентов самой библиотеки
+
+Ниже представлен пример как передать в качестве `control` пользовательскую обертку над компонентом `Switch`
+
+<Canvas withSource="none">
+  <CloneElement />
+</Canvas>
+
+<Source language="tsx" code={RawCloneElement} />
 
 ## Связанные компоненты
 

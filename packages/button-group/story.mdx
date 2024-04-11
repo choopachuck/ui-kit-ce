@@ -14,12 +14,14 @@ import {
   PopupExample,
   ClassesDummy,
   Canvas as CanvasStory,
+  CloneElement,
 } from '@v-uik/button-group/examples'
 import RawSingle from '!!raw-loader!@v-uik/button-group/examples/Single'
 import RawMulti from '!!raw-loader!@v-uik/button-group/examples/Multi'
 import RawExamples from '!!raw-loader!@v-uik/button-group/examples/Examples'
 import RawPopupExample from '!!raw-loader!@v-uik/button-group/examples/PopupExample'
 import RawCanvas from '!!raw-loader!@v-uik/button-group/examples/Canvas'
+import RawCloneElement from '!!raw-loader!@v-uik/button-group/examples/CloneElement'
 
 export const story = createStory(CanvasStory, RawCanvas)
 
@@ -59,6 +61,12 @@ import { ButtonGroup, Button } from '@v-uik/base'
 import { ButtonGroup } from '@v-uik/button-group'
 import { Button } from '@v-uik/button'
 ```
+
+<DocsAlert type="warning">
+  Компонент использует <code>React.CloneElement</code>. Перейдите к разделу{' '}
+  <a href="#механизм-reactcloneelement">Механизм React.CloneElement</a> чтобы
+  узнать подробнее
+</DocsAlert>
 
 ## Размеры и цветовая схема
 
@@ -103,6 +111,30 @@ import { Button } from '@v-uik/button'
 </Canvas>
 
 <Source language="tsx" code={RawPopupExample} />
+
+## Механизм `React.CloneElement`
+
+Компонент `ButtonGroup` использует механизм `React.CloneElement` для всех передаваемых `children` и ожидает в качестве `children` компоненты `Button`.
+Для них он задает следующие свойства:
+
+| Свойство    | Описание                                                                                                                                                                 |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `kind`      | Тип кнопки. Значение всегда равно `outlined`                                                                                                                             |
+| `color`     | Цвет кнопки. Значение равно передаваемому значению из `ButtonGroup`                                                                                                      |
+| `disabled`  | Флаг заблокированной кнопки. Равно значению передаваемому значению из `ButtonGroup` или значению `disabled`, если оно указано у соответствующего `child`                 |
+| `className` | Css-класс, который состоит из `className` у соответствующего `child`, а также `className`, который присваивает `ButtonGroup`                                             |
+| `classes`   | Объект, который содержит `classes1` (значение `classes` из `child`), `classes2` (значение `classes` из `ButtonGroup`), `mergeCallback` (функция для объединения классов) |
+| `onClick`   | Функция обратного вызова, которая обрабатывает нажатие на кнопку и вызывает обработчики `ButtonGroup`                                                                    |
+
+`ButtonGroup` накладывает ограничения на использование компонентов в `children`, так как он выполняет проверку на валидность `children` и ожидает, что в конечном счете это будут компоненты `Button`
+
+Ниже представлен пример как передать в качестве `children` пользовательскую обертку над компонентом `Button`
+
+<Canvas withSource="none">
+  <CloneElement />
+</Canvas>
+
+<Source language="tsx" code={RawCloneElement} />
 
 ## Связанные компоненты
 
