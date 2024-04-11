@@ -45,10 +45,16 @@ type OptionItemStatusProps = {
   children?: React.ReactNode
 }
 
-export type OptionItemProps<Option, E extends React.ElementType> = {
+type OptionItemCommonProps<E extends React.ElementType> = {
   commonOptionItemProps?: ListItemProps<E>
   className?: string
-} & (OptionItemStatusProps | OptionItemBaseProps<Option>)
+}
+
+export type OptionItemProps<
+  Option,
+  E extends React.ElementType
+> = OptionItemCommonProps<E> &
+  (OptionItemStatusProps | OptionItemBaseProps<Option>)
 
 export const OptionItem = <
   Option,
@@ -76,7 +82,7 @@ export const OptionItem = <
       optionClasses,
       className,
       commonOptionItemProps,
-    } = props
+    } = props as OptionItemBaseProps<Option> & OptionItemCommonProps<E>
     const {
       classes: classesCommonOptionItemProps,
       ...restCommonOptionItemProps
