@@ -183,7 +183,7 @@ export const CircularProgress = React.forwardRef(
     const pathColor = color ?? theme.comp.circularProgress.pathColorBackground
 
     const dynamicStyles = getDynamicStyles({
-      size: SIZES[size],
+      size: sizesConfig[size],
       color: pathColor,
     })
     const classList = useStyles({ animationRadius })()
