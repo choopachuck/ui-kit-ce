@@ -16,7 +16,8 @@ const useStyles = createUseStyles((theme) => ({
     position: 'relative',
 
     '&::after': {
-      border: '1px solid transparent',
+      borderStyle: 'solid',
+      borderWidth: 1,
       content: '""',
       position: 'absolute',
       top: 0,
@@ -53,7 +54,9 @@ const useStyles = createUseStyles((theme) => ({
     borderColor: theme.comp.underlay.colorBorderOutlinedNeutral,
   },
 
-  filled: {},
+  filled: {
+    borderColor: 'transparent',
+  },
   filledError: {
     backgroundColor: theme.comp.underlay.colorBackgroundFilledError,
     borderColor: theme.comp.underlay.colorBorderFilledError,
