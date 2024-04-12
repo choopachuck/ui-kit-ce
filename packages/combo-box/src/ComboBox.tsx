@@ -519,7 +519,6 @@ export const ComboBox = React.forwardRef(
     const handleListRef = React.useCallback(
       (node: HTMLElement) => {
         listRef.current = node
-        listRef.current?.focus()
       },
       [listRef]
     )
