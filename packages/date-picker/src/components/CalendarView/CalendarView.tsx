@@ -537,11 +537,6 @@ export const CalendarView: CalendarViewProps = <TDate extends unknown>(
               hoveredPosition = inHoverRangeResult.position
             }
 
-            const selectedEndStart =
-              selectedPosition === 'end' ? 'selected-end' : 'selected-start'
-            const hoveredEndStart =
-              selectedPosition === 'end' ? 'hovered-end' : 'hovered-start'
-
             return (
               <button
                 key={`day-${index}-${dayIndex}`}
@@ -551,7 +546,11 @@ export const CalendarView: CalendarViewProps = <TDate extends unknown>(
                   {
                     [classesMap.todayButton]: isToday,
                     [classesMap.selected]: isSelected,
-                    [classesMap[selectedEndStart]]: selectedPosition,
+                    [classesMap[
+                      `selected-${
+                        selectedPosition as string
+                      }` as keyof typeof classesList
+                    ]]: selectedPosition,
                     [classesMap.notInMonth]: !isInCurrentMonth,
                     [classesMap.startOfMonth]: isStartOfMonth,
                     [classesMap.endOfMonth]: isEndOfMonth,
@@ -559,7 +558,11 @@ export const CalendarView: CalendarViewProps = <TDate extends unknown>(
                     [classesMap.endOfWeek]: dayIndex === 6,
                     [classesMap.inRange]: inRange,
                     [classesMap.hovered]: inHoverRange,
-                    [classesMap[hoveredEndStart]]: hoveredPosition,
+                    [classesMap[
+                      `hovered-${
+                        hoveredPosition as string
+                      }` as keyof typeof classesList
+                    ]]: hoveredPosition,
                   }
                 )}
                 //aria-disabled вместо disabled, чтобы работала навигация с клавиатуры
