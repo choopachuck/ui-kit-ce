@@ -15,7 +15,7 @@ export const createFileItem = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.color.separationMinor,
   infoColorText: compatibilityMode
     ? theme.colourway.onBackgroundLow
-    : theme.sys.color.onBackgroundMedium,
+    : theme.sys.color.onBackgroundLow,
   buttonColorIcon: compatibilityMode
     ? theme.colourway.onBackgroundHigh
     : theme.sys.color.onBackgroundHigh,

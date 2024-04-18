@@ -6,6 +6,8 @@ import {
   dark,
   light,
   DateLibAdapterProvider,
+  createTheme,
+  darkOverrides,
 } from '@v-uik/base'
 import { DateFnsAdapter } from '@v-uik/date-picker/adapters/date-fns'
 import { ru } from 'date-fns/locale'
@@ -62,6 +64,16 @@ const getTheme = (key) => {
   }
 }
 
+const getNextTheme = (key) => {
+  switch (key) {
+    case THEME_KEYS.dark:
+      return createTheme(darkOverrides)
+    case THEME_KEYS.light:
+    default:
+      return createTheme()
+  }
+}
+
 const withThemeProvider = (Story, context) => {
   const classes = useStyles()
   const themeKey = context.globals.theme
@@ -80,8 +92,8 @@ const withThemeProvider = (Story, context) => {
 
   if (splitMode === SPLIT_MODE.on) {
     const splitTheme = [
-      getTheme(THEME_KEYS.light),
-      getTheme(THEME_KEYS.dark),
+      getNextTheme(THEME_KEYS.light),
+      getNextTheme(THEME_KEYS.dark),
     ].map((theme, index) => {
       return (
         <ThemeProvider theme={theme} key={index}>

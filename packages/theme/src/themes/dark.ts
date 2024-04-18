@@ -340,7 +340,7 @@ export const darkOverrides = {
        */
       disabled: ref.palette.gray30,
       disabledHigh: setAlphaChannel(ref.palette.white, ref.alpha.channel25),
-      disabledMedium: setAlphaChannel(ref.palette.white, ref.alpha.channel25),
+      disabledMedium: setAlphaChannel(ref.palette.white, ref.alpha.channel10),
       disabledLow: setAlphaChannel(ref.palette.white, ref.alpha.channel5),
 
       /**
@@ -367,6 +367,100 @@ export const darkOverrides = {
       onErrorLow: setAlphaChannel(ref.palette.black, ref.alpha.channel70),
       successAlpha: ref.palette.green60,
       warningAlpha: ref.palette.gold70,
+      backdropColorBackground: setAlphaChannel(
+        ref.palette.coldGray10,
+        ref.alpha.channel65
+      ),
+
+      inverseOnBackgroundMedium: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel60
+      ),
+      inverseOnBackgroundLow: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel45
+      ),
+
+      inverseOnBackgroundOverlayToning: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel5
+      ),
+      inverseOnBackgroundOverlaySelect: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel10
+      ),
+      inverseOnBackgroundOverlayHover: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel15
+      ),
+      inverseOnBackgroundOverlayActive: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel20
+      ),
+
+      onPrimaryOverlayToning: setAlphaChannel(
+        ref.palette.white,
+        ref.alpha.channel5
+      ),
+      onPrimaryOverlaySelect: setAlphaChannel(
+        ref.palette.white,
+        ref.alpha.channel10
+      ),
+      onPrimaryOverlayHover: setAlphaChannel(
+        ref.palette.white,
+        ref.alpha.channel15
+      ),
+      onPrimaryOverlayActive: setAlphaChannel(
+        ref.palette.white,
+        ref.alpha.channel20
+      ),
+
+      onSecondaryOverlayToning: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel5
+      ),
+      onSecondaryOverlaySelect: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel10
+      ),
+      onSecondaryOverlayHover: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel15
+      ),
+      onSecondaryOverlayActive: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel20
+      ),
+
+      inverseNeutralAlpha: ref.palette.gray60,
+
+      onSuccessHigh: ref.palette.black,
+      onWarningHigh: ref.palette.black,
+
+      inverseDisabledHigh: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel25
+      ),
+      inverseDisabledMedium: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel10
+      ),
+      inverseDisabledLow: setAlphaChannel(
+        ref.palette.black,
+        ref.alpha.channel5
+      ),
+
+      inverseFocus: ref.palette.gray30,
+      inverseFocusPocus: ref.palette.coldGray95,
+
+      inverseSeparationMajor: setAlphaChannel(
+        ref.palette.gray60,
+        ref.alpha.channel55
+      ),
+      inverseSeparationMinor: setAlphaChannel(
+        ref.palette.gray60,
+        ref.alpha.channel30
+      ),
     },
   },
   comp: {
@@ -374,6 +468,7 @@ export const darkOverrides = {
     link: {
       colorText: ref.palette.electricBlue60,
       colorTextHover: ref.palette.electricBlue70,
+      colorTextActive: ref.palette.electricBlue80,
       colorTextVisited: ref.palette.orchid60,
     },
     slider: {
@@ -418,6 +513,20 @@ export const darkOverrides = {
         ref.alpha.channel70
       ),
       colorTextYellow: ref.palette.sunny80,
+    },
+    inlineNotification: {
+      colorBackgroundFilledError: '#5B0C06',
+      colorBackgroundFilledWarning: '#544303',
+      colorBackgroundFilledSuccess: '#0B5118',
+      colorBackgroundFilledInfo: '#034775',
+      colorBackgroundFilledNeutral: '#454545',
+    },
+    underlay: {
+      colorBackgroundFilledError: '#5B0C06',
+      colorBackgroundFilledWarning: '#544303',
+      colorBackgroundFilledSuccess: '#0B5118',
+      colorBackgroundFilledInfo: '#034775',
+      colorBackgroundFilledNeutral: '#454545',
     },
   },
 }

@@ -1,5 +1,4 @@
 import { Theme } from '../interface'
-import { setAlphaChannel } from '../utils'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createDrawer = (theme: Theme, compatibilityMode?: boolean) => ({
@@ -14,7 +13,7 @@ export const createDrawer = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.color.separationMajor,
   backdropColorBackground: compatibilityMode
     ? theme.colourway.mono06
-    : setAlphaChannel(theme.ref.palette.coldGray20, theme.ref.alpha.channel45),
+    : theme.sys.color.backdropColorBackground,
   elevationShadow: compatibilityMode
     ? theme.colourway.shadow03
     : theme.sys.elevation.lg,
