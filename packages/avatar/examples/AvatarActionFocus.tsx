@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Avatar, createUseStyles } from '@v-uik/base'
 import { avatarImage01, avatarImage02, avatarImage03 } from './assets'
 
-export const useStyles = createUseStyles((theme) => ({
+const useStyles = createUseStyles((theme) => ({
   root: {
     position: 'relative',
     '&::after': {

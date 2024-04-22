@@ -8,9 +8,21 @@ const secondSvgPath =
   'M13.6403 5.51965L11.5864 3.39556L19.0646 0L21.1185 2.12404L21.1186 2.12391L23.1726 4.248L19.8891 11.9815L17.8351 9.8574L21.1185 2.12414L13.6403 5.51965ZM11.5862 3.39563L9.53222 5.51972L2.05407 2.1242L5.33746 9.85747L3.28348 11.9816L0 4.24807L2.05398 2.12398L2.05404 2.12412L4.10797 7.04252e-05L11.5862 3.39563ZM17.8349 14.106L19.8889 11.9819L23.1723 19.7154L21.1184 21.8395L21.1183 21.8394L19.0644 23.9633L11.5862 20.5679L13.6402 18.4438L21.1183 21.8393L17.8349 14.106ZM3.28358 11.9815L5.33756 14.1056L2.05419 21.8389L2.05408 21.8391L0.0001013 19.715L3.28358 11.9815ZM2.05419 21.8389L4.10816 23.9631L11.5864 20.5674L9.5324 18.4434L2.05419 21.8389Z'
 
 // TODO: replace with new icon later
-export const LogoPlatformV: React.FC<Props> = (props) => {
+export const LogoPlatformV: React.FC<Props> = ({
+  width = 160,
+  height = 24,
+  fill = 'currentColor',
+  ...props
+}) => {
   return (
-    <svg {...props} viewBox="0 0 160 24" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width={width}
+      height={height}
+      fill={fill}
+      {...props}
+      viewBox="0 0 160 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path fillRule="evenodd" clipRule="evenodd" d={firstSvgPath} />
       <path fillRule="evenodd" clipRule="evenodd" d={secondSvgPath} />
     </svg>
@@ -18,8 +30,3 @@ export const LogoPlatformV: React.FC<Props> = (props) => {
 }
 
 LogoPlatformV.displayName = 'LogoPlatformV'
-LogoPlatformV.defaultProps = {
-  width: 160,
-  height: 24,
-  fill: 'currentColor',
-}

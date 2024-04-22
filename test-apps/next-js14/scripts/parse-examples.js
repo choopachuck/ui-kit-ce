@@ -9,6 +9,7 @@ const ignore = [
   'Canvas.tsx',
   'TextareaAutosize.tsx',
   'Playground.tsx',
+  'UseResetCss.tsx',
 ]
 
 const files = globSync('../../packages/*/examples/*.tsx')
