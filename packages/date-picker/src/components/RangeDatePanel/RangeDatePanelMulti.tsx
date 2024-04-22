@@ -51,6 +51,7 @@ export const RangeDatePanelMulti = React.forwardRef(
       header,
       allowInfinity,
       calendarViewClasses,
+      panelHeaderClasses,
       ...rest
     } = props
 
@@ -138,6 +139,7 @@ export const RangeDatePanelMulti = React.forwardRef(
             yearSelected={yearOrMonthSelected}
             monthText={monthText}
             yearText={yearText}
+            classes={panelHeaderClasses}
           />
 
           <div className={classesList.viewsContainer}>

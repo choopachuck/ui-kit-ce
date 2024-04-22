@@ -52,6 +52,7 @@ export const RangeDatePanelMultiDivided = React.forwardRef(
       header,
       allowInfinity,
       calendarViewClasses,
+      panelHeaderClasses,
       ...rest
     } = props
 
@@ -165,6 +166,7 @@ export const RangeDatePanelMultiDivided = React.forwardRef(
               {...panelHeaderPropsLeft}
               monthText={monthTextLeft}
               yearText={yearTextLeft}
+              classes={panelHeaderClasses}
             />
 
             {currentViewLeft === DatePickerView.day && (
@@ -215,6 +217,7 @@ export const RangeDatePanelMultiDivided = React.forwardRef(
               {...panelHeaderPropsRight}
               monthText={monthTextRight}
               yearText={yearTextRight}
+              classes={panelHeaderClasses}
             />
 
             {currentViewRight === DatePickerView.day && (
