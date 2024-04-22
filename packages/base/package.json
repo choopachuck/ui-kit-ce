@@ -72,6 +72,7 @@
     "@v-uik/typography": "1.10.0",
     "@v-uik/underlay": "1.10.0",
     "@v-uik/utils": "1.10.0",
-    "@v-uik/avatar": "1.10.0"
+    "@v-uik/avatar": "1.10.0",
+    "@v-uik/pagination": "1.10.0"
   }
 }

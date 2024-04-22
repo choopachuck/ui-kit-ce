@@ -49,6 +49,7 @@ import * as TooltipPackage from '@v-uik/tooltip'
 import * as UnderlayPackage from '@v-uik/underlay'
 import * as TypographyPackage from '@v-uik/typography'
 import * as UtilsPackage from '@v-uik/utils'
+import * as PaginationPackage from '@v-uik/pagination'
 
 import React from 'react'
 
@@ -151,6 +152,7 @@ export const createLiveEditStory = (
       '@v-uik/underlay': UnderlayPackage,
       '@v-uik/typography': TypographyPackage,
       '@v-uik/utils': UtilsPackage,
+      '@v-uik/pagination': PaginationPackage,
     },
     code: code || defaultCode,
   })

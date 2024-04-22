@@ -40,6 +40,7 @@ module.exports = {
         'next-js-provider',
         'notification',
         'input-password',
+        'pagination',
         'polyfills',
         'popup',
         'portal',

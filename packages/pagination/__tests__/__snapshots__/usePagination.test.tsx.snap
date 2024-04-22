@@ -1,0 +1,691 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`use pagination handleChangeCurrentPage works correctly ({"defaultPage": 8, "pageNumber": 2}) 1`] = `
+Object {
+  "currentPage": 2,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": false,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 1,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 2,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 4,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 5,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 25,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination handleChangeCurrentPage works correctly ({"pageNumber": 2}) 1`] = `
+Object {
+  "currentPage": 2,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": false,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 1,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 2,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 4,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 5,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 25,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination handleChangeCurrentPage works correctly ({"pageNumber": 25}) 1`] = `
+Object {
+  "currentPage": 25,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": true,
+  "isStart": false,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 1,
+    },
+    Object {
+      "appearance": "overflow-start",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 21,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 22,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 23,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 24,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 25,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination handleFirstClick works correctly (%p) 1`] = `
+Object {
+  "currentPage": 1,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": true,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 1,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 2,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 4,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 5,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 25,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination handleLastClick works correctly (%p) 1`] = `
+Object {
+  "currentPage": 25,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": true,
+  "isStart": false,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 1,
+    },
+    Object {
+      "appearance": "overflow-start",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 21,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 22,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 23,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 24,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 25,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination handleNextClick works correctly (%p) 1`] = `
+Object {
+  "currentPage": 6,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": false,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 1,
+    },
+    Object {
+      "appearance": "overflow-start",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 5,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 6,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 7,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 25,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination handlePreviousClick works correctly (%p) 1`] = `
+Object {
+  "currentPage": 4,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": false,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 1,
+    },
+    Object {
+      "appearance": "overflow-start",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 4,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 5,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 25,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination returns props correctly ({"boundaryPageCount": 0, "defaultPage": 3, "nearPageCount": 1, "totalPageCount": 10}) 1`] = `
+Object {
+  "currentPage": 3,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": false,
+  "items": Array [
+    Object {
+      "appearance": "overflow-start",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 2,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 4,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination returns props correctly ({"boundaryPageCount": 0, "nearPageCount": 1, "totalPageCount": 10}) 1`] = `
+Object {
+  "currentPage": 1,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": true,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 1,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 2,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 4,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination returns props correctly ({"boundaryPageCount": 1, "currentPage": 1, "defaultPage": 3, "nearPageCount": 2, "totalPageCount": 8}) 1`] = `
+Object {
+  "currentPage": 1,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": true,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 1,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 2,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 4,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 5,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 6,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 7,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 8,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination returns props correctly ({"boundaryPageCount": 3, "currentPage": 6, "nearPageCount": 2, "totalPageCount": 25}) 1`] = `
+Object {
+  "currentPage": 6,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": false,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 1,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 2,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 4,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 5,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 6,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 7,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 8,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 9,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 23,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 24,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 25,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination returns props correctly ({"boundaryPageCount": 3, "nearPageCount": 2, "totalPageCount": 25}) 1`] = `
+Object {
+  "currentPage": 1,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": true,
+  "items": Array [
+    Object {
+      "appearance": "item",
+      "isSelected": true,
+      "value": 1,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 2,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 4,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 5,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 6,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 7,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 8,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 9,
+    },
+    Object {
+      "appearance": "overflow-end",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 23,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 24,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 25,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;
+
+exports[`use pagination returns props correctly ({"boundaryPageCount": 5, "currentPage": 6, "nearPageCount": 1, "totalPageCount": 4}) 1`] = `
+Object {
+  "currentPage": 6,
+  "handleFirstClick": [Function],
+  "handleLastClick": [Function],
+  "handleNextClick": [Function],
+  "handlePreviousClick": [Function],
+  "isEnd": false,
+  "isStart": false,
+  "items": Array [
+    Object {
+      "appearance": "overflow-start",
+      "isSelected": false,
+      "value": "...",
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 1,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 2,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 3,
+    },
+    Object {
+      "appearance": "item",
+      "isSelected": false,
+      "value": 4,
+    },
+  ],
+  "setCurrentPage": [Function],
+}
+`;

@@ -73,6 +73,7 @@ export * from '@v-uik/underlay'
 export * from '@v-uik/utils'
 export * from '@v-uik/labelled'
 export * from '@v-uik/avatar'
+export * from '@v-uik/pagination'
 
 /**
  * Заглушка, не используется

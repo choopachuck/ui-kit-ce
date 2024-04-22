@@ -59,6 +59,7 @@ import { createUnderlay } from './underlay'
 import { createAvatar } from './avatar'
 import { createCard } from './card'
 import { createCloseButton } from './closeButton'
+import { createPagination } from './pagination'
 
 // пришлось описать ключи компонентного слоя отдельным типом, потому что вывести
 // не удается из-за циклической зависимости в createComp.
@@ -125,6 +126,7 @@ type ComponentLayerKeys =
   | 'fileItem'
   | 'underlay'
   | 'closeButton'
+  | 'pagination'
 
 let compatibilityMap: { [key in ComponentLayerKeys]: boolean | undefined }
 
@@ -196,6 +198,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     tooltip: checkCompatibilityMode(customProps, 'tooltip'),
     underlay: checkCompatibilityMode(customProps, 'underlay'),
     closeButton: checkCompatibilityMode(customProps, 'closeButton'),
+    pagination: checkCompatibilityMode(customProps, 'pagination'),
   }
 
   return {
@@ -286,6 +289,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     tooltip: createTooltip(theme, compatibilityMap.tooltip),
     underlay: createUnderlay(theme, compatibilityMap.underlay),
     closeButton: createCloseButton(theme, compatibilityMap.closeButton),
+    pagination: createPagination(theme, compatibilityMap.pagination),
   }
 }
 

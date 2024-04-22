@@ -43,6 +43,7 @@ const packages = [
   'modal',
   'next-js-provider',
   'notification',
+  'pagination',
   'popup',
   'portal',
   'progress',

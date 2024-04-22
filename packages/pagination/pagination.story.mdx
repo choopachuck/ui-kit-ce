@@ -1,0 +1,278 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Pagination } from '@v-uik/pagination'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+
+import {
+  PaginationCanvas,
+  PaginationBase,
+  PaginationNearPagesCount,
+  PaginationBoundaryPagesCount,
+  PaginationNavigationWithoutPreviousAndNext,
+  PaginationNavigationWithFirstAndLast,
+  PaginationSizes,
+  PaginationDisabled,
+  PaginationOnPageChange,
+  PaginationDefaultPage,
+  PaginationComponents,
+  PaginationUsePagination,
+  PaginationVariants,
+  PaginationGap,
+  PaginationRound,
+  PaginationCompact,
+  PaginationDropdown,
+} from './examples'
+
+import RawCanvas from '!!raw-loader!@v-uik/pagination/examples/PaginationCanvas'
+import RawPaginationBase from '!!raw-loader!@v-uik/pagination/examples/PaginationBase'
+import RawPaginationNearPagesCount from '!!raw-loader!@v-uik/pagination/examples/PaginationNearPagesCount'
+import RawPaginationBoundaryPagesCount from '!!raw-loader!@v-uik/pagination/examples/PaginationBoundaryPagesCount'
+import RawPaginationNavigationWithoutPreviousAndNext from '!!raw-loader!@v-uik/pagination/examples/PaginationNavigationWithoutPreviousAndNext'
+import RawPaginationNavigationWithFirstAndLast from '!!raw-loader!@v-uik/pagination/examples/PaginationNavigationWithFirstAndLast'
+import RawPaginationSizes from '!!raw-loader!@v-uik/pagination/examples/PaginationSizes'
+import RawPaginationDisabled from '!!raw-loader!@v-uik/pagination/examples/PaginationDisabled'
+import RawPaginationOnPageChange from '!!raw-loader!@v-uik/pagination/examples/PaginationOnPageChange'
+import RawPaginationDefaultPage from '!!raw-loader!@v-uik/pagination/examples/PaginationDefaultPage'
+import RawPaginationComponents from '!!raw-loader!@v-uik/pagination/examples/PaginationComponents'
+import RawPaginationUsePagination from '!!raw-loader!@v-uik/pagination/examples/PaginationUsePagination'
+import RawPaginationVariants from '!!raw-loader!@v-uik/pagination/examples/PaginationVariants'
+import RawPaginationGap from '!!raw-loader!@v-uik/pagination/examples/PaginationGap'
+import RawPaginationRound from '!!raw-loader!@v-uik/pagination/examples/PaginationRound'
+import RawPaginationCompact from '!!raw-loader!@v-uik/pagination/examples/PaginationCompact'
+import RawPaginationDropdown from '!!raw-loader!@v-uik/pagination/examples/PaginationDropdown'
+
+export const story = createStory(PaginationCanvas, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Pagination', 'Pagination'])}
+  component={Pagination}
+/>
+
+<Story
+  name="Pagination"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: { disable: true },
+  }}
+>
+  {story.component}
+</Story>
+
+# Pagination
+
+Пагинация используется для разделения контента или данных на несколько страниц и позволяет пользователям переходить к следующей, предыдущей, первой, последней или определенным страницам
+
+## import
+
+```ts
+import { Pagination } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Pagination } from '@v-uik/pagination'
+```
+
+## Базовое использование
+
+Ниже представлен пример базового использования компонента с указанием общего количества страниц
+
+<Canvas withSource="none">
+  <PaginationBase />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationBase} />
+
+## Размеры пагинации
+
+Пагинация предоставляет возможность задавать предзаложенный размер компонента через свойство `size`. В зависимости от этого значения меняется размер элементов.
+Предзаложены следующие размеры пагинации:
+
+| Значение        | Описание         |
+| --------------- | ---------------- |
+| <code>sm</code> | Маленький размер |
+| <code>md</code> | Средний размер   |
+| <code>lg</code> | Большой размер   |
+
+По умолчанию пагинация имеет размер `md`
+
+<Canvas withSource="none">
+  <PaginationSizes />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationSizes} />
+
+## Блокировка пагинации
+
+Для того, чтобы заблокировать пагинацию и отключить ее функциональность, необходимо передать зачение `true` в свойство `disabled`
+
+<Canvas withSource="none">
+  <PaginationDisabled />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationDisabled} />
+
+## Задание отображаемых страниц
+
+Компонент предоставляет возможность указывать количество отображаемых элементов пагинации
+
+### Соседние страницы
+
+Чтобы указать количество отображаемых страниц слева и справа от активной страницы, необходимо задать соответствующее
+значение помощью свойства `nearPageCount`
+
+<Canvas withSource="none">
+  <PaginationNearPagesCount />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationNearPagesCount} />
+
+По умолчанию значение `nearPageCount` равно 1
+
+### Крайние страницы
+
+Чтобы указать количество отображаемых страниц в начале и в конце пагинации, необходимо задать соответствующее
+значение помощью свойства `boundaryPageCount`
+
+<Canvas withSource="none">
+  <PaginationBoundaryPagesCount />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationBoundaryPagesCount} />
+
+По умолчанию значение `boundaryPageCount` равно 1
+
+## Скрытие / отображение кнопок навигации
+
+### К предыдущей и следующей странице
+
+Чтобы скрыть кнопки навигации к предыдущей и следующей странице необходимо задать значение `false` для свойства `hideNavigationPrevious` и(или) `hideNavigationNext`
+
+<Canvas withSource="none">
+  <PaginationNavigationWithoutPreviousAndNext />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationNavigationWithoutPreviousAndNext} />
+
+### К первой и последней странице
+
+Чтобы отобразить кнопки навигации к первой и последней странице необходимо задать значение `true` для свойства `showNavigationFirst` и(или) `showNavigationLast`
+
+<Canvas withSource="none">
+  <PaginationNavigationWithFirstAndLast />
+</Canvas>
+
+<Source language="tsx" code={PaginationNavigationWithFirstAndLast} />
+
+## Текущий номер страницы по умолчанию
+
+Для того, чтобы указать текущий номер страницы по умолчанию при первой отрисовке, необходимо передать соответствующее значение
+в свойство `defaultPage`
+
+<Canvas withSource="none">
+  <PaginationDefaultPage />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationDefaultPage} />
+
+## Контроль изменения номера страницы
+
+Компонент предоставляет поддержку Flux-архитектуры и дает возможность контролировать текущий номер страницы внутри пагинации. Для этого достаточно
+передать функцию обратного вызова `onPageChange`, которая возвращает новый номер страницы, а также передать текущий номер страницы,
+указав соответствующее значение в свойство `currentPage`
+
+<Canvas withSource="none">
+  <PaginationOnPageChange />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationOnPageChange} />
+
+## Компоненты пагинации
+
+`Pagination` позволяет переопределить части своих компонентов по желанию пользователя. Для этого необходимо передать соответствующие компоненты в
+свойство `components`. В пагинации возможно переопределить следующие компоненты:
+
+| Название             | Свойство                 | Описание                                                |
+| -------------------- | ------------------------ | ------------------------------------------------------- |
+| `PageButton`         | `PageButtonProps`        | Элементы пагинации, отображающие номера страниц         |
+| `OverflowButton`     | `OverflowButtonProps`    | Элементы пагинации, отображающие скрытые номера страниц |
+| `FirstPageButton`    | `NavigationButtonProps`  | Кнопка переключения на первую страницу пагинации        |
+| `LastPageButton`     | `NavigationButtonProps`  | Кнопка переключения на последнюю страницу пагинации     |
+| `PreviousPageButton` | `NavigationButtonProps`  | Кнопка переключения на предыдущую страницу пагинации    |
+| `NextPageButton`     | `NavigationButtonProps`  | Кнопка переключения на следующую страницу пагинации     |
+| `SelectedIndicator`  | `SelectedIndicatorProps` | Индикатор активной страницы                             |
+
+<Canvas withSource="none">
+  <PaginationComponents />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationComponents} />
+
+## Хук `usePagination`
+
+Для более детальной кастомизации пагинации компонент `Pagination` предоставляет хук `usePagination`. С помощью него возможно
+придать пагинации любой внешний вид, сохранив, при этом, всю функциональность компонента
+
+<Canvas withSource="none">
+  <PaginationUsePagination />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationUsePagination} />
+
+## Примеры использования
+
+### Отступы между элементами
+
+Ниже представлен вариант реализации отступов между элементами с помощью свойства `gap` и с помощью
+определения отрицательного `margin` основного контейнера и `margin` самих элементов слева и справа
+
+<Canvas withSource="none">
+  <PaginationGap />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationGap} />
+
+### Внешний вид
+
+Ниже представлены примеры реализации следующих внешних видов пагинации: `ghost`, `outlined` и `contained`
+
+<Canvas withSource="none">
+  <PaginationVariants />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationVariants} />
+
+### Скругление
+
+Ниже представлены примеры реализации следующих скруглений пагинации: `square`, `rounded` и `circle`
+
+<Canvas withSource="none">
+  <PaginationRound />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationRound} />
+
+### Компактный вариант пагинации
+
+<Canvas withSource="none">
+  <PaginationCompact />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationCompact} />
+
+### Список скрытых страниц
+
+Для того, чтобы раскрыть выпадающий список скрытых элементов, в нажмите на "троеточие" слева или справа
+
+<Canvas withSource="none">
+  <PaginationDropdown />
+</Canvas>
+
+<Source language="tsx" code={RawPaginationDropdown} />
