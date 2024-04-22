@@ -40,6 +40,7 @@ import { useSafeRangeValue } from './hooks/useSafeValue'
 import {
   RangePickerClasses as Classes,
   CalendarViewClasses,
+  PanelHeaderClasses,
 } from './interfaces/classes'
 import {
   useOutsideScroll,
@@ -304,6 +305,10 @@ export interface RangePickerProps<TDate = unknown>
    * CSS классы для стилизации сетки календаря
    */
   calendarViewClasses?: CalendarViewClasses
+  /**
+   * CSS классы для стилизации компонента PanelHeader
+   */
+  panelHeaderClasses?: PanelHeaderClasses
 }
 
 interface IRangePicker
@@ -372,6 +377,7 @@ export const RangePicker = React.forwardRef(
       description,
       labelledClasses,
       calendarViewClasses,
+      panelHeaderClasses,
       keepHelperTextMinHeight,
       required,
       suffix,
@@ -667,6 +673,7 @@ export const RangePicker = React.forwardRef(
       <RangeDatePanelComponent<TDate>
         ref={panelRef}
         calendarViewClasses={calendarViewClasses}
+        panelHeaderClasses={panelHeaderClasses}
         existedViews={existedViews}
         range={selectedRange}
         activeInputIndex={activeInputIndex}

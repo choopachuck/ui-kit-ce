@@ -21,7 +21,10 @@ import {
 } from '../../interfaces/common'
 import { useRangeDateCheckState } from '../../hooks/useRangeDateCheckState'
 import { useHoverState } from '../../hooks/useHoverState'
-import { CalendarViewClasses } from '../../interfaces/classes'
+import {
+  CalendarViewClasses,
+  PanelHeaderClasses,
+} from '../../interfaces/classes'
 
 export interface Props<TDate = unknown>
   extends ValidateDateProps<TDate>,
@@ -30,6 +33,10 @@ export interface Props<TDate = unknown>
    * CSS классы для стилизации
    */
   calendarViewClasses?: CalendarViewClasses
+  /**
+   * CSS классы для стилизации компонента PanelHeader
+   */
+  panelHeaderClasses?: PanelHeaderClasses
   /**
    * Выбранный промежуток
    */
@@ -86,6 +93,7 @@ export const RangeDatePanel = React.forwardRef(
       header,
       allowInfinity,
       calendarViewClasses,
+      panelHeaderClasses,
       ...rest
     } = props
 
@@ -158,6 +166,7 @@ export const RangeDatePanel = React.forwardRef(
 
           <PanelHeader
             {...panelHeaderProps}
+            classes={panelHeaderClasses}
             monthText={monthText}
             yearText={yearText}
           />

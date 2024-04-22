@@ -201,3 +201,16 @@ export type CalendarViewClasses = {
   /** */
   endOfWeek?: string
 }
+
+export type PanelHeaderClasses = {
+  /** Стиль, применяемый к обертке компонента */
+  root?: string
+  /** Стиль, применяемый к кнопкам промотки месяцев */
+  chevron?: string
+  /** Стиль, применяемый к кнопки выбора месяца */
+  month?: string
+  /** Стиль, применяемый к кнопке выбора года */
+  year?: string
+  /** Стиль, применяемый к кнопкам выбора года/месяца при активации выбора года/месяца */
+  selected?: string
+}

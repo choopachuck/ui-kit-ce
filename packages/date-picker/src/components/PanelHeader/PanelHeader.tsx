@@ -6,6 +6,8 @@ import { Button, ButtonKinds, ButtonColor, ButtonProps } from '@v-uik/button'
 import { ChevronLeftIcon } from './ChevronLeftIcon'
 import { ChevronRightIcon } from './ChevronRightIcon'
 import type { ComponentPropsWithRefFix } from '@v-uik/common'
+import { PanelHeaderClasses } from '../../interfaces/classes'
+import { useClassList } from '@v-uik/hooks'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -101,6 +103,10 @@ export interface Props extends Omit<ComponentPropsWithRefFix<'div'>, 'ref'> {
    * Обработчик нажатия кнопки года
    */
   onClickYear?: ButtonProps['onClick']
+  /**
+   * CSS классы для стилизации
+   */
+  classes?: PanelHeaderClasses
 }
 
 export const PanelHeader = React.forwardRef(
@@ -115,11 +121,13 @@ export const PanelHeader = React.forwardRef(
       yearText,
       yearSelected,
       onClickYear,
+      classes,
       ...rest
     } = props
 
     const classesList = useStyles()
-    const className = clsx(classNameProp, classesList.root)
+    const classesMap = useClassList(classesList, classes)
+    const className = clsx(classNameProp, classesMap.root)
 
     const handleLeftClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       onClickChevron?.(event, -1)
@@ -140,7 +148,7 @@ export const PanelHeader = React.forwardRef(
             <Button
               kind={ButtonKinds.ghost}
               color={ButtonColor.secondary}
-              className={classesList.chevron}
+              className={classesMap.chevron}
               onClick={handleLeftClick}
             >
               <ChevronLeftIcon />
@@ -149,8 +157,8 @@ export const PanelHeader = React.forwardRef(
             <Button
               kind={ButtonKinds.ghost}
               color={ButtonColor.secondary}
-              className={clsx(classesList.month, {
-                [classesList.selected]: monthSelected,
+              className={clsx(classesMap.month, {
+                [classesMap.selected]: monthSelected,
               })}
               onClick={onClickMonth}
             >
@@ -160,7 +168,7 @@ export const PanelHeader = React.forwardRef(
             <Button
               kind={ButtonKinds.ghost}
               color={ButtonColor.secondary}
-              className={classesList.chevron}
+              className={classesMap.chevron}
               onClick={handleRightClick}
             >
               <ChevronRightIcon />
@@ -172,8 +180,8 @@ export const PanelHeader = React.forwardRef(
           <Button
             kind={ButtonKinds.ghost}
             color={ButtonColor.secondary}
-            className={clsx(classesList.year, {
-              [classesList.selected]: yearSelected,
+            className={clsx(classesMap.year, {
+              [classesMap.selected]: yearSelected,
             })}
             onClick={onClickYear}
           >
