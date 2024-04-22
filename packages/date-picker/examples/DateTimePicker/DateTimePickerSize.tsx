@@ -10,14 +10,6 @@ const inputProps = {
 
 export const DateTimePickerSize: React.FC = () => {
   const [date, setDate] = React.useState<Date | null>(null)
-
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
-
   const [size, setSize] = React.useState<ElementSizeType>('md')
 
   return (
@@ -42,7 +34,7 @@ export const DateTimePickerSize: React.FC = () => {
           calendarViewExternalProps={externalAriaProps}
           mask="11.11.11 11:11"
           inputProps={inputProps}
-          onChange={handleChange}
+          onChange={setDate}
         />
       </div>
     </div>

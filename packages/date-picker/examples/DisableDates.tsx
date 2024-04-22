@@ -13,13 +13,6 @@ const isDisabledDate = (date: Date | null) => {
 export const DisableDatesStory = (): React.ReactElement => {
   const [date, setDate] = React.useState<Date | null>(null)
 
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
-
   return (
     <DatePicker
       classes={{
@@ -30,7 +23,7 @@ export const DisableDatesStory = (): React.ReactElement => {
       inputProps={inputProps}
       next_shouldDisableDate={isDisabledDate}
       calendarViewExternalProps={externalAriaProps}
-      onChange={handleChange}
+      onChange={setDate}
     />
   )
 }

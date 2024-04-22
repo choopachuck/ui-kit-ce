@@ -11,13 +11,6 @@ export const TriggerOnChangeOnInvalid = (): React.ReactElement => {
   const [triggerOnChangeOnInvalid, setTriggerOnChangeOnInvalid] =
     React.useState<boolean>(true)
 
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
-
   const onSwitchChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setDate(null)
     setTriggerOnChangeOnInvalid(ev.target.checked)
@@ -41,7 +34,7 @@ export const TriggerOnChangeOnInvalid = (): React.ReactElement => {
         mask="11.11.1111"
         inputProps={inputProps}
         calendarViewExternalProps={externalAriaProps}
-        onChange={handleChange}
+        onChange={setDate}
       />
     </>
   )

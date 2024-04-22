@@ -9,13 +9,6 @@ const inputProps = {
 export const RenderInputStory = (): JSX.Element => {
   const [date, setDate] = React.useState<Date | null>(null)
 
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
-
   return (
     <DatePicker
       value={date}
@@ -25,7 +18,7 @@ export const RenderInputStory = (): JSX.Element => {
       renderInput={({ value }) => (
         <Button>{value ? value : 'Выбрать дату'}</Button>
       )}
-      onChange={handleChange}
+      onChange={setDate}
     />
   )
 }

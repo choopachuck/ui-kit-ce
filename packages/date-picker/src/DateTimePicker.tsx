@@ -7,6 +7,10 @@ export interface DateTimePickerProps<TDate = unknown>
   timePickerProps?: Omit<BaseTimePickerProps, 'onChange' | 'value'>
 }
 
+type DateTimePickerComponent = <TDate>(
+  props: DateTimePickerProps<TDate> & React.RefAttributes<HTMLDivElement>
+) => JSX.Element
+
 export const DateTimePicker = React.forwardRef(
   <TDate extends unknown>(
     { timePickerProps, ...datePickerProps }: DateTimePickerProps<TDate>,
@@ -20,4 +24,4 @@ export const DateTimePicker = React.forwardRef(
       />
     )
   }
-)
+) as DateTimePickerComponent

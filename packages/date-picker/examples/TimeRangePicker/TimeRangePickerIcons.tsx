@@ -28,17 +28,9 @@ const validationErrorMessages: TimePickerProps['validationErrorMessages'] = {
 }
 
 export const TimeRangePickerIcons = () => {
-  const [date, setDate] = React.useState<[Date | null, Date | null]>([
-    null,
-    null,
-  ])
-
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
+  const [date, setDate] = React.useState<
+    [Date | null | number, Date | null | number]
+  >([null, null])
 
   return (
     <div>
@@ -54,7 +46,7 @@ export const TimeRangePickerIcons = () => {
           startTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
           endTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
           validationErrorMessages={validationErrorMessages}
-          onChange={handleChange}
+          onChange={setDate}
         />
       </div>
       <div style={{ marginBottom: 24 }}>
@@ -70,7 +62,7 @@ export const TimeRangePickerIcons = () => {
           validationErrorMessages={validationErrorMessages}
           startTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
           endTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
-          onChange={handleChange}
+          onChange={setDate}
         />
       </div>
       <div style={{ marginBottom: 24 }}>
@@ -86,7 +78,7 @@ export const TimeRangePickerIcons = () => {
           validationErrorMessages={validationErrorMessages}
           startTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
           endTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
-          onChange={handleChange}
+          onChange={setDate}
         />
       </div>
     </div>
