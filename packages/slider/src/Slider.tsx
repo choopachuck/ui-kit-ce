@@ -13,6 +13,7 @@ import { useClassList, useThrottle } from '@v-uik/hooks'
 import { SliderMarker, SliderMarkerProps, Tick, TickLabel } from './components'
 import type { TickItem, Classes } from './interfaces'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const DECREASE_ARROW_KEYS = ['ArrowDown', 'ArrowLeft']
 const INCREASE_ARROW_KEYS = ['ArrowUp', 'ArrowRight']
@@ -30,7 +31,7 @@ interface SliderStylesProps {
 
 export interface SliderProps
   extends SliderStylesProps,
-    Omit<React.ComponentPropsWithRef<'div'>, 'onChange'> {
+    Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * JSS-классы для стилизации
    */

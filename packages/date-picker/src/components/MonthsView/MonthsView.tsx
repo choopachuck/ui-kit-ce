@@ -9,6 +9,7 @@ import {
   CheckDateStateResult,
   FunctionComponentCommonFields,
 } from '../../interfaces/common'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   fullHeight: {
@@ -245,7 +246,7 @@ const useStyles = createUseStyles((theme) => ({
 const MONTHS_IN_ROW = 3
 
 export interface Props<TDate = unknown>
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRefFix<'div'> {
   /**
    * Текущая дата просмотра календаря
    */

@@ -7,9 +7,10 @@ import { useYearViewStyles } from '../hooks/useYearViewStyles'
 import { RangeDate, PartsOfRangeDate } from '../interfaces'
 import { useYearViewNavigation } from '../hooks/navigation'
 import { RangeYearViewClasses as Classes } from '../interfaces/classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface RangeYearViewProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * Список классов
    */

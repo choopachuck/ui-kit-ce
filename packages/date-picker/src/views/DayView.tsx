@@ -7,9 +7,10 @@ import { useDayViewStyles } from '../hooks/useDayViewStyles'
 import { DayParams } from '../interfaces'
 import { useDayViewNavigation } from '../hooks/navigation'
 import { DayViewClasses as Classes } from '../interfaces/classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface DayViewProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * Список классов
    */

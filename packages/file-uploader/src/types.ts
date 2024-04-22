@@ -1,4 +1,4 @@
-import * as React from 'react'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export type UploaderError = 'FILE_INVALID_TYPE'
 
@@ -22,7 +22,7 @@ export type UploaderBaseProps = {
    * Свойства поля ввода
    */
   inputProps?: Omit<
-    React.HTMLProps<HTMLInputElement>,
+    ComponentPropsWithRefFix<'input'>,
     'type' | 'accept' | 'multiple'
   >
   /**

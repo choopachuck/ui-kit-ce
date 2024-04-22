@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { DirectionType } from '@v-uik/common'
+import { DirectionType, ComponentPropsWithRefFix } from '@v-uik/common'
 
 export const NotificationPosition = {
   'top-left': 'top-left',
@@ -76,7 +76,7 @@ export interface CommonOptions {
 
 export type NotificationContainerProps<T extends React.ElementType = 'div'> =
   Omit<CommonOptions, 'classes'> &
-    React.ComponentPropsWithRef<T> & {
+    ComponentPropsWithRefFix<T> & {
       /**
        * Максимально количество одновременно отображаемых сообщений
        */
@@ -110,7 +110,7 @@ export interface NotificationOptions extends CommonOptions {
 
 export type NotificationProps<T extends React.ElementType = 'div'> =
   NotificationOptions &
-    React.ComponentPropsWithRef<T> & {
+    ComponentPropsWithRefFix<T> & {
       /**
        * Активно ли сообщение
        * @internal

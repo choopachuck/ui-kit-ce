@@ -3,7 +3,11 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
-import { ElementSizeType, ElementSize } from '@v-uik/common'
+import {
+  ElementSizeType,
+  ElementSize,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 
 export type Classes = {
   /** Стиль, применяемый к основному элементу */
@@ -21,7 +25,7 @@ export type Classes = {
 }
 
 export interface InputHelperTextProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'ref'> {
   /**
    * Список классов
    */

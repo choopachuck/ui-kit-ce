@@ -1,5 +1,9 @@
 import * as React from 'react'
-import { ElementSizeType, ClearButton } from '@v-uik/common'
+import {
+  ElementSizeType,
+  ClearButton,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { CommonProps } from '../interfaces'
 
 type Classes = Partial<Record<'clearIndicator' | 'disabled' | 'small', string>>
@@ -7,7 +11,7 @@ type Classes = Partial<Record<'clearIndicator' | 'disabled' | 'small', string>>
 export type ClearIndicatorProps<Option> = {
   children?: React.ReactNode
   classes?: Classes
-  innerProps: JSX.IntrinsicElements['div']
+  innerProps: ComponentPropsWithRefFix<'div'>
   disabled?: boolean
   size: ElementSizeType
 } & CommonProps<Option>

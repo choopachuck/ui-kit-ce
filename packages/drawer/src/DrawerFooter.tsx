@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { defaultPadding } from './constants'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   footer: {
@@ -25,11 +26,11 @@ const useStyles = createUseStyles((theme) => ({
   },
 }))
 
-export interface DrawerFooterProps extends React.ComponentPropsWithRef<'div'> {
+export interface DrawerFooterProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * Свойства элемента-разделителя
    */
-  dividerProps?: React.HTMLAttributes<HTMLHRElement>
+  dividerProps?: ComponentPropsWithRefFix<'hr'>
 }
 
 export const DrawerFooter = React.forwardRef(

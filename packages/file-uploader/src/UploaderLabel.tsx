@@ -5,6 +5,7 @@ import { clsx, createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { Box, PolymorphicComponentProps } from '@v-uik/box'
 import { UploaderLabelClasses } from './classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   label: {
@@ -67,15 +68,15 @@ type UploaderLabelOwnProps = {
   /**
    * Пропсы для label
    */
-  labelProps?: React.HTMLProps<HTMLDivElement> //TODO: HTMLLabelElement
+  labelProps?: ComponentPropsWithRefFix<'label'>
   /**
    * Пропсы для description
    */
-  descriptionProps?: React.HTMLProps<HTMLDivElement>
+  descriptionProps?: ComponentPropsWithRefFix<'div'>
   /**
    * Пропсы для errorText
    */
-  errorTextProps?: React.HTMLProps<HTMLDivElement>
+  errorTextProps?: ComponentPropsWithRefFix<'div'>
   children: React.ReactNode
   /**
    * Классы
@@ -85,7 +86,7 @@ type UploaderLabelOwnProps = {
    * UploaderLabel задизейблен
    */
   disabled?: boolean
-} & React.ComponentPropsWithRef<typeof defaultElement>
+} & ComponentPropsWithRefFix<typeof defaultElement>
 
 export type UploaderLabelProps<E extends React.ElementType> =
   PolymorphicComponentProps<E, UploaderLabelOwnProps>
@@ -122,7 +123,7 @@ export const UploaderLabel = React.forwardRef(
       >
         {label && (
           <label
-            {...(labelProps as unknown as React.HTMLProps<HTMLLabelElement>)}
+            {...labelProps}
             className={clsx(classesMap.label, labelProps.className)}
           >
             {label}

@@ -5,6 +5,7 @@ import { createUseStyles, clsx } from '@v-uik/theme'
 import { Button, ButtonKinds, ButtonColor, ButtonProps } from '@v-uik/button'
 import { ChevronLeftIcon } from './ChevronLeftIcon'
 import { ChevronRightIcon } from './ChevronRightIcon'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -63,7 +64,7 @@ const useStyles = createUseStyles((theme) => ({
   selected: {},
 }))
 
-export interface Props extends React.HTMLAttributes<HTMLDivElement> {
+export interface Props extends Omit<ComponentPropsWithRefFix<'div'>, 'ref'> {
   /**
    * Показывать ли месяц и стрелки переключения
    */

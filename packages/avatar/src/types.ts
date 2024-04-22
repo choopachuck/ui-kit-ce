@@ -5,6 +5,7 @@ import {
   AvatarGroupSize,
 } from './constants'
 import { AvatarClasses } from './classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export type AvatarSizeType = keyof typeof AvatarSize
 
@@ -14,7 +15,7 @@ export type AvatarGroupColoringType = keyof typeof AvatarGroupColoring
 
 export type AvatarGroupSizeType = keyof typeof AvatarGroupSize
 
-export type AvatarProps = Omit<JSX.IntrinsicElements['div'], 'ref'> & {
+export type AvatarProps = Omit<ComponentPropsWithRefFix<'div'>, 'ref'> & {
   /**
    * CSS классы компонента
    */
@@ -46,7 +47,7 @@ export type AvatarProps = Omit<JSX.IntrinsicElements['div'], 'ref'> & {
   /**
    * HTML свойства для элемента `img`
    */
-  imgProps?: JSX.IntrinsicElements['img']
+  imgProps?: ComponentPropsWithRefFix<'img'>
   /**
    * Заглушка, которая будет отображаться, если изображение не загрузилось и отсутствует `alt`, `icon` и `children`
    */

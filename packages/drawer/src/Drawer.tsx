@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx, Transition, CSSTransition } from '@v-uik/theme'
 import { Portal, PortalProps } from '@v-uik/portal'
-import { TrapFocus } from '@v-uik/common'
+import { TrapFocus, ComponentPropsWithRefFix } from '@v-uik/common'
 import {
   useMergedRefs,
   useBodyScrollLock,
@@ -243,7 +243,7 @@ interface DrawerStyleProps {
 
 export interface DrawerProps
   extends DrawerStyleProps,
-    React.ComponentPropsWithRef<'div'> {
+    ComponentPropsWithRefFix<'div'> {
   /**
    * CSS классы компонента
    */
@@ -255,13 +255,13 @@ export interface DrawerProps
   /**
    * HTML-аттрибуты элемента фона окна
    */
-  backdropProps?: React.HTMLAttributes<HTMLDivElement> & {
+  backdropProps?: ComponentPropsWithRefFix<'div'> & {
     ref?: React.Ref<HTMLDivElement>
   }
   /**
    * Свойства HTML-элемента панели
    */
-  contentProps?: React.ComponentPropsWithRef<'div'>
+  contentProps?: ComponentPropsWithRefFix<'div'>
   /**
    * HTML-элемент или функция, возвращающая HTML-элемент, в который рендерится children
    */

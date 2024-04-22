@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles({
   actions: {
@@ -17,7 +18,7 @@ const useStyles = createUseStyles({
   },
 })
 
-export interface ModalFooterProps extends React.ComponentPropsWithRef<'div'> {}
+export interface ModalFooterProps extends ComponentPropsWithRefFix<'div'> {}
 
 export const ModalFooter = React.forwardRef(
   (

@@ -6,7 +6,7 @@ import { useClassList } from '@v-uik/hooks'
 import { Text, TextProps, TextKinds } from '@v-uik/typography'
 import { ButtonProps } from '@v-uik/button'
 import { defaultPadding } from './constants'
-import { CloseButton } from '@v-uik/common'
+import { CloseButton, ComponentPropsWithRefFix } from '@v-uik/common'
 import { pick } from '@v-uik/utils'
 
 const useStyles = createUseStyles((theme) => ({
@@ -77,7 +77,7 @@ type Classes = {
   divider?: string
 }
 
-export interface DrawerHeaderProps extends React.ComponentPropsWithRef<'div'> {
+export interface DrawerHeaderProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */
@@ -109,7 +109,7 @@ export interface DrawerHeaderProps extends React.ComponentPropsWithRef<'div'> {
   /**
    * Свойства элемента-разделителя
    */
-  dividerProps?: React.HTMLAttributes<HTMLHRElement>
+  dividerProps?: ComponentPropsWithRefFix<'hr'>
 }
 
 export const DrawerHeader = React.forwardRef(

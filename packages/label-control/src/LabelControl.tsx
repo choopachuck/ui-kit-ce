@@ -3,7 +3,11 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { Classes } from './classes'
 
 const useStyles = createUseStyles((theme) => ({
@@ -85,7 +89,7 @@ const useStyles = createUseStyles((theme) => ({
 }))
 
 export interface LabelControlProps
-  extends Omit<React.ComponentPropsWithRef<'label'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'label'>, 'onChange'> {
   /**
    * CSS классы компонента
    */

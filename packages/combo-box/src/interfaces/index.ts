@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ElementSizeType } from '@v-uik/common'
+import { ElementSizeType, ComponentPropsWithRefFix } from '@v-uik/common'
 import { TooltipProps } from '@v-uik/tooltip'
 import { DropdownProps } from '@v-uik/dropdown'
 import { ListProps } from '@v-uik/list'
@@ -30,7 +30,7 @@ export type CommonProps<Option> = {
 export interface BaseComboBoxProps<
   Option,
   ListElement extends React.ElementType
-> extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+> extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Omit<LabelledProps, 'children' | 'classes'> {
   /**
    * Список классов для компонента Labelled
@@ -188,7 +188,7 @@ export interface BaseComboBoxProps<
   /**
    * Пропсы innerProps для компонента Control
    */
-  controlInnerProps?: Partial<JSX.IntrinsicElements['div']>
+  controlInnerProps?: Partial<ComponentPropsWithRefFix<'div'>>
   /**
    * Cбрасывает введенное значение, при событии blur. Актуален только для isSearchable
    */

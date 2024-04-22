@@ -7,6 +7,7 @@ import {
   ElementSizeType,
   ClearButton,
   ClearButtonProps,
+  ComponentPropsWithRefFix,
 } from '@v-uik/common'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
 import { useMergedRefs, useClassList } from '@v-uik/hooks'
@@ -45,7 +46,7 @@ export type InputChangeEvent =
   | React.MouseEvent<HTMLDivElement>
 
 export interface InputBaseProps<TCanClear extends boolean = boolean>
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix' | 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'prefix' | 'onChange' | 'ref'> {
   /**
    * Список классов
    */

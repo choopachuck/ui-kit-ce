@@ -3,7 +3,12 @@
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
-import { ElementSize, ElementSizeType, TrapFocus } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  TrapFocus,
+  ComponentPropsWithoutRefFix,
+} from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import {
@@ -90,7 +95,7 @@ const useStyles = createUseStyles((theme) => ({
 export interface DatePickerProps<TDate = unknown>
   extends BaseDatePickerProps<TDate>,
     Omit<ValidateDateProps<TDate>, 'shouldDisableDate'>,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    Omit<ComponentPropsWithoutRefFix<'div'>, 'onChange'>,
     Omit<LabelledProps, 'children' | 'classes'> {
   /**
    * CSS классы для стилизации

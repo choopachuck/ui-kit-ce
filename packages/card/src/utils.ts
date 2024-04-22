@@ -1,9 +1,10 @@
 import { ButtonAriaActionEventHandler } from '@v-uik/hooks'
-import { isSelectable, isClickable, CardProps, KindProps } from './types'
+import { isSelectable, isClickable, KindProps } from './types'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export const getInputProps = (
   props: KindProps
-): React.HTMLProps<HTMLInputElement> | undefined => {
+): ComponentPropsWithRefFix<'input'> | undefined => {
   if (!isSelectable(props)) {
     return undefined
   }
@@ -19,7 +20,7 @@ export const getInputProps = (
 export const getClickableProps = (
   props: KindProps
 ):
-  | (Omit<React.HTMLProps<HTMLDivElement>, 'onClick'> & {
+  | (Omit<ComponentPropsWithRefFix<'div'>, 'onClick'> & {
       onClick?: ButtonAriaActionEventHandler<HTMLDivElement>
     })
   | undefined => {
@@ -33,7 +34,7 @@ export const getClickableProps = (
   }
 }
 
-export const getOmittedParams = (props: CardProps) => {
+export const getOmittedParams = (props: KindProps) => {
   if (isSelectable(props)) {
     return ['checked', 'onChange', 'inputProps', 'kind', 'disabled']
   } else if (isClickable(props)) {

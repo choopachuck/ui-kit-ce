@@ -8,6 +8,7 @@ import type { TagClasses } from './interfaces'
 import { TTagElementSizeType, TagElementSize } from './TTagElementSizeType'
 import type { TagComponentsConfig } from './components'
 import { getComponents } from './components'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export const TagKinds = {
   lite: 'lite',
@@ -30,7 +31,7 @@ export const TagColor = {
 
 export type TTagColor = keyof typeof TagColor
 
-export interface CommonProps extends React.ComponentPropsWithRef<'button'> {
+export interface CommonProps extends ComponentPropsWithRefFix<'button'> {
   /**
    * JSS-классы для стилизации
    */

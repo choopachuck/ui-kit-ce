@@ -5,6 +5,7 @@ import { createUseStyles, clsx } from '@v-uik/theme'
 import { useGeneratedId, useClassList, useButtonReset } from '@v-uik/hooks'
 import { AccordionComponentsConfig, getComponents } from './components'
 import { Classes } from './classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -119,12 +120,12 @@ interface HeaderProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   ref?: React.RefCallback<HTMLButtonElement>
 }
 
-interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ContentProps extends ComponentPropsWithRefFix<'div'> {
   ref?: React.RefCallback<HTMLDivElement>
 }
 
 export interface AccordionItemProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onClick'> {
   /**
    * JSS-классы для стилизации.
    */

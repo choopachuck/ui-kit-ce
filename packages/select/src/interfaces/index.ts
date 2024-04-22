@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ListItemProps, ListProps } from '@v-uik/list'
-import { ElementSizeType } from '@v-uik/common'
+import { ElementSizeType, ComponentPropsWithRefFix } from '@v-uik/common'
 import { TooltipProps } from '@v-uik/tooltip'
 import { DropdownProps } from '@v-uik/dropdown'
 import { LabelledProps } from '@v-uik/labelled'
@@ -22,7 +22,7 @@ export type Option<E extends React.ElementType> = Omit<
 export interface BaseSelectProps<
   ListElement extends React.ElementType,
   ListItemElement extends React.ElementType
-> extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+> extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Omit<LabelledProps, 'children' | 'classes'> {
   /**
    * Список опций

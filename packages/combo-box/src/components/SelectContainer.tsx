@@ -4,6 +4,7 @@ import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { CommonProps } from '../interfaces'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles({
   root: {
@@ -18,7 +19,7 @@ type Classes = Partial<Record<'root', string>>
 export type SelectContainerProps<Option> = {
   children: React.ReactNode
   classes: Classes
-  innerProps: JSX.IntrinsicElements['div']
+  innerProps: ComponentPropsWithRefFix<'div'>
   isDisabled?: boolean
   isFocused: boolean
 } & CommonProps<Option>

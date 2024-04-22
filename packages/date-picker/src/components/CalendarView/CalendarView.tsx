@@ -11,6 +11,7 @@ import {
 } from '../../interfaces/common'
 import { CalendarViewClasses as Classes } from '../../interfaces/classes'
 import { useClassList } from '@v-uik/hooks'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   row: {
@@ -354,7 +355,7 @@ const useStyles = createUseStyles((theme) => ({
 }))
 
 export interface Props<TDate = unknown>
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRefFix<'div'> {
   /**
    * CSS классы для стилизации
    */

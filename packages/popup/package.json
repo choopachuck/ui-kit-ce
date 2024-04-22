@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.9.0",
+    "@v-uik/common": "^1.10.0",
     "@v-uik/hooks": "^1.10.0",
     "@v-uik/portal": "^1.10.0",
     "@v-uik/theme": "^1.10.0"

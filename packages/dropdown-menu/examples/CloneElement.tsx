@@ -31,7 +31,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 }))
 
-type CustomChildProps = React.HTMLProps<HTMLDivElement> & {
+type CustomChildProps = React.ComponentPropsWithRef<'div'> & {
   text: string
 }
 

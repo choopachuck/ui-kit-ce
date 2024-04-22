@@ -11,6 +11,7 @@ import { getInputProps, getOmittedParams, getClickableProps } from './utils'
 
 import { KEY_CODES, CardKind } from './constants'
 import { CardContent } from './CardContent'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -190,8 +191,8 @@ export const Card = React.forwardRef(
     const classList = useStyles()
 
     const omittedProps = omit<
-      Omit<React.HTMLProps<HTMLDivElement>, 'onChange'>
-    >(props, getOmittedParams(props as CardProps))
+      Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>
+    >(props as CardProps, getOmittedParams(props))
 
     const classesMap = useClassList(classList, classes)
 

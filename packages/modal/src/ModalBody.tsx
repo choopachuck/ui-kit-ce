@@ -4,6 +4,7 @@ import * as React from 'react'
 import { createUseStyles, clsx, setAlphaChannel } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { BodyClasses } from './classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const scrollColor = '#c4c4c4'
 
@@ -68,7 +69,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 }))
 
-export interface ModalBodyProps extends React.ComponentPropsWithRef<'div'> {
+export interface ModalBodyProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */

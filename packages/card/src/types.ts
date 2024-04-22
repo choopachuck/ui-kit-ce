@@ -1,6 +1,7 @@
 import { ButtonAriaActionEventHandler } from '@v-uik/hooks'
 import { CardClasses } from './classes'
 import { CardKind } from './constants'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export type CardKindType = keyof typeof CardKind
 
@@ -17,7 +18,7 @@ export type ClickableProps = {
   /**
    * Пропсы для контейнера  (доступны при kind='clickable')
    */
-  buttonProps?: Omit<React.HTMLProps<HTMLDivElement>, 'onClick' | 'disabled'>
+  buttonProps?: Omit<ComponentPropsWithRefFix<'div'>, 'onClick' | 'disabled'>
   /**
    * Флаг disabled
    */
@@ -40,7 +41,7 @@ export type SelectableProps = {
   /**
    * Пропсы для элемента input (доступны при kind='selectable')
    */
-  inputProps?: Omit<React.HTMLProps<HTMLInputElement>, 'onChange' | 'name'>
+  inputProps?: Omit<ComponentPropsWithRefFix<'input'>, 'onChange' | 'name'>
   disabled?: boolean
 }
 
@@ -54,7 +55,7 @@ export type KindProps =
        */
       kind?: undefined
     } & Omit<
-      React.HTMLProps<HTMLDivElement>,
+      ComponentPropsWithRefFix<'div'>,
       'onChange' | 'checked' | 'onClick' | 'name' | 'disabled'
     >)
 

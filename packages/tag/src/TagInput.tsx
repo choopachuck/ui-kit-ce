@@ -8,10 +8,11 @@ import { AddIcon } from './assets/AddIcon'
 import { isEqualKeyboardKeys } from '@v-uik/utils'
 import { TagInputClasses } from './interfaces'
 import { TTagElementSizeType, TagElementSize } from './TTagElementSizeType'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface TagInputProps
   extends Omit<
-    React.ComponentPropsWithRef<'div'>,
+    ComponentPropsWithRefFix<'div'>,
     'prefix' | 'onChange' | 'onSubmit'
   > {
   /**
@@ -21,7 +22,7 @@ export interface TagInputProps
   /**
    * HTML-атрибуты элемента input
    */
-  inputProps?: React.HTMLAttributes<HTMLInputElement>
+  inputProps?: ComponentPropsWithRefFix<'input'>
   /**
    * Ссылка на нативный элемент input
    */

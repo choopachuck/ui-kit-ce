@@ -7,9 +7,10 @@ import { useNowDate } from '../hooks/useNowDate'
 import { useMonthViewNavigation } from '../hooks/navigation'
 import { DisableDateProps, CalendarPickerViews } from '../interfaces'
 import { MonthViewClasses as Classes } from '../interfaces/classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface MonthViewProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Pick<DisableDateProps<TDate>, 'shouldDisableDate'> {
   /**
    * Список классов

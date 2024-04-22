@@ -10,6 +10,7 @@ import { AvatarProps } from './types'
 import { FallbackIcon } from './assets'
 import { AvatarKind, AvatarSize } from './constants'
 import { AvatarGroupContext } from './AvatarGroupContext'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles(
   (theme) => {
@@ -199,8 +200,8 @@ const useStyles = createUseStyles(
 )
 
 const getAttribute = <T extends unknown = string>(
-  attr: keyof JSX.IntrinsicElements['img'],
-  props?: JSX.IntrinsicElements['img'],
+  attr: keyof ComponentPropsWithRefFix<'img'>,
+  props?: ComponentPropsWithRefFix<'img'>,
   defaultValue?: T
 ) => {
   return (props?.[attr] || defaultValue) as T

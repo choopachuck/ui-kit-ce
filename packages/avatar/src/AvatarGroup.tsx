@@ -16,6 +16,7 @@ import { AvatarGroupClasses } from './classes'
 import { AvatarGroupSize, AvatarKind } from './constants'
 import { AvatarGroupColoring } from '.'
 import { useAvatarGroupItems, getChildrenInlineStyleByIndex } from './hooks'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles(
   (theme) => ({
@@ -36,7 +37,7 @@ const useStyles = createUseStyles(
 
 export type AvatarGroupPalette = UsePaletteColors[] | undefined
 
-export type AvatarGroupProps = Omit<JSX.IntrinsicElements['div'], 'ref'> &
+export type AvatarGroupProps = Omit<ComponentPropsWithRefFix<'div'>, 'ref'> &
   Pick<AvatarProps, 'kind' | 'withBorder' | 'withShadow'> & {
     /**
      * Свойства для аватаров в группе

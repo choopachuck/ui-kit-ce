@@ -2,7 +2,11 @@
 
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { useClassList, useMergedRefs } from '@v-uik/hooks'
 import { CommonProps } from '../interfaces'
 
@@ -154,7 +158,7 @@ type Classes = Partial<
 export type ControlProps<Option> = {
   children: React.ReactNode
   classes?: Classes
-  innerProps: JSX.IntrinsicElements['div']
+  innerProps: ComponentPropsWithRefFix<'div'>
   isDisabled?: boolean
   isFocused: boolean
   isSearchable?: boolean

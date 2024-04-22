@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { Classes } from './classes'
@@ -190,7 +191,7 @@ export type TBadgeStatus = keyof typeof BadgeStatus
 
 export interface BadgeProps
   extends BadgeStylesProps,
-    React.ComponentPropsWithRef<'span'> {
+    ComponentPropsWithRefFix<'span'> {
   /**
    * JSS-классы для стилизации.
    */

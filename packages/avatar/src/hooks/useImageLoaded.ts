@@ -1,8 +1,9 @@
 'use client'
 
 import React from 'react'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
-export type UseImageLoadedProps = JSX.IntrinsicElements['img']
+export type UseImageLoadedProps = ComponentPropsWithRefFix<'img'>
 
 export type UseImageLoadedStatus = 'pending' | 'ready' | 'error' | 'skipped'
 

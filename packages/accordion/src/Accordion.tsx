@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   accordion: {
@@ -17,7 +18,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 }))
 
-export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface AccordionProps extends ComponentPropsWithRefFix<'div'> {}
 
 export const Accordion = React.forwardRef(
   (

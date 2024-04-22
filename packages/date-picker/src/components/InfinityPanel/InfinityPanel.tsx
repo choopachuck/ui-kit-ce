@@ -7,6 +7,7 @@ import { TRangeDate, TRangeValue } from '../../interfaces/range'
 import { FunctionComponentCommonFields } from '../../interfaces/common'
 import { NegativeIcon } from './icons/negative'
 import { PositiveIcon } from './icons/positive'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -39,7 +40,7 @@ const useStyles = createUseStyles((theme) => ({
 }))
 
 export interface Props<TDate = unknown>
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRefFix<'div'> {
   /**
    * Значение диапазона
    */

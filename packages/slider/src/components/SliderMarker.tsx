@@ -4,6 +4,7 @@ import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import type { SliderMarkerClasses } from '../interfaces'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => {
   const active = {
@@ -77,8 +78,7 @@ const useStyles = createUseStyles((theme) => {
   }
 })
 
-export interface SliderMarkerProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface SliderMarkerProps extends ComponentPropsWithRefFix<'div'> {
   isActive?: boolean
   isFocused?: boolean
   disabled?: boolean

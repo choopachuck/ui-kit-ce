@@ -16,7 +16,7 @@ import { getIconSize } from './utils'
 import DefaultSuccessIcon from './icons/SuccessIcon'
 import DefaultErrorIcon from './icons/ErrorIcon'
 import { FileItemClasses } from './classes'
-import { ElementSizeType } from '@v-uik/common'
+import { ElementSizeType, ComponentPropsWithRefFix } from '@v-uik/common'
 
 const defaultComponents: FileItemComponents = {
   ExitIcon: DefaultExitIcon,
@@ -213,7 +213,7 @@ export type FileItemOwnProps = {
    * Проп для замены иконок и внутренних компонент
    */
   components?: Partial<FileItemComponents>
-} & React.ComponentPropsWithRef<typeof defaultElement>
+} & ComponentPropsWithRefFix<typeof defaultElement>
 
 export type FileItemProps<E extends React.ElementType> =
   PolymorphicComponentProps<E, FileItemOwnProps>

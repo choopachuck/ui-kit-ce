@@ -4,6 +4,7 @@ import * as React from 'react'
 import { createUseStyles, clsx, useTheme } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { CircularClasses, ProgressSize, ProgressSizeProps } from './interfaces'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const SIZES: { [key in ProgressSizeProps]: number } = {
   xlg: 56,
@@ -105,7 +106,7 @@ interface CircleStyleProps {
 }
 
 export interface CircularProgressProps
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'size'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'size'> {
   classes?: Partial<CircularClasses>
   /**
    * Значение прогресса

@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
-import { ElementSize } from '@v-uik/common'
+import { ElementSize, ComponentPropsWithRefFix } from '@v-uik/common'
 import { Button, ButtonProps, ButtonKinds, ButtonColor } from '@v-uik/button'
 import { mergeClasses, warning } from '@v-uik/utils'
 import { Classes } from './classes'
@@ -18,7 +18,7 @@ export type TButtonGroupKinds = keyof typeof ButtonGroupKinds
 type GetChildButtonOptions = { isFirst: boolean; isLast: boolean }
 
 export interface ButtonGroupProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * JSS-классы для стилизации
    */

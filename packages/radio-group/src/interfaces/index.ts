@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { DirectionType } from '@v-uik/common'
+import { DirectionType, ComponentPropsWithRefFix } from '@v-uik/common'
 import { InputLabelProps } from '@v-uik/input-label'
 import { InputHelperTextProps } from '@v-uik/input-helper-text'
 
@@ -8,7 +8,7 @@ type RadioGroupClasses = Partial<
 >
 
 export interface RadioGroupProps<T extends string>
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * JSS-классы для стилизации
    */

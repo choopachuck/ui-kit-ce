@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export const InputAffixType = {
   prefix: 'prefix',
@@ -10,7 +11,7 @@ export const InputAffixType = {
 
 export type TInputAffixType = keyof typeof InputAffixType
 
-export interface InputAffixProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface InputAffixProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * Тип аффикса
    */

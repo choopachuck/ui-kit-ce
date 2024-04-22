@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles({
   body: {
@@ -14,7 +15,7 @@ const useStyles = createUseStyles({
   },
 })
 
-export interface DrawerBodyProps extends React.ComponentPropsWithRef<'div'> {}
+export interface DrawerBodyProps extends ComponentPropsWithRefFix<'div'> {}
 
 export const DrawerBody = React.forwardRef(
   (

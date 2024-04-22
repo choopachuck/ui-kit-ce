@@ -10,6 +10,7 @@ import {
   CheckDateStateResult,
   FunctionComponentCommonFields,
 } from '../../interfaces/common'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   years: {
@@ -251,7 +252,7 @@ const useStyles = createUseStyles((theme) => ({
 const YEARS_IN_ROW = 3
 
 export interface Props<TDate = unknown>
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRefFix<'div'> {
   /**
    * Минимальная допустимая дата
    */

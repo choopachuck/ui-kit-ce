@@ -19,9 +19,10 @@ import {
 import { getExternalComponentsProps } from '../utils/getExternalComponentProps'
 import { CalendarPickerClasses } from '../interfaces/classes'
 import { useClassList } from '@v-uik/hooks'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface CalendarPickerProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Pick<DisableDateProps<TDate>, 'minDate' | 'maxDate' | 'shouldDisableDate'> {
   /**
    * CSS классы для стилизации

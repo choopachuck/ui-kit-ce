@@ -4,7 +4,11 @@ import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useMergedRefs, useClassList } from '@v-uik/hooks'
 import type { Classes } from './interfaces'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { getTextLength } from '@v-uik/utils'
 import { Labelled, LabelledProps } from '@v-uik/labelled'
 
@@ -14,7 +18,7 @@ type TextareaAttributesWithRef =
 
 export interface TextareaProps<
   InnerProps extends TextareaAttributesWithRef = TextareaAttributesWithRef
-> extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+> extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Omit<LabelledProps, 'children' | 'classes'> {
   /**
    * Список классов

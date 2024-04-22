@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
-import { Direction } from '@v-uik/common'
+import { Direction, ComponentPropsWithRefFix } from '@v-uik/common'
 import { BarContext } from './BarContext'
 import { BarKinds, DarkColors, LightColors } from './constants'
 import { BarDividerClasses as Classes } from './interfaces/classes'
@@ -63,7 +63,7 @@ export const BarDividerKinds = {
 
 export type TBarDividerKinds = keyof typeof BarDividerKinds
 
-export interface BarDividerProps extends React.ComponentPropsWithRef<'hr'> {
+export interface BarDividerProps extends ComponentPropsWithRefFix<'hr'> {
   /**
    * JSS-классы для стилизации
    */

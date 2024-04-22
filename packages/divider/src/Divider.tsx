@@ -3,7 +3,11 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { Box, PolymorphicComponentProps } from '@v-uik/box'
-import { DirectionType, Direction } from '@v-uik/common'
+import {
+  DirectionType,
+  Direction,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { useClassList } from '@v-uik/hooks'
 import { Classes } from './classes'
 
@@ -126,7 +130,7 @@ const useStyles = createUseStyles((theme) => ({
 const defaultElement = 'hr'
 
 export interface BaseDividerProps
-  extends React.ComponentPropsWithRef<typeof defaultElement> {
+  extends ComponentPropsWithRefFix<typeof defaultElement> {
   /**
    * CSS классы компонента
    */

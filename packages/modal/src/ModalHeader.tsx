@@ -7,7 +7,7 @@ import { Text, TextProps, TextKinds } from '@v-uik/typography'
 import { ButtonProps } from '@v-uik/button'
 import { ModalContext } from './ModalContext'
 import { HeaderClasses } from './classes'
-import { CloseButton } from '@v-uik/common'
+import { CloseButton, ComponentPropsWithRefFix } from '@v-uik/common'
 import { pick } from '@v-uik/utils'
 
 const useStyles = createUseStyles((theme) => ({
@@ -51,7 +51,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 }))
 
-export interface ModalHeaderProps extends React.ComponentPropsWithRef<'div'> {
+export interface ModalHeaderProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */

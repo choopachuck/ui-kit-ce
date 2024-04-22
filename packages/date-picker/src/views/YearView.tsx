@@ -8,9 +8,10 @@ import { useYearViewStyles } from '../hooks/useYearViewStyles'
 import { useYearViewNavigation } from '../hooks/navigation'
 import { DisableDateProps, CalendarPickerViews } from '../interfaces'
 import { YearViewClasses as Classes } from '../interfaces/classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface YearViewProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Pick<DisableDateProps<TDate>, 'minDate' | 'maxDate' | 'shouldDisableDate'> {
   /**
    * Список классов

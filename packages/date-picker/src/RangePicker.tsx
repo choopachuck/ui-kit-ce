@@ -3,7 +3,11 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import { warning } from '@v-uik/utils'
@@ -251,7 +255,7 @@ export interface RangePickerProps<TDate = unknown>
       'label' | 'labelProps' | 'helperText' | 'helperTextProps'
     >,
     ValidateDateProps<TDate>,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Omit<LabelledProps, 'children' | 'classes'> {
   /**
    * CSS классы для стилизации

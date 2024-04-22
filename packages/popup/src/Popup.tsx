@@ -7,11 +7,12 @@ import {
   Options,
   Instance,
 } from '@popperjs/core'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 import { useTheme, Theme } from '@v-uik/theme'
 import { Portal, PortalProps } from '@v-uik/portal'
 import { useMergedRefs } from '@v-uik/hooks'
 
-export interface PopupProps extends React.ComponentPropsWithRef<'div'> {
+export interface PopupProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * HTML-элемент или функция, возвращающая HTML-элемент, относительно которого рендерится Popup
    */

@@ -4,6 +4,7 @@ import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
 import { Box, PolymorphicComponentProps } from '@v-uik/box'
 import { useClassList } from '@v-uik/hooks'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 import { Classes } from './classes'
 
 const useStyles = createUseStyles((theme) => ({
@@ -62,7 +63,7 @@ const useStyles = createUseStyles((theme) => ({
 const defaultElement = 'a'
 
 export interface LinkBaseProps
-  extends React.ComponentPropsWithRef<typeof defaultElement> {
+  extends ComponentPropsWithRefFix<typeof defaultElement> {
   /**
    * Адрес ссылки
    */
