@@ -125,6 +125,9 @@ const useStyles = createUseStyles((theme) => ({
     height: defaultRadioWidth,
     width: defaultRadioWidth,
     borderRadius: '50%',
+    '& svg': {
+      position: 'absolute',
+    },
   },
 
   radioMark: {
