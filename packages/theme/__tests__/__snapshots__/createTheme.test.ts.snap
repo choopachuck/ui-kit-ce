@@ -5398,7 +5398,7 @@ Object {
       "infoAlpha": "rgb(7, 150, 245)",
       "inverseBackgroundAlpha": "rgb(229, 229, 229)",
       "inverseBackgroundBeta": "rgb(201, 201, 201)",
-      "inverseDisabled": "rgb(69, 69, 69)",
+      "inverseDisabled": "rgb(201, 201, 201)",
       "inverseDisabledHigh": "rgba(0, 0, 0, 0.2)",
       "inverseDisabledLow": "rgba(0, 0, 0, 0.04)",
       "inverseDisabledMedium": "rgba(0, 0, 0, 0.08)",

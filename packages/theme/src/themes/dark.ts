@@ -437,6 +437,8 @@ export const darkOverrides = {
       onSuccessHigh: ref.palette.black,
       onWarningHigh: ref.palette.black,
 
+      inverseDisabled: ref.palette.gray80,
+
       inverseDisabledHigh: setAlphaChannel(
         ref.palette.black,
         ref.alpha.channel25
