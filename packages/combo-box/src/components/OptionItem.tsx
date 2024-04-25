@@ -18,6 +18,7 @@ type OptionClasses = {
   noOptionsText?: string
   optionLoading?: string
   creatableDivider?: string
+  prefix?: string
 }
 
 export type OptionItemBaseProps<Option> = {
@@ -117,6 +118,7 @@ export const OptionItem = <
       large: optionClasses.optionLarge,
       disabled: optionClasses.optionDisabled,
       selected: optionClasses.selectedOption,
+      prefix: optionClasses.prefix,
       ...classesCommonOptionItemProps,
     }
 

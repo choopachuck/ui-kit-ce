@@ -17,12 +17,10 @@ import {
   useForceSecondRender,
   useValue,
 } from '@v-uik/hooks'
-import { Checkbox } from '@v-uik/checkbox'
 import { Tooltip } from '@v-uik/tooltip'
 import { ErrorIcon } from './assets/ErrorIcon'
 
 import { ComboBoxComponentsConfig, getComponents } from './components'
-import { ComboBoxOptionIcon } from './assets/ComboBoxOptionIcon'
 import {
   BaseComboBoxProps,
   Classes,
@@ -133,10 +131,6 @@ const useStyles = createUseStyles((theme) => ({
 
   selectedOption: {
     backgroundColor: theme.comp.comboBox.optionColorBackgroundSelected,
-  },
-
-  checkbox: {
-    marginRight: 11,
   },
 
   optionDisabled: {
@@ -319,6 +313,7 @@ export const ComboBox = React.forwardRef(
       optionDisabled: clsx(classList.optionDisabled, classes?.optionDisabled),
       optionText: classes?.optionText,
       optionTextTypography: classes?.optionTextTypography,
+      optionMultiPrefix: classes?.optionMultiPrefix,
       errorIcon: clsx(
         classList.errorIcon,
         classes?.errorIcon,
@@ -1014,12 +1009,15 @@ export const ComboBox = React.forwardRef(
       IndicatorContainer,
       Input,
       MultiValue,
+      MultiCheckbox,
       SelectContainer,
       SingleValue,
       ValueContainer,
       Placeholder,
       OptionList,
       OptionItem,
+      OptionPrefix,
+      OptionSuffix,
     } = getComponents<Option, ListElement, ListItemElement>(components)
 
     const commonProps: CommonProps<Option> = {
@@ -1246,37 +1244,31 @@ export const ComboBox = React.forwardRef(
       const isSelected = isOptionSelected(option)
       const isDisabled = isOptionDisabled(option)
 
-      if (multiple && !isCreating) {
-        return (
-          <>
-            <Checkbox
-              disabled={isDisabled}
-              className={clsx({
-                [classList.checkbox]: !!getOptionPrefix(option),
-              })}
-              checked={isSelected}
-            />
-            {getOptionPrefix(option)}
-          </>
-        )
-      }
-
-      return getOptionPrefix(option)
+      return OptionPrefix ? (
+        <OptionPrefix
+          option={option}
+          multiple={multiple}
+          creating={isCreating}
+          selected={isSelected}
+          disabled={isDisabled}
+          components={{ MultiCheckbox }}
+          customOptionPrefix={getOptionPrefix(option)}
+        />
+      ) : null
     }
 
     const renderOptionSuffix = (option: Option) => {
       const isSelected = isOptionSelected(option)
 
-      if (!multiple && isSelected) {
-        return (
-          <>
-            {getOptionSuffix(option)}
-            {showCheckMark && <ComboBoxOptionIcon />}
-          </>
-        )
-      }
-
-      return getOptionSuffix(option)
+      return OptionSuffix ? (
+        <OptionSuffix
+          selected={isSelected}
+          option={option}
+          multiple={multiple}
+          customOptionSuffix={getOptionSuffix(option)}
+          showCheckMark={showCheckMark}
+        />
+      ) : null
     }
 
     const content = () => {
@@ -1323,6 +1315,7 @@ export const ComboBox = React.forwardRef(
             noOptionsText: classesMap.option,
             optionLoading: classesMap.option,
             optionDisabled: classesMap.optionDisabled,
+            prefix: classesMap.optionMultiPrefix,
           }}
           formatOptionLabel={formatOptionLabel}
           inputValue={inputValue}

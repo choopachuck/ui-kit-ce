@@ -14,6 +14,9 @@ import { Input, InputProps } from './Input'
 import { Placeholder, PlaceholderProps } from './Placeholder'
 import { OptionList, OptionListProps } from './OptionList'
 import { OptionItem, OptionItemProps } from './OptionItem'
+import { OptionPrefix, OptionPrefixProps } from './OptionPrefix'
+import { OptionSuffix, OptionSuffixProps } from './OptionSuffix'
+import { Checkbox, CheckboxProps } from '@v-uik/checkbox'
 
 export type { OptionListProps, OptionItemProps }
 
@@ -28,6 +31,7 @@ export type ComboBoxComponents<
   IndicatorContainer: React.ComponentType<IndicatorContainerProps<Option>>
   Input: React.ComponentType<InputProps<Option>>
   MultiValue: React.ComponentType<MultiValueProps<Option>>
+  MultiCheckbox: React.ComponentType<CheckboxProps>
   Placeholder: React.ComponentType<PlaceholderProps<Option>>
   SelectContainer: React.ComponentType<SelectContainerProps<Option>>
   SingleValue: React.ComponentType<SingleValueProps<Option>>
@@ -36,6 +40,8 @@ export type ComboBoxComponents<
     OptionListProps<Option, ListElement, OptionItemElement>
   >
   OptionItem: React.ComponentType<OptionItemProps<Option, OptionItemElement>>
+  OptionPrefix: React.ComponentType<OptionPrefixProps<Option>> | null
+  OptionSuffix: React.ComponentType<OptionSuffixProps<Option>> | null
 }
 
 export type ComboBoxComponentsConfig<
@@ -51,12 +57,15 @@ export const defaultComboboxComponents = {
   IndicatorContainer: IndicatorContainer,
   Input: Input,
   MultiValue: MultiValue,
+  MultiCheckbox: Checkbox,
   Placeholder: Placeholder,
   SelectContainer: SelectContainer,
   SingleValue: SingleValue,
   ValueContainer: ValueContainer,
   OptionList: OptionList,
   OptionItem: OptionItem,
+  OptionPrefix: OptionPrefix,
+  OptionSuffix: OptionSuffix,
 }
 
 export type ComboBoxComponentsGeneric = typeof defaultComboboxComponents
@@ -84,4 +93,6 @@ export type {
   SelectContainerProps,
   SingleValueProps,
   ValueContainerProps,
+  OptionSuffixProps,
+  OptionPrefixProps,
 }
