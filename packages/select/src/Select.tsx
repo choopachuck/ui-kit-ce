@@ -18,10 +18,9 @@ import { useSelect } from './hooks'
 import {
   SelectButton,
   SelectButtonProps,
-  SelectComponents,
+  SelectComponentsConfig,
   getComponents,
 } from './components'
-import { SelectOptionIcon } from './assets/SelectOptionIcon'
 import { BaseSelectProps, Option, Classes } from './interfaces'
 import { isEqualKeyboardKeys, includesKeyboardKey } from '@v-uik/utils'
 import { useSelectModifiers } from '@v-uik/popup'
@@ -204,7 +203,7 @@ export type SelectProps<
     /**
      * Свойство для переопределения компонентов `Select`
      */
-    components?: SelectComponents<T, A>
+    components?: SelectComponentsConfig<T, A>
   }
 
 const defaultListElement = 'ul'
@@ -337,10 +336,10 @@ export const Select = React.forwardRef(
       ...dropdownProps?.popperOptions,
     }
 
-    const { DropdownIndicator } = getComponents<ListElement, ListItemElement>(
-      components
-    )
-
+    const { DropdownIndicator, OptionSuffix } = getComponents<
+      ListElement,
+      ListItemElement
+    >(components)
     const renderSelectButtonText = () => {
       if (
         placeholder &&
@@ -567,7 +566,11 @@ export const Select = React.forwardRef(
         <ListItem<ListItemElement>
           key={optionValue}
           id={listId}
-          suffix={isSelected ? <SelectOptionIcon /> : undefined}
+          suffix={
+            OptionSuffix ? (
+              <OptionSuffix option={option} selected={isSelected} />
+            ) : undefined
+          }
           selected={isSelected}
           aria-selected={isSelected}
           role="option"

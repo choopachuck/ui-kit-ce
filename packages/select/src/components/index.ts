@@ -3,8 +3,10 @@ import {
   SelectDropdownIndicatorProps,
 } from './SelectDropdownIndicator'
 
+import { OptionSuffix, OptionSuffixProps } from './OptionSuffix'
+
 export * from './SelectButton'
-export type { SelectDropdownIndicatorProps }
+export type { SelectDropdownIndicatorProps, OptionSuffixProps }
 
 export type SelectComponents<
   ListElement extends React.ElementType,
@@ -13,6 +15,7 @@ export type SelectComponents<
   DropdownIndicator: React.ComponentType<
     SelectDropdownIndicatorProps<ListElement, ListItemElement>
   >
+  OptionSuffix: React.ComponentType<OptionSuffixProps<ListItemElement>> | null
 }
 
 export type SelectComponentsConfig<
@@ -22,6 +25,7 @@ export type SelectComponentsConfig<
 
 export const defaultSelectComponents = {
   DropdownIndicator: SelectDropdownIndicator,
+  OptionSuffix: OptionSuffix,
 }
 
 export type SelectComponentsGeneric = typeof defaultSelectComponents
