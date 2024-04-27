@@ -14,8 +14,8 @@ import { Input, InputProps } from './Input'
 import { Placeholder, PlaceholderProps } from './Placeholder'
 import { OptionList, OptionListProps } from './OptionList'
 import { OptionItem, OptionItemProps } from './OptionItem'
-import { OptionPrefix, OptionPrefixProps } from './OptionPrefix'
-import { OptionSuffix, OptionSuffixProps } from './OptionSuffix'
+import { OptionPrefixProps } from './OptionPrefix'
+import { OptionSuffixProps } from './OptionSuffix'
 import { Checkbox, CheckboxProps } from '@v-uik/checkbox'
 
 export type { OptionListProps, OptionItemProps }
@@ -64,11 +64,12 @@ export const defaultComboboxComponents = {
   ValueContainer: ValueContainer,
   OptionList: OptionList,
   OptionItem: OptionItem,
-  OptionPrefix: OptionPrefix,
-  OptionSuffix: OptionSuffix,
 }
 
-export type ComboBoxComponentsGeneric = typeof defaultComboboxComponents
+export type ComboBoxComponentsGeneric = typeof defaultComboboxComponents & {
+  OptionPrefix?: React.ComponentType<OptionPrefixProps<unknown>> | null
+  OptionSuffix?: React.ComponentType<OptionSuffixProps<unknown>> | null
+}
 
 export const getComponents = <
   Option,

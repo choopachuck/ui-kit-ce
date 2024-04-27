@@ -8,6 +8,8 @@ import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
 import { CircularProgress } from '@v-uik/progress'
 import { ListProps, scrollElement } from '@v-uik/list'
 import { includesKeyboardKey, isEqualKeyboardKeys, warning } from '@v-uik/utils'
+import { ComboBoxOptionIcon } from './assets/ComboBoxOptionIcon'
+
 import { useSelectModifiers } from '@v-uik/popup'
 import {
   useMergedRefs,
@@ -187,6 +189,10 @@ const useStyles = createUseStyles((theme) => ({
 
   counter: {
     flex: '0 0 auto',
+  },
+
+  checkbox: {
+    marginRight: 11,
   },
 }))
 
@@ -1244,6 +1250,28 @@ export const ComboBox = React.forwardRef(
       const isSelected = isOptionSelected(option)
       const isDisabled = isOptionDisabled(option)
 
+      const props = {
+        disabled,
+        checked: isSelected,
+        className: clsx({
+          [classList.checkbox]: !!getOptionPrefix(option),
+        }),
+      }
+
+      //Если пользователь не прокидовал кастомный компонент
+      if (OptionPrefix === undefined) {
+        if (multiple && !isCreating) {
+          return (
+            <>
+              {MultiCheckbox && <MultiCheckbox {...props} />}
+              {getOptionPrefix(option)}
+            </>
+          )
+        }
+
+        return getOptionPrefix(option)
+      }
+
       return OptionPrefix ? (
         <OptionPrefix
           option={option}
@@ -1259,6 +1287,19 @@ export const ComboBox = React.forwardRef(
 
     const renderOptionSuffix = (option: Option) => {
       const isSelected = isOptionSelected(option)
+
+      if (OptionSuffix === undefined) {
+        if (!multiple && isSelected) {
+          return (
+            <>
+              {getOptionSuffix(option)}
+              {showCheckMark && <ComboBoxOptionIcon />}
+            </>
+          )
+        }
+
+        return getOptionSuffix(option)
+      }
 
       return OptionSuffix ? (
         <OptionSuffix
