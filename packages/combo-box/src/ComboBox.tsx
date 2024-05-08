@@ -1067,6 +1067,7 @@ export const ComboBox = React.forwardRef(
           {...commonProps}
           classes={{ tag: classesMap.tag, focused: classesMap.focused }}
           isFocused={isFocused}
+          size={size}
           onDelete={(e) => handleDeleteOption(e, option)}
         >
           {getOptionLabel(option)}
@@ -1461,7 +1462,13 @@ export const ComboBox = React.forwardRef(
                 {renderInput()}
               </ValueContainer>
 
-              <IndicatorContainer {...commonProps} isDisabled={disabled}>
+              <IndicatorContainer
+                {...commonProps}
+                isDisabled={disabled}
+                classes={{
+                  indicatorContainer: classes?.inputIndicatorContainer,
+                }}
+              >
                 {renderLoadingIndicator()}
                 {renderClearIndicator()}
                 {renderErrorIcon()}

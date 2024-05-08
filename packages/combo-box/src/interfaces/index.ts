@@ -330,6 +330,8 @@ export type Classes = {
   inputArrowIcon?: string
   /** Стиль, применяемый к обертке поля ввода */
   inputContent?: string
+  /** Стиль, применяемый к обертке индикаторов */
+  inputIndicatorContainer?: string
   /** Стиль, применяемый к иконке ошибки */
   inputErrorIcon?: string
   /** Стиль, применяемый к основной форме ввода и выбора значений */

@@ -4,6 +4,7 @@ import * as React from 'react'
 import { createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { Tag, TagProps } from '@v-uik/tag'
+import { ElementSizeType } from '@v-uik/common'
 import { CommonProps } from '../interfaces'
 
 const useStyles = createUseStyles((theme) => ({
@@ -41,6 +42,7 @@ type Classes = Partial<Record<'tag' | 'tagText' | 'focused', string>>
 export type MultiValueProps<Option> = {
   children: React.ReactNode
   classes?: Classes
+  size?: ElementSizeType
   isDisabled?: boolean
   isFocused?: boolean
   onDelete?: (e: React.MouseEvent<HTMLSpanElement>) => void

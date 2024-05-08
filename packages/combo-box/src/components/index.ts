@@ -96,4 +96,5 @@ export type {
   ValueContainerProps,
   OptionSuffixProps,
   OptionPrefixProps,
+  ClearIndicatorProps,
 }
