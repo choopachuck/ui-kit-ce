@@ -110,7 +110,7 @@ export const SliderMarker = React.forwardRef(
         {...rest}
         ref={ref}
         role="slider"
-        tabIndex={0}
+        tabIndex={disabled ? -1 : 0}
         className={classesMap.root}
       >
         <div className={className} />

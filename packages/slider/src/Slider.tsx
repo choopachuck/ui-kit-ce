@@ -316,6 +316,10 @@ export const Slider = React.forwardRef(
     /* ------------------Управление с клавиатуры-------------------*/
     /* ------------------------------------------------------------*/
     const handleKeydown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (disabled) {
+        return
+      }
+
       if (includesKeyboardKey(DECREASE_ARROW_KEYS, e.key)) {
         e.preventDefault()
         const rounded = roundBy(value - step, step)
