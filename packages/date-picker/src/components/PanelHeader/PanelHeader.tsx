@@ -47,7 +47,7 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
   year: {
-    padding: [10, 20],
+    padding: [8, 20],
     borderTopLeftRadius:
       theme.comp.calendarPicker.buttonShapeBorderRadiusTopLeft,
     borderTopRightRadius:
