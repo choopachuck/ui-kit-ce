@@ -24,6 +24,10 @@ export type FileItemClasses = {
    */
   error?: string
   /**
+   * Стиль для status=success
+   */
+  success?: string
+  /**
    * Стиль для status=progress
    */
   progress?: string

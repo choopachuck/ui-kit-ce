@@ -18,7 +18,7 @@ const ErrorIcon: React.FC<FileItemIconProps> = ({
       {...props}
     >
       <path
-        fill="#E31607"
+        fill="currentColor"
         fillRule="evenodd"
         d="M22.5 12c0 5.799-4.701 10.5-10.5 10.5S1.5 17.799 1.5 12 6.201 1.5 12 1.5 22.5 6.201 22.5 12Zm-9-1.5V18h-3v-7.5h3Zm0-1.5V6h-3v3h3Z"
         clipRule="evenodd"

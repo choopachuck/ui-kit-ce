@@ -28,6 +28,9 @@ export const createSlider = (theme: Theme, compatibilityMode?: boolean) => ({
   markerColorBackground: compatibilityMode
     ? theme.colourway.secondary
     : theme.sys.color.secondaryAlpha,
+  markerColorBackgroundHover: compatibilityMode
+    ? theme.colourway.secondary
+    : theme.sys.color.secondaryAlpha,
   markerColorBackgroundActive: compatibilityMode
     ? theme.colourway.primary
     : theme.sys.color.primaryAlpha,

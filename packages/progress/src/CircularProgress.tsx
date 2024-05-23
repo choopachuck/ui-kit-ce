@@ -71,6 +71,7 @@ const useStyles = (keyframesProps: CircleStyleProps) =>
       },
 
       percentage: {
+        color: theme.comp.circularProgress.colorText,
         fontFamily: theme.comp.circularProgress.typographyFontFamily,
         fontSize: theme.comp.circularProgress.typographyFontSize,
         lineHeight: theme.comp.circularProgress.typographyLineHeight,

@@ -205,38 +205,38 @@ const useStyles = createUseStyles((theme) => ({
 
   textExtraSmall: {
     fontSize:
-      theme.comp.tagInput.typographyFontSize ||
-      theme.comp.tagInput.typographyFontSizeXs,
+      theme.comp.tagInput.typographyFontSizeXs ||
+      theme.comp.tagInput.typographyFontSize,
     lineHeight:
-      theme.comp.tagInput.typographyLineHeight ||
-      theme.comp.tagInput.typographyLineHeightXs,
+      theme.comp.tagInput.typographyLineHeightXs ||
+      theme.comp.tagInput.typographyLineHeight,
   },
 
   textSmall: {
     fontSize:
-      theme.comp.tagInput.typographyFontSize ||
-      theme.comp.tagInput.typographyFontSizeSm,
+      theme.comp.tagInput.typographyFontSizeSm ||
+      theme.comp.tagInput.typographyFontSize,
     lineHeight:
-      theme.comp.tagInput.typographyLineHeight ||
-      theme.comp.tagInput.typographyLineHeightSm,
+      theme.comp.tagInput.typographyLineHeightSm ||
+      theme.comp.tagInput.typographyLineHeight,
   },
 
   textMedium: {
     fontSize:
-      theme.comp.tagInput.typographyFontSize ||
-      theme.comp.tagInput.typographyFontSizeMd,
+      theme.comp.tagInput.typographyFontSizeMd ||
+      theme.comp.tagInput.typographyFontSize,
     lineHeight:
-      theme.comp.tagInput.typographyLineHeight ||
-      theme.comp.tagInput.typographyLineHeightMd,
+      theme.comp.tagInput.typographyLineHeightMd ||
+      theme.comp.tagInput.typographyLineHeight,
   },
 
   textLarge: {
     fontSize:
-      theme.comp.tagInput.typographyFontSize ||
-      theme.comp.tagInput.typographyFontSizeLg,
+      theme.comp.tagInput.typographyFontSizeLg ||
+      theme.comp.tagInput.typographyFontSize,
     lineHeight:
-      theme.comp.tagInput.typographyLineHeight ||
-      theme.comp.tagInput.typographyLineHeightLg,
+      theme.comp.tagInput.typographyLineHeightLg ||
+      theme.comp.tagInput.typographyLineHeight,
   },
 
   addIcon: {
@@ -269,41 +269,41 @@ const useStyles = createUseStyles((theme) => ({
   inputExtraSmall: {
     padding: [2, 24, 2, 8],
     fontSize:
-      theme.comp.tagInput.typographyFontSize ||
-      theme.comp.tagInput.typographyFontSizeXs,
+      theme.comp.tagInput.typographyFontSizeXs ||
+      theme.comp.tagInput.typographyFontSize,
     lineHeight:
-      theme.comp.tagInput.typographyLineHeight ||
-      theme.comp.tagInput.typographyLineHeightXs,
+      theme.comp.tagInput.typographyLineHeightXs ||
+      theme.comp.tagInput.typographyLineHeight,
   },
 
   inputSmall: {
     padding: [2, 24, 2, 8],
     fontSize:
-      theme.comp.tagInput.typographyFontSize ||
-      theme.comp.tagInput.typographyFontSizeSm,
+      theme.comp.tagInput.typographyFontSizeSm ||
+      theme.comp.tagInput.typographyFontSize,
     lineHeight:
-      theme.comp.tagInput.typographyLineHeight ||
-      theme.comp.tagInput.typographyLineHeightSm,
+      theme.comp.tagInput.typographyLineHeightSm ||
+      theme.comp.tagInput.typographyLineHeight,
   },
 
   inputMedium: {
     padding: [6, 28, 6, 12],
     fontSize:
-      theme.comp.tagInput.typographyFontSize ||
-      theme.comp.tagInput.typographyFontSizeMd,
+      theme.comp.tagInput.typographyFontSizeMd ||
+      theme.comp.tagInput.typographyFontSize,
     lineHeight:
-      theme.comp.tagInput.typographyLineHeight ||
-      theme.comp.tagInput.typographyLineHeightMd,
+      theme.comp.tagInput.typographyLineHeightMd ||
+      theme.comp.tagInput.typographyLineHeight,
   },
 
   inputLarge: {
     padding: [6, 28, 6, 12],
     fontSize:
-      theme.comp.tagInput.typographyFontSize ||
-      theme.comp.tagInput.typographyFontSizeLg,
+      theme.comp.tagInput.typographyFontSizeLg ||
+      theme.comp.tagInput.typographyFontSize,
     lineHeight:
-      theme.comp.tagInput.typographyLineHeight ||
-      theme.comp.tagInput.typographyLineHeightLg,
+      theme.comp.tagInput.typographyLineHeightLg ||
+      theme.comp.tagInput.typographyLineHeight,
   },
 
   empty: {

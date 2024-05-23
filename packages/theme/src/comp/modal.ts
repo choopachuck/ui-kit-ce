@@ -27,6 +27,10 @@ export const createModal = (theme: Theme, compatibilityMode?: boolean) => ({
   shapeBorderRadiusBottomRight: compatibilityMode
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusXl,
+
+  colorBorder: compatibilityMode
+    ? theme.colourway.mono04
+    : theme.sys.color.separationMajor,
 })
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

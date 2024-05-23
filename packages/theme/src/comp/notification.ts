@@ -32,6 +32,12 @@ export const createNotification = (
   contentColorTextNeutral: '',
   contentColorTextInfo: '',
 
+  colorBorderError: 'transparent',
+  colorBorderWarning: 'transparent',
+  colorBorderSuccess: 'transparent',
+  colorBorderInfo: 'transparent',
+  colorBorderNeutral: 'transparent',
+
   colorBackground: compatibilityMode
     ? theme.colourway.background01
     : theme.sys.color.backgroundAlpha,

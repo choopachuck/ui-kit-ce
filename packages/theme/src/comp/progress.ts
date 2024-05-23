@@ -43,6 +43,9 @@ export const createCircularProgress = (
   theme: Theme,
   compatibilityMode?: boolean
 ) => ({
+  colorText: compatibilityMode
+    ? theme.colourway.bar.light.onBgHigh
+    : theme.sys.color.onBackgroundHigh,
   pathColorBackground: compatibilityMode
     ? theme.colourway.primary
     : theme.sys.color.primaryAlpha,

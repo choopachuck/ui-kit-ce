@@ -154,6 +154,7 @@ const useStyles = createUseStyles((theme) => ({
     },
 
     '&$dragged': {
+      color: theme.comp.tag.colorTextLiteDragged,
       backgroundColor: theme.comp.tag.colorBackgroundLiteDragged,
 
       '&::after': {
@@ -234,6 +235,7 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: theme.comp.tag.colorBackgroundSecondaryDragged,
 
       '&::after': {
+        borderColor: theme.comp.tag.colorBorderSecondaryDragged,
         borderWidth: 0,
       },
     },
@@ -255,6 +257,7 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: theme.comp.tag.colorBackgroundSecondarySelected,
 
       '&:disabled': {
+        color: theme.comp.tag.colorTextSecondarySelectedDisabled,
         backgroundColor:
           theme.comp.tag.colorBackgroundSecondarySelectedDisabled,
       },
@@ -314,6 +317,7 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: theme.comp.tag.colorBackgroundPrimaryDragged,
 
       '&::after': {
+        borderColor: theme.comp.tag.colorBorderPrimaryDragged,
         borderWidth: 0,
       },
     },
@@ -333,6 +337,7 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: theme.comp.tag.colorBackgroundPrimarySelected,
 
       '&:disabled': {
+        color: theme.comp.tag.colorTextPrimarySelectedDisabled,
         backgroundColor: theme.comp.tag.colorBackgroundPrimarySelectedDisabled,
       },
 

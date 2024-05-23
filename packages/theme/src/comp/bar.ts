@@ -359,7 +359,7 @@ export const createBarMenuItem = (
     : theme.sys.color.inverseOnBackgroundHigh,
   colorTextLight: compatibilityMode
     ? theme.colourway.bar.light.onBgLow
-    : theme.sys.color.onBackgroundLow,
+    : theme.sys.color.onBackgroundMedium,
   colorTextLightDisabled: compatibilityMode
     ? theme.colourway.bar.light.onBgDisabled
     : theme.sys.color.disabledHigh,

@@ -157,15 +157,27 @@ export const createCalendarPicker = (
   yearButtonColorBackgroundSelected: compatibilityMode
     ? theme.colourway.mono03
     : theme.sys.color.onBackgroundOverlaySelect,
+  /**
+   * @deprecated Будет удалено. Скругление наследуется из компонента `Button`
+   */
   buttonShapeBorderRadiusTopLeft: compatibilityMode
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusMd,
+  /**
+   * @deprecated Будет удалено. Скругление наследуется из компонента `Button`
+   */
   buttonShapeBorderRadiusTopRight: compatibilityMode
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusMd,
+  /**
+   * @deprecated Будет удалено. Скругление наследуется из компонента `Button`
+   */
   buttonShapeBorderRadiusBottomLeft: compatibilityMode
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusMd,
+  /**
+   * @deprecated Будет удалено. Скругление наследуется из компонента `Button`
+   */
   buttonShapeBorderRadiusBottomRight: compatibilityMode
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusMd,

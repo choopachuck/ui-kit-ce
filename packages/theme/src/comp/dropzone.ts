@@ -21,7 +21,7 @@ export const createDropzone = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.color.neutralGamma,
   contentColorText: compatibilityMode
     ? theme.colourway.onBackgroundLow
-    : theme.sys.color.onBackgroundMedium,
+    : theme.sys.color.onBackgroundLow,
 
   // Color/disabled
   colorBackgroundDisabled: 'transparent',
@@ -70,17 +70,17 @@ export const createDropzone = (theme: Theme, compatibilityMode?: boolean) => ({
   // Typography
   contentTypographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.headings
-    : theme.sys.typography.uiTextLg.fontFamily,
+    : theme.sys.typography.bodyLg.fontFamily,
   contentTypographyFontSize: compatibilityMode
     ? theme.typography.fontSize.body1
-    : theme.sys.typography.uiTextLg.fontSize,
+    : theme.sys.typography.bodyLg.fontSize,
   contentTypographyLineHeight: compatibilityMode
     ? theme.typography.lineHeight.body1
-    : theme.sys.typography.uiTextLg.lineHeight,
+    : theme.sys.typography.bodyLg.lineHeight,
   contentTypographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.regular
-    : theme.sys.typography.uiTextLg.fontWeight,
+    : theme.sys.typography.bodyLg.fontWeight,
   contentTypographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.body1
-    : theme.sys.typography.uiTextLg.letterSpacing,
+    : theme.sys.typography.bodyLg.letterSpacing,
 })

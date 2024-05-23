@@ -14,6 +14,10 @@ export const createCloseButton = (
   colorTextActive: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
+  colorTextDisabled: compatibilityMode
+    ? theme.colourway.onWarningLow
+    : theme.sys.color.disabledHigh,
+  colorBackground: 'transparent',
   colorBackgroundHover: compatibilityMode
     ? theme.colourway.mono02
     : theme.sys.color.onBackgroundOverlayHover,
@@ -23,6 +27,7 @@ export const createCloseButton = (
   colorShadowFocus: compatibilityMode
     ? theme.colourway.focus
     : theme.sys.color.focus,
+  colorBackgroundDisabled: 'transparent',
 
   shapeBorderRadiusTopLeft: compatibilityMode
     ? theme.shape.borderRadius

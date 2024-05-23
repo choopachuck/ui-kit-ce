@@ -72,6 +72,22 @@ const useStyles = createUseStyles((theme) => ({
       margin: 16,
       padding: 24,
     },
+
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: -1,
+      left: -1,
+      borderWidth: theme.shape.borderWidth,
+      borderStyle: theme.shape.borderStyle,
+      borderTopLeftRadius: 'inherit',
+      borderTopRightRadius: 'inherit',
+      borderBottomLeftRadius: 'inherit',
+      borderBottomRightRadius: 'inherit',
+      borderColor: theme.comp.modal.colorBorder,
+      height: '100%',
+      width: '100%',
+    },
   },
 }))
 

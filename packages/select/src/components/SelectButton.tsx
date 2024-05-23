@@ -171,7 +171,11 @@ const useStyles = createUseStyles((theme) => ({
     justifyContent: 'center',
   },
 
-  disabled: {},
+  disabled: {
+    '& $empty': {
+      color: theme.comp.select.placeholderColorTextDisabled,
+    },
+  },
 }))
 
 type Classes = Partial<
@@ -257,7 +261,7 @@ export const SelectButton = React.forwardRef(
     const { ellipsis } = useText()
 
     const textClassName = clsx(classesMap.text, ellipsis, {
-      [classesMap.empty]: !disabled && emptyValue,
+      [classesMap.empty]: emptyValue,
       [classesMap.textSmall]: isSmall,
       [classesMap.textMedium]: isMedium,
       [classesMap.textLarge]: isLarge,

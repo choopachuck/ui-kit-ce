@@ -36,6 +36,23 @@ const useStyles = createUseStyles((theme) => ({
     boxShadow: theme.comp.notification.elevationShadow,
     backgroundColor: theme.comp.notification.colorBackground,
     color: theme.comp.notification.colorText,
+    position: 'relative',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: -1,
+      left: -1,
+      borderWidth: theme.shape.borderWidth,
+      borderStyle: theme.shape.borderStyle,
+      borderTopLeftRadius: 'inherit',
+      borderTopRightRadius: 'inherit',
+      borderBottomLeftRadius: 'inherit',
+      borderBottomRightRadius: 'inherit',
+      borderColor: theme.comp.notification.colorBorderNeutral,
+      height: '100%',
+      width: '100%',
+      zIndex: -1,
+    },
   },
 
   horizontal: {
@@ -154,6 +171,9 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   success: {
+    '&::after': {
+      borderColor: theme.comp.notification.colorBorderSuccess,
+    },
     '& $indicator': {
       backgroundColor: theme.comp.notification.indicatorColorBackgroundSuccess,
     },
@@ -164,6 +184,9 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   info: {
+    '&::after': {
+      borderColor: theme.comp.notification.colorBorderInfo,
+    },
     '& $indicator': {
       backgroundColor: theme.comp.notification.indicatorColorBackgroundInfo,
     },
@@ -174,6 +197,9 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   warning: {
+    '&::after': {
+      borderColor: theme.comp.notification.colorBorderWarning,
+    },
     '& $indicator': {
       backgroundColor: theme.comp.notification.indicatorColorBackgroundWarning,
     },
@@ -184,6 +210,9 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   error: {
+    '&::after': {
+      borderColor: theme.comp.notification.colorBorderError,
+    },
     '& $indicator': {
       backgroundColor: theme.comp.notification.indicatorColorBackgroundError,
     },

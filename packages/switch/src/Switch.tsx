@@ -32,6 +32,10 @@ const useStyles = createUseStyles((theme) => ({
     '&:hover $switch': {
       backgroundColor: theme.comp.switch.colorBackgroundHover,
     },
+
+    '&:active $switch': {
+      backgroundColor: theme.comp.switch.colorBackgroundActive,
+    },
   },
 
   disabled: {

@@ -14,6 +14,9 @@ export const createCheckbox = (theme: Theme, compatibilityMode?: boolean) => ({
   iconColorText: compatibilityMode
     ? theme.colourway.onSecondaryHigh
     : theme.sys.color.onSecondaryHigh,
+  /**
+   * @deprecated будет удалено, используйте `colorMarkChecked`
+   */
   colorMark: '',
   colorBorder: compatibilityMode
     ? theme.colourway.secondary

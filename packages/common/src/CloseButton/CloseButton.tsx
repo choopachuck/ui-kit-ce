@@ -1,5 +1,7 @@
 'use client'
 
+/* eslint-disable react/prop-types  */ // TODO: Багует eslint при использовании нативных props из элементов React
+
 import React, { FC } from 'react'
 import { useButtonReset } from '@v-uik/hooks'
 import { createUseStyles } from 'react-jss'
@@ -26,6 +28,7 @@ const useStyles = createUseStyles((comp: CloseButtonTokens) => ({
     borderBottomRightRadius: comp.shapeBorderRadiusBottomRight,
     color: comp.colorText,
     cursor: 'pointer',
+    backgroundColor: comp.colorBackground,
 
     '&:hover': {
       color: comp.colorTextHover,
@@ -41,6 +44,10 @@ const useStyles = createUseStyles((comp: CloseButtonTokens) => ({
       boxShadow: `0 0 0 2px ${comp.colorShadowFocus}`,
     },
   },
+  disabled: {
+    color: comp.colorTextDisabled,
+    backgroundColor: comp.colorBackgroundDisabled,
+  },
 }))
 
 export type CloseButtonProps = {
@@ -52,6 +59,7 @@ export const CloseButton: FC<CloseButtonProps> = ({
   tokens,
   className,
   children,
+  disabled,
   ...props
 }) => {
   const defaultComp: CloseButtonTokens = useTheme().comp.closeButton
@@ -65,7 +73,8 @@ export const CloseButton: FC<CloseButtonProps> = ({
       className={clsx(
         buttonClasses.resetButton,
         classes.closeButton,
-        className
+        className,
+        { [classes.disabled]: disabled }
       )}
       {...props}
     >

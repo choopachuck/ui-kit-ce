@@ -8,6 +8,9 @@ export const createSwitch = (theme: Theme, compatibilityMode?: boolean) => ({
   colorBackgroundHover: compatibilityMode
     ? theme.colourway.mono06
     : theme.sys.color.neutralBeta,
+  colorBackgroundActive: compatibilityMode
+    ? theme.colourway.mono07
+    : theme.sys.color.neutralGamma,
   colorBackgroundDisabled: compatibilityMode
     ? theme.colourway.disabledMajor
     : theme.sys.color.disabledMedium,

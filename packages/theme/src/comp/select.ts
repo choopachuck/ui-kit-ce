@@ -36,6 +36,9 @@ export const createSelect = (theme: Theme, compatibilityMode?: boolean) => ({
   placeholderColorText: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
+  placeholderColorTextDisabled: compatibilityMode
+    ? theme.colourway.onBackgroundDisabled
+    : theme.sys.color.disabledHigh,
   alertIconColorText: compatibilityMode
     ? theme.colourway.error
     : theme.sys.color.errorAlpha,

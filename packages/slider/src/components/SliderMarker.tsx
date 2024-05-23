@@ -15,6 +15,12 @@ const useStyles = createUseStyles((theme) => {
     background: theme.comp.slider.markerColorBackgroundActive,
   }
 
+  const hover = {
+    width: 16,
+    height: 16,
+    backgroundColor: theme.comp.slider.markerColorBackgroundHover,
+  }
+
   const focused = {
     width: 10,
     height: 10,
@@ -38,10 +44,7 @@ const useStyles = createUseStyles((theme) => {
       background: 'none',
       outline: 'none',
 
-      '&:hover $marker': {
-        width: 16,
-        height: 16,
-      },
+      '&:hover $marker': hover,
 
       '& $focused': focused,
       '&:hover $focused': focusedHover,

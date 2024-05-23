@@ -22,6 +22,9 @@ export const createTag = (theme: Theme, compatibilityMode?: boolean) => ({
   colorBorderLiteDisabled: compatibilityMode
     ? theme.colourway.disabledMajor
     : theme.sys.color.disabledMedium,
+  colorTextLiteDragged: compatibilityMode
+    ? theme.colourway.onBackgroundHigh
+    : theme.sys.color.onBackgroundHigh,
   colorBackgroundLiteDragged: compatibilityMode
     ? theme.colourway.backgroundComponent
     : theme.sys.color.backgroundComponent,
@@ -98,15 +101,19 @@ export const createTag = (theme: Theme, compatibilityMode?: boolean) => ({
   colorBorderSecondaryDisabled: compatibilityMode
     ? theme.colourway.disabledMajor
     : theme.sys.color.disabledMedium,
+  colorBorderSecondaryDragged: 'transparent',
   colorTextSecondaryDragged: compatibilityMode
     ? theme.colourway.onSecondaryHigh
     : theme.sys.color.onSecondaryHigh,
   colorBackgroundSecondaryDragged: compatibilityMode
     ? theme.colourway.secondarySelected
-    : theme.sys.color.secondaryAlpha,
+    : theme.sys.color.secondaryGamma,
   colorTextSecondarySelected: compatibilityMode
     ? theme.colourway.onSecondaryHigh
     : theme.sys.color.onSecondaryHigh,
+  colorTextSecondarySelectedDisabled: compatibilityMode
+    ? theme.colourway.disabledMajor
+    : theme.sys.color.disabledHigh,
   colorBackgroundSecondarySelected: compatibilityMode
     ? theme.colourway.secondary
     : theme.sys.color.secondaryAlpha,
@@ -159,15 +166,19 @@ export const createTag = (theme: Theme, compatibilityMode?: boolean) => ({
   colorBorderPrimaryDisabled: compatibilityMode
     ? theme.colourway.disabledMajor
     : theme.sys.color.disabledMedium,
+  colorBorderPrimaryDragged: 'transparent',
   colorTextPrimaryDragged: compatibilityMode
     ? theme.colourway.onSecondaryHigh
     : theme.sys.color.onPrimaryHigh,
   colorBackgroundPrimaryDragged: compatibilityMode
     ? theme.colourway.primarySelected
-    : theme.sys.color.primaryAlpha,
+    : theme.sys.color.primaryGamma,
   colorTextPrimarySelected: compatibilityMode
     ? theme.colourway.onPrimaryHigh
     : theme.sys.color.onPrimaryHigh,
+  colorTextPrimarySelectedDisabled: compatibilityMode
+    ? theme.colourway.onBackgroundDisabled
+    : theme.sys.color.disabledHigh,
   colorBackgroundPrimarySelected: compatibilityMode
     ? theme.colourway.primary
     : theme.sys.color.primaryAlpha,
@@ -232,7 +243,7 @@ export const createTag = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.color.focusPocus,
   elevationShadowDragged: compatibilityMode
     ? theme.colourway.shadow02
-    : theme.sys.elevation.lg,
+    : theme.sys.elevation.md,
 
   shapeBorderRadiusTopLeft: compatibilityMode
     ? '24px'
@@ -379,44 +390,32 @@ export const createTagInput = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.typography.bodyMd.letterSpacing,
 
   //typography xs
-  typographyFontSizeXs: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeightXs: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  typographyFontSizeXs: '',
+  typographyLineHeightXs: '',
 
   //typography sm
-  typographyFontSizeSm: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeightSm: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  typographyFontSizeSm: '',
+  typographyLineHeightSm: '',
 
   //typography xs
-  typographyFontSizeMd: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeightMd: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  typographyFontSizeMd: '',
+  typographyLineHeightMd: '',
 
   //typography xs
-  typographyFontSizeLg: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeightLg: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
+  typographyFontSizeLg: '',
+  typographyLineHeightLg: '',
 
   //typography (old)
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyFontSizeXs`, `typographyFontSizeSm`, `typographyFontSizeMd` или `typographyFontSizeLg`
    */
-  typographyFontSize: '',
+  typographyFontSize: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
   /**
    * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyLineHeightXs`, `typographyLineHeightSm`, `typographyLineHeightMd` или `typographyLineHeightLg`
    */
-  typographyLineHeight: '',
+  typographyLineHeight: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
 })

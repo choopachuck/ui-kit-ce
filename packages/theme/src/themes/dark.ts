@@ -530,5 +530,13 @@ export const darkOverrides = {
       colorBackgroundFilledInfo: '#034775',
       colorBackgroundFilledNeutral: '#454545',
     },
+    card: {
+      colorBackgroundClickableHover: '#2E3D43',
+      colorBackgroundClickableActive: '#404F54',
+      colorBackgroundSelectableHover: '#2E3D43',
+      colorBackgroundSelectableActive: '#404F54',
+      colorBackgroundSelectableCheckedHover: '#2E3D43',
+      colorBackgroundSelectableCheckedActive: '#404F54',
+    },
   },
 }

@@ -117,6 +117,14 @@ const useStyles = createUseStyles((theme) => ({
     '&$root:after': {
       borderColor: theme.comp.fileItem.colorBorderError,
     },
+    '& $status': {
+      color: theme.comp.fileItem.iconColorTextError,
+    },
+  },
+  success: {
+    '& $status': {
+      color: theme.comp.fileItem.iconColorTextSuccess,
+    },
   },
   progress: {
     '$root&': {
@@ -248,6 +256,7 @@ export const FileItem = React.forwardRef(
       status && {
         [classesMap.error]: status === 'error',
         [classesMap.progress]: status === 'progress',
+        [classesMap.success]: status === 'success',
       },
       classNameProps
     )
