@@ -70,6 +70,10 @@
         "section": "Continuous Integration",
         "hidden": true
       }
-    ]
+    ],
+    "commitUrlFormat": "#",
+    "issueUrlFormat": "#",
+    "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
+    "userUrlFormat": "{{host}}/{{user}}"
   }
 }
