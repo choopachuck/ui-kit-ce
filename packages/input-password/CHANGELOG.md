@@ -1,0 +1,13 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 1.11.0 (2024-06-04)
+
+
+### Features
+
+* **hooks:** добавлен хук useButtonReset ([be369fc](#))
+* **input,theme:** добавлены новые токены для типографики в зависимости от свойства `size` ([c85ea0c](#))
+* **labelled,theme:** добавлены новые токены для типографики в зависимости от свойства `size` ([4ad1352](#))

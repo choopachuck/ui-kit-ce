@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/box",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "Polymorphic component.",
   "main": "dist/cjs/index.js",
   "typings": "dist/esm/index.d.ts",
