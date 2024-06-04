@@ -2,7 +2,11 @@
 
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { useClassList, useMergedRefs } from '@v-uik/hooks'
 import { CommonProps } from '../interfaces'
 
@@ -16,23 +20,14 @@ const useStyles = createUseStyles((theme) => ({
     position: 'relative',
 
     maxWidth: '100%',
-    padding: [8, 16],
     outline: 0,
 
     fontFamily: theme.comp.comboBox.inputTypographyFontFamily,
-    fontSize: theme.comp.comboBox.inputTypographyFontSize,
-    lineHeight: theme.comp.comboBox.inputTypographyLineHeight,
     letterSpacing: theme.comp.comboBox.inputTypographyLetterSpacing,
     fontWeight: theme.comp.comboBox.inputTypographyFontWeight,
 
     color: theme.comp.comboBox.inputColorText,
     backgroundColor: theme.comp.comboBox.inputColorBackground,
-    borderTopLeftRadius: theme.comp.comboBox.inputShapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.comboBox.inputShapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius:
-      theme.comp.comboBox.inputShapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius:
-      theme.comp.comboBox.inputShapeBorderRadiusBottomRightMd,
 
     '&::after': {
       content: '""',
@@ -60,35 +55,19 @@ const useStyles = createUseStyles((theme) => ({
       },
     },
 
-    '&$small': {
-      paddingTop: 4,
-      paddingBottom: 4,
-      borderTopLeftRadius: theme.comp.comboBox.inputShapeBorderRadiusTopLeftSm,
-      borderTopRightRadius:
-        theme.comp.comboBox.inputShapeBorderRadiusTopRightSm,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.inputShapeBorderRadiusBottomLeftSm,
-      borderBottomRightRadius:
-        theme.comp.comboBox.inputShapeBorderRadiusBottomRightSm,
-    },
-
-    '&$large': {
-      paddingTop: 12,
-      paddingBottom: 12,
-      borderTopLeftRadius: theme.comp.comboBox.inputShapeBorderRadiusTopLeftLg,
-      borderTopRightRadius:
-        theme.comp.comboBox.inputShapeBorderRadiusTopRightLg,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.inputShapeBorderRadiusBottomLeftLg,
-      borderBottomRightRadius:
-        theme.comp.comboBox.inputShapeBorderRadiusBottomRightLg,
-    },
-
     '&$focused': {
       boxShadow: `0 0 0 2px ${theme.comp.comboBox.inputColorShadowFocus}`,
 
       '&::after': {
         borderWidth: 0,
+      },
+    },
+
+    '&$error': {
+      backgroundColor: theme.comp.comboBox.inputColorBackgroundError,
+
+      '&::after': {
+        borderColor: theme.comp.comboBox.inputColorBorderError,
       },
     },
 
@@ -110,12 +89,6 @@ const useStyles = createUseStyles((theme) => ({
         },
       },
     },
-
-    '&$error': {
-      '&::after': {
-        borderColor: theme.comp.comboBox.inputColorBorderError,
-      },
-    },
   },
 
   focused: {},
@@ -124,9 +97,53 @@ const useStyles = createUseStyles((theme) => ({
 
   error: {},
 
-  small: {},
+  small: {
+    padding: [4, 16],
+    borderTopLeftRadius: theme.comp.comboBox.inputShapeBorderRadiusTopLeftSm,
+    borderTopRightRadius: theme.comp.comboBox.inputShapeBorderRadiusTopRightSm,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.inputShapeBorderRadiusBottomLeftSm,
+    borderBottomRightRadius:
+      theme.comp.comboBox.inputShapeBorderRadiusBottomRightSm,
+    fontSize:
+      theme.comp.comboBox.inputTypographyFontSizeSm ||
+      theme.comp.comboBox.inputTypographyFontSize,
+    lineHeight:
+      theme.comp.comboBox.inputTypographyLineHeightSm ||
+      theme.comp.comboBox.inputTypographyLineHeight,
+  },
 
-  large: {},
+  medium: {
+    padding: [8, 16],
+    borderTopLeftRadius: theme.comp.comboBox.inputShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.comboBox.inputShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.inputShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.comboBox.inputShapeBorderRadiusBottomRightMd,
+    fontSize:
+      theme.comp.comboBox.inputTypographyFontSizeMd ||
+      theme.comp.comboBox.inputTypographyFontSize,
+    lineHeight:
+      theme.comp.comboBox.inputTypographyLineHeightMd ||
+      theme.comp.comboBox.inputTypographyLineHeight,
+  },
+
+  large: {
+    padding: [12, 16],
+    borderTopLeftRadius: theme.comp.comboBox.inputShapeBorderRadiusTopLeftLg,
+    borderTopRightRadius: theme.comp.comboBox.inputShapeBorderRadiusTopRightLg,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.inputShapeBorderRadiusBottomLeftLg,
+    borderBottomRightRadius:
+      theme.comp.comboBox.inputShapeBorderRadiusBottomRightLg,
+    fontSize:
+      theme.comp.comboBox.inputTypographyFontSizeLg ||
+      theme.comp.comboBox.inputTypographyFontSize,
+    lineHeight:
+      theme.comp.comboBox.inputTypographyLineHeightLg ||
+      theme.comp.comboBox.inputTypographyLineHeight,
+  },
 
   isSearchable: {},
 }))
@@ -141,7 +158,7 @@ type Classes = Partial<
 export type ControlProps<Option> = {
   children: React.ReactNode
   classes?: Classes
-  innerProps: JSX.IntrinsicElements['div']
+  innerProps: ComponentPropsWithRefFix<'div'>
   isDisabled?: boolean
   isFocused: boolean
   isSearchable?: boolean
@@ -175,6 +192,7 @@ export const Control = React.forwardRef(
 
     const className = clsx(classesMap.rootControl, innerProps.className, {
       [classesMap.small]: size === ElementSize.sm,
+      [classesMap.medium]: size === ElementSize.md,
       [classesMap.large]: size === ElementSize.lg,
       [classesMap.disabled]: isDisabled,
       [classesMap.error]: !isFocused && error,

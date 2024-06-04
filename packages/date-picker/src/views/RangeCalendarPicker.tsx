@@ -16,9 +16,10 @@ import { RangeMonthView } from './RangeMonthView'
 import { RangeYearView, RangeYearViewProps } from './RangeYearView'
 import { ChevronLeftIcon } from '../components/PanelHeader/ChevronLeftIcon'
 import { ChevronRightIcon } from '../components/PanelHeader/ChevronRightIcon'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface RangeCalendarPickerProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Pick<RangeYearViewProps<TDate>, 'minDate' | 'maxDate'> {
   /**
    * Выбранная дата.

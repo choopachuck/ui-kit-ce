@@ -3,7 +3,11 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { Classes } from './classes'
 
 const useStyles = createUseStyles((theme) => ({
@@ -59,21 +63,33 @@ const useStyles = createUseStyles((theme) => ({
     fontSize: theme.comp.labelControl.typographyFontSizeMd,
     lineHeight: theme.comp.labelControl.typographyLineHeightMd,
     letterSpacing: theme.comp.labelControl.typographyLetterSpacingMd,
-
-    '&$sm': {
-      fontFamily: theme.comp.labelControl.typographyFontFamilySm,
-      fontWeight: theme.comp.labelControl.typographyFontWeightSm,
-      fontSize: theme.comp.labelControl.typographyFontSizeSm,
-      lineHeight: theme.comp.labelControl.typographyLineHeightSm,
-      letterSpacing: theme.comp.labelControl.typographyLetterSpacingSm,
-    },
   },
 
-  sm: {},
+  labelSmall: {
+    fontFamily: theme.comp.labelControl.typographyFontFamilySm,
+    fontWeight: theme.comp.labelControl.typographyFontWeightSm,
+    fontSize: theme.comp.labelControl.typographyFontSizeSm,
+    lineHeight: theme.comp.labelControl.typographyLineHeightSm,
+    letterSpacing: theme.comp.labelControl.typographyLetterSpacingSm,
+  },
+  labelMedium: {
+    fontFamily: theme.comp.labelControl.typographyFontFamilyMd,
+    fontWeight: theme.comp.labelControl.typographyFontWeightMd,
+    fontSize: theme.comp.labelControl.typographyFontSizeMd,
+    lineHeight: theme.comp.labelControl.typographyLineHeightMd,
+    letterSpacing: theme.comp.labelControl.typographyLetterSpacingMd,
+  },
+  labelLarge: {
+    fontFamily: theme.comp.labelControl.typographyFontFamilyLg,
+    fontWeight: theme.comp.labelControl.typographyFontWeightLg,
+    fontSize: theme.comp.labelControl.typographyFontSizeLg,
+    lineHeight: theme.comp.labelControl.typographyLineHeightLg,
+    letterSpacing: theme.comp.labelControl.typographyLetterSpacingLg,
+  },
 }))
 
 export interface LabelControlProps
-  extends Omit<React.ComponentPropsWithRef<'label'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'label'>, 'onChange'> {
   /**
    * CSS классы компонента
    */
@@ -85,7 +101,7 @@ export interface LabelControlProps
   /**
    * Размер заголовка и контролла
    */
-  size?: Exclude<ElementSizeType, 'lg'>
+  size?: ElementSizeType
   /**
    * Контролл, который будет выводиться вместе с меткой Radio, CheckBox или Switch
    */
@@ -128,7 +144,7 @@ export const LabelControl = React.forwardRef(
       checked,
       control,
       disabled,
-      size,
+      size = 'md',
       onChange,
       inputProps,
       label,
@@ -148,17 +164,15 @@ export const LabelControl = React.forwardRef(
       [classesMap.bottom]: labelPlacement === 'bottom',
       [classesMap.end]: labelPlacement === 'end',
     })
+    const contentClassName = clsx(classesMap.labelContent, {
+      [classesMap.labelSmall]: size === ElementSize.sm,
+      [classesMap.labelMedium]: size === ElementSize.md,
+      [classesMap.labelLarge]: size === ElementSize.lg,
+    })
 
     return (
       <label {...rest} ref={ref} className={className}>
-        <span
-          className={clsx(classesMap.labelContent, {
-            [classesMap.sm]: size === ElementSize.sm,
-          })}
-        >
-          {label}
-        </span>
-
+        <span className={contentClassName}>{label}</span>
         {React.cloneElement(control, {
           disabled,
           inputProps,

@@ -32,20 +32,10 @@ const Component: React.FC<Props> = (props) => {
   const customizedId = React.useRef(1)
 
   const showMessage = () => {
-    const content =
-      showDescription || showCustomContent ? (
-        <>
-          {title}
-
-          {showDescription && <span>{description}</span>}
-
-          {showCustomContent && <div>Custom content</div>}
-        </>
-      ) : (
-        title
-      )
-
-    notification(content, {
+    notification(showDescription ? <span>{description}</span> : '', {
+      nextNotification: true,
+      actions: showCustomContent ? <div>Custom content</div> : undefined,
+      title,
       status,
       icon: showIcon,
       id: `custom-id-${customizedId.current++}`,

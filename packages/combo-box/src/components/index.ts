@@ -14,6 +14,9 @@ import { Input, InputProps } from './Input'
 import { Placeholder, PlaceholderProps } from './Placeholder'
 import { OptionList, OptionListProps } from './OptionList'
 import { OptionItem, OptionItemProps } from './OptionItem'
+import { OptionPrefixProps } from './OptionPrefix'
+import { OptionSuffixProps } from './OptionSuffix'
+import { Checkbox, CheckboxProps } from '@v-uik/checkbox'
 
 export type { OptionListProps, OptionItemProps }
 
@@ -28,6 +31,7 @@ export type ComboBoxComponents<
   IndicatorContainer: React.ComponentType<IndicatorContainerProps<Option>>
   Input: React.ComponentType<InputProps<Option>>
   MultiValue: React.ComponentType<MultiValueProps<Option>>
+  MultiCheckbox: React.ComponentType<CheckboxProps>
   Placeholder: React.ComponentType<PlaceholderProps<Option>>
   SelectContainer: React.ComponentType<SelectContainerProps<Option>>
   SingleValue: React.ComponentType<SingleValueProps<Option>>
@@ -36,6 +40,8 @@ export type ComboBoxComponents<
     OptionListProps<Option, ListElement, OptionItemElement>
   >
   OptionItem: React.ComponentType<OptionItemProps<Option, OptionItemElement>>
+  OptionPrefix: React.ComponentType<OptionPrefixProps<Option>> | null
+  OptionSuffix: React.ComponentType<OptionSuffixProps<Option>> | null
 }
 
 export type ComboBoxComponentsConfig<
@@ -51,6 +57,7 @@ export const defaultComboboxComponents = {
   IndicatorContainer: IndicatorContainer,
   Input: Input,
   MultiValue: MultiValue,
+  MultiCheckbox: Checkbox,
   Placeholder: Placeholder,
   SelectContainer: SelectContainer,
   SingleValue: SingleValue,
@@ -59,7 +66,10 @@ export const defaultComboboxComponents = {
   OptionItem: OptionItem,
 }
 
-export type ComboBoxComponentsGeneric = typeof defaultComboboxComponents
+export type ComboBoxComponentsGeneric = typeof defaultComboboxComponents & {
+  OptionPrefix?: React.ComponentType<OptionPrefixProps<unknown>> | null
+  OptionSuffix?: React.ComponentType<OptionSuffixProps<unknown>> | null
+}
 
 export const getComponents = <
   Option,
@@ -74,3 +84,17 @@ export const getComponents = <
     ...defaultComboboxComponents,
     ...componentProp,
   } as ComboBoxComponentsGeneric)
+
+export type {
+  ControlProps,
+  DropdownIndicatorProps,
+  IndicatorContainerProps,
+  MultiValueProps,
+  PlaceholderProps,
+  SelectContainerProps,
+  SingleValueProps,
+  ValueContainerProps,
+  OptionSuffixProps,
+  OptionPrefixProps,
+  ClearIndicatorProps,
+}

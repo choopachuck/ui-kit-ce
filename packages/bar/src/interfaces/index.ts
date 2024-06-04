@@ -1,9 +1,8 @@
-import * as React from 'react'
-import { DirectionType } from '@v-uik/common'
+import { DirectionType, ComponentPropsWithRefFix } from '@v-uik/common'
 import { BarKindsType, SubBarKindsType } from '../constants'
 import { BarClasses, SubBarClasses } from './classes'
 
-export interface BarProps extends React.ComponentPropsWithRef<'div'> {
+export interface BarProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */
@@ -22,7 +21,7 @@ export interface BarProps extends React.ComponentPropsWithRef<'div'> {
   expanded?: boolean
 }
 
-export interface SubBarProps extends React.ComponentPropsWithRef<'div'> {
+export interface SubBarProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */

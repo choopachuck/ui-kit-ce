@@ -1,5 +1,11 @@
-const isProduction = process.env.NODE_ENV === 'production'
-const isTesting = process.env.TESTING === 'true'
+let isProduction = false
+let isTesting = false
+
+try {
+  isProduction = process.env.NODE_ENV === 'production'
+  isTesting = process.env.TESTING === 'true'
+  // eslint-disable-next-line no-empty
+} catch (_e) {}
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,@typescript-eslint/no-empty-function
 const noop = () => {}

@@ -4,7 +4,11 @@ import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { hasElementType, isEqualKeyboardKeys } from '@v-uik/utils'
-import { Direction, DirectionType } from '@v-uik/common'
+import {
+  Direction,
+  DirectionType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { Tab, TabProps } from './Tab'
 import { TabsContext, TabsContextValue } from './TabsContext'
 import { TabsClasses } from './interfaces'
@@ -239,7 +243,7 @@ export const TabsKinds = {
 export type TTabsKinds = keyof typeof TabsKinds
 
 export interface TabsProps
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * Список классов
    */

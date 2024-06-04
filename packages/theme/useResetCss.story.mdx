@@ -1,0 +1,56 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import {
+  createTitle,
+  HOOKS,
+  DocsAlert,
+  createStory,
+} from '../../docs/showroom/config'
+import { UseResetCss } from './examples/UseResetCss'
+import RawUseResetCss from '!!raw-loader!./examples/UseResetCss'
+import { Button } from '@v-uik/button'
+
+export const story = createStory(UseResetCss, RawUseResetCss)
+
+<Meta title={createTitle([HOOKS.root, HOOKS.useResetCss])} />
+
+<Story
+  name="useResetCss"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# useResetCss
+
+Хук `useResetCss` позволяет сбрасывать стили браузера по умолчанию
+
+Данный хук глобально объявляет единый стиль для всего документа, убирая лишние отступы и указывая корректные типы отображения, шрифты и внешний вид у HTML-элементов
+
+## import
+
+```tsx
+import { useResetCss } from '@v-uik/base'
+```
+
+или
+
+```tsx
+import { useResetCss } from '@v-uik/theme'
+```
+
+## Пример
+
+<Canvas withSource="none">
+  <UseResetCss />
+</Canvas>
+
+<Source language="tsx" code={RawUseResetCss}></Source>
+
+## Полезные ссылки
+
+- [Объявление стилей CSS-IN-JS](https://cssinjs.org/jss-api/?v=v10.0.3#create-style-sheet)

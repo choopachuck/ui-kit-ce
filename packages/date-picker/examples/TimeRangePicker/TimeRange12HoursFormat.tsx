@@ -15,17 +15,9 @@ const validationErrorMessages: TimePickerProps['validationErrorMessages'] = {
 }
 
 export const TimeRange12HoursFormat = (): React.ReactElement => {
-  const [date, setDate] = React.useState<[Date | null, Date | null]>([
-    null,
-    null,
-  ])
-
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
+  const [date, setDate] = React.useState<
+    [Date | null | number, Date | null | number]
+  >([null, null])
 
   return (
     <DateLibAdapterProvider
@@ -44,7 +36,7 @@ export const TimeRange12HoursFormat = (): React.ReactElement => {
           format="hh:mm a"
           startInputProps={{ placeholder: 'hh:mm аа' }}
           endInputProps={{ placeholder: 'hh:mm аа' }}
-          onChange={handleChange}
+          onChange={setDate}
         />
       </div>
     </DateLibAdapterProvider>

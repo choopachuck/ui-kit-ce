@@ -27,6 +27,54 @@ it('set input value correctly', () => {
   expect(getByRole('textbox')).toHaveValue('+7 (921) 875-45-39')
 })
 
+describe('paste value with space', () => {
+  it('in start', () => {
+    const { getByRole } = render(<MaskedInput mask="*****" />)
+
+    const input = getByRole('textbox')
+
+    fireEvent.keyDown(input, {
+      key: 'Control',
+      code: 'ControlLeft',
+      keyCode: 17,
+    })
+    fireEvent.paste(input, { clipboardData: { getData: () => '   222' } })
+    fireEvent.keyUp(input, { key: 'Control', code: 'ControlLeft', keyCode: 17 })
+
+    expect(input).toHaveValue('222__')
+  })
+  it('in end', () => {
+    const { getByRole } = render(<MaskedInput mask="*****" />)
+
+    const input = getByRole('textbox')
+
+    fireEvent.keyDown(input, {
+      key: 'Control',
+      code: 'ControlLeft',
+      keyCode: 17,
+    })
+    fireEvent.paste(input, { clipboardData: { getData: () => '222   ' } })
+    fireEvent.keyUp(input, { key: 'Control', code: 'ControlLeft', keyCode: 17 })
+
+    expect(input).toHaveValue('222__')
+  })
+  it('in start and end', () => {
+    const { getByRole } = render(<MaskedInput mask="*****" />)
+
+    const input = getByRole('textbox')
+
+    fireEvent.keyDown(input, {
+      key: 'Control',
+      code: 'ControlLeft',
+      keyCode: 17,
+    })
+    fireEvent.paste(input, { clipboardData: { getData: () => '   222   ' } })
+    fireEvent.keyUp(input, { key: 'Control', code: 'ControlLeft', keyCode: 17 })
+
+    expect(input).toHaveValue('222__')
+  })
+})
+
 it('v is not insterted when ctrl+v', () => {
   const { getByRole } = render(<EditableComp />)
   const input = getByRole('textbox')

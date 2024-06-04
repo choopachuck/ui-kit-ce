@@ -79,10 +79,10 @@ export const createTable = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.color.backgroundAlpha,
   bodyCellFixedColorBackgroundHover: compatibilityMode
     ? theme.colourway.background03
-    : 'rgb(224 224 224)', // onOverlayHover without opacity
+    : 'rgb(224, 224, 224)', // onOverlayHover without opacity
   bodyCellFixedColorBackgroundStripe: compatibilityMode
     ? theme.colourway.background02
-    : 'rgb(245 245 245)', // onOverlayToning without opacity
+    : 'rgb(245, 245, 245)', // onOverlayToning without opacity
   paginationColorText: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
@@ -155,5 +155,5 @@ export const createTable = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.typography.bodyMd.letterSpacing,
   paginationTypographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.semibold
-    : theme.ref.typography.fontWeight.semiBold,
+    : theme.sys.typography.bodyMd.fontWeight,
 })

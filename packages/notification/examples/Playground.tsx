@@ -1,7 +1,5 @@
 import * as React from 'react'
 import {
-  Text,
-  useTheme,
   Button,
   Link,
   NotificationContainer,
@@ -59,8 +57,6 @@ export const Playground = ({
   title,
   description,
 }: PlaygroundProps): React.ReactElement => {
-  const theme = useTheme()
-
   const customizedId = React.useRef(1)
 
   const showMessage = () => {
@@ -68,51 +64,33 @@ export const Playground = ({
       ? `custom-id-${customizedId.current++}`
       : undefined
 
-    const titleText = showTitle ? title : null
+    const content = showDescription ? description : undefined
+    const actions = (
+      <div
+        style={{
+          display: 'flex',
+          marginRight: showCloseButton ? -40 : 0,
+        }}
+      >
+        <Link href="">Link</Link>
 
-    const content =
-      showDescription || showCustomContent ? (
-        <>
-          {titleText}
-
-          {showDescription && (
-            <Text
-              style={{
-                marginTop: titleText ? 8 : 0,
-                color: theme.sys.color.onBackgroundMedium,
-              }}
-            >
-              {description}
-            </Text>
-          )}
-
-          {showCustomContent && (
-            <div
-              style={{
-                display: 'flex',
-                marginTop: 16,
-                marginRight: showCloseButton ? -40 : 0,
-              }}
-            >
-              <Link href="">Link</Link>
-
-              <Button
-                style={{ marginLeft: 'auto' }}
-                kind="outlined"
-                size="sm"
-                color="secondary"
-                onClick={() => notification.close(id as string)}
-              >
-                Button
-              </Button>
-            </div>
-          )}
-        </>
-      ) : (
-        titleText
-      )
+        <Button
+          style={{ marginLeft: 'auto' }}
+          kind="outlined"
+          size="sm"
+          color="secondary"
+          onClick={() => notification.close(id as string)}
+        >
+          Button
+        </Button>
+      </div>
+    )
 
     notification(content, {
+      direction:
+        showDescription || showCustomContent ? 'vertical' : 'horizontal',
+      title: showTitle ? title : null,
+      actions: showCustomContent ? actions : null,
       status,
       icon: getShowIcon(showIcon, showCustomContent),
       id,
@@ -136,6 +114,7 @@ export const Playground = ({
       </div>
 
       <NotificationContainer
+        nextNotification
         position={position}
         autoClose={disableAutoClose ? false : autoClose}
         limit={limit}

@@ -8,6 +8,9 @@ export const createInput = (theme: Theme, compatibilityMode?: boolean) => ({
   colorBackgroundDisabled: compatibilityMode
     ? theme.colourway.backgroundComponent
     : theme.sys.color.disabledLow,
+  colorBackgroundError: compatibilityMode
+    ? theme.colourway.backgroundComponent
+    : theme.sys.color.backgroundComponent,
   colorBorder: compatibilityMode
     ? theme.colourway.mono05
     : theme.sys.color.neutralAlpha,
@@ -90,19 +93,40 @@ export const createInput = (theme: Theme, compatibilityMode?: boolean) => ({
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusLg,
 
+  //typography (base)
   typographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.bodyMd.fontFamily,
   typographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.regular
     : theme.sys.typography.bodyMd.fontWeight,
-  typographyFontSize: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  typographyLineHeight: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
   typographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,
+
+  //typography lg
+  typographyFontSizeLg: '',
+  typographyLineHeightLg: '',
+
+  //typography md
+  typographyFontSizeMd: '',
+  typographyLineHeightMd: '',
+
+  //typography sm
+  typographyFontSizeSm: '',
+  typographyLineHeightSm: '',
+
+  //typography (old)
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyFontSizeSm`, `typographyFontSizeMd` или `typographyFontSizeLg`
+   */
+  typographyFontSize: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyLineHeightSm`, `typographyLineHeightMd` или `typographyLineHeightLg`
+   */
+  typographyLineHeight: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
 })

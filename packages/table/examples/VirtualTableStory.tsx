@@ -180,7 +180,7 @@ const Row = <DataSource extends ReservedDataSourceProps<DataSource>>({
                 tableCellContentStyles[size as TableSizeProp]
               )}
             >
-              {currentDataSourceRow[dataIndex]}
+              {currentDataSourceRow[dataIndex] as unknown as string}
             </div>
           </div>
         )

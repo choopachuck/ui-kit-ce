@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { BreakpointsNumberValue } from '@v-uik/common'
+import { BreakpointsNumberValue, ComponentPropsWithRefFix } from '@v-uik/common'
 
-export interface GridProps extends React.ComponentPropsWithRef<'div'> {
+export interface GridProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * Коэффициент расстояния между ячейками сетки.
    */

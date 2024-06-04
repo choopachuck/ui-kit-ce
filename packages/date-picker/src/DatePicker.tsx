@@ -3,7 +3,12 @@
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
-import { ElementSize, ElementSizeType, TrapFocus } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  TrapFocus,
+  ComponentPropsWithoutRefFix,
+} from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import {
@@ -11,6 +16,7 @@ import {
   useGeneratedId,
   useOutsideScroll,
   useForceSecondRender,
+  useClassList,
 } from '@v-uik/hooks'
 import {
   BaseTimePicker,
@@ -34,7 +40,10 @@ import { ExternalCalendarViewComponentsPropsPartial } from './interfaces'
 import { useShouldDisableDate } from './hooks/useShouldDisableDate'
 import { ComponentIdContext } from './utils/ComponentIdContext'
 import { useDefaultFocus } from './hooks/useDefaultFocus'
-import { DatePickerClasses as Classes } from './interfaces/classes'
+import {
+  CalendarPickerClasses,
+  DatePickerClasses as Classes,
+} from './interfaces/classes'
 import { useDropdownStateChange } from './hooks/useDropdownStateChange'
 import { useMobileView } from './hooks/useMobileView'
 import { MobileCalendarPicker } from './components/MobileCalendar/MobileCalendarPicker'
@@ -78,7 +87,6 @@ const useStyles = createUseStyles((theme) => ({
   timePickerRoot: {
     maxHeight: 348,
   },
-
   inputRoot: {
     width: 176,
   },
@@ -87,7 +95,7 @@ const useStyles = createUseStyles((theme) => ({
 export interface DatePickerProps<TDate = unknown>
   extends BaseDatePickerProps<TDate>,
     Omit<ValidateDateProps<TDate>, 'shouldDisableDate'>,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    Omit<ComponentPropsWithoutRefFix<'div'>, 'onChange'>,
     Omit<LabelledProps, 'children' | 'classes'> {
   /**
    * CSS классы для стилизации
@@ -97,6 +105,10 @@ export interface DatePickerProps<TDate = unknown>
    * Список классов для компонента Labelled
    */
   labelledClasses?: LabelledProps['classes']
+  /**
+   * Список классов для компонента CalendarPicker
+   */
+  calendarPickerClasses?: CalendarPickerClasses
   /**
    * Поле содержит ошибку
    */
@@ -207,6 +219,7 @@ export const DatePicker = React.forwardRef(
       hideDropdownOnOutsideScroll = false,
       timePickerProps,
       labelledClasses,
+      calendarPickerClasses,
       description,
       keepHelperTextMinHeight,
       required,
@@ -312,8 +325,9 @@ export const DatePicker = React.forwardRef(
       (validationError && validationErrorMessages[validationError])
 
     const classesList = useStyles()
+    const classesMap = useClassList(classesList, classes)
 
-    const className = clsx(classesList.root, classes?.root, classNameProp, {
+    const className = clsx(classesMap.root, classes?.root, classNameProp, {
       ...(classes?.error
         ? {
             [classes.error]: error,
@@ -325,7 +339,7 @@ export const DatePicker = React.forwardRef(
           }
         : {}),
       // позволяем растянуть input на 100% ширины, при отсутствии рендер функции
-      [classesList.fullWidth]: !renderInput && inputProps?.fullWidth,
+      [classesMap.fullWidth]: !renderInput && inputProps?.fullWidth,
     })
 
     const { onInputClick: onClick, onDropdownStateChange } =
@@ -371,7 +385,7 @@ export const DatePicker = React.forwardRef(
         ...(inputProps?.classes ?? {}),
         root: clsx(
           {
-            [classesList.inputRoot]: !timePickerProps,
+            [classesMap.inputRoot]: !timePickerProps,
           },
           inputProps?.classes?.root
         ),
@@ -418,7 +432,7 @@ export const DatePicker = React.forwardRef(
       <div
         ref={panelRef}
         className={clsx(
-          classesList.calendarPickerDropdown,
+          classesMap.calendarPickerDropdown,
           classes?.calendarPickerDropdown
         )}
         onKeyDown={handleContainerKeyDown}
@@ -439,6 +453,7 @@ export const DatePicker = React.forwardRef(
             />
           ) : (
             <CalendarPicker
+              classes={calendarPickerClasses || {}}
               value={value}
               minDate={minDate}
               maxDate={maxDate}
@@ -454,10 +469,10 @@ export const DatePicker = React.forwardRef(
           {!isMobile && timePickerProps && (
             <div
               ref={timePickerContainerRef}
-              className={classesList.timePickerContainer}
+              className={classesMap.timePickerContainer}
             >
               <BaseTimePicker
-                classes={{ root: classesList.timePickerRoot }}
+                classes={{ root: classesMap.timePickerRoot }}
                 {...timePickerProps}
                 value={value}
                 onChange={onChange}
@@ -473,6 +488,7 @@ export const DatePicker = React.forwardRef(
       <ComponentIdContext.Provider value={componentSystemId}>
         <div {...rest} ref={mergedRootRefs} className={className}>
           <Labelled
+            size={size}
             keepHelperTextMinHeight={keepHelperTextMinHeight}
             required={required}
             classes={labelledClasses}

@@ -226,6 +226,7 @@ export const createColor = (theme: Theme) => ({
     theme.ref.palette.black,
     theme.ref.alpha.channel5
   ),
+  inverseDisabled: theme.ref.palette.gray30,
   inverseDisabledHigh: setAlphaChannel(
     theme.ref.palette.white,
     theme.ref.alpha.channel25
@@ -259,5 +260,10 @@ export const createColor = (theme: Theme) => ({
   inverseSeparationMinor: setAlphaChannel(
     theme.ref.palette.gray50,
     theme.ref.alpha.channel30
+  ),
+
+  backdropColorBackground: setAlphaChannel(
+    theme.ref.palette.coldGray20,
+    theme.ref.alpha.channel45
   ),
 })

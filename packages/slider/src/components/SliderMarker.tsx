@@ -2,6 +2,9 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
+import { useClassList } from '@v-uik/hooks'
+import type { SliderMarkerClasses } from '../interfaces'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => {
   const active = {
@@ -10,6 +13,12 @@ const useStyles = createUseStyles((theme) => {
     boxShadow: 'none',
     cursor: 'pointer',
     background: theme.comp.slider.markerColorBackgroundActive,
+  }
+
+  const hover = {
+    width: 16,
+    height: 16,
+    backgroundColor: theme.comp.slider.markerColorBackgroundHover,
   }
 
   const focused = {
@@ -26,7 +35,7 @@ const useStyles = createUseStyles((theme) => {
   }
 
   return {
-    hoverArea: {
+    root: {
       width: 16,
       height: 16,
       display: 'flex',
@@ -35,10 +44,7 @@ const useStyles = createUseStyles((theme) => {
       background: 'none',
       outline: 'none',
 
-      '&:hover $marker': {
-        width: 16,
-        height: 16,
-      },
+      '&:hover $marker': hover,
 
       '& $focused': focused,
       '&:hover $focused': focusedHover,
@@ -75,11 +81,11 @@ const useStyles = createUseStyles((theme) => {
   }
 })
 
-export interface SliderMarkerProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface SliderMarkerProps extends ComponentPropsWithRefFix<'div'> {
   isActive?: boolean
   isFocused?: boolean
   disabled?: boolean
+  classes?: Partial<SliderMarkerClasses>
 }
 
 export const SliderMarker = React.forwardRef(
@@ -89,15 +95,17 @@ export const SliderMarker = React.forwardRef(
       isActive,
       isFocused,
       disabled,
+      classes,
       ...rest
     }: SliderMarkerProps,
     ref: React.Ref<HTMLDivElement>
   ) => {
-    const classes = useStyles()
-    const className = clsx(classes.marker, classNameProp, {
-      [classes.active]: isActive,
-      [classes.focused]: isFocused,
-      [classes.disabled]: disabled,
+    const classesList = useStyles()
+    const classesMap = useClassList(classesList, classes)
+    const className = clsx(classesMap.marker, classNameProp, {
+      [classesMap.active]: isActive,
+      [classesMap.focused]: isFocused,
+      [classesMap.disabled]: disabled,
     })
 
     return (
@@ -105,8 +113,8 @@ export const SliderMarker = React.forwardRef(
         {...rest}
         ref={ref}
         role="slider"
-        tabIndex={0}
-        className={classes.hoverArea}
+        tabIndex={disabled ? -1 : 0}
+        className={classesMap.root}
       >
         <div className={className} />
       </div>

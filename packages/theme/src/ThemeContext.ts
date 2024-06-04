@@ -10,6 +10,7 @@ import {
 import { Classes, Styles, StyleSheetFactoryOptions } from 'jss'
 import { light } from './themes'
 import { Theme } from './interface'
+import { createTheme } from './createTheme'
 
 interface BaseOptions<Theme = DefaultTheme> extends StyleSheetFactoryOptions {
   index?: number
@@ -21,7 +22,20 @@ interface CreateUseStylesOptions<Theme = DefaultTheme>
   name?: string
 }
 
-const ThemeContext = React.createContext<Theme>(light)
+//#region Перезапись дефолтной темы с помощью глобальной переменной DEFAULT_UIK_THEME (только для команды ЕДС, в остальных случаях не рекомендуется к использованию!!!)
+
+let defaultTheme = light
+
+if (
+  globalThis.DEFAULT_UIK_THEME &&
+  typeof globalThis.DEFAULT_UIK_THEME === 'object'
+) {
+  defaultTheme = createTheme(globalThis.DEFAULT_UIK_THEME)
+}
+
+//#endregion
+
+const ThemeContext = React.createContext<Theme>(defaultTheme)
 
 const theming = createTheming<Theme>(ThemeContext)
 

@@ -9,6 +9,7 @@ import {
   UseDynamicContainerReturnType,
 } from './hooks'
 import { Classes } from './classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const getDynamicStyles = (props: UseDynamicContainerReturnType) => {
   return {
@@ -32,7 +33,7 @@ const useStyles = createUseStyles({
 const defaultElement = 'div'
 
 export interface ContainerBaseProps
-  extends React.ComponentPropsWithRef<typeof defaultElement>,
+  extends ComponentPropsWithRefFix<typeof defaultElement>,
     UseDynamicContainerParams {
   /**
    * CSS классы компонента

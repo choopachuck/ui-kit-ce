@@ -11,13 +11,6 @@ const inputProps = {
 export const DateTimePicker12Hours = (): React.ReactElement => {
   const [date, setDate] = React.useState<Date | null>(null)
 
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
-
   return (
     <DateLibAdapterProvider
       dateAdapter={DateFnsAdapter}
@@ -36,7 +29,7 @@ export const DateTimePicker12Hours = (): React.ReactElement => {
           views: ['hours', 'minutes', 'seconds'],
           is12HoursFormat: true,
         }}
-        onChange={handleChange}
+        onChange={setDate}
       />
     </DateLibAdapterProvider>
   )

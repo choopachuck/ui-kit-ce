@@ -41,3 +41,16 @@ export type Classes = {
   /**  Стиль, применяемый к элементу с `disabled='true'` */
   disabled?: string
 }
+
+export interface SliderMarkerClasses {
+  /** Стиль, применяемый к контейнеру */
+  root?: string
+  /** Стиль, применяемый к элементу */
+  marker?: string
+  /** Стиль, применяемый к элементу в состоянии active */
+  active?: string
+  /** Стиль, применяемый к элементу в состоянии focused */
+  focused?: string
+  /** Стиль, применяемый к элементу в состоянии disabled */
+  disabled?: string
+}

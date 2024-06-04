@@ -15,6 +15,9 @@ export const createSelect = (theme: Theme, compatibilityMode?: boolean) => ({
     ? theme.colourway.backgroundComponent
     : theme.sys.color.disabledLow,
   inputColorBackgroundHover: '#dadada', // TODO: after implementing overlay add backgroundComponent
+  inputColorBackgroundError: compatibilityMode
+    ? theme.colourway.backgroundComponent
+    : theme.sys.color.backgroundComponent,
   inputColorBorder: compatibilityMode
     ? theme.colourway.mono05
     : theme.sys.color.neutralAlpha,
@@ -33,6 +36,9 @@ export const createSelect = (theme: Theme, compatibilityMode?: boolean) => ({
   placeholderColorText: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
+  placeholderColorTextDisabled: compatibilityMode
+    ? theme.colourway.onBackgroundDisabled
+    : theme.sys.color.disabledHigh,
   alertIconColorText: compatibilityMode
     ? theme.colourway.error
     : theme.sys.color.errorAlpha,
@@ -100,21 +106,42 @@ export const createSelect = (theme: Theme, compatibilityMode?: boolean) => ({
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusLg,
 
+  //typography (base)
   inputTypographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.bodyMd.fontFamily,
   inputTypographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.regular
     : theme.sys.typography.bodyMd.fontWeight,
-  inputTypographyFontSize: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  inputTypographyLineHeight: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
   inputTypographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,
+
+  //typography sm
+  inputTypographyFontSizeSm: '',
+  inputTypographyLineHeightSm: '',
+
+  //typography md
+  inputTypographyFontSizeMd: '',
+  inputTypographyLineHeightMd: '',
+
+  //typography lg
+  inputTypographyFontSizeLg: '',
+  inputTypographyLineHeightLg: '',
+
+  //typography (old)
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `inputTypographyFontSizeSm`, `inputTypographyFontSizeMd` или `inputTypographyFontSizeLg`
+   */
+  inputTypographyFontSize: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `inputTypographyLineHeightSm`, `inputTypographyLineHeightMd` или `inputTypographyLineHeightLg`
+   */
+  inputTypographyLineHeight: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
 
   optionShapeBorderRadiusTopLeftMd: compatibilityMode
     ? 0

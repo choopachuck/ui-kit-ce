@@ -10,9 +10,10 @@ import {
   valueToPercent,
 } from '@v-uik/utils'
 import { useClassList, useThrottle } from '@v-uik/hooks'
-import { SliderMarker, Tick, TickLabel } from './components'
-import { TickItem, Classes } from './interfaces'
+import { SliderMarker, SliderMarkerProps, Tick, TickLabel } from './components'
+import type { TickItem, Classes } from './interfaces'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const DECREASE_ARROW_KEYS = ['ArrowDown', 'ArrowLeft']
 const INCREASE_ARROW_KEYS = ['ArrowUp', 'ArrowRight']
@@ -30,7 +31,7 @@ interface SliderStylesProps {
 
 export interface SliderProps
   extends SliderStylesProps,
-    Omit<React.ComponentPropsWithRef<'div'>, 'onChange'> {
+    Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * JSS-классы для стилизации
    */
@@ -71,7 +72,7 @@ export interface SliderProps
   /**
    * Свойства элемента marker
    */
-  markerProps?: React.InputHTMLAttributes<HTMLDivElement>
+  markerProps?: Omit<SliderMarkerProps, 'isActive' | 'isFocused' | 'disabled'>
 }
 
 interface ExtendedSliderStylesProps extends SliderStylesProps {
@@ -315,6 +316,10 @@ export const Slider = React.forwardRef(
     /* ------------------Управление с клавиатуры-------------------*/
     /* ------------------------------------------------------------*/
     const handleKeydown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (disabled) {
+        return
+      }
+
       if (includesKeyboardKey(DECREASE_ARROW_KEYS, e.key)) {
         e.preventDefault()
         const rounded = roundBy(value - step, step)

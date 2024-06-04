@@ -1,6 +1,8 @@
 export type DatePickerClasses = {
   /** Стиль, применяемый к основному элементу  */
   root?: string
+  /** Стиль, применяемый к основному элементу поля ввода */
+  inputRoot?: string
   /** Стиль, применяемый к обертке поля ввода */
   inputContainer?: string
   /** Стиль, применяемый к основному элементу в случае ошибки */
@@ -9,6 +11,25 @@ export type DatePickerClasses = {
   disabled?: string
   /** Стиль, применяемый к выпадашке пикера */
   calendarPickerDropdown?: string
+  /** Стиль, применяемый к основному элементу пикера времени*/
+  timePickerRoot?: string
+  /** Стиль, применяемый к обертке пикера времени */
+  timePickerContainer?: string
+}
+
+export type CalendarPickerClasses = {
+  /** Стиль, применяемый к основному элементу  */
+  root?: string
+  /** Стиль, применяемый к элементам навигации */
+  calendarBar?: string
+  /** Стиль, применяемый к кнопкам промотки месяцев */
+  chevron?: string
+  /** Стиль, применяемый к кнопки выбора месяца */
+  month?: string
+  /** Стиль, применяемый к кнопке выбора года */
+  year?: string
+  /** Стиль, применяемый к кнопкам выбора года/месяца при активации выбора года/месяца */
+  selected?: string
 }
 
 export type DayViewClasses = {
@@ -142,4 +163,54 @@ export type RangeYearViewClasses = {
   withinHoverRangeStart?: string
   /** Стиль, применяемый при наведении на кнопку последного года предполагаемого периода */
   withinHoverRangeEnd?: string
+}
+
+export type CalendarViewClasses = {
+  /** Стиль, применяемый к каждой строке (недели) */
+  row?: string
+  /** Стиль, применяемый к каждому заголовку дню недели */
+  weekDay?: string
+  /** Стиль, применяемый к текстовому полю каждого дня */
+  dayText?: string
+  /** Стиль, применяемый к кнопке каждого дня */
+  dayButton?: string
+  /** Стиль, применяемый к кнопке сегодняшнего дня */
+  todayButton?: string
+  /** Стиль, применяемый к выбранному дню */
+  selected?: string
+  /** Стиль, применяемый к каждому дню не текущего месяца */
+  notInMonth?: string
+  /** Стиль, применяемый к кнопке каждого дня попадающего в диапазон */
+  inRange?: string
+  /** */
+  hovered?: string
+  /** */
+  'selected-start'?: string
+  /** */
+  'selected-end'?: string
+  /** */
+  'hovered-start'?: string
+  /** */
+  'hovered-end'?: string
+  /** */
+  startOfMonth?: string
+  /** */
+  endOfMonth?: string
+  /** */
+  startOfWeek?: string
+  /** */
+  endOfWeek?: string
+}
+
+export type PanelHeaderClasses = {
+  /** Стиль, применяемый к обертке компонента */
+  root?: string
+  /** Стиль, применяемый к кнопкам промотки месяцев */
+  chevron?: string
+  /** Стиль, применяемый к кнопки выбора месяца */
+  month?: string
+  /** Стиль, применяемый к кнопке выбора года */
+  year?: string
+  /** Стиль, применяемый к кнопкам выбора года/месяца при активации выбора года/месяца */
+  selected?: string
 }

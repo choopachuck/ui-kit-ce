@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { clsx } from '@v-uik/theme'
-import { useClassList, useMergedRefs } from '@v-uik/hooks'
-import { useButtonReset } from '@v-uik/button'
+import { useClassList, useMergedRefs, useButtonReset } from '@v-uik/hooks'
 import { useDateLibAdapter } from '../hooks/useDateLibAdapter'
 import { useNowDate } from '../hooks/useNowDate'
 import { useMonthViewStyles } from '../hooks/useMonthViewStyles'
 import { RangeDate, PartsOfRangeDate } from '../interfaces'
 import { useMonthViewNavigation } from '../hooks/navigation'
 import { RangeMonthViewClasses as Classes } from '../interfaces/classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface RangeMonthViewProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * Список классов
    */

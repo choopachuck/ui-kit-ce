@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ListItemProps, ListProps } from '@v-uik/list'
-import { ElementSizeType } from '@v-uik/common'
+import { ElementSizeType, ComponentPropsWithRefFix } from '@v-uik/common'
 import { TooltipProps } from '@v-uik/tooltip'
 import { DropdownProps } from '@v-uik/dropdown'
 import { LabelledProps } from '@v-uik/labelled'
@@ -22,7 +22,7 @@ export type Option<E extends React.ElementType> = Omit<
 export interface BaseSelectProps<
   ListElement extends React.ElementType,
   ListItemElement extends React.ElementType
-> extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+> extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Omit<LabelledProps, 'children' | 'classes'> {
   /**
    * Список опций
@@ -87,7 +87,9 @@ export type Classes = {
   root?: string
   /** Стиль, применяемый к элементу с `size='sm'` */
   small?: string
-  /** Стиль, применяемый к элементу с `size='sm'` */
+  /** Стиль, применяемый к элементу с `size='md'` */
+  medium?: string
+  /** Стиль, применяемый к элементу с `size='lg'` */
   large?: string
   /** Стиль, применяемый к элементу с `error='true'` */
   error?: string
@@ -107,6 +109,16 @@ export type Classes = {
   list?: string
   /** Стиль, применяемый к опции */
   option?: string
+  /** Стиль, применяемый к опции с `size='sm'` */
+  optionSm?: string
+  /** Стиль, применяемый к опции с `size='md'` */
+  optionMd?: string
+  /** Стиль, применяемый к опции с `size='lg'` */
+  optionLg?: string
+  /** Стиль, применяемый к тексту опции` */
+  optionText?: string
+  /** Стиль, применяемый к типографии текста опции` */
+  optionTextTypography?: string
   /** Стиль, применяемый к активной опции (hover) */
   optionActive?: string
   /** Стиль, применяемый к выбранной опции */
@@ -119,4 +131,6 @@ export type Classes = {
   single?: string
   /** Стиль, применяемый к выпадашке с `error='true'` */
   listError?: string
+  /** Стиль, применяемый к элементу выбора с `disabled='true'` */
+  disabled?: string
 }

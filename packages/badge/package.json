@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/badge",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -23,7 +23,8 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@v-uik/hooks": "^1.10.0",
-    "@v-uik/theme": "^1.10.0"
+    "@v-uik/common": "^1.11.0",
+    "@v-uik/hooks": "^1.11.0",
+    "@v-uik/theme": "^1.11.0"
   }
 }

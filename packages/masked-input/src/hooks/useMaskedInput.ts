@@ -270,7 +270,7 @@ export const useMaskedInput = (
           start: Number(input.selectionStart),
           end: Number(input.selectionEnd),
         }
-        maskedInputCore.paste(text)
+        maskedInputCore.paste(text.trim())
         const value = maskedInputCore.getValue()
         input.value = value
         input.setSelectionRange(

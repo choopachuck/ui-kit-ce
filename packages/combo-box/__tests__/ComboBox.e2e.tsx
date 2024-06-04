@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { test, expect } from '../../../playwright/fixtures/customMount'
+import { test as testWithTheme } from '../../../playwright/fixtures/withThemeProviderInjected'
 import {
   CompactTags,
   Error,
@@ -8,6 +9,7 @@ import {
   SingleSelect,
 } from '../examples'
 import { ComboBox } from '../src'
+import { createTheme } from '@v-uik/theme'
 
 test.describe('ComboBox', () => {
   test('value is not selected', async ({ mount }) => {
@@ -107,5 +109,48 @@ test.describe('ComboBox', () => {
     await page.evaluate(() => (document.body.style.height = '1000px'))
     await page.evaluate(() => window.scrollTo(0, 1))
     await expect(dropdown).toBeVisible()
+  })
+
+  testWithTheme('sizes with custom typography', async ({ mountWithTheme }) => {
+    const options = [{ value: '1', label: 'value' }]
+    const theme = createTheme({
+      comp: {
+        backwardCompatibilityMode: false,
+        comboBox: {
+          inputTypographyFontSizeSm: '10px',
+          inputTypographyLineHeightSm: '14px',
+          inputTypographyFontSizeMd: '25px',
+          inputTypographyLineHeightMd: '30px',
+          inputTypographyFontSizeLg: '60px',
+          inputTypographyLineHeightLg: '90px',
+        },
+      },
+    })
+
+    const component = await mountWithTheme(
+      <div style={{ padding: 5 }}>
+        <ComboBox
+          size="sm"
+          style={{ marginBottom: 30 }}
+          options={options}
+          value={options[0].value}
+        />
+        <ComboBox
+          size="md"
+          style={{ marginBottom: 30 }}
+          options={options}
+          value={options[0].value}
+        />
+        <ComboBox
+          style={{ marginBottom: 30 }}
+          options={options}
+          value={options[0].value}
+        />
+        <ComboBox size="lg" options={options} value={options[0].value} />
+      </div>,
+      theme
+    )
+
+    await expect(component).toHaveScreenshot()
   })
 })

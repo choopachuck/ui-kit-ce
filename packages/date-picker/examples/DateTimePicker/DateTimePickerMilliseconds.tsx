@@ -9,13 +9,6 @@ const inputProps = {
 export const DateTimePickerMilliseconds: React.FC = () => {
   const [date, setDate] = React.useState<Date | null>(null)
 
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
-
   return (
     <DateTimePicker
       format="dd.MM.yy HH:mm:ss.SSS"
@@ -26,7 +19,7 @@ export const DateTimePickerMilliseconds: React.FC = () => {
         views: ['hours', 'minutes', 'seconds', 'milliseconds'],
       }}
       inputProps={inputProps}
-      onChange={handleChange}
+      onChange={setDate}
     />
   )
 }

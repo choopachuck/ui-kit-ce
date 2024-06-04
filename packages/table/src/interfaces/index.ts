@@ -2,6 +2,7 @@ import * as React from 'react'
 import { TableClasses as Classes } from './classes'
 import { UseColumnsResult } from '../hooks/useColumns'
 import { UseScrollResult } from '../hooks/useScroll'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export * from './classes'
 
@@ -283,7 +284,7 @@ export type ColumnsOffsets = { [key in React.Key]: number | string }
 export type RowKeyFunction<DataSource> = (record: DataSource) => Key
 
 export interface TableProps<DataSource>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * JSS-классы для стилизации
    */

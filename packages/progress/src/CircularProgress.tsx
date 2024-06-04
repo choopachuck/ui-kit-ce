@@ -4,6 +4,7 @@ import * as React from 'react'
 import { createUseStyles, clsx, useTheme } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { CircularClasses, ProgressSize, ProgressSizeProps } from './interfaces'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const SIZES: { [key in ProgressSizeProps]: number } = {
   xlg: 56,
@@ -70,6 +71,7 @@ const useStyles = (keyframesProps: CircleStyleProps) =>
       },
 
       percentage: {
+        color: theme.comp.circularProgress.colorText,
         fontFamily: theme.comp.circularProgress.typographyFontFamily,
         fontSize: theme.comp.circularProgress.typographyFontSize,
         lineHeight: theme.comp.circularProgress.typographyLineHeight,
@@ -105,7 +107,7 @@ interface CircleStyleProps {
 }
 
 export interface CircularProgressProps
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'size'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'size'> {
   classes?: Partial<CircularClasses>
   /**
    * Значение прогресса
@@ -119,6 +121,10 @@ export interface CircularProgressProps
    * Размер прогресс бара
    */
   size?: ProgressSizeProps
+  /**
+   * Настройка размеров прогресс бара
+   */
+  sizesConfig?: Record<ProgressSizeProps, number>
   /**
    * Скрыть задний фон прогресс бара
    */
@@ -145,6 +151,7 @@ export const CircularProgress = React.forwardRef(
       value,
       max = 100,
       size = ProgressSize.lg,
+      sizesConfig = SIZES,
       hideTrack = false,
       thickness = STROKE_WIDTH,
       percentageInsideCircle,
@@ -154,7 +161,7 @@ export const CircularProgress = React.forwardRef(
     ref: React.Ref<HTMLDivElement>
   ) => {
     // рассчитываем радиус
-    const radius = SIZES[size] / 2 - thickness / 2
+    const radius = sizesConfig[size] / 2 - thickness / 2
 
     // цифра 6.2 дает нужный эффект при расчете strokeDashoffset
     const animationRadius = (radius * 6.2).toFixed()
@@ -178,7 +185,7 @@ export const CircularProgress = React.forwardRef(
     const pathColor = color ?? theme.comp.circularProgress.pathColorBackground
 
     const dynamicStyles = getDynamicStyles({
-      size: SIZES[size],
+      size: sizesConfig[size],
       color: pathColor,
     })
     const classList = useStyles({ animationRadius })()

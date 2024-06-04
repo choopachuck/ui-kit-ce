@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
-import { useButtonReset } from '@v-uik/button'
+import { useButtonReset } from '@v-uik/hooks'
 import { useDateLibAdapter } from '../../hooks/useDateLibAdapter'
 import { useDefaultDates } from '../../hooks/useDefaultDates'
 import { splitArrayIntoChunks } from '../../utils/common'
@@ -10,6 +10,7 @@ import {
   CheckDateStateResult,
   FunctionComponentCommonFields,
 } from '../../interfaces/common'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   years: {
@@ -251,7 +252,7 @@ const useStyles = createUseStyles((theme) => ({
 const YEARS_IN_ROW = 3
 
 export interface Props<TDate = unknown>
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRefFix<'div'> {
   /**
    * Минимальная допустимая дата
    */

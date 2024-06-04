@@ -1,0 +1,84 @@
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
+import { Underlay } from '@v-uik/underlay'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import {
+  Canvas as CanvasStory,
+  Filled,
+  Outlined,
+  CustomColor,
+} from './examples'
+import RawCanvas from '!!raw-loader!@v-uik/underlay/examples/Canvas'
+import RawFilled from '!!raw-loader!@v-uik/underlay/examples/Filled'
+import RawOutlined from '!!raw-loader!@v-uik/underlay/examples/Outlined'
+import RawCustomColor from '!!raw-loader!@v-uik/underlay/examples/CustomColor'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'Underlay', 'Underlay'])}
+  component={Underlay}
+/>
+
+<Story
+  name="Underlay"
+  parameters={{
+    ...story.parameters,
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Underlay
+
+Underlay — это компонент, поверх которого выстраиваются все остальные компоненты пользовательского интерфейса.
+Компонент имеет набор цветов для заливки и обводки: `error`, `warning`, `success`, `info`, `neutral`.
+Также можно использовать любой нужный цвет.
+
+## import
+
+```ts
+import { Underlay } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Underlay } from '@v-uik/underlay'
+```
+
+## C заливкой
+
+Underlay c kind = `filled`.
+
+<Canvas withSource="none">
+  <Filled />
+</Canvas>
+
+<Source language="tsx" code={RawFilled} />
+
+## C обводкой
+
+Underlay c kind = `outlined`.
+
+<Canvas withSource="none">
+  <Outlined />
+</Canvas>
+
+<Source language="tsx" code={RawOutlined} />
+
+## Произвольный цвет
+
+Через свойство `color` можно задать произвольный цвет компонента.
+
+<Canvas withSource="none">
+  <CustomColor />
+</Canvas>
+
+<Source language="tsx" code={RawCustomColor} />

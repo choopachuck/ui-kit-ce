@@ -5,8 +5,9 @@ import { createUseStyles, clsx, useTheme } from '@v-uik/theme'
 import { omit } from '@v-uik/utils'
 import { UseGridDynamicValuesReturnType } from './hooks'
 import { BreakpointValue, DEPRECATED_MEDIA_POINTS } from './config'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
-export interface GridItemProps extends React.ComponentPropsWithRef<'div'> {
+export interface GridItemProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * Размер экрана
    */

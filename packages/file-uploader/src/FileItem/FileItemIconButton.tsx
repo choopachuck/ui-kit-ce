@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
-import { useButtonReset } from '@v-uik/button'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 import { FileItemIconButtonClasses } from './classes'
 import { ElementSizeType } from '@v-uik/common'
 

@@ -4,7 +4,7 @@ import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { Select, SelectProps, SingleSelectProps } from '@v-uik/select'
-import { Direction, ElementSize } from '@v-uik/common'
+import { Direction, ElementSize, ComponentPropsWithRefFix } from '@v-uik/common'
 import { BarContext } from './BarContext'
 import { BarKinds, DarkColors, LightColors } from './constants'
 import { BarSelectClasses as Classes } from './interfaces/classes'
@@ -268,7 +268,7 @@ const useStyles = createUseStyles((theme) => ({
 export interface BarSelectProps<
   ListElement extends React.ElementType,
   ListItemElement extends React.ElementType
-> extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+> extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * JSS-классы для стилизации
    */

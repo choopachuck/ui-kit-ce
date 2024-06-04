@@ -31,6 +31,7 @@ import {
 } from './datePicker'
 import { createDrawer, createDrawerHeader, createDrawerFooter } from './drawer'
 import { createDropdownMenu, createDropdownMenuItem } from './dropdownMenu'
+import { createInlineNotification } from './inlineNotification'
 import { createInput } from './input'
 import { createInputHelperText } from './inputHelperText'
 import { createInputPassword } from './inputPassword'
@@ -54,12 +55,18 @@ import { createTooltip } from './tooltip'
 import { createDivider } from './divider'
 import { createDropzone } from './dropzone'
 import { createFileItem } from './fileItem'
+import { createUnderlay } from './underlay'
+import { createAvatar } from './avatar'
+import { createCard } from './card'
+import { createCloseButton } from './closeButton'
+import { createPagination } from './pagination'
 
 // пришлось описать ключи компонентного слоя отдельным типом, потому что вывести
 // не удается из-за циклической зависимости в createComp.
 type ComponentLayerKeys =
   | 'accordion'
   | 'accordionItem'
+  | 'avatar'
   | 'badge'
   | 'bar'
   | 'barButton'
@@ -74,6 +81,7 @@ type ComponentLayerKeys =
   | 'breadcrumbs'
   | 'button'
   | 'buttonGroup'
+  | 'card'
   | 'checkbox'
   | 'comboBox'
   | 'datePicker'
@@ -88,6 +96,7 @@ type ComponentLayerKeys =
   | 'drawerFooter'
   | 'dropdownMenu'
   | 'dropdownMenuItem'
+  | 'inlineNotification'
   | 'input'
   | 'inputHelperText'
   | 'inputPassword'
@@ -115,6 +124,9 @@ type ComponentLayerKeys =
   | 'divider'
   | 'dropzone'
   | 'fileItem'
+  | 'underlay'
+  | 'closeButton'
+  | 'pagination'
 
 let compatibilityMap: { [key in ComponentLayerKeys]: boolean | undefined }
 
@@ -123,6 +135,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
   compatibilityMap = {
     accordion: checkCompatibilityMode(customProps, 'accordion'),
     accordionItem: checkCompatibilityMode(customProps, 'accordionItem'),
+    avatar: checkCompatibilityMode(customProps, 'avatar'),
     badge: checkCompatibilityMode(customProps, 'badge'),
     bar: checkCompatibilityMode(customProps, 'bar'),
     barButton: checkCompatibilityMode(customProps, 'barButton'),
@@ -137,6 +150,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     breadcrumbs: checkCompatibilityMode(customProps, 'breadcrumbs'),
     button: checkCompatibilityMode(customProps, 'button'),
     buttonGroup: checkCompatibilityMode(customProps, 'buttonGroup'),
+    card: checkCompatibilityMode(customProps, 'card'),
     checkbox: checkCompatibilityMode(customProps, 'checkbox'),
     comboBox: checkCompatibilityMode(customProps, 'comboBox'),
     datePicker: checkCompatibilityMode(customProps, 'datePicker'),
@@ -154,6 +168,10 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     dropdownMenuItem: checkCompatibilityMode(customProps, 'dropdownMenuItem'),
     dropzone: checkCompatibilityMode(customProps, 'dropzone'),
     fileItem: checkCompatibilityMode(customProps, 'fileItem'),
+    inlineNotification: checkCompatibilityMode(
+      customProps,
+      'inlineNotification'
+    ),
     input: checkCompatibilityMode(customProps, 'input'),
     inputHelperText: checkCompatibilityMode(customProps, 'inputHelperText'),
     inputPassword: checkCompatibilityMode(customProps, 'inputPassword'),
@@ -178,11 +196,15 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     tagInput: checkCompatibilityMode(customProps, 'tagInput'),
     textarea: checkCompatibilityMode(customProps, 'textarea'),
     tooltip: checkCompatibilityMode(customProps, 'tooltip'),
+    underlay: checkCompatibilityMode(customProps, 'underlay'),
+    closeButton: checkCompatibilityMode(customProps, 'closeButton'),
+    pagination: checkCompatibilityMode(customProps, 'pagination'),
   }
 
   return {
     accordion: createAccordion(theme, compatibilityMap.accordion),
     accordionItem: createAccordionItem(theme, compatibilityMap.accordionItem),
+    avatar: createAvatar(theme, compatibilityMap.avatar),
     badge: createBadge(theme, compatibilityMap.badge),
     bar: createBar(theme, compatibilityMap.bar),
     barButton: createBarButton(theme, compatibilityMap.barButton),
@@ -200,6 +222,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     breadcrumbs: createBreadcrumbs(theme, compatibilityMap.breadcrumbs),
     button: createButton(theme, compatibilityMap.button),
     buttonGroup: createButtonGroup(theme, compatibilityMap.buttonGroup),
+    card: createCard(theme, compatibilityMap.card),
     checkbox: createCheckbox(theme, compatibilityMap.checkbox),
     comboBox: createComboBox(theme, compatibilityMap.comboBox),
     datePicker: createDatePicker(theme, compatibilityMap.datePicker),
@@ -226,6 +249,10 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     ),
     dropzone: createDropzone(theme, compatibilityMap.dropzone),
     fileItem: createFileItem(theme, compatibilityMap.fileItem),
+    inlineNotification: createInlineNotification(
+      theme,
+      compatibilityMap.inlineNotification
+    ),
     input: createInput(theme, compatibilityMap.input),
     inputHelperText: createInputHelperText(
       theme,
@@ -260,6 +287,9 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     textarea: createTextarea(theme, compatibilityMap.textarea),
     timeView: createTimeView(),
     tooltip: createTooltip(theme, compatibilityMap.tooltip),
+    underlay: createUnderlay(theme, compatibilityMap.underlay),
+    closeButton: createCloseButton(theme, compatibilityMap.closeButton),
+    pagination: createPagination(theme, compatibilityMap.pagination),
   }
 }
 

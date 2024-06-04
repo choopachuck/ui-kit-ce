@@ -16,6 +16,9 @@ export const createComboBox = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.color.disabledLow,
   inputColorBackgroundHover: '#dadada', // TODO: after implementing overlay add backgroundComponent
   inputColorBackgroundSearchableHover: '#f2f2f2', // TODO: after implementing overlay add backgroundComponent
+  inputColorBackgroundError: compatibilityMode
+    ? theme.colourway.backgroundComponent
+    : theme.sys.color.backgroundComponent,
   inputColorBorder: compatibilityMode
     ? theme.colourway.mono05
     : theme.sys.color.neutralAlpha,
@@ -96,22 +99,42 @@ export const createComboBox = (theme: Theme, compatibilityMode?: boolean) => ({
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusLg,
 
-  // Input (Control) typography tokens
+  // Input (Control) typography tokens (base)
   inputTypographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.bodyMd.fontFamily,
   inputTypographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.regular
     : theme.sys.typography.bodyMd.fontWeight,
-  inputTypographyFontSize: compatibilityMode
-    ? theme.typography.fontSize.body2
-    : theme.sys.typography.bodyMd.fontSize,
-  inputTypographyLineHeight: compatibilityMode
-    ? theme.typography.lineHeight.body2
-    : theme.sys.typography.bodyMd.lineHeight,
   inputTypographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,
+
+  // Input (Control) typography tokens sm
+  inputTypographyFontSizeSm: '',
+  inputTypographyLineHeightSm: '',
+
+  // Input (Control) typography tokens md
+  inputTypographyFontSizeMd: '',
+  inputTypographyLineHeightMd: '',
+
+  // Input (Control) typography tokens lg
+  inputTypographyFontSizeLg: '',
+  inputTypographyLineHeightLg: '',
+
+  // Input (Control) typography tokens (old)
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `inputTypographyFontSizeSm`, `inputTypographyFontSizeMd` или `inputTypographyFontSizeLg`
+   */
+  inputTypographyFontSize: compatibilityMode
+    ? theme.typography.fontSize.body2
+    : theme.sys.typography.bodyMd.fontSize,
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `inputTypographyLineHeightSm`, `inputTypographyLineHeightMd` или `inputTypographyLineHeightLg`
+   */
+  inputTypographyLineHeight: compatibilityMode
+    ? theme.typography.lineHeight.body2
+    : theme.sys.typography.bodyMd.lineHeight,
 
   optionShapeBorderRadiusTopLeftMd: compatibilityMode
     ? 0

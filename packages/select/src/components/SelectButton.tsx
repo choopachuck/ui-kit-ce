@@ -2,12 +2,10 @@
 
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 import { ElementSize, ElementSizeType } from '@v-uik/common'
 import { useText } from '@v-uik/typography'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
-import { useButtonReset } from '@v-uik/button'
-import { SelectIcon } from '../assets/SelectIcon'
 import { ErrorIcon } from '../assets/ErrorIcon'
 
 const useStyles = createUseStyles((theme) => ({
@@ -18,15 +16,8 @@ const useStyles = createUseStyles((theme) => ({
     width: '100%',
     maxWidth: '100%',
     boxSizing: 'border-box',
-    padding: [8, 16],
     color: theme.comp.select.inputColorText,
     backgroundColor: theme.comp.select.inputColorBackground,
-    borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius:
-      theme.comp.select.inputShapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius:
-      theme.comp.select.inputShapeBorderRadiusBottomRightMd,
 
     '&::after': {
       content: '""',
@@ -58,27 +49,9 @@ const useStyles = createUseStyles((theme) => ({
       },
     },
 
-    '&$small': {
-      padding: [4, 16],
-      borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftSm,
-      borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightSm,
-      borderBottomLeftRadius:
-        theme.comp.select.inputShapeBorderRadiusBottomLeftSm,
-      borderBottomRightRadius:
-        theme.comp.select.inputShapeBorderRadiusBottomRightSm,
-    },
-
-    '&$large': {
-      padding: [12, 16],
-      borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftLg,
-      borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightLg,
-      borderBottomLeftRadius:
-        theme.comp.select.inputShapeBorderRadiusBottomLeftLg,
-      borderBottomRightRadius:
-        theme.comp.select.inputShapeBorderRadiusBottomRightLg,
-    },
-
     '&$error:not(:focus-visible)': {
+      backgroundColor: theme.comp.select.inputColorBackgroundError,
+
       '&::after': {
         borderColor: theme.comp.select.inputColorBorderError,
       },
@@ -97,10 +70,13 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   small: {
-    '& $arrowIcon': {
-      width: 16,
-      height: 16,
-    },
+    padding: [4, 16],
+    borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftSm,
+    borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightSm,
+    borderBottomLeftRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomLeftSm,
+    borderBottomRightRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomRightSm,
 
     '& $errorIcon': {
       width: 16,
@@ -108,13 +84,27 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
-  large: {},
-
-  opened: {
-    '& $arrowIcon': {
-      transform: 'rotate(180deg)',
-    },
+  medium: {
+    padding: [8, 16],
+    borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomRightMd,
   },
+
+  large: {
+    padding: [12, 16],
+    borderTopLeftRadius: theme.comp.select.inputShapeBorderRadiusTopLeftLg,
+    borderTopRightRadius: theme.comp.select.inputShapeBorderRadiusTopRightLg,
+    borderBottomLeftRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomLeftLg,
+    borderBottomRightRadius:
+      theme.comp.select.inputShapeBorderRadiusBottomRightLg,
+  },
+
+  opened: {},
 
   error: {},
 
@@ -128,12 +118,36 @@ const useStyles = createUseStyles((theme) => ({
     position: 'relative',
     boxSizing: 'border-box',
     padding: 0,
-
     fontFamily: theme.comp.select.inputTypographyFontFamily,
-    fontSize: theme.comp.select.inputTypographyFontSize,
-    lineHeight: theme.comp.select.inputTypographyLineHeight,
     letterSpacing: theme.comp.select.inputTypographyLetterSpacing,
     fontWeight: theme.comp.select.inputTypographyFontWeight,
+  },
+
+  textSmall: {
+    fontSize:
+      theme.comp.select.inputTypographyFontSizeSm ||
+      theme.comp.select.inputTypographyFontSize,
+    lineHeight:
+      theme.comp.select.inputTypographyLineHeightSm ||
+      theme.comp.select.inputTypographyLineHeight,
+  },
+
+  textMedium: {
+    fontSize:
+      theme.comp.select.inputTypographyFontSizeMd ||
+      theme.comp.select.inputTypographyFontSize,
+    lineHeight:
+      theme.comp.select.inputTypographyLineHeightMd ||
+      theme.comp.select.inputTypographyLineHeight,
+  },
+
+  textLarge: {
+    fontSize:
+      theme.comp.select.inputTypographyFontSizeLg ||
+      theme.comp.select.inputTypographyFontSize,
+    lineHeight:
+      theme.comp.select.inputTypographyLineHeightLg ||
+      theme.comp.select.inputTypographyLineHeight,
   },
 
   content: {
@@ -150,14 +164,23 @@ const useStyles = createUseStyles((theme) => ({
     zIndex: 2,
   },
 
-  arrowIcon: {
+  arrowIconContainer: {
     marginLeft: 8,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  disabled: {
+    '& $empty': {
+      color: theme.comp.select.placeholderColorTextDisabled,
+    },
   },
 }))
 
 type Classes = Partial<
   Record<
-    'button' | 'empty' | 'content' | 'text' | 'errorIcon' | 'arrowIcon',
+    'button' | 'empty' | 'content' | 'text' | 'errorIcon' | 'disabled',
     string
   >
 >
@@ -192,6 +215,10 @@ export interface SelectButtonProps
    * Индикатор отсутствия значения
    */
   emptyValue?: boolean
+  /**
+   * Иконка открытия/закрытия компонента `Select`
+   */
+  dropdownIndicator?: React.ReactNode
 }
 
 export const SelectButton = React.forwardRef(
@@ -202,10 +229,12 @@ export const SelectButton = React.forwardRef(
       size = ElementSize.md,
       isOpen,
       error,
+      disabled,
       showErrorIcon,
       errorIconTooltipProps,
       emptyValue,
       children,
+      dropdownIndicator,
       ...rest
     }: SelectButtonProps,
     ref: React.Ref<HTMLButtonElement>
@@ -213,27 +242,41 @@ export const SelectButton = React.forwardRef(
     const buttonClasses = useButtonReset()
     const classesList = useStyles()
     const classesMap = useClassList(classesList, classes)
+    const isSmall = size === ElementSize.sm
+    const isMedium = size === ElementSize.md
+    const isLarge = size === ElementSize.lg
     const className = clsx(
       buttonClasses.resetButton,
       classesMap.button,
       classNameProp,
       {
-        [classesMap.small]: size === ElementSize.sm,
-        [classesMap.large]: size === ElementSize.lg,
+        [classesMap.small]: isSmall,
+        [classesMap.medium]: isMedium,
+        [classesMap.large]: isLarge,
         [classesMap.opened]: isOpen,
         [classesMap.error]: error,
+        [classesMap.disabled]: disabled,
       }
     )
     const { ellipsis } = useText()
 
     const textClassName = clsx(classesMap.text, ellipsis, {
-      [classesMap.empty ?? '']: !rest.disabled && emptyValue,
+      [classesMap.empty]: emptyValue,
+      [classesMap.textSmall]: isSmall,
+      [classesMap.textMedium]: isMedium,
+      [classesMap.textLarge]: isLarge,
     })
 
     const errorIcon = <ErrorIcon className={classesMap.errorIcon} />
 
     return (
-      <button {...rest} ref={ref} className={className} type="button">
+      <button
+        {...rest}
+        ref={ref}
+        className={className}
+        disabled={disabled}
+        type="button"
+      >
         <span className={classesMap.content}>
           <span className={textClassName}>{children}</span>
           {showErrorIcon &&
@@ -245,7 +288,9 @@ export const SelectButton = React.forwardRef(
             ) : (
               errorIcon
             ))}
-          <SelectIcon className={classesMap.arrowIcon} />
+          <span className={classesMap.arrowIconContainer}>
+            {dropdownIndicator}
+          </span>
         </span>
       </button>
     )

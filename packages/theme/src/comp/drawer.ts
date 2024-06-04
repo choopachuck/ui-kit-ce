@@ -1,5 +1,4 @@
 import { Theme } from '../interface'
-import { setAlphaChannel } from '../utils'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createDrawer = (theme: Theme, compatibilityMode?: boolean) => ({
@@ -14,7 +13,7 @@ export const createDrawer = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.color.separationMajor,
   backdropColorBackground: compatibilityMode
     ? theme.colourway.mono06
-    : setAlphaChannel(theme.ref.palette.coldGray20, theme.ref.alpha.channel45),
+    : theme.sys.color.backdropColorBackground,
   elevationShadow: compatibilityMode
     ? theme.colourway.shadow03
     : theme.sys.elevation.lg,
@@ -80,21 +79,27 @@ export const createDrawerHeader = (
   subtitleColorText: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorText: compatibilityMode
     ? theme.colourway.onBackgroundHigh
     : theme.sys.color.onBackgroundHigh,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorTextHover: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorTextActive: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorBackgroundHover: compatibilityMode
     ? theme.colourway.mono02
     : theme.sys.color.onBackgroundOverlayHover,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorBackgroundActive: compatibilityMode
     ? theme.colourway.mono04
     : theme.sys.color.onBackgroundOverlayActive,
+
   dividerColorBorder: compatibilityMode
     ? theme.colourway.mono02
     : theme.sys.color.separationMinor,

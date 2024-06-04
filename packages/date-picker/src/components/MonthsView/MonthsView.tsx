@@ -2,13 +2,14 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
-import { useButtonReset } from '@v-uik/button'
+import { useButtonReset } from '@v-uik/hooks'
 import { useDateLibAdapter } from '../../hooks/useDateLibAdapter'
 import { splitArrayIntoChunks } from '../../utils/common'
 import {
   CheckDateStateResult,
   FunctionComponentCommonFields,
 } from '../../interfaces/common'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   fullHeight: {
@@ -245,7 +246,7 @@ const useStyles = createUseStyles((theme) => ({
 const MONTHS_IN_ROW = 3
 
 export interface Props<TDate = unknown>
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRefFix<'div'> {
   /**
    * Текущая дата просмотра календаря
    */

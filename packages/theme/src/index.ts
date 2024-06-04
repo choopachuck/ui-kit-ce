@@ -8,6 +8,7 @@ export * from './interface'
 export * from './utils'
 export * from 'react-transition-group'
 export * from './useResetCss'
+export * from './global'
 import clsx from 'clsx'
 
 export { clsx }

@@ -2,10 +2,10 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
-import { useGeneratedId, useClassList } from '@v-uik/hooks'
-import { useButtonReset } from '@v-uik/button'
-import { AccordionIcon } from './assets/AccordionIcon'
+import { useGeneratedId, useClassList, useButtonReset } from '@v-uik/hooks'
+import { AccordionComponentsConfig, getComponents } from './components'
 import { Classes } from './classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -120,12 +120,12 @@ interface HeaderProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   ref?: React.RefCallback<HTMLButtonElement>
 }
 
-interface ContentProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ContentProps extends ComponentPropsWithRefFix<'div'> {
   ref?: React.RefCallback<HTMLDivElement>
 }
 
 export interface AccordionItemProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onClick'> {
   /**
    * JSS-классы для стилизации.
    */
@@ -154,6 +154,11 @@ export interface AccordionItemProps
    * Обработчик события клика по кнопке
    */
   onClick?(e: React.MouseEvent<HTMLButtonElement>): void
+
+  /**
+   * Свойство для переопределения элементов AccordionItem
+   */
+  components?: AccordionComponentsConfig
 }
 
 export const AccordionItem = React.forwardRef(
@@ -168,6 +173,7 @@ export const AccordionItem = React.forwardRef(
       header,
       expanded = false,
       children,
+      components,
       ...rest
     }: AccordionItemProps,
     ref: React.Ref<HTMLDivElement>
@@ -189,6 +195,8 @@ export const AccordionItem = React.forwardRef(
 
     const headerId = useGeneratedId(headerProps?.id)
 
+    const { Icon } = getComponents(components)
+
     return (
       <div {...rest} ref={ref} className={className}>
         <button
@@ -203,7 +211,14 @@ export const AccordionItem = React.forwardRef(
           onClick={onClick}
         >
           <span className={classesMap.headerText}>{header}</span>
-          <AccordionIcon className={classesMap.headerIcon} />
+          <Icon
+            expanded={expanded}
+            contentProps={contentProps}
+            headerProps={headerProps}
+            header={header}
+            classes={classesMap}
+            disabled={disabled}
+          />
         </button>
         {expanded && (
           <div

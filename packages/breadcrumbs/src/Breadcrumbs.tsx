@@ -7,6 +7,7 @@ import { useClassList } from '@v-uik/hooks'
 import { DropdownMenuProps } from '@v-uik/dropdown-menu'
 import { Ellipsis } from './Ellipsis'
 import type { Classes } from './classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   root: {},
@@ -50,7 +51,7 @@ const useStyles = createUseStyles((theme) => ({
 }))
 
 export interface BreadcrumbsProps<ListElement extends React.ElementType>
-  extends React.HTMLAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */

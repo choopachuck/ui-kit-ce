@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { clsx } from '@v-uik/theme'
-import { useClassList, useMergedRefs } from '@v-uik/hooks'
-import { useButtonReset } from '@v-uik/button'
+import { useClassList, useMergedRefs, useButtonReset } from '@v-uik/hooks'
 import { useDateLibAdapter } from '../hooks/useDateLibAdapter'
 import { useNowDate } from '../hooks/useNowDate'
 import { useYearViewStyles } from '../hooks/useYearViewStyles'
@@ -9,9 +8,10 @@ import { useYearViewStyles } from '../hooks/useYearViewStyles'
 import { useYearViewNavigation } from '../hooks/navigation'
 import { DisableDateProps, CalendarPickerViews } from '../interfaces'
 import { YearViewClasses as Classes } from '../interfaces/classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface YearViewProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Pick<DisableDateProps<TDate>, 'minDate' | 'maxDate' | 'shouldDisableDate'> {
   /**
    * Список классов

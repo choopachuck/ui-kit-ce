@@ -4,8 +4,10 @@ export * from '@v-uik/badge'
 export * from '@v-uik/bar'
 export * from '@v-uik/box'
 export * from '@v-uik/breadcrumbs'
-export * from '@v-uik/button'
+export { Button, ButtonColor, ButtonKinds } from '@v-uik/button'
+export type { TButtonColor, TButtonKinds, ButtonProps } from '@v-uik/button'
 export * from '@v-uik/button-group'
+export * from '@v-uik/card'
 export * from '@v-uik/checkbox'
 export * from '@v-uik/checkbox-group'
 
@@ -23,6 +25,7 @@ export * from '@v-uik/dropdown-menu'
 export * from '@v-uik/file-uploader'
 export * from '@v-uik/grid'
 export * from '@v-uik/hooks'
+export * from '@v-uik/inline-notification'
 export * from '@v-uik/input'
 
 export * from '@v-uik/input-helper-text'
@@ -66,8 +69,11 @@ export * from '@v-uik/tooltip'
 export type { Classes as TooltipClasses } from '@v-uik/tooltip'
 
 export * from '@v-uik/typography'
+export * from '@v-uik/underlay'
 export * from '@v-uik/utils'
 export * from '@v-uik/labelled'
+export * from '@v-uik/avatar'
+export * from '@v-uik/pagination'
 
 /**
  * Заглушка, не используется

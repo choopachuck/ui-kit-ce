@@ -1,11 +1,10 @@
 import * as React from 'react'
-import { DirectionType } from '@v-uik/common'
+import { DirectionType, ComponentPropsWithRefFix } from '@v-uik/common'
 import { InputLabelProps } from '@v-uik/input-label'
 import { InputHelperTextProps } from '@v-uik/input-helper-text'
 import { Classes } from './classes'
 
-export interface CheckboxGroupProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface CheckboxGroupProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */

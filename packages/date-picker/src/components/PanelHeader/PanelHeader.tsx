@@ -5,6 +5,9 @@ import { createUseStyles, clsx } from '@v-uik/theme'
 import { Button, ButtonKinds, ButtonColor, ButtonProps } from '@v-uik/button'
 import { ChevronLeftIcon } from './ChevronLeftIcon'
 import { ChevronRightIcon } from './ChevronRightIcon'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
+import { PanelHeaderClasses } from '../../interfaces/classes'
+import { useClassList } from '@v-uik/hooks'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -44,7 +47,7 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
   year: {
-    padding: [10, 20],
+    padding: [8, 20],
     borderTopLeftRadius:
       theme.comp.calendarPicker.buttonShapeBorderRadiusTopLeft,
     borderTopRightRadius:
@@ -63,7 +66,7 @@ const useStyles = createUseStyles((theme) => ({
   selected: {},
 }))
 
-export interface Props extends React.HTMLAttributes<HTMLDivElement> {
+export interface Props extends Omit<ComponentPropsWithRefFix<'div'>, 'ref'> {
   /**
    * Показывать ли месяц и стрелки переключения
    */
@@ -100,6 +103,10 @@ export interface Props extends React.HTMLAttributes<HTMLDivElement> {
    * Обработчик нажатия кнопки года
    */
   onClickYear?: ButtonProps['onClick']
+  /**
+   * CSS классы для стилизации
+   */
+  classes?: PanelHeaderClasses
 }
 
 export const PanelHeader = React.forwardRef(
@@ -114,11 +121,13 @@ export const PanelHeader = React.forwardRef(
       yearText,
       yearSelected,
       onClickYear,
+      classes,
       ...rest
     } = props
 
     const classesList = useStyles()
-    const className = clsx(classNameProp, classesList.root)
+    const classesMap = useClassList(classesList, classes)
+    const className = clsx(classNameProp, classesMap.root)
 
     const handleLeftClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       onClickChevron?.(event, -1)
@@ -139,7 +148,7 @@ export const PanelHeader = React.forwardRef(
             <Button
               kind={ButtonKinds.ghost}
               color={ButtonColor.secondary}
-              className={classesList.chevron}
+              className={classesMap.chevron}
               onClick={handleLeftClick}
             >
               <ChevronLeftIcon />
@@ -148,8 +157,8 @@ export const PanelHeader = React.forwardRef(
             <Button
               kind={ButtonKinds.ghost}
               color={ButtonColor.secondary}
-              className={clsx(classesList.month, {
-                [classesList.selected]: monthSelected,
+              className={clsx(classesMap.month, {
+                [classesMap.selected]: monthSelected,
               })}
               onClick={onClickMonth}
             >
@@ -159,7 +168,7 @@ export const PanelHeader = React.forwardRef(
             <Button
               kind={ButtonKinds.ghost}
               color={ButtonColor.secondary}
-              className={classesList.chevron}
+              className={classesMap.chevron}
               onClick={handleRightClick}
             >
               <ChevronRightIcon />
@@ -171,8 +180,8 @@ export const PanelHeader = React.forwardRef(
           <Button
             kind={ButtonKinds.ghost}
             color={ButtonColor.secondary}
-            className={clsx(classesList.year, {
-              [classesList.selected]: yearSelected,
+            className={clsx(classesMap.year, {
+              [classesMap.selected]: yearSelected,
             })}
             onClick={onClickYear}
           >

@@ -20,6 +20,7 @@ import {
   AbsolutePositioningExample,
   PlaceholderExample,
   Canvas as CanvasStory,
+  CustomIcon,
 } from './examples'
 
 import RawErrorExample from '!!raw-loader!./examples/ErrorExample'
@@ -34,6 +35,7 @@ import RawComplexLayout from '!!raw-loader!./examples/ComplexLayout'
 import RawCanvas from '!!raw-loader!@v-uik/select/examples/Canvas'
 import RawAbsolutePositioningExample from '!!raw-loader!@v-uik/select/examples/AbsolutePositioning'
 import RawPlaceholderExample from '!!raw-loader!@v-uik/select/examples/PlaceholderExample'
+import RawCustomIcon from '!!raw-loader!@v-uik/select/examples/CustomIcon'
 
 export const story = createStory(CanvasStory, RawCanvas)
 
@@ -48,6 +50,10 @@ export const story = createStory(CanvasStory, RawCanvas)
     ...story.parameters,
     docs: {
       disable: true,
+    },
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/lzH6myIem2UFgLxszyQea8/PV-1-UI-Kit?node-id=3879%3A119256',
     },
   }}
 >
@@ -183,6 +189,14 @@ import { Select } from '@v-uik/select'
 </Canvas>
 
 <Source language="tsx" code={RawPlaceholderExample} />
+
+## Компонент с пользовательской иконкой открытия/закрытия
+
+<Canvas withSource="none">
+  <CustomIcon />
+</Canvas>
+
+<Source language="tsx" code={RawCustomIcon} />
 
 ## Связанные компоненты
 

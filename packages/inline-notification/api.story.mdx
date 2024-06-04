@@ -1,0 +1,23 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { InlineNotification } from '@v-uik/inline-notification'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { ClassesDummy } from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.feedback, 'InlineNotification', 'API'])}
+  component={InlineNotification}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Inline Notification API
+
+<ArgsTable of={InlineNotification} />
+
+# Classes
+
+<ArgsTable of={ClassesDummy} />

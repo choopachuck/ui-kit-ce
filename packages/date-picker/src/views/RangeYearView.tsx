@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { clsx } from '@v-uik/theme'
-import { useClassList, useMergedRefs } from '@v-uik/hooks'
-import { useButtonReset } from '@v-uik/button'
+import { useClassList, useMergedRefs, useButtonReset } from '@v-uik/hooks'
 import { useDateLibAdapter } from '../hooks/useDateLibAdapter'
 import { useNowDate } from '../hooks/useNowDate'
 import { useYearViewStyles } from '../hooks/useYearViewStyles'
 import { RangeDate, PartsOfRangeDate } from '../interfaces'
 import { useYearViewNavigation } from '../hooks/navigation'
 import { RangeYearViewClasses as Classes } from '../interfaces/classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface RangeYearViewProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * Список классов
    */

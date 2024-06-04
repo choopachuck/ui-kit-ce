@@ -398,6 +398,50 @@ it('print suffix correctly at selected option', () => {
   expect(text).toBeInTheDocument()
 })
 
+it('prefix should not exists', () => {
+  const suffixOptions = [
+    { value: '0', label: 'Нулевое', type: 'some', prefix: 'hello' },
+    { value: '1', label: 'Первое', type: 'other' },
+  ]
+
+  const { queryByText, getByRole } = render(
+    <ComboBox
+      options={suffixOptions}
+      value={options[0]}
+      components={{ OptionPrefix: null }}
+    />
+  )
+
+  const openButton = getByRole('button', { name: 'openPopupButton' })
+  fireEvent.mouseDown(openButton)
+
+  const text = queryByText('hello')
+
+  expect(text).not.toBeInTheDocument()
+})
+
+it('suffix should not exists', () => {
+  const suffixOptions = [
+    { value: '0', label: 'Нулевое', type: 'some', suffix: 'hello' },
+    { value: '1', label: 'Первое', type: 'other' },
+  ]
+
+  const { queryByText, getByRole } = render(
+    <ComboBox
+      options={suffixOptions}
+      value={options[0]}
+      components={{ OptionSuffix: null }}
+    />
+  )
+
+  const openButton = getByRole('button', { name: 'openPopupButton' })
+  fireEvent.mouseDown(openButton)
+
+  const text = queryByText('hello')
+
+  expect(text).not.toBeInTheDocument()
+})
+
 it('should navigate through disabled options correctly', async () => {
   const options = [
     { value: '', label: 'Пустое' },

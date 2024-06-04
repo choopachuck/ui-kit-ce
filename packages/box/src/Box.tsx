@@ -23,7 +23,10 @@ export type BoxOwnProps<E extends React.ElementType = React.ElementType> = {
 }
 
 export type BoxProps<E extends React.ElementType> = BoxOwnProps<E> &
-  Omit<React.ComponentProps<E>, keyof BoxOwnProps>
+  Omit<
+    React.ComponentProps<E>,
+    keyof BoxOwnProps | 'onPointerEnterCapture' | 'onPointerLeaveCapture'
+  >
 
 const defaultElement = 'div'
 

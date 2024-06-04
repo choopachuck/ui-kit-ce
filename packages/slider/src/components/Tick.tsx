@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const getDynamicStyles = (props: TickProps) => ({
   tick: {
@@ -17,7 +18,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 }))
 
-export interface TickProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface TickProps extends ComponentPropsWithRefFix<'span'> {
   /**
    * Оступ слева в процентах
    */

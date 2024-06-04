@@ -1,3 +1,7 @@
 .v-uik-test-override {
   color: #2a72f8;
 }
+
+table.sbdocs.sbdocs-table {
+  width: 100%;
+}

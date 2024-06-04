@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { test, expect } from '../../../playwright/fixtures/customMount'
+import { test as testWithTheme } from '../../../playwright/fixtures/withThemeProviderInjected'
 import { Tag, TTagKinds, TTagColor } from '../src'
+import { createTheme } from '@v-uik/theme'
 
 const kinds: Exclude<TTagKinds, 'color'>[] = ['lite', 'primary', 'secondary']
 
@@ -134,5 +136,46 @@ test.describe('Tag', () => {
         await expect(component).toHaveScreenshot()
       })
     })
+  })
+
+  testWithTheme('sizes with custom typography', async ({ mountWithTheme }) => {
+    const theme = createTheme({
+      comp: {
+        backwardCompatibilityMode: false,
+        tag: {
+          typographyFontSizeXs: '7px',
+          typographyLineHeightXs: '9px',
+          typographyFontSizeSm: '8px',
+          typographyLineHeightSm: '10px',
+          typographyFontSizeMd: '25px',
+          typographyLineHeightMd: '30px',
+          typographyFontSizeLg: '60px',
+          typographyLineHeightLg: '90px',
+        },
+      },
+    })
+
+    const component = await mountWithTheme(
+      <div style={{ paddingTop: 10 }}>
+        <div style={{ marginBottom: 10 }}>
+          <Tag size="xs">Tag</Tag>
+        </div>
+        <div style={{ marginBottom: 10 }}>
+          <Tag size="sm">Tag</Tag>
+        </div>
+        <div style={{ marginBottom: 10 }}>
+          <Tag>Add</Tag>
+        </div>
+        <div style={{ marginBottom: 10 }}>
+          <Tag size="md">Add</Tag>
+        </div>
+        <div style={{ marginBottom: 10 }}>
+          <Tag size="lg">Add</Tag>
+        </div>
+      </div>,
+      theme
+    )
+
+    await expect(component).toHaveScreenshot()
   })
 })

@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx, Transition } from '@v-uik/theme'
 import { Portal, PortalProps } from '@v-uik/portal'
-import { TrapFocus } from '@v-uik/common'
+import { TrapFocus, ComponentPropsWithRefFix } from '@v-uik/common'
 import {
   useGeneratedId,
   useMergedRefs,
@@ -72,6 +72,22 @@ const useStyles = createUseStyles((theme) => ({
       margin: 16,
       padding: 24,
     },
+
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: -1,
+      left: -1,
+      borderWidth: theme.shape.borderWidth,
+      borderStyle: theme.shape.borderStyle,
+      borderTopLeftRadius: 'inherit',
+      borderTopRightRadius: 'inherit',
+      borderBottomLeftRadius: 'inherit',
+      borderBottomRightRadius: 'inherit',
+      borderColor: theme.comp.modal.colorBorder,
+      height: '100%',
+      width: '100%',
+    },
   },
 }))
 
@@ -84,7 +100,7 @@ interface ModalStylesProps {
 
 export interface ModalProps
   extends ModalStylesProps,
-    React.ComponentPropsWithRef<'div'> {
+    ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */
@@ -96,15 +112,11 @@ export interface ModalProps
   /**
    * HTML-аттрибуты элемента фона окна
    */
-  backdropProps?: React.HTMLAttributes<HTMLDivElement> & {
-    ref?: React.Ref<HTMLDivElement>
-  }
+  backdropProps?: ComponentPropsWithRefFix<'div'>
   /**
    * HTML-аттрибуты элемента модального окна
    */
-  contentProps?: React.HTMLAttributes<HTMLDivElement> & {
-    ref?: React.Ref<HTMLDivElement>
-  }
+  contentProps?: ComponentPropsWithRefFix<'div'>
   /**
    * HTML-элемент или функция, возвращающая HTML-элемент, в который рендерится children
    */

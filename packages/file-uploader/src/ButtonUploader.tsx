@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { UploaderBaseProps, UploaderFile } from './types'
-import { Button, ButtonProps } from '@v-uik/button'
+import { Button as BaseButton, ButtonProps } from '@v-uik/button'
 import { filterFilesByAccept } from './utils'
 
 const useStyles = createUseStyles({
@@ -22,6 +22,12 @@ export interface ButtonUploaderProps
     files: UploaderFile[],
     e: React.ChangeEvent<HTMLInputElement>
   ) => void
+
+  components?: {
+    Button?: React.ForwardRefExoticComponent<
+      ButtonProps & React.RefAttributes<HTMLButtonElement>
+    >
+  }
 }
 
 export const ButtonUploader = React.forwardRef(
@@ -35,12 +41,15 @@ export const ButtonUploader = React.forwardRef(
       children,
       onClick,
       onUpload,
+      components = { Button: BaseButton },
       ...rest
     }: ButtonUploaderProps,
     ref: React.Ref<HTMLButtonElement>
   ) => {
     const inputRef = React.useRef<HTMLInputElement>(null)
-
+    const Button = components.Button as React.ForwardRefExoticComponent<
+      ButtonProps & React.RefAttributes<HTMLButtonElement>
+    >
     const classesList = useStyles()
 
     const handleInputChange: React.ChangeEventHandler<HTMLInputElement> =

@@ -1,12 +1,13 @@
 'use client'
 
 import * as React from 'react'
-import { createUseStyles, clsx } from '@v-uik/theme'
+import { createUseStyles, clsx, useTheme, Theme } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { Text, TextProps, TextKinds } from '@v-uik/typography'
-import { Button, ButtonColor, ButtonKinds, ButtonProps } from '@v-uik/button'
+import { ButtonProps } from '@v-uik/button'
 import { defaultPadding } from './constants'
-import { IconClose } from './assets/IconClose'
+import { CloseButton, ComponentPropsWithRefFix } from '@v-uik/common'
+import { pick } from '@v-uik/utils'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -47,24 +48,6 @@ const useStyles = createUseStyles((theme) => ({
     position: 'absolute',
     top: -8,
     right: -8,
-    minWidth: 40,
-    padding: 7,
-
-    '&:not(:disabled)': {
-      color: theme.comp.drawerHeader.closeButtonColorText,
-
-      '&:hover': {
-        color: theme.comp.drawerHeader.closeButtonColorTextHover,
-        backgroundColor:
-          theme.comp.drawerHeader.closeButtonColorBackgroundHover,
-      },
-
-      '&:hover:active': {
-        color: theme.comp.drawerHeader.closeButtonColorTextActive,
-        backgroundColor:
-          theme.comp.drawerHeader.closeButtonColorBackgroundActive,
-      },
-    },
   },
 
   divider: {
@@ -94,7 +77,7 @@ type Classes = {
   divider?: string
 }
 
-export interface DrawerHeaderProps extends React.ComponentPropsWithRef<'div'> {
+export interface DrawerHeaderProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */
@@ -118,7 +101,7 @@ export interface DrawerHeaderProps extends React.ComponentPropsWithRef<'div'> {
   /**
    * Свойства кнопки закрытия
    */
-  closeButtonProps?: ButtonProps
+  closeButtonProps?: ButtonProps //TODO: 2.0 ButtonProps оставлены для обратной совместимости, должны быть HTMLProps Button
   /**
    * Обработчик нажатия кнопки закрытия
    */
@@ -126,7 +109,7 @@ export interface DrawerHeaderProps extends React.ComponentPropsWithRef<'div'> {
   /**
    * Свойства элемента-разделителя
    */
-  dividerProps?: React.HTMLAttributes<HTMLHRElement>
+  dividerProps?: ComponentPropsWithRefFix<'hr'>
 }
 
 export const DrawerHeader = React.forwardRef(
@@ -164,6 +147,17 @@ export const DrawerHeader = React.forwardRef(
       }
     )
 
+    const drawerHeaderComp = useTheme().comp.drawerHeader
+
+    const closeButtonTokens = pick<
+      typeof drawerHeaderComp,
+      Theme['comp']['closeButton']
+    >(drawerHeaderComp, /^closeButton/, (v) =>
+      v.replace(/^(closeButton)([A-Z])/, (_$1, _$2, $3: string) =>
+        $3.toLowerCase()
+      )
+    )
+
     return (
       <>
         <div ref={ref} className={className} {...rest}>
@@ -182,18 +176,15 @@ export const DrawerHeader = React.forwardRef(
           )}
 
           {showCloseButton && (
-            <Button
-              kind={ButtonKinds.ghost}
-              color={ButtonColor.secondary}
+            <CloseButton
+              tokens={closeButtonTokens}
+              onClick={onClose}
               {...closeButtonProps}
               className={clsx(
                 classesMap.closeButton,
                 closeButtonProps?.className
               )}
-              onClick={onClose}
-            >
-              <IconClose />
-            </Button>
+            />
           )}
         </div>
 

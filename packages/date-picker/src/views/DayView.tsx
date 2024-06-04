@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { clsx } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
-import { useButtonReset } from '@v-uik/button'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 import { useDateLibAdapter } from '../hooks/useDateLibAdapter'
 import { useNowDate } from '../hooks/useNowDate'
 import { useDayViewStyles } from '../hooks/useDayViewStyles'
 import { DayParams } from '../interfaces'
 import { useDayViewNavigation } from '../hooks/navigation'
 import { DayViewClasses as Classes } from '../interfaces/classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export interface DayViewProps<TDate>
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * Список классов
    */

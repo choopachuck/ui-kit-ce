@@ -11,18 +11,10 @@ const validationErrorMessages: TimePickerProps['validationErrorMessages'] = {
 }
 
 export const TimeRangePickerSizeStory: React.FC = () => {
-  const [date, setDate] = React.useState<[Date | null, Date | null]>([
-    null,
-    null,
-  ])
+  const [date, setDate] = React.useState<
+    [Date | null | number, Date | null | number]
+  >([null, null])
   const [size, setSize] = React.useState<ElementSizeType>('md')
-
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
 
   return (
     <div>
@@ -49,7 +41,7 @@ export const TimeRangePickerSizeStory: React.FC = () => {
           endInputProps={{ placeholder: 'hh:mm:ss' }}
           startTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
           endTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
-          onChange={handleChange}
+          onChange={setDate}
         />
       </div>
     </div>

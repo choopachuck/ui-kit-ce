@@ -2,8 +2,9 @@ import * as React from 'react'
 import { clsx } from '@v-uik/theme'
 import { TabsContext } from './TabsContext'
 import { TabClasses } from './interfaces'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
-export interface TabProps extends React.ComponentPropsWithRef<'button'> {
+export interface TabProps extends ComponentPropsWithRefFix<'button'> {
   /**
    * Список классов
    */

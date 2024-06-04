@@ -16,7 +16,7 @@ import { getIconSize } from './utils'
 import DefaultSuccessIcon from './icons/SuccessIcon'
 import DefaultErrorIcon from './icons/ErrorIcon'
 import { FileItemClasses } from './classes'
-import { ElementSizeType } from '@v-uik/common'
+import { ElementSizeType, ComponentPropsWithRefFix } from '@v-uik/common'
 
 const defaultComponents: FileItemComponents = {
   ExitIcon: DefaultExitIcon,
@@ -117,6 +117,14 @@ const useStyles = createUseStyles((theme) => ({
     '&$root:after': {
       borderColor: theme.comp.fileItem.colorBorderError,
     },
+    '& $status': {
+      color: theme.comp.fileItem.iconColorTextError,
+    },
+  },
+  success: {
+    '& $status': {
+      color: theme.comp.fileItem.iconColorTextSuccess,
+    },
   },
   progress: {
     '$root&': {
@@ -213,7 +221,7 @@ export type FileItemOwnProps = {
    * Проп для замены иконок и внутренних компонент
    */
   components?: Partial<FileItemComponents>
-} & React.ComponentPropsWithRef<typeof defaultElement>
+} & ComponentPropsWithRefFix<typeof defaultElement>
 
 export type FileItemProps<E extends React.ElementType> =
   PolymorphicComponentProps<E, FileItemOwnProps>
@@ -248,6 +256,7 @@ export const FileItem = React.forwardRef(
       status && {
         [classesMap.error]: status === 'error',
         [classesMap.progress]: status === 'progress',
+        [classesMap.success]: status === 'success',
       },
       classNameProps
     )

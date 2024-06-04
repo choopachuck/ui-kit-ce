@@ -23,4 +23,10 @@ export type Classes = {
   fullWidth?: string
   /** Стиль, применяемый к тексту в элементе */
   text?: string
+  /** Стиль, применяемый к тексту в элементе с `size='sm'` */
+  textSm?: string
+  /** Стиль, применяемый к тексту в элементе с `size='md'` */
+  textMd?: string
+  /** Стиль, применяемый к тексту в элементе с `size='lg'` */
+  textLg?: string
 }

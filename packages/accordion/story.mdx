@@ -10,10 +10,12 @@ import {
   Collapse,
   ClassesDummy,
   Canvas as CanvasStory,
+  CustomIcon,
 } from './examples'
 import RawBasic from '!!raw-loader!@v-uik/accordion/examples/Basic'
 import RawCollapse from '!!raw-loader!@v-uik/accordion/examples/Collapse'
 import RawCanvas from '!!raw-loader!@v-uik/accordion/examples/Canvas'
+import RawCustomIcon from '!!raw-loader!@v-uik/accordion/examples/CustomIcon'
 
 export const story = createStory(CanvasStory, RawCanvas)
 
@@ -77,3 +79,11 @@ import { Accordion, AccordionItem } from '@v-uik/accordion'
 </Canvas>
 
 <Source language="tsx" code={RawCollapse} />
+
+## Аккордеон с пользовательской иконкой
+
+<Canvas withSource="none">
+  <CustomIcon />
+</Canvas>
+
+<Source language="tsx" code={RawCustomIcon} />

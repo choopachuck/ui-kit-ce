@@ -52,7 +52,6 @@ export const DropdownMenu = React.forwardRef(
 
     const handleListRef = React.useCallback((node: HTMLElement) => {
       listRef.current = node
-      listRef.current?.focus()
     }, [])
 
     const mergedListRef = useMergedRefs([listProps?.ref, handleListRef])
@@ -83,6 +82,8 @@ export const DropdownMenu = React.forwardRef(
 
         if (!open) {
           handleSetOpen(true)
+        } else {
+          listRef.current?.focus()
         }
       }
     }

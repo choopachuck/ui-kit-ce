@@ -1,0 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 1.11.0 (2024-06-04)
+
+
+### Features
+
+* **slider:** добавлен проп classes в SliderMarker ([0bde95b](#))
+
+
+### Bug Fixes
+
+* **slider:** убрана возможность фокуса с помощью клавиатуры и перемещение слайдера при disabed ([171658a](#))
+* поправлена совместимость с @types/react@18.2.43 и выше ([9769c71](#))

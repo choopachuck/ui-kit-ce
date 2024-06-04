@@ -4,6 +4,7 @@ import {
   createTitle,
   COMPONENTS,
   createStory,
+  DocsAlert,
 } from '../../docs/showroom/config'
 import {
   Adaptive,
@@ -54,6 +55,12 @@ import { Grid, GridItem } from '@v-uik/base'
 ```ts
 import { Grid, GridItem } from '@v-uik/grid'
 ```
+
+<DocsAlert type="warning">
+  Компонент использует <code>React.CloneElement</code>. Перейдите к разделу{' '}
+  <a href="#механизм-reactcloneelement">Механизм React.CloneElement</a> чтобы
+  узнать подробнее
+</DocsAlert>
 
 ## GridItem
 
@@ -110,3 +117,17 @@ import { Grid, GridItem } from '@v-uik/grid'
 </Canvas>
 
 <Source language="tsx" code={RawAutoGrid}></Source>
+
+## Механизм `React.CloneElement`
+
+Компонент `Grid` использует механизм `React.CloneElement` для передаваемого `children` и ожидает в качестве `children` компонент `GridItem`.
+Для них он задает следующие свойства:
+
+| Свойство    | Описание                                                                                                                |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `className` | Css-класс, который состоит из `className` у соответствующего `child`, а также `className`, который присваивает `Grid`   |
+| `style`     | Объект инлайн-стиля, который состоит из `style` у соответствующего `child`, а также `style`, который присваивает `Grid` |
+| `screen`    | Размер экрана, который присваивает `Grid`                                                                               |
+| `columns`   | Количество колонок, которое присваивает `Grid`                                                                          |
+
+`Grid` не накладывает ограничения на использование компонентов в `children`, но подразумевает, что дочерними компонентами будут `GridItem`, так как `Grid` присваивает свойства `GridItemProps`, необходимые именно для компонента `GridItem`

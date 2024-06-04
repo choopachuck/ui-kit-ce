@@ -1,0 +1,119 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Card } from '@v-uik/card'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import CanvasStory from './examples/Canvas'
+import RawCanvasStory from '!!raw-loader!./examples/Canvas'
+
+import { RadioCard } from './examples/RadioCard'
+import RawRadioCard from '!!raw-loader!./examples/RadioCard'
+
+import { CheckboxCard } from './examples/CheckboxCard'
+import RawCheckboxCard from '!!raw-loader!./examples/CheckboxCard'
+
+import { HorizontalCard } from './examples/HorizontalCard'
+import RawHorizontalCard from '!!raw-loader!./examples/HorizontalCard'
+
+import { ChartCard } from './examples/ChartCard'
+import RawChartCard from '!!raw-loader!./examples/ChartCard'
+
+import { CardsKind } from './examples/CardsKind'
+import RawCardsKind from '!!raw-loader!./examples/CardsKind'
+
+import { ExpandableCard } from './examples/ExpandableCard'
+import RawExpandableCard from '!!raw-loader!./examples/ExpandableCard'
+
+import * as AssetsModule from '@v-uik/card/examples/assets'
+
+export const story = createStory(CanvasStory, RawCanvasStory, {
+  './assets': AssetsModule,
+})
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Card', 'Card'])}
+  component={Card}
+/>
+
+<Story
+  name="Card"
+  parameters={{
+    ...story.parameters,
+    controls: { disable: true },
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {story.component}
+</Story>
+
+# Card
+
+Карточка позволяет группировать контент и действия в одном компоненте.
+
+## import
+
+```ts
+import { Card } from '@v-uik/base'
+```
+
+или
+
+```ts
+import { Card } from '@v-uik/card'
+```
+
+## Типы карточек
+
+С помощью пропса `kind` можно выбрать тип карточки. По-умолчанию `kind="container"`.
+При `kind="clickable"` карточка ведет себя как кнопка, есть возможность явно определить `onClick` и дополнительные пропсы для кнопки с помощью
+`buttonProps`. При `kind="selectable"` - реализуется функционал `<input type="checkbox">`.
+
+<Canvas withSource="none">
+  <CardsKind />
+</Canvas>
+
+<Source language="tsx" code={RawCardsKind} />
+
+## Горизонтальная карточка
+
+<Canvas withSource="none">
+  <HorizontalCard />
+</Canvas>
+
+<Source language="tsx" code={RawHorizontalCard} />
+
+## Карточка с одиночным выбором
+
+<Canvas withSource="none">
+  <RadioCard />
+</Canvas>
+
+<Source language="tsx" code={RawRadioCard} />
+
+## Карточка с мультивыбором
+
+<Canvas withSource="none">
+  <CheckboxCard />
+</Canvas>
+
+<Source language="tsx" code={RawCheckboxCard} />
+
+## Раскрывающаяся Карточка
+
+<Canvas withSource="none">
+  <ExpandableCard />
+</Canvas>
+
+<Source language="tsx" code={RawExpandableCard} />
+
+## Карточка с диаграммой
+
+<Canvas withSource="none">
+  <ChartCard />
+</Canvas>
+
+<Source language="tsx" code={ChartCard} />

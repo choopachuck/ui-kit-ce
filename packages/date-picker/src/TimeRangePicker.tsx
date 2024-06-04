@@ -151,11 +151,15 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
   inputDisabled: {},
+  inputError: {},
   input: {
     zIndex: 2,
     backgroundColor: 'transparent',
 
     '&$inputDisabled': {
+      backgroundColor: 'transparent',
+    },
+    '&$inputError:not($inputDisabled)': {
       backgroundColor: 'transparent',
     },
 
@@ -491,6 +495,7 @@ export const TimeRangePicker = React.forwardRef(
         classesList.inputDisabled,
         propsStartInputProps?.classes?.disabled
       ),
+      error: clsx(classesList.inputError, propsStartInputProps?.classes?.error),
     }
 
     const endInputClasses: InputBaseProps['classes'] = {
@@ -508,6 +513,7 @@ export const TimeRangePicker = React.forwardRef(
         classesList.inputDisabled,
         propsEndInputProps?.classes?.disabled
       ),
+      error: clsx(classesList.inputError, propsEndInputProps?.classes?.error),
     }
 
     // keyboard
@@ -669,6 +675,7 @@ export const TimeRangePicker = React.forwardRef(
         ref={ref}
       >
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}

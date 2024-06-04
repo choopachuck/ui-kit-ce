@@ -55,9 +55,9 @@ const dataSource: DataSource[] = [
 ]
 
 export const TreeExpandableStory = (): JSX.Element => {
-  const [treeExpandedRows, setTreeExpandedRows] = React.useState<{
-    [key in React.Key]: boolean
-  }>({})
+  const [treeExpandedRows, setTreeExpandedRows] = React.useState<
+    Record<number, boolean>
+  >({})
 
   const columns: ColumnProps<DataSource>[] = [
     {
@@ -66,7 +66,8 @@ export const TreeExpandableStory = (): JSX.Element => {
       title: 'Name',
       kind: 'tree',
       width: 500,
-      isRowExpanded: ({ row }) => !!row.key && !!treeExpandedRows[row.key],
+      isRowExpanded: ({ row }) =>
+        !!row.key && !!treeExpandedRows[row.key as number],
     },
     {
       key: 'count',
@@ -83,7 +84,7 @@ export const TreeExpandableStory = (): JSX.Element => {
         if (params.type === 'treeExpand') {
           const newRows = { ...treeExpandedRows }
 
-          const key = params.row.key
+          const key = params.row.key as number
           if (key) {
             newRows[key] ? delete newRows[key] : (newRows[key] = true)
           }
@@ -95,9 +96,9 @@ export const TreeExpandableStory = (): JSX.Element => {
 }
 
 export const TreeExpandableCustomizedStory = (): JSX.Element => {
-  const [treeExpandedRows, setTreeExpandedRows] = React.useState<{
-    [key in React.Key]: boolean
-  }>({})
+  const [treeExpandedRows, setTreeExpandedRows] = React.useState<
+    Record<number, boolean>
+  >({})
 
   const columns: ColumnProps<DataSource>[] = [
     {
@@ -106,7 +107,8 @@ export const TreeExpandableCustomizedStory = (): JSX.Element => {
       title: 'Name',
       kind: 'tree',
       width: 510,
-      isRowExpanded: ({ row }) => !!row.key && !!treeExpandedRows[row.key],
+      isRowExpanded: ({ row }) =>
+        !!row.key && !!treeExpandedRows[row.key as number],
       renderCellContent: ({ row, cell, originClassName, indentLevel = 0 }) => (
         <>
           <div
@@ -119,13 +121,15 @@ export const TreeExpandableCustomizedStory = (): JSX.Element => {
             <TreeExpandButton
               hoverable
               expanded={
-                row.key !== undefined ? !!treeExpandedRows[row.key] : false
+                row.key !== undefined
+                  ? !!treeExpandedRows[row.key as number]
+                  : false
               }
               onClick={(event) => {
                 event.stopPropagation()
                 const newRows = { ...treeExpandedRows }
 
-                const key = row.key
+                const key = row.key as number
                 if (key) {
                   newRows[key] ? delete newRows[key] : (newRows[key] = true)
                 }
@@ -158,7 +162,7 @@ export const TreeExpandableCustomizedStory = (): JSX.Element => {
         if (params.type === 'treeExpand') {
           const newRows = { ...treeExpandedRows }
 
-          const key = params.row.key
+          const key = params.row.key as number
           if (key) {
             newRows[key] ? delete newRows[key] : (newRows[key] = true)
           }

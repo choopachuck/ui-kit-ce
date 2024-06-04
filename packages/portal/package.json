@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/portal",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "typings": "dist/esm/index.d.ts",

@@ -36,7 +36,7 @@ export const createAccordionItem = (
     : theme.sys.color.separationMajor,
   colorBackgroundHover: compatibilityMode
     ? theme.colourway.mono02
-    : theme.sys.color.onBackgroundOverlaySelect,
+    : theme.sys.color.onBackgroundOverlayHover,
   colorBackgroundActive: compatibilityMode
     ? theme.colourway.mono04
     : theme.sys.color.onBackgroundOverlayActive,

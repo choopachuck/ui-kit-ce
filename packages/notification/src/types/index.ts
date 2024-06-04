@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { DirectionType, ComponentPropsWithRefFix } from '@v-uik/common'
 
 export const NotificationPosition = {
   'top-left': 'top-left',
@@ -63,11 +64,19 @@ export interface CommonOptions {
    * JSS-классы для стилизации Notification
    */
   classes?: Partial<NotificationClasses>
+  /**
+   * свойства кнопки закрытия
+   */
+  closeButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>
+  /**
+   * включить режим работы cо свойствами title, actions
+   */
+  nextNotification?: boolean
 }
 
 export type NotificationContainerProps<T extends React.ElementType = 'div'> =
   Omit<CommonOptions, 'classes'> &
-    React.ComponentPropsWithRef<T> & {
+    ComponentPropsWithRefFix<T> & {
       /**
        * Максимально количество одновременно отображаемых сообщений
        */
@@ -91,11 +100,17 @@ export interface NotificationOptions extends CommonOptions {
    * Идентификатор сообщения.
    */
   id?: string
+  /** заголовок сообщения (только при nextNotification = true) */
+  title?: React.ReactNode
+  /** блок действий сообщения (только при nextNotification = true) */
+  actions?: React.ReactNode
+  /** направление отображения сообщения (только при nextNotification = true) */
+  direction?: DirectionType
 }
 
 export type NotificationProps<T extends React.ElementType = 'div'> =
   NotificationOptions &
-    React.ComponentPropsWithRef<T> & {
+    ComponentPropsWithRefFix<T> & {
       /**
        * Активно ли сообщение
        * @internal
@@ -125,10 +140,49 @@ export type NotificationClasses = {
   indicator?: string
   /** Стиль, применяемый к элементу иконки */
   icon?: string
-  /** Стиль, применяемый к содержимому элемента  */
-  content?: string
   /** Стиль, применяемый к элементу кнопки закрытия */
   closeButton?: string
+
+  /** Стиль title (стилизуется как потомок horizontal/vertical) */
+  title?: string
+  /** Стиль title при status: error */
+  titleError?: string
+  /** Стиль title при status: warning */
+  titleWarning?: string
+  /** Стиль title при status: success */
+  titleSuccess?: string
+  /** Стиль title при status: neutral */
+  titleNeutral?: string
+  /** Стиль title при status: info */
+  titleInfo?: string
+
+  /** Стиль content (стилизуется как потомок horizontal/vertical) */
+  content?: string
+  /** Стиль content при status: error */
+  contentError?: string
+  /** Стиль content при status: warning */
+  contentWarning?: string
+  /** Стиль content при status: success */
+  contentSuccess?: string
+  /** Стиль content при status: neutral */
+  contentNeutral?: string
+  /** Стиль content при status: info */
+  contentInfo?: string
+
+  /** Стиль обертки title и content (стилизуется как потомок horizontal/vertical) */
+  textContainer?: string
+
+  /** Стиль контейнера actions (стилизуется как потомок horizontal/vertical) */
+  actions?: string
+
+  /** Стиль контейнера контента (стилизуется как потомок horizontal/vertical) */
+  body?: string
+
+  /** Стиль при direction: horizontal */
+  horizontal?: string
+
+  /** Стиль при direction: vertical */
+  vertical?: string
 }
 
 export type NotificationContainerClasses = {

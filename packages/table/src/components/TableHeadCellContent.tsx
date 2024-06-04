@@ -2,7 +2,6 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
-import { useButtonReset } from '@v-uik/button'
 import {
   TableSizeProp,
   TableEventType,
@@ -10,6 +9,7 @@ import {
   ColumnProps,
 } from '../interfaces'
 import {
+  useButtonReset,
   ButtonAriaActionEventHandler,
   useButtonAriaActionProps,
 } from '@v-uik/hooks'

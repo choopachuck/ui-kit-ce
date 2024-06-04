@@ -6,7 +6,7 @@ const folders = fs.readdirSync(path.resolve(__dirname, '../packages'))
 const tscPath = path.resolve(__dirname, '../node_modules/.bin/tsc')
 
 folders.forEach((packageName) => {
-  if (packageName === 'combo-box' || packageName === 'next-js-provider') {
+  if (packageName === 'next-js-provider') {
     return
   }
 

@@ -1,14 +1,40 @@
 import * as React from 'react'
 import { test, expect } from '../../../playwright/fixtures/customMount'
-import { Basic } from '../examples/Basic'
-import { WithError } from '../examples/WithError'
-import { Disabled } from '../examples/Disabled'
-import { FullWidth } from '../examples/FullWidth'
-import { WithRows } from '../examples/WithRows'
+import { test as testWithTheme } from '../../../playwright/fixtures/withThemeProviderInjected'
+import { WithError, WithRows, FullWidth, Disabled, Basic } from '../examples'
+import { Textarea } from '../src'
+import { createTheme } from '@v-uik/theme'
 
 test.describe('Textarea', () => {
   test('enabled', async ({ mount }) => {
     const component = await mount(<Basic />)
+
+    await expect(component).toHaveScreenshot()
+  })
+  testWithTheme('sizes with custom typography', async ({ mountWithTheme }) => {
+    const theme = createTheme({
+      comp: {
+        backwardCompatibilityMode: false,
+        textarea: {
+          typographyFontSizeSm: '9px',
+          typographyLineHeightSm: '12px',
+          typographyFontSizeMd: '16px',
+          typographyLineHeightMd: '24px',
+          typographyFontSizeLg: '36px',
+          typographyLineHeightLg: '50px',
+        },
+      },
+    })
+
+    const component = await mountWithTheme(
+      <div style={{ padding: 5 }}>
+        <Textarea size="sm" style={{ marginRight: 10 }} value="value" />
+        <Textarea size="md" style={{ marginRight: 10 }} value="value" />
+        <Textarea style={{ marginRight: 10 }} value="value" />
+        <Textarea size="lg" value="value" />
+      </div>,
+      theme
+    )
 
     await expect(component).toHaveScreenshot()
   })

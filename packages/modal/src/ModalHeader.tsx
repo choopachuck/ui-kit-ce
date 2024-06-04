@@ -1,13 +1,14 @@
 'use client'
 
 import * as React from 'react'
-import { createUseStyles, clsx } from '@v-uik/theme'
+import { createUseStyles, clsx, useTheme, Theme } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { Text, TextProps, TextKinds } from '@v-uik/typography'
-import { Button, ButtonColor, ButtonKinds, ButtonProps } from '@v-uik/button'
+import { ButtonProps } from '@v-uik/button'
 import { ModalContext } from './ModalContext'
-import { IconClose } from './assets/IconClose'
 import { HeaderClasses } from './classes'
+import { CloseButton, ComponentPropsWithRefFix } from '@v-uik/common'
+import { pick } from '@v-uik/utils'
 
 const useStyles = createUseStyles((theme) => ({
   root: {
@@ -47,27 +48,10 @@ const useStyles = createUseStyles((theme) => ({
     position: 'absolute',
     top: -8,
     right: -8,
-    minWidth: 40,
-    padding: 7,
-
-    '&:not(:disabled)': {
-      color: theme.comp.modalHeader.closeButtonColorText,
-
-      '&:hover': {
-        color: theme.comp.modalHeader.closeButtonColorTextHover,
-        backgroundColor: theme.comp.modalHeader.closeButtonColorBackgroundHover,
-      },
-
-      '&:hover:active': {
-        color: theme.comp.modalHeader.closeButtonColorTextActive,
-        backgroundColor:
-          theme.comp.modalHeader.closeButtonColorBackgroundActive,
-      },
-    },
   },
 }))
 
-export interface ModalHeaderProps extends React.ComponentPropsWithRef<'div'> {
+export interface ModalHeaderProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */
@@ -91,7 +75,7 @@ export interface ModalHeaderProps extends React.ComponentPropsWithRef<'div'> {
   /**
    * Свойства кнопки закрытия
    */
-  closeButtonProps?: ButtonProps
+  closeButtonProps?: ButtonProps //TODO: 2.0 ButtonProps оставлены для обратной совместимости, должны быть HTMLProps Button
 }
 
 export const ModalHeader = React.forwardRef(
@@ -134,6 +118,16 @@ export const ModalHeader = React.forwardRef(
       }
     )
 
+    const modalHeaderComp = useTheme().comp.modalHeader
+    const closeButtonTokens = pick<
+      typeof modalHeaderComp,
+      Theme['comp']['closeButton']
+    >(modalHeaderComp, /^closeButton/, (v) =>
+      v.replace(/^(closeButton)([A-Z])/, (_$1, _$2, $3: string) =>
+        $3.toLowerCase()
+      )
+    )
+
     return (
       <div ref={ref} className={className} {...rest}>
         <Text
@@ -156,18 +150,15 @@ export const ModalHeader = React.forwardRef(
         )}
 
         {showCloseButton && (
-          <Button
-            kind={ButtonKinds.ghost}
-            color={ButtonColor.secondary}
+          <CloseButton
+            tokens={closeButtonTokens}
+            onClick={onCloseClick}
             {...closeButtonProps}
             className={clsx(
               classesMap.closeButton,
               closeButtonProps?.className
             )}
-            onClick={onCloseClick}
-          >
-            <IconClose />
-          </Button>
+          />
         )}
       </div>
     )

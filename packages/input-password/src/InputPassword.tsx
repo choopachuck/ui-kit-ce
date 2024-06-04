@@ -2,10 +2,10 @@
 
 import * as React from 'react'
 import { Input, InputProps } from '@v-uik/input'
-import { useToggle } from '@v-uik/hooks'
+import { useToggle, useButtonReset } from '@v-uik/hooks'
 import { HideIcon, ShowIcon } from './Icons'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { ButtonProps, useButtonReset } from '@v-uik/button'
+import { ButtonProps } from '@v-uik/button'
 
 const useStyles = createUseStyles((theme) => ({
   icon: {
@@ -55,7 +55,7 @@ export interface InputPasswordProps<TCanClear extends boolean = boolean>
   /**
    * Пропсы для кнопки с иконкой
    */
-  buttonIconProps?: Omit<ButtonProps, 'className' | 'onMouseDown' | 'onClick'>
+  buttonIconProps?: Omit<ButtonProps, 'className' | 'onMouseDown' | 'onClick'> //TODO: 2.0 ButtonProps оставлены для обратной совместимости, должны быть HTMLProps Button
 }
 
 const _InputPassword = React.forwardRef(

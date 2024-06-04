@@ -2,12 +2,13 @@
 
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { useClassList } from '@v-uik/hooks'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
+import { useClassList, useButtonReset } from '@v-uik/hooks'
 import { useText } from '@v-uik/typography'
-import { useButtonReset } from '@v-uik/button'
-import { DeleteIcon } from './assets/DeleteIcon'
-import { TagClasses } from './interfaces'
+import type { TagClasses } from './interfaces'
+import { TTagElementSizeType, TagElementSize } from './TTagElementSizeType'
+import type { TagComponentsConfig } from './components'
+import { getComponents } from './components'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 export const TagKinds = {
   lite: 'lite',
@@ -30,7 +31,7 @@ export const TagColor = {
 
 export type TTagColor = keyof typeof TagColor
 
-export interface CommonProps extends React.ComponentPropsWithRef<'button'> {
+export interface CommonProps extends ComponentPropsWithRefFix<'button'> {
   /**
    * JSS-классы для стилизации
    */
@@ -38,7 +39,11 @@ export interface CommonProps extends React.ComponentPropsWithRef<'button'> {
   /**
    * Размер тэга
    */
-  size?: Exclude<ElementSizeType, 'lg'>
+  size?: TTagElementSizeType
+  /**
+   * Свойство для переопределения элементов Tag
+   */
+  components?: TagComponentsConfig
 }
 
 /**
@@ -95,7 +100,6 @@ const useStyles = createUseStyles((theme) => ({
     boxSizing: 'border-box',
     boxShadow: 'none',
     textAlign: 'center',
-    padding: [6, 12],
     borderTopLeftRadius: theme.comp.tag.shapeBorderRadiusTopLeft,
     borderTopRightRadius: theme.comp.tag.shapeBorderRadiusTopRight,
     borderBottomLeftRadius: theme.comp.tag.shapeBorderRadiusBottomLeft,
@@ -150,6 +154,7 @@ const useStyles = createUseStyles((theme) => ({
     },
 
     '&$dragged': {
+      color: theme.comp.tag.colorTextLiteDragged,
       backgroundColor: theme.comp.tag.colorBackgroundLiteDragged,
 
       '&::after': {
@@ -230,6 +235,7 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: theme.comp.tag.colorBackgroundSecondaryDragged,
 
       '&::after': {
+        borderColor: theme.comp.tag.colorBorderSecondaryDragged,
         borderWidth: 0,
       },
     },
@@ -251,6 +257,7 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: theme.comp.tag.colorBackgroundSecondarySelected,
 
       '&:disabled': {
+        color: theme.comp.tag.colorTextSecondarySelectedDisabled,
         backgroundColor:
           theme.comp.tag.colorBackgroundSecondarySelectedDisabled,
       },
@@ -310,6 +317,7 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: theme.comp.tag.colorBackgroundPrimaryDragged,
 
       '&::after': {
+        borderColor: theme.comp.tag.colorBorderPrimaryDragged,
         borderWidth: 0,
       },
     },
@@ -329,6 +337,7 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: theme.comp.tag.colorBackgroundPrimarySelected,
 
       '&:disabled': {
+        color: theme.comp.tag.colorTextPrimarySelectedDisabled,
         backgroundColor: theme.comp.tag.colorBackgroundPrimarySelectedDisabled,
       },
 
@@ -391,8 +400,20 @@ const useStyles = createUseStyles((theme) => ({
     backgroundColor: theme.comp.tag.colorBackgroundGray,
   },
 
+  extraSmall: {
+    padding: [2, 8],
+  },
+
   small: {
     padding: [2, 8],
+  },
+
+  medium: {
+    padding: [6, 12],
+  },
+
+  large: {
+    padding: [8, 16],
   },
 
   selected: {
@@ -452,8 +473,6 @@ const useStyles = createUseStyles((theme) => ({
   text: {
     fontFamily: theme.comp.tag.typographyFontFamily,
     fontWeight: theme.comp.tag.typographyFontWeight,
-    fontSize: theme.comp.tag.typographyFontSize,
-    lineHeight: theme.comp.tag.typographyLineHeight,
     letterSpacing: theme.comp.tag.typographyLetterSpacing,
 
     zIndex: 2,
@@ -462,6 +481,38 @@ const useStyles = createUseStyles((theme) => ({
     alignItems: 'inherit',
     justifyContent: 'inherit',
     flexWrap: 'nowrap',
+  },
+
+  textExtraSmall: {
+    fontSize:
+      theme.comp.tag.typographyFontSizeXs || theme.comp.tag.typographyFontSize,
+    lineHeight:
+      theme.comp.tag.typographyLineHeightXs ||
+      theme.comp.tag.typographyLineHeight,
+  },
+
+  textSmall: {
+    fontSize:
+      theme.comp.tag.typographyFontSizeSm || theme.comp.tag.typographyFontSize,
+    lineHeight:
+      theme.comp.tag.typographyLineHeightSm ||
+      theme.comp.tag.typographyLineHeight,
+  },
+
+  textMedium: {
+    fontSize:
+      theme.comp.tag.typographyFontSizeMd || theme.comp.tag.typographyFontSize,
+    lineHeight:
+      theme.comp.tag.typographyLineHeightMd ||
+      theme.comp.tag.typographyLineHeight,
+  },
+
+  textLarge: {
+    fontSize:
+      theme.comp.tag.typographyFontSizeLg || theme.comp.tag.typographyFontSize,
+    lineHeight:
+      theme.comp.tag.typographyLineHeightLg ||
+      theme.comp.tag.typographyLineHeight,
   },
 
   closeButton: {
@@ -488,12 +539,13 @@ export const Tag = React.forwardRef(
       className: classNameProp,
       kind = TagKinds.lite,
       color,
-      size = ElementSize.md,
+      size = TagElementSize.md,
       disabled,
       dragged,
       children,
       onDelete,
       onClick,
+      components,
       ...rest
     }: TagProps,
     ref: React.Ref<HTMLButtonElement>
@@ -501,10 +553,16 @@ export const Tag = React.forwardRef(
     const isColorTag = kind === TagKinds.color
     const isClickable = !isColorTag && !!onClick && !disabled
 
+    const { DeleteIcon } = getComponents(components)
+
     const buttonClasses = useButtonReset()
     const { ellipsis } = useText()
     const classesList = useStyles()
     const classesMap = useClassList(classesList, classes)
+    const isExtraSmall = size === TagElementSize.xs
+    const isSmall = size === TagElementSize.sm
+    const isMedium = size === TagElementSize.md
+    const isLarge = size === TagElementSize.lg
     const className = clsx(
       classNameProp,
       buttonClasses.resetButton,
@@ -521,14 +579,22 @@ export const Tag = React.forwardRef(
         [classesMap.blue]: isColorTag && color === TagColor.blue,
         [classesMap.violet]: isColorTag && color === TagColor.violet,
         [classesMap.gray]: isColorTag && color === TagColor.gray,
-        [classesMap.small]: size === ElementSize.sm,
+        [classesMap.extraSmall]: isExtraSmall,
+        [classesMap.small]: isSmall,
+        [classesMap.medium]: isMedium,
+        [classesMap.large]: isLarge,
         [classesMap.selected]: !isColorTag && selected,
         [classesMap.clickable]: isClickable,
         [classesMap.dragged]: !isColorTag && dragged,
       }
     )
 
-    const textClassName = clsx(ellipsis, classesMap.text)
+    const textClassName = clsx(ellipsis, classesMap.text, {
+      [classesMap.textExtraSmall]: isExtraSmall,
+      [classesMap.textSmall]: isSmall,
+      [classesMap.textMedium]: isMedium,
+      [classesMap.textLarge]: isLarge,
+    })
 
     const handleDeleteIconClick = (
       event: React.MouseEvent<HTMLSpanElement>

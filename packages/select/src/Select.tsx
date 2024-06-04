@@ -15,8 +15,12 @@ import {
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
 import { List, ListItem, ListItemProps, ListItemGroup } from '@v-uik/list'
 import { useSelect } from './hooks'
-import { SelectButton, SelectButtonProps } from './components'
-import { SelectOptionIcon } from './assets/SelectOptionIcon'
+import {
+  SelectButton,
+  SelectButtonProps,
+  SelectComponentsConfig,
+  getComponents,
+} from './components'
 import { BaseSelectProps, Option, Classes } from './interfaces'
 import { isEqualKeyboardKeys, includesKeyboardKey } from '@v-uik/utils'
 import { useSelectModifiers } from '@v-uik/popup'
@@ -79,13 +83,6 @@ const useStyles = createUseStyles((theme) => ({
 
   option: {
     minWidth: 0,
-    borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius:
-      theme.comp.select.optionShapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius:
-      theme.comp.select.optionShapeBorderRadiusBottomRightMd,
-
     '&:hover': {
       cursor: 'pointer',
       backgroundColor: theme.comp.select.optionColorBackgroundHover,
@@ -95,6 +92,33 @@ const useStyles = createUseStyles((theme) => ({
         backgroundColor: theme.comp.select.listColorBackground,
       },
     },
+  },
+
+  optionSmall: {
+    borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftSm,
+    borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightSm,
+    borderBottomLeftRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomLeftSm,
+    borderBottomRightRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomRightSm,
+  },
+
+  optionMedium: {
+    borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomRightMd,
+  },
+
+  optionLarge: {
+    borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftLg,
+    borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightLg,
+    borderBottomLeftRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomLeftLg,
+    borderBottomRightRadius:
+      theme.comp.select.optionShapeBorderRadiusBottomRightLg,
   },
 
   listError: {
@@ -114,27 +138,11 @@ const useStyles = createUseStyles((theme) => ({
     backgroundColor: theme.comp.select.optionColorBackgroundHover,
   },
 
-  small: {
-    '& $option': {
-      borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftSm,
-      borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightSm,
-      borderBottomLeftRadius:
-        theme.comp.select.optionShapeBorderRadiusBottomLeftSm,
-      borderBottomRightRadius:
-        theme.comp.select.optionShapeBorderRadiusBottomRightSm,
-    },
-  },
+  small: {},
 
-  large: {
-    '& $option': {
-      borderTopLeftRadius: theme.comp.select.optionShapeBorderRadiusTopLeftLg,
-      borderTopRightRadius: theme.comp.select.optionShapeBorderRadiusTopRightLg,
-      borderBottomLeftRadius:
-        theme.comp.select.optionShapeBorderRadiusBottomLeftLg,
-      borderBottomRightRadius:
-        theme.comp.select.optionShapeBorderRadiusBottomRightLg,
-    },
-  },
+  medium: {},
+
+  large: {},
 
   disabled: {
     cursor: 'default',
@@ -192,6 +200,10 @@ export type SelectProps<
      * JSS-классы для стилизации
      */
     classes?: Partial<Classes>
+    /**
+     * Свойство для переопределения компонентов `Select`
+     */
+    components?: SelectComponentsConfig<T, A>
   }
 
 const defaultListElement = 'ul'
@@ -234,6 +246,7 @@ export const Select = React.forwardRef(
       labelledClasses,
       keepHelperTextMinHeight,
       required,
+      components,
       ...rest
     }: SelectProps<ListElement, ListItemElement>,
     ref: React.Ref<HTMLDivElement>
@@ -243,9 +256,13 @@ export const Select = React.forwardRef(
     const classesList = useStyles()
 
     const classesMap = useClassList(classesList, classes)
+    const isSmall = size === ElementSize.sm
+    const isMedium = size === ElementSize.md
+    const isLarge = size === ElementSize.lg
     const className = clsx(classNameProp, classesMap.root, {
-      [classesMap?.small ?? '']: size === ElementSize.sm,
-      [classesMap?.large ?? '']: size === ElementSize.lg,
+      [classesMap?.small ?? '']: isSmall,
+      [classesMap?.medium ?? '']: isMedium,
+      [classesMap?.large ?? '']: isLarge,
       [classesMap?.error ?? '']: error,
     })
     const buttonClasses: SelectButtonProps['classes'] = classes
@@ -255,11 +272,18 @@ export const Select = React.forwardRef(
           content: classesMap?.buttonContent,
           text: classesMap?.buttonText,
           errorIcon: classesMap?.buttonErrorIcon,
-          arrowIcon: classesMap?.buttonArrowIcon,
+          disabled: classesMap?.disabled,
         }
       : undefined
     const listItemClasses: ListItemProps<ListItemElement>['classes'] = {
+      listItem: classesMap.option,
+      text: classesMap.optionText,
+      textTypography: classesMap.optionTextTypography,
+      small: classesMap.optionSmall,
+      medium: classesMap.optionMedium,
+      large: classesMap.optionLarge,
       disabled: classesMap.optionDisabled,
+      selected: classesMap.optionSelected,
     }
 
     const buttonRef = React.useRef<HTMLButtonElement>(null)
@@ -282,13 +306,40 @@ export const Select = React.forwardRef(
       value,
     })
 
+    const [isOpen, setIsOpen] = React.useState(false)
+
+    const selectProps = {
+      value,
+      label,
+      options,
+      limitByWidth,
+      size,
+      error,
+      showErrorIcon,
+      errorIconTooltipProps,
+      dropdownProps,
+      listProps,
+      disabled,
+      groupBy,
+      hideDropdownOnOutsideScroll,
+      placeholder,
+      labelledClasses,
+      classes: classesMap,
+      onChange,
+      multiple,
+      selectButtonProps,
+      opened: isOpen,
+    }
+
     const popperOptions: DropdownProps['popperOptions'] = {
       strategy: 'fixed',
       ...dropdownProps?.popperOptions,
     }
 
-    const [isOpen, setIsOpen] = React.useState(false)
-
+    const { DropdownIndicator, OptionSuffix } = getComponents<
+      ListElement,
+      ListItemElement
+    >(components)
     const renderSelectButtonText = () => {
       if (
         placeholder &&
@@ -515,15 +566,18 @@ export const Select = React.forwardRef(
         <ListItem<ListItemElement>
           key={optionValue}
           id={listId}
-          suffix={isSelected ? <SelectOptionIcon /> : undefined}
+          suffix={
+            OptionSuffix ? (
+              <OptionSuffix option={option} selected={isSelected} />
+            ) : undefined
+          }
           selected={isSelected}
           aria-selected={isSelected}
           role="option"
           disabled={isOptionDisabled}
           {...restOptionProps}
           interactive={false}
-          className={clsx(option.className, classesMap.option, {
-            [classesMap.optionSelected ?? '']: multiple && isSelected,
+          className={clsx(option.className, {
             [classesMap.optionActive ?? '']: optionValue === active?.value,
           })}
           classes={listItemClasses}
@@ -590,6 +644,7 @@ export const Select = React.forwardRef(
     if (multiple) {
       return (
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}
@@ -612,6 +667,7 @@ export const Select = React.forwardRef(
     return (
       <div {...rest} ref={ref} className={className} onKeyDown={handleKeyDown}>
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}
@@ -640,7 +696,7 @@ export const Select = React.forwardRef(
               {...commonSelectAriaProps}
               {...selectButtonProps}
               ref={mergedButtonRefs}
-              // id шник активного элемента (по которму перемещаются кнопками )
+              // id-шник активного элемента (по которому перемещаются кнопками )
               aria-activedescendant={
                 isOpen && active
                   ? createAriaActiveDescendantId(active.value)
@@ -659,6 +715,7 @@ export const Select = React.forwardRef(
               emptyValue={
                 !Array.isArray(selectedOption) && !selectedOption?.value
               }
+              dropdownIndicator={<DropdownIndicator {...selectProps} />}
               onClick={toggleOpen}
               onKeyDown={preventOnKeyDownSpace}
             >

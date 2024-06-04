@@ -1,5 +1,4 @@
 import { Theme } from '../interface'
-import { setAlphaChannel } from '../utils'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createModal = (theme: Theme, compatibilityMode?: boolean) => ({
@@ -14,7 +13,7 @@ export const createModal = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.elevation.xl,
   backdropColorBackground: compatibilityMode
     ? theme.colourway.mono06
-    : setAlphaChannel(theme.ref.palette.coldGray20, theme.ref.alpha.channel45),
+    : theme.sys.color.backdropColorBackground,
 
   shapeBorderRadiusTopLeft: compatibilityMode
     ? theme.shape.borderRadius
@@ -28,6 +27,10 @@ export const createModal = (theme: Theme, compatibilityMode?: boolean) => ({
   shapeBorderRadiusBottomRight: compatibilityMode
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusXl,
+
+  colorBorder: compatibilityMode
+    ? theme.colourway.mono04
+    : theme.sys.color.separationMajor,
 })
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -38,18 +41,24 @@ export const createModalHeader = (
   subtitleColorText: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
+
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorText: compatibilityMode
     ? theme.colourway.onBackgroundHigh
     : theme.sys.color.onBackgroundHigh,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorTextHover: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorTextActive: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorBackgroundHover: compatibilityMode
     ? theme.colourway.mono02
     : theme.sys.color.onBackgroundOverlayHover,
+  /** @deprecated используйте токены comp.closeButton */
   closeButtonColorBackgroundActive: compatibilityMode
     ? theme.colourway.mono04
     : theme.sys.color.onBackgroundOverlayActive,

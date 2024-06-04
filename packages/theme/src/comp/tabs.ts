@@ -28,7 +28,7 @@ export const createTabs = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.color.primaryAlpha,
   contentColorShadow: compatibilityMode
     ? theme.colourway.mono04
-    : theme.sys.color.separationMinor,
+    : theme.sys.color.separationMajor,
   tabColorShadowFilledSelected: compatibilityMode
     ? theme.colourway.mono02
     : theme.sys.color.separationMinor,

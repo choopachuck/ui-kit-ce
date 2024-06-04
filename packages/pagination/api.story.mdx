@@ -1,0 +1,62 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Pagination } from '@v-uik/pagination'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import {
+  PaginationClassesDummy,
+  PaginationHookPropsApiDummy,
+  PaginationHookReturnPropsApiDummy,
+  PaginationItemsApiDummy,
+  PaginationPageApiDummy,
+  PaginationOverflowApiDummy,
+  PaginationNavigationApiDummy,
+  PaginationSelectedIndicatorApiDummy,
+} from './examples'
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Pagination', 'API'])}
+  component={Pagination}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Pagination API
+
+<ArgsTable of={Pagination} exclude="placeholder" />
+
+# Pagination Classes
+
+<ArgsTable of={PaginationClassesDummy} />
+
+# PaginationPageButton API
+
+<ArgsTable of={PaginationPageApiDummy} exclude="placeholder" />
+
+# PaginationOverflowButton API
+
+<ArgsTable of={PaginationOverflowApiDummy} exclude="placeholder" />
+
+# PaginationNavigationButton API
+
+<ArgsTable of={PaginationNavigationApiDummy} exclude="placeholder" />
+
+# PaginationSelectedIndicator API
+
+<ArgsTable of={PaginationSelectedIndicatorApiDummy} />
+
+# UsePagination API
+
+## Props
+
+<ArgsTable of={PaginationHookPropsApiDummy} />
+
+## Returned value
+
+<ArgsTable of={PaginationHookReturnPropsApiDummy} />
+
+# PaginationItem API
+
+<ArgsTable of={PaginationItemsApiDummy} />

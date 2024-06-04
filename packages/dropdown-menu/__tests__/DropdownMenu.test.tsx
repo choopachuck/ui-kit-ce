@@ -19,9 +19,20 @@ it('show dropdown menu', () => {
   expect(getByRole('menuitem')).toBeInTheDocument()
 })
 
-it('focus list when opened', () => {
+it('does not focus list when clicked', () => {
   const { getByRole } = render(<Component />)
   fireEvent.click(getByRole('button'))
+  expect(document.activeElement).not.toBe(getByRole('menuitem'))
+})
+
+it('focus list with keyboard navigation', () => {
+  const { getByRole } = render(<Component />)
+  const button = getByRole('button')
+  button.focus()
+  fireEvent.keyDown(button, { key: 'Enter' })
+  expect(document.activeElement).toBe(button)
+  expect(getByRole('menuitem')).toBeInTheDocument()
+  fireEvent.keyDown(button, { key: 'ArrowDown' })
   expect(document.activeElement).toBe(getByRole('menuitem'))
 })
 

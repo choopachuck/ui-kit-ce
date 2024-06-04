@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { test, expect } from '../../../playwright/fixtures/customMount'
+import { test as testWithTheme } from '../../../playwright/fixtures/withThemeProviderInjected'
 import { Button, TButtonKinds, TButtonColor } from '../src'
+import { createTheme } from '@v-uik/theme'
 
 const buttonKinds: Array<TButtonKinds> = ['contained', 'outlined', 'ghost']
 const buttonColors: Array<TButtonColor> = ['primary', 'secondary', 'error']
@@ -89,6 +91,45 @@ test.describe('Button', () => {
 
         await expect(component).toHaveScreenshot()
       })
+
+      testWithTheme(
+        'sizes with custom typography',
+        async ({ mountWithTheme }) => {
+          const theme = createTheme({
+            comp: {
+              backwardCompatibilityMode: false,
+              button: {
+                typographyFontSizeSm: '9px',
+                typographyLineHeightSm: '1px',
+                typographyFontSizeMd: '25px',
+                typographyLineHeightMd: '30px',
+                typographyFontSizeLg: '60px',
+                typographyLineHeightLg: '90px',
+              },
+            },
+          })
+
+          const component = await mountWithTheme(
+            <div>
+              <Button size="sm" kind={kind} style={{ margin: 10 }}>
+                button
+              </Button>
+              <Button kind={kind} style={{ margin: 10 }}>
+                button
+              </Button>
+              <Button size="md" kind={kind} style={{ margin: 10 }}>
+                button
+              </Button>
+              <Button size="lg" kind={kind} style={{ margin: 10 }}>
+                button
+              </Button>
+            </div>,
+            theme
+          )
+
+          await expect(component).toHaveScreenshot()
+        }
+      )
 
       test('fullWidth', async ({ mount }) => {
         const component = await mount(

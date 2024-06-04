@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { ProgressSize, ProgressSizeProps, LinearClasses } from './interfaces'
@@ -110,7 +111,7 @@ export interface LinearStylesProps {
 }
 
 export interface LinearProgressProps
-  extends Omit<React.ComponentPropsWithRef<'div'>, 'size'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'size'> {
   classes?: Partial<LinearClasses>
   /**
    * Значение прогресса
@@ -135,7 +136,7 @@ export interface LinearProgressProps
   /**
    * Свойства элемента track
    */
-  trackProps?: React.HTMLAttributes<HTMLDivElement>
+  trackProps?: ComponentPropsWithRefFix<'div'>
 }
 
 export const LinearProgress = React.forwardRef(

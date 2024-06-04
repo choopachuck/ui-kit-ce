@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
-import { Direction } from '@v-uik/common'
+import { Direction, ComponentPropsWithRefFix } from '@v-uik/common'
 import { useText } from '@v-uik/typography'
 import { BarContext } from './BarContext'
 import { BarKinds, DarkColors, LightColors } from './constants'
@@ -44,7 +44,7 @@ type Classes = Partial<
   >
 >
 
-export interface BarItemProps extends React.ComponentPropsWithRef<'div'> {
+export interface BarItemProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */

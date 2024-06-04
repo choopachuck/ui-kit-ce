@@ -92,6 +92,8 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
+  medium: {},
+
   large: {
     minHeight: 48,
     padding: [12, 16],
@@ -214,7 +216,7 @@ export const ListItem = React.forwardRef(
     ])
 
     const interactive = listContext.interactive || interactiveProp
-    const size = sizeProp || listContext.size
+    const size = sizeProp || listContext.size || 'md'
     const stripe = listContext.stripe || stripeProp
 
     const classesList = useStyles()
@@ -229,6 +231,7 @@ export const ListItem = React.forwardRef(
       [classesMap.critical]: critical,
       [classesMap.selected]: selected,
       [classesMap.small]: size === ElementSize.sm,
+      [classesMap.medium]: size === ElementSize.md,
       [classesMap.large]: size === ElementSize.lg,
     })
 

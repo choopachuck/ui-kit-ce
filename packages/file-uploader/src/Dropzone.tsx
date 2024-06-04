@@ -9,6 +9,7 @@ import { useButtonAriaActionProps, useClassList } from '@v-uik/hooks'
 import { filterFilesByAccept } from './utils'
 import { isEvtWithFiles } from './utils/isEvtWithFiles'
 import { DropzoneClasses } from './classes'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
   input: {
@@ -122,7 +123,7 @@ export type DropzoneOwnProps = {
    * Классы
    */
   classes?: DropzoneClasses
-} & React.ComponentPropsWithRef<typeof defaultElement> &
+} & ComponentPropsWithRefFix<typeof defaultElement> &
   UploaderBaseProps
 
 export type DropzoneProps<E extends React.ElementType> =

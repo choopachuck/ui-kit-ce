@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ElementSizeType } from '@v-uik/common'
+import { ElementSizeType, ComponentPropsWithRefFix } from '@v-uik/common'
 import { TooltipProps } from '@v-uik/tooltip'
 import { DropdownProps } from '@v-uik/dropdown'
 import { ListProps } from '@v-uik/list'
@@ -30,14 +30,14 @@ export type CommonProps<Option> = {
 export interface BaseComboBoxProps<
   Option,
   ListElement extends React.ElementType
-> extends Omit<React.ComponentPropsWithRef<'div'>, 'onChange'>,
+> extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Omit<LabelledProps, 'children' | 'classes'> {
   /**
    * Список классов для компонента Labelled
    */
   labelledClasses?: LabelledProps['classes']
   /**
-   * Можно ли очищать всё поле
+   * Можно ли очищать всё поле (нажатием по крестику, через Backspace, повторным нажатием на выбранную опцию)
    */
   canClear?: boolean
   /**
@@ -188,7 +188,7 @@ export interface BaseComboBoxProps<
   /**
    * Пропсы innerProps для компонента Control
    */
-  controlInnerProps?: Partial<JSX.IntrinsicElements['div']>
+  controlInnerProps?: Partial<ComponentPropsWithRefFix<'div'>>
   /**
    * Cбрасывает введенное значение, при событии blur. Актуален только для isSearchable
    */
@@ -256,7 +256,7 @@ type MultiChoiceProps<Option> = {
   multiple: true
   /**
    * Настраивает количество отображаемых тегов, если включена опция `withTags`
-   * для отображение тегов в поле ввода.
+   * для отображения тегов в поле ввода.
    *
    * Если опций будет больше указанного лимита, они будут скрыты и появится тег
    * с указанием скрытых опций, формата `+n`.
@@ -310,9 +310,11 @@ export interface Accessors<Option> {
 export type Classes = {
   /** Стиль, применяемый к контейнеру основного элемента  */
   root?: string
-  /** Стиль, применяемый к контейнеру основного элемента, в состоянии sm */
+  /** Стиль, применяемый к контейнеру основного элемента с `size='sm` */
   small?: string
-  /** Стиль, применяемый к контейнеру основного элемента, в состоянии lg  */
+  /** Стиль, применяемый к контейнеру основного элемента с `size='md` */
+  medium?: string
+  /** Стиль, применяемый к контейнеру основного элемента с `size='lg`  */
   large?: string
   /** Стиль, применяемый к основному элементу, в состоянии error */
   error?: string
@@ -328,32 +330,48 @@ export type Classes = {
   inputArrowIcon?: string
   /** Стиль, применяемый к обертке поля ввода */
   inputContent?: string
+  /** Стиль, применяемый к обертке индикаторов */
+  inputIndicatorContainer?: string
   /** Стиль, применяемый к иконке ошибки */
   inputErrorIcon?: string
   /** Стиль, применяемый к основной форме ввода и выбора значений */
   inputRoot?: string
+  /** Стиль, применяемый к полю ввода в состоянии disabled */
+  inputDisabled?: string
   /** Стиль, применяемый к обертке (списку) отображаемых элементов */
   list?: string
   /** Стиль, применяемый к каждому отображаемому элементу */
   option?: string
+  /** Стиль, применяемый к каждому отображаемому элементу с `size='sm` */
+  optionSmall?: string
+  /** Стиль, применяемый к каждому отображаемому элементу с `size='md` */
+  optionMedium?: string
+  /** Стиль, применяемый к каждому отображаемому элементу с `size='lg` */
+  optionLarge?: string
   /** Стиль, применяемый к каждому отображаемому элементу, в состоянии active */
   optionActive?: string
   /** Стиль, применяемый к каждому отображаемому элементу, в состоянии disabled */
   optionDisabled?: string
+  /** Стиль, применяемый к тексту каждого отображаемого элемента` */
+  optionText?: string
+  /** Стиль, применяемый к типографии текста каждого отображаемого элемента` */
+  optionTextTypography?: string
+  /** Стиль, применяемый к обёртке чекбокса каждого отображаемого элемента, в состоянии multiple` */
+  optionMultiPrefix?: string
   /** Стиль, применяемый к каждому отображаемому элементу, в состоянии selected */
   selectedOption?: string
   /** Стиль, применяемый к индикатору процесса загрузки, в состоянии loading */
   loading?: string
-  /** Стиль, применяемый к текстому содержимому выводимого элемента,
+  /** Стиль, применяемый к текстовому содержимому выводимого элемента,
    *  или к содержимому каждого элемента, выводимого через запятую внутри формы ввода */
   text?: string
-  /** Стиль, применяемый к каждому выводимому элементу, при выводе через тэги,, в состоянии multiple */
+  /** Стиль, применяемый к каждому выводимому элементу, при выводе через теги, в состоянии multiple */
   tag?: string
   /** Стиль, применяемый к чекбоксу, в состоянии multiple */
   checkBox?: string
   /** Стиль, применяемый к разделителю у создаваемой опции, в состоянии Creatable */
   creatableDivider?: string
-  /** Стиль, применяемый к счетчику тэгов, в состоянии withTags и Counter */
+  /** Стиль, применяемый к счетчику тегов, в состоянии withTags и Counter */
   counter?: string
   /** Стиль, применяемый к фокусированному тегу, при управлении стрелками лево/право */
   focused?: string

@@ -3,7 +3,11 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
-import { Direction, DirectionType } from '@v-uik/common'
+import {
+  Direction,
+  DirectionType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { StepperContext, StepperContextValue } from './StepperContext'
 import { StepperClasses } from './interfaces'
 
@@ -20,7 +24,7 @@ const useStyles = createUseStyles({
 })
 
 export interface StepperProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * JSS-классы для стилизации
    */

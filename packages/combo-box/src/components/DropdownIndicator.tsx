@@ -3,7 +3,11 @@
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
-import { ElementSizeType, ElementSize } from '@v-uik/common'
+import {
+  ElementSizeType,
+  ElementSize,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { CommonProps } from '../interfaces'
 import { ComboBoxIcon } from '../assets/ComboBoxIcon'
 
@@ -46,7 +50,7 @@ type Classes = Partial<
 export type DropdownIndicatorProps<Option> = {
   children?: React.ReactNode
   classes?: Classes
-  innerProps: JSX.IntrinsicElements['div']
+  innerProps: ComponentPropsWithRefFix<'div'>
   isDisabled?: boolean
   size: ElementSizeType
 } & CommonProps<Option>

@@ -6,8 +6,10 @@ import { ElementSize } from '@v-uik/common'
 import { InputAffix, InputAffixType } from '@v-uik/input'
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
 import { CircularProgress } from '@v-uik/progress'
-import { ListItemProps, ListProps, scrollElement } from '@v-uik/list'
+import { ListProps, scrollElement } from '@v-uik/list'
 import { includesKeyboardKey, isEqualKeyboardKeys, warning } from '@v-uik/utils'
+import { ComboBoxOptionIcon } from './assets/ComboBoxOptionIcon'
+
 import { useSelectModifiers } from '@v-uik/popup'
 import {
   useMergedRefs,
@@ -17,12 +19,10 @@ import {
   useForceSecondRender,
   useValue,
 } from '@v-uik/hooks'
-import { Checkbox } from '@v-uik/checkbox'
 import { Tooltip } from '@v-uik/tooltip'
 import { ErrorIcon } from './assets/ErrorIcon'
 
 import { ComboBoxComponentsConfig, getComponents } from './components'
-import { ComboBoxOptionIcon } from './assets/ComboBoxOptionIcon'
 import {
   BaseComboBoxProps,
   Classes,
@@ -85,43 +85,13 @@ const useStyles = createUseStyles((theme) => ({
     overflowY: 'auto',
     overflowX: 'hidden',
     boxSizing: 'border-box',
-    borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius:
-      theme.comp.comboBox.listShapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius:
-      theme.comp.comboBox.listShapeBorderRadiusBottomRightMd,
     backgroundColor: theme.comp.comboBox.listColorBackground,
     boxShadow: theme.comp.comboBox.listElevationShadow,
     border: `1px solid ${theme.comp.comboBox.listColorBorder}`,
-
-    '&$small': {
-      borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftSm,
-      borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightSm,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.listShapeBorderRadiusBottomLeftSm,
-      borderBottomRightRadius:
-        theme.comp.comboBox.listShapeBorderRadiusBottomRightSm,
-    },
-
-    '&$large': {
-      borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftLg,
-      borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightLg,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.listShapeBorderRadiusBottomLeftLg,
-      borderBottomRightRadius:
-        theme.comp.comboBox.listShapeBorderRadiusBottomRightLg,
-    },
   },
 
   option: {
     minWidth: 0,
-    borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftMd,
-    borderTopRightRadius: theme.comp.comboBox.optionShapeBorderRadiusTopRightMd,
-    borderBottomLeftRadius:
-      theme.comp.comboBox.optionShapeBorderRadiusBottomLeftMd,
-    borderBottomRightRadius:
-      theme.comp.comboBox.optionShapeBorderRadiusBottomRightMd,
 
     '&:hover': {
       cursor: 'pointer',
@@ -134,12 +104,35 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
-  selectedOption: {
-    backgroundColor: theme.comp.comboBox.optionColorBackgroundSelected,
+  optionSmall: {
+    borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftSm,
+    borderTopRightRadius: theme.comp.comboBox.optionShapeBorderRadiusTopRightSm,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomLeftSm,
+    borderBottomRightRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomRightSm,
   },
 
-  checkbox: {
-    marginRight: 11,
+  optionMedium: {
+    borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.comboBox.optionShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomRightMd,
+  },
+
+  optionLarge: {
+    borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftLg,
+    borderTopRightRadius: theme.comp.comboBox.optionShapeBorderRadiusTopRightLg,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomLeftLg,
+    borderBottomRightRadius:
+      theme.comp.comboBox.optionShapeBorderRadiusBottomRightLg,
+  },
+
+  selectedOption: {
+    backgroundColor: theme.comp.comboBox.optionColorBackgroundSelected,
   },
 
   optionDisabled: {
@@ -163,15 +156,12 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   small: {
-    '& $option': {
-      borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftSm,
-      borderTopRightRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusTopRightSm,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusBottomLeftSm,
-      borderBottomRightRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusBottomRightSm,
-    },
+    borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftSm,
+    borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightSm,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomLeftSm,
+    borderBottomRightRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomRightSm,
 
     '& $errorIcon': {
       width: 16,
@@ -179,20 +169,30 @@ const useStyles = createUseStyles((theme) => ({
     },
   },
 
+  medium: {
+    borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftMd,
+    borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightMd,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomLeftMd,
+    borderBottomRightRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomRightMd,
+  },
+
   large: {
-    '& $option': {
-      borderTopLeftRadius: theme.comp.comboBox.optionShapeBorderRadiusTopLeftLg,
-      borderTopRightRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusTopRightLg,
-      borderBottomLeftRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusBottomLeftLg,
-      borderBottomRightRadius:
-        theme.comp.comboBox.optionShapeBorderRadiusBottomRightLg,
-    },
+    borderTopLeftRadius: theme.comp.comboBox.listShapeBorderRadiusTopLeftLg,
+    borderTopRightRadius: theme.comp.comboBox.listShapeBorderRadiusTopRightLg,
+    borderBottomLeftRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomLeftLg,
+    borderBottomRightRadius:
+      theme.comp.comboBox.listShapeBorderRadiusBottomRightLg,
   },
 
   counter: {
     flex: '0 0 auto',
+  },
+
+  checkbox: {
+    marginRight: 11,
   },
 }))
 
@@ -311,28 +311,36 @@ export const ComboBox = React.forwardRef(
     const classesMap = {
       list: clsx(classList.list, classes?.list),
       option: clsx(classList.option, classes?.option),
+      optionSmall: clsx(classList.optionSmall, classes?.optionSmall),
+      optionMedium: clsx(classList.optionMedium, classes?.optionMedium),
+      optionLarge: clsx(classList.optionLarge, classes?.optionLarge),
       selectedOption: clsx(classList.selectedOption, classes?.selectedOption),
       optionActive: clsx(classList.optionActive, classes?.optionActive),
       optionDisabled: clsx(classList.optionDisabled, classes?.optionDisabled),
+      optionText: classes?.optionText,
+      optionTextTypography: classes?.optionTextTypography,
+      optionMultiPrefix: classes?.optionMultiPrefix,
       errorIcon: clsx(
         classList.errorIcon,
         classes?.errorIcon,
         classes?.inputErrorIcon
       ),
       text: clsx(classList.text, classes?.text),
-      input: clsx(classes?.input),
-      inputArrowIcon: clsx(classes?.inputArrowIcon),
-      inputContent: clsx(classes?.inputContent),
-      inputRoot: clsx(classes?.inputRoot),
-      tag: clsx(classes?.tag),
+      input: classes?.input,
+      inputArrowIcon: classes?.inputArrowIcon,
+      inputContent: classes?.inputContent,
+      inputRoot: classes?.inputRoot,
+      inputDisabled: classes?.inputDisabled,
+      tag: classes?.tag,
       counter: clsx(classes?.counter, classList.counter),
       small: clsx(classList.small, classes?.small),
+      medium: clsx(classList.medium, classes?.medium),
       large: clsx(classList.large, classes?.large),
-      root: clsx(classes?.root),
       error: clsx(classes?.error),
-      inputPrefix: clsx(classes?.inputPrefix),
-      inputSuffix: clsx(classes?.inputSuffix),
-      loading: clsx(classes?.loading),
+      root: classes?.root,
+      inputPrefix: classes?.inputPrefix,
+      inputSuffix: classes?.inputSuffix,
+      loading: classes?.loading,
       creatableDivider: clsx(
         classes?.creatableDivider,
         classList.creatableDivider
@@ -340,18 +348,20 @@ export const ComboBox = React.forwardRef(
       focused: classes?.focused,
     }
 
+    const isSmall = size === ElementSize.sm
+    const isMedium = size === ElementSize.md
+    const isLarge = size === ElementSize.lg
+
     classesMap.list = clsx(classesMap.list, {
-      [classesMap.small]: size === ElementSize.sm,
-      [classesMap.large]: size === ElementSize.lg,
+      [classesMap.small]: isSmall,
+      [classesMap.medium]: isMedium,
+      [classesMap.large]: isLarge,
     })
 
-    const listItemClasses: ListItemProps<ListElement>['classes'] = {
-      disabled: classesMap.optionDisabled,
-    }
-
     const className = clsx(classNameProp, classesMap.root, {
-      [classesMap.small]: size === ElementSize.sm,
-      [classesMap.large]: size === ElementSize.lg,
+      [classesMap.small]: isSmall,
+      [classesMap.medium]: isMedium,
+      [classesMap.large]: isLarge,
       [classesMap.error]: error,
     })
 
@@ -423,7 +433,7 @@ export const ComboBox = React.forwardRef(
     // костыль на срабатывание onStateChange
     React.useEffect(() => {
       dropdownProps?.onStateChange?.(isPopupOpen)
-    }, [dropdownProps?.onStateChange, isPopupOpen])
+    }, [dropdownProps?.onStateChange, isPopupOpen]) // eslint-disable-line
 
     const popupModifiers = useSelectModifiers<Option>({
       modifiers: dropdownProps?.modifiers,
@@ -510,7 +520,6 @@ export const ComboBox = React.forwardRef(
     const handleListRef = React.useCallback(
       (node: HTMLElement) => {
         listRef.current = node
-        listRef.current?.focus()
       },
       [listRef]
     )
@@ -926,7 +935,7 @@ export const ComboBox = React.forwardRef(
               }
             }
 
-            // возврат с исходному введенному значению
+            // возврат к исходному введенному значению
             recoveryBackfillInputValue?.((inputValue: string) => {
               if (currIndex === nextIndex) {
                 handleChangeValues(
@@ -1006,12 +1015,15 @@ export const ComboBox = React.forwardRef(
       IndicatorContainer,
       Input,
       MultiValue,
+      MultiCheckbox,
       SelectContainer,
       SingleValue,
       ValueContainer,
       Placeholder,
       OptionList,
       OptionItem,
+      OptionPrefix,
+      OptionSuffix,
     } = getComponents<Option, ListElement, ListItemElement>(components)
 
     const commonProps: CommonProps<Option> = {
@@ -1055,6 +1067,7 @@ export const ComboBox = React.forwardRef(
           {...commonProps}
           classes={{ tag: classesMap.tag, focused: classesMap.focused }}
           isFocused={isFocused}
+          size={size}
           onDelete={(e) => handleDeleteOption(e, option)}
         >
           {getOptionLabel(option)}
@@ -1238,37 +1251,66 @@ export const ComboBox = React.forwardRef(
       const isSelected = isOptionSelected(option)
       const isDisabled = isOptionDisabled(option)
 
-      if (multiple && !isCreating) {
-        return (
-          <>
-            <Checkbox
-              disabled={isDisabled}
-              className={clsx({
-                [classList.checkbox]: !!getOptionPrefix(option),
-              })}
-              checked={isSelected}
-            />
-            {getOptionPrefix(option)}
-          </>
-        )
+      const props = {
+        disabled,
+        checked: isSelected,
+        className: clsx({
+          [classList.checkbox]: !!getOptionPrefix(option),
+        }),
       }
 
-      return getOptionPrefix(option)
+      //Если пользователь не прокидовал кастомный компонент
+      if (OptionPrefix === undefined) {
+        if (multiple && !isCreating) {
+          return (
+            <>
+              {MultiCheckbox && <MultiCheckbox {...props} />}
+              {getOptionPrefix(option)}
+            </>
+          )
+        }
+
+        return getOptionPrefix(option)
+      }
+
+      return OptionPrefix ? (
+        <OptionPrefix
+          option={option}
+          multiple={multiple}
+          creating={isCreating}
+          selected={isSelected}
+          disabled={isDisabled}
+          components={{ MultiCheckbox }}
+          customOptionPrefix={getOptionPrefix(option)}
+        />
+      ) : null
     }
 
     const renderOptionSuffix = (option: Option) => {
       const isSelected = isOptionSelected(option)
 
-      if (!multiple && isSelected) {
-        return (
-          <>
-            {getOptionSuffix(option)}
-            {showCheckMark && <ComboBoxOptionIcon />}
-          </>
-        )
+      if (OptionSuffix === undefined) {
+        if (!multiple && isSelected) {
+          return (
+            <>
+              {getOptionSuffix(option)}
+              {showCheckMark && <ComboBoxOptionIcon />}
+            </>
+          )
+        }
+
+        return getOptionSuffix(option)
       }
 
-      return getOptionSuffix(option)
+      return OptionSuffix ? (
+        <OptionSuffix
+          selected={isSelected}
+          option={option}
+          multiple={multiple}
+          customOptionSuffix={getOptionSuffix(option)}
+          showCheckMark={showCheckMark}
+        />
+      ) : null
     }
 
     const content = () => {
@@ -1298,17 +1340,24 @@ export const ComboBox = React.forwardRef(
           createAriaActiveDescendantId={createAriaActiveDescendantId}
           commonOptionItemProps={{
             interactive: false,
-            classes: listItemClasses,
+            classes: { disabled: classesMap.optionDisabled },
             role: 'option',
             size,
           }}
           optionClasses={{
             option: classesMap.option,
+            optionSmall: classesMap.optionSmall,
+            optionMedium: classesMap.optionMedium,
+            optionLarge: classesMap.optionLarge,
+            optionText: classesMap.optionText,
+            optionTextTypography: classesMap.optionTextTypography,
             selectedOption: classesMap.selectedOption,
             optionActive: classesMap.optionActive,
             creatableDivider: classesMap.creatableDivider,
             noOptionsText: classesMap.option,
             optionLoading: classesMap.option,
+            optionDisabled: classesMap.optionDisabled,
+            prefix: classesMap.optionMultiPrefix,
           }}
           formatOptionLabel={formatOptionLabel}
           inputValue={inputValue}
@@ -1336,6 +1385,7 @@ export const ComboBox = React.forwardRef(
         }}
       >
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}
@@ -1370,7 +1420,11 @@ export const ComboBox = React.forwardRef(
               {...commonProps}
               isFocused={focused}
               size={size}
-              classes={{ rootControl: classesMap.inputRoot }}
+              classes={{
+                focused: classesMap.focused,
+                rootControl: classesMap.inputRoot,
+                disabled: classesMap.inputDisabled,
+              }}
               isDisabled={disabled}
               innerProps={{
                 'aria-activedescendant': getActiveDescendant(),
@@ -1408,7 +1462,13 @@ export const ComboBox = React.forwardRef(
                 {renderInput()}
               </ValueContainer>
 
-              <IndicatorContainer {...commonProps} isDisabled={disabled}>
+              <IndicatorContainer
+                {...commonProps}
+                isDisabled={disabled}
+                classes={{
+                  indicatorContainer: classes?.inputIndicatorContainer,
+                }}
+              >
                 {renderLoadingIndicator()}
                 {renderClearIndicator()}
                 {renderErrorIcon()}

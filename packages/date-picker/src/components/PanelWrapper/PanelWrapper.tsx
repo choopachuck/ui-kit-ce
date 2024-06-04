@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { Theme } from '@v-uik/theme'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme: Theme) => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = createUseStyles((theme: Theme) => ({
   },
 }))
 
-export interface Props extends React.HTMLAttributes<HTMLDivElement> {}
+export interface Props extends ComponentPropsWithRefFix<'div'> {}
 
 export const PanelWrapper = React.forwardRef(
   (props: Props, ref: React.Ref<HTMLDivElement>) => {

@@ -4,7 +4,7 @@ import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { InputBase, InputBaseProps } from '@v-uik/input'
-import { Direction } from '@v-uik/common'
+import { Direction, ComponentPropsWithRefFix } from '@v-uik/common'
 import { SearchIcon } from './assets/SearchIcon'
 import { BarContext } from './BarContext'
 import { BarKinds, DarkColors, LightColors } from './constants'
@@ -221,7 +221,7 @@ const useStyles = createUseStyles((theme) => ({
 }))
 
 export interface BarSearchProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
   /**
    * JSS-классы для стилизации
    */

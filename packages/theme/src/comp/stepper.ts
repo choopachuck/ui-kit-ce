@@ -104,27 +104,52 @@ export const createStep = (theme: Theme, compatibilityMode?: boolean) => ({
     : theme.sys.shape.borderRadiusMd,
 
   // Step text colors
+
+  /**
+   * @deprecated Будет удалено, для задания цвета используйте `descriptionColorText` и `labelColorText`
+   */
   colorText: compatibilityMode
     ? theme.colourway.secondary
     : theme.sys.color.secondaryAlpha,
+  /**
+   * @deprecated Будет удалено, для задания цвета используйте `descriptionColorText` и `labelColorText`
+   */
   colorTextHover: compatibilityMode
     ? theme.colourway.secondaryHover
     : theme.sys.color.secondaryBeta,
+  /**
+   * @deprecated Будет удалено, для задания цвета используйте `descriptionColorText` и `labelColorText`
+   */
   colorTextActive: compatibilityMode
     ? theme.colourway.secondaryActive
     : theme.sys.color.secondaryGamma,
+  /**
+   * @deprecated Будет удалено, для задания цвета используйте `descriptionColorTextDisabled` и `labelColorTextDisabled`
+   */
   colorTextDisabled: compatibilityMode
     ? theme.colourway.disabledMajor
     : theme.sys.color.disabledHigh,
+  /**
+   * @deprecated Будет удалено, для задания цвета используйте  `labelColorTextError`
+   */
   colorTextError: compatibilityMode
     ? theme.colourway.error
     : theme.sys.color.errorAlpha,
+  /**
+   * @deprecated Будет удалено, для задания цвета используйте  `labelColorTextErrorActive`
+   */
   colorTextErrorActive: compatibilityMode
     ? theme.colourway.errorActive
     : theme.sys.color.errorGamma,
+  /**
+   * @deprecated Будет удалено, для задания цвета используйте  `labelColorTextErrorDisabled`
+   */
   colorTextErrorDisabled: compatibilityMode
     ? theme.colourway.disabledMajor
     : theme.sys.color.disabledHigh,
+  /**
+   * @deprecated Будет удалено, для задания цвета используйте  `labelColorTextErrorHover`
+   */
   colorTextErrorHover: compatibilityMode
     ? theme.colourway.errorHover
     : theme.sys.color.errorBeta,

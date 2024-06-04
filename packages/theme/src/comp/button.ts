@@ -250,20 +250,40 @@ export const createButton = (theme: Theme, compatibilityMode?: boolean) => ({
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusLg,
 
-  //typography
+  //typography (base)
   typographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.uiTextMd.fontFamily,
   typographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.semibold
     : theme.sys.typography.uiTextMd.fontWeight,
-  typographyFontSize: compatibilityMode
-    ? theme.typography.fontSize.button
-    : theme.sys.typography.uiTextMd.fontSize,
-  typographyLineHeight: compatibilityMode
-    ? theme.typography.lineHeight.button
-    : theme.sys.typography.uiTextMd.lineHeight,
   typographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.button
     : theme.sys.typography.uiTextMd.letterSpacing,
+
+  //typography lg
+  typographyFontSizeLg: '',
+  typographyLineHeightLg: '',
+
+  //typography md
+  typographyFontSizeMd: '',
+  typographyLineHeightMd: '',
+
+  //typography sm
+  typographyFontSizeSm: '',
+  typographyLineHeightSm: '',
+
+  //typography (old)
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyFontSizeSm`, `typographyFontSizeMd` или `typographyFontSizeLg`
+   */
+  typographyFontSize: compatibilityMode
+    ? theme.typography.fontSize.button
+    : theme.sys.typography.uiTextMd.fontSize,
+  /**
+   * @deprecated Используйте соответствующие токены, в зависимости от нужного размера: `typographyLineHeightSm`, `typographyLineHeightMd` или `typographyLineHeightLg`
+   */
+  typographyLineHeight: compatibilityMode
+    ? theme.typography.lineHeight.button
+    : theme.sys.typography.uiTextMd.lineHeight,
 })

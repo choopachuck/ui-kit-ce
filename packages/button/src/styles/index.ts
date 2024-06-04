@@ -48,8 +48,6 @@ export const getStyles = (theme: Theme): Styles => ({
     '&$textTypography': {
       fontFamily: theme.comp.button.typographyFontFamily,
       fontWeight: theme.comp.button.typographyFontWeight,
-      fontSize: theme.comp.button.typographyFontSize,
-      lineHeight: theme.comp.button.typographyLineHeight,
       letterSpacing: theme.comp.button.typographyLetterSpacing,
     },
 
@@ -59,6 +57,33 @@ export const getStyles = (theme: Theme): Styles => ({
     alignItems: 'inherit',
     justifyContent: 'inherit',
     zIndex: 2,
+  },
+
+  textSm: {
+    fontSize:
+      theme.comp.button.typographyFontSizeSm ||
+      theme.comp.button.typographyFontSize,
+    lineHeight:
+      theme.comp.button.typographyLineHeightSm ||
+      theme.comp.button.typographyLineHeight,
+  },
+
+  textMd: {
+    fontSize:
+      theme.comp.button.typographyFontSizeMd ||
+      theme.comp.button.typographyFontSize,
+    lineHeight:
+      theme.comp.button.typographyLineHeightMd ||
+      theme.comp.button.typographyLineHeight,
+  },
+
+  textLg: {
+    fontSize:
+      theme.comp.button.typographyFontSizeLg ||
+      theme.comp.button.typographyFontSize,
+    lineHeight:
+      theme.comp.button.typographyLineHeightLg ||
+      theme.comp.button.typographyLineHeight,
   },
 
   textTypography: {},
@@ -79,8 +104,6 @@ export const getStyles = (theme: Theme): Styles => ({
     width: '100%',
   },
 
-  medium: {},
-
   small: {
     paddingTop: 4,
     paddingBottom: 4,
@@ -89,6 +112,8 @@ export const getStyles = (theme: Theme): Styles => ({
     borderBottomLeftRadius: theme.comp.button.shapeBorderRadiusBottomLeftSm,
     borderBottomRightRadius: theme.comp.button.shapeBorderRadiusBottomRightSm,
   },
+
+  medium: {},
 
   large: {
     paddingTop: 12,

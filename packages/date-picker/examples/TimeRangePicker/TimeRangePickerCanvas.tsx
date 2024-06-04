@@ -9,17 +9,9 @@ const validationErrorMessages: TimePickerProps['validationErrorMessages'] = {
 }
 
 export default () => {
-  const [date, setDate] = React.useState<[Date | null, Date | null]>([
-    null,
-    null,
-  ])
-
-  const handleChange = React.useCallback(
-    (value) => {
-      setDate(value)
-    },
-    [setDate]
-  )
+  const [date, setDate] = React.useState<
+    [Date | null | number, Date | null | number]
+  >([null, null])
 
   return (
     <TimePicker.RangePicker
@@ -40,7 +32,7 @@ export default () => {
       validationErrorMessages={validationErrorMessages}
       startTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
       endTimePickerProps={{ views: ['hours', 'minutes', 'seconds'] }}
-      onChange={handleChange}
+      onChange={setDate}
     />
   )
 }

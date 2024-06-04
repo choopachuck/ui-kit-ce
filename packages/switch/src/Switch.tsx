@@ -3,7 +3,11 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { Classes } from './interfaces'
 
 const defaultWidth = 48
@@ -27,6 +31,10 @@ const useStyles = createUseStyles((theme) => ({
 
     '&:hover $switch': {
       backgroundColor: theme.comp.switch.colorBackgroundHover,
+    },
+
+    '&:active $switch': {
+      backgroundColor: theme.comp.switch.colorBackgroundActive,
     },
   },
 
@@ -195,7 +203,7 @@ const useStyles = createUseStyles((theme) => ({
 }))
 
 export interface SwitchProps
-  extends Omit<React.ComponentPropsWithRef<'label'>, 'onChange'> {
+  extends Omit<ComponentPropsWithRefFix<'label'>, 'onChange'> {
   /**
    * CSS классы компонента
    */

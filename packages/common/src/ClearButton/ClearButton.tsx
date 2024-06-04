@@ -5,6 +5,7 @@ import { clsx, createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { ElementSizeType, ElementSize } from '../ElementSize'
 import { ClearIcon } from './assets/ClearIcon'
+import type { ComponentPropsWithRefFix } from '../ReactTypes'
 
 const useStyles = createUseStyles({
   inputClear: {
@@ -56,7 +57,7 @@ export interface ClearButtonProps {
   /**
    * Свойства для div контейнера кнопки
    */
-  innerProps?: JSX.IntrinsicElements['div']
+  innerProps?: ComponentPropsWithRefFix<'div'>
   /**
    * Иконка для кнопки очистки
    */

@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import type { ComponentPropsWithRefFix } from '@v-uik/common'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList, useGeneratedId } from '@v-uik/hooks'
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
@@ -117,7 +118,7 @@ export type Classes = {
   indicator?: string
 }
 
-export interface TooltipProps extends React.ComponentPropsWithRef<'div'> {
+export interface TooltipProps extends ComponentPropsWithRefFix<'div'> {
   /**
    * JSS-классы для стилизации
    */

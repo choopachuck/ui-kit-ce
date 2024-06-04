@@ -4,13 +4,22 @@ import {
   createTitle,
   COMPONENTS,
   createStory,
+  DocsAlert,
 } from '../../docs/showroom/config'
-import { Multi, Single, Placement, Interactive, Accessible } from './examples'
+import {
+  Multi,
+  Single,
+  Placement,
+  Interactive,
+  Accessible,
+  CloneElement,
+} from './examples'
 import RawMulti from '!!raw-loader!@v-uik/tooltip/examples/Multi'
 import RawSingle from '!!raw-loader!@v-uik/tooltip/examples/Single'
 import RawPlacement from '!!raw-loader!@v-uik/tooltip/examples/Placement'
 import RawInteractive from '!!raw-loader!@v-uik/tooltip/examples/Interactive'
 import RawAccessible from '!!raw-loader!@v-uik/tooltip/examples/Accessible'
+import RawCloneElement from '!!raw-loader!@v-uik/tooltip/examples/CloneElement'
 
 export const story = createStory(Accessible, RawAccessible)
 
@@ -47,6 +56,12 @@ import { Tooltip } from '@v-uik/base'
 ```ts
 import { Tooltip } from '@v-uik/tooltip'
 ```
+
+<DocsAlert type="warning">
+  Компонент использует <code>React.CloneElement</code>. Перейдите к разделу{' '}
+  <a href="#механизм-reactcloneelement">Механизм React.CloneElement</a> чтобы
+  узнать подробнее
+</DocsAlert>
 
 ## Подсказки, поддерживающие несколько строк (default).
 
@@ -116,3 +131,26 @@ import { Tooltip } from '@v-uik/tooltip'
 </Canvas>
 
 <Source language="tsx" code={RawAccessible} />
+
+## Механизм `React.CloneElement`
+
+Компонент `Tooltip` использует механизм `React.CloneElement` для передаваемого `children` и ожидает в качестве `children` один `Child`.
+Для него он задает следующие свойства:
+
+| Свойство        | Описание                                                                                                                                            |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ref`           | Ссылка на DOM-узел                                                                                                                                  |
+| `onFocus`       | Функция обратного вызова, которая обрабатывает фокус элемента и вызывает обработчики `Tooltip`                                                      |
+| `onBlur`        | Функция обратного вызова, которая обрабатывает потерю фокуса у элемента и вызывает обработчики `Tooltip`                                            |
+| `aria-expanded` | Aria-атрибут, который равен `true`, если тултип раскрыт, или `false`, если тултип не раскрыт. Свойство передается при значении `interactive={true}` |
+| `aria-controls` | Aria-атрибут, который задает `Tooltip`. Свойство передается при значении `interactive={true}`                                                       |
+
+`Tooltip` накладывает ограничения на количество компонентов в `children`, так как он ожидает только один `Child`
+
+Ниже представлен пример как передать в качестве `children` пользовательскую обертку над компонентом `Button`
+
+<Canvas withSource="none">
+  <CloneElement />
+</Canvas>
+
+<Source language="tsx" code={RawCloneElement} />

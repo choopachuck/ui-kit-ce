@@ -3,7 +3,11 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
-import { ElementSize, ElementSizeType } from '@v-uik/common'
+import {
+  ElementSize,
+  ElementSizeType,
+  ComponentPropsWithRefFix,
+} from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import { warning } from '@v-uik/utils'
@@ -18,7 +22,7 @@ import { RangeDatePanel } from './components/RangeDatePanel/RangeDatePanel'
 import { RangeDatePanelMulti } from './components/RangeDatePanel/RangeDatePanelMulti'
 import { RangeDatePanelMultiDivided } from './components/RangeDatePanel/RangeDatePanelMultiDivided'
 import { CalendarIcon } from './components/CalendarIcon/CalendarIcon'
-import { InputInfinityIcon } from './components/InputInfinityIcon/InputInfinityIcon'
+import { InputInfinityButton } from './components/InputInfinityButton/InputInfinityButton'
 import { RangeInputStyle, RangeDatePanelStyle } from './constants/range'
 import {
   defaultValidationErrorMessages,
@@ -33,7 +37,11 @@ import { defaultViews } from './constants/common'
 import { useDateLibAdapter } from './hooks/useDateLibAdapter'
 import { useShouldDisableDate } from './hooks/useShouldDisableDate'
 import { useSafeRangeValue } from './hooks/useSafeValue'
-import { RangePickerClasses as Classes } from './interfaces/classes'
+import {
+  RangePickerClasses as Classes,
+  CalendarViewClasses,
+  PanelHeaderClasses,
+} from './interfaces/classes'
 import {
   useOutsideScroll,
   useMergedRefs,
@@ -105,6 +113,7 @@ const useStyles = createUseStyles((theme) => ({
 
     '&$disabled': {
       cursor: 'default',
+      backgroundColor: theme.comp.rangePicker.inputColorBackgroundDisabled,
 
       '&::after': {
         borderColor: theme.comp.rangePicker.inputColorBorderDisabled,
@@ -127,6 +136,8 @@ const useStyles = createUseStyles((theme) => ({
       },
 
       '&$error': {
+        backgroundColor: theme.comp.rangePicker.inputColorBackgroundError,
+
         '&::after': {
           borderColor: theme.comp.rangePicker.inputColorBorderError,
         },
@@ -193,6 +204,9 @@ const useStyles = createUseStyles((theme) => ({
     '&$inputDisabled': {
       backgroundColor: 'transparent',
     },
+    '&$inputError:not($inputDisabled)': {
+      backgroundColor: 'transparent',
+    },
     '&::after': {
       borderWidth: 0,
     },
@@ -205,6 +219,7 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   inputFocused: {},
+  inputError: {},
 
   inputStart: {
     paddingRight: 8,
@@ -241,7 +256,7 @@ export interface RangePickerProps<TDate = unknown>
       'label' | 'labelProps' | 'helperText' | 'helperTextProps'
     >,
     ValidateDateProps<TDate>,
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
+    Omit<ComponentPropsWithRefFix<'div'>, 'onChange'>,
     Omit<LabelledProps, 'children' | 'classes'> {
   /**
    * CSS классы для стилизации
@@ -282,6 +297,18 @@ export interface RangePickerProps<TDate = unknown>
    * Скрывать дропдаун при скроле вне дропдауна
    */
   hideDropdownOnOutsideScroll?: boolean
+  /**
+   * Вспомогательный элемент после поля ввода
+   */
+  suffix?: React.ReactNode
+  /**
+   * CSS классы для стилизации сетки календаря
+   */
+  calendarViewClasses?: CalendarViewClasses
+  /**
+   * CSS классы для стилизации компонента PanelHeader
+   */
+  panelHeaderClasses?: PanelHeaderClasses
 }
 
 interface IRangePicker
@@ -349,8 +376,11 @@ export const RangePicker = React.forwardRef(
       hideDropdownOnOutsideScroll = false,
       description,
       labelledClasses,
+      calendarViewClasses,
+      panelHeaderClasses,
       keepHelperTextMinHeight,
       required,
+      suffix,
       ...rest
     } = props
 
@@ -551,6 +581,7 @@ export const RangePicker = React.forwardRef(
         classesList.inputDisabled,
         startInputProps?.classes?.disabled
       ),
+      error: clsx(classesList.inputError, startInputProps?.classes?.error),
     }
 
     const endInputClasses: InputBaseProps['classes'] = {
@@ -565,6 +596,7 @@ export const RangePicker = React.forwardRef(
         classesList.inputDisabled,
         endInputProps?.classes?.disabled
       ),
+      error: clsx(classesList.inputError, endInputProps?.classes?.error),
     }
 
     const nativeInputPropsStart: InputBaseProps['inputProps'] = {
@@ -640,6 +672,8 @@ export const RangePicker = React.forwardRef(
     const content = (
       <RangeDatePanelComponent<TDate>
         ref={panelRef}
+        calendarViewClasses={calendarViewClasses}
+        panelHeaderClasses={panelHeaderClasses}
         existedViews={existedViews}
         range={selectedRange}
         activeInputIndex={activeInputIndex}
@@ -655,7 +689,7 @@ export const RangePicker = React.forwardRef(
     )
 
     const startSuffix = allowInfinity ? (
-      <InputInfinityIcon
+      <InputInfinityButton
         isInfinity={isStartInfinity}
         index={0}
         setSelectedRangeByIndex={
@@ -669,7 +703,7 @@ export const RangePicker = React.forwardRef(
     )
 
     const endSuffix = allowInfinity ? (
-      <InputInfinityIcon
+      <InputInfinityButton
         isInfinity={isEndInfinity}
         index={1}
         setSelectedRangeByIndex={
@@ -717,6 +751,7 @@ export const RangePicker = React.forwardRef(
     return (
       <div {...rest} ref={mergedRootRefs} className={className}>
         <Labelled
+          size={size}
           classes={labelledClasses}
           label={label}
           helperText={helperText}
@@ -782,7 +817,7 @@ export const RangePicker = React.forwardRef(
                         />
                       )
                     : null}
-                  <CalendarIcon />
+                  {suffix ?? <CalendarIcon />}
                 </div>
               </div>
             )}

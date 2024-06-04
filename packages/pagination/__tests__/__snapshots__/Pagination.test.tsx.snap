@@ -1,0 +1,392 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pagination components renders divider component correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "className": "pagination-selectedIndicator-0-2-8 pagination-selectedIndicatorMedium-0-2-10",
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": null,
+    },
+  ],
+}
+`;
+
+exports[`pagination components renders navigation first component correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "aria-label": "Go to first page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonFirst-0-2-15 pagination-itemDisabled-0-2-17",
+        "disabled": true,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": null,
+    },
+  ],
+}
+`;
+
+exports[`pagination components renders navigation last component correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "aria-label": "Go to first page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonFirst-0-2-15 pagination-itemDisabled-0-2-17",
+        "disabled": true,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "aria-label": "Go to last page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonLast-0-2-16",
+        "disabled": false,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+  ],
+}
+`;
+
+exports[`pagination components renders navigation next component correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "aria-label": "Go to first page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonFirst-0-2-15 pagination-itemDisabled-0-2-17",
+        "disabled": true,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "aria-label": "Go to last page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonLast-0-2-16",
+        "disabled": false,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "aria-label": "Go to previous page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonPrevious-0-2-13 pagination-itemDisabled-0-2-17",
+        "disabled": true,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "aria-label": "Go to next page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonNext-0-2-14",
+        "disabled": false,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+  ],
+}
+`;
+
+exports[`pagination components renders navigation previous component correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "aria-label": "Go to first page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonFirst-0-2-15 pagination-itemDisabled-0-2-17",
+        "disabled": true,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "aria-label": "Go to last page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonLast-0-2-16",
+        "disabled": false,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "aria-label": "Go to previous page",
+        "children": <Unknown />,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-navigationButton-0-2-12 pagination-navigationButtonPrevious-0-2-13 pagination-itemDisabled-0-2-17",
+        "disabled": true,
+        "isEnd": false,
+        "isStart": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+  ],
+}
+`;
+
+exports[`pagination components renders overflow component correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "appearance": "overflow-start",
+        "children": "...",
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-itemOverflow-0-2-7",
+        "disabled": false,
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "appearance": "overflow-end",
+        "children": "...",
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 pagination-itemOverflow-0-2-7",
+        "disabled": false,
+        "size": "md",
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+  ],
+}
+`;
+
+exports[`pagination components renders page component correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "appearance": "item",
+        "aria-label": "Go to page 1",
+        "children": 1,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 resetButton-0-2-19 pagination-item-0-2-2 pagination-itemSelected-0-2-6",
+        "disabled": false,
+        "indicator": <ForwardRef
+          className="pagination-selectedIndicator-0-2-8 pagination-selectedIndicatorMedium-0-2-10"
+        />,
+        "isSelected": true,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "appearance": "item",
+        "aria-label": "Go to page 2",
+        "children": 2,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 resetButton-0-2-19 pagination-item-0-2-2",
+        "disabled": false,
+        "indicator": <ForwardRef
+          className="pagination-selectedIndicator-0-2-8 pagination-selectedIndicatorMedium-0-2-10"
+        />,
+        "isSelected": false,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "appearance": "item",
+        "aria-label": "Go to page 3",
+        "children": 3,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 resetButton-0-2-19 pagination-item-0-2-2",
+        "disabled": false,
+        "indicator": <ForwardRef
+          className="pagination-selectedIndicator-0-2-8 pagination-selectedIndicatorMedium-0-2-10"
+        />,
+        "isSelected": false,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "appearance": "item",
+        "aria-label": "Go to page 4",
+        "children": 4,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 resetButton-0-2-19 pagination-item-0-2-2",
+        "disabled": false,
+        "indicator": <ForwardRef
+          className="pagination-selectedIndicator-0-2-8 pagination-selectedIndicatorMedium-0-2-10"
+        />,
+        "isSelected": false,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "appearance": "item",
+        "aria-label": "Go to page 5",
+        "children": 5,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 resetButton-0-2-19 pagination-item-0-2-2",
+        "disabled": false,
+        "indicator": <ForwardRef
+          className="pagination-selectedIndicator-0-2-8 pagination-selectedIndicatorMedium-0-2-10"
+        />,
+        "isSelected": false,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+    Array [
+      Object {
+        "appearance": "item",
+        "aria-label": "Go to page 10",
+        "children": 10,
+        "className": "resetButton-0-2-19 pagination-item-0-2-2 pagination-itemMedium-0-2-4 resetButton-0-2-19 pagination-item-0-2-2",
+        "disabled": false,
+        "indicator": <ForwardRef
+          className="pagination-selectedIndicator-0-2-8 pagination-selectedIndicatorMedium-0-2-10"
+        />,
+        "isSelected": false,
+        "onPageChange": [Function],
+        "size": "md",
+      },
+      Object {},
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+    Object {
+      "type": "return",
+      "value": null,
+    },
+  ],
+}
+`;
