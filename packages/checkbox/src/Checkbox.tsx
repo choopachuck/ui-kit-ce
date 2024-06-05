@@ -8,13 +8,16 @@ import {
   CheckboxGroupContextValue,
 } from '@v-uik/checkbox-group'
 import { CheckedIcon, IndeterminateIcon } from './icons'
-import { Classes } from './classes'
+import type { Classes } from './classes'
 
 const useStyles = createUseStyles((theme) => ({
   control: {
+    width: 24,
+    height: 24,
     position: 'relative',
     display: 'inline-flex',
     alignItems: 'center',
+    justifyContent: 'center',
     boxSizing: 'border-box',
     cursor: 'pointer',
 
@@ -31,8 +34,8 @@ const useStyles = createUseStyles((theme) => ({
     opacity: 0,
     margin: 0,
     zIndex: 5,
-    width: 20,
-    height: 20,
+    width: 21,
+    height: 21,
 
     '&:disabled': {
       cursor: 'default',
@@ -175,8 +178,8 @@ const useStyles = createUseStyles((theme) => ({
 
   checkbox: {
     flexShrink: 0,
-    width: 20,
-    height: 20,
+    width: 21,
+    height: 21,
     boxSizing: 'border-box',
     backgroundColor: theme.comp.checkbox.colorBackground,
     zIndex: 1,
