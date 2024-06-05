@@ -10,6 +10,12 @@ const Editable = () => {
     setValue(val === null ? undefined : val)
   }
 
+  const handleKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (event) => {
+    if (event.key === 'ArrowDown') {
+      handleChange(444)
+    }
+  }
+
   return (
     <>
       <button type="button" onClick={() => setValue(50)}>
@@ -21,6 +27,7 @@ const Editable = () => {
         decimalSeparator="."
         value={value}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
       />
     </>
   )
@@ -260,4 +267,10 @@ it('handles external change correctly', () => {
   input.blur()
 
   expect(input).toHaveValue('50.000')
+
+  input.focus()
+  // simulating external state change without blur
+  fireEvent.keyDown(input, { key: 'ArrowDown' })
+  expect(input).toHaveValue('444.000')
+  expect(input).toHaveFocus()
 })

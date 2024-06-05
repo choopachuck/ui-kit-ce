@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { isEqualKeyboardKeys, warning } from '@v-uik/utils'
 import { Input, InputChangeReason, InputProps } from '@v-uik/input'
-import { useConverter, useMergedRefs, useValue } from '@v-uik/hooks'
+import { useConverter, useMergedRefs } from '@v-uik/hooks'
+import { useInputValue } from './hooks/useInputValue'
 import { createList, formatPastedValue, Item, filterPredicate } from './utils'
 import {
   ValueType,
@@ -80,17 +81,30 @@ const _InputNumber = React.forwardRef(
           return getFormattedString(String(value), isNegativeZero)
         }
 
-        return getFormattedString(value as string, value === '-0')
+        if (
+          typeof value === 'string' ||
+          typeof value === 'undefined' ||
+          value === null
+        ) {
+          return getFormattedString(value, value === '-0')
+        }
+
+        warning(
+          false,
+          'InputNumber',
+          'тип value не соответсвует значению указанному в valueType'
+        )
+
+        return ''
       },
       [valueType, getFormattedString]
     )
 
-    const [focus, setFocus] = React.useState(false)
-    const [inputValue, setInputValue] = useValue(value, {
-      formatValueFromProp: toFormattedString,
-      fallbackValue: '',
-      useInnerState: focus,
-    })
+    const [inputValue, setInputValue, onInputBlur] = useInputValue(
+      value,
+      toFormattedString,
+      toString
+    )
 
     const [selection, setSelection] = React.useState<ISelection | null>(null)
 
@@ -319,14 +333,11 @@ const _InputNumber = React.forwardRef(
     const handleBlur = (e: React.FocusEvent<HTMLDivElement, Element>) => {
       rest.onBlur?.(e)
 
-      setInputValue(toFormattedString(value))
-      setFocus(false)
+      onInputBlur()
     }
 
     const handleFocus = (e: React.FocusEvent<HTMLDivElement, Element>) => {
       rest.onFocus?.(e)
-
-      setFocus(true)
     }
 
     return (
