@@ -81,11 +81,7 @@ const _InputNumber = React.forwardRef(
           return getFormattedString(String(value), isNegativeZero)
         }
 
-        if (
-          typeof value === 'string' ||
-          typeof value === 'undefined' ||
-          value === null
-        ) {
+        if (typeof value === 'string') {
           return getFormattedString(value, value === '-0')
         }
 
