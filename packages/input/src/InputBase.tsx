@@ -452,6 +452,13 @@ const _InputBase = React.forwardRef(
       </div>
     )
 
+    React.useEffect(() => {
+      if (disabled && focused) {
+        setFocused(false)
+        onFocusChange?.(false)
+      }
+    }, [disabled, focused, onFocusChange])
+
     return (
       <div {...rest} ref={ref} className={className} onClick={handleClick}>
         {prefix && (
