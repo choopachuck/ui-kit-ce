@@ -405,8 +405,6 @@ export const DatePicker = React.forwardRef(
       error,
     }
 
-    const isOpen = !disabled && open
-
     const handleContainerKeyDown: React.KeyboardEventHandler<HTMLDivElement> =
       React.useCallback(
         (event) => {
@@ -484,6 +482,12 @@ export const DatePicker = React.forwardRef(
       </div>
     )
 
+    React.useEffect(() => {
+      if (open && disabled) {
+        setOpen(false)
+      }
+    }, [disabled, open, setOpen])
+
     return (
       <ComponentIdContext.Provider value={componentSystemId}>
         <div {...rest} ref={mergedRootRefs} className={className}>
@@ -505,7 +509,7 @@ export const DatePicker = React.forwardRef(
               action={DropdownTriggerType.click}
               anchor={inputRef.current?.parentElement}
               {...dropdownProps}
-              open={isOpen}
+              open={open}
               content={content}
               onStateChange={onDropdownStateChange}
             >
