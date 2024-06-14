@@ -748,6 +748,12 @@ export const RangePicker = React.forwardRef(
       fullWidth,
     }
 
+    React.useEffect(() => {
+      if (disabled && open) {
+        setOpen(false)
+      }
+    }, [disabled, open, setOpen])
+
     return (
       <div {...rest} ref={mergedRootRefs} className={className}>
         <Labelled
@@ -767,7 +773,7 @@ export const RangePicker = React.forwardRef(
             placement="bottom-start"
             action={DropdownTriggerType.click}
             {...dropdownProps}
-            open={!disabled && open}
+            open={open}
             content={content}
             onStateChange={onDropdownStateChange}
           >
