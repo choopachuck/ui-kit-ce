@@ -242,7 +242,6 @@ export const ComboBox = React.forwardRef(
       helperText,
       helperTextProps,
       id,
-      inputValue: inputValueProp,
       isOptionDisabled = isOptionDisabledBuiltin,
       isSearchable,
       label,
@@ -270,12 +269,14 @@ export const ComboBox = React.forwardRef(
       opened: propsOpened,
       showArrow = true,
       showCheckMark = true,
+      inputInnerProps,
+      inputValue: inputValueProp,
       inputPrefix,
       inputSuffix,
+      clearInputOnBlur = false,
       loading,
       loadingLabel = 'Загрузка...',
       controlInnerProps = {},
-      clearInputOnBlur = false,
       isCreatableDivided,
       onMenuOpen,
       onMenuClose,
@@ -1178,6 +1179,7 @@ export const ComboBox = React.forwardRef(
               tabIndex: disabled ? -1 : 0,
               type: 'text',
               value: inputValue,
+              ...inputInnerProps,
             }}
             isDisabled={disabled}
           />
