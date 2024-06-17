@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/theme",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "",
   "main": "dist/cjs/index.js",
   "typings": "dist/esm/index.d.ts",
@@ -18,7 +18,7 @@
   "author": "UFSUI",
   "license": "ISC",
   "dependencies": {
-    "@v-uik/utils": "^1.11.0",
+    "@v-uik/utils": "^1.11.1",
     "clsx": "^1.0.0",
     "jss": "^10.6.0",
     "react-jss": "^10.9.0",
