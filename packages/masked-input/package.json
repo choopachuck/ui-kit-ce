@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/masked-input",
-  "version": "1.11.0",
+  "version": "1.11.1",
   "description": "",
   "sideEffects": false,
   "module": "dist/esm/index.js",
@@ -23,7 +23,7 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@v-uik/input": "^1.11.0",
-    "@v-uik/utils": "^1.11.0"
+    "@v-uik/input": "^1.11.1",
+    "@v-uik/utils": "^1.11.1"
   }
 }
