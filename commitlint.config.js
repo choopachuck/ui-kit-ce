@@ -16,6 +16,7 @@ module.exports = {
         'card',
         'checkbox',
         'checkbox-group',
+        'clickstream',
         'combo-box',
         'common',
         'container',

@@ -1,0 +1,38 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { Clickstream } from '@v-uik/clickstream'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import { BasicClickstream } from './examples/BasicClickstream'
+import RawBasicClickstream from '!!raw-loader!./examples/BasicClickstream'
+
+<Meta title={createTitle([COMPONENTS., 'Clickstream'])} component={Clickstream} />
+
+<Story
+  name="Clickstream"
+  parameters={{
+    docs: {
+      disable: true,
+    },
+  }}
+>
+  {(args) => <Clickstream {...args} />}
+</Story>
+
+# Clickstream
+
+Новый компонент.
+
+<ArgsTable of={Clickstream} />
+
+## import
+
+```ts
+import { Clickstream } from '@v-uik/clickstream'
+```
+
+## Пример
+
+<Canvas withSource="none">
+  <BasicClickstream />
+</Canvas>
+
+<Source language="tsx" code={RawBasicClickstream} />
