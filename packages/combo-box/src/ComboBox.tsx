@@ -1204,7 +1204,7 @@ export const ComboBox = React.forwardRef(
             size={size}
             innerProps={{
               'aria-label': 'clearButton',
-              onMouseDown: backfill ? handleForceClear : handleClear,
+              onClick: backfill ? handleForceClear : handleClear,
             }}
           />
         )

@@ -726,11 +726,11 @@ it('should remove selectValue after inputValue in correct order by clear indicat
   fireEvent.change(input, { target: { value: 'dsad' } })
 
   expect(input).toHaveValue('dsad')
-  fireEvent.mouseDown(clearButton)
+  fireEvent.click(clearButton)
   expect(input).toHaveValue('')
   expect(selectedValues.length).toBe(2)
 
-  fireEvent.mouseDown(clearButton)
+  fireEvent.click(clearButton)
   expect(input).toHaveValue('')
   expect(onChange).toBeCalledTimes(1)
   expect(onChange).toBeCalledWith([], expect.anything(), undefined, 'clear')
