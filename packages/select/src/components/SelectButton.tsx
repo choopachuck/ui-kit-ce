@@ -41,7 +41,7 @@ const useStyles = createUseStyles((theme) => ({
       },
     },
 
-    '&:focus-visible': {
+    '&:focus': {
       boxShadow: `0 0 0 2px ${theme.comp.select.inputColorShadowFocus}`,
 
       '&::after': {
