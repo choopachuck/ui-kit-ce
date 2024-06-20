@@ -15,6 +15,7 @@ import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import { useOpenState } from './hooks/useOpenState'
 import { useTimeInput } from './hooks/useTimeInput'
 import { useSafeTimeFormat } from './hooks/useSafeTimeFormat'
+import { useHandleChangeDate } from './hooks'
 import { useDropdownStateChange } from './hooks/useDropdownStateChange'
 import { useMergedRefs, useClassList } from '@v-uik/hooks'
 import { isEqualKeyboardKeys } from '@v-uik/utils'
@@ -161,6 +162,12 @@ export const TimePicker = React.forwardRef(
       format
     )
 
+    const handleChange = useHandleChangeDate({
+      input: inputRef.current,
+      onChange,
+      format,
+    })
+
     const {
       value: inputValue,
       onChange: inputHandleChange,
@@ -168,7 +175,7 @@ export const TimePicker = React.forwardRef(
     } = useTimeInput<TDate>({
       is12HoursFormat: baseTimePickerProps?.is12HoursFormat,
       date: value as TDate,
-      changeDate: onChange,
+      changeDate: handleChange,
       format: safeFormat,
       shouldDisableTime: baseTimePickerProps?.shouldDisableTime,
       triggerOnChangeOnInvalid,
@@ -227,6 +234,8 @@ export const TimePicker = React.forwardRef(
       disabled,
       inputProps: {
         autoComplete: 'off',
+        //@ts-expect-error Компонент корректно принимает data-атрибуты
+        'data-v-uik-input-type': 'time',
         ...propsInputProps?.inputProps,
         role: 'combobox',
         'aria-haspopup': 'dialog',
@@ -293,7 +302,7 @@ export const TimePicker = React.forwardRef(
                         )
                       }, 0)
                     }}
-                    onChange={onChange}
+                    onChange={handleChange}
                   />
                 </TrapFocus>
               </div>

@@ -49,6 +49,7 @@ import {
   useClassList,
 } from '@v-uik/hooks'
 import { Labelled, LabelledProps } from '@v-uik/labelled'
+import { useHandleChangeRangeDate } from './hooks'
 
 const useStyles = createUseStyles((theme) => ({
   root: {},
@@ -410,6 +411,15 @@ export const RangePicker = React.forwardRef(
     const startInputRef = React.useRef<HTMLInputElement>(null)
     const endInputRef = React.useRef<HTMLInputElement>(null)
 
+    const mergedStartInputRefs = useMergedRefs([
+      startInputRef,
+      startInputProps?.inputRef ?? null,
+    ])
+    const mergedEndInputRefs = useMergedRefs([
+      endInputRef,
+      endInputProps?.inputRef ?? null,
+    ])
+
     const isDividedStyle = inputStyle === RangeInputStyle.divided
 
     const isMobile = useMobileView()
@@ -475,6 +485,12 @@ export const RangePicker = React.forwardRef(
       []
     )
 
+    const handleChange = useHandleChangeRangeDate<TDate>({
+      inputs: [startInputRef.current, endInputRef.current],
+      format,
+      onChange: onChange as (date: TRangeDate<TDate>) => void,
+    })
+
     const {
       selectedRange,
       setSelectedRangeByIndex,
@@ -482,8 +498,7 @@ export const RangePicker = React.forwardRef(
       validationErrorStart,
     } = useSelectRange<TDate>({
       value,
-      //TODO: приведение для обратной совместимости кривых типов, удалить в 2.0
-      onChange: onChange as (date: TRangeDate<TDate>) => void,
+      onChange: handleChange,
       onChangeByIndex,
       rawValue,
       minDate,
@@ -722,8 +737,12 @@ export const RangePicker = React.forwardRef(
       ...startInputProps,
       classes: startInputClasses,
       disabled,
-      inputRef: startInputRef,
-      inputProps: nativeInputPropsStart,
+      inputRef: mergedStartInputRefs,
+      inputProps: {
+        //@ts-expect-error Компонент корректно принимает data-атрибуты
+        'data-v-uik-input-type': 'range-start',
+        ...nativeInputPropsStart,
+      },
       onFocusChange: debouncedSetFocused,
       suffix: startSuffix,
       size,
@@ -738,8 +757,12 @@ export const RangePicker = React.forwardRef(
       ...endInputProps,
       classes: endInputClasses,
       disabled,
-      inputRef: endInputRef,
-      inputProps: nativeInputPropsEnd,
+      inputRef: mergedEndInputRefs,
+      inputProps: {
+        //@ts-expect-error Компонент корректно принимает data-атрибуты
+        'data-v-uik-input-type': 'range-end',
+        ...nativeInputPropsEnd,
+      },
       onFocusChange: debouncedSetFocused,
       suffix: endSuffix,
       size,

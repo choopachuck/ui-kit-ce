@@ -1,4 +1,5 @@
 import { useDateLibAdapter } from './useDateLibAdapter'
+import { formatDate } from '../utils/date'
 
 /**
  * Определяет стандартное поведение для форматирования даты в поле ввода
@@ -11,19 +12,5 @@ export const useFormat = <TDate = unknown>(
 ): string => {
   const adapter = useDateLibAdapter<TDate>()
 
-  if (!date) {
-    return placeholder
-  }
-
-  try {
-    const adapterDate = adapter.date(date) as TDate
-
-    if (format === 'keyboardDate') {
-      return adapter.format(adapterDate, format)
-    }
-
-    return adapter.formatByString(adapterDate, format)
-  } catch (e) {
-    return placeholder
-  }
+  return formatDate(adapter, date, format, placeholder)
 }

@@ -254,7 +254,7 @@ export class MaskedInputCore {
     return true
   }
 
-  delete(): boolean {
+  delete(silent = false): boolean {
     // Нельзя ничего удалить в конце значения.
     if (
       this.selection.end === this.selection.start &&
@@ -312,30 +312,32 @@ export class MaskedInputCore {
     }
 
     // История.
-    if (this.historyIndex !== -1) {
-      // Значение изменено после отмены, так что удаляем последующую историю.
-      this.history.splice(
-        this.historyIndex,
-        this.history.length - this.historyIndex
-      )
-    }
-    if (
-      this.lastOperation !== 'delete' ||
-      selectionBefore.start !== selectionBefore.end ||
-      (this.lastSelection !== null &&
-        selectionBefore.start !== this.lastSelection.start)
-    ) {
-      this.history.push({
-        value: valueBefore,
-        selection: selectionBefore,
-        lastOperation: this.lastOperation,
-        startUndo: false,
-      })
-    }
-    this.lastOperation = 'delete'
-    this.lastSelection = {
-      start: this.selection.start,
-      end: this.selection.end,
+    if (!silent) {
+      if (this.historyIndex !== -1) {
+        // Значение изменено после отмены, так что удаляем последующую историю.
+        this.history.splice(
+          this.historyIndex,
+          this.history.length - this.historyIndex
+        )
+      }
+      if (
+        this.lastOperation !== 'delete' ||
+        selectionBefore.start !== selectionBefore.end ||
+        (this.lastSelection !== null &&
+          selectionBefore.start !== this.lastSelection.start)
+      ) {
+        this.history.push({
+          value: valueBefore,
+          selection: selectionBefore,
+          lastOperation: this.lastOperation,
+          startUndo: false,
+        })
+      }
+      this.lastOperation = 'delete'
+      this.lastSelection = {
+        start: this.selection.start,
+        end: this.selection.end,
+      }
     }
 
     return true
@@ -345,7 +347,7 @@ export class MaskedInputCore {
    * Пытаемся удалить символ относительно текущей позиции курсора(выделения) для текущего значения.
    * @return {boolean} Возвращает true, если в результате значение было изменено.
    */
-  backspace(): boolean {
+  backspace(silent = false): boolean {
     // Если курсор в начале значения, то ничего не делаем.
     if (this.selection.start === 0 && this.selection.end === 0) {
       return false
@@ -395,30 +397,32 @@ export class MaskedInputCore {
     }
 
     // История.
-    if (this.historyIndex !== -1) {
-      // Значение изменено после отмены, так сто удаляем последующую историю.
-      this.history.splice(
-        this.historyIndex,
-        this.history.length - this.historyIndex
-      )
-    }
-    if (
-      this.lastOperation !== 'backspace' ||
-      selectionBefore.start !== selectionBefore.end ||
-      (this.lastSelection !== null &&
-        selectionBefore.start !== this.lastSelection.start)
-    ) {
-      this.history.push({
-        value: valueBefore,
-        selection: selectionBefore,
-        lastOperation: this.lastOperation,
-        startUndo: false,
-      })
-    }
-    this.lastOperation = 'backspace'
-    this.lastSelection = {
-      start: this.selection.start,
-      end: this.selection.end,
+    if (!silent) {
+      if (this.historyIndex !== -1) {
+        // Значение изменено после отмены, так сто удаляем последующую историю.
+        this.history.splice(
+          this.historyIndex,
+          this.history.length - this.historyIndex
+        )
+      }
+      if (
+        this.lastOperation !== 'backspace' ||
+        selectionBefore.start !== selectionBefore.end ||
+        (this.lastSelection !== null &&
+          selectionBefore.start !== this.lastSelection.start)
+      ) {
+        this.history.push({
+          value: valueBefore,
+          selection: selectionBefore,
+          lastOperation: this.lastOperation,
+          startUndo: false,
+        })
+      }
+      this.lastOperation = 'backspace'
+      this.lastSelection = {
+        start: this.selection.start,
+        end: this.selection.end,
+      }
     }
 
     return true

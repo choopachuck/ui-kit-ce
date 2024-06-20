@@ -159,3 +159,26 @@ export const getDateByActiveInputIndex = <TDate extends unknown>(
     : rangeDate[activeInputIndex] ??
         rangeDate[inverseRangeIndex[activeInputIndex]]
 }
+
+export function formatDate<TDate = unknown>(
+  adapter: CustomUtils<TDate>,
+  date: Date | TDate,
+  format = 'keyboardDate',
+  placeholder = ''
+): string {
+  if (!date) {
+    return placeholder
+  }
+
+  try {
+    const adapterDate = adapter.date(date) as TDate
+
+    if (format === 'keyboardDate') {
+      return adapter.format(adapterDate, format)
+    }
+
+    return adapter.formatByString(adapterDate, format)
+  } catch (e) {
+    return placeholder
+  }
+}

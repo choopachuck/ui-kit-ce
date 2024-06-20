@@ -15,13 +15,13 @@ import { ErrorIcon } from './components/ErrorIcon/ErrorIcon'
 import { useShouldDisableRangeTime } from './hooks/useShouldDisableRangeTime'
 import { TRangeDate } from './interfaces'
 import { TimePickerOwnProps } from './interfaces/time'
-import { useClassList } from '@v-uik/hooks'
+import { useClassList, useMergedRefs } from '@v-uik/hooks'
 import { isEqualKeyboardKeys } from '@v-uik/utils'
 import { RangeInputStyle, RangeInputStyleType } from './constants/range'
 import { focusSelectedTime } from './utils/time'
 import { TimeValidationErrorMessages } from './constants/common'
 import { useRangeTimeInput } from './hooks/useRangeTimeInput'
-import { useRangeTimeValidation } from './hooks'
+import { useRangeTimeValidation, useHandleChangeRangeDate } from './hooks'
 import { useDateLibAdapter } from './hooks/useDateLibAdapter'
 import { Labelled } from '@v-uik/labelled'
 
@@ -377,6 +377,14 @@ export const TimeRangePicker = React.forwardRef(
     const inputContainerRef = React.useRef<HTMLInputElement>(null)
     const startInputRef = React.useRef<HTMLInputElement>(null)
     const endInputRef = React.useRef<HTMLInputElement>(null)
+    const mergedStartInputRefs = useMergedRefs([
+      startInputRef,
+      propsStartInputProps?.inputRef ?? null,
+    ])
+    const mergedEndInputRefs = useMergedRefs([
+      endInputRef,
+      propsEndInputProps?.inputRef ?? null,
+    ])
     // Для высчитвания позиционирования относительно контейнеров
     const startInputContainerRef = React.useRef<HTMLDivElement>(null)
     const endInputContainerRef = React.useRef<HTMLDivElement>(null)
@@ -400,6 +408,12 @@ export const TimeRangePicker = React.forwardRef(
         endDisabledTime,
       })
 
+    const handleChange = useHandleChangeRangeDate<TDate>({
+      inputs: [startInputRef.current, endInputRef.current],
+      format,
+      onChange: onChange as (date: TRangeDate<TDate>) => void,
+    })
+
     // callbacks
     const onChangeByIndex = React.useCallback(
       (index: InputIndex) => (date: TDate | null) => {
@@ -414,7 +428,7 @@ export const TimeRangePicker = React.forwardRef(
         const isValueChanged = date !== value?.[index]
 
         if (isValid && isValueChanged) {
-          onChange?.(newRange)
+          handleChange(newRange, index)
         }
       },
       [
@@ -549,6 +563,8 @@ export const TimeRangePicker = React.forwardRef(
       disabled,
       inputProps: {
         autoComplete: 'off',
+        //@ts-expect-error Компонент корректно принимает data-атрибуты
+        'data-v-uik-input-type': 'time-range-start',
         ...propsStartInputProps?.inputProps,
         onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
           propsStartInputProps?.inputProps?.onFocus?.(event)
@@ -559,7 +575,7 @@ export const TimeRangePicker = React.forwardRef(
       },
       onFocusChange: handleFocus,
       size,
-      inputRef: startInputRef,
+      inputRef: mergedStartInputRefs,
       value: inputValueStart,
       onChange: inputHandleChangeStart,
       fullWidth,
@@ -573,6 +589,8 @@ export const TimeRangePicker = React.forwardRef(
       disabled,
       inputProps: {
         autoComplete: 'off',
+        //@ts-expect-error Компонент корректно принимает data-атрибуты
+        'data-v-uik-input-type': 'time-range-end',
         ...propsEndInputProps?.inputProps,
         onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
           propsEndInputProps?.inputProps?.onFocus?.(event)
@@ -584,7 +602,7 @@ export const TimeRangePicker = React.forwardRef(
       onFocusChange: handleFocus,
       size,
       value: inputValueEnd,
-      inputRef: endInputRef,
+      inputRef: mergedEndInputRefs,
       onChange: inputHandleChangeEnd,
       fullWidth,
     }

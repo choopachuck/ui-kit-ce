@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { CommonProps, ChangeEvent } from '../interfaces'
-import { MaskedInputCore } from '../core/MaskedInputCore'
-import { isEqualKeyboardKeys } from '@v-uik/utils'
+import { CommonProps, ChangeEvent } from '../../interfaces'
+import { MaskedInputCore } from '../../core/MaskedInputCore'
+import { dispatchChangeEvent } from '@v-uik/utils'
 import { InputChangeReason } from '@v-uik/input'
+import { MaskedInputAction } from './MaskedInputAction'
 
 interface IUseMaskedInputProps extends CommonProps {
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>
-  inputRef: React.RefObject<HTMLInputElement>
 }
 
 interface IUseMaskedInputResult {
@@ -37,7 +37,6 @@ export const useMaskedInput = (
     groupCharShifting,
     inputProps: inputPropsProp,
     autoSelectOnFocus,
-    inputRef,
   } = props
 
   const maskedInputCore = React.useRef<MaskedInputCore>(
@@ -90,40 +89,23 @@ export const useMaskedInput = (
     reason?: InputChangeReason
   ) => {
     const maskValue = maskedInputCore.getValue()
-    const input = inputRef.current as HTMLInputElement
+    const maskedInputAction = new MaskedInputAction(maskedInputCore, event, {
+      maskAsPlaceholder,
+    })
+    const isClear = reason === 'clear'
 
     if (maskValue === maskedInputCore.emptyValue) {
       return
     }
 
-    if (reason === 'clear') {
+    if (isClear) {
       maskedInputCore.setValue('')
     }
 
     if (mask && value !== maskValue) {
-      // Вырезание или удаление - сокращает размер значения.
-      const isDeletion = value.length < maskValue.length
+      maskedInputAction.performChange()
 
-      if (isDeletion) {
-        maskedInputCore.selection = {
-          start: Number(input.selectionStart),
-          end: Number(input.selectionStart) + maskValue.length - value.length,
-        }
-        maskedInputCore.backspace()
-      }
-
-      value = maskedInputCore.getValue()
-      input.value =
-        value === maskedInputCore.emptyValue && !maskAsPlaceholder ? '' : value
-
-      if (value) {
-        input.setSelectionRange(
-          maskedInputCore.selection.start,
-          maskedInputCore.selection.end
-        )
-      }
-
-      if (isDeletion) {
+      if (maskedInputAction.getActionType() === 'delete' || isClear) {
         emitChange(value, event, reason)
       }
     }
@@ -132,10 +114,9 @@ export const useMaskedInput = (
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const input = event.currentTarget
 
-    let oldValue: string
     let value = ''
-    let isChanged: boolean
 
+    // TODO: убрать и переделать на handleChange с использованием MaskedInputAction:: _performUndo
     if (
       (event.ctrlKey || event.metaKey) &&
       event.key.toUpperCase() === (event.shiftKey ? 'Y' : 'Z') // undo
@@ -151,11 +132,13 @@ export const useMaskedInput = (
           maskedInputCore.selection.start,
           maskedInputCore.selection.end
         )
+        dispatchChangeEvent(input, value)
         emitChange(value, event)
       }
 
       return
     } else if (
+      // TODO: убрать и переделать на handleChange с использованием MaskedInputAction:: _performRedo
       (event.ctrlKey || event.metaKey) &&
       event.key.toUpperCase() === (event.shiftKey ? 'Z' : 'Y') // redo
     ) {
@@ -170,71 +153,15 @@ export const useMaskedInput = (
           maskedInputCore.selection.start,
           maskedInputCore.selection.end
         )
+        dispatchChangeEvent(input, value)
         emitChange(value, event)
       }
 
       return
     } else if (event.ctrlKey || event.metaKey) {
       return
-    } else if (isEqualKeyboardKeys('Backspace', event.key)) {
-      event.preventDefault()
-      maskedInputCore.selection = {
-        start: Number(input.selectionStart),
-        end: Number(input.selectionEnd),
-      }
-      oldValue = input.value
-      isChanged = false
-
-      while (maskedInputCore.backspace()) {
-        isChanged = true
-        value = maskedInputCore.getValue()
-        value =
-          value === maskedInputCore.emptyValue && !maskAsPlaceholder
-            ? ''
-            : value
-
-        if (value !== oldValue) {
-          break
-        }
-      }
-
-      if (isChanged) {
-        input.value = value
-        if (value) {
-          input.setSelectionRange(
-            maskedInputCore.selection.start,
-            maskedInputCore.selection.end
-          )
-        }
-        emitChange(value, event)
-      }
-
-      return
-    } else if (isEqualKeyboardKeys('Delete', event.key)) {
-      event.preventDefault()
-      maskedInputCore.selection = {
-        start: Number(input.selectionStart),
-        end: Number(input.selectionEnd),
-      }
-      oldValue = input.value
-      maskedInputCore.delete()
-      value = maskedInputCore.getValue()
-      value =
-        value === maskedInputCore.emptyValue && !maskAsPlaceholder ? '' : value
-
-      if (value !== oldValue) {
-        input.value = value
-        if (value) {
-          input.setSelectionRange(
-            maskedInputCore.selection.start,
-            maskedInputCore.selection.end
-          )
-        }
-        emitChange(value, event)
-      }
-
-      return
     } else {
+      // TODO: убрать и переделать на handleChange с использованием MaskedInputAction:: _performInput
       maskedInputCore.selection = {
         start: Number(input.selectionStart),
         end: Number(input.selectionEnd),
@@ -277,6 +204,7 @@ export const useMaskedInput = (
           maskedInputCore.selection.start,
           maskedInputCore.selection.end
         )
+        dispatchChangeEvent(input, value)
         emitChange(value, event)
       }
     }

@@ -20,6 +20,14 @@ export const DateTimePicker = React.forwardRef(
       <DatePicker
         ref={ref}
         {...datePickerProps}
+        inputProps={{
+          ...datePickerProps?.inputProps,
+          inputProps: {
+            //@ts-expect-error Компонент корректно принимает data-атрибуты
+            'data-v-uik-input-type': 'date-time',
+            ...datePickerProps?.inputProps?.inputProps,
+          },
+        }}
         timePickerProps={timePickerProps ?? {}}
       />
     )

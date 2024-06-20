@@ -49,6 +49,7 @@ import { useMobileView } from './hooks/useMobileView'
 import { MobileCalendarPicker } from './components/MobileCalendar/MobileCalendarPicker'
 import { focusSelectedTime } from './utils/time'
 import { Labelled, LabelledProps } from '@v-uik/labelled'
+import { useHandleChangeDate } from './hooks'
 
 const useStyles = createUseStyles((theme) => ({
   root: {},
@@ -271,13 +272,19 @@ export const DatePicker = React.forwardRef(
       adapter
     )
 
+    const handleChange = useHandleChangeDate({
+      input: inputRef.current,
+      onChange,
+      format,
+    })
+
     const {
       value: inputValue,
       onChange: inputHandleChange,
       validationError,
     } = useMaskedInput<TDate>({
       date: rawValue,
-      changeDate: onChange,
+      changeDate: handleChange,
       format,
       mask,
       minDate,
@@ -397,6 +404,8 @@ export const DatePicker = React.forwardRef(
       inputProps: {
         autoComplete: 'off',
         role: 'combobox',
+        //@ts-expect-error Компонент корректно принимает data-атрибуты
+        'data-v-uik-input-type': 'date',
         'aria-haspopup': 'dialog',
         'aria-expanded': open,
         ...nativeInputProps,
@@ -445,7 +454,7 @@ export const DatePicker = React.forwardRef(
               renderDay={renderDay}
               externalComponentsProps={externalComponentsProps}
               timePickerProps={timePickerProps}
-              onChange={onChange}
+              onChange={handleChange}
               onChangeDay={close}
               onChangeMonth={scheduleFocusDateOnOpen}
             />
@@ -458,7 +467,7 @@ export const DatePicker = React.forwardRef(
               shouldDisableDate={shouldDisableDate}
               renderDay={renderDay}
               externalComponentsProps={externalComponentsProps}
-              onChange={onChange}
+              onChange={handleChange}
               onChangeDay={close}
               onChangeMonth={scheduleFocusDateOnOpen}
             />
@@ -473,7 +482,7 @@ export const DatePicker = React.forwardRef(
                 classes={{ root: classesMap.timePickerRoot }}
                 {...timePickerProps}
                 value={value}
-                onChange={onChange}
+                onChange={handleChange}
                 onClickLastNumberColumn={() => setOpen(false)}
               />
             </div>

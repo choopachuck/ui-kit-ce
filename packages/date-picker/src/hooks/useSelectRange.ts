@@ -14,7 +14,7 @@ import { DateValidationError } from '../constants/common'
 interface IUseSelectRangeProps<TDate = unknown>
   extends UseRangeMaskedInputValidationProps<TDate> {
   value: [ParsableDate<TDate>, ParsableDate<TDate>]
-  onChange?: (date: TRangeDate<TDate>) => void
+  onChange?: (date: TRangeDate<TDate>, index: 0 | 1) => void
   onChangeByIndex?: (date: TRangeDate<TDate>, index: 0 | 1) => void
   rawValue?: [ParsableDate<TDate>, ParsableDate<TDate>]
   triggerOnChangeOnInvalid?: boolean
@@ -114,7 +114,7 @@ export const useSelectRange = <TDate = unknown>({
   ) => {
     if (overrideRange) {
       setSelectedRange(overrideRange)
-      onChange?.(overrideRange)
+      onChange?.(overrideRange, index)
       onChangeByIndex?.(overrideRange, index)
 
       return
@@ -133,7 +133,7 @@ export const useSelectRange = <TDate = unknown>({
     newRange[index] = isValidDate ? rawValue : null
     setSelectedRange(newRange)
     if (!validationErrors || triggerOnChangeOnInvalid) {
-      onChange?.(rawNewRange)
+      onChange?.(rawNewRange, index)
     }
 
     //перекинуть фокус на след инпут, если ввод валидный
