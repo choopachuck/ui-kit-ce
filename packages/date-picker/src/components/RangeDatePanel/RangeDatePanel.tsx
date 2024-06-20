@@ -25,6 +25,7 @@ import {
   CalendarViewClasses,
   PanelHeaderClasses,
 } from '../../interfaces/classes'
+import { getDateByActiveInputIndex } from '../../utils/date'
 
 export interface Props<TDate = unknown>
   extends ValidateDateProps<TDate>,
@@ -100,7 +101,7 @@ export const RangeDatePanel = React.forwardRef(
     const adapter = useDateLibAdapter<TDate>()
 
     const { currentViewDate, setCurrentViewDate } = useCurrentViewDate<TDate>(
-      range?.[0] || range?.[1]
+      getDateByActiveInputIndex(range, activeInputIndex)
     )
 
     const { hoverDate, setHoverDate } = useHoverState<TDate>(
@@ -133,9 +134,7 @@ export const RangeDatePanel = React.forwardRef(
       isDateInRange,
       isDateInHoverRange,
       isMonthDisabled,
-      isMonthSelected,
       isYearDisabled,
-      isYearSelected,
     } = useRangeDateCheckState<TDate>({
       range,
       activeInputIndex,
@@ -189,10 +188,6 @@ export const RangeDatePanel = React.forwardRef(
               fullHeight={existedViews?.day || existedViews?.year}
               currentViewDate={currentViewDate}
               isMonthDisabled={isMonthDisabled}
-              isMonthSelected={isMonthSelected}
-              isInRange={isDateInRange}
-              isInHoverRange={isDateInHoverRange}
-              setHoverDate={setHoverDate}
               onClickMonth={onSelectMonth}
             />
           )}
@@ -203,10 +198,6 @@ export const RangeDatePanel = React.forwardRef(
               minDate={minDate}
               maxDate={maxDate}
               isYearDisabled={isYearDisabled}
-              isYearSelected={isYearSelected}
-              isInRange={isDateInRange}
-              isInHoverRange={isDateInHoverRange}
-              setHoverDate={setHoverDate}
               onClickYear={onSelectYear}
             />
           )}
