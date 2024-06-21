@@ -58,14 +58,6 @@ export const DropdownMenu = React.forwardRef(
 
     const [open, setOpen] = useValue(openProp)
 
-    const modifiers = React.useMemo<DropdownProps['modifiers']>(() => {
-      if (modifiersProp) {
-        return [...defaultModifiers, ...modifiersProp]
-      }
-
-      return defaultModifiers
-    }, [modifiersProp])
-
     const handleSetOpen = (value: boolean) => {
       setOpen(value)
       onStateChangeProp?.(value)
@@ -87,6 +79,10 @@ export const DropdownMenu = React.forwardRef(
         }
       }
     }
+
+    const modifiers = React.useMemo<DropdownProps['modifiers']>(() => {
+      return [...defaultModifiers, ...(modifiersProp || [])]
+    }, [modifiersProp])
 
     const content = (
       <DropdownMenuContext.Provider
