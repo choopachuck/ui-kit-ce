@@ -1069,7 +1069,15 @@ export const ComboBox = React.forwardRef(
           classes={{ tag: classesMap.tag, focused: classesMap.focused }}
           isFocused={isFocused}
           size={size}
-          onDelete={(e) => handleDeleteOption(e, option)}
+          deleteButtonProps={{
+            onMouseDown: (e) => {
+              e.preventDefault()
+              e.stopPropagation()
+            },
+            onClick: (e) => {
+              handleDeleteOption(e, option)
+            },
+          }}
         >
           {getOptionLabel(option)}
         </MultiValue>

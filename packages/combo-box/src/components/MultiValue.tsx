@@ -4,7 +4,7 @@ import * as React from 'react'
 import { createUseStyles } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { Tag, TagProps } from '@v-uik/tag'
-import { ElementSizeType } from '@v-uik/common'
+import { ElementSizeType, ComponentPropsWithRefFix } from '@v-uik/common'
 import { CommonProps } from '../interfaces'
 
 const useStyles = createUseStyles((theme) => ({
@@ -46,6 +46,7 @@ export type MultiValueProps<Option> = {
   isDisabled?: boolean
   isFocused?: boolean
   onDelete?: (e: React.MouseEvent<HTMLSpanElement>) => void
+  deleteButtonProps?: ComponentPropsWithRefFix<'span'>
 } & CommonProps<Option>
 
 export const MultiValue = <Option,>({
@@ -54,6 +55,7 @@ export const MultiValue = <Option,>({
   isDisabled,
   isFocused,
   onDelete,
+  deleteButtonProps,
 }: MultiValueProps<Option>): JSX.Element => {
   const classesList = useStyles()
 
@@ -75,6 +77,7 @@ export const MultiValue = <Option,>({
       classes={tagClasses}
       size="sm"
       kind="lite"
+      deleteButtonProps={deleteButtonProps || {}}
       onDelete={onDelete as TagProps['onDelete']}
     >
       {children}

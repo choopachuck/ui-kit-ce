@@ -32,17 +32,11 @@ const defaultLimitTags = 1
 
 export const Collapsible = (): JSX.Element => {
   const [value, setValue] = React.useState<Option[] | undefined>([])
-  const [limitTags, setLimitTags] = React.useState<number | undefined>(
-    defaultLimitTags
-  )
+  const [dropdownOpen, setDropdownState] = React.useState(false)
 
-  const onFocus = () => {
-    setLimitTags(undefined)
-  }
-
-  const onBlur = () => {
-    setLimitTags(defaultLimitTags)
-  }
+  const limitTags = React.useMemo(() => {
+    return dropdownOpen ? undefined : defaultLimitTags
+  }, [dropdownOpen])
 
   const classes = useStyles()
 
@@ -61,9 +55,11 @@ export const Collapsible = (): JSX.Element => {
         options={options}
         placeholder={Placeholder.MULTIPLE_SEARCHABLE}
         noOptionsText="No options"
+        dropdownProps={{
+          onStateChange: setDropdownState,
+        }}
         classes={{ inputContent: limitTags ? classes.inputContent : undefined }}
         value={value}
-        controlInnerProps={{ onFocus, onBlur }}
         onChange={(_v: string[], _e: ComboboxEvent, fullValue?: Option[]) => {
           setValue(fullValue)
         }}
