@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { clsx, useTheme, createUseStyles } from '@v-uik/theme'
-import { ElementSize } from '@v-uik/common'
+import { ElementSize, ComponentPropsWithRefFix } from '@v-uik/common'
 import {
   useMergedRefs,
   useOutsideClick,
@@ -22,7 +22,11 @@ import {
   getComponents,
 } from './components'
 import { BaseSelectProps, Option, Classes } from './interfaces'
-import { isEqualKeyboardKeys, includesKeyboardKey } from '@v-uik/utils'
+import {
+  isEqualKeyboardKeys,
+  includesKeyboardKey,
+  dispatchChangeEvent,
+} from '@v-uik/utils'
 import { useSelectModifiers } from '@v-uik/popup'
 import { Labelled } from '@v-uik/labelled'
 
@@ -204,6 +208,10 @@ export type SelectProps<
      * Свойство для переопределения компонентов `Select`
      */
     components?: SelectComponentsConfig<T, A>
+    /**
+     * Свойства для нативного элемента input
+     */
+    inputProps?: ComponentPropsWithRefFix<'input'>
   }
 
 const defaultListElement = 'ul'
@@ -211,6 +219,12 @@ const defaultListItemElement = 'li'
 
 const ARROWS_KEYS = ['ArrowUp', 'ArrowDown']
 const SUBMIT_KEYS = [' ', 'Enter']
+
+const generateInlineValue = (value: string | string[]) =>
+  (Array.isArray(value) ? value : [value]).reduce(
+    (accum, v, index) => accum.concat(index ? ', ' : '', v),
+    ''
+  )
 
 export const Select = React.forwardRef(
   <
@@ -247,6 +261,7 @@ export const Select = React.forwardRef(
       keepHelperTextMinHeight,
       required,
       components,
+      inputProps,
       ...rest
     }: SelectProps<ListElement, ListItemElement>,
     ref: React.Ref<HTMLDivElement>
@@ -288,6 +303,10 @@ export const Select = React.forwardRef(
 
     const buttonRef = React.useRef<HTMLButtonElement>(null)
     const popupRef = React.useRef<HTMLDivElement | null>(null)
+    const inputRef = React.useRef<HTMLInputElement>(null)
+    const inputMergedRef = useMergedRefs(
+      inputProps?.ref ? [inputRef, inputProps?.ref] : [inputRef]
+    )
 
     const {
       groupedOptions,
@@ -308,6 +327,16 @@ export const Select = React.forwardRef(
 
     const [isOpen, setIsOpen] = React.useState(false)
 
+    const handleChange = (
+      value: string & string[],
+      event: React.MouseEvent<HTMLElement> & React.KeyboardEvent<HTMLDivElement>
+    ) => {
+      onChange?.(value, event)
+      if (inputRef.current) {
+        dispatchChangeEvent(inputRef.current, generateInlineValue(value))
+      }
+    }
+
     const selectProps = {
       value,
       label,
@@ -325,7 +354,7 @@ export const Select = React.forwardRef(
       placeholder,
       labelledClasses,
       classes: classesMap,
-      onChange,
+      onChange: handleChange,
       multiple,
       selectButtonProps,
       opened: isOpen,
@@ -376,7 +405,7 @@ export const Select = React.forwardRef(
     /* -------------------------------------------------------------------- */
     /* -----------------------Отрисовка children--------------------------- */
     /* -------------------------------------------------------------------- */
-    const handleChange = (
+    const handleChangeValue = (
       option: Option<ListItemElement>,
       e: React.MouseEvent<HTMLElement>
     ) => {
@@ -391,7 +420,7 @@ export const Select = React.forwardRef(
       }
 
       // @ts-ignore исправить позже
-      onChange?.(temp, e)
+      handleChange?.(temp, e)
       close()
 
       // при закрытии возвращаем фокус на кнопку
@@ -454,7 +483,7 @@ export const Select = React.forwardRef(
             temp = active.value as string
           }
           // @ts-ignore исправить позже
-          onChange?.(temp, e)
+          handleChange?.(temp, e)
           close()
 
           // при закрытии возвращаем фокус на кнопку
@@ -551,7 +580,7 @@ export const Select = React.forwardRef(
 
       const handleOptionClick = (e: React.MouseEvent<HTMLElement>) => {
         if (!isOptionDisabled) {
-          handleChange(option, e)
+          handleChangeValue(option, e)
         }
 
         // eslint-disable-next-line @typescript-eslint/no-unsafe-call
@@ -591,6 +620,14 @@ export const Select = React.forwardRef(
       )
     }
 
+    const handleHiddenInputRef = (element: HTMLInputElement | null) => {
+      if (element && value) {
+        element.value = generateInlineValue(value)
+      }
+
+      return inputMergedRef(element)
+    }
+
     /**
      * Общие aria пропсы select
      */
@@ -599,6 +636,15 @@ export const Select = React.forwardRef(
       'aria-describedby': helperText ? helperTextId : undefined,
       'aria-invalid': typeof error === 'undefined' ? undefined : error,
     }
+
+    const hiddenInput = (
+      <input
+        {...inputProps}
+        ref={handleHiddenInputRef}
+        data-v-uik-input-type="select"
+        type="hidden"
+      />
+    )
 
     const content = (
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -660,6 +706,7 @@ export const Select = React.forwardRef(
           }}
         >
           {content}
+          {hiddenInput}
         </Labelled>
       )
     }
@@ -722,6 +769,7 @@ export const Select = React.forwardRef(
               {renderSelectButtonText()}
             </SelectButton>
           </Dropdown>
+          {hiddenInput}
         </Labelled>
       </div>
     )
