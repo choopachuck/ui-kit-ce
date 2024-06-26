@@ -7,12 +7,17 @@ import {
   ElementSize,
   ElementSizeType,
   ComponentPropsWithRefFix,
+  DATA_V_UIK_INPUT_TYPE,
 } from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import { warning } from '@v-uik/utils'
 import { ValidateDateProps } from './interfaces/date'
-import { BaseRangePickerProps, TRangeDate } from './interfaces/range'
+import {
+  BaseRangePickerProps,
+  TRangeDate,
+  TRangeValue,
+} from './interfaces/range'
 import { useOpenState } from './hooks/useOpenState'
 import { useSelectRange } from './hooks/useSelectRange'
 import { useRangeMaskedInput } from './hooks/useRangeMaskedInput'
@@ -514,7 +519,8 @@ export const RangePicker = React.forwardRef(
 
     const maskedRangeInputProps = {
       range: selectedRange,
-      changeDate: setSelectedRangeByIndex,
+      changeDate: (range: TRangeValue<TDate> | null, index: 0 | 1) =>
+        setSelectedRangeByIndex(range, index, undefined, 'input'),
       format,
       mask,
       rawValue,
@@ -739,8 +745,8 @@ export const RangePicker = React.forwardRef(
       disabled,
       inputRef: mergedStartInputRefs,
       inputProps: {
-        //@ts-expect-error Компонент корректно принимает data-атрибуты
-        'data-v-uik-input-type': 'range-start',
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'range-start',
         ...nativeInputPropsStart,
       },
       onFocusChange: debouncedSetFocused,
@@ -759,8 +765,8 @@ export const RangePicker = React.forwardRef(
       disabled,
       inputRef: mergedEndInputRefs,
       inputProps: {
-        //@ts-expect-error Компонент корректно принимает data-атрибуты
-        'data-v-uik-input-type': 'range-end',
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'range-end',
         ...nativeInputPropsEnd,
       },
       onFocusChange: debouncedSetFocused,

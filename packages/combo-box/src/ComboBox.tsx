@@ -2,12 +2,17 @@
 
 import * as React from 'react'
 import { clsx, createUseStyles } from '@v-uik/theme'
-import { ElementSize } from '@v-uik/common'
+import { ElementSize, DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 import { InputAffix, InputAffixType } from '@v-uik/input'
 import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
 import { CircularProgress } from '@v-uik/progress'
 import { ListProps, scrollElement } from '@v-uik/list'
-import { includesKeyboardKey, isEqualKeyboardKeys, warning } from '@v-uik/utils'
+import {
+  includesKeyboardKey,
+  isEqualKeyboardKeys,
+  warning,
+  dispatchChangeEvent,
+} from '@v-uik/utils'
 import { ComboBoxOptionIcon } from './assets/ComboBoxOptionIcon'
 
 import { useSelectModifiers } from '@v-uik/popup'
@@ -33,6 +38,8 @@ import {
   Options,
   TruncateProps,
   ComboboxChangeReason,
+  SingleValue,
+  MultiValue,
 } from './interfaces'
 import {
   getOptionLabel as getOptionLabelBuiltin,
@@ -284,6 +291,7 @@ export const ComboBox = React.forwardRef(
       labelledClasses,
       keepHelperTextMinHeight,
       required,
+      inputProps,
       ...rest
     }: ComboboxProps<Option, ListElement, ListItemElement>,
     ref: React.Ref<HTMLDivElement>
@@ -372,6 +380,12 @@ export const ComboBox = React.forwardRef(
     const popupRef = React.useRef<HTMLDivElement | null>(null)
     const indexOfSelected = React.useRef<number>()
     const listRef = React.useRef<HTMLElement | null>(null)
+
+    const hiddenInputRef = React.useRef<HTMLInputElement>(null)
+    const hiddenInputMergedRef = useMergedRefs([
+      hiddenInputRef,
+      inputProps?.ref ?? null,
+    ])
 
     const [focused, setFocused] = React.useState(false)
     const [opened, setOpened] = React.useState<boolean>(false)
@@ -590,13 +604,37 @@ export const ComboBox = React.forwardRef(
     const mergedListRef = useMergedRefs([listProps?.ref, handleListRef])
     const mergedControlRef = useMergedRefs([inputRootRef, refOutsideClick])
 
+    const generateInlineValue = (value: Options<Option> | undefined) =>
+      value
+        ? (Array.isArray(value) ? value : [value]).reduce(
+            (accum, v, index) =>
+              accum.concat(index ? ', ' : '', getOptionLabel(v)),
+            ''
+          )
+        : ''
+
     // ==============================
     // Функции управления состоянием
     // ==============================
 
+    const handleChange = (
+      value: string & string[],
+      e: ComboboxEvent,
+      fullValue?: SingleValue<Option> & MultiValue<Option>,
+      reason?: ComboboxChangeReason
+    ) => {
+      onChange?.(value, e, fullValue, reason)
+      if (hiddenInputRef.current) {
+        dispatchChangeEvent(
+          hiddenInputRef.current,
+          generateInlineValue(fullValue)
+        )
+      }
+    }
+
     const handleChangeInputValue = (
       value: string,
-      event?: ComboBoxInputEvent
+      event: ComboBoxInputEvent = 'input'
     ) => {
       if (value !== inputValue) {
         onInputChange?.(value, event)
@@ -649,7 +687,7 @@ export const ComboBox = React.forwardRef(
 
       //TODO: исправить когда обновится версия тс
       // @ts-ignore
-      onChange?.(
+      handleChange(
         // @ts-ignore
         valueTernary(multiple, resultValues, resultValues[0] ?? ''),
         event,
@@ -658,7 +696,7 @@ export const ComboBox = React.forwardRef(
       )
     }
 
-    const handleOptionMouseDown = (option: Option, event: ComboboxEvent) => {
+    const handleOptionClick = (option: Option, event: ComboboxEvent) => {
       if (isOptionDisabled(option)) {
         return
       }
@@ -679,12 +717,12 @@ export const ComboBox = React.forwardRef(
       event.stopPropagation()
 
       if (inputValue) {
-        handleChangeInputValue('')
+        handleChangeInputValue('', 'select-clear')
       } else {
         setSelectedValue([])
         //TODO: исправить когда обновится версия тс
         // @ts-ignore
-        onChange?.(valueTernary(multiple, [], ''), event, undefined, 'clear')
+        handleChange(valueTernary(multiple, [], ''), event, undefined, 'clear')
       }
 
       // сбрасываем активный элемент в 0
@@ -700,10 +738,10 @@ export const ComboBox = React.forwardRef(
       }
       event.stopPropagation()
 
-      handleChangeInputValue('')
+      handleChangeInputValue('', 'select-clear')
       setSelectedValue([])
       //TODO: исправить когда обновится версия тс
-      onChange?.(
+      handleChange(
         // @ts-ignore
         valueTernary(multiple, [], ''),
         event,
@@ -738,7 +776,7 @@ export const ComboBox = React.forwardRef(
       setFocused(false)
 
       if (clearInputOnBlur) {
-        handleChangeInputValue('')
+        handleChangeInputValue('', 'select-clear')
       }
 
       // сбрасывает значение, после ухода фокуса с компонента
@@ -873,7 +911,7 @@ export const ComboBox = React.forwardRef(
           }
 
           if (document.activeElement !== inputRef.current || !inputValue) {
-            handleChangeInputValue('')
+            handleChangeInputValue('', 'delete-clear')
           }
 
           setSelectedValue([])
@@ -1374,10 +1412,27 @@ export const ComboBox = React.forwardRef(
           loadingLabel={loadingLabel}
           loading={loading}
           OptionItemComponent={OptionItem}
-          onSelectOption={handleOptionMouseDown}
+          onSelectOption={handleOptionClick}
         />
       )
     }
+
+    const handleHiddenInputRef = (element: HTMLInputElement | null) => {
+      if (element && selectedValue && !element.value) {
+        element.value = generateInlineValue(selectedValue)
+      }
+
+      return hiddenInputMergedRef(element)
+    }
+
+    const hiddenInput = (
+      <input
+        {...{ [DATA_V_UIK_INPUT_TYPE]: 'combo-box' }}
+        {...inputProps}
+        ref={handleHiddenInputRef}
+        type="hidden"
+      />
+    )
 
     return (
       <SelectContainer
@@ -1496,6 +1551,7 @@ export const ComboBox = React.forwardRef(
               )}
             </Control>
           </Dropdown>
+          {hiddenInput}
         </Labelled>
       </SelectContainer>
     )

@@ -22,6 +22,21 @@ export type UseHandleChangeDateProps<TDate extends unknown = unknown> = Pick<
   onChange?: (date: TDate) => void
 }
 
+export type UseHandleChangeDateReason = 'input' | 'panel'
+
+export type UseHandleChangeDateReturnProps<TDate extends unknown = unknown> = (
+  date: TDate,
+  reason?: UseHandleChangeDateReason
+) => void
+
+export type UseHandleChangeRangeDateReturnProps<
+  TDate extends unknown = unknown
+> = (
+  date: TRangeDate<TDate>,
+  index: 0 | 1,
+  reason?: UseHandleChangeDateReason
+) => void
+
 export type UseHandleChangeDateRangeProps<TDate extends unknown = unknown> =
   Pick<PerformChangeProps<TDate>, 'format'> & {
     inputs: [
@@ -48,17 +63,34 @@ export const useHandleChangeDate = <TDate extends unknown = unknown>({
   onChange,
   format,
   input,
-}: UseHandleChangeDateProps<TDate>) => {
+}: UseHandleChangeDateProps<TDate>): UseHandleChangeDateReturnProps<TDate> => {
   const adapter = useDateLibAdapter<TDate>()
+  const performChangeTimeoutRef = React.useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null)
 
   const handleChange = React.useCallback(
-    (date: TDate) => {
-      performChange<TDate>({
-        adapter,
-        date,
-        format,
-        input,
-      })
+    (date: TDate, reason: UseHandleChangeDateReason = 'panel') => {
+      if (performChangeTimeoutRef.current) {
+        clearTimeout(performChangeTimeoutRef.current)
+      }
+      const makePerformChange = () =>
+        performChange<TDate>({
+          adapter,
+          date,
+          format,
+          input,
+        })
+      if (reason === 'input') {
+        makePerformChange()
+      } else {
+        // Выносим диспатч в макротаску, чтобы не задерживать ивенты клика по календарю, а, затем,
+        // позже забрать все атрибуты из инпута в change event
+        performChangeTimeoutRef.current = setTimeout(
+          () => makePerformChange(),
+          1
+        )
+      }
       onChange?.(date)
     },
     [onChange, format, adapter, input]
@@ -71,18 +103,36 @@ export const useHandleChangeRangeDate = <TDate extends unknown = unknown>({
   onChange,
   format,
   inputs,
-}: UseHandleChangeDateRangeProps<TDate>) => {
+}: UseHandleChangeDateRangeProps<TDate>): UseHandleChangeRangeDateReturnProps<TDate> => {
   const adapter = useDateLibAdapter<TDate>()
+  const performChangeTimeoutRef = React.useRef<ReturnType<
+    typeof setTimeout
+  > | null>(null)
 
   const handleChange = React.useCallback(
-    (date: TRangeDate<TDate>, index: 0 | 1) => {
-      performChange({
-        adapter,
-        date: date[index],
-        format,
-        input: inputs[index],
-      })
+    (
+      date: TRangeDate<TDate>,
+      index: 0 | 1,
+      reason: UseHandleChangeDateReason = 'panel'
+    ) => {
+      const makePerformChange = () =>
+        performChange({
+          adapter,
+          date: date[index],
+          format,
+          input: inputs[index],
+        })
 
+      if (reason === 'input') {
+        makePerformChange()
+      } else {
+        // Выносим диспатч в макротаску, чтобы не задерживать ивенты клика по календарю, а, затем,
+        // позже забрать все атрибуты из инпута в change event
+        performChangeTimeoutRef.current = setTimeout(
+          () => makePerformChange(),
+          1
+        )
+      }
       onChange?.(date as TRangeDateBackwardCompat<TDate>)
     },
     [onChange, format, adapter, inputs]

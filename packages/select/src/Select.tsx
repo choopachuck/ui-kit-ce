@@ -2,7 +2,11 @@
 
 import * as React from 'react'
 import { clsx, useTheme, createUseStyles } from '@v-uik/theme'
-import { ElementSize, ComponentPropsWithRefFix } from '@v-uik/common'
+import {
+  ElementSize,
+  ComponentPropsWithRefFix,
+  DATA_V_UIK_INPUT_TYPE,
+} from '@v-uik/common'
 import {
   useMergedRefs,
   useOutsideClick,
@@ -304,9 +308,7 @@ export const Select = React.forwardRef(
     const buttonRef = React.useRef<HTMLButtonElement>(null)
     const popupRef = React.useRef<HTMLDivElement | null>(null)
     const inputRef = React.useRef<HTMLInputElement>(null)
-    const inputMergedRef = useMergedRefs(
-      inputProps?.ref ? [inputRef, inputProps?.ref] : [inputRef]
-    )
+    const inputMergedRef = useMergedRefs([inputRef, inputProps?.ref ?? null])
 
     const {
       groupedOptions,
@@ -641,7 +643,7 @@ export const Select = React.forwardRef(
       <input
         {...inputProps}
         ref={handleHiddenInputRef}
-        data-v-uik-input-type="select"
+        {...{ [DATA_V_UIK_INPUT_TYPE]: 'select' }}
         type="hidden"
       />
     )

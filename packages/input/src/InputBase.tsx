@@ -8,6 +8,7 @@ import {
   ClearButton,
   ClearButtonProps,
   ComponentPropsWithRefFix,
+  DATA_V_UIK_INPUT_TYPE,
 } from '@v-uik/common'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
 import { useMergedRefs, useClassList } from '@v-uik/hooks'
@@ -492,6 +493,13 @@ const _InputBase = React.forwardRef(
       </div>
     )
 
+    const vUikInputType =
+      (inputProps?.[
+        DATA_V_UIK_INPUT_TYPE as keyof React.InputHTMLAttributes<HTMLInputElement>
+      ] as string) ||
+      inputProps?.type ||
+      'text'
+
     React.useEffect(() => {
       if (disabled && focused) {
         setFocused(false)
@@ -519,7 +527,7 @@ const _InputBase = React.forwardRef(
             [classesMap.inputMedium]: isMedium,
             [classesMap.inputLarge]: isLarge,
           })}
-          data-v-uik-input-type={inputProps?.type || 'text'}
+          {...{ [DATA_V_UIK_INPUT_TYPE]: vUikInputType }}
           disabled={disabled}
           placeholder={placeholder}
           value={value}

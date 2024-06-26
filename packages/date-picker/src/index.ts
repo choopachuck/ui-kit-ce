@@ -21,3 +21,4 @@ export * from './views/RangeYearView'
 
 export * from './views/BaseTimePicker'
 export * from './interfaces/time'
+export * from './utils/customDateLibAdapter'

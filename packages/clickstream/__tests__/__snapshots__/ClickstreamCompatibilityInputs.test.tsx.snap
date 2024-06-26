@@ -1,0 +1,1080 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`clickstream lib components compatibility: checkbox 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "checkbox",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-205",
+              },
+              Object {
+                "key": "type",
+                "value": "checkbox",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "checkbox",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "checkbox",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-205",
+              },
+              Object {
+                "key": "type",
+                "value": "checkbox",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "checkbox",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": Event {
+            "isTrusted": true,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: input clear button 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "text",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "button",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "clearButton-0-2-36",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "clearButton",
+              },
+              Object {
+                "key": "title",
+                "value": "input-text-clear-button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "div",
+            "elementType": "div",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "clearButton",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: input-number 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "number",
+              },
+              Object {
+                "key": "title",
+                "value": "input-number",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "number",
+              },
+              Object {
+                "key": "title",
+                "value": "input-number",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "15,00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "15,00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: input-password 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "input-password",
+              },
+              Object {
+                "key": "type",
+                "value": "password",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 password-0-2-40 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "password",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "password",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "input-password",
+              },
+              Object {
+                "key": "type",
+                "value": "password",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 password-0-2-40 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "password",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "password",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "new password",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: input-text 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "input-text",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "text",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "input-text",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "text",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "new value",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: masked-input 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "title",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "title",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "+7 (212) 128-__-__",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "+7 (212) 128-__-__",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "title",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "+7 (212) 128-__-__",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "+7 (212) 128-__-__",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "title",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "+7 (212) 12_-__-__",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "+7 (212) 12_-__-__",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: radio 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "radio",
+              },
+              Object {
+                "key": "type",
+                "value": "radio",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-200",
+              },
+              Object {
+                "key": "value",
+                "value": "undefined",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "radio",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "radio",
+              },
+              Object {
+                "key": "type",
+                "value": "radio",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-200",
+              },
+              Object {
+                "key": "value",
+                "value": "undefined",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "radio",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": Event {
+            "isTrusted": true,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: select 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "select",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "listbox",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "class",
+                "value": "resetButton-0-2-41 button-0-2-68 medium-0-2-70 opened-0-2-72",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+              Object {
+                "key": "aria-activedescendant",
+                "value": "v-uik-140-option-",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Выберите значение",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "aria-selected",
+                "value": "false",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-140-option-1",
+              },
+              Object {
+                "key": "class",
+                "value": "listItem-0-2-211 option-0-2-56 medium-0-2-217 optionMedium-0-2-58",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "li",
+            "elementType": "li",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "select",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "1",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "1",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: switch 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      MouseEvent {
+        "isTrusted": false,
+      },
+      Object {
+        "batteryLevel": "0",
+        "connectionType": "UNKNOWN",
+        "elementAttributes": Array [
+          Object {
+            "key": "data-v-uik-input-type",
+            "value": "switch",
+          },
+          Object {
+            "key": "title",
+            "value": "switch",
+          },
+          Object {
+            "key": "type",
+            "value": "checkbox",
+          },
+          Object {
+            "key": "class",
+            "value": "input-0-2-49",
+          },
+        ],
+        "elementEvent": "click",
+        "elementTag": "input",
+        "elementType": "checkbox",
+        "pageName": "",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+        "url": "http://localhost/",
+        "value": "true",
+      },
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "switch",
+              },
+              Object {
+                "key": "title",
+                "value": "switch",
+              },
+              Object {
+                "key": "type",
+                "value": "checkbox",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-49",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "checkbox",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "switch",
+              },
+              Object {
+                "key": "title",
+                "value": "switch",
+              },
+              Object {
+                "key": "type",
+                "value": "checkbox",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-49",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "checkbox",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": Event {
+            "isTrusted": true,
+          },
+        },
+      ],
+    ],
+    Array [
+      Event {
+        "isTrusted": true,
+      },
+      Object {
+        "batteryLevel": "0",
+        "connectionType": "UNKNOWN",
+        "elementAttributes": Array [
+          Object {
+            "key": "data-v-uik-input-type",
+            "value": "switch",
+          },
+          Object {
+            "key": "title",
+            "value": "switch",
+          },
+          Object {
+            "key": "type",
+            "value": "checkbox",
+          },
+          Object {
+            "key": "class",
+            "value": "input-0-2-49",
+          },
+        ],
+        "elementEvent": "change",
+        "elementTag": "input",
+        "elementType": "checkbox",
+        "pageName": "",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+        "url": "http://localhost/",
+        "value": "true",
+      },
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "switch",
+              },
+              Object {
+                "key": "title",
+                "value": "switch",
+              },
+              Object {
+                "key": "type",
+                "value": "checkbox",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-49",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "checkbox",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "switch",
+              },
+              Object {
+                "key": "title",
+                "value": "switch",
+              },
+              Object {
+                "key": "type",
+                "value": "checkbox",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-49",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "checkbox",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": Event {
+            "isTrusted": true,
+          },
+        },
+      ],
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

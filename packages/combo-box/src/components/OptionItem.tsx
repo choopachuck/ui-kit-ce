@@ -142,7 +142,7 @@ export const OptionItem = <
           onMouseEnter={() => setActive(option)}
           onKeyDown={() => setActive(option)}
           // @ts-ignore
-          onMouseDown={(event) => onSelectOption(option, event)}
+          onClick={(event) => onSelectOption(option, event)}
           {...(restCommonOptionItemProps as ListItemProps<E>)}
         >
           {formatOptionLabel ? formatOptionLabel(label, inputValue) : label}

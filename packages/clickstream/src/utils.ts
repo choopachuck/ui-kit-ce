@@ -10,7 +10,6 @@ import {
   ALIGNMENT,
   MINUTES_IN_HOUR,
   MS_IN_MINUTE,
-  MS_IN_SECOND,
 } from './constants'
 
 declare global {
@@ -169,7 +168,12 @@ export const getElementValue = (
     return element.getAttribute('src')
   }
 
-  return element.getAttribute('aria-label') || element.innerText || ''
+  return (
+    element.getAttribute('aria-label') ||
+    element.innerText ||
+    element.textContent ||
+    ''
+  )
 }
 
 export const getApplicationLanguage = (): string =>
@@ -209,6 +213,14 @@ export const getPageName = (): string => {
   return globalThis.document.title
 }
 
+export const getUrl = (): string => {
+  if (!window?.location?.href) {
+    return ''
+  }
+
+  return window.location.href
+}
+
 export const getScreenSize = (): string =>
   globalThis.screen
     ? `${globalThis.screen.width}x${globalThis.screen.height}`
@@ -241,8 +253,4 @@ export const getISOTime = (): string => {
   return `${correctedShortDate}${formatOffset(
     correctedDate.getTimezoneOffset()
   )}`
-}
-
-export const getTimestamp = (): number => {
-  return Math.floor(new Date().getTime() / MS_IN_SECOND)
 }

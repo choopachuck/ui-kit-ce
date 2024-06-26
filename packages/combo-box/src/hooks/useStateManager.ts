@@ -80,8 +80,8 @@ export function useStateManager<
   })
 
   const onInputChange = React.useCallback(
-    (value: string) => {
-      propsOnInputChange?.(value)
+    (value: string, ...rest) => {
+      propsOnInputChange?.(value, ...rest)
 
       setInputValue(value)
     },

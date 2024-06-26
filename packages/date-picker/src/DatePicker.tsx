@@ -8,6 +8,7 @@ import {
   ElementSizeType,
   TrapFocus,
   ComponentPropsWithoutRefFix,
+  DATA_V_UIK_INPUT_TYPE,
 } from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
@@ -284,7 +285,7 @@ export const DatePicker = React.forwardRef(
       validationError,
     } = useMaskedInput<TDate>({
       date: rawValue,
-      changeDate: handleChange,
+      changeDate: (date) => handleChange(date, 'input'),
       format,
       mask,
       minDate,
@@ -404,8 +405,8 @@ export const DatePicker = React.forwardRef(
       inputProps: {
         autoComplete: 'off',
         role: 'combobox',
-        //@ts-expect-error Компонент корректно принимает data-атрибуты
-        'data-v-uik-input-type': 'date',
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'date',
         'aria-haspopup': 'dialog',
         'aria-expanded': open,
         ...nativeInputProps,

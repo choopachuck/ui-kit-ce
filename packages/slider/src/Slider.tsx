@@ -14,7 +14,7 @@ import { useClassList, useThrottle, useMergedRefs } from '@v-uik/hooks'
 import { SliderMarker, SliderMarkerProps, Tick, TickLabel } from './components'
 import type { TickItem, Classes } from './interfaces'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
-import type { ComponentPropsWithRefFix } from '@v-uik/common'
+import { ComponentPropsWithRefFix, DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 
 const DECREASE_ARROW_KEYS = ['ArrowDown', 'ArrowLeft']
 const INCREASE_ARROW_KEYS = ['ArrowUp', 'ArrowRight']
@@ -204,9 +204,7 @@ export const Slider = React.forwardRef(
     const markerRef = React.useRef<HTMLDivElement>(null)
 
     const inputRef = React.useRef<HTMLInputElement>(null)
-    const inputMergedRef = useMergedRefs(
-      inputProps?.ref ? [inputRef, inputProps?.ref] : [inputRef]
-    )
+    const inputMergedRef = useMergedRefs([inputRef, inputProps?.ref ?? null])
 
     const [isActive, setIsActive] = React.useState(false)
     const [isFocused, setIsFocused] = React.useState(false)
@@ -439,7 +437,7 @@ export const Slider = React.forwardRef(
         <input
           {...inputProps}
           ref={inputMergedRef}
-          data-v-uik-input-type="slider"
+          {...{ [DATA_V_UIK_INPUT_TYPE]: 'slider' }}
           type="hidden"
           value={value}
         />

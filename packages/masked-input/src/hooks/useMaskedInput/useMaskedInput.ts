@@ -4,6 +4,7 @@ import { MaskedInputCore } from '../../core/MaskedInputCore'
 import { dispatchChangeEvent } from '@v-uik/utils'
 import { InputChangeReason } from '@v-uik/input'
 import { MaskedInputAction } from './MaskedInputAction'
+import { DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 
 interface IUseMaskedInputProps extends CommonProps {
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>
@@ -234,6 +235,8 @@ export const useMaskedInput = (
   }
 
   const inputProps: React.InputHTMLAttributes<HTMLInputElement> = {
+    //@ts-ignore Компонент корректно принимает data-атрибуты
+    [DATA_V_UIK_INPUT_TYPE]: 'masked-input',
     ...inputPropsProp,
     onKeyDown: handleKeyDown,
     onFocus: handleFocus,

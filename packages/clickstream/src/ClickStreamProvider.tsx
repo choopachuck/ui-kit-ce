@@ -18,6 +18,7 @@ import {
   getClickEventElement,
   getChangeEventElement,
   isForbiddenForElement,
+  getUrl,
 } from './utils'
 import {
   ClickStreamElementType,
@@ -43,7 +44,7 @@ const EVENT_TYPE_TO_HANDLER_MAP: Record<
 } as const
 
 const generateBaseData = async () => ({
-  url: window.location.href,
+  url: getUrl(),
   batteryLevel: await getBatteryLevel(),
   connectionType: getConnectionType(),
   pageName: getPageName(),
@@ -202,18 +203,21 @@ const _ClickStreamProvider = React.forwardRef<
     )
 
     React.useEffect(() => {
-      if (disableAutoSendEvent) {
-        return
-      }
       const dispatchClickStreamEvent = async (event: Event) => {
         await debouncedDispatchEvent(event, event.type)
       }
 
-      processDispatchToBody(dispatchClickStreamEvent, 'add')
-
-      return () => {
+      const removeEventListeners = () => {
         processDispatchToBody(dispatchClickStreamEvent, 'remove')
       }
+
+      if (disableAutoSendEvent) {
+        return removeEventListeners
+      }
+
+      processDispatchToBody(dispatchClickStreamEvent, 'add')
+
+      return removeEventListeners
     }, [debouncedDispatchEvent, disableAutoSendEvent])
 
     React.useImperativeHandle(

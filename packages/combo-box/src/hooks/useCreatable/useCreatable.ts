@@ -6,6 +6,7 @@ import { getOptionLabel as baseGetOptionLabel } from '../../builtins'
 import { ComboboxProps } from '../../ComboBox'
 import { CreatableProps } from './types'
 import { defaultOptionItemElement } from '../../config'
+import { DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 
 const compareOption = <Option>(
   inputValue: string,
@@ -160,5 +161,9 @@ export function useCreatable<
     isSearchable,
     isCreatableDivided,
     onChange,
+    inputProps: {
+      [DATA_V_UIK_INPUT_TYPE]: 'combo-box-creatable',
+      ...restComboBoxProps?.inputProps,
+    },
   }
 }

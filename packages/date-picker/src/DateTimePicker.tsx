@@ -1,4 +1,5 @@
 import React from 'react'
+import { DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 import { DatePicker, DatePickerProps } from './DatePicker'
 import { BaseTimePickerProps } from './views/BaseTimePicker'
 
@@ -23,8 +24,8 @@ export const DateTimePicker = React.forwardRef(
         inputProps={{
           ...datePickerProps?.inputProps,
           inputProps: {
-            //@ts-expect-error Компонент корректно принимает data-атрибуты
-            'data-v-uik-input-type': 'date-time',
+            //@ts-ignore Компонент корректно принимает data-атрибуты
+            [DATA_V_UIK_INPUT_TYPE]: 'date-time',
             ...datePickerProps?.inputProps?.inputProps,
           },
         }}

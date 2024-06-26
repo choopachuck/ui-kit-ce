@@ -1,0 +1,1039 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`custom formatEventData works correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      MouseEvent {
+        "isTrusted": false,
+      },
+      "click",
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": Object {
+        "baar": "2",
+        "foo": "1",
+      },
+    },
+  ],
+}
+`;
+
+exports[`dispatch event from ref works correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      MouseEvent {
+        "isTrusted": false,
+      },
+      Object {
+        "batteryLevel": "0",
+        "connectionType": "UNKNOWN",
+        "elementAttributes": Array [],
+        "elementEvent": "customEvent",
+        "elementTag": "button",
+        "elementType": "submit",
+        "pageName": "",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+        "url": "http://localhost/",
+        "value": "button",
+      },
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [],
+            "elementEvent": "customEvent",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+      ],
+    ],
+    Array [
+      MouseEvent {
+        "isTrusted": false,
+      },
+      Object {
+        "batteryLevel": "0",
+        "connectionType": "UNKNOWN",
+        "elementAttributes": Array [],
+        "elementEvent": "click",
+        "elementTag": "button",
+        "elementType": "submit",
+        "pageName": "",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+        "url": "http://localhost/",
+        "value": "button",
+      },
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [],
+            "elementEvent": "customEvent",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+      ],
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`onInit callback works correctly 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "batteryLevel": "0",
+        "connectionType": "UNKNOWN",
+        "pageName": "",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+        "url": "http://localhost/",
+      },
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`onSendEvent callback works correctly at the end of the timer 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "personal-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "personal-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "personal-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "personal-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "personal-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "personal-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "personal-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "personal-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "personal-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`onSendEvent callback works correctly with custom batching 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "third-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`onSendEvent callback works correctly with generic batching 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "id",
+                "value": "custom-second-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`ref has all nessesary imperative handles 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "dispatchEvent": [Function],
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

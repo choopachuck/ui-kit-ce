@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { Dropdown, DropdownTriggerType } from '@v-uik/dropdown'
-import { ElementSize } from '@v-uik/common'
+import { ElementSize, DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import { BaseTimePicker, BaseTimePickerProps } from './views/BaseTimePicker'
@@ -21,8 +21,11 @@ import { RangeInputStyle, RangeInputStyleType } from './constants/range'
 import { focusSelectedTime } from './utils/time'
 import { TimeValidationErrorMessages } from './constants/common'
 import { useRangeTimeInput } from './hooks/useRangeTimeInput'
-import { useRangeTimeValidation, useHandleChangeRangeDate } from './hooks'
-import { useDateLibAdapter } from './hooks/useDateLibAdapter'
+import {
+  useRangeTimeValidation,
+  useHandleChangeRangeDate,
+  UseHandleChangeDateReason,
+} from './hooks'
 import { Labelled } from '@v-uik/labelled'
 
 const useStyles = createUseStyles((theme) => ({
@@ -400,7 +403,6 @@ export const TimeRangePicker = React.forwardRef(
       endTimePickerProps,
       range
     )
-    const adapter = useDateLibAdapter<TDate>()
 
     const { validate, validationErrorEnd, validationErrorStart } =
       useRangeTimeValidation<TDate>({
@@ -416,32 +418,23 @@ export const TimeRangePicker = React.forwardRef(
 
     // callbacks
     const onChangeByIndex = React.useCallback(
-      (index: InputIndex) => (date: TDate | null) => {
-        const newRange = [...(range ?? [])] as TRangeDate<TDate>
+      (index: InputIndex, reason: UseHandleChangeDateReason = 'panel') =>
+        (date: TDate | null) => {
+          const newRange = [...(range ?? [])] as TRangeDate<TDate>
 
-        newRange[index] = date
+          newRange[index] = date
 
-        setRange(newRange)
+          setRange(newRange)
 
-        const isValid =
-          validate({ range: newRange, index }) || triggerOnChangeOnInvalid
-        const isValueChanged = date !== value?.[index]
+          const isValid =
+            validate({ range: newRange, index }) || triggerOnChangeOnInvalid
+          const isValueChanged = date !== value?.[index]
 
-        if (isValid && isValueChanged) {
-          handleChange(newRange, index)
-        }
-      },
-      [
-        value,
-        setActiveInputIndex,
-        setOpen,
-        setRange,
-        range,
-        adapter,
-        validate,
-        onChange,
-        triggerOnChangeOnInvalid,
-      ]
+          if (isValid && isValueChanged) {
+            handleChange(newRange, index, reason)
+          }
+        },
+      [value, setRange, range, validate, triggerOnChangeOnInvalid, handleChange]
     )
 
     const handleFocus = React.useCallback(
@@ -455,7 +448,7 @@ export const TimeRangePicker = React.forwardRef(
       useRangeTimeInput<TDate>({
         range: range as TRangeDate<TDate>,
         index: 0,
-        changeDate: onChangeByIndex(InputIndex.LEFT),
+        changeDate: onChangeByIndex(InputIndex.LEFT, 'input'),
         format: safeFormat,
         validationError: validationErrorStart,
       })
@@ -464,7 +457,7 @@ export const TimeRangePicker = React.forwardRef(
       useRangeTimeInput<TDate>({
         range: range as TRangeDate<TDate>,
         index: 1,
-        changeDate: onChangeByIndex(InputIndex.RIGHT),
+        changeDate: onChangeByIndex(InputIndex.RIGHT, 'input'),
         format: safeFormat,
         validationError: validationErrorEnd,
       })
@@ -563,8 +556,8 @@ export const TimeRangePicker = React.forwardRef(
       disabled,
       inputProps: {
         autoComplete: 'off',
-        //@ts-expect-error Компонент корректно принимает data-атрибуты
-        'data-v-uik-input-type': 'time-range-start',
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'time-range-start',
         ...propsStartInputProps?.inputProps,
         onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
           propsStartInputProps?.inputProps?.onFocus?.(event)
@@ -589,8 +582,8 @@ export const TimeRangePicker = React.forwardRef(
       disabled,
       inputProps: {
         autoComplete: 'off',
-        //@ts-expect-error Компонент корректно принимает data-атрибуты
-        'data-v-uik-input-type': 'time-range-end',
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'time-range-end',
         ...propsEndInputProps?.inputProps,
         onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
           propsEndInputProps?.inputProps?.onFocus?.(event)

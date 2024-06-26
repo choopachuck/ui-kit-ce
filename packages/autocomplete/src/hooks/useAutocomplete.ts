@@ -12,6 +12,7 @@ import {
   getOptionLabel as baseGetOptionLabel,
   ComboboxChangeReason,
 } from '@v-uik/combo-box'
+import { DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 import { typed, suggested } from '../utils'
 import { AutocompleteProps } from './types'
 import { useValue } from '@v-uik/hooks'
@@ -144,5 +145,10 @@ export function useAutocomplete<
     showArrow,
     showCheckMark,
     openOnClick,
+    inputProps: {
+      //@ts-ignore Компонент корректно принимает data-атрибуты
+      [DATA_V_UIK_INPUT_TYPE]: 'autocomplete',
+      ...restComboBoxProps?.inputProps,
+    },
   }
 }

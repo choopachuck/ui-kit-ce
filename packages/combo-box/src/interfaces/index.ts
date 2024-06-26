@@ -213,6 +213,10 @@ export interface BaseComboBoxProps<
    * Функция, которая будет вызываться перед каждым закрытием меню
    */
   onMenuClose?: () => void
+  /**
+   * Свойства для нативного элемента input
+   */
+  inputProps?: ComponentPropsWithRefFix<'input'>
 }
 
 export type ComboboxEvent =
@@ -220,7 +224,7 @@ export type ComboboxEvent =
   | React.KeyboardEvent<HTMLDivElement>
   | React.MouseEvent<HTMLSpanElement>
 
-export type ComboBoxInputEvent = ComboBoxClearEvent // типы добавляются по мере необходимости
+export type ComboBoxInputEvent = ComboBoxClearEvent | 'input' // типы добавляются по мере необходимости
 type ComboBoxClearEvent = 'select-clear' | 'delete-clear'
 
 export type ComboboxChangeReason =

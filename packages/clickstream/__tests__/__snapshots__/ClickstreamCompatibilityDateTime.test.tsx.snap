@@ -1,0 +1,1497 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`clickstream lib components compatibility: date-time-picker::keyboard 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "date-time",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "title",
+                "value": "date-time-picker",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "gridcell",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "data-date",
+                "value": "01/01/2020(v-uik-18)",
+              },
+              Object {
+                "key": "class",
+                "value": "resetButton-0-2-41 dayButton-0-2-235 today-0-2-236 selected-0-2-237",
+              },
+              Object {
+                "key": "aria-selected",
+                "value": "true",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "1",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "date-time",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "title",
+                "value": "date-time-picker",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "01.01.2020 00:00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01.01.2020 00:00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "data-value",
+                "value": "1",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41 selected-0-2-252",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "date-time",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "title",
+                "value": "date-time-picker",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "01.01.2020 01:00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01.01.2020 01:00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "-1",
+              },
+              Object {
+                "key": "data-value",
+                "value": "1",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "date-time",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "false",
+              },
+              Object {
+                "key": "title",
+                "value": "date-time-picker",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "01.01.2020 01:01",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01.01.2020 01:01",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: date-time-picker::mouseclick 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "date-time",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "title",
+                "value": "date-time-picker",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "data-value",
+                "value": "1",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41 selected-0-2-252",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "date-time",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "title",
+                "value": "date-time-picker",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "01.01.2020 01:00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01.01.2020 01:00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "-1",
+              },
+              Object {
+                "key": "data-value",
+                "value": "1",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "date-time",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "false",
+              },
+              Object {
+                "key": "title",
+                "value": "date-time-picker",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "01.01.2020 01:01",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01.01.2020 01:01",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: time-picker::mouseclick 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-picker",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "data-value",
+                "value": "4",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41 selected-0-2-252",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "04",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-picker",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "04:00:00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "04:00:00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "data-value",
+                "value": "4",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41 selected-0-2-252",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "04",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-picker",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "04:04:00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "04:04:00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "-1",
+              },
+              Object {
+                "key": "data-value",
+                "value": "4",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "04",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-picker",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "aria-haspopup",
+                "value": "dialog",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "04:04:04",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "04:04:04",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: time-range-picker::keyboard 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time-range-start",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-range-picker-start",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "placeholder",
+                "value": "hh:mm:ss",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "data-value",
+                "value": "1",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41 selected-0-2-252",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time-range-start",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-range-picker-start",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "placeholder",
+                "value": "hh:mm:ss",
+              },
+              Object {
+                "key": "value",
+                "value": "01:00:00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01:00:00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "data-value",
+                "value": "1",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41 selected-0-2-252",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time-range-start",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-range-picker-start",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "placeholder",
+                "value": "hh:mm:ss",
+              },
+              Object {
+                "key": "value",
+                "value": "01:01:00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01:01:00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "-1",
+              },
+              Object {
+                "key": "data-value",
+                "value": "1",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time-range-start",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-range-picker-start",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "placeholder",
+                "value": "hh:mm:ss",
+              },
+              Object {
+                "key": "value",
+                "value": "01:01:01",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01:01:01",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "data-value",
+                "value": "2",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41 selected-0-2-252",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "02",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time-range-end",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-range-picker-end",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "placeholder",
+                "value": "hh:mm:ss",
+              },
+              Object {
+                "key": "value",
+                "value": "02:00:00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "02:00:00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "data-value",
+                "value": "1",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41 selected-0-2-252",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time-range-end",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-range-picker-end",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "placeholder",
+                "value": "hh:mm:ss",
+              },
+              Object {
+                "key": "value",
+                "value": "02:01:00",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "02:01:00",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "tabindex",
+                "value": "-1",
+              },
+              Object {
+                "key": "data-value",
+                "value": "1",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "option-0-2-250 resetButton-0-2-41",
+              },
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "type",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "button",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "01",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "time-range-end",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "title",
+                "value": "time-range-picker-end",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "placeholder",
+                "value": "hh:mm:ss",
+              },
+              Object {
+                "key": "value",
+                "value": "02:01:01",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "02:01:01",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

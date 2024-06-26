@@ -23,10 +23,11 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@v-uik/theme": "^1.11.1"
+    "@v-uik/theme": "^1.11.1",
+    "@v-uik/common": "^1.11.1",
+    "@v-uik/combo-box": "^1.11.1"
   },
   "devDependencies": {
-    "@v-uik/combo-box": "^1.11.1",
     "@v-uik/theme": "^1.5.1"
   }
 }
