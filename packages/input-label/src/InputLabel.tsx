@@ -154,6 +154,10 @@ const useStyles = createUseStyles((theme) => ({
   },
 
   hasSuffix: {},
+
+  tooltip: {
+    paddingLeft: 4,
+  },
 }))
 
 export const InputLabel = React.forwardRef(
@@ -200,11 +204,7 @@ export const InputLabel = React.forwardRef(
         {tooltipText && (
           <Tooltip
             {...tooltipProps}
-            style={{
-              display: 'inline',
-              verticalAlign: 'top',
-              paddingLeft: 4,
-            }}
+            className={clsx(classesList.tooltip, tooltipProps?.className)}
             dropdownProps={{
               placement: 'top-start',
               ...tooltipProps?.dropdownProps,
