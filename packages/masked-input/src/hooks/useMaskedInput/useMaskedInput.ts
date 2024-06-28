@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { CommonProps, ChangeEvent } from '../../interfaces'
+import type { CommonProps, ChangeEvent } from '../../interfaces'
+import type { InputChangeReason } from '@v-uik/input'
 import { MaskedInputCore } from '../../core/MaskedInputCore'
 import { dispatchChangeEvent } from '@v-uik/utils'
-import { InputChangeReason } from '@v-uik/input'
 import { MaskedInputAction } from './MaskedInputAction'
 import { DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 
@@ -25,7 +25,7 @@ export const useMaskedInput = (
 ): IUseMaskedInputResult => {
   const {
     mask,
-    value,
+    value: valueProp,
     onChange,
     formatCharacters,
     placeholderChar,
@@ -40,10 +40,12 @@ export const useMaskedInput = (
     autoSelectOnFocus,
   } = props
 
+  const [mockValue, setMockValue] = React.useState('')
+
   const maskedInputCore = React.useRef<MaskedInputCore>(
     new MaskedInputCore({
       pattern: mask,
-      value,
+      value: valueProp,
       formatCharacters,
       placeholderChar,
       overtype: overtype === undefined ? !!keepCharPositions : overtype,
@@ -53,12 +55,12 @@ export const useMaskedInput = (
     })
   ).current
 
-  const prevValueRef = React.useRef(value)
+  const prevValueRef = React.useRef<string | null>(null)
   const prevMaskRef = React.useRef(mask)
 
-  if (prevValueRef.current !== value) {
-    maskedInputCore.setValue(value)
-    prevValueRef.current = value
+  if (prevValueRef.current !== valueProp) {
+    maskedInputCore.setValue(valueProp)
+    prevValueRef.current = String(valueProp)
   }
 
   if (prevMaskRef.current !== mask) {
@@ -75,11 +77,28 @@ export const useMaskedInput = (
       event: ChangeEvent,
       reason: InputChangeReason = 'input'
     ) => {
-      const value = valueWithoutMask
-        ? (newValue !== maskedInputCore.emptyValue && newValue) || ''
-        : maskedInputCore.getRawValue()
+      const input = event.target
 
-      onChange?.(value, event, reason)
+      if (input instanceof HTMLInputElement) {
+        const { start, end } = maskedInputCore.selection
+        input.setSelectionRange(start, end)
+      }
+
+      if (valueWithoutMask) {
+        onChange?.(newValue, event, reason)
+      } else {
+        // В кейсе, когда не указывается valueWithoutMask и значение пустое, то мокаем
+        // отображаемое значение и не вызываем onChange
+        if (!maskedInputCore.getRawValue().trim().length) {
+          if (prevValueRef.current) {
+            onChange?.('', event, reason)
+          }
+          setMockValue(newValue)
+        } else {
+          setMockValue('')
+          onChange?.(maskedInputCore.getRawValue(), event, reason)
+        }
+      }
     },
     [maskedInputCore, valueWithoutMask, onChange]
   )
@@ -89,26 +108,19 @@ export const useMaskedInput = (
     event: React.ChangeEvent<HTMLInputElement>,
     reason?: InputChangeReason
   ) => {
-    const maskValue = maskedInputCore.getValue()
-    const maskedInputAction = new MaskedInputAction(maskedInputCore, event, {
-      maskAsPlaceholder,
-    })
-    const isClear = reason === 'clear'
-
-    if (maskValue === maskedInputCore.emptyValue) {
+    if (!mask) {
       return
     }
 
-    if (isClear) {
-      maskedInputCore.setValue('')
-    }
+    const maskedInputAction = new MaskedInputAction(maskedInputCore, event, {
+      maskAsPlaceholder,
+      reason,
+      valueWithoutMask,
+    })
+    const isValueChanged = maskedInputAction.performChange(value)
 
-    if (mask && value !== maskValue) {
-      maskedInputAction.performChange()
-
-      if (maskedInputAction.getActionType() === 'delete' || isClear) {
-        emitChange(value, event, reason)
-      }
+    if (isValueChanged) {
+      emitChange(maskedInputAction.getResultValue(), event, reason)
     }
   }
 
@@ -161,24 +173,6 @@ export const useMaskedInput = (
       return
     } else if (event.ctrlKey || event.metaKey) {
       return
-    } else {
-      // TODO: убрать и переделать на handleChange с использованием MaskedInputAction:: _performInput
-      maskedInputCore.selection = {
-        start: Number(input.selectionStart),
-        end: Number(input.selectionEnd),
-      }
-
-      maskedInputCore.setValue(input.value)
-
-      if (maskedInputCore.input(event.key)) {
-        const value = maskedInputCore.getValue()
-        input.value = value
-        input.setSelectionRange(
-          maskedInputCore.selection.start,
-          maskedInputCore.selection.end
-        )
-        emitChange(value, event)
-      }
     }
 
     inputPropsProp?.onKeyDown?.(event)
@@ -224,8 +218,9 @@ export const useMaskedInput = (
           input.selectionStart === input.selectionEnd &&
           Number(input.selectionEnd) >= maskedInputCore.value.length
         ) {
-          // Устанавливем каретку на первый доступный для ввода символ.
+          // Устанавливаем каретку на первый доступный для ввода символ.
           const firstFreePosition = maskedInputCore.getFirstFreePosition()
+
           input.setSelectionRange(firstFreePosition, firstFreePosition)
         }
       }, 0)
@@ -243,17 +238,18 @@ export const useMaskedInput = (
     onPaste: handlePaste,
   }
 
-  let valueToShow = ''
-  if (value) {
-    valueToShow = valueWithoutMask ? value : maskedInputCore.getValue()
+  let value = ''
+
+  if (valueProp) {
+    value = maskedInputCore.getValue()
   } else {
     if (maskAsPlaceholder) {
-      valueToShow = maskedInputCore.emptyValue
+      value = maskedInputCore.emptyValue
     }
   }
 
   return {
-    value: valueToShow,
+    value: mockValue || value,
     onChange: handleChange,
     inputProps,
   }

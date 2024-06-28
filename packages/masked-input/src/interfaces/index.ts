@@ -7,6 +7,8 @@ export type ChangeEvent =
   | React.KeyboardEvent<HTMLInputElement>
   | React.ClipboardEvent<HTMLInputElement>
 
+export type MaskedInputChangeEvent = ChangeEvent
+
 export interface CommonProps {
   /**
    * Значение поля
@@ -17,7 +19,7 @@ export interface CommonProps {
    */
   onChange?: (
     value: string,
-    event?: ChangeEvent,
+    event?: MaskedInputChangeEvent,
     reason?: InputChangeReason
   ) => void
   /**

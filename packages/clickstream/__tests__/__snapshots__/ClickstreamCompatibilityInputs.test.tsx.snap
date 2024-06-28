@@ -523,7 +523,7 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
               },
               Object {
                 "key": "value",
-                "value": "+7 (212) 128-__-__",
+                "value": "+7 (212) 12_-__-__",
               },
             ],
             "elementEvent": "change",
@@ -532,43 +532,9 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
             "pageName": "",
             "timeStamp": "2020-01-01T00:00:00.078-00:00",
             "url": "http://localhost/",
-            "value": "+7 (212) 128-__-__",
+            "value": "+7 (212) 12_-__-__",
           },
           "event": Event {
-            "isTrusted": false,
-          },
-        },
-        Object {
-          "data": Object {
-            "batteryLevel": "0",
-            "connectionType": "UNKNOWN",
-            "elementAttributes": Array [
-              Object {
-                "key": "data-v-uik-input-type",
-                "value": "masked-input",
-              },
-              Object {
-                "key": "title",
-                "value": "masked-input",
-              },
-              Object {
-                "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
-              },
-              Object {
-                "key": "value",
-                "value": "+7 (212) 128-__-__",
-              },
-            ],
-            "elementEvent": "click",
-            "elementTag": "input",
-            "elementType": "text",
-            "pageName": "",
-            "timeStamp": "2020-01-01T00:00:00.078-00:00",
-            "url": "http://localhost/",
-            "value": "+7 (212) 128-__-__",
-          },
-          "event": MouseEvent {
             "isTrusted": false,
           },
         },
@@ -594,13 +560,47 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
                 "value": "+7 (212) 12_-__-__",
               },
             ],
-            "elementEvent": "change",
+            "elementEvent": "click",
             "elementTag": "input",
             "elementType": "text",
             "pageName": "",
             "timeStamp": "2020-01-01T00:00:00.078-00:00",
             "url": "http://localhost/",
             "value": "+7 (212) 12_-__-__",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "title",
+                "value": "masked-input",
+              },
+              Object {
+                "key": "class",
+                "value": "input-0-2-27 inputMedium-0-2-29",
+              },
+              Object {
+                "key": "value",
+                "value": "+7 (212) 1__-__-__",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "+7 (212) 1__-__-__",
           },
           "event": Event {
             "isTrusted": false,
