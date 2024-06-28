@@ -5,7 +5,7 @@ export const createNotification = (
   theme: Theme,
   compatibilityMode?: boolean
 ) => ({
-  /** @deprecated используйте токены titleColorText* и contentColorText* */
+  /** @deprecated используйте токены `titleColorText` и `contentColorText` */
   colorText: compatibilityMode
     ? theme.colourway.onBackgroundHigh
     : theme.sys.color.onBackgroundHigh,
@@ -74,27 +74,27 @@ export const createNotification = (
   iconColorTextError: compatibilityMode
     ? theme.colourway.error
     : theme.sys.color.errorAlpha,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте `comp.closeButton.colorText` */
   closeButtonColorText: compatibilityMode
     ? theme.colourway.onBackgroundHigh
     : theme.sys.color.onBackgroundHigh,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте `comp.closeButton.colorTextHover` */
   closeButtonColorTextHover: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте `comp.closeButton.colorTextActive` */
   closeButtonColorTextActive: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте `comp.closeButton.colorBackgroundHover` */
   closeButtonColorBackgroundHover: compatibilityMode
     ? theme.colourway.mono02
     : theme.sys.color.onBackgroundOverlayHover,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте `comp.closeButton.colorBackgroundActive` */
   closeButtonColorBackgroundActive: compatibilityMode
     ? theme.colourway.mono04
     : theme.sys.color.onBackgroundOverlayActive,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте `comp.closeButton.colorShadowFocus` */
   closeButtonColorShadowFocus: compatibilityMode
     ? theme.colourway.focus
     : theme.sys.color.focus,
@@ -145,23 +145,23 @@ export const createNotification = (
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,
 
-  /** @deprecated */
+  /** @deprecated рекомендуется использовать `next_contentTypographyFontFamily` */
   contentTypographyFontFamily: compatibilityMode
     ? theme.typography.fontFamily.text
     : theme.sys.typography.bodyMd.fontFamily,
-  /** @deprecated */
+  /** @deprecated рекомендуется использовать `next_contentTypographyFontWeight` */
   contentTypographyFontWeight: compatibilityMode
     ? theme.typography.fontWeight.semibold
     : theme.ref.typography.fontWeight.semiBold,
-  /** @deprecated */
+  /** @deprecated рекомендуется использовать `next_contentTypographyFontSize` */
   contentTypographyFontSize: compatibilityMode
     ? theme.typography.fontSize.body2
     : theme.sys.typography.bodyMd.fontSize,
-  /** @deprecated */
+  /** @deprecated рекомендуется использовать `next_contentTypographyLineHeight` */
   contentTypographyLineHeight: compatibilityMode
     ? theme.typography.lineHeight.body2
     : theme.sys.typography.bodyMd.lineHeight,
-  /** @deprecated */
+  /** @deprecated рекомендуется использовать `next_contentTypographyLetterSpacing` */
   contentTypographyLetterSpacing: compatibilityMode
     ? theme.typography.letterSpacing.body2
     : theme.sys.typography.bodyMd.letterSpacing,

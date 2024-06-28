@@ -42,23 +42,23 @@ export const createModalHeader = (
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
 
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте токены `comp.closeButton.colorText` */
   closeButtonColorText: compatibilityMode
     ? theme.colourway.onBackgroundHigh
     : theme.sys.color.onBackgroundHigh,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте токены `comp.closeButton.colorTextHover` */
   closeButtonColorTextHover: compatibilityMode
     ? theme.colourway.onBackgroundMedium
     : theme.sys.color.onBackgroundMedium,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте токены `comp.closeButton.colorTextActive` */
   closeButtonColorTextActive: compatibilityMode
     ? theme.colourway.onBackgroundLow
     : theme.sys.color.onBackgroundLow,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте токены `comp.closeButton.colorBackgroundHover` */
   closeButtonColorBackgroundHover: compatibilityMode
     ? theme.colourway.mono02
     : theme.sys.color.onBackgroundOverlayHover,
-  /** @deprecated используйте токены comp.closeButton */
+  /** @deprecated используйте токены `comp.closeButton.colorBackgroundActive` */
   closeButtonColorBackgroundActive: compatibilityMode
     ? theme.colourway.mono04
     : theme.sys.color.onBackgroundOverlayActive,

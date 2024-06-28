@@ -47,9 +47,17 @@ const readCompFile = (path) => {
       const tokenFullName = `comp.${compName}.${tokenName}`
 
       let tokenValueAssignment
+      let replacements = []
 
       tokenAssignment.forEachChild((x) => {
         if (x.kind === ts.SyntaxKind.Identifier) {
+          const text = x.getFullText(rootNode)
+          if (text.includes('@deprecated')) {
+            replacements = (text.match(/`([a-z|.]*)`/gi) || []).map(
+              (depToken) => depToken.replace(/`/g, '')
+            )
+          }
+
           return
         }
 
@@ -61,6 +69,7 @@ const readCompFile = (path) => {
         tokenName,
         tokenFullName,
         ...parseTokenAssignment(tokenValueAssignment),
+        ...(replacements.length ? { replacements } : {}),
       }
     })
 
