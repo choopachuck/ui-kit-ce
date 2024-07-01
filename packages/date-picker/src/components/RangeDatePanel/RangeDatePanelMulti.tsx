@@ -64,7 +64,18 @@ export const RangeDatePanelMulti = React.forwardRef(
       getDateByActiveInputIndex(range, activeInputIndex)
     )
 
-    const currentViewDateNext = adapter.addMonths(currentViewDate, 1)
+    // показывать рендж на одной вкладке, если даты в соседних месяцах
+    const currentViewDateFix =
+      activeInputIndex === 1 &&
+      range[0] &&
+      range[1] &&
+      typeof range[0] !== 'number' &&
+      typeof range[1] !== 'number' &&
+      !adapter.isSameMonth(range[0], range[1])
+        ? adapter.addMonths(currentViewDate, -1)
+        : currentViewDate
+
+    const currentViewDateNext = adapter.addMonths(currentViewDateFix, 1)
 
     const { hoverDate, setHoverDate } = useHoverState<TDate>(
       range,
@@ -88,7 +99,7 @@ export const RangeDatePanelMulti = React.forwardRef(
     })
 
     const monthText = `${adapter.format(
-      currentViewDate,
+      currentViewDateFix,
       'month'
     )} - ${adapter.format(currentViewDateNext, 'month')}`
     const yearText = adapter.getYear(currentViewDate)
@@ -146,7 +157,7 @@ export const RangeDatePanelMulti = React.forwardRef(
               <>
                 <CalendarView<TDate>
                   classes={calendarViewClasses}
-                  currentViewDate={currentViewDate}
+                  currentViewDate={currentViewDateFix}
                   isDateDisabled={isDateDisabled}
                   isDateSelected={isDateSelected}
                   isInRange={isDateInRange}
