@@ -77,7 +77,7 @@ export const MultiValue = <Option,>({
       classes={tagClasses}
       size="sm"
       kind="lite"
-      deleteButtonProps={deleteButtonProps || {}}
+      deleteButtonProps={deleteButtonProps}
       onDelete={onDelete as TagProps['onDelete']}
     >
       {children}
