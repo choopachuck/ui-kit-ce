@@ -12,7 +12,7 @@ import {
 import { DateFnsAdapter } from '@v-uik/date-picker/adapters/date-fns'
 import { ru } from 'date-fns/locale'
 import { DocsWrapper, DocsSideNav, HeadersComponentsMdx } from '../internal'
-import { COMPONENTS, HOOKS, COOKBOOK } from '../config'
+import { COMPONENTS, HOOKS, COOKBOOK, STORY_TITLES } from '../config'
 import { setup } from '../config/monaco'
 import { EnvService } from 'services'
 
@@ -148,6 +148,20 @@ export const parameters = {
         COMPONENTS.dataDisplay,
         COMPONENTS.feedback,
         COMPONENTS.utility,
+        [
+          'Box',
+          'ClickStreamProvider',
+          [
+            STORY_TITLES.clickStreamProvider.api,
+            STORY_TITLES.clickStreamProvider.baseUsage,
+            STORY_TITLES.clickStreamProvider.batchSize,
+            STORY_TITLES.clickStreamProvider.init,
+            STORY_TITLES.clickStreamProvider.inactivityTime,
+            STORY_TITLES.clickStreamProvider.formatData,
+            STORY_TITLES.clickStreamProvider.refAndCustomEvents,
+            STORY_TITLES.clickStreamProvider.disableEvents,
+          ],
+        ],
         HOOKS.root,
         COOKBOOK.root,
       ],

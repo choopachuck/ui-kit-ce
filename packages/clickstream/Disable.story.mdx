@@ -1,0 +1,70 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { ClickStreamProvider } from '@v-uik/clickstream'
+import {
+  createTitle,
+  COMPONENTS,
+  DocsAlert,
+  STORY_TITLES,
+} from '../../docs/showroom/config'
+import { DisableAll, DisableSingle } from './examples'
+
+import RawDisableAll from '!!raw-loader!./examples/DisableAll'
+import RawDisableSingle from '!!raw-loader!./examples/DisableSingle'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.utility,
+    'ClickStreamProvider',
+    STORY_TITLES.clickStreamProvider.disableEvents,
+  ])}
+  component={ClickStreamProvider}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Отключение автоматической отправки событий
+
+В компоненте `ClickStreamProvider` существует несколько механизмов для отключения автоматической отправки событий:
+полное отключение автоматической отправки всех событий и отключение отправки автоматического события на конкретном элементе.
+
+При этом ручная отправка событий с помощью контекста или механизма `React.useRef` продолжит работать.
+
+Для того чтобы узнать больше о контексте `ClickStreamProvider` и о его механизме использования `React.useRef`, перейдите по [ссылке](?path=/docs/вспомогательные-компоненты-clickstreamprovider-ref-контекст-пользовательские-события-и-ручная-отправка--page).
+
+<DocsAlert justify="start">
+  Результат манипуляций с элементами формы или со всей страницей отобразится в
+  панели с кодом снизу под примером реализации
+</DocsAlert>
+<br />
+
+## Отключение всех событий
+
+Для того чтобы сделать полное отключение автоматической отправки всех событий в приложении, достаточно указать у провайдера флаг `disableAutoSendEvent`
+в значении `true`.
+
+Ниже представлен пример реализации полного отключения автоматической отправки событий. Нажатия любых кнопок не будут вызывать отправку событий в
+очередь.
+
+<Canvas withSource="none">
+  <DisableAll />
+</Canvas>
+
+<Source language="tsx" code={RawDisableAll} />
+
+## Отключение событий на конкретном элементе
+
+Для того чтобы сделать отключение автоматической отправки событий у одного конкретного элемента, нужно указать у этого элемента флаг `data-click-stream-off`
+в значении `true`.
+
+Ниже представлен пример реализации частичного отключения автоматической отправки событий. Нажатие правой кнопки не будет вызывать отправку событий в
+очередь, а левая кнопка будет работать согласно стандартному поведению.
+
+<Canvas withSource="none">
+  <DisableSingle />
+</Canvas>
+
+<Source language="tsx" code={RawDisableSingle} />

@@ -114,7 +114,7 @@ export type ClickStreamProviderProps<
   TData extends unknown = ClickStreamEventData
 > = {
   /**
-   * Функция обратного вызова, которая срабатывает первой инициализации провайдера
+   * Функция обратного вызова, которая срабатывает при первой инициализации провайдера
    *
    * @param {ClickStreamBaseData<TData>} data Данные первой инициализации провайдера
    *
@@ -142,18 +142,20 @@ export type ClickStreamProviderProps<
    * @param {string} eventType Тип инициированного события. По умолчанию принимает значение события
    * `event.type`. Также может принимать любое пользовательское значение
    */
-  formatEventData?: (event: Event, eventType?: string) => TData
+  formatEventData?: (event: Event, eventType: string) => TData
   /**
    * Функция обратного вызова, которая срабатывает при добавлении нового события в очередь событий
    *
    * @param {Event} event Инициированное событие
    * @param {TData} data Отформатированные данные для события
    * @param {ClickStreamEventBatch<TData>} batch Накопленная очередь событий
+   * @param {boolean} immediate Флаг отправки события без очереди
    */
   onBatch?: (
     event: Event,
     data: TData,
-    batch: ClickStreamEventBatch<TData>
+    batch: ClickStreamEventBatch<TData>,
+    immediate: boolean
   ) => void
   /**
    * Флаг для отключения у всего приложения автоматической отправки событий через `ClickStreamProvider`
@@ -168,7 +170,7 @@ export type ClickStreamProviderProps<
    *
    * Если пользователь совершил количество действий меньше, чем указано в свойстве `batchSize`, то
    * по истечению указанного времени `ClickStreamProvider` автоматически запустит функцию обратного
-   * вызова `dispatchEvent` с накопившейся очередью событий
+   * вызова `onSendEvent` с накопившейся очередью событий
    */
   inactivityTime?: number
 }

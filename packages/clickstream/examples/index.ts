@@ -1,3 +1,13 @@
 export * from './ClickStreamContextProps.dummy'
 export * from './ClickStreamEventData.dummy'
 export * from './ClickStreamEventMeta.dummy'
+
+export * from './BasicClickStream'
+export * from './BatchSize'
+export * from './InactivityTime'
+export * from './Init'
+export * from './FormatData'
+export * from './RefHandle'
+export * from './ContextHandle'
+export * from './DisableAll'
+export * from './DisableSingle'

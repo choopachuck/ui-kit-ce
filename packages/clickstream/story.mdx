@@ -1,0 +1,67 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { ClickStreamProvider } from '@v-uik/clickstream'
+import {
+  createTitle,
+  COMPONENTS,
+  DocsAlert,
+  STORY_TITLES,
+} from '../../docs/showroom/config'
+import { BasicClickStream } from './examples'
+
+import RawBasicClickStream from '!!raw-loader!./examples/BasicClickStream'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.utility,
+    'ClickStreamProvider',
+    STORY_TITLES.clickStreamProvider.baseUsage,
+  ])}
+  component={ClickStreamProvider}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# ClickStreamProvider
+
+Компонент-обертка для сбора пользовательских действий в приложении
+
+## import
+
+```ts
+import { ClickStreamProvider } from '@v-uik/clickstream'
+```
+
+## Базовое использование
+
+`ClickStreamProvider` позволяет собирать информацию о том, на какие элементы приложения кликнул пользователь или
+какие поля для ввода данных он заполнил.
+
+Чтобы начать отслеживать пользовательские действия, достаточно передать
+в компонент функцию обратного вызова `onSendEvent`. Эта функция принимает аргумент `batch`, содержащий очередь из
+совершенных пользователем действий.<br/>
+
+На текущий момент компонент автоматически собирает данные о двух типах событий: клик по элементу и изменение значения в
+полях для ввода (в частности, тэги `input` или `textarea`).
+
+По умолчанию функция `onSendEvent` будет вызвана, если пользователь совершит 10 подобных действий.
+
+Помимо этого, каждый раз, когда пользователь совершает клик по элементу или производит изменение элементов формы, вызывается функция обратного вызова `onBatch`,
+которая позволяет отследить выполенное действие, а также получить все метаданные данного действия и всю информацию о совершенном событии.
+
+Ниже представлен пример базового использования с указанием функций для свойств `onSendEvent` и `onBatch`, и дальнейшей обработкой
+полученных данных.
+
+<DocsAlert justify="start">
+  Результат манипуляций с элементами формы или со всей страницей отобразится в
+  панели с кодом снизу под формой
+</DocsAlert>
+
+<Canvas withSource="none">
+  <BasicClickStream />
+</Canvas>
+
+<Source language="tsx" code={RawBasicClickStream} />

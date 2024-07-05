@@ -4,13 +4,13 @@ import { AlertIcon } from './assets/AlretIcon'
 
 type Props = {
   type?: 'info' | 'warning' | 'danger' | 'success'
+  justify?: React.CSSProperties['justifyContent']
 }
 
 const useStyles = createUseStyles((theme) => ({
   root: {
     padding: '1rem',
     display: 'flex',
-    justifyContent: 'space-between',
     alignItems: 'flex-start',
     gap: 20,
     borderRadius: theme.ref.radius.xs,
@@ -62,11 +62,18 @@ const useStyles = createUseStyles((theme) => ({
   },
 }))
 
-export const DocsAlert: React.FC<Props> = ({ type = 'info', children }) => {
+export const DocsAlert: React.FC<Props> = ({
+  type = 'info',
+  children,
+  justify = 'space-between',
+}) => {
   const classesList = useStyles()
 
   return (
-    <aside className={clsx(classesList.root, classesList[type])}>
+    <aside
+      className={clsx(classesList.root, classesList[type])}
+      style={{ justifyContent: justify }}
+    >
       <div className={classesList.icon}>
         <AlertIcon />
       </div>

@@ -153,7 +153,7 @@ const _ClickStreamProvider = React.forwardRef<
         const newEventData: ClickStreamEventBatchItem = { event, data }
         const meta = generateMeta()
 
-        onBatch?.(event, data, batchRef.current)
+        onBatch?.(event, data, batchRef.current, immediate)
 
         // Если очередь событий достигла допустимого размера или событие отправлено с флагом `immediate`,
         // то сразу отправляем очередь пользователю, иначе оборачиваем отправку в отложенный вызов на
@@ -235,7 +235,9 @@ const _ClickStreamProvider = React.forwardRef<
 
         onInit?.(baseData, generateMeta())
       })()
-    }, [onInit])
+
+      //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
       <ClickStreamContext.Provider value={value}>
