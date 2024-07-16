@@ -33,7 +33,6 @@ export interface ButtonUploaderProps
 export const ButtonUploader = React.forwardRef(
   (
     {
-      classes,
       inputProps,
       multiple = true,
       disabled = false,
