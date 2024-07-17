@@ -8,12 +8,13 @@ import {
   percentToValue,
   roundBy,
   valueToPercent,
+  dispatchChangeEvent,
 } from '@v-uik/utils'
-import { useClassList, useThrottle } from '@v-uik/hooks'
+import { useClassList, useThrottle, useMergedRefs } from '@v-uik/hooks'
 import { SliderMarker, SliderMarkerProps, Tick, TickLabel } from './components'
 import type { TickItem, Classes } from './interfaces'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
-import type { ComponentPropsWithRefFix } from '@v-uik/common'
+import { ComponentPropsWithRefFix, DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 
 const DECREASE_ARROW_KEYS = ['ArrowDown', 'ArrowLeft']
 const INCREASE_ARROW_KEYS = ['ArrowUp', 'ArrowRight']
@@ -73,6 +74,10 @@ export interface SliderProps
    * Свойства элемента marker
    */
   markerProps?: Omit<SliderMarkerProps, 'isActive' | 'isFocused' | 'disabled'>
+  /**
+   * Свойства для нативного элемента input
+   */
+  inputProps?: ComponentPropsWithRefFix<'input'>
 }
 
 interface ExtendedSliderStylesProps extends SliderStylesProps {
@@ -190,12 +195,16 @@ export const Slider = React.forwardRef(
       onChange,
       onMouseDown,
       markerProps,
+      inputProps,
       ...rest
     }: SliderProps,
     ref: React.Ref<HTMLDivElement>
   ) => {
     const trackRef = React.useRef<HTMLDivElement>(null)
     const markerRef = React.useRef<HTMLDivElement>(null)
+
+    const inputRef = React.useRef<HTMLInputElement>(null)
+    const inputMergedRef = useMergedRefs([inputRef, inputProps?.ref ?? null])
 
     const [isActive, setIsActive] = React.useState(false)
     const [isFocused, setIsFocused] = React.useState(false)
@@ -237,6 +246,15 @@ export const Slider = React.forwardRef(
       },
       classes: { tooltip: clsx(classesMap.thumb, classesMap.tooltip) },
     }
+
+    const handleChange = (newValue: number) => {
+      onChange?.(newValue)
+
+      if (value !== newValue && inputRef?.current) {
+        dispatchChangeEvent(inputRef.current, newValue)
+      }
+    }
+
     /* ------------------------------------------------------------*/
     /* ----------------Вычисление нового значения------------------*/
     /* ------------------------------------------------------------*/
@@ -326,7 +344,7 @@ export const Slider = React.forwardRef(
         const newValue = Math.max(min, rounded)
 
         if (value !== newValue) {
-          onChange?.(newValue)
+          handleChange(newValue)
         }
       }
 
@@ -336,7 +354,7 @@ export const Slider = React.forwardRef(
         const newValue = Math.min(max, rounded)
 
         if (value !== newValue) {
-          onChange?.(newValue)
+          handleChange(newValue)
         }
       }
 
@@ -344,7 +362,7 @@ export const Slider = React.forwardRef(
         e.preventDefault()
 
         if (value !== min) {
-          onChange?.(min)
+          handleChange(min)
         }
       }
 
@@ -352,7 +370,7 @@ export const Slider = React.forwardRef(
         e.preventDefault()
 
         if (value !== max) {
-          onChange?.(max)
+          handleChange(max)
         }
       }
     }
@@ -367,7 +385,7 @@ export const Slider = React.forwardRef(
 
     const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
       onMouseDown?.(e)
-      onChange?.(getNewValue(e.pageX))
+      handleChange(getNewValue(e.pageX))
       e.preventDefault()
 
       setIsDragging(true)
@@ -379,7 +397,7 @@ export const Slider = React.forwardRef(
     }
 
     const handleMove = useThrottle((e: MouseEvent) => {
-      onChange?.(getNewValue(e.pageX))
+      handleChange(getNewValue(e.pageX))
     }, 30)
 
     React.useEffect(() => {
@@ -416,7 +434,13 @@ export const Slider = React.forwardRef(
         className={className}
         onMouseDown={handleMouseDown}
       >
-        <input type="hidden" value={value} />
+        <input
+          {...inputProps}
+          ref={inputMergedRef}
+          {...{ [DATA_V_UIK_INPUT_TYPE]: 'slider' }}
+          type="hidden"
+          value={value}
+        />
         {labels}
         <div ref={trackRef} className={clsx(classesMap.rail, classesMap.track)}>
           <div className={classesMap.range} style={dynamicStyles.range} />

@@ -144,3 +144,41 @@ export const validateRange = <TDate = unknown>(
 export function getTDate<TDate>(value?: TRangeValue<TDate>): TDate | null {
   return !!value && typeof value !== 'number' ? value : null
 }
+
+export const getDateByActiveInputIndex = <TDate extends unknown>(
+  rangeDate: TRangeDate<TDate>,
+  activeInputIndex?: 0 | 1
+): number | TDate | null => {
+  const inverseRangeIndex = {
+    0: 1,
+    1: 0,
+  }
+
+  return activeInputIndex === undefined
+    ? null
+    : rangeDate[activeInputIndex] ??
+        rangeDate[inverseRangeIndex[activeInputIndex]]
+}
+
+export function formatDate<TDate = unknown>(
+  adapter: CustomUtils<TDate>,
+  date: Date | TDate,
+  format = 'keyboardDate',
+  placeholder = ''
+): string {
+  if (!date) {
+    return placeholder
+  }
+
+  try {
+    const adapterDate = adapter.date(date) as TDate
+
+    if (format === 'keyboardDate') {
+      return adapter.format(adapterDate, format)
+    }
+
+    return adapter.formatByString(adapterDate, format)
+  } catch (e) {
+    return placeholder
+  }
+}

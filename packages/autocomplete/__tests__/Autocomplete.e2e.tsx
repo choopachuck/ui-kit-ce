@@ -9,21 +9,21 @@ import {
 test.describe('Autocomplete', () => {
   test('basic autocomplete', async ({ page, mount }) => {
     const component = await mount(<BasicAutocomplete />)
-    await component.locator('input').type('o')
+    await component.locator('input[type="text"]').type('o')
 
     await expect(page).toHaveScreenshot()
   })
 
   test('autocomplete with icons', async ({ page, mount }) => {
     const component = await mount(<SearchAutocomplete />)
-    await component.locator('input').type('o')
+    await component.locator('input[type="text"]').type('o')
 
     await expect(page).toHaveScreenshot()
   })
 
   test('autocomplete with loading', async ({ page, mount }) => {
     const component = await mount(<AsyncAutocomplete />)
-    await component.locator('input').type('dsa')
+    await component.locator('input[type="text"]').type('dsa')
 
     await expect(page).toHaveScreenshot()
   })

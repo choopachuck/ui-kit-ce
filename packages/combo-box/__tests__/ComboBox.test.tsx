@@ -167,7 +167,7 @@ it('handle change value correctly', async () => {
   const openButton = getByRole('button', { name: 'openPopupButton' })
   fireEvent.mouseDown(openButton)
   const foundOptions = await findAllByRole('option')
-  fireEvent.mouseDown(foundOptions[2])
+  fireEvent.click(foundOptions[2])
   expect(onChange).toBeCalledTimes(1)
   expect(onChange).toBeCalledWith(
     '2',
@@ -195,7 +195,7 @@ it('handle value change correctly in multiple mode', async () => {
   fireEvent.mouseDown(openButton)
 
   const foundOptions = await findAllByRole('option')
-  fireEvent.mouseDown(foundOptions[2])
+  fireEvent.click(foundOptions[2])
   expect(onChange).toBeCalledTimes(1)
   expect(onChange).toBeCalledWith(
     ['0', '1', '2'],
@@ -224,7 +224,7 @@ it('unselect selected option correctly in multiple mode', async () => {
   fireEvent.mouseDown(openButton)
 
   const foundOptions = await findAllByRole('option')
-  fireEvent.mouseDown(foundOptions[3])
+  fireEvent.click(foundOptions[3])
   expect(onChange).toBeCalledTimes(1)
   expect(onChange).toBeCalledWith(
     ['1'],
@@ -590,7 +590,7 @@ describe('handle change on empty value when delete', () => {
     const openButton = getByRole('button', { name: 'openPopupButton' })
     fireEvent.mouseDown(openButton)
     let foundOptions = await findAllByRole('option')
-    fireEvent.mouseDown(foundOptions[2])
+    fireEvent.click(foundOptions[2])
     expect(onChange).toBeCalledTimes(1)
     expect(onChange).toBeCalledWith(
       '2',
@@ -605,7 +605,7 @@ describe('handle change on empty value when delete', () => {
 
     fireEvent.mouseDown(openButton)
     foundOptions = await findAllByRole('option')
-    fireEvent.mouseDown(foundOptions[2])
+    fireEvent.click(foundOptions[2])
     expect(onChange).toBeCalledTimes(canClear ? 2 : 1)
     if (canClear) {
       expect(onChange).toBeCalledWith(
@@ -726,11 +726,11 @@ it('should remove selectValue after inputValue in correct order by clear indicat
   fireEvent.change(input, { target: { value: 'dsad' } })
 
   expect(input).toHaveValue('dsad')
-  fireEvent.mouseDown(clearButton)
+  fireEvent.click(clearButton)
   expect(input).toHaveValue('')
   expect(selectedValues.length).toBe(2)
 
-  fireEvent.mouseDown(clearButton)
+  fireEvent.click(clearButton)
   expect(input).toHaveValue('')
   expect(onChange).toBeCalledTimes(1)
   expect(onChange).toBeCalledWith([], expect.anything(), undefined, 'clear')

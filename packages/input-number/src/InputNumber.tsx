@@ -11,6 +11,7 @@ import {
   ISelection,
   IParts,
 } from './types'
+import { DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 
 export type Props<TCanClear extends boolean = boolean> = {
   /**
@@ -340,6 +341,11 @@ const _InputNumber = React.forwardRef(
       <Input
         {...rest}
         ref={ref}
+        inputProps={{
+          //@ts-ignore Компонент корректно принимает data-атрибуты
+          [DATA_V_UIK_INPUT_TYPE]: 'number',
+          ...rest.inputProps,
+        }}
         inputRef={mergedInputRef}
         value={inputValue}
         onPaste={onPaste}

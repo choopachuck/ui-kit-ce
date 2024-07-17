@@ -56,7 +56,6 @@ export const MaskedInputBase = React.forwardRef(
       groupCharShifting,
       inputProps: inputPropsProp,
       autoSelectOnFocus,
-      inputRef,
     })
 
     return (

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.12.0 (2024-07-05)
+
+
+### Bug Fixes
+
+* **dropdown-menu:** позиционирование dropdown при первом рендере если ширина dropdown больше экрана ([658ea1e](#))
+* **dropdown-menu:** схлопывание меню при изменение ширины окна ([2a799f8](#))
+
+
+
 ### 1.11.1 (2024-06-17)
 
 **Note:** Version bump only for package @v-uik/dropdown-menu

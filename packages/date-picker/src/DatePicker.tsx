@@ -8,6 +8,7 @@ import {
   ElementSizeType,
   TrapFocus,
   ComponentPropsWithoutRefFix,
+  DATA_V_UIK_INPUT_TYPE,
 } from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
@@ -49,6 +50,7 @@ import { useMobileView } from './hooks/useMobileView'
 import { MobileCalendarPicker } from './components/MobileCalendar/MobileCalendarPicker'
 import { focusSelectedTime } from './utils/time'
 import { Labelled, LabelledProps } from '@v-uik/labelled'
+import { useHandleChangeDate } from './hooks'
 
 const useStyles = createUseStyles((theme) => ({
   root: {},
@@ -271,13 +273,19 @@ export const DatePicker = React.forwardRef(
       adapter
     )
 
+    const handleChange = useHandleChangeDate({
+      input: inputRef.current,
+      onChange,
+      format,
+    })
+
     const {
       value: inputValue,
       onChange: inputHandleChange,
       validationError,
     } = useMaskedInput<TDate>({
       date: rawValue,
-      changeDate: onChange,
+      changeDate: (date) => handleChange(date, 'input'),
       format,
       mask,
       minDate,
@@ -397,6 +405,8 @@ export const DatePicker = React.forwardRef(
       inputProps: {
         autoComplete: 'off',
         role: 'combobox',
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'date',
         'aria-haspopup': 'dialog',
         'aria-expanded': open,
         ...nativeInputProps,
@@ -404,8 +414,6 @@ export const DatePicker = React.forwardRef(
       size,
       error,
     }
-
-    const isOpen = !disabled && open
 
     const handleContainerKeyDown: React.KeyboardEventHandler<HTMLDivElement> =
       React.useCallback(
@@ -447,7 +455,7 @@ export const DatePicker = React.forwardRef(
               renderDay={renderDay}
               externalComponentsProps={externalComponentsProps}
               timePickerProps={timePickerProps}
-              onChange={onChange}
+              onChange={handleChange}
               onChangeDay={close}
               onChangeMonth={scheduleFocusDateOnOpen}
             />
@@ -460,7 +468,7 @@ export const DatePicker = React.forwardRef(
               shouldDisableDate={shouldDisableDate}
               renderDay={renderDay}
               externalComponentsProps={externalComponentsProps}
-              onChange={onChange}
+              onChange={handleChange}
               onChangeDay={close}
               onChangeMonth={scheduleFocusDateOnOpen}
             />
@@ -475,7 +483,7 @@ export const DatePicker = React.forwardRef(
                 classes={{ root: classesMap.timePickerRoot }}
                 {...timePickerProps}
                 value={value}
-                onChange={onChange}
+                onChange={handleChange}
                 onClickLastNumberColumn={() => setOpen(false)}
               />
             </div>
@@ -483,6 +491,12 @@ export const DatePicker = React.forwardRef(
         </TrapFocus>
       </div>
     )
+
+    React.useEffect(() => {
+      if (open && disabled) {
+        setOpen(false)
+      }
+    }, [disabled, open, setOpen])
 
     return (
       <ComponentIdContext.Provider value={componentSystemId}>
@@ -505,7 +519,7 @@ export const DatePicker = React.forwardRef(
               action={DropdownTriggerType.click}
               anchor={inputRef.current?.parentElement}
               {...dropdownProps}
-              open={isOpen}
+              open={open}
               content={content}
               onStateChange={onDropdownStateChange}
             >

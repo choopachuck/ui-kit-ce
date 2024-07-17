@@ -19,6 +19,7 @@ import { Props as RangeDatePanelProps } from './RangeDatePanel'
 import { useHoverState } from '../../hooks/useHoverState'
 
 import { getStyles } from './styles'
+import { getDateByActiveInputIndex } from '../../utils/date'
 
 const useStyles = createUseStyles(getStyles)
 
@@ -60,10 +61,21 @@ export const RangeDatePanelMulti = React.forwardRef(
     const adapter = useDateLibAdapter<TDate>()
 
     const { currentViewDate, setCurrentViewDate } = useCurrentViewDate<TDate>(
-      range[0] || range[1]
+      getDateByActiveInputIndex(range, activeInputIndex)
     )
 
-    const currentViewDateNext = adapter.addMonths(currentViewDate, 1)
+    // показывать рендж на одной вкладке, если даты в соседних месяцах
+    const currentViewDateFix =
+      activeInputIndex === 1 &&
+      range[0] &&
+      range[1] &&
+      typeof range[0] !== 'number' &&
+      typeof range[1] !== 'number' &&
+      !adapter.isSameMonth(range[0], range[1])
+        ? adapter.addMonths(currentViewDate, -1)
+        : currentViewDate
+
+    const currentViewDateNext = adapter.addMonths(currentViewDateFix, 1)
 
     const { hoverDate, setHoverDate } = useHoverState<TDate>(
       range,
@@ -87,7 +99,7 @@ export const RangeDatePanelMulti = React.forwardRef(
     })
 
     const monthText = `${adapter.format(
-      currentViewDate,
+      currentViewDateFix,
       'month'
     )} - ${adapter.format(currentViewDateNext, 'month')}`
     const yearText = adapter.getYear(currentViewDate)
@@ -98,9 +110,7 @@ export const RangeDatePanelMulti = React.forwardRef(
       isDateInRange,
       isDateInHoverRange,
       isMonthDisabled,
-      isMonthSelected,
       isYearDisabled,
-      isYearSelected,
     } = useRangeDateCheckState<TDate>({
       range,
       activeInputIndex,
@@ -147,7 +157,7 @@ export const RangeDatePanelMulti = React.forwardRef(
               <>
                 <CalendarView<TDate>
                   classes={calendarViewClasses}
-                  currentViewDate={currentViewDate}
+                  currentViewDate={currentViewDateFix}
                   isDateDisabled={isDateDisabled}
                   isDateSelected={isDateSelected}
                   isInRange={isDateInRange}
@@ -177,10 +187,6 @@ export const RangeDatePanelMulti = React.forwardRef(
                   fullHeight
                   currentViewDate={currentViewDate}
                   isMonthDisabled={isMonthDisabled}
-                  isMonthSelected={isMonthSelected}
-                  isInRange={isDateInRange}
-                  isInHoverRange={isDateInHoverRange}
-                  setHoverDate={setHoverDate}
                   onClickMonth={onSelectMonth}
                 />
 
@@ -191,10 +197,6 @@ export const RangeDatePanelMulti = React.forwardRef(
                   minDate={minDate}
                   maxDate={maxDate}
                   isYearDisabled={isYearDisabled}
-                  isYearSelected={isYearSelected}
-                  isInRange={isDateInRange}
-                  isInHoverRange={isDateInHoverRange}
-                  setHoverDate={setHoverDate}
                   onClickYear={onSelectYear}
                 />
               </>

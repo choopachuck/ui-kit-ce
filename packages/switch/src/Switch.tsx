@@ -7,6 +7,7 @@ import {
   ElementSize,
   ElementSizeType,
   ComponentPropsWithRefFix,
+  DATA_V_UIK_INPUT_TYPE,
 } from '@v-uik/common'
 import { Classes } from './interfaces'
 
@@ -260,6 +261,7 @@ export const Switch = React.forwardRef(
     return (
       <span {...rest} ref={ref} className={className}>
         <input
+          {...{ [DATA_V_UIK_INPUT_TYPE]: 'switch' }}
           {...inputProps}
           name={name}
           type="checkbox"

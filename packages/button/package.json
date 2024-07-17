@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/button",
-  "version": "1.11.1",
+  "version": "1.12.0",
   "description": "",
   "sideEffects": false,
   "main": "dist/cjs/index.js",
@@ -23,9 +23,9 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@v-uik/common": "^1.11.1",
-    "@v-uik/hooks": "^1.11.1",
-    "@v-uik/theme": "^1.11.1",
-    "@v-uik/typography": "^1.11.1"
+    "@v-uik/common": "^1.12.0",
+    "@v-uik/hooks": "^1.12.0",
+    "@v-uik/theme": "^1.12.0",
+    "@v-uik/typography": "^1.12.0"
   }
 }

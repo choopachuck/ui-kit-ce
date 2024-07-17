@@ -158,25 +158,25 @@ export const createCalendarPicker = (
     ? theme.colourway.mono03
     : theme.sys.color.onBackgroundOverlaySelect,
   /**
-   * @deprecated Будет удалено. Скругление наследуется из компонента `Button`
+   * @deprecated Будет удалено. Скругление наследуется из `comp.button.shapeBorderRadiusTopLeftMd`
    */
   buttonShapeBorderRadiusTopLeft: compatibilityMode
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusMd,
   /**
-   * @deprecated Будет удалено. Скругление наследуется из компонента `Button`
+   * @deprecated Будет удалено. Скругление наследуется из `comp.button.shapeBorderRadiusTopRightMd`
    */
   buttonShapeBorderRadiusTopRight: compatibilityMode
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusMd,
   /**
-   * @deprecated Будет удалено. Скругление наследуется из компонента `Button`
+   * @deprecated Будет удалено. Скругление наследуется из `comp.button.shapeBorderRadiusBottomLeftMd`
    */
   buttonShapeBorderRadiusBottomLeft: compatibilityMode
     ? theme.shape.borderRadius
     : theme.sys.shape.borderRadiusMd,
   /**
-   * @deprecated Будет удалено. Скругление наследуется из компонента `Button`
+   * @deprecated Будет удалено. Скругление наследуется из `comp.button.shapeBorderRadiusBottomRightMd`
    */
   buttonShapeBorderRadiusBottomRight: compatibilityMode
     ? theme.shape.borderRadius
@@ -316,18 +316,31 @@ export const createDayView = (theme: Theme, compatibilityMode?: boolean) => ({
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const createRangeDayView = () => ({
   //TODO: удалить в 2.0
+  /** @deprecated используйте `comp.dayView.weekDayColorText` */
   weekDayColorText: '',
+  /** @deprecated используйте `comp.dayView.dayButtonColorTextToday` */
   dayButtonColorTextToday: '',
+  /** @deprecated используйте `comp.dayView.dayButtonColorTextTodayDisabled` */
   dayButtonColorTextTodayDisabled: '',
+  /** @deprecated используйте `comp.dayView.dayButtonColorTextTodaySelected` */
   dayButtonColorTextTodaySelected: '',
+  /** @deprecated используйте `comp.dayView.dayButtonColorTextNotInMonth` */
   dayButtonColorTextNotInMonth: '',
+  /** @deprecated используйте `comp.dayView.dayButtonColorBackgroundWithinRange` */
   dayButtonColorBackgroundWithinRange: '',
+  /** @deprecated используйте `comp.dayView.dayButtonColorBackgroundWithinRangeHover` */
   dayButtonColorBackgroundWithinRangeHover: '',
+  /** @deprecated используйте `comp.dayView.dayButtonColorBorderHover` */
   dayButtonColorBorderHover: '',
+  /** @deprecated используйте `comp.dayView.dividerColorBorder` */
   dividerColorBorder: '',
+  /** @deprecated используйте `comp.dayView.dayButtonShapeBorderRadiusTopLeft` */
   dayButtonShapeBorderRadiusTopLeft: '',
+  /** @deprecated используйте `comp.dayView.dayButtonShapeBorderRadiusTopRight` */
   dayButtonShapeBorderRadiusTopRight: '',
+  /** @deprecated используйте `comp.dayView.dayButtonShapeBorderRadiusBottomLeft` */
   dayButtonShapeBorderRadiusBottomLeft: '',
+  /** @deprecated используйте `comp.dayView.dayButtonShapeBorderRadiusBottomRight` */
   dayButtonShapeBorderRadiusBottomRight: '',
 })
 

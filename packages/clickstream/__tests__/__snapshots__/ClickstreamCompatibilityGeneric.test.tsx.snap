@@ -1,0 +1,367 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`clickstream lib components compatibility: native HTML-elements 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-id",
+                "value": "1",
+              },
+              Object {
+                "key": "id",
+                "value": "custom-button",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "custom button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "custom button",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "custom-class",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "button-02",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "button-03",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "style",
+                "value": "color: red;",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "button",
+            "elementType": "submit",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "button-04",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "input-01",
+              },
+              Object {
+                "key": "aria-label",
+                "value": "3",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "value",
+                "value": "some value",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "some value",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "button",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "header",
+            "elementType": "header",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "header",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "aria-label",
+                "value": "my awesome textarea",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "textarea",
+            "elementType": "textarea",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "textarea",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "text-input",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "placeholder",
+                "value": "Placeholder text...",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "text-input",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "placeholder",
+                "value": "Placeholder text...",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "hello world",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "radio-input",
+              },
+              Object {
+                "key": "type",
+                "value": "radio",
+              },
+              Object {
+                "key": "data-foo",
+                "value": "bar",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "radio",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "radio-input",
+              },
+              Object {
+                "key": "type",
+                "value": "radio",
+              },
+              Object {
+                "key": "data-foo",
+                "value": "bar",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "radio",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": Event {
+            "isTrusted": true,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "checkbox-input",
+              },
+              Object {
+                "key": "type",
+                "value": "checkbox",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "checkbox",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "title",
+                "value": "checkbox-input",
+              },
+              Object {
+                "key": "type",
+                "value": "checkbox",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "checkbox",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "true",
+          },
+          "event": Event {
+            "isTrusted": true,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

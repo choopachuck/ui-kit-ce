@@ -1,5 +1,6 @@
 export * from './Bar'
 export * from './BarButton'
+export * from './BarContext'
 export * from './BarDate'
 export * from './BarDivider'
 export * from './BarDropdown'

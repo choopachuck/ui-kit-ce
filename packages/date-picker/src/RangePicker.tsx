@@ -7,12 +7,17 @@ import {
   ElementSize,
   ElementSizeType,
   ComponentPropsWithRefFix,
+  DATA_V_UIK_INPUT_TYPE,
 } from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import { warning } from '@v-uik/utils'
 import { ValidateDateProps } from './interfaces/date'
-import { BaseRangePickerProps, TRangeDate } from './interfaces/range'
+import {
+  BaseRangePickerProps,
+  TRangeDate,
+  TRangeValue,
+} from './interfaces/range'
 import { useOpenState } from './hooks/useOpenState'
 import { useSelectRange } from './hooks/useSelectRange'
 import { useRangeMaskedInput } from './hooks/useRangeMaskedInput'
@@ -49,6 +54,7 @@ import {
   useClassList,
 } from '@v-uik/hooks'
 import { Labelled, LabelledProps } from '@v-uik/labelled'
+import { useHandleChangeRangeDate } from './hooks'
 
 const useStyles = createUseStyles((theme) => ({
   root: {},
@@ -410,6 +416,15 @@ export const RangePicker = React.forwardRef(
     const startInputRef = React.useRef<HTMLInputElement>(null)
     const endInputRef = React.useRef<HTMLInputElement>(null)
 
+    const mergedStartInputRefs = useMergedRefs([
+      startInputRef,
+      startInputProps?.inputRef ?? null,
+    ])
+    const mergedEndInputRefs = useMergedRefs([
+      endInputRef,
+      endInputProps?.inputRef ?? null,
+    ])
+
     const isDividedStyle = inputStyle === RangeInputStyle.divided
 
     const isMobile = useMobileView()
@@ -475,6 +490,12 @@ export const RangePicker = React.forwardRef(
       []
     )
 
+    const handleChange = useHandleChangeRangeDate<TDate>({
+      inputs: [startInputRef.current, endInputRef.current],
+      format,
+      onChange: onChange as (date: TRangeDate<TDate>) => void,
+    })
+
     const {
       selectedRange,
       setSelectedRangeByIndex,
@@ -482,8 +503,7 @@ export const RangePicker = React.forwardRef(
       validationErrorStart,
     } = useSelectRange<TDate>({
       value,
-      //TODO: приведение для обратной совместимости кривых типов, удалить в 2.0
-      onChange: onChange as (date: TRangeDate<TDate>) => void,
+      onChange: handleChange,
       onChangeByIndex,
       rawValue,
       minDate,
@@ -499,7 +519,8 @@ export const RangePicker = React.forwardRef(
 
     const maskedRangeInputProps = {
       range: selectedRange,
-      changeDate: setSelectedRangeByIndex,
+      changeDate: (range: TRangeValue<TDate> | null, index: 0 | 1) =>
+        setSelectedRangeByIndex(range, index, undefined, 'input'),
       format,
       mask,
       rawValue,
@@ -722,8 +743,12 @@ export const RangePicker = React.forwardRef(
       ...startInputProps,
       classes: startInputClasses,
       disabled,
-      inputRef: startInputRef,
-      inputProps: nativeInputPropsStart,
+      inputRef: mergedStartInputRefs,
+      inputProps: {
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'range-start',
+        ...nativeInputPropsStart,
+      },
       onFocusChange: debouncedSetFocused,
       suffix: startSuffix,
       size,
@@ -738,8 +763,12 @@ export const RangePicker = React.forwardRef(
       ...endInputProps,
       classes: endInputClasses,
       disabled,
-      inputRef: endInputRef,
-      inputProps: nativeInputPropsEnd,
+      inputRef: mergedEndInputRefs,
+      inputProps: {
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'range-end',
+        ...nativeInputPropsEnd,
+      },
       onFocusChange: debouncedSetFocused,
       suffix: endSuffix,
       size,
@@ -747,6 +776,12 @@ export const RangePicker = React.forwardRef(
       onChange: inputHandleChangeEnd,
       fullWidth,
     }
+
+    React.useEffect(() => {
+      if (disabled && open) {
+        setOpen(false)
+      }
+    }, [disabled, open, setOpen])
 
     return (
       <div {...rest} ref={mergedRootRefs} className={className}>
@@ -767,7 +802,7 @@ export const RangePicker = React.forwardRef(
             placement="bottom-start"
             action={DropdownTriggerType.click}
             {...dropdownProps}
-            open={!disabled && open}
+            open={open}
             content={content}
             onStateChange={onDropdownStateChange}
           >

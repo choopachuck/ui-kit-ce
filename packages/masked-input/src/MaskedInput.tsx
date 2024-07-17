@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Input, InputProps } from '@v-uik/input'
 import { CommonProps } from './interfaces'
-import { useMaskedInput } from './hooks/useMaskedInput'
+import { useMaskedInput } from './hooks'
 import {
   DEFAULT_PLACEHOLDER_CHAR,
   DEFAULT_FORMAT_CHARACTERS,
@@ -56,7 +56,6 @@ export const MaskedInput = React.forwardRef(
       groupCharShifting,
       inputProps: inputPropsProp,
       autoSelectOnFocus,
-      inputRef,
     })
 
     return (

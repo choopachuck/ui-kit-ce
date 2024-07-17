@@ -79,10 +79,15 @@ type TruncateProps =
        * Свойство определяющее состояния тега во время его перемещения. Реализован только класс. Неактуален для типа 'color'
        */
       dragged?: boolean
+      /**
+       * Дополнительные свойства для кнопки удаления
+       */
+      deleteButtonProps?: ComponentPropsWithRefFix<'span'>
     }
   | {
       kind: Extract<TTagKinds, 'color'>
       onDelete?: never
+      deleteButtonProps?: never
       onClick?: never
       color?: TTagColor
       selected?: never
@@ -544,6 +549,7 @@ export const Tag = React.forwardRef(
       dragged,
       children,
       onDelete,
+      deleteButtonProps,
       onClick,
       components,
       ...rest
@@ -615,6 +621,8 @@ export const Tag = React.forwardRef(
       [onDelete]
     )
 
+    const isDeleteButtonVisible = !isColorTag && (onDelete || deleteButtonProps)
+
     return (
       <button
         {...rest}
@@ -627,12 +635,17 @@ export const Tag = React.forwardRef(
         onClick={onClick}
       >
         <span className={textClassName}>{children}</span>
-        {!isColorTag && onDelete && (
+        {isDeleteButtonVisible && (
           <span
+            onClick={handleDeleteIconClick}
+            {...deleteButtonProps}
+            className={clsx(
+              classesMap.deleteButton,
+              classesMap.closeButton,
+              deleteButtonProps?.className
+            )}
             role="button"
             tabIndex={-1}
-            className={clsx(classesMap.deleteButton, classesMap.closeButton)}
-            onClick={handleDeleteIconClick}
           >
             <DeleteIcon />
           </span>

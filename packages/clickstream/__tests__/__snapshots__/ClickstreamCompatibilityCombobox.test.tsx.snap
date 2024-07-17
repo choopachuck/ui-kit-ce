@@ -1,0 +1,1281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`clickstream lib components compatibility: autocomplete::keyboard 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "input-0-2-162",
+              },
+              Object {
+                "key": "aria-autocomplete",
+                "value": "list",
+              },
+              Object {
+                "key": "aria-controls",
+                "value": "v-uik-88",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "false",
+              },
+              Object {
+                "key": "autocapitalize",
+                "value": "none",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "autocorrect",
+                "value": "off",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-90",
+              },
+              Object {
+                "key": "spellcheck",
+                "value": "false",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "title",
+                "value": "autocomplete-search-input",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "autocomplete",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Пустое",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Пустое",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "autocomplete",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Второе",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Второе",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "autocomplete",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Четвертое",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Четвертое",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "autocomplete",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Пятое",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Пятое",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "autocomplete",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Четвертое",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Четвертое",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: combobox::creatable 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "input-0-2-162",
+              },
+              Object {
+                "key": "aria-autocomplete",
+                "value": "list",
+              },
+              Object {
+                "key": "aria-controls",
+                "value": "v-uik-59",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "autocapitalize",
+                "value": "none",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "autocorrect",
+                "value": "off",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-61",
+              },
+              Object {
+                "key": "spellcheck",
+                "value": "false",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox-creatable-input",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "input-0-2-162",
+              },
+              Object {
+                "key": "aria-autocomplete",
+                "value": "list",
+              },
+              Object {
+                "key": "aria-controls",
+                "value": "v-uik-59",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "false",
+              },
+              Object {
+                "key": "autocapitalize",
+                "value": "none",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "autocorrect",
+                "value": "off",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-61",
+              },
+              Object {
+                "key": "spellcheck",
+                "value": "false",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox-creatable-input",
+              },
+              Object {
+                "key": "value",
+                "value": "Новая опция",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Новая опция",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "combo-box-creatable",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "\\"Новая опция\\"",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "\\"Новая опция\\"",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "aria-selected",
+                "value": "false",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-63-option-Новая опция",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "li",
+            "elementType": "li",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "\\"Новая опция\\"",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "rootControl-0-2-142 medium-0-2-147 focused-0-2-143 isSearchable-0-2-149",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "aria-labelledby",
+                "value": "v-uik-34",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "-1",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox-multiple",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "div",
+            "elementType": "div",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Поиск",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "combo-box",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Первое",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "aria-selected",
+                "value": "true",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-35-option-1",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "optionActive-0-2-132 listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "li",
+            "elementType": "li",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "combo-box",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Первое, Второе",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое, Второе",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "aria-selected",
+                "value": "true",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-35-option-2",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "optionActive-0-2-132 listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "li",
+            "elementType": "li",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Второе",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "combo-box",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Первое",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "aria-selected",
+                "value": "false",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-35-option-2",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "optionActive-0-2-132 listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "li",
+            "elementType": "li",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Второе",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "input-0-2-162",
+              },
+              Object {
+                "key": "aria-autocomplete",
+                "value": "list",
+              },
+              Object {
+                "key": "aria-controls",
+                "value": "v-uik-31",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "false",
+              },
+              Object {
+                "key": "autocapitalize",
+                "value": "none",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "autocorrect",
+                "value": "off",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-33",
+              },
+              Object {
+                "key": "spellcheck",
+                "value": "false",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox-multiple-search-input",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "input-0-2-162",
+              },
+              Object {
+                "key": "aria-autocomplete",
+                "value": "list",
+              },
+              Object {
+                "key": "aria-controls",
+                "value": "v-uik-31",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "autocapitalize",
+                "value": "none",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "autocorrect",
+                "value": "off",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-33",
+              },
+              Object {
+                "key": "spellcheck",
+                "value": "false",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox-multiple-search-input",
+              },
+              Object {
+                "key": "value",
+                "value": "Треть",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Треть",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "combo-box",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Первое, Третье",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое, Третье",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "aria-selected",
+                "value": "true",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-35-option-3",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "optionActive-0-2-132 listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "li",
+            "elementType": "li",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Третье",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "rootControl-0-2-142 medium-0-2-147 focused-0-2-143 isSearchable-0-2-149",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "false",
+              },
+              Object {
+                "key": "aria-labelledby",
+                "value": "v-uik-34",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "-1",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox-multiple",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "div",
+            "elementType": "div",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "ПервоеТретье",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "combo-box",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Первое",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "input-0-2-162",
+              },
+              Object {
+                "key": "aria-autocomplete",
+                "value": "list",
+              },
+              Object {
+                "key": "aria-controls",
+                "value": "v-uik-31",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "false",
+              },
+              Object {
+                "key": "autocapitalize",
+                "value": "none",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "autocorrect",
+                "value": "off",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-33",
+              },
+              Object {
+                "key": "spellcheck",
+                "value": "false",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox-multiple-search-input",
+              },
+              Object {
+                "key": "value",
+                "value": "",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "rootControl-0-2-142 medium-0-2-147 focused-0-2-143 isSearchable-0-2-149",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "aria-labelledby",
+                "value": "v-uik-34",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "-1",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox-multiple",
+              },
+              Object {
+                "key": "aria-activedescendant",
+                "value": "v-uik-35-option-Первое",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "div",
+            "elementType": "div",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`clickstream lib components compatibility: combobox::single 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "rootControl-0-2-142 medium-0-2-147 focused-0-2-143",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "true",
+              },
+              Object {
+                "key": "aria-labelledby",
+                "value": "v-uik-6",
+              },
+              Object {
+                "key": "role",
+                "value": "combobox",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "div",
+            "elementType": "div",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Выберите опцию",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "aria-selected",
+                "value": "false",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-7-option-1",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "li",
+            "elementType": "li",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "data-v-uik-input-type",
+                "value": "combo-box",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "Первое",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Первое",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+      ],
+      Object {
+        "applicationLanguage": "ru",
+        "browser": "Mozilla/5.0 (linux) AppleWebKit/537.36 (KHTML, like Gecko) jsdom/16.7.0",
+        "platform": "WEB",
+        "screenSize": "0x0",
+        "systemLanguage": "ru",
+        "timeStamp": "2020-01-01T00:00:00.078-00:00",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;

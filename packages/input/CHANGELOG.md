@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.12.0 (2024-07-05)
+
+
+### Features
+
+* **combo-box,autocomplete:** изменение значения инициирует событие onChange ([70b460e](#))
+* **input:** очистка поля инициирует событие onChange ([482eede](#))
+
+
+### Bug Fixes
+
+* **input:** исправлено отображение фокуса при дизейбле инпута ([49aeac4](#))
+
+
+
 ### 1.11.1 (2024-06-17)
 
 **Note:** Version bump only for package @v-uik/input

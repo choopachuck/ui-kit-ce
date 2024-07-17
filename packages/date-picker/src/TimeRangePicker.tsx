@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { Dropdown, DropdownTriggerType } from '@v-uik/dropdown'
-import { ElementSize } from '@v-uik/common'
+import { ElementSize, DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import { BaseTimePicker, BaseTimePickerProps } from './views/BaseTimePicker'
@@ -15,14 +15,17 @@ import { ErrorIcon } from './components/ErrorIcon/ErrorIcon'
 import { useShouldDisableRangeTime } from './hooks/useShouldDisableRangeTime'
 import { TRangeDate } from './interfaces'
 import { TimePickerOwnProps } from './interfaces/time'
-import { useClassList } from '@v-uik/hooks'
+import { useClassList, useMergedRefs } from '@v-uik/hooks'
 import { isEqualKeyboardKeys } from '@v-uik/utils'
 import { RangeInputStyle, RangeInputStyleType } from './constants/range'
 import { focusSelectedTime } from './utils/time'
 import { TimeValidationErrorMessages } from './constants/common'
 import { useRangeTimeInput } from './hooks/useRangeTimeInput'
-import { useRangeTimeValidation } from './hooks'
-import { useDateLibAdapter } from './hooks/useDateLibAdapter'
+import {
+  useRangeTimeValidation,
+  useHandleChangeRangeDate,
+  UseHandleChangeDateReason,
+} from './hooks'
 import { Labelled } from '@v-uik/labelled'
 
 const useStyles = createUseStyles((theme) => ({
@@ -377,6 +380,14 @@ export const TimeRangePicker = React.forwardRef(
     const inputContainerRef = React.useRef<HTMLInputElement>(null)
     const startInputRef = React.useRef<HTMLInputElement>(null)
     const endInputRef = React.useRef<HTMLInputElement>(null)
+    const mergedStartInputRefs = useMergedRefs([
+      startInputRef,
+      propsStartInputProps?.inputRef ?? null,
+    ])
+    const mergedEndInputRefs = useMergedRefs([
+      endInputRef,
+      propsEndInputProps?.inputRef ?? null,
+    ])
     // Для высчитвания позиционирования относительно контейнеров
     const startInputContainerRef = React.useRef<HTMLDivElement>(null)
     const endInputContainerRef = React.useRef<HTMLDivElement>(null)
@@ -392,7 +403,6 @@ export const TimeRangePicker = React.forwardRef(
       endTimePickerProps,
       range
     )
-    const adapter = useDateLibAdapter<TDate>()
 
     const { validate, validationErrorEnd, validationErrorStart } =
       useRangeTimeValidation<TDate>({
@@ -400,34 +410,31 @@ export const TimeRangePicker = React.forwardRef(
         endDisabledTime,
       })
 
+    const handleChange = useHandleChangeRangeDate<TDate>({
+      inputs: [startInputRef.current, endInputRef.current],
+      format,
+      onChange: onChange as (date: TRangeDate<TDate>) => void,
+    })
+
     // callbacks
     const onChangeByIndex = React.useCallback(
-      (index: InputIndex) => (date: TDate | null) => {
-        const newRange = [...(range ?? [])] as TRangeDate<TDate>
+      (index: InputIndex, reason: UseHandleChangeDateReason = 'panel') =>
+        (date: TDate | null) => {
+          const newRange = [...(range ?? [])] as TRangeDate<TDate>
 
-        newRange[index] = date
+          newRange[index] = date
 
-        setRange(newRange)
+          setRange(newRange)
 
-        const isValid =
-          validate({ range: newRange, index }) || triggerOnChangeOnInvalid
-        const isValueChanged = date !== value?.[index]
+          const isValid =
+            validate({ range: newRange, index }) || triggerOnChangeOnInvalid
+          const isValueChanged = date !== value?.[index]
 
-        if (isValid && isValueChanged) {
-          onChange?.(newRange)
-        }
-      },
-      [
-        value,
-        setActiveInputIndex,
-        setOpen,
-        setRange,
-        range,
-        adapter,
-        validate,
-        onChange,
-        triggerOnChangeOnInvalid,
-      ]
+          if (isValid && isValueChanged) {
+            handleChange(newRange, index, reason)
+          }
+        },
+      [value, setRange, range, validate, triggerOnChangeOnInvalid, handleChange]
     )
 
     const handleFocus = React.useCallback(
@@ -441,7 +448,7 @@ export const TimeRangePicker = React.forwardRef(
       useRangeTimeInput<TDate>({
         range: range as TRangeDate<TDate>,
         index: 0,
-        changeDate: onChangeByIndex(InputIndex.LEFT),
+        changeDate: onChangeByIndex(InputIndex.LEFT, 'input'),
         format: safeFormat,
         validationError: validationErrorStart,
       })
@@ -450,7 +457,7 @@ export const TimeRangePicker = React.forwardRef(
       useRangeTimeInput<TDate>({
         range: range as TRangeDate<TDate>,
         index: 1,
-        changeDate: onChangeByIndex(InputIndex.RIGHT),
+        changeDate: onChangeByIndex(InputIndex.RIGHT, 'input'),
         format: safeFormat,
         validationError: validationErrorEnd,
       })
@@ -549,6 +556,8 @@ export const TimeRangePicker = React.forwardRef(
       disabled,
       inputProps: {
         autoComplete: 'off',
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'time-range-start',
         ...propsStartInputProps?.inputProps,
         onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
           propsStartInputProps?.inputProps?.onFocus?.(event)
@@ -559,7 +568,7 @@ export const TimeRangePicker = React.forwardRef(
       },
       onFocusChange: handleFocus,
       size,
-      inputRef: startInputRef,
+      inputRef: mergedStartInputRefs,
       value: inputValueStart,
       onChange: inputHandleChangeStart,
       fullWidth,
@@ -573,6 +582,8 @@ export const TimeRangePicker = React.forwardRef(
       disabled,
       inputProps: {
         autoComplete: 'off',
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'time-range-end',
         ...propsEndInputProps?.inputProps,
         onFocus: (event: React.FocusEvent<HTMLInputElement>) => {
           propsEndInputProps?.inputProps?.onFocus?.(event)
@@ -584,7 +595,7 @@ export const TimeRangePicker = React.forwardRef(
       onFocusChange: handleFocus,
       size,
       value: inputValueEnd,
-      inputRef: endInputRef,
+      inputRef: mergedEndInputRefs,
       onChange: inputHandleChangeEnd,
       fullWidth,
     }

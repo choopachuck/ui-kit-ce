@@ -10,11 +10,16 @@ import {
   UseRangeMaskedInputValidationResult,
 } from './useRangeMaskedInputValidation'
 import { DateValidationError } from '../constants/common'
+import { UseHandleChangeDateReason } from './useHandleChangeDate'
 
 interface IUseSelectRangeProps<TDate = unknown>
   extends UseRangeMaskedInputValidationProps<TDate> {
   value: [ParsableDate<TDate>, ParsableDate<TDate>]
-  onChange?: (date: TRangeDate<TDate>) => void
+  onChange?: (
+    date: TRangeDate<TDate>,
+    index: 0 | 1,
+    reason?: UseHandleChangeDateReason
+  ) => void
   onChangeByIndex?: (date: TRangeDate<TDate>, index: 0 | 1) => void
   rawValue?: [ParsableDate<TDate>, ParsableDate<TDate>]
   triggerOnChangeOnInvalid?: boolean
@@ -25,7 +30,9 @@ export interface IUseSelectRangeResult<TDate = unknown>
   selectedRange: TRangeDate<TDate>
   setSelectedRangeByIndex: (
     date: TRangeValue<TDate> | null,
-    index: 0 | 1
+    index: 0 | 1,
+    overrideRange?: TRangeDate<TDate>,
+    reason?: UseHandleChangeDateReason
   ) => void
 }
 
@@ -110,11 +117,12 @@ export const useSelectRange = <TDate = unknown>({
   const handleChangeDateByIndex = (
     rawValue: TRangeValue<TDate> | null,
     index: 0 | 1,
-    overrideRange?: TRangeDate<TDate>
+    overrideRange?: TRangeDate<TDate>,
+    reason: UseHandleChangeDateReason = 'panel'
   ) => {
     if (overrideRange) {
       setSelectedRange(overrideRange)
-      onChange?.(overrideRange)
+      onChange?.(overrideRange, index, reason)
       onChangeByIndex?.(overrideRange, index)
 
       return
@@ -133,7 +141,7 @@ export const useSelectRange = <TDate = unknown>({
     newRange[index] = isValidDate ? rawValue : null
     setSelectedRange(newRange)
     if (!validationErrors || triggerOnChangeOnInvalid) {
-      onChange?.(rawNewRange)
+      onChange?.(rawNewRange, index, reason)
     }
 
     //перекинуть фокус на след инпут, если ввод валидный

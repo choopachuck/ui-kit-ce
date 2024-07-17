@@ -5,10 +5,7 @@ import { createUseStyles, clsx } from '@v-uik/theme'
 import { useButtonReset } from '@v-uik/hooks'
 import { useDateLibAdapter } from '../../hooks/useDateLibAdapter'
 import { splitArrayIntoChunks } from '../../utils/common'
-import {
-  CheckDateStateResult,
-  FunctionComponentCommonFields,
-} from '../../interfaces/common'
+import { FunctionComponentCommonFields } from '../../interfaces/common'
 import type { ComponentPropsWithRefFix } from '@v-uik/common'
 
 const useStyles = createUseStyles((theme) => ({
@@ -119,128 +116,9 @@ const useStyles = createUseStyles((theme) => ({
         },
       },
     },
-
-    '&$inRange': {
-      backgroundColor:
-        theme.comp.rangeDayView.dayButtonColorBackgroundWithinRange ||
-        theme.comp.monthView.monthButtonColorBackgroundWithinRange,
-    },
-
-    '&$hovered': {
-      borderRadius: 0,
-      borderTop: `1px dashed ${
-        theme.comp.rangeDayView.dayButtonColorBorderHover ||
-        theme.comp.monthView.monthButtonColorBorderHover
-      }`,
-      borderBottom: `1px dashed ${
-        theme.comp.rangeDayView.dayButtonColorBorderHover ||
-        theme.comp.monthView.monthButtonColorBorderHover
-      }`,
-
-      '&$startOfRow': {
-        borderLeft: `1px dashed ${
-          theme.comp.rangeDayView.dayButtonColorBorderHover ||
-          theme.comp.monthView.monthButtonColorBorderHover
-        }`,
-      },
-
-      '&$endOfRow': {
-        borderRight: `1px dashed ${
-          theme.comp.rangeDayView.dayButtonColorBorderHover ||
-          theme.comp.monthView.monthButtonColorBorderHover
-        }`,
-      },
-
-      '&$inRange': {
-        border: 0,
-        backgroundColor:
-          theme.comp.rangeDayView.dayButtonColorBackgroundWithinRangeHover ||
-          theme.comp.monthView.monthButtonColorBackgroundWithinRangeHover,
-
-        '&:hover': {
-          backgroundColor:
-            theme.comp.rangeDayView.dayButtonColorBackgroundWithinRangeHover ||
-            theme.comp.monthView.monthButtonColorBackgroundWithinRangeHover,
-        },
-      },
-    },
-
-    '&$hovered-start': {
-      borderLeft: `1px dashed ${
-        theme.comp.rangeDayView.dayButtonColorBorderHover ||
-        theme.comp.monthView.monthButtonColorBorderHover
-      }`,
-
-      '&:not($inRange)': {
-        borderTopLeftRadius:
-          theme.comp.rangeDayView.dayButtonShapeBorderRadiusTopLeft ||
-          theme.comp.monthView.monthButtonShapeBorderRadiusTopLeft,
-        borderBottomLeftRadius:
-          theme.comp.rangeDayView.dayButtonShapeBorderRadiusBottomLeft ||
-          theme.comp.monthView.monthButtonShapeBorderRadiusBottomLeft,
-      },
-    },
-
-    '&$hovered-end': {
-      borderRight: `1px dashed ${
-        theme.comp.rangeDayView.dayButtonColorBorderHover ||
-        theme.comp.monthView.monthButtonColorBorderHover
-      }`,
-
-      '&:not($inRange)': {
-        borderTopRightRadius:
-          theme.comp.rangeDayView.dayButtonShapeBorderRadiusTopRight ||
-          theme.comp.monthView.monthButtonShapeBorderRadiusTopRight,
-        borderBottomRightRadius:
-          theme.comp.rangeDayView.dayButtonShapeBorderRadiusBottomRight ||
-          theme.comp.monthView.monthButtonShapeBorderRadiusBottomRight,
-      },
-    },
-
-    '&$startOfRow': {
-      borderTopLeftRadius:
-        theme.comp.rangeDayView.dayButtonShapeBorderRadiusTopLeft ||
-        theme.comp.monthView.monthButtonShapeBorderRadiusTopLeft,
-      borderBottomLeftRadius:
-        theme.comp.rangeDayView.dayButtonShapeBorderRadiusBottomLeft ||
-        theme.comp.monthView.monthButtonShapeBorderRadiusBottomLeft,
-    },
-
-    '&$endOfRow': {
-      borderTopRightRadius:
-        theme.comp.rangeDayView.dayButtonShapeBorderRadiusTopRight ||
-        theme.comp.monthView.monthButtonShapeBorderRadiusTopRight,
-      borderBottomRightRadius:
-        theme.comp.rangeDayView.dayButtonShapeBorderRadiusBottomRight ||
-        theme.comp.monthView.monthButtonShapeBorderRadiusBottomRight,
-    },
   },
 
   selected: {},
-
-  'selected-start': {
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-  },
-
-  'selected-end': {
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-  },
-
-  inRange: {
-    borderRadius: 0,
-  },
-
-  hovered: {},
-
-  'hovered-start': {},
-
-  'hovered-end': {},
-
-  startOfRow: {},
-
-  endOfRow: {},
 }))
 
 const MONTHS_IN_ROW = 3
@@ -263,22 +141,6 @@ export interface Props<TDate = unknown>
    * Функция проверки отключена ли дата
    */
   isMonthDisabled: (date: TDate) => boolean
-  /**
-   * Функция проверки выбрана ли дата
-   */
-  isMonthSelected: (date: TDate) => CheckDateStateResult
-  /**
-   * Функция проверки находится ли дата в выбранном диапазоне
-   */
-  isInRange?: (date: TDate) => CheckDateStateResult
-  /**
-   * Функция проверки находится ли дата в диапазоне наведения
-   */
-  isInHoverRange?: (date: TDate) => CheckDateStateResult
-  /**
-   * Функция установки даты, на которую наведен курсор
-   */
-  setHoverDate?: (date: TDate | null) => void
 }
 
 interface IMonthsView extends FunctionComponentCommonFields<Props> {
@@ -295,10 +157,6 @@ export const MonthsView: IMonthsView = <TDate extends unknown>(
     className,
     currentViewDate,
     isMonthDisabled,
-    isMonthSelected,
-    isInRange,
-    isInHoverRange,
-    setHoverDate,
     onClickMonth,
     fullHeight,
     ...rest
@@ -315,77 +173,31 @@ export const MonthsView: IMonthsView = <TDate extends unknown>(
     const monthsArray = adapter.getMonthArray(currentViewDate)
     const monthsArrayByRow = splitArrayIntoChunks(monthsArray, MONTHS_IN_ROW)
 
-    let isSelectedFound = false
-    let isFocusedFound = false
-    let isInRangeFound = false
-    let isInHoverRangeFound = false
-
     return monthsArrayByRow.map((monthsRow, rowIndex) => (
       <div key={`row-${rowIndex}`} className={classesList.row}>
         {monthsRow.map((month, index) => {
-          let isSelected = false
-          let selectedPosition = ''
-          if (!isSelectedFound) {
-            const selectedResult = isMonthSelected(month)
-            isSelected = selectedResult.value
-            isSelectedFound = !!selectedResult.preventNextCheck
-            selectedPosition = selectedResult.position ?? ''
-          }
-
-          let isFocused = false
-          if (!isFocusedFound) {
-            isFocused =
-              isSelected || adapter.isSameMonth(currentViewDate, month)
-            isFocusedFound = isFocused
-          }
-
-          let inRange = false
-          if (!isSelected && !isInRangeFound && isInRange) {
-            const inRangeResult = isInRange(month)
-            inRange = inRangeResult.value
-            isInRangeFound = !!inRangeResult.preventNextCheck
-          }
-
-          let inHoverRange = false
-          let hoveredPosition = ''
-          if (!isSelected && !isInHoverRangeFound && isInHoverRange) {
-            const inHoverRangeResult = isInHoverRange(month)
-            inHoverRange = inHoverRangeResult.value
-            isInHoverRangeFound = !!inHoverRangeResult.preventNextCheck
-            hoveredPosition = inHoverRangeResult.position ?? ''
-          }
-
           return (
             <button
               key={`month-${rowIndex}-${index}`}
-              ref={isFocused ? focusedButtonRef : undefined}
+              ref={
+                adapter.isSameMonth(currentViewDate, month)
+                  ? focusedButtonRef
+                  : undefined
+              }
               className={clsx(
                 buttonClasses.resetButton,
                 classesList.monthButton,
                 {
-                  [classesList.selected]: isSelected,
-                  [classesList[
-                    `selected-${selectedPosition}` as keyof typeof classesList
-                  ]]: selectedPosition,
-                  [classesList.startOfRow]: index === 0,
-                  [classesList.endOfRow]: index === MONTHS_IN_ROW - 1,
-                  [classesList.inRange]: inRange,
-                  [classesList.hovered]: inHoverRange,
-                  [classesList[
-                    `hovered-${hoveredPosition}` as keyof typeof classesList
-                  ]]: hoveredPosition,
+                  [classesList.selected]: adapter.isSameMonth(
+                    currentViewDate,
+                    month
+                  ),
                 }
               )}
               //aria-disabled вместо disabled, чтобы работала навигация с клавиатуры
               aria-disabled={isMonthDisabled(month)}
               type="button"
               onClick={() => onClickMonth(month)}
-              onMouseEnter={
-                setHoverDate ? () => setHoverDate(month) : undefined
-              }
-              onMouseLeave={setHoverDate ? () => setHoverDate(null) : undefined}
-              onFocus={setHoverDate ? () => setHoverDate(month) : undefined}
-              onBlur={setHoverDate ? () => setHoverDate(null) : undefined}
             >
               <span className={classesList.monthText}>
                 {adapter.format(month, 'monthShort')}

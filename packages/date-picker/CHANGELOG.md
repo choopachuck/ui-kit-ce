@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.12.0 (2024-07-05)
+
+
+### Features
+
+* **combo-box,autocomplete:** изменение значения инициирует событие onChange ([70b460e](#))
+* **date-picker:** удаление и изменение значения через календарь инициирует событие onChange ([5b62fe4](#))
+
+
+### Bug Fixes
+
+* **date-picker:** исправлена логика индикации выбранного месяца и года в RangePicker ([4c3020e](#))
+* **date-picker:** исправлено поведение дропдауна rangePicker при дизейбле ([74e5030](#))
+* **date-picker:** исправлено поведение дропдауна при дизейбле ([77ed573](#))
+
+
+
 ### 1.11.1 (2024-06-17)
 
 **Note:** Version bump only for package @v-uik/date-picker

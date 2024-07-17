@@ -239,7 +239,7 @@ it('handle clear value correctly', () => {
 
   const clearButton = getByRole('button', { name: 'clearButton' })
   expect(clearButton).toBeInTheDocument()
-  fireEvent.mouseDown(clearButton)
+  fireEvent.click(clearButton)
 
   expect(handleChange).toHaveBeenCalledTimes(2)
   expect(handleChange).toHaveBeenCalledWith(null, expect.anything(), 'clear')

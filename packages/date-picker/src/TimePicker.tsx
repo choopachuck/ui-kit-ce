@@ -4,7 +4,7 @@ import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { VirtualElement } from '@popperjs/core'
 import { Dropdown, DropdownTriggerType } from '@v-uik/dropdown'
-import { ElementSize, TrapFocus } from '@v-uik/common'
+import { ElementSize, TrapFocus, DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 import { InputBase, InputBaseProps } from '@v-uik/input'
 import { ClockIcon } from './components/ClockIcon/ClockIcon'
 import {
@@ -15,6 +15,7 @@ import { MaskedInputBase, MaskedInputBaseProps } from '@v-uik/masked-input'
 import { useOpenState } from './hooks/useOpenState'
 import { useTimeInput } from './hooks/useTimeInput'
 import { useSafeTimeFormat } from './hooks/useSafeTimeFormat'
+import { useHandleChangeDate } from './hooks'
 import { useDropdownStateChange } from './hooks/useDropdownStateChange'
 import { useMergedRefs, useClassList } from '@v-uik/hooks'
 import { isEqualKeyboardKeys } from '@v-uik/utils'
@@ -161,6 +162,12 @@ export const TimePicker = React.forwardRef(
       format
     )
 
+    const handleChange = useHandleChangeDate({
+      input: inputRef.current,
+      onChange,
+      format,
+    })
+
     const {
       value: inputValue,
       onChange: inputHandleChange,
@@ -168,7 +175,7 @@ export const TimePicker = React.forwardRef(
     } = useTimeInput<TDate>({
       is12HoursFormat: baseTimePickerProps?.is12HoursFormat,
       date: value as TDate,
-      changeDate: onChange,
+      changeDate: (date) => handleChange(date, 'input'),
       format: safeFormat,
       shouldDisableTime: baseTimePickerProps?.shouldDisableTime,
       triggerOnChangeOnInvalid,
@@ -227,6 +234,8 @@ export const TimePicker = React.forwardRef(
       disabled,
       inputProps: {
         autoComplete: 'off',
+        //@ts-ignore Компонент корректно принимает data-атрибуты
+        [DATA_V_UIK_INPUT_TYPE]: 'time',
         ...propsInputProps?.inputProps,
         role: 'combobox',
         'aria-haspopup': 'dialog',
@@ -293,7 +302,7 @@ export const TimePicker = React.forwardRef(
                         )
                       }, 0)
                     }}
-                    onChange={onChange}
+                    onChange={handleChange}
                   />
                 </TrapFocus>
               </div>

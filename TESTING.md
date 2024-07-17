@@ -26,7 +26,7 @@ docker pull mcr.microsoft.com/playwright:v1.23.2-focal
 После успешного скачивания образа, запустите контейнер:
 
 ```bash
-// Для MacOS и Linux
+// Для MacOS, Linux и PowerShell
 docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.23.2-focal /bin/bash
 
 // или для Windows

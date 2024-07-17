@@ -1,11 +1,15 @@
 import * as React from 'react'
-import { ElementSizeType, ComponentPropsWithRefFix } from '@v-uik/common'
-import { TooltipProps } from '@v-uik/tooltip'
-import { DropdownProps } from '@v-uik/dropdown'
-import { ListProps } from '@v-uik/list'
+import type {
+  ElementSizeType,
+  ComponentPropsWithRefFix,
+  ComponentPropsWithoutRefFix,
+} from '@v-uik/common'
+import type { TooltipProps } from '@v-uik/tooltip'
+import type { DropdownProps } from '@v-uik/dropdown'
+import type { ListProps } from '@v-uik/list'
 
-import { FilterOption } from '../utils'
-import { LabelledProps } from '@v-uik/labelled'
+import type { FilterOption } from '../utils'
+import type { LabelledProps } from '@v-uik/labelled'
 
 export type Options<Option> = Option[]
 
@@ -92,6 +96,10 @@ export interface BaseComboBoxProps<
    * Группировка опций по признаку
    */
   groupBy?: (option: Option) => string
+  /**
+   * Пропсы innerProps для компонента Input
+   */
+  inputInnerProps?: Partial<ComponentPropsWithoutRefFix<'input'>>
   /**
    * Значение текстового поля
    */
@@ -205,6 +213,10 @@ export interface BaseComboBoxProps<
    * Функция, которая будет вызываться перед каждым закрытием меню
    */
   onMenuClose?: () => void
+  /**
+   * Свойства для нативного элемента input
+   */
+  inputProps?: ComponentPropsWithRefFix<'input'>
 }
 
 export type ComboboxEvent =
@@ -212,7 +224,7 @@ export type ComboboxEvent =
   | React.KeyboardEvent<HTMLDivElement>
   | React.MouseEvent<HTMLSpanElement>
 
-export type ComboBoxInputEvent = ComboBoxClearEvent // типы добавляются по мере необходимости
+export type ComboBoxInputEvent = ComboBoxClearEvent | 'input' // типы добавляются по мере необходимости
 type ComboBoxClearEvent = 'select-clear' | 'delete-clear'
 
 export type ComboboxChangeReason =

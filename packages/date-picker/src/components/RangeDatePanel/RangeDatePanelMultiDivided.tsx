@@ -123,9 +123,7 @@ export const RangeDatePanelMultiDivided = React.forwardRef(
       isDateInRange,
       isDateInHoverRange,
       isMonthDisabled,
-      isMonthSelected,
       isYearDisabled,
-      isYearSelected,
     } = useRangeDateCheckState<TDate>({
       range,
       activeInputIndex,
@@ -187,10 +185,6 @@ export const RangeDatePanelMultiDivided = React.forwardRef(
                 fullHeight={existedViews.day || existedViews.year}
                 currentViewDate={currentViewDateLeft}
                 isMonthDisabled={isMonthDisabled}
-                isMonthSelected={isMonthSelected}
-                isInRange={isDateInRange}
-                isInHoverRange={isDateInHoverRange}
-                setHoverDate={setHoverDate}
                 onClickMonth={onSelectMonthLeft}
               />
             )}
@@ -201,10 +195,6 @@ export const RangeDatePanelMultiDivided = React.forwardRef(
                 minDate={minDate}
                 maxDate={maxDate}
                 isYearDisabled={isYearDisabled}
-                isYearSelected={isYearSelected}
-                isInRange={isDateInRange}
-                isInHoverRange={isDateInHoverRange}
-                setHoverDate={setHoverDate}
                 onClickYear={onSelectYearLeft}
               />
             )}
@@ -238,10 +228,6 @@ export const RangeDatePanelMultiDivided = React.forwardRef(
                 fullHeight={existedViews.day || existedViews.year}
                 currentViewDate={currentViewDateRight}
                 isMonthDisabled={isMonthDisabled}
-                isMonthSelected={isMonthSelected}
-                isInRange={isDateInRange}
-                isInHoverRange={isDateInHoverRange}
-                setHoverDate={setHoverDate}
                 onClickMonth={onSelectMonthRight}
               />
             )}
@@ -252,10 +238,6 @@ export const RangeDatePanelMultiDivided = React.forwardRef(
                 minDate={minDate}
                 maxDate={maxDate}
                 isYearDisabled={isYearDisabled}
-                isYearSelected={isYearSelected}
-                isInRange={isDateInRange}
-                isInHoverRange={isDateInHoverRange}
-                setHoverDate={setHoverDate}
                 onClickYear={onSelectYearRight}
               />
             )}

@@ -8,11 +8,13 @@ import {
   ClearButton,
   ClearButtonProps,
   ComponentPropsWithRefFix,
+  DATA_V_UIK_INPUT_TYPE,
 } from '@v-uik/common'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
 import { useMergedRefs, useClassList } from '@v-uik/hooks'
 import { InputAffix, InputAffixType } from './InputAffix'
 import { ErrorIcon } from './assets/ErrorIcon'
+import { dispatchChangeEvent } from '@v-uik/utils'
 
 type Classes = {
   /** Стиль, применяемый к основному элементу */
@@ -43,7 +45,11 @@ export type InputChangeReason = 'input' | 'clear'
 
 export type InputChangeEvent =
   | React.ChangeEvent<HTMLInputElement>
+  /**
+   * @deprecated Заменено на React.PointerEvent<HTMLButtonElement>
+   */
   | React.MouseEvent<HTMLDivElement>
+  | React.PointerEvent<HTMLButtonElement>
 
 export interface InputBaseProps<TCanClear extends boolean = boolean>
   extends Omit<ComponentPropsWithRefFix<'div'>, 'prefix' | 'onChange' | 'ref'> {
@@ -389,6 +395,21 @@ const _InputBase = React.forwardRef(
     const [focused, setFocused] = React.useState(false)
     const inputRef = React.useRef<HTMLInputElement>(null)
 
+    //#region О механизме изменения значения поля
+    // Ранее инициатором изменения поля могли служить два элемента - это input, и кнопка очистки поля.
+    // Соответственно имелось два ивента - это React.ChangeEvent<HTMLInputElement> и
+    // React.MouseEvent<HTMLDivElement>. После внедрения доработок ClickStream и вызова
+    // нативного ивента через dispatchEvent, инициатором очистки поля теперь всегда является input.
+    // Очистка поля всегда триггерит dispachtEvent, вместо прямого вызова onChange. Поэтому
+    // необходимо дополнительные значения, такие как reason или event, отправлять не аргументами, а
+    // сохранять в рефе, и уже эти значения прокидывать в onChange
+
+    // Костыль, чтобы отлавливать тип изменения поля при диспатче нативного ивента
+    const inputChangeReasonRef = React.useRef<InputChangeReason | null>(null)
+    // Костыль, чтобы отлавливать событие изменения поля при диспатче нативного ивента
+    const inputChangeEventRef = React.useRef<InputChangeEvent | null>(null)
+    //#endregion
+
     const mergedInputRef = useMergedRefs([inputRefProp, inputRef])
 
     const classesList = useStyles()
@@ -407,6 +428,19 @@ const _InputBase = React.forwardRef(
       [classesMap.large]: isLarge,
       [classesMap.fullWidth]: fullWidth,
     })
+
+    const setInputChangeEvent = (
+      event: InputChangeEvent,
+      reason: InputChangeReason
+    ) => {
+      inputChangeEventRef.current = event
+      inputChangeReasonRef.current = reason
+    }
+
+    const clearInputChangeEvent = () => {
+      inputChangeEventRef.current = null
+      inputChangeReasonRef.current = null
+    }
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       setFocused(true)
@@ -428,22 +462,29 @@ const _InputBase = React.forwardRef(
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      onChange?.(event.target.value, event, 'input')
+      onChange?.(
+        event.target.value,
+        // Для сохранения обратной совместимости хардкодом кастим тип ивента
+        (inputChangeEventRef.current ??
+          event) as React.ChangeEvent<HTMLInputElement>,
+        inputChangeReasonRef.current ?? 'input'
+      )
+      clearInputChangeEvent()
     }
 
     const handleClear = (event: InputChangeEvent) => {
-      const _onChange = onChange as (
-        value: string,
-        event: InputChangeEvent,
-        reason?: InputChangeReason
-      ) => void
-      _onChange?.('', event, 'clear')
-      onClear?.()
+      if (inputRef.current) {
+        onClear?.()
+        setInputChangeEvent(event, 'clear')
+        dispatchChangeEvent(inputRef.current, '')
+      }
     }
 
-    const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
+    const handleClearButtonClick = (
+      event: React.PointerEvent<HTMLDivElement>
+    ) => {
       handleClear(event)
-      clearButtonInnerProps?.onMouseDown?.(event)
+      clearButtonInnerProps?.onClick?.(event)
     }
 
     const errorIcon = (
@@ -451,6 +492,20 @@ const _InputBase = React.forwardRef(
         <ErrorIcon />
       </div>
     )
+
+    const vUikInputType =
+      (inputProps?.[
+        DATA_V_UIK_INPUT_TYPE as keyof React.InputHTMLAttributes<HTMLInputElement>
+      ] as string) ||
+      inputProps?.type ||
+      'text'
+
+    React.useEffect(() => {
+      if (disabled && focused) {
+        setFocused(false)
+        onFocusChange?.(false)
+      }
+    }, [disabled, focused, onFocusChange])
 
     return (
       <div {...rest} ref={ref} className={className} onClick={handleClick}>
@@ -472,6 +527,7 @@ const _InputBase = React.forwardRef(
             [classesMap.inputMedium]: isMedium,
             [classesMap.inputLarge]: isLarge,
           })}
+          {...{ [DATA_V_UIK_INPUT_TYPE]: vUikInputType }}
           disabled={disabled}
           placeholder={placeholder}
           value={value}
@@ -494,7 +550,7 @@ const _InputBase = React.forwardRef(
               size={size}
               innerProps={{
                 ...clearButtonInnerProps,
-                onMouseDown: handleMouseDown,
+                onClick: handleClearButtonClick,
               }}
               clearIcon={clearIcon}
             />
