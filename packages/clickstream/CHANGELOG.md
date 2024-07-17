@@ -8,21 +8,5 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
+* **clickstream:** Реализован новый компонент ClickStream для сбора аналитики ([05e2721](#))
 * **combo-box,autocomplete:** изменение значения инициирует событие onChange ([70b460e](#))
-
-
-
-### 1.11.1 (2024-06-17)
-
-**Note:** Version bump only for package @v-uik/switch
-
-
-
-
-
-## 1.11.0 (2024-06-04)
-
-
-### Bug Fixes
-
-* поправлена совместимость с @types/react@18.2.43 и выше ([9769c71](#))

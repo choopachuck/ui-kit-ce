@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.12.0 (2024-07-05)
+
+
+### Features
+
+* **bar:** в экспорт пакета вынесен BarContext ([2ac51c5](#))
+* **input:** очистка поля инициирует событие onChange ([482eede](#))
+
+
+### Bug Fixes
+
+* **select:** исправлено некорректное отображение фокуса на Select ([927fcc4](#))
+
+
+
 ### 1.11.1 (2024-06-17)
 
 **Note:** Version bump only for package @v-uik/bar

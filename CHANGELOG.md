@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.12.0 (2024-07-05)
+
+
+### Features
+
+* **bar:** в экспорт пакета вынесен BarContext ([2ac51c5](#))
+* **clickstream:** Реализован новый компонент ClickStream для сбора аналитики ([05e2721](#))
+* **combo-box,autocomplete:** изменение значения инициирует событие onChange ([70b460e](#))
+* **combo-box:** добавлен inputInnerProps ([a790a77](#))
+* **date-picker:** удаление и изменение значения через календарь инициирует событие onChange ([5b62fe4](#))
+* **input:** очистка поля инициирует событие onChange ([482eede](#))
+* **select:** изменение значения инициирует событие onChange ([ca30548](#))
+* **slider:** изменение значения инициирует событие onChange ([fa93359](#))
+
+
+### Bug Fixes
+
+* **checkbox:** поправлен размер checkbox ([5451566](#))
+* **combo-box:** баг невозможности удаления тэгов при динамическом изменение limitTag ([a1d24d2](#))
+* **date-picker:** исправлена логика индикации выбранного месяца и года в RangePicker ([4c3020e](#))
+* **date-picker:** исправлено поведение дропдауна rangePicker при дизейбле ([74e5030](#))
+* **date-picker:** исправлено поведение дропдауна при дизейбле ([77ed573](#))
+* **dropdown-menu:** позиционирование dropdown при первом рендере если ширина dropdown больше экрана ([658ea1e](#))
+* **dropdown-menu:** схлопывание меню при изменение ширины окна ([2a799f8](#))
+* **input-number:** исправлено обновление отображаемого значения ([94923f4](#))
+* **input:** исправлено отображение фокуса при дизейбле инпута ([49aeac4](#))
+* **select:** исправлено некорректное отображение фокуса на Select ([927fcc4](#))
+
+
+
 ### 1.11.1 (2024-06-17)
 
 

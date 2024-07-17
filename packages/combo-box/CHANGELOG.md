@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.12.0 (2024-07-05)
+
+
+### Features
+
+* **combo-box,autocomplete:** изменение значения инициирует событие onChange ([70b460e](#))
+* **combo-box:** добавлен inputInnerProps ([a790a77](#))
+* **input:** очистка поля инициирует событие onChange ([482eede](#))
+
+
+### Bug Fixes
+
+* **checkbox:** поправлен размер checkbox ([5451566](#))
+* **combo-box:** баг невозможности удаления тэгов при динамическом изменение limitTag ([a1d24d2](#))
+
+
+
 ### 1.11.1 (2024-06-17)
 
 **Note:** Version bump only for package @v-uik/combo-box
