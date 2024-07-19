@@ -22,15 +22,17 @@ export const WithTopAndBottomLabels = (
   props: WithTopAndBottomLabelsProps
 ): React.ReactElement => {
   const classes = useStyles()
+  const labelProps = { suffix: 'suffix text' }
 
   return (
     <div className={classes.container}>
       <div className={classes.containerItem}>
-        <LabelledInput label="Login" {...props} />
+        <LabelledInput label="label" labelProps={labelProps} {...props} />
       </div>
       <div className={classes.containerItem}>
         <LabelledInput
           label="Login"
+          labelProps={labelProps}
           description="Some description"
           {...props}
         />
@@ -38,6 +40,7 @@ export const WithTopAndBottomLabels = (
       <div className={classes.containerItem}>
         <LabelledInput
           label="Login"
+          labelProps={labelProps}
           description="Some description"
           helperText="Some helper text"
           {...props}

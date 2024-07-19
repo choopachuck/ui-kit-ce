@@ -9,33 +9,35 @@ import {
 import { createTheme } from '@v-uik/theme'
 
 test.describe('Labelled', () => {
-  test('with label, description and helper text', async ({ mount }) => {
+  test('with label, suffix, description and helper text', async ({ mount }) => {
     const component = await mount(<WithTopAndBottomLabels />)
 
     await expect(component).toHaveScreenshot()
   })
-  test('with label, description and helper text disabled', async ({
+  test('with label, suffix, description and helper text disabled', async ({
     mount,
   }) => {
     const component = await mount(<WithTopAndBottomLabels disabled />)
 
     await expect(component).toHaveScreenshot()
   })
-  test('with label, description and helper text required', async ({
+  test('with label, suffix, description and helper text required', async ({
     mount,
   }) => {
     const component = await mount(<WithTopAndBottomLabels required />)
 
     await expect(component).toHaveScreenshot()
   })
-  test('with label, description and helper text disabled required', async ({
+  test('with label, suffix, description and helper text disabled required', async ({
     mount,
   }) => {
     const component = await mount(<WithTopAndBottomLabels required disabled />)
 
     await expect(component).toHaveScreenshot()
   })
-  test('with label, description and helper text error', async ({ mount }) => {
+  test('with label, suffix, description and helper text error', async ({
+    mount,
+  }) => {
     const component = await mount(<WithTopAndBottomLabels error />)
 
     await expect(component).toHaveScreenshot()
