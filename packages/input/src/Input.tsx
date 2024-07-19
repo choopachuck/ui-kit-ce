@@ -70,6 +70,7 @@ const _Input = React.forwardRef(
       onClear,
       canClear,
       clearButtonInnerProps,
+      ellipsis,
       ...rest
     }: InputProps<TCanClear>,
     ref: React.Ref<HTMLDivElement>
@@ -141,6 +142,7 @@ const _Input = React.forwardRef(
             clearIcon={clearIcon}
             canClear={canClear}
             clearButtonInnerProps={clearButtonInnerProps}
+            ellipsis={ellipsis}
             onChange={onChange}
             onFocusChange={setFocused}
             onClear={onClear}

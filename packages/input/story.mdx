@@ -14,6 +14,7 @@ import {
   Canvas as CanvasStory,
   InputWithClear,
   InputRequired,
+  InputEllipsis,
 } from './examples'
 import RawInputWithHelperText from '!!raw-loader!@v-uik/input/examples/InputWithHelperText'
 import RawInputWithTooltip from '!!raw-loader!@v-uik/input/examples/InputWithTooltip'
@@ -105,6 +106,14 @@ InputLabel — это подкомпонент отображения label дл
 </Canvas>
 
 <Source language="tsx" code={RawInputRequired} />
+
+## Текст обрезается с многоточием
+
+<Canvas withSource="none">
+  <InputEllipsis />
+</Canvas>
+
+<Source language="tsx" code={InputEllipsis} />
 
 ## Поле ввода с подсчетом введенных символов
 
