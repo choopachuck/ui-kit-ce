@@ -421,8 +421,7 @@ export const Drawer = React.forwardRef(
         exitActive:
           transitionExitClassName && classesMap[transitionExitClassName],
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [placement])
+    }, [placement, classesMap])
 
     if (!open && transitionEnded) {
       return null
