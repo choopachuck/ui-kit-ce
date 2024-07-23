@@ -58,6 +58,7 @@ const useStyles = createUseStyles((theme) => ({
     alignItems: 'flex-start',
     flexDirection: 'column',
     justifyContent: 'end',
+    verticalAlign: 'top',
   },
 
   fullWidth: {
