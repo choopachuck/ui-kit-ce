@@ -26,7 +26,17 @@ import { TimeValidationErrorMessages } from './constants/common'
 import { Labelled } from '@v-uik/labelled'
 
 const useStyles = createUseStyles((theme) => ({
-  root: {},
+  root: {
+    display: 'inline-flex',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    justifyContent: 'end',
+  },
+
+  fullWidth: {
+    alignItems: 'stretch',
+    width: '100%',
+  },
   inputContainer: {},
   dropdown: {
     boxSizing: 'border-box',
@@ -43,9 +53,6 @@ const useStyles = createUseStyles((theme) => ({
     borderWidth: theme.shape.borderWidth,
     borderColor: theme.comp.datePicker.dropdownColorBorder,
     boxShadow: theme.comp.datePicker.dropdownElevationShadow,
-  },
-  fullWidth: {
-    alignItems: 'stretch',
   },
   error: {},
   disabled: {},

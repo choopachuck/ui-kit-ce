@@ -53,10 +53,16 @@ import { Labelled, LabelledProps } from '@v-uik/labelled'
 import { useHandleChangeDate } from './hooks'
 
 const useStyles = createUseStyles((theme) => ({
-  root: {},
+  root: {
+    display: 'inline-flex',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    justifyContent: 'end',
+  },
 
   fullWidth: {
     alignItems: 'stretch',
+    width: '100%',
   },
 
   calendarPickerDropdown: {
