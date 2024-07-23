@@ -23,11 +23,11 @@ import {
   BaseTimePicker,
   StaticBaseTimePickerProps,
 } from './views/BaseTimePicker'
-import {
+import type {
   BaseDatePickerProps,
   DayParams,
   ValidateDateProps,
-} from './interfaces/date'
+} from './interfaces'
 import { useOpenState } from './hooks/useOpenState'
 import { useMaskedInput } from './hooks/useMaskedInput'
 import { useHandleFocus } from './hooks/useHandleFocus'
@@ -37,11 +37,11 @@ import { defaultValidationErrorMessages } from './constants/common'
 import { CalendarPicker } from './views/CalendarPicker'
 import { useDateLibAdapter } from './hooks/useDateLibAdapter'
 import { isEqualKeyboardKeys, warning } from '@v-uik/utils'
-import { ExternalCalendarViewComponentsPropsPartial } from './interfaces'
+import type { ExternalCalendarViewComponentsPropsPartial } from './interfaces'
 import { useShouldDisableDate } from './hooks/useShouldDisableDate'
 import { ComponentIdContext } from './utils/ComponentIdContext'
 import { useDefaultFocus } from './hooks/useDefaultFocus'
-import {
+import type {
   CalendarPickerClasses,
   DatePickerClasses as Classes,
 } from './interfaces/classes'
@@ -484,7 +484,10 @@ export const DatePicker = React.forwardRef(
                 {...timePickerProps}
                 value={value}
                 onChange={handleChange}
-                onClickLastNumberColumn={() => setOpen(false)}
+                onClickLastNumberColumn={() => {
+                  setOpen(false)
+                  timePickerProps?.onClickLastNumberColumn?.()
+                }}
               />
             </div>
           )}
