@@ -324,3 +324,25 @@ it.each([true, false])(
     )
   }
 )
+
+// UIK-482
+it.each([true, false])(
+  'insert first symbols of mask works correctly with valueWithoutMask=%s',
+  async (valueWithoutMask) => {
+    const handleChange = jest.fn()
+    const { getByRole } = render(
+      <MaskedInputTest
+        valueWithoutMask={valueWithoutMask}
+        mask="+7 (111) 111-11-11"
+        onChange={handleChange}
+      />
+    )
+    const input = getByRole('textbox') as HTMLInputElement
+
+    userEvent.click(input)
+
+    await userEvent.keyboard('+7{space}(7', { delay: 5 })
+
+    expect(input).toHaveValue('+7 (7__) ___-__-__')
+  }
+)

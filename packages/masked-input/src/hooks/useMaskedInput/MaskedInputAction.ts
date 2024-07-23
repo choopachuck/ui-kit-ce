@@ -151,6 +151,12 @@ export class MaskedInputAction {
         : Number(event.target.selectionEnd),
     }
 
+    const isDeletedItemEditable =
+      maskedInputCore.value[maskedInputCore.selection.start + offset] &&
+      maskedInputCore.pattern.isEditableIndex(
+        maskedInputCore.selection.start + offset
+      )
+
     // Если указан диапазон значений, то удаляем все символы, включая первый
     if (maskedInputCore.selection.start - maskedInputCore.selection.end !== 0) {
       maskedInputCore.selection = {
@@ -158,12 +164,6 @@ export class MaskedInputAction {
         end: maskedInputCore.selection.end,
       }
     }
-
-    const isDeletedItemEditable =
-      maskedInputCore.value[maskedInputCore.selection.start + offset] &&
-      maskedInputCore.pattern.isEditableIndex(
-        maskedInputCore.selection.start + offset
-      )
 
     const deleteMethod = isBackspace
       ? maskedInputCore.backspace
@@ -274,13 +274,23 @@ export class MaskedInputAction {
     let result = false
     const selectionOffset = -1
 
+    // При первом вводе символа в инпуте самой маски еще нет, поэтому ставим каретку в начало относительно символа без маски
+    const isFirstChar =
+      event.target.value.length === 1 &&
+      !maskedInputCore.getRawValue() &&
+      event.target.selectionStart === 1 &&
+      event.target.selectionEnd === 1
+    const start = (event.target.selectionStart || 0) + selectionOffset
+    const end = isFirstChar
+      ? start
+      : Number(event.target.selectionStart) +
+        maskedInputCore.getValue().length -
+        event.target.value.length
+
     // Выравниваем каретку у maskedInputCore и input
     maskedInputCore.selection = {
-      start: (event.target.selectionStart || 0) + selectionOffset,
-      end:
-        Number(event.target.selectionStart) +
-        maskedInputCore.getValue().length -
-        event.target.value.length,
+      start,
+      end,
     }
 
     if (!char) {
