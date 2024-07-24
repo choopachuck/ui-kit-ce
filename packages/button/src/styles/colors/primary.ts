@@ -23,7 +23,7 @@ export const primary = (theme: Theme): JssStyle => ({
       backgroundColor: theme.comp.button.colorBackgroundContainedPrimaryActive,
     },
 
-    '&:disabled': {
+    '&$disabled': {
       color: theme.comp.button.colorTextContainedPrimaryDisabled,
       backgroundColor:
         theme.comp.button.colorBackgroundContainedPrimaryDisabled,
@@ -67,7 +67,7 @@ export const primary = (theme: Theme): JssStyle => ({
       },
     },
 
-    '&:disabled': {
+    '&$disabled': {
       color: theme.comp.button.colorTextOutlinedPrimaryDisabled,
 
       '&::after': {
@@ -93,7 +93,7 @@ export const primary = (theme: Theme): JssStyle => ({
       backgroundColor: theme.comp.button.colorBackgroundGhostPrimaryActive,
     },
 
-    '&:disabled': {
+    '&$disabled': {
       color: theme.comp.button.colorTextGhostPrimaryDisabled,
     },
   },

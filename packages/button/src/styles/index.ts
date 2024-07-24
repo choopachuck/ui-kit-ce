@@ -26,10 +26,6 @@ export const getStyles = (theme: Theme): Styles => ({
     borderBottomLeftRadius: theme.comp.button.shapeBorderRadiusBottomLeftMd,
     borderBottomRightRadius: theme.comp.button.shapeBorderRadiusBottomRightMd,
 
-    '&:disabled': {
-      pointerEvents: 'none',
-    },
-
     '&::after': {
       content: '""',
       position: 'absolute',
@@ -122,5 +118,11 @@ export const getStyles = (theme: Theme): Styles => ({
     borderTopRightRadius: theme.comp.button.shapeBorderRadiusTopRightLg,
     borderBottomLeftRadius: theme.comp.button.shapeBorderRadiusBottomLeftLg,
     borderBottomRightRadius: theme.comp.button.shapeBorderRadiusBottomRightLg,
+  },
+
+  disabled: {
+    pointerEvents: 'none',
+    cursor: 'not-allowed',
+    userSelect: 'none',
   },
 })

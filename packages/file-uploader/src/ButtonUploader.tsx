@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
 
 export interface ButtonUploaderProps
   extends UploaderBaseProps,
-    Omit<ButtonProps, 'onError'> {
+    Omit<ButtonProps, 'onError' | 'ref'> {
   /**
    * Калбек выбора файла Выбор файла
    */

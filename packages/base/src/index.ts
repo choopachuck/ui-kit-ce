@@ -4,8 +4,18 @@ export * from '@v-uik/badge'
 export * from '@v-uik/bar'
 export * from '@v-uik/box'
 export * from '@v-uik/breadcrumbs'
-export { Button, ButtonColor, ButtonKinds } from '@v-uik/button'
-export type { TButtonColor, TButtonKinds, ButtonProps } from '@v-uik/button'
+export {
+  Button,
+  ButtonColor,
+  ButtonKinds,
+  PolymorphicButton,
+} from '@v-uik/button'
+export type {
+  TButtonColor,
+  TButtonKinds,
+  ButtonProps,
+  PolymorphicButtonProps,
+} from '@v-uik/button'
 export * from '@v-uik/button-group'
 export * from '@v-uik/card'
 export * from '@v-uik/checkbox'

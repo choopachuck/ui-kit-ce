@@ -26,6 +26,7 @@
     "@v-uik/common": "^1.12.0",
     "@v-uik/hooks": "^1.12.0",
     "@v-uik/theme": "^1.12.0",
-    "@v-uik/typography": "^1.12.0"
+    "@v-uik/typography": "^1.12.0",
+    "@v-uik/box": "^1.12.0"
   }
 }

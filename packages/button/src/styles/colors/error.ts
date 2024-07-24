@@ -23,7 +23,7 @@ export const error = (theme: Theme): JssStyle => ({
       backgroundColor: theme.comp.button.colorBackgroundContainedErrorActive,
     },
 
-    '&:disabled': {
+    '&$disabled': {
       color: theme.comp.button.colorTextContainedErrorDisabled,
       backgroundColor: theme.comp.button.colorBackgroundContainedErrorDisabled,
     },
@@ -66,7 +66,7 @@ export const error = (theme: Theme): JssStyle => ({
       },
     },
 
-    '&:disabled': {
+    '&$disabled': {
       color: theme.comp.button.colorTextOutlinedErrorDisabled,
 
       '&::after': {
@@ -92,7 +92,7 @@ export const error = (theme: Theme): JssStyle => ({
       backgroundColor: theme.comp.button.colorBackgroundGhostErrorActive,
     },
 
-    '&:disabled': {
+    '&$disabled': {
       color: theme.comp.button.colorTextGhostErrorDisabled,
     },
   },

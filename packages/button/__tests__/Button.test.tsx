@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
-import { Button } from '../src'
+import { Button, PolymorphicButton } from '../src'
 import { light } from '../../theme/src'
 
 it('correctly set background & color depends on property', () => {
@@ -50,4 +50,14 @@ it('set height depends on size property', () => {
 it('correct handle fullWidth property', () => {
   const { getByRole } = render(<Button fullWidth>button</Button>)
   expect(getByRole('button')).toHaveStyle('width: 100%')
+})
+
+it('render custom tag', () => {
+  const { getByRole } = render(
+    <PolymorphicButton as="a" href="/">
+      Some Link
+    </PolymorphicButton>
+  )
+
+  expect(getByRole('link')).toBeInTheDocument()
 })
