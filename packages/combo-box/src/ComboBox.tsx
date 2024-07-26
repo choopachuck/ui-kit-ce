@@ -523,7 +523,9 @@ export const ComboBox = React.forwardRef(
 
     const handleOutsideClick = React.useCallback(
       (e?: Event) => {
-        if (e && listRef.current?.contains(e.target as Node)) {
+        if (e && listRef.current === e.target) {
+          e.stopPropagation()
+        } else if (e && listRef.current?.contains(e.target as Node)) {
           close(e)
         } else {
           closeWithUnFocus(e)

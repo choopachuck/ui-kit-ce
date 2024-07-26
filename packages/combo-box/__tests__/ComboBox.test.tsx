@@ -865,3 +865,21 @@ it('handle delete selected value by backspace key press STS-30124', () => {
     'force-clear'
   )
 })
+
+it('shouldnt close popup when click was on scroll', () => {
+  const outsideClick = jest.fn()
+
+  const { getByRole } = render(
+    <div style={{ padding: 50 }} onMouseDown={outsideClick}>
+      <ComboBox options={options} />
+    </div>
+  )
+
+  const openButton = getByRole('button', { name: 'openPopupButton' })
+  fireEvent.mouseDown(openButton)
+
+  const list = getByRole('list')
+
+  fireEvent.mouseDown(list)
+  expect(outsideClick).toHaveBeenCalledTimes(0)
+})
