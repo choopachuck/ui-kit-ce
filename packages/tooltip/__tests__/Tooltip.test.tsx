@@ -1,5 +1,5 @@
+import { fireEvent, render, waitFor } from '@testing-library/react'
 import * as React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
 import { Tooltip, TooltipProps } from '../src'
 
 const Component = (props: Partial<TooltipProps>) => (
@@ -22,6 +22,20 @@ it('show tooltip on hover', async () => {
   await waitFor(() => expect(queryByText('content')).not.toBeInTheDocument())
 })
 
+it('not show tooltip on hover with empty content', async () => {
+  const { getByRole, queryByRole } = render(
+    <Component dropdownProps={{ content: '' }} />
+  )
+  const button = getByRole('button')
+  expect(queryByRole('tooltip')).not.toBeInTheDocument()
+  fireEvent.click(button)
+  await waitFor(() => expect(queryByRole('tooltip')).not.toBeInTheDocument())
+  fireEvent.mouseEnter(button)
+  await waitFor(() => expect(queryByRole('tooltip')).not.toBeInTheDocument())
+  fireEvent.mouseLeave(button)
+  await waitFor(() => expect(queryByRole('tooltip')).not.toBeInTheDocument())
+})
+
 it('show tooltip on click', async () => {
   const { getByRole, queryByText, getByText } = render(
     <>
@@ -37,6 +51,23 @@ it('show tooltip on click', async () => {
   await waitFor(() => expect(queryByText('content')).toBeInTheDocument())
   fireEvent.mouseDown(getByText('outside'))
   await waitFor(() => expect(queryByText('content')).not.toBeInTheDocument())
+})
+
+it('not show tooltip on click with empty content', async () => {
+  const { getByRole, queryByRole, getByText } = render(
+    <>
+      <div>outside</div>
+      <Component dropdownProps={{ action: 'click', content: '' }} />
+    </>
+  )
+  const button = getByRole('button')
+  expect(queryByRole('tooltip')).not.toBeInTheDocument()
+  fireEvent.mouseEnter(button)
+  await waitFor(() => expect(queryByRole('tooltip')).not.toBeInTheDocument())
+  fireEvent.click(button)
+  await waitFor(() => expect(queryByRole('tooltip')).not.toBeInTheDocument())
+  fireEvent.mouseDown(getByText('outside'))
+  await waitFor(() => expect(queryByRole('tooltip')).not.toBeInTheDocument())
 })
 
 it('shows tooltip on child focus and hover', async () => {

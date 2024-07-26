@@ -240,16 +240,6 @@ export const Tooltip = React.forwardRef(
       [setOpen, onStateChangeProp]
     )
 
-    const content = (
-      <TooltipContext.Provider value={{ close: handleClose }}>
-        <div {...rest} ref={tooltipRef} className={tooltipClassName}>
-          <div data-popper-arrow className={classesMap.arrow} />
-          {indicator && <IndicatorIcon className={classesMap.indicator} />}
-          {contentProp}
-        </div>
-      </TooltipContext.Provider>
-    )
-
     const child = React.Children.only(childrenProp)
 
     const dropdownId = useGeneratedId(dropdownProps?.id)
@@ -279,6 +269,20 @@ export const Tooltip = React.forwardRef(
     const modifiers = dropdownProps?.modifiers
       ? [...arrowModifiers, ...dropdownProps?.modifiers]
       : arrowModifiers
+
+    if (!contentProp) {
+      return children
+    }
+
+    const content = (
+      <TooltipContext.Provider value={{ close: handleClose }}>
+        <div {...rest} ref={tooltipRef} className={tooltipClassName}>
+          <div data-popper-arrow className={classesMap.arrow} />
+          {indicator && <IndicatorIcon className={classesMap.indicator} />}
+          {contentProp}
+        </div>
+      </TooltipContext.Provider>
+    )
 
     return (
       <Dropdown
