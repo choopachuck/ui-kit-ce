@@ -51,8 +51,15 @@ export function useAutocomplete<
   Option,
   ListElement,
   ListItemElement
-> {
+> & {
+  currentValue: React.MutableRefObject<
+    MultiValue<Option> | SingleValue<Option> | string | null | undefined
+  >
+} {
   const [inputValue] = useValue(propsValue, { fallbackValue: '' })
+  const currentValue = React.useRef<
+    MultiValue<Option> | SingleValue<Option> | string | null | undefined
+  >(propsValue)
 
   // новая фильтрация опций, это необходимо чтобы фильтрация работала только по изменению inputValue через клавиатуру
   const filterOption = React.useCallback(
@@ -72,6 +79,7 @@ export function useAutocomplete<
       fullValue?: MultiValue<Option> | SingleValue<Option>,
       reason?: ComboboxChangeReason
     ) => {
+      currentValue.current = fullValue
       propsOnChange?.(
         toString(
           clearValue(fullValue as SingleValue<Option> | SingleValue<string>),
@@ -87,6 +95,7 @@ export function useAutocomplete<
   const onInputChange = React.useCallback(
     (value: string, event?: ComboBoxInputEvent) => {
       if (event !== 'select-clear') {
+        currentValue.current = value
         propsOnInputChange?.(value)
         propsOnChange?.(value, null as unknown as ComboboxEvent)
       }
@@ -145,6 +154,7 @@ export function useAutocomplete<
     showArrow,
     showCheckMark,
     openOnClick,
+    currentValue,
     inputProps: {
       //@ts-ignore Компонент корректно принимает data-атрибуты
       [DATA_V_UIK_INPUT_TYPE]: 'autocomplete',

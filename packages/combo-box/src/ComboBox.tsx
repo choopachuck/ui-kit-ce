@@ -298,8 +298,12 @@ export const ComboBox = React.forwardRef(
   ) => {
     useForceSecondRender(propsOpened)
 
-    const { backfill, recoveryBackfillInputValue: recoveryBackfillInputValue } =
-      React.useContext(HiddenPropsContext)
+    const {
+      backfill,
+      recoveryBackfillInputValue: recoveryBackfillInputValue,
+      shouldClearValue,
+      isAutocomplete,
+    } = React.useContext(HiddenPropsContext)
 
     const classList = useStyles()
     const dynamicStyles = getDynamicStyles({ rows })
@@ -409,11 +413,24 @@ export const ComboBox = React.forwardRef(
     // после ввода в autocomplete, введенное значение должно стать опцией с возможностью очистки при canClear
     React.useEffect(() => {
       if (backfill) {
-        setSelectedValue(
-          inputValue ? [toOption(inputValue) as unknown as Option] : []
+        let option = toOption(inputValue) as unknown as Option
+        const sameOption = options.find(
+          (x) =>
+            getOptionLabel(x) === inputValue || getOptionValue(x) === inputValue
         )
+        if (sameOption) {
+          option = sameOption
+        }
+        setSelectedValue(inputValue ? [option] : [])
       }
-    }, [backfill, inputValue, setSelectedValue])
+    }, [
+      backfill,
+      inputValue,
+      setSelectedValue,
+      getOptionLabel,
+      getOptionValue,
+      options,
+    ])
 
     const [active, setActive] = React.useState<Option | undefined>(undefined)
     const [selectedActive, setSelectedActive] = React.useState<
@@ -582,7 +599,7 @@ export const ComboBox = React.forwardRef(
     const hasValue = () => selectedValue.length > 0
 
     const canChangeValue = (option?: Option) => {
-      if (multiple || canClear) {
+      if (multiple || canClear || isAutocomplete) {
         return true
       }
 
@@ -667,7 +684,18 @@ export const ComboBox = React.forwardRef(
         (x) => getOptionValue(x) === getOptionValue(option)
       )
 
-      if (index !== -1) {
+      if (isAutocomplete) {
+        if (
+          index !== -1 &&
+          canClear &&
+          shouldClearValue?.(getOptionValue(option))
+        ) {
+          optionsClone.splice(index, 1)
+        } else {
+          optionsClone = [option]
+        }
+        setSelectedValue(optionsClone)
+      } else if (index !== -1 && !isAutocomplete) {
         optionsClone.splice(index, 1)
         setSelectedValue(optionsClone)
       } else {
