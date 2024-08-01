@@ -486,6 +486,10 @@ export const Notification = React.forwardRef(
               tokens={closeButtonTokens}
               aria-label={closeButtonAriaLabel}
               {...closeButtonProps}
+              className={clsx(
+                classesMap.closeButton,
+                closeButtonProps?.className
+              )}
               onClick={closeNotification}
             />
           )}
