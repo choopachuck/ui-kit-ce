@@ -93,6 +93,10 @@ export interface InputBaseProps<TCanClear extends boolean = boolean>
    */
   disabled?: boolean
   /**
+   * Использовать ли нативное css-свойство text-overflow со значением ellipsis
+   */
+  ellipsis?: boolean
+  /**
    * Подсказка внутри поля, если не введен текст
    */
   placeholder?: string
@@ -280,7 +284,6 @@ const useStyles = createUseStyles((theme) => ({
     fontFamily: theme.comp.input.typographyFontFamily,
     fontWeight: theme.comp.input.typographyFontWeight,
     letterSpacing: theme.comp.input.typographyLetterSpacing,
-    textOverflow: 'ellipsis',
 
     '&:-webkit-autofill': {
       // в autofill можно только так переопределить фон,
@@ -309,6 +312,12 @@ const useStyles = createUseStyles((theme) => ({
     '&:focus': {
       outline: 0,
     },
+  },
+
+  ellipsis: {
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
   },
 
   inputSmall: {
@@ -388,6 +397,7 @@ const _InputBase = React.forwardRef(
       onClear,
       canClear = false,
       clearButtonInnerProps,
+      ellipsis,
       ...rest
     }: InputBaseProps<TCanClear>,
     ref: React.Ref<HTMLDivElement>
@@ -526,6 +536,7 @@ const _InputBase = React.forwardRef(
             [classesMap.inputSmall]: isSmall,
             [classesMap.inputMedium]: isMedium,
             [classesMap.inputLarge]: isLarge,
+            [classesMap.ellipsis]: ellipsis,
           })}
           {...{ [DATA_V_UIK_INPUT_TYPE]: vUikInputType }}
           disabled={disabled}

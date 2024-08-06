@@ -16,7 +16,7 @@ exports[`clickstream lib components compatibility: checkbox 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-205",
+                "value": "input-0-2-206",
               },
               Object {
                 "key": "type",
@@ -46,7 +46,7 @@ exports[`clickstream lib components compatibility: checkbox 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-205",
+                "value": "input-0-2-206",
               },
               Object {
                 "key": "type",
@@ -97,7 +97,7 @@ exports[`clickstream lib components compatibility: input clear button 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
+                "value": "input-0-2-27 inputMedium-0-2-30",
               },
               Object {
                 "key": "data-v-uik-input-type",
@@ -135,7 +135,7 @@ exports[`clickstream lib components compatibility: input clear button 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "clearButton-0-2-36",
+                "value": "clearButton-0-2-37",
               },
               Object {
                 "key": "aria-label",
@@ -198,7 +198,7 @@ exports[`clickstream lib components compatibility: input-number 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
+                "value": "input-0-2-27 inputMedium-0-2-30",
               },
               Object {
                 "key": "value",
@@ -232,7 +232,7 @@ exports[`clickstream lib components compatibility: input-number 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
+                "value": "input-0-2-27 inputMedium-0-2-30",
               },
               Object {
                 "key": "value",
@@ -291,7 +291,7 @@ exports[`clickstream lib components compatibility: input-password 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 password-0-2-40 inputMedium-0-2-29",
+                "value": "input-0-2-27 password-0-2-41 inputMedium-0-2-30",
               },
               Object {
                 "key": "data-v-uik-input-type",
@@ -329,7 +329,7 @@ exports[`clickstream lib components compatibility: input-password 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 password-0-2-40 inputMedium-0-2-29",
+                "value": "input-0-2-27 password-0-2-41 inputMedium-0-2-30",
               },
               Object {
                 "key": "data-v-uik-input-type",
@@ -388,7 +388,7 @@ exports[`clickstream lib components compatibility: input-text 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
+                "value": "input-0-2-27 inputMedium-0-2-30",
               },
               Object {
                 "key": "data-v-uik-input-type",
@@ -422,7 +422,7 @@ exports[`clickstream lib components compatibility: input-text 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
+                "value": "input-0-2-27 inputMedium-0-2-30",
               },
               Object {
                 "key": "data-v-uik-input-type",
@@ -485,7 +485,7 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
+                "value": "input-0-2-27 inputMedium-0-2-30",
               },
               Object {
                 "key": "value",
@@ -519,11 +519,11 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
+                "value": "input-0-2-27 inputMedium-0-2-30",
               },
               Object {
                 "key": "value",
-                "value": "+7 (212) 128-__-__",
+                "value": "+7 (212) 12_-__-__",
               },
             ],
             "elementEvent": "change",
@@ -532,7 +532,7 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
             "pageName": "",
             "timeStamp": "2020-01-01T00:00:00.078-00:00",
             "url": "http://localhost/",
-            "value": "+7 (212) 128-__-__",
+            "value": "+7 (212) 12_-__-__",
           },
           "event": Event {
             "isTrusted": false,
@@ -553,11 +553,11 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
+                "value": "input-0-2-27 inputMedium-0-2-30",
               },
               Object {
                 "key": "value",
-                "value": "+7 (212) 128-__-__",
+                "value": "+7 (212) 12_-__-__",
               },
             ],
             "elementEvent": "click",
@@ -566,7 +566,7 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
             "pageName": "",
             "timeStamp": "2020-01-01T00:00:00.078-00:00",
             "url": "http://localhost/",
-            "value": "+7 (212) 128-__-__",
+            "value": "+7 (212) 12_-__-__",
           },
           "event": MouseEvent {
             "isTrusted": false,
@@ -587,11 +587,11 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-27 inputMedium-0-2-29",
+                "value": "input-0-2-27 inputMedium-0-2-30",
               },
               Object {
                 "key": "value",
-                "value": "+7 (212) 12_-__-__",
+                "value": "+7 (212) 1__-__-__",
               },
             ],
             "elementEvent": "change",
@@ -600,7 +600,7 @@ exports[`clickstream lib components compatibility: masked-input 1`] = `
             "pageName": "",
             "timeStamp": "2020-01-01T00:00:00.078-00:00",
             "url": "http://localhost/",
-            "value": "+7 (212) 12_-__-__",
+            "value": "+7 (212) 1__-__-__",
           },
           "event": Event {
             "isTrusted": false,
@@ -646,7 +646,7 @@ exports[`clickstream lib components compatibility: radio 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-200",
+                "value": "input-0-2-201",
               },
               Object {
                 "key": "value",
@@ -680,7 +680,7 @@ exports[`clickstream lib components compatibility: radio 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-200",
+                "value": "input-0-2-201",
               },
               Object {
                 "key": "value",
@@ -747,7 +747,7 @@ exports[`clickstream lib components compatibility: select 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "resetButton-0-2-41 button-0-2-68 medium-0-2-70 opened-0-2-72",
+                "value": "resetButton-0-2-42 button-0-2-69 medium-0-2-71 opened-0-2-73",
               },
               Object {
                 "key": "type",
@@ -789,7 +789,7 @@ exports[`clickstream lib components compatibility: select 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "listItem-0-2-211 option-0-2-56 medium-0-2-217 optionMedium-0-2-58",
+                "value": "listItem-0-2-212 option-0-2-57 medium-0-2-218 optionMedium-0-2-59",
               },
             ],
             "elementEvent": "click",
@@ -879,7 +879,7 @@ exports[`clickstream lib components compatibility: switch 1`] = `
           },
           Object {
             "key": "class",
-            "value": "input-0-2-49",
+            "value": "input-0-2-50",
           },
         ],
         "elementEvent": "click",
@@ -910,7 +910,7 @@ exports[`clickstream lib components compatibility: switch 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-49",
+                "value": "input-0-2-50",
               },
             ],
             "elementEvent": "click",
@@ -944,7 +944,7 @@ exports[`clickstream lib components compatibility: switch 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-49",
+                "value": "input-0-2-50",
               },
             ],
             "elementEvent": "change",
@@ -983,7 +983,7 @@ exports[`clickstream lib components compatibility: switch 1`] = `
           },
           Object {
             "key": "class",
-            "value": "input-0-2-49",
+            "value": "input-0-2-50",
           },
         ],
         "elementEvent": "change",
@@ -1014,7 +1014,7 @@ exports[`clickstream lib components compatibility: switch 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-49",
+                "value": "input-0-2-50",
               },
             ],
             "elementEvent": "click",
@@ -1048,7 +1048,7 @@ exports[`clickstream lib components compatibility: switch 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "input-0-2-49",
+                "value": "input-0-2-50",
               },
             ],
             "elementEvent": "change",

@@ -55,6 +55,25 @@ test.describe('Switch labeled', () => {
 
         await expect(comp).toHaveScreenshot()
       })
+      // UIK-547
+      test('hover on label', async ({ mount, page }) => {
+        const mounted = await mount(<SwitchesWithText />)
+        const comp = mounted.locator('label', { hasText: 'MD' })
+        const span = comp.locator('span', { hasText: 'MD' })
+
+        const spanBox = await span.boundingBox()
+
+        if (!spanBox) {
+          throw new Error()
+        }
+
+        await page.mouse.move(
+          spanBox.x + spanBox.width / 2,
+          spanBox.y + spanBox.height / 2
+        )
+
+        await expect(comp).toHaveScreenshot()
+      })
     })
     test.describe('on', () => {
       test('enabled', async ({ mount, page }) => {
@@ -117,6 +136,29 @@ test.describe('Switch labeled', () => {
         const comp = mounted.locator('label', {
           hasText: 'md disabled checked',
         })
+
+        await expect(comp).toHaveScreenshot()
+      })
+      // UIK-547
+      test('hover on label', async ({ mount, page }) => {
+        const mounted = await mount(<SwitchesWithText />)
+        const comp = mounted.locator('label', { hasText: 'MD' })
+
+        await comp.click()
+        await page.mouse.click(0, 0)
+
+        const span = comp.locator('span', { hasText: 'MD' })
+
+        const spanBox = await span.boundingBox()
+
+        if (!spanBox) {
+          throw new Error()
+        }
+
+        await page.mouse.move(
+          spanBox.x + spanBox.width / 2,
+          spanBox.y + spanBox.height / 2
+        )
 
         await expect(comp).toHaveScreenshot()
       })

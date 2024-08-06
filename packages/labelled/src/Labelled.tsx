@@ -64,11 +64,13 @@ const useStyles = createUseStyles((theme) => ({
   topLabelsWrapper: {
     display: 'flex',
     flexDirection: 'row',
+    width: '100%',
   },
   topLabels: {
     marginBottom: 8,
     display: 'flex',
     flexDirection: 'column',
+    width: '100%',
   },
   required: {
     color: theme.comp.inputLabel.requiredColorText,

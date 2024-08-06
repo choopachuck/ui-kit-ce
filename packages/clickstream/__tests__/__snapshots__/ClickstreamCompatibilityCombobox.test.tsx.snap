@@ -12,7 +12,7 @@ exports[`clickstream lib components compatibility: autocomplete::keyboard 1`] = 
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "input-0-2-162",
+                "value": "input-0-2-163",
               },
               Object {
                 "key": "aria-autocomplete",
@@ -257,7 +257,7 @@ exports[`clickstream lib components compatibility: combobox::creatable 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "input-0-2-162",
+                "value": "input-0-2-163",
               },
               Object {
                 "key": "aria-autocomplete",
@@ -327,7 +327,7 @@ exports[`clickstream lib components compatibility: combobox::creatable 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "input-0-2-162",
+                "value": "input-0-2-163",
               },
               Object {
                 "key": "aria-autocomplete",
@@ -443,7 +443,7 @@ exports[`clickstream lib components compatibility: combobox::creatable 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+                "value": "listItem-0-2-212 option-0-2-127 medium-0-2-218 optionMedium-0-2-129",
               },
             ],
             "elementEvent": "click",
@@ -490,7 +490,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "rootControl-0-2-142 medium-0-2-147 focused-0-2-143 isSearchable-0-2-149",
+                "value": "rootControl-0-2-143 medium-0-2-148 focused-0-2-144 isSearchable-0-2-150",
               },
               Object {
                 "key": "aria-expanded",
@@ -578,7 +578,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "optionActive-0-2-132 listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+                "value": "optionActive-0-2-133 listItem-0-2-212 option-0-2-127 medium-0-2-218 optionMedium-0-2-129",
               },
             ],
             "elementEvent": "click",
@@ -646,7 +646,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "optionActive-0-2-132 listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+                "value": "optionActive-0-2-133 listItem-0-2-212 option-0-2-127 medium-0-2-218 optionMedium-0-2-129",
               },
             ],
             "elementEvent": "click",
@@ -714,7 +714,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "optionActive-0-2-132 listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+                "value": "optionActive-0-2-133 listItem-0-2-212 option-0-2-127 medium-0-2-218 optionMedium-0-2-129",
               },
             ],
             "elementEvent": "click",
@@ -736,7 +736,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "input-0-2-162",
+                "value": "input-0-2-163",
               },
               Object {
                 "key": "aria-autocomplete",
@@ -806,7 +806,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "input-0-2-162",
+                "value": "input-0-2-163",
               },
               Object {
                 "key": "aria-autocomplete",
@@ -922,7 +922,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "optionActive-0-2-132 listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+                "value": "optionActive-0-2-133 listItem-0-2-212 option-0-2-127 medium-0-2-218 optionMedium-0-2-129",
               },
             ],
             "elementEvent": "click",
@@ -944,7 +944,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "rootControl-0-2-142 medium-0-2-147 focused-0-2-143 isSearchable-0-2-149",
+                "value": "rootControl-0-2-143 medium-0-2-148 focused-0-2-144 isSearchable-0-2-150",
               },
               Object {
                 "key": "aria-expanded",
@@ -1016,7 +1016,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "input-0-2-162",
+                "value": "input-0-2-163",
               },
               Object {
                 "key": "aria-autocomplete",
@@ -1086,7 +1086,7 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "rootControl-0-2-142 medium-0-2-147 focused-0-2-143 isSearchable-0-2-149",
+                "value": "rootControl-0-2-143 medium-0-2-148 focused-0-2-144 isSearchable-0-2-150",
               },
               Object {
                 "key": "aria-expanded",
@@ -1157,7 +1157,7 @@ exports[`clickstream lib components compatibility: combobox::single 1`] = `
             "elementAttributes": Array [
               Object {
                 "key": "class",
-                "value": "rootControl-0-2-142 medium-0-2-147 focused-0-2-143",
+                "value": "rootControl-0-2-143 medium-0-2-148 focused-0-2-144",
               },
               Object {
                 "key": "aria-expanded",
@@ -1215,7 +1215,7 @@ exports[`clickstream lib components compatibility: combobox::single 1`] = `
               },
               Object {
                 "key": "class",
-                "value": "listItem-0-2-211 option-0-2-126 medium-0-2-217 optionMedium-0-2-128",
+                "value": "listItem-0-2-212 option-0-2-127 medium-0-2-218 optionMedium-0-2-129",
               },
             ],
             "elementEvent": "click",

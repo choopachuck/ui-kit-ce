@@ -128,7 +128,27 @@ export class Pattern {
         valueIndex++
       } else {
         valueBuffer[i] = this.pattern[i]
-        // Позволяет значению содержать статические символы из шаблона.
+        let skipMaskedStaticSymbols = false
+
+        if (value.length !== this.pattern.length) {
+          // Проверяем, что значение может совпадать с символом маски и его можно указать на конкретном индексе
+          for (let j = 0; j < this.pattern.length; j++) {
+            if (
+              this.pattern[j] &&
+              this.isEditableIndex(j) &&
+              this.isValidAtIndex(value[valueIndex], j)
+            ) {
+              skipMaskedStaticSymbols = true
+              break
+            }
+          }
+
+          if (skipMaskedStaticSymbols) {
+            continue
+          }
+        }
+
+        // Позволяем значениям содержать статические символы из шаблона.
         if (
           value.length > valueIndex &&
           value[valueIndex] === this.pattern[i]
@@ -179,12 +199,24 @@ export class Pattern {
 
   /**
    * Возвращает исходное значение по отформатированному и маске.
+   *
+   * @param {string[]} value Массив символов поля
+   * @param {number[]} value Индексы символов, на которых нужно указать пробелы
+   *
+   * @returns string Значение поля в формате строки
    */
-  getRawValue(value: string[]): string {
+  getRawValue(value: string[], emptyCharsIndexes: number[] = []): string {
     const rawValue: string[] = []
+
     for (let i = 0; i < value.length; i++) {
-      if (this.isEditableIndex(i) && value[i] !== this.getPlaceholderChar(i)) {
-        rawValue.push(value[i])
+      if (this.isEditableIndex(i)) {
+        const valueIsPlaceholderChar = value[i] === this.getPlaceholderChar(i)
+        if (emptyCharsIndexes.includes(i) && valueIsPlaceholderChar) {
+          // Указываем неразрывные пробелы, чтобы они не тримились и не затирались
+          rawValue.push('\u00A0')
+        } else if (!valueIsPlaceholderChar) {
+          rawValue.push(value[i])
+        }
       }
     }
 

@@ -64,7 +64,7 @@ const Component = withDateLibAdapter(
 
 it.each(adapterKeys)(
   '[Adapter: %s] handles input from keyboard',
-  (adapterKey) => {
+  async (adapterKey) => {
     const onChange = jest.fn()
     const { getAllByRole } = render(
       <Component adapterKey={adapterKey} onChange={onChange} />
@@ -72,13 +72,13 @@ it.each(adapterKeys)(
 
     const [startInput, endInput] = getAllByRole('textbox')
     startInput.focus()
-    userEvent.keyboard('121212')
+    await userEvent.keyboard('121212', { delay: 5 })
     expect(onChange).toHaveBeenCalledTimes(1)
     expect(startInput).toHaveValue('12:12:12')
 
     endInput.focus()
 
-    userEvent.keyboard('222222')
+    await userEvent.keyboard('222222', { delay: 5 })
     expect(onChange).toHaveBeenCalledTimes(2)
     expect(endInput).toHaveValue('22:22:22')
   }
@@ -114,7 +114,7 @@ it.each(adapterKeys)(
 
 it.each(adapterKeys)(
   '[Adapter: %s] invalid if end is before start',
-  (adapterKey) => {
+  async (adapterKey) => {
     const onChange = jest.fn()
     const { getAllByRole, container, getByText } = render(
       <Component adapterKey={adapterKey} onChange={onChange} />
@@ -122,12 +122,12 @@ it.each(adapterKeys)(
 
     const [startInput, endInput] = getAllByRole('textbox')
     startInput.focus()
-    userEvent.keyboard('230000')
+    await userEvent.keyboard('230000', { delay: 5 })
     expect(onChange).toHaveBeenCalledTimes(1)
 
     endInput.focus()
 
-    userEvent.keyboard('200000')
+    await userEvent.keyboard('200000', { delay: 5 })
     expect(onChange).toHaveBeenCalledTimes(1)
     let errorIcon = container.querySelector(errorIconSelector)
     expect(errorIcon).not.toBeNull()
@@ -136,7 +136,8 @@ it.each(adapterKeys)(
     ).toBeInTheDocument()
 
     userEvent.clear(endInput)
-    userEvent.keyboard('233000')
+    await userEvent.keyboard('233000', { delay: 5 })
+
     expect(onChange).toHaveBeenCalledTimes(2)
     errorIcon = container.querySelector(errorIconSelector)
     expect(errorIcon).toBeNull()
@@ -145,7 +146,7 @@ it.each(adapterKeys)(
 
 it.each(adapterKeys)(
   '[Adapter: %s] invalid if start is after end ',
-  (adapterKey) => {
+  async (adapterKey) => {
     const onChange = jest.fn()
     const { getAllByRole, container, getByText } = render(
       <Component adapterKey={adapterKey} onChange={onChange} />
@@ -153,12 +154,12 @@ it.each(adapterKeys)(
 
     const [startInput, endInput] = getAllByRole('textbox')
     endInput.focus()
-    userEvent.keyboard('150000')
+    await userEvent.keyboard('150000', { delay: 5 })
     expect(onChange).toHaveBeenCalledTimes(1)
 
     startInput.focus()
 
-    userEvent.keyboard('200000')
+    await userEvent.keyboard('200000', { delay: 5 })
     expect(onChange).toHaveBeenCalledTimes(1)
     let errorIcon = container.querySelector(errorIconSelector)
     expect(errorIcon).not.toBeNull()
@@ -167,7 +168,7 @@ it.each(adapterKeys)(
     ).toBeInTheDocument()
 
     userEvent.clear(startInput)
-    userEvent.keyboard('140000')
+    await userEvent.keyboard('140000', { delay: 5 })
     expect(onChange).toHaveBeenCalledTimes(2)
     errorIcon = container.querySelector(errorIconSelector)
     expect(errorIcon).toBeNull()
@@ -250,7 +251,7 @@ it.each(adapterKeys)('[Adapter: %s] invalid time error', (adapterKey) => {
 // UIK-203
 it.each(adapterKeys)(
   '[Adapter: %s] not skips outrange value after correction using keyboard with triggerOnChangeOnInvalid=true',
-  (adapterKey) => {
+  async (adapterKey) => {
     const onChange = jest.fn((v: TRangeDate<unknown>) => v)
     const { getAllByRole, container, getByText } = render(
       <Component
@@ -260,18 +261,21 @@ it.each(adapterKeys)(
       />
     )
 
-    const [startInput, endInput] = getAllByRole('textbox')
+    const [startInput, endInput] = getAllByRole('textbox') as [
+      HTMLInputElement,
+      HTMLInputElement
+    ]
 
     // Указываем дату конца раньше даты начала (10:00:00) с клавиатуры
     endInput.focus()
-    userEvent.keyboard('100000')
+    await userEvent.keyboard('100000', { delay: 5 })
 
     expect(endInput).toHaveValue('10:00:00')
     expect(onChange).toHaveBeenCalledTimes(6)
 
     // Указываем дату начала позже даты конца (11:00:00) с клавиатуры
     startInput.focus()
-    userEvent.keyboard('110000')
+    await userEvent.keyboard('110000', { delay: 5 })
 
     expect(startInput).toHaveValue('11:00:00')
     expect(onChange).toHaveBeenCalledTimes(12)
@@ -284,7 +288,8 @@ it.each(adapterKeys)(
     // Указываем валидную дату конца (12:00:00) с клавиатуры
     userEvent.clear(endInput)
     endInput.focus()
-    userEvent.keyboard('120000')
+
+    await userEvent.keyboard('120000', { delay: 5 })
 
     // Проверяем, что дата начала (11:00:00) не сбросилась
     const expectedDateStart = new Date()
@@ -313,7 +318,10 @@ it.each(adapterKeys)(
       <Component adapterKey={adapterKey} onChange={onChange} />
     )
 
-    const [startInput, endInput] = getAllByRole('textbox')
+    const [startInput, endInput] = getAllByRole('textbox') as [
+      HTMLInputElement,
+      HTMLInputElement
+    ]
 
     // Указываем дату начала позже даты конца (10:00:00) с помощью тултипа
     startInput.click()
@@ -329,7 +337,7 @@ it.each(adapterKeys)(
 
     // Указываем дату конца раньше даты начала (09:00:00) с клавиатуры
     endInput.focus()
-    userEvent.keyboard('090000')
+    await userEvent.keyboard('090000', { delay: 5 })
 
     expect(endInput).toHaveValue('09:00:00')
     expect(onChange).toHaveBeenCalledTimes(3)
@@ -341,6 +349,7 @@ it.each(adapterKeys)(
 
     // Указываем валидную дату начала (08:00:00) с помощью тултипа
     userEvent.clear(startInput)
+
     startInput.click()
 
     dialog = await findByRole('tooltip')

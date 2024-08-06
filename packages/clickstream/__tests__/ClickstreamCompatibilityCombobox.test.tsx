@@ -47,6 +47,9 @@ it('clickstream lib components compatibility: combobox::single', async () => {
   await waitFor(() =>
     expect(handleBatch).toHaveBeenCalledTimes(expectedBatchCalls)
   )
+
+  // Могут возникать артефакты в снепшотах теста, связанные с дата атрибутами у options в компоненте.
+  // Запускайте тесты через yarn test:unit clickstream без указания названия теста
   await waitFor(() => expect(handleSendEvent).toMatchSnapshot())
 })
 
@@ -82,9 +85,7 @@ it('clickstream lib components compatibility: combobox::multiple', async () => {
 
   await waitFor(() => userEvent.click(combobox), { timeout: 1 })
 
-  for (let i = 0; i <= searchValue.length; i++) {
-    userEvent.keyboard('[Backspace]')
-  }
+  userEvent.keyboard('[Backspace]'.repeat(searchValue.length + 1))
 
   await waitFor(() => userEvent.tab(), { timeout: 1 })
 
@@ -93,6 +94,8 @@ it('clickstream lib components compatibility: combobox::multiple', async () => {
   await waitFor(() =>
     expect(handleBatch).toHaveBeenCalledTimes(expectedBatchCalls)
   )
+  // Могут возникать артефакты в снепшотах теста, связанные с дата атрибутами у options в компоненте.
+  // Запускайте тесты через yarn test:unit clickstream без указания названия теста
   await waitFor(() => expect(handleSendEvent).toMatchSnapshot())
 })
 
@@ -122,6 +125,8 @@ it('clickstream lib components compatibility: combobox::creatable', async () => 
   await waitFor(() =>
     expect(handleBatch).toHaveBeenCalledTimes(expectedBatchCalls)
   )
+  // Могут возникать артефакты в снепшотах теста, связанные с дата атрибутами у options в компоненте.
+  // Запускайте тесты через yarn test:unit clickstream без указания названия теста
   await waitFor(() => expect(handleSendEvent).toMatchSnapshot())
 })
 
@@ -171,5 +176,8 @@ it('clickstream lib components compatibility: autocomplete::keyboard', async () 
   await waitFor(() =>
     expect(handleBatch).toHaveBeenCalledTimes(expectedBatchCalls)
   )
+
+  // Могут возникать артефакты в снепшотах теста, связанные с дата атрибутами у options в компоненте.
+  // Запускайте тесты через yarn test:unit clickstream без указания названия теста
   await waitFor(() => expect(handleSendEvent).toMatchSnapshot())
 })

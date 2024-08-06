@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/radio",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "",
   "sideEffects": false,
   "module": "dist/esm/index.js",
@@ -23,9 +23,9 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@v-uik/hooks": "^1.12.0",
-    "@v-uik/radio-group": "^1.12.0",
-    "@v-uik/theme": "^1.12.0",
-    "@v-uik/typography": "^1.12.0"
+    "@v-uik/hooks": "^1.12.1",
+    "@v-uik/radio-group": "^1.12.1",
+    "@v-uik/theme": "^1.12.1",
+    "@v-uik/typography": "^1.12.1"
   }
 }

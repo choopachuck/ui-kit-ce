@@ -7,8 +7,8 @@ import * as React from 'react'
 import { render, waitFor } from '@testing-library/react'
 import { ClickStreamComponentsTest } from '../examples/ClickStreamComponentsTest'
 import * as ClickStreamUtils from '../src/utils'
-import userEvent from '@testing-library/user-event'
 import { mockGlobals } from './helpers'
+import { userEvent } from '../../../jest/utils'
 
 jest.useFakeTimers('modern').setSystemTime(new Date('2020-01-01'))
 jest
@@ -129,13 +129,19 @@ it('clickstream lib components compatibility: masked-input', async () => {
     />
   )
 
-  const input = getByTitle('masked-input')
+  const input = getByTitle('masked-input') as HTMLInputElement
 
   await waitFor(() => userEvent.click(input), { timeout: 1 })
-  userEvent.keyboard('212128')
+
+  await userEvent.typeMasked(input, '21212')
+
   await waitFor(() => userEvent.tab(), { timeout: 1 })
 
   await waitFor(() => userEvent.click(input), { timeout: 1 })
+
+  // userEvent производит лишние манипуляции в selectionRange у инпута и перемещает каретку всегда в конец маски;
+  // нужно всегда вручную указывать актуальную позицию каретки
+  input.setSelectionRange(11, 11)
   await waitFor(() => userEvent.keyboard('[Backspace]'), { timeout: 1 })
   await waitFor(() => userEvent.tab(), { timeout: 1 })
 
@@ -180,6 +186,9 @@ it('clickstream lib components compatibility: select', async () => {
   await waitFor(() =>
     expect(handleBatch).toHaveBeenCalledTimes(expectedBatchCalls)
   )
+
+  // Могут возникать артефакты в снепшотах теста, связанные с дата атрибутами у options в компоненте.
+  // Запускайте тесты через yarn test:unit clickstream без указания названия теста
   await waitFor(() => expect(handleSendEvent).toMatchSnapshot())
 })
 

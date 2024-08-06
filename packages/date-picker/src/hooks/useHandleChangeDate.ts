@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { dispatchChangeEvent } from '@v-uik/utils'
 import { useDateLibAdapter } from './useDateLibAdapter'
-import { formatDate } from '../utils/date'
+import { formatDate, isInvalid } from '../utils/date'
 import { CustomUtils } from '../utils/customDateLibAdapter'
 import { TRangeDate } from '../interfaces'
 import { TRangeDateBackwardCompat } from '../interfaces/range'
@@ -52,7 +52,9 @@ const performChange = <TDate extends unknown = unknown>({
   date,
   adapter,
 }: PerformChangeProps<TDate>) => {
-  const stringValue = formatDate<TDate>(adapter, date, format)
+  const stringValue = isInvalid(date, adapter)
+    ? input?.value
+    : formatDate<TDate>(adapter, date, format)
 
   if (input && stringValue) {
     dispatchChangeEvent(input, stringValue)
