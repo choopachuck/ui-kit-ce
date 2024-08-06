@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 1.12.1 (2024-07-24)
+
+
+### Bug Fixes
+
+* **masked-input:** исправлен ввод символов маски с клавиатуры ([0f27073](#))
+* **masked-input:** конфигурация маски ([0cb4e1a](#))
+
+
+
 ## 1.12.0 (2024-07-05)
 
 

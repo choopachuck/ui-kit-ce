@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### 1.12.1 (2024-07-24)
+
+
+### Bug Fixes
+
+* **switch:** исправлено поведение стиля hover в невыбранном состоянии при наведении на label ([6cbd621](#))
+
+
+
 ## 1.12.0 (2024-07-05)
 
 

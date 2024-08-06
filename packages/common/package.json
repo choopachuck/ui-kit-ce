@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/common",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "",
   "main": "dist/cjs/index.js",
   "typings": "dist/esm/index.d.ts",
@@ -16,9 +16,9 @@
     "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json"
   },
   "dependencies": {
-    "@v-uik/hooks": "^1.12.0",
-    "@v-uik/theme": "^1.12.0",
-    "@v-uik/utils": "^1.12.0"
+    "@v-uik/hooks": "^1.12.1",
+    "@v-uik/theme": "^1.12.1",
+    "@v-uik/utils": "^1.12.1"
   },
   "author": "UFSUI",
   "license": "ISC",

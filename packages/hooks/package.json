@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/hooks",
-  "version": "1.12.0",
+  "version": "1.12.1",
   "description": "",
   "module": "dist/esm/index.js",
   "main": "dist/cjs/index.js",
@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
-    "@v-uik/theme": "^1.12.0",
-    "@v-uik/utils": "^1.12.0",
+    "@v-uik/theme": "^1.12.1",
+    "@v-uik/utils": "^1.12.1",
     "body-scroll-lock": "^3.1.5",
     "react-popper": "^2.3.0"
   },

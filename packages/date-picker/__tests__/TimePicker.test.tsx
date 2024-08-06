@@ -57,7 +57,7 @@ const Component = withDateLibAdapter(
 
 it.each(adapterKeys)(
   '[Adapter: %s] handles input from keyboard',
-  (adapterKey) => {
+  async (adapterKey) => {
     const onChange = jest.fn()
     const { getByRole } = render(
       <Component adapterKey={adapterKey} onChange={onChange} />
@@ -71,14 +71,14 @@ it.each(adapterKeys)(
     input.focus()
 
     //ignores invalid input
-    userEvent.keyboard('q')
+    await userEvent.keyboard('q', { delay: 5 })
     expect(getErrorIcon()).toBeNull()
     expect(onChange).toHaveBeenCalledTimes(0)
 
-    userEvent.keyboard('1')
+    await userEvent.keyboard('1', { delay: 5 })
     expect(getErrorIcon()).not.toBeNull()
     expect(onChange).toHaveBeenCalledTimes(0)
-    userEvent.keyboard('21212')
+    await userEvent.keyboard('21212', { delay: 5 })
     expect(getErrorIcon()).toBeNull()
     expect(onChange).toHaveBeenCalled()
   }
@@ -302,27 +302,30 @@ it.each(adapterKeys)('[Adapter: %s] invalid time error', (adapterKey) => {
   ).toBeInTheDocument()
 })
 
-it.each(adapterKeys)('[Adapter: %s] not allowed time error', (adapterKey) => {
-  const { getByRole, getByText } = render(
-    <Component
-      adapterKey={adapterKey}
-      shouldDisableTime={(date, view) => {
-        if (view === 'minutes') {
-          return [0, 1, 2, 3, 4, 5, 6].includes(date.getMinutes())
-        }
+it.each(adapterKeys)(
+  '[Adapter: %s] not allowed time error',
+  async (adapterKey) => {
+    const { getByRole, getByText } = render(
+      <Component
+        adapterKey={adapterKey}
+        shouldDisableTime={(date, view) => {
+          if (view === 'minutes') {
+            return [0, 1, 2, 3, 4, 5, 6].includes(date.getMinutes())
+          }
 
-        return false
-      }}
-    />
-  )
+          return false
+        }}
+      />
+    )
 
-  const input = getByRole('combobox')
+    const input = getByRole('combobox')
 
-  userEvent.click(input)
+    userEvent.click(input)
 
-  userEvent.keyboard('11:03:00')
+    await userEvent.keyboard('11:03:00', { delay: 5 })
 
-  expect(
-    getByText(validationErrorMessages.notAllowedTime as string)
-  ).toBeInTheDocument()
-})
+    expect(
+      getByText(validationErrorMessages.notAllowedTime as string)
+    ).toBeInTheDocument()
+  }
+)

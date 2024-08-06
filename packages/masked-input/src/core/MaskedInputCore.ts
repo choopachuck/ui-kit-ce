@@ -1,5 +1,5 @@
 import { Pattern } from './Pattern'
-import {
+import type {
   FormatCharacters,
   HistoryItem,
   Config,
@@ -26,7 +26,7 @@ export class MaskedInputCore {
   /** Признак замены символов при вводе. */
   private readonly overtype?: boolean
   /**
-   * Признак который группирует символы с одинаковой маской.
+   * Признак, который группирует символы с одинаковой маской.
    * После этого удаление или добавление символа внутри одной группы не влияет
    * на другие. Так же не позволяет вводить новые символы, если группа полностью
    * заполнена. При вводе символа остальные символы после него сдвигаются до
@@ -100,7 +100,7 @@ export class MaskedInputCore {
       return true
     }
 
-    if (!this.getRawValue() && start === end) {
+    if (!this.getRawValue() && start === end && !start) {
       for (let i = 0; i < this.pattern.firstEditableIndex; i++) {
         if (char === this.pattern.pattern[i]) {
           this.selection.start = this.selection.end = i + 1
@@ -367,6 +367,7 @@ export class MaskedInputCore {
         )
         // При отсутствии режима сохранения позиций символов необходимо сдвинуть правую часть влево,
         // добавив заполнитель справа.
+
         if (!this.keepCharPositions && !this.groupCharShifting) {
           let lastEditableIndex = this.selection.start - 1,
             i = this.selection.start
@@ -691,10 +692,48 @@ export class MaskedInputCore {
 
   /**
    * Получить текущее значение без обработки по маске.
+   *
    * @returns {string} Текущее значение без обработки по маске.
    */
   getRawValue(): string {
-    return this.pattern.getRawValue(this.value)
+    return this.pattern.getRawValue(this.value, this.getEmptyCharsIndexes())
+  }
+
+  /**
+   * Получить индексы символов, которые были записаны как пустые значения.
+   *
+   * @returns {number[]} Индексы символов, которые были записаны как пустые значения
+   */
+  public getEmptyCharsIndexes(): number[] {
+    let emptyCharsIndexes: number[] = []
+    let tmpEmptyCharsIndexes: number[] = []
+    let leftRangeIndex: number | null = null
+
+    for (let i = 0; i < this.value.length; i++) {
+      if (!this.pattern.isEditableIndex(i)) {
+        continue
+      }
+      if (this.value[i] === this.pattern.placeholderChar) {
+        tmpEmptyCharsIndexes.push(i)
+      } else {
+        if (leftRangeIndex === null || Math.abs(leftRangeIndex - i) <= 1) {
+          leftRangeIndex = i
+          continue
+        }
+        emptyCharsIndexes = [...emptyCharsIndexes, ...tmpEmptyCharsIndexes]
+        tmpEmptyCharsIndexes = []
+      }
+    }
+
+    if (emptyCharsIndexes.length) {
+      return emptyCharsIndexes
+    }
+
+    if (emptyCharsIndexes.length === 0 && leftRangeIndex !== null) {
+      return [...tmpEmptyCharsIndexes.filter((v) => v < Number(leftRangeIndex))]
+    }
+
+    return []
   }
 
   /**

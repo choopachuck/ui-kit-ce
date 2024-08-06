@@ -136,6 +136,11 @@ const useStyles = createUseStyles((theme) => ({
       boxShadow: `0 0 0 2px ${theme.comp.switch.colorShadowFocus}`,
     },
 
+    // Hover
+    '&:hover ~ $switch': {
+      backgroundColor: theme.comp.switch.colorBackgroundHover,
+    },
+
     /**
      * Checked
      */
