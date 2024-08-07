@@ -1334,6 +1334,7 @@ export const ComboBox = React.forwardRef(
         checked: isSelected,
         className: clsx({
           [classList.checkbox]: !!getOptionPrefix(option),
+          [classes?.checkBox ?? '']: multiple,
         }),
       }
 
