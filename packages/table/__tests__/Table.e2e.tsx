@@ -11,6 +11,7 @@ import { FixedHeaderStory } from '../examples/FixedHeaderStory'
 import { FixedColumnsStory } from '../examples/FixedColumnsStory'
 import { SortableStory } from '../examples/SortableStory'
 import { CustomPaginateTable } from '../examples/CustomPaginateTable'
+import { default as PaginationCanvas } from '../examples/PaginationCanvas'
 import { AlignmentStory } from '../examples/AlignmentStory'
 import { AlignmentSortableStory } from '../examples/AlignmentSortableStory'
 
@@ -212,6 +213,26 @@ test.describe('Pagination', () => {
     test('Custom', async ({ mount }) => {
       const comp = await mount(<CustomPaginateTable />)
 
+      await expect(comp).toHaveScreenshot()
+    })
+    test('Select', async ({ mount, page }) => {
+      // await page.setViewportSize({ width: 1024, height: 200 })
+      const comp = await mount(
+        <div style={{ height: 700 }}>
+          <PaginationCanvas />
+        </div>
+      )
+
+      await page.locator('[aria-label="выбор страницы"]').click()
+
+      await page
+        .locator('[role="listbox"]')
+        .evaluate((element) =>
+          element.setAttribute(
+            'style',
+            'overscroll-behavior: contain;max-height: 150px;overflow-y: scroll;'
+          )
+        )
       await expect(comp).toHaveScreenshot()
     })
   })
