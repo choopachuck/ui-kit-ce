@@ -137,6 +137,7 @@ export interface TableComponents<DataSource = unknown> {
     wrapper?: CustomizeComponent
     row?: CustomizeComponent
     cell?: CustomizeComponent
+    sortIcon?: Record<SortOrderProp, CustomizeComponent>
   }
   body?:
     | {
@@ -183,7 +184,7 @@ type BaseColumnProps<DataSource> = {
   /**
    * Устанавливает свойства для конкретной ячейки.
    *
-   * Например можно установить colSpan и rowSpan.
+   * Например, можно установить colSpan и rowSpan.
    */
   setCellProps?(params: {
     cell: unknown

@@ -167,17 +167,20 @@ export const Table = React.forwardRef(
       'table'
     )
 
-    // Для того, чтобы мемоизация Header была
+    // Для того чтобы мемоизация Header была
     const headerClasses = React.useMemo(
       () => ({
         head: classes?.head,
         headRow: classes?.headRow,
         headCell: classesMap.headCell,
+        asc: classes?.headSortAsc,
+        desc: classes?.headSortDesc,
+        none: classes?.headSortNone,
       }),
       [classes]
     )
 
-    // Для того, чтобы мемоизация Body была
+    // Для того чтобы мемоизация Body была
     const bodyClasses = React.useMemo(
       () => ({
         body: classes?.body,

@@ -5,7 +5,10 @@ import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList } from '@v-uik/hooks'
 import { commonCellUseStyles } from '../styles'
 import { getComponent, parseHeaderRows } from '../utils'
-import { TableHeadCellContent } from './TableHeadCellContent'
+import {
+  TableHeadCellContent,
+  TableHeadCellContentClasses,
+} from './TableHeadCellContent'
 import { useFixedHeader } from '../hooks/useFixedHeader'
 import { UseColumnsResult } from '../hooks/useColumns'
 import { UseScrollResult } from '../hooks/useScroll'
@@ -94,7 +97,8 @@ const useStyles = createUseStyles((theme) => ({
   headCellLast: {},
 }))
 
-type Classes = Partial<Record<'head' | 'headRow' | 'headCell', string>>
+type Classes = Partial<Record<'head' | 'headRow' | 'headCell', string>> &
+  TableHeadCellContentClasses
 
 type HeaderProps<DataSource = unknown> = Pick<
   TableProps<DataSource>,
@@ -251,8 +255,10 @@ const _Header = <DataSource extends ReservedDataSourceProps<DataSource>>({
                 )}
               >
                 <TableHeadCellContent
+                  classes={classesMap}
                   column={column}
                   size={size as TableSizeProp}
+                  components={components}
                   onChange={onChange}
                 >
                   {title}
