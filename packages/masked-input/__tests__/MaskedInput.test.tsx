@@ -2,7 +2,7 @@ import * as React from 'react'
 import { MaskedInput } from '../src'
 import { fireEvent, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { MaskedInputTest } from '../examples/MaskedInputTest'
+import { MaskedInputTest } from './MaskedInputTest'
 const MASK = '+7 (111) 111-11-11'
 
 const EditableComp = () => {
