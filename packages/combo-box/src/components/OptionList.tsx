@@ -1,6 +1,11 @@
 import React from 'react'
 import { ListProps, List, ListItemGroup, ListItemProps } from '@v-uik/list'
-import { CommonProps, GroupType } from '../interfaces'
+import {
+  CommonProps,
+  GroupType,
+  ComboboxEvent,
+  ComboBoxInputEvent,
+} from '../interfaces'
 import { defaultOptionItemElement, defaultOptionListElement } from '../config'
 
 import { OptionItemBaseProps, OptionItemProps } from './OptionItem'
@@ -13,7 +18,7 @@ export type OptionListProps<
   groupedOptions?: GroupType<Option>[]
   groupBy?: (option: Option) => string
 
-  noOptionsText?: string
+  noOptionsText?: React.ReactNode | null
 
   commonOptionItemProps: ListItemProps<O>
   OptionItemComponent: React.ComponentType<OptionItemProps<Option, O>>
@@ -21,6 +26,9 @@ export type OptionListProps<
   loadingLabel?: React.ReactNode
   loading?: boolean
   listProps: Omit<ListProps<E>, 'children'>
+  handleChangeInputValue: (value: string, event?: ComboBoxInputEvent) => void
+  handleClear: (event: ComboboxEvent) => void
+  inputRef: React.RefObject<HTMLInputElement>
 } & Omit<OptionItemBaseProps<Option>, 'option'>
 
 export const OptionList = <
@@ -38,7 +46,9 @@ export const OptionList = <
   loading,
   OptionItemComponent,
   ...props
-}: OptionListProps<Option, E, O>): React.ReactElement => {
+}: OptionListProps<Option, E, O>): React.ReactElement<
+  OptionListProps<Option, E, O>
+> => {
   const renderGroupOptions = () => {
     if (groupBy && groupedOptions) {
       return groupedOptions.map(({ key, group, options }) => (
@@ -60,9 +70,14 @@ export const OptionList = <
   }
 
   const renderNoOptionsText = () => {
+    const withoutSystemOptions = props.filteredOptions?.filter(
+      (option) =>
+        !(option as typeof option & { __isCreating__: boolean }).__isCreating__
+    )
+
     if (
       (groupBy && groupedOptions?.length === 0) ||
-      (!groupBy && props.filteredOptions?.length === 0)
+      (!groupBy && withoutSystemOptions?.length === 0 && noOptionsText)
     ) {
       return (
         <OptionItemComponent
@@ -113,8 +128,8 @@ export const OptionList = <
       ) : (
         <>
           {renderGroupOptions()}
-          {renderOptions()}
           {renderNoOptionsText()}
+          {renderOptions()}
         </>
       )}
     </List>

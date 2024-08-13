@@ -219,8 +219,8 @@ export type ComboboxProps<
     components?: ComboBoxComponentsConfig<Option, ListElement, ListItem>
   }
 
-const defaultFilterOption = createFilter()
 const defaultOptions: Options<unknown> = []
+const defaultFilterOption = createFilter()
 
 export const ComboBox = React.forwardRef(
   <
@@ -240,7 +240,6 @@ export const ComboBox = React.forwardRef(
       dropdownProps,
       error,
       errorIconTooltipProps,
-      filterOption = defaultFilterOption,
       getOptionLabel = getOptionLabelBuiltin,
       getOptionPrefix = getOptionPrefixBuiltin,
       getOptionSuffix = getOptionSuffixBuiltin,
@@ -292,6 +291,7 @@ export const ComboBox = React.forwardRef(
       keepHelperTextMinHeight,
       required,
       inputProps,
+      filterOption = defaultFilterOption,
       ...rest
     }: ComboboxProps<Option, ListElement, ListItemElement>,
     ref: React.Ref<HTMLDivElement>
@@ -384,6 +384,7 @@ export const ComboBox = React.forwardRef(
     const popupRef = React.useRef<HTMLDivElement | null>(null)
     const indexOfSelected = React.useRef<number>()
     const listRef = React.useRef<HTMLElement | null>(null)
+    const clearRef = React.useRef<HTMLDivElement | null>(null)
 
     const hiddenInputRef = React.useRef<HTMLInputElement>(null)
     const hiddenInputMergedRef = useMergedRefs([
@@ -838,7 +839,12 @@ export const ComboBox = React.forwardRef(
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
       onControlMouseDown?.(event)
-      if (openOnClick && !disabled) {
+      if (
+        openOnClick &&
+        !disabled &&
+        event.target !== clearRef.current &&
+        !clearRef.current?.contains(event.target as HTMLElement)
+      ) {
         handleMouseDownDropdown(event)
       }
     }
@@ -1265,6 +1271,7 @@ export const ComboBox = React.forwardRef(
         return (
           <ClearIndicator
             {...commonProps}
+            ref={clearRef}
             disabled={disabled}
             size={size}
             innerProps={{
@@ -1400,6 +1407,7 @@ export const ComboBox = React.forwardRef(
             style: { ...dynamicStyles.list, ...(listProps?.style || {}) },
           }}
           {...commonProps}
+          inputRef={inputRef}
           renderOptionPrefix={renderOptionPrefix}
           renderOptionSuffix={renderOptionSuffix}
           groupBy={groupBy}
@@ -1440,6 +1448,8 @@ export const ComboBox = React.forwardRef(
           loadingLabel={loadingLabel}
           loading={loading}
           OptionItemComponent={OptionItem}
+          handleChangeInputValue={handleChangeInputValue}
+          handleClear={handleClear}
           onSelectOption={handleOptionClick}
         />
       )

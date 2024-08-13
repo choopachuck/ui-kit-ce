@@ -15,7 +15,7 @@ const noop = () => {}
  * @param valid - условие вывода
  * @param message - сообщение для отображения
  */
-const printError = (valid: boolean, message: string): void => {
+export const printError = (valid: boolean, message: string): void => {
   // Support uglify
   if (!isProduction && !valid && console !== undefined && !isTesting) {
     console.error(`Warning: ${message}`)
@@ -23,7 +23,12 @@ const printError = (valid: boolean, message: string): void => {
 }
 
 export const warning = !isProduction
-  ? (valid: boolean, component: string, message?: string): void => {
-      printError(valid, `[@v-uik: ${component}] ${message ?? ''}`)
+  ? (
+      valid: boolean,
+      component: string,
+      message?: string,
+      lib = '@v-uik'
+    ): void => {
+      printError(valid, `[${lib}: ${component}] ${message ?? ''}`)
     }
   : noop
