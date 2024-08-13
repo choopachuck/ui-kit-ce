@@ -10,7 +10,7 @@
     "start:lint": "start-storybook --port 9010"
   },
   "author": "UFSUI",
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "devDependencies": {
     "@babel/core": "7.10.4",
     "@storybook/addon-a11y": "6.5.13",

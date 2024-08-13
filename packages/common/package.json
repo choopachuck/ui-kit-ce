@@ -21,7 +21,7 @@
     "@v-uik/utils": "^1.12.1"
   },
   "author": "UFSUI",
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "sideEffects": false,
   "module": "dist/esm/index.js"
 }

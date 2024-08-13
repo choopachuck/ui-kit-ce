@@ -19,7 +19,7 @@
     "build:adapters:cjs": "tsc -d --outDir ./dist/adapters --project tsconfig.adapters.cjs.json",
     "build:adapters:esm": "tsc -d --outDir ./dist/adapters/esm/ --project tsconfig.adapters.esm.json"
   },
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "author": "UFSUI",
   "peerDependencies": {
     "react": ">=16.8.0"

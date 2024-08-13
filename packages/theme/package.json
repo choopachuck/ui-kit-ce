@@ -16,7 +16,7 @@
     "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json"
   },
   "author": "UFSUI",
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "dependencies": {
     "@v-uik/utils": "^1.12.1",
     "clsx": "^1.0.0",

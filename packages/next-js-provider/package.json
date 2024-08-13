@@ -17,7 +17,7 @@
     "build:cjs": "tsc -d --outDir ./dist/cjs --project tsconfig.cjs.json || exit 0",
     "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json || exit 0"
   },
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "author": "UFSUI",
   "peerDependencies": {
     "next": "^13.0.0 || ^14.0.0",

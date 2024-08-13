@@ -21,7 +21,7 @@ to: packages/<%= h.changeCase.paramCase(name) %>/package.json
     "build:cjs": "tsc -d --outDir ./dist/cjs --project tsconfig.cjs.json",
     "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json"
   },
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "author": "UFSUI",
   "peerDependencies": {
     "react": ">=16.8.0"

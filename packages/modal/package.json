@@ -17,7 +17,7 @@
     "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json",
     "clean": "rm -rf node_modules dist"
   },
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "author": "UFSUI",
   "peerDependencies": {
     "react": ">=16.8.0",
