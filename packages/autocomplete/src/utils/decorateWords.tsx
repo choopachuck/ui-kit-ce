@@ -42,8 +42,17 @@ function decorateWords<T>(
   return <span>{decoratedWords}</span>
 }
 
+/**
+ * Подготавливает строку к использованию внутри регулярного выражения. Экранирует все спецсимволы
+ * @param str - строка для преобразования
+ * @see {@link https://stackoverflow.com/a/6969486/10039155|скопировано из stackoverflow}
+ */
+function escapeRegExp(str: string): string {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
 function getWords(label: string, inputValue: string): string[] {
-  const result = label.match(new RegExp(`(${inputValue})`, 'i'))
+  const result = label.match(new RegExp(`(${escapeRegExp(inputValue)})`, 'i'))
 
   if (result === null) {
     return [label]

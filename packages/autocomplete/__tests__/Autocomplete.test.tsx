@@ -108,6 +108,25 @@ it('has focus when click on label STS-30123', () => {
   expect(searchInput).toHaveFocus()
 })
 
+it('has to work with special character', async () => {
+  const options = [{ value: '', label: `$&+,:;=?@#|'<>.-^*()%!` }]
+  const onChange = jest.fn()
+  const { findByRole, getByRole } = render(
+    <Autocomplete options={options} onChange={onChange} />
+  )
+
+  const searchInput = getByRole('textbox') as HTMLInputElement
+  fireEvent.change(searchInput, { target: { value: `$&+,:;=?@#|'<>.-^*()%!` } })
+
+  const foundOption = await findByRole('option')
+  fireEvent.click(foundOption)
+  expect(onChange).toBeCalledWith(
+    `$&+,:;=?@#|'<>.-^*()%!`,
+    expect.anything(),
+    'select'
+  )
+})
+
 it('outside value change clears inputs text STS-30122', async () => {
   const { rerender, container } = render(<Autocomplete value="Google" />)
 
