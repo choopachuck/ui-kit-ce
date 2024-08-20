@@ -129,6 +129,7 @@ const useStyles = createUseStyles((theme) => ({
     flexGrow: 1,
     marginLeft: 16,
     marginRight: 8,
+    wordBreak: 'break-word',
   },
   textContainer: {
     display: 'flex',
@@ -241,6 +242,7 @@ const useStyles = createUseStyles((theme) => ({
     lineHeight: theme.comp.notification.contentTypographyLineHeight,
     letterSpacing: theme.comp.notification.contentTypographyLetterSpacing,
     fontWeight: theme.comp.notification.contentTypographyFontWeight,
+    wordBreak: 'break-word',
   },
 
   '@keyframes fakeProgress': {
