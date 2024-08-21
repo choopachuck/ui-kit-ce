@@ -883,3 +883,24 @@ it('shouldnt close popup when click was on scroll', () => {
   fireEvent.mouseDown(list)
   expect(outsideClick).toHaveBeenCalledTimes(0)
 })
+
+// UIK-598 (SBTSUPPORT-45624)
+it('combobox not fires onBlur when click on option', async () => {
+  const onChange = jest.fn()
+  const onBlur = jest.fn()
+
+  const { getByRole, findAllByRole } = render(
+    <ComboBox
+      options={options}
+      controlInnerProps={{ onBlur }}
+      onChange={onChange}
+    />
+  )
+
+  const openButton = getByRole('button', { name: 'openPopupButton' })
+  userEvent.click(openButton)
+  const foundOptions = await findAllByRole('option')
+  userEvent.click(foundOptions[2], { bubbles: true })
+  expect(onChange).toBeCalledTimes(1)
+  expect(onBlur).toBeCalledTimes(0)
+})

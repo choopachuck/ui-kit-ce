@@ -738,9 +738,6 @@ export const ComboBox = React.forwardRef(
       if (!disableCloseOnSelect) {
         close()
       }
-
-      // это здесь для того, что не срабатывал onblur после выбора элемента
-      event.preventDefault()
     }
 
     const handleClear = (event: ComboboxEvent) => {

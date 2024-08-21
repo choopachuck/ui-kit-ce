@@ -10,6 +10,7 @@ import {
 } from '../examples'
 import { ComboBox } from '../src'
 import { createTheme } from '@v-uik/theme'
+import { SearchableAndClearOnBLur } from './components'
 
 test.describe('ComboBox', () => {
   test('value is not selected', async ({ mount }) => {
@@ -153,4 +154,31 @@ test.describe('ComboBox', () => {
 
     await expect(component).toHaveScreenshot()
   })
+})
+
+// UIK-607 (STS-54235)
+// TODO передалать на юнит-тест, когда поднимется версия userEvent до 14 версии
+// TODO @see https://testing-library.com/docs/user-event/pointer/
+test('combobox with isSearchable and clearInputOnBlur not clears value on change', async ({
+  page,
+  mount,
+}) => {
+  const component = await mount(
+    <div style={{ height: 300 }}>
+      <SearchableAndClearOnBLur />
+    </div>
+  )
+
+  const searchInput = page.locator('[type="text"]')
+
+  await searchInput.click()
+  await searchInput.fill('Первое')
+
+  const option = page.locator('[role="option"]')
+
+  await option.click()
+
+  const value = await component.locator('[role="combobox"]').textContent()
+
+  expect(value).toBe('Первое')
 })
