@@ -15,7 +15,11 @@ export const ButtonGroupKinds = {
 
 export type TButtonGroupKinds = keyof typeof ButtonGroupKinds
 
-type GetChildButtonOptions = { isFirst: boolean; isLast: boolean }
+type GetChildButtonOptions = {
+  isFirst: boolean
+  isLast: boolean
+  isSingle: boolean
+}
 
 export interface ButtonGroupProps
   extends Omit<ComponentPropsWithRefFix<'div'>, 'onChange'> {
@@ -183,7 +187,7 @@ export const ButtonGroup = React.forwardRef(
 
     const getChildButtonProps = (
       childButton: React.ReactElement<ButtonProps>,
-      { isFirst, isLast }: GetChildButtonOptions
+      { isFirst, isLast, isSingle }: GetChildButtonOptions
     ) => {
       const name = childButton.props.name
       const isSelected =
@@ -199,9 +203,9 @@ export const ButtonGroup = React.forwardRef(
         disabled: disabled || childButton.props.disabled,
         className: clsx(childButton.props.className, classesMap.button, {
           [classesMap.selected]: isSelected,
-          [classesMap.buttonFirst]: isFirst,
-          [classesMap.buttonLast]: isLast,
-          [classesMap.buttonMiddle]: !isFirst && !isLast,
+          [classesMap.buttonFirst]: isFirst && !isSingle,
+          [classesMap.buttonLast]: isLast && !isSingle,
+          [classesMap.buttonMiddle]: !isFirst && !isLast && !isSingle,
         }),
         classes: mergeClasses({
           classes1: childButton.props.classes || {},
@@ -218,14 +222,16 @@ export const ButtonGroup = React.forwardRef(
     const childrenArray = React.Children.toArray(childrenProp)
 
     const children = childrenArray
-      .map((item, index) => {
+      .map((item, index, arr) => {
         if (React.isValidElement(item)) {
           const isFirst = index === 0
           const isLast = index === childrenArray.length - 1
+          const isSingle = arr.length === 1
+
           if (item.type === Button) {
             return React.cloneElement(
               item,
-              getChildButtonProps(item, { isFirst, isLast })
+              getChildButtonProps(item, { isFirst, isLast, isSingle })
             )
           }
 
@@ -241,7 +247,7 @@ export const ButtonGroup = React.forwardRef(
                 childOfAChild as React.ReactElement<ButtonProps>,
                 getChildButtonProps(
                   childOfAChild as React.ReactElement<ButtonProps>,
-                  { isFirst, isLast }
+                  { isFirst, isLast, isSingle }
                 )
               ),
             })
