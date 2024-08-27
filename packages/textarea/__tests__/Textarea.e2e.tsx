@@ -2,7 +2,7 @@ import * as React from 'react'
 import { test, expect } from '../../../playwright/fixtures/customMount'
 import { test as testWithTheme } from '../../../playwright/fixtures/withThemeProviderInjected'
 import { WithError, WithRows, FullWidth, Disabled, Basic } from '../examples'
-import { Textarea } from '../src'
+import { Textarea, TextareaProps } from '../src'
 import { createTheme } from '@v-uik/theme'
 
 test.describe('Textarea', () => {
@@ -84,5 +84,34 @@ test.describe('Textarea', () => {
     const component = await mount(<WithRows />)
 
     await expect(component).toHaveScreenshot()
+  })
+  test.describe('resize', () => {
+    const resizeList: NonNullable<TextareaProps['resize']>[] = [
+      'none',
+      'both',
+      'horizontal',
+      'vertical',
+    ]
+
+    resizeList.forEach((resize) => {
+      test(resize, async ({ mount, page }) => {
+        const component = await mount(<Textarea resize={resize} value="text" />)
+        const initialSize = await component.boundingBox()
+
+        if (initialSize) {
+          const offset = 6
+          const offsetMove = 70
+          const sizeX = initialSize.x + initialSize.width
+          const sizeY = initialSize.y + initialSize.height
+
+          await page.mouse.move(sizeX - offset, sizeY - offset)
+          await page.mouse.down()
+          await page.mouse.move(sizeX + offsetMove, sizeY + offsetMove)
+          await page.mouse.up()
+        }
+
+        await expect(component).toHaveScreenshot()
+      })
+    })
   })
 })
