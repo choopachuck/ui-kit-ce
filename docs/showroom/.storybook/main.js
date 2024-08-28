@@ -1,7 +1,7 @@
 const path = require('path')
-const { ESLintPlugin } = require('eslint-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const {
   getCodeEditorStaticDirs,
 } = require('storybook-addon-code-editor/getStaticDirs')
