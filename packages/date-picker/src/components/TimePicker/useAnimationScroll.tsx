@@ -118,10 +118,12 @@ export const useAnimationScroll = <E extends string | number>({
       return
     }
 
-    setBottomOffset(
-      container.offsetHeight - optionElement.clientHeight - OFFSET
-    )
-  }, [])
+    const containerHeight = containerRef.current?.offsetHeight
+
+    if (containerHeight) {
+      setBottomOffset(containerHeight - optionElement.clientHeight - OFFSET)
+    }
+  }, [isFirstRender])
 
   React.useEffect(() => {
     setIsFirstRender(false)
