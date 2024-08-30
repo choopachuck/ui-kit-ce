@@ -45,10 +45,6 @@ export const useColumns = <DataSource>(
   columns: ColumnProps<DataSource>[]
 ): UseColumnsResult<DataSource> => {
   return React.useMemo(() => {
-    const isMultiRowsColumns = columns.some(
-      (column) => column.children && column.children.length
-    )
-
     const flattenColumns = flatColumns(columns)
 
     let expandableColumn: ColumnProps<DataSource> | undefined
@@ -105,13 +101,10 @@ export const useColumns = <DataSource>(
       flattenColumns,
       expandableColumn,
       expandableTreeColumn,
-      // temporary disable fixed columns when multiline header
-      columnsOffsets: isMultiRowsColumns ? {} : columnsOffsets,
-      lastStartFixedColumn: isMultiRowsColumns
-        ? undefined
-        : lastStartFixedColumn,
-      firstEndFixedColumn: isMultiRowsColumns ? undefined : firstEndFixedColumn,
-      hasFixedColumns: isMultiRowsColumns ? false : hasFixedColumns,
+      columnsOffsets,
+      lastStartFixedColumn,
+      firstEndFixedColumn,
+      hasFixedColumns,
     }
   }, [columns])
 }

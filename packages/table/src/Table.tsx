@@ -46,9 +46,11 @@ const useStyles = createUseStyles((theme) => ({
     boxSizing: 'border-box',
     textAlign: 'left',
     width: '100%',
+
     '&$hasFixedColumns': {
       tableLayout: 'fixed',
     },
+
     borderCollapse: 'separate',
     borderSpacing: 0,
     // Позволяет растягивать содержимое ячеек по высоте.

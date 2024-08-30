@@ -71,7 +71,7 @@ const columns: ColumnProps<DataSource>[] = [
       {
         key: 'address',
         dataIndex: 'address',
-        title: 'Addres',
+        title: 'Address',
         children: [
           {
             key: 'country',

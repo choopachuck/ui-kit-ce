@@ -8,6 +8,7 @@ import { ExpandableStory } from '../examples/ExpandableStory'
 import { TreeExpandableStory } from '../examples/TreeExpandableStory'
 import { PaginateTable } from '../examples/PaginateTable'
 import { FixedHeaderStory } from '../examples/FixedHeaderStory'
+import { MultiRowHeaderWithFixedColumns } from '../examples/MultiRowHeaderWithFixedColumns'
 import { FixedColumnsStory } from '../examples/FixedColumnsStory'
 import { SortableStory } from '../examples/SortableStory'
 import { CustomPaginateTable } from '../examples/CustomPaginateTable'
@@ -241,6 +242,20 @@ test.describe('Pagination', () => {
 test.describe('Fixed', () => {
   test('Header', async ({ mount, page }) => {
     const comp = await mount(<FixedHeaderStory />)
+
+    await page.evaluate(() => {
+      const tableWrapper = document.querySelector('div div')
+
+      if (tableWrapper) {
+        tableWrapper.scrollTop = 100
+      }
+    })
+
+    await expect(comp).toHaveScreenshot()
+  })
+
+  test('Multi Row Header', async ({ mount, page }) => {
+    const comp = await mount(<MultiRowHeaderWithFixedColumns />)
 
     await page.evaluate(() => {
       const tableWrapper = document.querySelector('div div')

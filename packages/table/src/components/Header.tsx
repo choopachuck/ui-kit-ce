@@ -206,7 +206,7 @@ const _Header = <DataSource extends ReservedDataSourceProps<DataSource>>({
               isColumnFixed || width || headerRowsTopOffsets
                 ? {
                     ...headerCellProps?.style,
-                    ...(width ? { width } : undefined),
+                    ...(width ? { width, minWidth: width } : undefined),
                     ...(isColumnFixed
                       ? {
                           [fixed === 'start' ? 'left' : 'right']:
