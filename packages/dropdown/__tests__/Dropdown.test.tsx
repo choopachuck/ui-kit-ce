@@ -89,6 +89,21 @@ it('show content when navigating from keyboard', () => {
   expect(queryByText('content')).not.toBeInTheDocument()
 })
 
+it('shows content on child focus', async () => {
+  const { queryByText, getByRole } = render(
+    <Dropdown action="focus" content="content">
+      <Button>button</Button>
+    </Dropdown>
+  )
+
+  const button = getByRole('button')
+  expect(queryByText('content')).not.toBeInTheDocument()
+  fireEvent.focus(button)
+  await waitFor(() => expect(queryByText('content')).toBeInTheDocument())
+  fireEvent.blur(button)
+  await waitFor(() => expect(queryByText('content')).not.toBeInTheDocument())
+})
+
 it('close dropdown when click outside', () => {
   const onStateChange = jest.fn()
   const { queryByText, getByRole, getByText } = render(

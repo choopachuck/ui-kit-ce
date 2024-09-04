@@ -4,7 +4,12 @@ import * as React from 'react'
 import type { ComponentPropsWithRefFix } from '@v-uik/common'
 import { createUseStyles, clsx } from '@v-uik/theme'
 import { useClassList, useGeneratedId } from '@v-uik/hooks'
-import { Dropdown, DropdownProps, DropdownTriggerType } from '@v-uik/dropdown'
+import {
+  Dropdown,
+  DropdownProps,
+  TDropdownTriggerType,
+  DropdownTriggerType,
+} from '@v-uik/dropdown'
 import { mergeRefs } from '@v-uik/utils'
 import { TooltipContext } from './TooltipContext'
 import { IndicatorIcon } from './assets/IndicatorIcon'
@@ -215,18 +220,6 @@ export const Tooltip = React.forwardRef(
       [setOpen, openProp, onStateChangeProp]
     )
 
-    const onBlur = (event: React.FocusEvent<HTMLElement>) => {
-      if (interactive) {
-        return
-      }
-
-      if (tooltipRef.current) {
-        if (!tooltipRef.current.contains(event.relatedTarget)) {
-          handleSetOpen(false)
-        }
-      }
-    }
-
     const handleClose = React.useCallback(() => {
       handleSetOpen(false)
       innerRef.current?.focus()
@@ -240,6 +233,13 @@ export const Tooltip = React.forwardRef(
       [setOpen, onStateChangeProp]
     )
 
+    const action: TDropdownTriggerType[] = [
+      interactive ? DropdownTriggerType.click : DropdownTriggerType.hover,
+    ]
+    if (showOnChildFocus) {
+      action.push(DropdownTriggerType.focus)
+    }
+
     const child = React.Children.only(childrenProp)
 
     const dropdownId = useGeneratedId(dropdownProps?.id)
@@ -247,17 +247,6 @@ export const Tooltip = React.forwardRef(
     const children = React.cloneElement(child, {
       // @ts-ignore
       ref: mergeRefs([child.ref, innerRef]),
-      onFocus: (event: React.FocusEvent<HTMLElement>) => {
-        child.props.onFocus?.(event)
-        if (showOnChildFocus) {
-          setOpen(true)
-        }
-      },
-      onBlur: (event: React.FocusEvent<HTMLElement>) => {
-        child.props.onBlur?.(event)
-
-        onBlur(event)
-      },
       ...(interactive
         ? {
             'aria-expanded': open,
@@ -288,19 +277,13 @@ export const Tooltip = React.forwardRef(
       <Dropdown
         ref={ref}
         disablePortal
-        action={
-          interactive ? DropdownTriggerType.click : DropdownTriggerType.hover
-        }
+        action={action}
         open={open}
         {...dropdownProps}
         id={dropdownId}
         modifiers={modifiers}
         content={content}
         onStateChange={onStateChange}
-        onBlur={(ev) => {
-          dropdownProps?.onBlur?.(ev)
-          onBlur(ev)
-        }}
         onKeyDown={(event) => {
           dropdownProps?.onKeyDown?.(event)
           if (interactive && event.key === 'Escape') {

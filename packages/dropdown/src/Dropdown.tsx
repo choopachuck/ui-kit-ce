@@ -13,6 +13,7 @@ const SUBMIT_KEYS = ['Space', 'Enter']
 export const DropdownTriggerType = {
   hover: 'hover',
   click: 'click',
+  focus: 'focus',
   contextMenu: 'contextMenu',
 } as const
 
@@ -56,6 +57,8 @@ export const Dropdown = React.forwardRef(
       mouseEnterDelay = 100,
       mouseLeaveDelay = 150,
       onStateChange,
+      onBlur,
+      onFocus,
       ...rest
     }: DropdownProps,
     ref: React.Ref<HTMLDivElement>
@@ -66,15 +69,17 @@ export const Dropdown = React.forwardRef(
     const mergedPopupRef = useMergedRefs([ref, popupRef])
 
     const delayTimeout = React.useRef<ReturnType<typeof setTimeout>>()
+    const isMouseInside = React.useRef(false)
 
     const [open, setOpen] = useValue(openProp)
     const [virtualElement, setVirtualElement] =
       React.useState<VirtualElement | null>(null)
-
     const isHoverAction = action.includes(DropdownTriggerType.hover)
     const isClickAction = action.includes(DropdownTriggerType.click)
+    const isFocusAction = action.includes(DropdownTriggerType.focus)
     const isContextMenuAction = action.includes(DropdownTriggerType.contextMenu)
-    const contextOnly = isContextMenuAction && !isClickAction && !isHoverAction
+    const contextOnly =
+      isContextMenuAction && !isClickAction && !isHoverAction && !isFocusAction
 
     const clearDelayTimeout = () => {
       if (delayTimeout.current) {
@@ -140,6 +145,7 @@ export const Dropdown = React.forwardRef(
 
     const onPopupMouseEnter = () => {
       clearDelayTimeout()
+      isMouseInside.current = true
     }
 
     const onPopupMouseLeave = (event: React.MouseEvent) => {
@@ -152,7 +158,7 @@ export const Dropdown = React.forwardRef(
       ) {
         return
       }
-
+      isMouseInside.current = false
       setDelayedOpen(false, mouseLeaveDelay)
     }
 
@@ -205,6 +211,18 @@ export const Dropdown = React.forwardRef(
       }
     }
 
+    const handleFocus = (event: React.FocusEvent<HTMLDivElement, Element>) => {
+      onFocus?.(event)
+      setDelayedOpen(true, mouseLeaveDelay)
+    }
+
+    const handleBlur = (event: React.FocusEvent<HTMLDivElement, Element>) => {
+      onBlur?.(event)
+      if (!isMouseInside.current) {
+        setDelayedOpen(false, mouseLeaveDelay)
+      }
+    }
+
     const child = React.Children.only(children)
 
     const newChildProps: React.HTMLAttributes<HTMLElement> & {
@@ -230,6 +248,11 @@ export const Dropdown = React.forwardRef(
       newChildProps.onKeyDown = onKeyDown
     }
 
+    if (isFocusAction) {
+      newChildProps.onFocus = handleFocus
+      newChildProps.onBlur = handleBlur
+    }
+
     const getAnchor = (): PopupProps['anchor'] => {
       if (contextOnly) {
         return virtualElement
@@ -250,8 +273,12 @@ export const Dropdown = React.forwardRef(
           ref={mergedPopupRef}
           open={open}
           anchor={getAnchor()}
-          onMouseEnter={isHoverAction ? onPopupMouseEnter : undefined}
-          onMouseLeave={isHoverAction ? onPopupMouseLeave : undefined}
+          onMouseEnter={
+            isHoverAction || isFocusAction ? onPopupMouseEnter : undefined
+          }
+          onMouseLeave={
+            isHoverAction || isFocusAction ? onPopupMouseLeave : undefined
+          }
         >
           {content}
         </Popup>
