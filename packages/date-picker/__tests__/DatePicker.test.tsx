@@ -627,3 +627,23 @@ it.each(adapterKeys)(
     expect(input).toHaveValue('')
   }
 )
+
+it.each(adapterKeys)(
+  '[Adapter: %s] works with null value correctly',
+  (adapterKey) => {
+    const currentDate = new Date()
+    const onChange = jest.fn()
+    const { getByRole } = render(
+      <Component
+        format="dd.MM.yyyy"
+        minDate={currentDate}
+        adapterKey={adapterKey}
+        value={null}
+        onChange={onChange}
+      />
+    )
+
+    const input = getByRole('combobox')
+    expect(input).toHaveValue('')
+  }
+)

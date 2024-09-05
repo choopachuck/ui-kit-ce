@@ -6,7 +6,7 @@ import {
   DEFAULT_PLACEHOLDER_CHAR,
   DEFAULT_FORMAT_CHARACTERS,
 } from './core/constants'
-import { useMergedRefs } from '@v-uik/hooks'
+import { useMergedRefs, useSafetyValue } from '@v-uik/hooks'
 
 export interface MaskedInputBaseProps
   extends CommonProps,
@@ -16,7 +16,7 @@ export const MaskedInputBase = React.forwardRef(
   (
     {
       mask,
-      value: valueProp,
+      value: rawValue,
       onChange: onChangeProp,
       formatCharacters = DEFAULT_FORMAT_CHARACTERS,
       placeholderChar = DEFAULT_PLACEHOLDER_CHAR,
@@ -41,9 +41,11 @@ export const MaskedInputBase = React.forwardRef(
       inputRef,
     ])
 
+    const safetyValue = useSafetyValue(rawValue)
+
     const { value, onChange, inputProps } = useMaskedInput({
       mask,
-      value: valueProp,
+      value: safetyValue,
       onChange: onChangeProp,
       formatCharacters,
       placeholderChar,

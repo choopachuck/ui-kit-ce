@@ -11,7 +11,7 @@ import {
   DATA_V_UIK_INPUT_TYPE,
 } from '@v-uik/common'
 import { Tooltip, TooltipProps } from '@v-uik/tooltip'
-import { useMergedRefs, useClassList } from '@v-uik/hooks'
+import { useMergedRefs, useClassList, useSafetyValue } from '@v-uik/hooks'
 import { InputAffix, InputAffixType } from './InputAffix'
 import { ErrorIcon } from './assets/ErrorIcon'
 import { dispatchChangeEvent } from '@v-uik/utils'
@@ -103,7 +103,7 @@ export interface InputBaseProps<TCanClear extends boolean = boolean>
   /**
    * Значение поля
    */
-  value?: React.ReactText
+  value?: React.ReactText | null
   /**
    * Можно ли очищать всё поле
    */
@@ -517,6 +517,8 @@ const _InputBase = React.forwardRef(
       }
     }, [disabled, focused, onFocusChange])
 
+    const safetyValue = useSafetyValue(value)
+
     return (
       <div {...rest} ref={ref} className={className} onClick={handleClick}>
         {prefix && (
@@ -541,7 +543,7 @@ const _InputBase = React.forwardRef(
           {...{ [DATA_V_UIK_INPUT_TYPE]: vUikInputType }}
           disabled={disabled}
           placeholder={placeholder}
-          value={value}
+          value={safetyValue}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}

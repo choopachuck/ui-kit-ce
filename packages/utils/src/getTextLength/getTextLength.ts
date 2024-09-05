@@ -7,7 +7,7 @@
  * @returns - количество символов, или "количество символов / максимальное количество символов"
  */
 export function getTextLength(
-  value?: React.ReactText,
+  value?: React.ReactText | null,
   maxLength?: number
 ): string {
   const count = String(value ?? '').length

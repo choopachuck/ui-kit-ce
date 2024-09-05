@@ -115,3 +115,10 @@ describe('handle clear value correctly', () => {
     expect(handleChange).toHaveBeenCalledWith('', expect.anything(), 'clear')
   })
 })
+
+it('works with null value correctly', () => {
+  const { getByRole } = render(<Component value={null} />)
+  const element = getByRole('textbox')
+
+  expect(element).toHaveValue('')
+})

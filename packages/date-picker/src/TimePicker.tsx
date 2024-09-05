@@ -229,7 +229,7 @@ export const TimePicker = React.forwardRef(
       [classesList.fullWidth]: !renderInput && propsInputProps?.fullWidth,
     })
 
-    const inputProps: InputBaseProps | MaskedInputBaseProps = {
+    const inputProps: InputBaseProps = {
       suffix: <ClockIcon />,
       ...propsInputProps,
       classes: {

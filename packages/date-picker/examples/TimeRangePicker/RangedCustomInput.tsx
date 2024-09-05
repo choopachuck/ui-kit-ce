@@ -28,7 +28,7 @@ export const RangedCustomInput = (): React.ReactElement => {
             {...startProps.inputProps}
             ref={startProps.inputRef}
             placeholder="чч:мм"
-            value={startProps.value}
+            value={startProps.value ?? undefined}
             onChange={(event) =>
               startProps.onChange?.(event.target.value, event, 'input')
             }
@@ -40,7 +40,7 @@ export const RangedCustomInput = (): React.ReactElement => {
             {...endProps.inputProps}
             ref={endProps.inputRef}
             placeholder="чч:мм"
-            value={endProps.value}
+            value={endProps.value ?? undefined}
             onChange={(event) =>
               endProps.onChange?.(event.target.value, event, 'input')
             }

@@ -268,7 +268,7 @@ export interface TimeRangePickerProps<TDate = unknown>
   /**
    * Значение пикера
    */
-  value?: TRangeDate<TDate>
+  value?: TRangeDate<TDate> | null
   /**
    * Обработчик изменения значения
    */

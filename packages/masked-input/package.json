@@ -25,6 +25,7 @@
   "dependencies": {
     "@v-uik/common": "^1.12.1",
     "@v-uik/input": "^1.12.1",
-    "@v-uik/utils": "^1.12.1"
+    "@v-uik/utils": "^1.12.1",
+    "@v-uik/hooks": "^1.12.1"
   }
 }

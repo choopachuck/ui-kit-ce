@@ -16,3 +16,8 @@ it('stretch to full width', () => {
   const { getByTestId } = render(<Input fullWidth data-testid="testId" />)
   expect(getByTestId('testId')).toHaveStyle('width: 100%')
 })
+
+it('works with null value correctly', () => {
+  const { getByRole } = render(<Input value={null} />)
+  expect(getByRole('textbox')).toHaveValue('')
+})

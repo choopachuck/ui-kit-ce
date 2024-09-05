@@ -36,7 +36,7 @@ export interface BaseRangePickerProps<TDate = unknown>
   /**
    * Значение пикера
    */
-  value?: [ParsableDate<TDate>, ParsableDate<TDate>]
+  value?: [ParsableDate<TDate>, ParsableDate<TDate>] | null
   /**
    * Обработчик изменения значения
    */

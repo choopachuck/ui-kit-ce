@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
-import { useMergedRefs, useClassList } from '@v-uik/hooks'
+import { useMergedRefs, useClassList, useSafetyValue } from '@v-uik/hooks'
 import type { Classes } from './interfaces'
 import {
   ElementSize,
@@ -70,7 +70,7 @@ export interface TextareaProps<
   /**
    * Значение поля
    */
-  value?: React.ReactText
+  value?: React.ReactText | null
   /**
    * Обработчик события изменения значения поля
    */
@@ -259,7 +259,7 @@ export const Textarea = React.forwardRef(
       className,
       label,
       labelProps,
-      value,
+      value: rawValue,
       onChange,
       placeholder,
       textareaProps,
@@ -334,13 +334,15 @@ export const Textarea = React.forwardRef(
       }
     }
 
+    const safetyValue = useSafetyValue(rawValue)
+
     const innerProps = {
       ref: mergedTextAreaRef,
       rows,
       className: textareaClassName,
       disabled,
       placeholder,
-      value,
+      value: safetyValue,
       onChange: handleChange,
       onFocus: handleFocus,
       onBlur: handleBlur,
@@ -351,9 +353,9 @@ export const Textarea = React.forwardRef(
 
     const labelSuffix = React.useMemo(() => {
       return showCount
-        ? getTextLength(value, textareaProps?.maxLength)
+        ? getTextLength(safetyValue, textareaProps?.maxLength)
         : undefined
-    }, [showCount, value, textareaProps?.maxLength])
+    }, [showCount, safetyValue, textareaProps?.maxLength])
 
     return (
       <div {...rest} ref={ref} className={containerClassName}>

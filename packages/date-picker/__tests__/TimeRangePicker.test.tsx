@@ -421,3 +421,18 @@ it.each(adapterKeys)(
     ).toBeInTheDocument()
   }
 )
+
+it.each(adapterKeys)(
+  '[Adapter: %s] works with null value correctly',
+  (adapterKey) => {
+    const onChange = jest.fn((v: TRangeDate<unknown>) => v)
+    const { getAllByRole } = render(
+      <Component adapterKey={adapterKey} value={null} onChange={onChange} />
+    )
+
+    const [startInput, endInput] = getAllByRole('textbox')
+
+    expect(startInput).toHaveValue('')
+    expect(endInput).toHaveValue('')
+  }
+)

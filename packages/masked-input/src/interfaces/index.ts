@@ -13,7 +13,7 @@ export interface CommonProps {
   /**
    * Значение поля
    */
-  value?: string
+  value?: React.ReactText | null
   /**
    * Обработчик события изменения значения поля
    */

@@ -19,7 +19,7 @@ export const RenderInput = (): React.ReactElement => {
             {...startProps.inputProps}
             ref={startProps.inputRef}
             placeholder="дд.мм.гггг"
-            value={startProps.value}
+            value={startProps.value ?? undefined}
             onChange={(event) =>
               startProps.onChange?.(event.target.value, event)
             }
@@ -31,7 +31,7 @@ export const RenderInput = (): React.ReactElement => {
             {...endProps.inputProps}
             ref={endProps.inputRef}
             placeholder="дд.мм.гггг"
-            value={endProps.value}
+            value={endProps.value ?? undefined}
             onChange={(event) => endProps.onChange?.(event.target.value, event)}
           />
         </div>

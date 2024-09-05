@@ -21,7 +21,7 @@ interface IUseSelectRangeProps<TDate = unknown>
     reason?: UseHandleChangeDateReason
   ) => void
   onChangeByIndex?: (date: TRangeDate<TDate>, index: 0 | 1) => void
-  rawValue?: [ParsableDate<TDate>, ParsableDate<TDate>]
+  rawValue?: [ParsableDate<TDate>, ParsableDate<TDate>] | null
   triggerOnChangeOnInvalid?: boolean
 }
 

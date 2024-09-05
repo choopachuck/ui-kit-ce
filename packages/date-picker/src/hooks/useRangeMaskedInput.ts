@@ -12,7 +12,7 @@ interface IUseMaskedInputProps<TDate = unknown> {
   changeDate: (range: TRangeValue<TDate> | null, index: 0 | 1) => void
   mask?: string
   format?: string
-  rawValue?: [ParsableDate<TDate>, ParsableDate<TDate>]
+  rawValue?: [ParsableDate<TDate>, ParsableDate<TDate>] | null
   validationError?: DateValidationError | null
 }
 
@@ -43,6 +43,7 @@ export const useRangeMaskedInput = <TDate = unknown>({
   rawValue = [null, null],
 }: IUseMaskedInputProps<TDate>): IUseMaskedInputResult => {
   const date = range[index]
+  const safetyRawValue = rawValue ?? [null, null]
 
   const isInfinity = date === -Infinity || date === Infinity
 
@@ -53,7 +54,7 @@ export const useRangeMaskedInput = <TDate = unknown>({
     getFormattedValue(isInfinity, index, formattedDate)
   )
 
-  const rawDate = rawValue[index]
+  const rawDate = safetyRawValue?.[index]
 
   React.useLayoutEffect(() => {
     if (rawDate !== null) {

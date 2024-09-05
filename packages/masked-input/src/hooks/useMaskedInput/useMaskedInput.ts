@@ -6,8 +6,9 @@ import { dispatchChangeEvent } from '@v-uik/utils'
 import { MaskedInputAction } from './MaskedInputAction'
 import { DATA_V_UIK_INPUT_TYPE } from '@v-uik/common'
 
-interface IUseMaskedInputProps extends CommonProps {
+interface IUseMaskedInputProps extends Omit<CommonProps, 'value'> {
   inputProps?: React.InputHTMLAttributes<HTMLInputElement>
+  value?: string
 }
 
 interface IUseMaskedInputResult {

@@ -329,3 +329,16 @@ it.each(adapterKeys)(
     ).toBeInTheDocument()
   }
 )
+
+it.each(adapterKeys)(
+  '[Adapter: %s] works with null value correctly',
+  (adapterKey) => {
+    const { getByRole } = render(
+      <Component adapterKey={adapterKey} value={null} />
+    )
+
+    const input = getByRole('combobox')
+
+    expect(input).toHaveValue('')
+  }
+)

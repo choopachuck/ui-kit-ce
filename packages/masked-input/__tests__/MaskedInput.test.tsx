@@ -346,3 +346,13 @@ it.each([true, false])(
     expect(input).toHaveValue('+7 (7__) ___-__-__')
   }
 )
+
+it('works with null value correctly', () => {
+  const { getByRole } = render(
+    <MaskedInputTest mask="+7 (111) 111-11-11" value={null} />
+  )
+
+  const input = getByRole('textbox') as HTMLInputElement
+
+  expect(input).toHaveValue('')
+})

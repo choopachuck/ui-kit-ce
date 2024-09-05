@@ -12,7 +12,7 @@ export const useSafeValue = <TDate>(value: TDate): TDate | null => {
 }
 
 export const useSafeRangeValue = <TDate>(
-  value?: [ParsableDate<TDate>, ParsableDate<TDate>]
+  value?: [ParsableDate<TDate>, ParsableDate<TDate>] | null
 ): [ParsableDate<TDate>, ParsableDate<TDate>] => {
   const adapter = useDateLibAdapter<TDate>()
 

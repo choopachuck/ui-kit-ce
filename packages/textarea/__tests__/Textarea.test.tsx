@@ -67,3 +67,9 @@ it('handle change correctly', () => {
   expect(onChange).toBeCalledTimes(2)
   expect(onChange).toBeCalledWith('', expect.anything())
 })
+
+it('works with null value correctly', () => {
+  const { getByRole } = render(<Textarea value={null} />)
+  const textarea = getByRole('textbox')
+  expect(textarea).toHaveValue('')
+})
