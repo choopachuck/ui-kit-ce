@@ -39,7 +39,6 @@ export const MultipleCreatable = (): JSX.Element => {
         formatLabel={(v) => `Add "${v}"`}
         value={value}
         placeholder={Placeholder.MULTIPLE_SEARCHABLE}
-        noOptionsText="No options"
         label="Label"
         options={options}
         onChange={setValue}
