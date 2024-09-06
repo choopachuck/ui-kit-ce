@@ -60,6 +60,7 @@ import { createAvatar } from './avatar'
 import { createCard } from './card'
 import { createCloseButton } from './closeButton'
 import { createPagination } from './pagination'
+import { createTree } from './tree'
 
 // пришлось описать ключи компонентного слоя отдельным типом, потому что вывести
 // не удается из-за циклической зависимости в createComp.
@@ -121,6 +122,7 @@ type ComponentLayerKeys =
   | 'tagInput'
   | 'textarea'
   | 'tooltip'
+  | 'tree'
   | 'divider'
   | 'dropzone'
   | 'fileItem'
@@ -196,6 +198,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     tagInput: checkCompatibilityMode(customProps, 'tagInput'),
     textarea: checkCompatibilityMode(customProps, 'textarea'),
     tooltip: checkCompatibilityMode(customProps, 'tooltip'),
+    tree: checkCompatibilityMode(customProps, 'tree'),
     underlay: checkCompatibilityMode(customProps, 'underlay'),
     closeButton: checkCompatibilityMode(customProps, 'closeButton'),
     pagination: checkCompatibilityMode(customProps, 'pagination'),
@@ -287,6 +290,7 @@ export const createComp = (theme: Theme, customProps: ThemeOptions = {}) => {
     textarea: createTextarea(theme, compatibilityMap.textarea),
     timeView: createTimeView(),
     tooltip: createTooltip(theme, compatibilityMap.tooltip),
+    tree: createTree(theme, compatibilityMap.tree),
     underlay: createUnderlay(theme, compatibilityMap.underlay),
     closeButton: createCloseButton(theme, compatibilityMap.closeButton),
     pagination: createPagination(theme, compatibilityMap.pagination),

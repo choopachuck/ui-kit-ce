@@ -59,6 +59,7 @@ module.exports = {
         'textarea',
         'theme',
         'tooltip',
+        'tree',
         'typography',
         'underlay',
         'utils',

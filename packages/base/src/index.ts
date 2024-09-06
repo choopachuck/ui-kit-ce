@@ -84,6 +84,7 @@ export * from '@v-uik/utils'
 export * from '@v-uik/labelled'
 export * from '@v-uik/avatar'
 export * from '@v-uik/pagination'
+export * from '@v-uik/tree'
 
 /**
  * Заглушка, не используется

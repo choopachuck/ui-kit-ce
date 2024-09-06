@@ -71,6 +71,7 @@
     "@v-uik/textarea": "1.12.1",
     "@v-uik/theme": "1.12.1",
     "@v-uik/tooltip": "1.12.1",
+    "@v-uik/tree": "1.12.1",
     "@v-uik/typography": "1.12.1",
     "@v-uik/underlay": "1.12.1",
     "@v-uik/utils": "1.12.1"

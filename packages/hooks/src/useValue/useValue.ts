@@ -29,11 +29,25 @@ export function useValue<T>(
   )
   const prevRef = React.useRef<T>()
 
+  const isFirstRenderRef = React.useRef(true)
+
   React.useEffect(() => {
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false
+
+      return
+    }
+
     prevRef.current = valueProp
   }, [valueProp])
 
   React.useLayoutEffect(() => {
+    if (isFirstRenderRef.current) {
+      isFirstRenderRef.current = false
+
+      return
+    }
+
     if (options?.useInnerState && valueProp) {
       setStateValue(options?.formatValueFromProp?.(valueProp) ?? valueProp)
     }
