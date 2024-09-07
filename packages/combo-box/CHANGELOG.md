@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.0] (2024-09-07)
+
+
+### Bug Fixes
+
+* **autocomplete:** исправлена работа onChange евента ([80d7b35](#))
+* **combo-box:** исправлена работа onBlur при выборе значения из выпадающего списка ([4f0ba1e](#))
+* **combo-box:** исправлено закрытие DropDown при клике на скролл-бар ([16ce887](#))
+* **combo-box:** исправлено использование класса для checkBox получаемого из пропсов ([01c7c9c](#))
+* **table:** исправлено сжатие выбраной опции текущей страницы если присутсвует скролл ([d426198](#))
+
+
+
 ### 1.12.1 (2024-07-24)
 
 **Note:** Version bump only for package @v-uik/combo-box
