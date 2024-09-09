@@ -5,3 +5,8 @@
 table.sbdocs.sbdocs-table {
   width: 100%;
 }
+
+/* Костыль, чтобы Trails отображались в mdx-документации сторибука */
+[role='treeitem'] span {
+  z-index: 1;
+}

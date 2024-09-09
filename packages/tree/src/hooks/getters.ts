@@ -3,7 +3,7 @@ import { TreeItem } from './types'
 export const getTreeItemChildren = <TItem = TreeItem>(
   item: TItem
 ): TItem[] | undefined =>
-  (item as unknown as TreeItem).children as TItem[] | undefined
+  (item as unknown as TreeItem).children as unknown as TItem[] | undefined
 
 export const getTreeItemKey = <TItem = TreeItem>(item: TItem): React.Key =>
   (item as unknown as TreeItem).key

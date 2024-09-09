@@ -12,29 +12,31 @@ import type {
 
 export type UseTreeToggleExpandOptions = {
   /**
-   * При раскрытии элемента дерева дерева раскрывать только его родительские элементы
+   * При раскрытии узла дерева дерева раскрывать только его родительские элементы
    */
   toggleParentsOnly?: boolean
 }
 
 export type UseExpandProps<TItem = TreeItem> = {
   /**
-   * Функция обратного вызова, которая срабатывает при скрытии/раскрытии элемента дерева
+   * Функция обратного вызова, которая срабатывает при скрытии/раскрытии узла дерева
    *
-   * @param {React.Key[]} expandedKeys Массив раскрытых элементов дерева
-   * @param {TreeNodeItem<TItem>} node Целевой элемент дерева
+   * @param {React.Key[]} expandedKeys Массив ключей раскрытых узлов дерева
+   * @param {TreeNodeItem<TItem>} node Целевой узел дерева
    */
   onNodeExpand?: (expandedKeys: React.Key[], node: TreeNodeItem<TItem>) => void
   /**
-   * Массив раскрытых элементов дерева по умолчанию
+   * Массив ключей раскрытых узлов дерева по умолчанию
    */
   defaultExpandedKeys?: React.Key[]
   /**
-   * Массив раскрытых элементов дерева
+   * Массив ключей раскрытых узлов дерева
    */
   expandedKeys?: React.Key[]
   /**
-   * Функция подгрузки данных при разворачивании элементов дерева с флагом `loadable = true`
+   * Функция обратного вызова для подгрузки новых дочерних узлов, которая срабатывает при раскрытии узлов дерева с флагом `loadable = true`
+   *
+   * @param {TreeNodeItem<TItem>} node Целевой узел дерева
    */
   onLoadData?: (node: TreeNodeItem<TItem>) => Promise<unknown>
   allowedKeysForExpand: Record<React.Key, boolean>
@@ -45,26 +47,26 @@ export type UseExpandProps<TItem = TreeItem> = {
 
 export type UseExpandReturnProps = {
   /**
-   * Функция для смены состояния раскрытия элемента дерева
+   * Функция для смены состояния раскрытия узла дерева
    *
-   * @param {React.Key} key Ключ элемента дерева
-   * @param {UseTreeToggleExpandOptions} options Параметры раскрытия элемента дерева
+   * @param {React.Key} key Ключ узла дерева
+   * @param {UseTreeToggleExpandOptions} options Параметры раскрытия узла дерева
    */
   toggleExpand: (key: React.Key, options?: UseTreeToggleExpandOptions) => void
   /**
-   * Функция для определения раскрытия элемента
+   * Функция для определения раскрытия узла
    *
-   * @param {React.Key} key Ключ элемента дерева
+   * @param {React.Key} key Ключ узла дерева
    *
-   * @returns Флаг раскрытия элемента дерева
+   * @returns Флаг раскрытия узла дерева
    */
   getIsExpanded: (key: React.Key) => boolean
   /**
-   * Функция для определения состояния загрузки у элемента дерева
+   * Функция для определения состояния загрузки у узла дерева
    *
-   * @param {React.Key} key Ключ элемента дерева
+   * @param {React.Key} key Ключ узла дерева
    *
-   * @returns Состояние загрузки элемента дерева
+   * @returns Состояние загрузки узла дерева
    */
   getIsLoading: (key: React.Key) => boolean
 }

@@ -47,7 +47,7 @@ const getDepthsToSkip = (
 export type TreeTrailProps<TItem = TreeItem> = TreeBaseComponentProps<TItem> &
   Pick<TreeProps, 'withHalfLevelSpacer' | 'levelSpacer'> & {
     /**
-     * Флаг последнего элемента внутри дочерних элементов
+     * Флаг последнего узла внутри дочерних узлов
      */
     isLastChild?: boolean
     lastParentsOnLevelMap: LastParentsOnLevelMap

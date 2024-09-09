@@ -1,4 +1,4 @@
-import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Meta, ArgsTable, Title, Subtitle } from '@storybook/addon-docs'
 import { Tree } from '@v-uik/tree'
 import { createTitle, COMPONENTS } from '../../docs/showroom/config'
 import {
@@ -13,6 +13,8 @@ import {
   TreeItemDummy,
   TreeNodeItemDummy,
   TreeNodeItemMetaDummy,
+  TreeImperativeHandlersRefDummy,
+  TreeGettersDummy,
 } from './examples/TreeTypes.dummy'
 
 <Meta
@@ -26,48 +28,59 @@ import {
   }}
 />
 
-# Tree API
+<Title>API</Title>
+<Subtitle>Описание свойств компонента и его элементов</Subtitle>
+
+## Tree API
 
 <ArgsTable of={Tree} exclude="placeholder" sort="requiredFirst" />
 
-# TreeNodeCheckbox API
+## TreeGetters API
+
+<ArgsTable of={TreeGettersDummy} exclude="placeholder|ref" />
+
+## TreeNodeCheckbox API
 
 <ArgsTable of={TreeNodeCheckboxDummy} exclude="placeholder|ref" />
 
-# TreeNodeContent API
+## TreeNodeContent API
 
 <ArgsTable of={TreeNodeContentDummy} exclude="placeholder|ref" />
 
-# TreeNodeContent API
+## TreeNodeExpandButton API
 
 <ArgsTable of={TreeNodeExpandButtonDummy} exclude="placeholder|ref" />
 
-# TreeNodeExpandIcon API
+## TreeNodeExpandIcon API
 
 <ArgsTable of={TreeNodeExpandIconDummy} exclude="placeholder|ref" />
 
-# TreeNodeIcon API
+## TreeNodeIcon API
 
 <ArgsTable of={TreeNodeIconDummy} exclude="placeholder|ref" />
 
-# UsePagination API
+## UseTree API
 
-## Props
+### Props
 
 <ArgsTable of={UseTreePropsDummy} exclude="placeholder|ref" />
 
-## Return value
+### Return value
 
 <ArgsTable of={UseTreeReturnPropsDummy} exclude="placeholder|ref" />
 
-# TreeItem API
+## TreeItem API
 
 <ArgsTable of={TreeItemDummy} exclude="placeholder|ref" />
 
-# TreeNodeItem API
+## TreeNodeItem API
 
 <ArgsTable of={TreeNodeItemDummy} exclude="placeholder|ref" />
 
-# TreeNodeItemMeta API
+## TreeNodeItemMeta API
 
 <ArgsTable of={TreeNodeItemMetaDummy} exclude="placeholder|ref" />
+
+## TreeImperativeHandlersRef API
+
+<ArgsTable of={TreeImperativeHandlersRefDummy} exclude="placeholder|ref" />

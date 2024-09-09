@@ -6,7 +6,7 @@ import { TreeBaseComponentProps } from '../../types'
 import { TreeItem } from '../../hooks'
 
 export type TreeNodeCheckboxProps<TItem = TreeItem> =
-  TreeBaseComponentProps<TItem> & CheckboxProps
+  TreeBaseComponentProps<TItem> & Omit<CheckboxProps, 'disabled'>
 
 export const TreeNodeCheckbox = <TItem extends unknown = TreeItem>({
   nodeKey,

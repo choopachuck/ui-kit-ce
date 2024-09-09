@@ -9,7 +9,7 @@ import { clsx } from '@v-uik/theme'
 export type TreeNodeIconContainerProps<TItem = TreeItem> =
   TreeBaseComponentProps<TItem> & {
     /**
-     * Флаг возможности скрытия/раскрытия элемента дерева
+     * Флаг возможности скрытия/раскрытия узла дерева
      */
     canExpand: boolean
   }

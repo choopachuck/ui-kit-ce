@@ -11,6 +11,8 @@ import {
   TreeItem,
   TreeNodeItem,
   TreeNodeItemMeta,
+  TreeImperativeHandlersRef,
+  TreeProps,
 } from '@v-uik/tree'
 
 export const TreeClassesDummy: React.FC<TreeClasses> = () => null
@@ -30,3 +32,9 @@ export const UseTreeReturnPropsDummy: React.FC<UseTreeReturnProps> = () => null
 export const TreeItemDummy: React.FC<TreeItem> = () => null
 export const TreeNodeItemDummy: React.FC<TreeNodeItem> = () => null
 export const TreeNodeItemMetaDummy: React.FC<TreeNodeItemMeta> = () => null
+
+export const TreeImperativeHandlersRefDummy: React.FC<
+  TreeImperativeHandlersRef
+> = () => null
+
+export const TreeGettersDummy: React.FC<TreeProps['getters']> = () => null

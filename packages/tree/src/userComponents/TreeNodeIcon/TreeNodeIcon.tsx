@@ -6,7 +6,7 @@ import { TreeBaseComponentProps } from '../../types'
 export type TreeNodeIconProps<TItem = TreeItem> =
   TreeBaseComponentProps<TItem> & {
     /**
-     * Флаг возможности скрытия/раскрытия элемента дерева
+     * Флаг возможности скрытия/раскрытия узла дерева
      */
     canExpand: boolean
   }

@@ -1,55 +1,53 @@
 import * as React from 'react'
-import { createUseStyles } from '@v-uik/base'
+import { createUseStyles, useValue } from '@v-uik/base'
 import { Source, SourceProps } from './components'
+import { ContextButtons, ContextButtonsProps } from '../_components'
 
-export type CodeProps = SourceProps & {
-  //eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any
-}
+export type CodeProps = SourceProps &
+  Omit<ContextButtonsProps, 'gutters'> & {
+    //eslint-disable-next-line @typescript-eslint/no-explicit-any
+    data?: any
+  }
 
 const useStyles = createUseStyles({
-  clearButton: {
-    zIndex: 1,
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    border: '0 none',
-    padding: [4, 10],
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    color: '#FFFFFF',
-    background: '#333333',
-    fontSize: '12px',
-    lineHeight: '16px',
-    fontFamily:
-      '"Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif',
-    fontWeight: 700,
-    borderTop: '1px solid rgba(255,255,255,.1)',
-    borderLeft: '1px solid rgba(255,255,255,.1)',
-    marginRight: -20,
-    borderRadius: '4px 0 0 0;',
-
-    '&:focus': {
-      boxShadow: '#1EA7FD 0 -3px 0 0 inset',
-      outline: '0 none',
-    },
-  },
   root: {
     position: 'relative',
-    marginTop: 48,
+  },
+  buttonContainer: {
+    zIndex: 1,
+    position: 'absolute',
+    bottom: 1,
+    right: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    '& button:last-child:not(:first-child)': {
+      borderTopLeftRadius: 0,
+    },
+  },
+  buttonContainerGutters: {
+    marginRight: -20,
   },
 })
+
+const copyToClipboard = (text: string) => navigator.clipboard.writeText(text)
 
 export const Code: React.FC<CodeProps> = ({
   data: dataProp,
   code: codeProp,
   height = 390,
+  gutters,
+  withClear: withClearProp,
+  withShowCode,
+  withCopy,
+  isShowCode: isShowCodeProp,
+  onShowCode,
   ...rest
 }) => {
   //eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-assignment
   const [data, setData] = React.useState<any>([])
   const [code, setCode] = React.useState('')
+  const [isCopied, setIsCopied] = React.useState(false)
+  const [isShowCode, setIsShowCode] = useValue(isShowCodeProp)
 
   const classes = useStyles()
 
@@ -57,6 +55,25 @@ export const Code: React.FC<CodeProps> = ({
     setData([])
     setCode('')
   }
+
+  const toggleShow = (value: boolean) => {
+    onShowCode?.(value)
+    if (isShowCodeProp === undefined) {
+      setIsShowCode((s) => !s)
+    }
+  }
+
+  const handleCopy = async () => {
+    await copyToClipboard(data || code)
+    setIsCopied(true)
+    setTimeout(() => {
+      setIsCopied(false)
+    }, 1000)
+  }
+
+  const showCode = (withShowCode && isShowCode) || !withShowCode
+  const withClear =
+    withClearProp && (!!code || ((data || []) as [])?.length > 0)
 
   React.useEffect(() => {
     setData(dataProp)
@@ -66,22 +83,30 @@ export const Code: React.FC<CodeProps> = ({
     setCode(codeProp ?? '')
   }, [codeProp])
 
+  if (!showCode) {
+    return null
+  }
+
   return (
     <div className={classes.root}>
       <Source
         height={height}
         code={code ? code : JSON.stringify(data, null, 1)}
+        gutters={gutters}
         {...rest}
       />
-      {(Array.isArray(data) ? data.length : !!code) ? (
-        <button
-          data-click-stream-off
-          className={classes.clearButton}
-          onClick={handleClear}
-        >
-          Clear Log
-        </button>
-      ) : undefined}
+      <ContextButtons
+        kind={rest.kind}
+        withCopy={withCopy}
+        withShowCode={withShowCode}
+        withClear={withClear}
+        gutters={gutters}
+        isCopied={isCopied}
+        isShowCode={isShowCode}
+        onShowCode={toggleShow}
+        onClear={handleClear}
+        onCopy={handleCopy}
+      />
     </div>
   )
 }

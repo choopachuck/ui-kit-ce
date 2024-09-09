@@ -7,18 +7,18 @@ import { getKeys } from './utils'
 
 export type UseCheckProps<TItem = TreeItem> = {
   /**
-   * Функция обратного вызова, которая срабатывает при изменении состояния выбора чекбокса у элемента дерева
+   * Функция обратного вызова, которая срабатывает при изменении состояния чекбокса у узла дерева
    *
-   * @param {React.Key[]} checkedKeys Массив отмеченных чекбоксов у элементов дерева
-   * @param {TreeNodeItem<TItem>} node Целевой элемент дерева
+   * @param {React.Key[]} checkedKeys Массив ключей узлов, для которых будут отмечены чекбоксы
+   * @param {TreeNodeItem<TItem>} node Целевой узел дерева
    */
   onNodeCheck?: (checkedKeys: React.Key[], node: TreeNodeItem<TItem>) => void
   /**
-   * Массив отмеченных чекбоксов у элементов дерева по умолчанию
+   * Массив ключей узлов, для которых будут отмечены чекбоксы по умолчанию
    */
   defaultCheckedKeys?: React.Key[]
   /**
-   * Массив отмеченных чекбоксов у элементов дерева
+   * Массив ключей узлов, для которых будут отмечены чекбоксы
    */
   checkedKeys?: React.Key[]
   treePlain: TreeNodePlain<TItem>
@@ -27,25 +27,25 @@ export type UseCheckProps<TItem = TreeItem> = {
 
 export type UseCheckReturnProps = {
   /**
-   * Функция для смены состояния выбора чекбокса у элемента дерева
+   * Функция для смены состояния чекбокса у узла дерева
    *
-   * @param {React.Key} key Ключ элемента дерева
+   * @param {React.Key} key Ключ узла дерева
    */
   toggleCheck: (key: React.Key) => void
   /**
-   * Функция для проверки выбора чекбокса у элемента дерева
+   * Функция для проверки выбора чекбокса у узла дерева
    *
-   * @param {React.Key} key Ключ элемента дерева
+   * @param {React.Key} key Ключ узла дерева
    *
-   * @returns Флаг выбранного чекбокса у элемента дерева
+   * @returns Флаг выбранного чекбокса у узла дерева
    */
   getIsChecked: (key: React.Key) => boolean
   /**
-   * Функция для проверки неопределенного состояния чекбокса у элемента дерева
+   * Функция для проверки неопределенного состояния чекбокса у узла дерева
    *
-   * @param {React.Key} key Ключ элемента дерева
+   * @param {React.Key} key Ключ узла дерева
    *
-   * @returns Флаг полувыбранного чекбокса у элемента дерева
+   * @returns Флаг полувыбранного чекбокса у узла дерева
    */
   getIsIndeterminate: (key: React.Key) => boolean
 }

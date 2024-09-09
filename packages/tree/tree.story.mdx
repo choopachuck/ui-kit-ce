@@ -1,0 +1,681 @@
+import {
+  Meta,
+  Story,
+  ArgsTable,
+  Source,
+  Canvas,
+  Subtitle,
+  Title,
+} from '@storybook/addon-docs'
+import { Tree } from '@v-uik/tree'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+  DocsAlert,
+} from '../../docs/showroom/config'
+import { Preview, Code } from '../../docs/showroom/components'
+
+import {
+  TreeCanvas,
+  TreeBase,
+  TreeSizes,
+  TreeDisabledFull,
+  TreeDisabledPartial,
+  TreeBaseNoExpand,
+  TreeLevelSpacer,
+  TreeWithHalfLevelSpacer,
+  TreeIcons,
+  TreeTrails,
+  TreeDefaultExpanded,
+  TreeExpandControlled,
+  TreeCheckable,
+  TreeCheckableDisabled,
+  TreeCheckableDefaultChecked,
+  TreeCheckableControlled,
+  TreeSelectable,
+  TreeSelectableDisabled,
+  TreeSelectableMultiple,
+  TreeSelectableDirectory,
+  TreeCustomClick,
+  TreeCustomKeyboard,
+  TreeCustomData,
+  TreeLoading,
+  TreeRef,
+  TreeCustomComponents,
+  TreeDisableFocusOnClick,
+  TreeMaxContentLines,
+  TreeRightElements,
+  TreeGapAll,
+  TreeGapGroup,
+  TreeThemed,
+  TreeHook,
+  TreeEdit,
+  TreeDefaultSelected,
+  TreeSelectableControlled,
+  TreeExpandNoExpander,
+} from './examples'
+
+import RawCanvas from '!!raw-loader!@v-uik/tree/examples/Canvas'
+import RawTreeBase from '!!raw-loader!@v-uik/tree/examples/TreeBase'
+import RawTreeSizes from '!!raw-loader!@v-uik/tree/examples/TreeSizes'
+import RawTreeDisabledFull from '!!raw-loader!@v-uik/tree/examples/TreeDisabledFull'
+import RawTreeDisabledPartial from '!!raw-loader!@v-uik/tree/examples/TreeDisabledPartial'
+import RawTreeBaseNoExpand from '!!raw-loader!@v-uik/tree/examples/TreeBaseNoExpand'
+import RawTreeLevelSpacer from '!!raw-loader!@v-uik/tree/examples/TreeLevelSpacer'
+import RawTreeWithHalfLevelSpacer from '!!raw-loader!@v-uik/tree/examples/TreeWithHalfLevelSpacer'
+import RawTreeIcons from '!!raw-loader!@v-uik/tree/examples/TreeIcons'
+import RawTreeTrails from '!!raw-loader!@v-uik/tree/examples/TreeTrails'
+import RawTreeDefaultExpanded from '!!raw-loader!@v-uik/tree/examples/TreeDefaultExpanded'
+import RawTreeExpandControlled from '!!raw-loader!@v-uik/tree/examples/TreeExpandControlled'
+import RawTreeCheckable from '!!raw-loader!@v-uik/tree/examples/TreeCheckable'
+import RawTreeCheckableDisabled from '!!raw-loader!@v-uik/tree/examples/TreeCheckableDisabled'
+import RawTreeCheckableDefaultChecked from '!!raw-loader!@v-uik/tree/examples/TreeCheckableDefaultChecked'
+import RawTreeCheckableControlled from '!!raw-loader!@v-uik/tree/examples/TreeCheckableControlled'
+import RawTreeSelectable from '!!raw-loader!@v-uik/tree/examples/TreeSelectable'
+import RawTreeSelectableDisabled from '!!raw-loader!@v-uik/tree/examples/TreeSelectableDisabled'
+import RawTreeSelectableMultiple from '!!raw-loader!@v-uik/tree/examples/TreeSelectableMultiple'
+import RawTreeSelectableDirectory from '!!raw-loader!@v-uik/tree/examples/TreeSelectableDirectory'
+import RawTreeCustomClick from '!!raw-loader!@v-uik/tree/examples/TreeCustomClick'
+import RawTreeCustomKeyboard from '!!raw-loader!@v-uik/tree/examples/TreeCustomKeyboard'
+import RawTreeCustomData from '!!raw-loader!@v-uik/tree/examples/TreeCustomData'
+import RawTreeLoading from '!!raw-loader!@v-uik/tree/examples/TreeLoading'
+import RawTreeRef from '!!raw-loader!@v-uik/tree/examples/TreeRef'
+import RawTreeCustomComponents from '!!raw-loader!@v-uik/tree/examples/TreeCustomComponents'
+import RawTreeDisableFocusOnClick from '!!raw-loader!@v-uik/tree/examples/TreeDisableFocusOnClick'
+import RawTreeMaxContentLines from '!!raw-loader!@v-uik/tree/examples/TreeMaxContentLines'
+import RawTreeRightElements from '!!raw-loader!@v-uik/tree/examples/TreeRightElements'
+import RawTreeGapAll from '!!raw-loader!@v-uik/tree/examples/TreeGapAll'
+import RawTreeGapGroup from '!!raw-loader!@v-uik/tree/examples/TreeGapGroup'
+import RawTreeThemed from '!!raw-loader!@v-uik/tree/examples/TreeThemed'
+import RawTreeHook from '!!raw-loader!@v-uik/tree/examples/TreeHook'
+import RawTreeEdit from '!!raw-loader!@v-uik/tree/examples/TreeEdit'
+import RawTreeDefaultSelected from '!!raw-loader!@v-uik/tree/examples/TreeDefaultSelected'
+import RawTreeSelectableControlled from '!!raw-loader!@v-uik/tree/examples/TreeSelectableControlled'
+import RawTreeExpandNoExpander from '!!raw-loader!@v-uik/tree/examples/TreeExpandNoExpander'
+
+export const story = createStory(TreeCanvas, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Tree', 'Tree'])}
+  component={Tree}
+/>
+
+<Story
+  name="Tree"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: { disable: true },
+  }}
+>
+  {story.component}
+</Story>
+
+<Title>Tree</Title>
+<Subtitle>Сворачиваемая иерархическая структура в виде дерева</Subtitle>
+
+## import
+
+<Code
+  code="import { Tree } from '@v-uik/base'"
+  height="auto"
+  withCopy
+  kind="ghost"
+/>
+
+или
+
+<Code
+  code="import { Tree } from '@v-uik/tree'"
+  height="auto"
+  withCopy
+  kind="ghost"
+/>
+
+## Глоссарий
+
+| Название | Применение в коде                       | Описание                                                                                                                                 |
+| -------- | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Узел     | <code>node</code>                       | Доменная единица, содержащая в себе текстовый контент и элементы управления. Является основной частью для взаимодействия с пользователем |
+| Элемент  | <code>item</code>                       | Блок, содержащий в себе целевой узел, а также группу всех дочерних элементов                                                             |
+| Дерево   | <code>root</code> или <code>tree</code> | Блок, содержащий в себе все элементы                                                                                                     |
+
+## Базовая функциональность
+
+Ниже представлен пример базового использования компонента с указанием источника данных.
+
+<Preview code={RawTreeBase}>
+  <TreeBase />
+</Preview>
+
+### Размеры дерева
+
+Компонент `Tree` позволяет устанавливать заранее заданный размер через свойство `size`.
+В зависимости от этого значения изменяется размер узлов. Доступны следующие размеры:
+
+| Значение        | Описание               |
+| --------------- | ---------------------- |
+| <code>xs</code> | Очень маленький размер |
+| <code>sm</code> | Маленький размер       |
+| <code>md</code> | Средний размер         |
+
+По умолчанию компонент Tree имеет размер `sm`.
+
+<Preview code={RawTreeSizes}>
+  <TreeSizes />
+</Preview>
+
+### Блокировка
+
+#### Полная блокировка
+
+Чтобы полностью заблокировать компонент `Tree` и отключить его функции, нужно передать значение `true` в свойство `disabled`.
+
+<Preview code={RawTreeDisabledFull}>
+  <TreeDisabledFull />
+</Preview>
+
+#### Выборочная блокировка
+
+Чтобы частично заблокировать отдельные узлы компонента, задайте значение `true` для свойства `disabled`
+для нужного узла в массиве данных `dataSource`.
+
+<Preview code={RawTreeDisabledPartial}>
+  <TreeDisabledPartial />
+</Preview>
+
+### Отступы вложенности
+
+#### Пользовательский отступ
+
+Чтобы задать пользовательский отступ для узлов,
+нужно указать числовое значение в свойстве `levelSpacer`. Если значение не задано,
+отступ будет автоматически рассчитан с использованием следующей формулы:<br/>
+
+`24 + 4 * 2`, где
+
+- 24 - базовый размер элементов управления;
+- 4 - отступ слева и справа между компонентами внутри узла дерева.
+
+<Preview code={RawTreeLevelSpacer}>
+  <TreeLevelSpacer />
+</Preview>
+
+#### Половина базового отступа
+
+Компонент предоставляет возможность использования половины базового отступа для узлов. Для активации данной
+функциональности необходимо задать значение `true` для свойства `withHalfLevelSpacer`.
+В этом случае отступ будет рассчитываться следующим образом:
+
+В случае, когда задано значение в свойстве `levelSpacer`:
+
+`levelSpacer / 2`, где
+
+- `levelSpacer` - пользовательский базовый отступ.
+
+Либо в случае, когда значение в свойстве `levelSpacer` отсутствует:
+
+`(24 + 4 * 2) / 2`, где
+
+- 24 - базовый размер элементов управления;
+- 4 - отступ слева и справа между компонентами внутри узла дерева.
+
+<Preview code={RawTreeWithHalfLevelSpacer}>
+  <TreeWithHalfLevelSpacer />
+</Preview>
+
+### Дополнительные элементы
+
+#### Отображение иконок
+
+Чтобы отобразить иконки для узлов дерева, передайте в компоненте `Tree` свойство `showIcons` в значении `true`.
+По умолчанию элементы с дочерними узлами отображают иконку «папки», а те, у которых нет дочерних узлов, - иконку «файла».
+
+<Preview code={RawTreeIcons}>
+  <TreeIcons />
+</Preview>
+
+#### Отображение путей
+
+Пути показывают пользователю, как друг с другом связаны родительские и дочерние элементы дерева.
+Чтобы их отобразить, задайте значение `true` для свойства `showTrails`.
+
+<Preview code={RawTreeTrails}>
+  <TreeTrails />
+</Preview>
+
+#### Многострочный текст
+
+Компонент `Tree` по умолчанию отображает только одну строку текста для каждого узла.
+Любой контент, который не помещается в одну строку, обрезается и заменяется троеточием.
+Пользователь может изменить количество отображаемых строк, указав числовое значение в свойстве `maxContentLines`.
+
+<Preview code={RawTreeMaxContentLines}>
+  <TreeMaxContentLines />
+</Preview>
+
+## Функциональность скрытия/раскрытия узлов
+
+В компоненте функция скрытия/раскрытия узлов является [неконтролируемой](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) и **доступной** по умолчанию.
+
+Чтобы раскрыть или скрыть узел, достаточно кликнуть на иконку стрелки слева или на любую область самого узла.
+
+### Раскрытые узлы по умолчанию
+
+Для раскрытия узлов по умолчанию, передайте массив соответствующих ключей в свойство `defaultExpandedKeys`.
+
+<DocsAlert type="warning" justify="start">
+  Данное свойство относится к неконтролируемому состоянию и работает только при
+  не заданном значении <code>expandedKeys</code>.
+</DocsAlert>
+
+<Preview code={RawTreeDefaultExpanded}>
+  <TreeDefaultExpanded />
+</Preview>
+
+### Контролируемое состояние раскрытия
+
+Компонент поддерживает Flux-архитектуру и позволяет управлять раскрытыми узлами дерева.
+Для этого нужно передать функцию обратного вызова `onNodeExpand`, срабатывающую в момент раскрытия узла и содержащую массив ключей раскрытых узлов.
+Также нужно указать раскрытые узлы в свойстве `expandedKeys`.
+
+<DocsAlert type="warning" justify="start">
+  Свойство <code>expandedKeys</code> относится к контролируемому состоянию. В
+  данном случае оно превалирует над свойством <code>defaultExpandedKeys</code>,
+  и ключи из <code>defaultExpandedKeys</code> будут проигнорированы в пользу
+  <code>expandedKeys</code>.
+</DocsAlert>
+
+<Preview code={RawTreeExpandControlled}>
+  <TreeExpandControlled />
+</Preview>
+
+### Подгрузка данных при раскрытии
+
+Для синхронной или асинхронной подгрузки дополнительных элементов при раскрытии узла, укажите
+значение `true` в свойство `loadable` для нужного узла в массиве данных `dataSource`, а также
+опишите саму функцию для подгрузки данных в свойстве компонента `onLoadData`.
+
+<Preview code={RawTreeLoading}>
+  <TreeLoading />
+</Preview>
+
+### Отключение
+
+Чтобы отключить функциональность скрытия/раскрытия узлов дерева и убрать видимость соответствующих кнопок,
+необходимо передать значение `true` в свойство `disableExpand`.
+
+<Preview code={RawTreeBaseNoExpand}>
+  <TreeBaseNoExpand />
+</Preview>
+
+## Функциональность чекбоксов
+
+В компоненте `Tree` функция отметки узлов с помощью чекбоксов является [неконтролируемой](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) и **недоступной** по умолчанию.
+
+### Включение
+
+Чтобы включить функциональность отметки узлов дерева и отобразить соответствующие чекбоксы,
+необходимо передать значение `true` в свойство `checkable`.
+
+Чтобы отметить узел, достаточно кликнуть на чекбокс у узла слева перед иконкой стрелки.
+
+<Preview code={RawTreeCheckable}>
+  <TreeCheckable />
+</Preview>
+
+### Чекбоксы, недоступные для отметки
+
+Компонент позволяет отключить чекбоксы для определенных узлов дерева, сохраняя при этом всю остальную функциональность.
+Для этого нужно передать значение `true` в свойстве `checkDisabled` для нужного узла в массиве данных `dataSource`.
+
+<Preview code={RawTreeCheckableDisabled}>
+  <TreeCheckableDisabled />
+</Preview>
+
+### Отмеченные элементы по умолчанию
+
+Для указания отмеченных узлов по умолчанию, передайте массив соответствующих ключей в свойство `defaultCheckedKeys`.
+
+Не всегда необходимо явно указывать каждый чекбокс, который должен быть отмечен.
+Если требуется, чтобы был отмечен родительский узел вместе со всеми его дочерними элементами, достаточно указать
+только корневой ключ этого узла. Компонент самостоятельно пометит все дочерние ключи в иерархии.
+
+<DocsAlert type="warning" justify="start">
+  Данное свойство относится к неконтролируемому состоянию и работает только при
+  не заданном значении <code>checkedKeys</code>.
+</DocsAlert>
+
+<Preview code={RawTreeCheckableDefaultChecked}>
+  <TreeCheckableDefaultChecked />
+</Preview>
+
+### Контролируемое состояние чекбоксов
+
+Компонент поддерживает Flux-архитектуру и позволяет управлять отмеченными элементами дерева.
+Для этого нужно передать функцию обратного вызова `onNodeCheck`, которая будет содержать массив ключей отмеченных узлов,
+а также указать текущие отмеченные элементы в свойстве `checkedKeys`.
+
+<DocsAlert type="warning" justify="start">
+  Свойство <code>checkedKeys</code> относится к контролируемому состоянию. В
+  данном случае свойство оно превалирует над свойством
+  <code> defaultCheckedKeys </code>, и ключи из
+  <code>defaultCheckedKeys</code> будут проигнорированы в пользу
+  <code>checkedKeys</code>.
+</DocsAlert>
+
+<Preview code={RawTreeCheckableControlled}>
+  <TreeCheckableControlled />
+</Preview>
+
+## Функциональность выбора узлов
+
+В компоненте функциональность выбора узлов является [неконтролируемой](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components) и **недоступной** по умолчанию.
+
+### Включение
+
+Чтобы включить функциональность выбора узлов, необходимо передать значение `true` в свойство `selectable`.
+
+Чтобы выбрать узел, достаточно кликнуть на любую область самого узла. По умолчанию компонент позволяет выбрать только один узел дерева и не дает возможности снять с него выделение.
+
+<Preview code={RawTreeSelectable}>
+  <TreeSelectable />
+</Preview>
+
+### Узлы, недоступные для выбора
+
+Компонент позволяет отключить функцию выбора для определенных узлов дерева, сохраняя при этом всю остальную функциональность.
+Для этого нужно передать значение `true` в свойстве `selectDisabled` для нужного узла в массиве данных `dataSource`.
+
+Ниже представлен пример, в котором узел с ключом `node-1` недоступен для выбора.
+
+<Preview code={RawTreeSelectableDisabled}>
+  <TreeSelectableDisabled />
+</Preview>
+
+### Множественный выбор узлов
+
+Для того, чтобы включить возможность выбора нескольких узлов, передайте в компонент `Tree` свойство `multipleSelect` в
+значении `true`.
+
+<Preview code={RawTreeSelectableMultiple}>
+  <TreeSelectableMultiple />
+</Preview>
+
+### Выбранные узлы по умолчанию
+
+Для выбора узлов по умолчанию, передайте массив соответствующих ключей в свойство `defaultSelectedKeys`.
+
+<DocsAlert type="warning" justify="start">
+  Данное свойство относится к неконтролируемому состоянию и работает только при
+  не заданном значении <code>selectedKeys</code>.
+</DocsAlert>
+
+<Preview code={RawTreeDefaultSelected}>
+  <TreeDefaultSelected />
+</Preview>
+
+### Контролируемое состояние выбора
+
+Компонент поддерживает Flux-архитектуру и позволяет управлять выбранными узлами дерева.
+Для этого нужно передать функцию обратного вызова `onNodeSelect`, срабатывающая в момент выбора узла и содержащая массив ключей выбранных узлов,
+а также указать выбранные узлы в свойстве `selectedKeys`.
+
+<DocsAlert type="warning" justify="start">
+  Свойство <code>selectedKeys</code> относится к контролируемому состоянию. В
+  данном случае оно превалирует над свойством <code>defaultSelectedKeys</code>,
+  и ключи из <code>defaultSelectedKeys</code> будут проигнорированы в пользу
+  <code>selectedKeys</code>.
+</DocsAlert>
+
+<Preview code={RawTreeSelectableControlled}>
+  <TreeSelectableControlled />
+</Preview>
+
+### Режимы работы
+
+`Tree` с включенным флагом `selectable` позволяет определять режим работы с помощью свойства `selectMode`.
+Компонент предполагает два режима работы: режим `strict` и режим `directory`.
+
+По умолчанию значение `selectMode` равно `strict`.
+
+#### Strict
+
+`Strict`, или строгий режим, является упрощенным способом манипуляции с компонентом `Tree`. Он позволяет выбрать либо один узел дерева без возможности
+снятия выделения, либо выбрать несколько узлов дерева с возможностью снятия выделения.
+
+#### Directory
+
+`Directory`, или режим файловой системы, позволяет работать с компонентом как с каталогом файлов или со структурой файловой системы, учитывая
+управление с помощью клавиатуры.
+
+Данный режим работы определяет следующую функциональность:
+
+- при выборе нового узла компонент снимает выделение с предыдущих узлов;
+- компонент не дает возможности снять выделение с текущего узла с помощью нажатия левой кнопки мыши;
+- компонент дает возможность выбрать диапазон узлов с помощью нажатия на
+  узел левой кнопкой мыши и с зажатой клавишей `Shift`;
+- компонент дает возможность выбрать или снять выделение с одного узла с помощью нажатия на узел
+  левой кнопкой мыши и с зажатой клавишей `Alt` (или `⌘`).
+
+Ниже представлен пример компонента `Tree` с режимом работы `directory`.
+
+<Preview code={RawTreeSelectableDirectory}>
+  <TreeSelectableDirectory />
+</Preview>
+
+## Хук useTree
+
+Для более детальной пользовательской настройки дерева компонент `Tree` предоставляет хук `useTree`. С его помощью возможно изменить
+внешний вид дерева, сохраняя при этом все его функциональные возможности.
+
+Подробную информацию о свойствах хука и о его возвращаемом значении можно узнать,
+перейдя по ссылке [UseTree API](/docs/отображение-данных-tree-api--page#usetree-api).
+
+<Preview code={RawTreeHook}>
+  <TreeHook />
+</Preview>
+
+## Управление с клавиатуры
+
+Компонент `Tree`, в соответствии с [требованиями доступности древовидных компонентов](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components),
+поддерживает управление с клавиатуры. Ниже описана модель поведения компонента с помощью соответствующих сочетаний клавиш.
+
+| Сочетание клавиш                                           | Описание                                                                                                                                                                                                                                                                                                  | Свойство                                                             |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| <code>↓</code>                                             | Перемещение фокуса на следующий узел                                                                                                                                                                                                                                                                      | -                                                                    |
+| <code>↑</code>                                             | Перемещение фокуса на предыдущий узел                                                                                                                                                                                                                                                                     | -                                                                    |
+| <code>←</code>                                             | 1) Когда фокус находится на открытом узле, узел закрывается;<br/><br/>2) Когда узел находится на дочернем узле, который также является конечным элементом или закрытым элементом, фокус перемещается на его родительский узел;<br/><br/>3) Когда фокус находится на закрытом дереве, ничего не происходит | <code>disableSelect={false}</code>                                   |
+| <code>→</code>                                             | 1) Когда фокус находится на закрытом узле, узел открывается; фокус не перемещается; <br/><br/>2) Когда фокус находится на открытом узле, фокус перемещается на первый дочерний узел; <br/><br/>3) Когда фокус находится на конечном узле (узле дерева без дочерних узлов), ничего не происходит           | <code>disableSelect={false}</code>                                   |
+| <code>Enter</code>                                         | Выполнение действия по умолчанию для текущего узла. <br/><br/>Для родительских узлов действие открывает или закрывает узел. В случае компонента с единичным выбором, если у узла нет дочерних узлов, выбирается текущий узел                                                                              | <code>disableSelect={false}</code>, <code>selectable={true}</code>   |
+| <code>Space</code>                                         | Изменяет состояние выбора узла                                                                                                                                                                                                                                                                            | <code>selectable={true}</code>                                       |
+| <code>Shift</code> + <code>Space</code>                    | Выбирается диапазон значений от последнего выбранного узла до текущего                                                                                                                                                                                                                                    | <code>selectable={true}</code> + <code>selectMode="directory"</code> |
+| <code>Ctrl</code> + <code>Shift</code> + <code>Home</code> | Выбор всех узлов, начиная с текущего и до первого                                                                                                                                                                                                                                                         | <code>selectable={true}</code> + <code>selectMode="directory"</code> |
+| <code>Ctrl</code> + <code>Shift</code> + <code>End</code>  | Выбор всех узлов, начиная с текущего и до последнего                                                                                                                                                                                                                                                      | <code>selectable={true}</code> + <code>selectMode="directory"</code> |
+| <code>Ctrl</code> + <code>A</code>                         | Выбор всех узлов                                                                                                                                                                                                                                                                                          | <code>selectable={true}</code> + <code>selectMode="directory"</code> |
+
+## Переопределение поведения по умолчанию
+
+Компонент дает возможность изменить стандартное поведение при нажатии на узел дерева или при использовании клавиатуры.
+
+### Управление с помощью мыши
+
+Для изменения поведения с помощью мыши предусмотрены следующие свойства:
+
+| Название                          | Описание                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------- |
+| <code>disableExpandOnClick</code> | Флаг для выключения возможности скрытия/раскрытия узла дерева при клике на узел |
+| <code>enableCheckOnClick</code>   | Флаг для включения возможности отмечать чекбокс при клике на узел               |
+| <code>disableSelectOnClick</code> | Флаг для выключения возможности выбора дерева при клике на узел                 |
+
+Ниже представлен пример реализации компонента `Tree`, у которого при нажатии на узел дерева не происходит скрытие/раскрытие,
+а также выделение узла, но происходит отметка чекбоксов.
+
+<Preview code={RawTreeCustomClick}>
+  <TreeCustomClick />
+</Preview>
+
+### Расширенное управление с помощью мыши
+
+Компонент имеет свойство `onNodeClick`, которое расширяет возможности поведения компонента при клике на узел дерева.
+
+Свойство `onNodeClick` принимает функцию обратного вызова, которая получает `event` в качестве первого аргумента (объект события нажатия кнопки мыши),
+`node` в качестве второго аргумента (целевой, или выбранный, узел дерева) и `handlers` в качестве третьего аргумента.
+
+Третий аргумент `handlers` хранит в себе следующий объект с функциями для работы с деревом:
+
+| Название                       | Описание                                               |
+| ------------------------------ | ------------------------------------------------------ |
+| <code>toggleCheck</code>       | Смена состояния чекбокса у узла дерева                 |
+| <code>toggleExpand</code>      | Смена состояния раскрытия у узла дерева                |
+| <code>toggleSelect</code>      | Смена состояния выбора у узла дерева                   |
+| <code>toggleSelectRange</code> | Смена состояния выбора у диапазона ключей узлов дерева |
+
+Для того чтобы отменить поведение по умолчанию во время клика по элементу, функция, переданная в свойство `onNodeClick`, должна возвращать значение `true`.
+
+### Управление с помощью клавиатуры
+
+Свойство `onTreeKeyDown` позволяет переопределить стандартное поведение компонента при манипуляциях с клавиатурой.
+Данное свойство принимает функцию обратного вызова, которая получает следующие аргументы:
+
+- event - объект события нажатия клавиши;
+- node - целевой или выбранный узел дерева;
+- handlers - объект, содержащий обработчики различных действий с клавиатурой.
+
+Третий аргумент `handlers` хранит в себе следующий объект с функциями для работы с деревом:
+
+| Название                       | Описание                                               |
+| ------------------------------ | ------------------------------------------------------ |
+| <code>toggleCheck</code>       | Смена состояния чекбокса у узла дерева                 |
+| <code>toggleExpand</code>      | Смена состояния раскрытия у узла дерева                |
+| <code>toggleSelect</code>      | Смена состояния выбора у узла дерева                   |
+| <code>toggleSelectRange</code> | Смена состояния выбора у диапазона ключей узлов дерева |
+
+Для того чтобы отменить поведение по умолчанию во время клика по элементу, функция, переданная в свойство `onTreeKeyDown`, должна возвращать значение `true`.
+
+Ниже представлен пример реализации компонента, который при наличии выбранного узла:
+
+- при нажатии `Enter` отмечает чекбокс узла;
+- при нажатии `Space` скрывает/раскрывает узел;Directory
+- при нажатии `S` выбирает узел.
+
+<Preview code={RawTreeCustomKeyboard}>
+  <TreeCustomKeyboard />
+</Preview>
+
+## Переопределение ключей массива данных
+
+По умолчанию компонент использует источник данных типа `TreeItem`.
+При необходимости можно изменить тип данных, описав соответствующие функции для получения необходимых свойств в свойстве компонента `getters`.
+
+Подробную информацию о каждой функции можно узнать, перейдя по ссылке [TreeGetters API](/docs/отображение-данных-tree-api--page#treegetters-api).
+
+<Preview code={RawTreeCustomData}>
+  <TreeCustomData />
+</Preview>
+
+## Компоненты дерева
+
+`Tree` позволяет переопределить части своих компонентов по желанию пользователя. Для этого необходимо передать соответствующие компоненты в
+свойство `components`. В дереве возможно переопределить следующие компоненты:
+
+| Название                      | Тип                                        | Описание                                                                                        |
+| ----------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| <code>ExpandButton</code>     | <code>TreeNodeExpandButtonProps</code>     | Кнопка скрытия/раскрытия узла дерева                                                            |
+| <code>ExpandIcon</code>       | <code>TreeNodeExpandIconProps</code>       | Иконка кнопки скрытия/раскрытия узла дерева                                                     |
+| <code>Checkbox</code>         | <code>TreeNodeCheckboxProps</code>         | Компонент чекбокса                                                                              |
+| <code>Icon</code>             | <code>TreeNodeIconProps</code>             | Иконка узла дерева                                                                              |
+| <code>Content</code>          | <code>TreeNodeContentProps</code>          | Компонент отображаемого контента у узла дерева                                                  |
+| <code>LoadingIndicator</code> | <code>TreeNodeLoadingIndicatorProps</code> | Компонент загрузки дочерних элементов узла дерева, отображаемый вместо кнопки скрытия/раскрытия |
+
+<DocsAlert type="warning" justify="start">
+  Чтобы избежать ошибок типизации Typescript необходимо указать тип для
+  источника данных <code>dataSource</code>.
+</DocsAlert>
+
+<Preview code={RawTreeCustomComponents}>
+  <TreeCustomComponents />
+</Preview>
+
+## Ref
+
+`Tree` предоставляет возможность управления компонентом с помощью передачи ref-ссылки.
+
+`ref`, который передается в компонент, получает объект с функциями для работы с узлами дерева,
+а также функции для управления деревом с помощью клавиатуры.
+
+Подробную информацию о каждой функции можно узнать, перейдя по ссылке [TreeImperativeHandlersRef API](/docs/отображение-данных-tree-api--page#treeimperativehandlersref-api).
+
+<DocsAlert type="warning" justify="start">
+  Чтобы избежать ошибок типизации Typescript необходимо указать generic для
+  компонента <code>Tree</code>, описывающий соответствующий тип источника
+  данных.
+</DocsAlert>
+
+<Preview code={RawTreeRef}>
+  <TreeRef />
+</Preview>
+
+## Отмена фокуса дерева при нажатии на узел
+
+Чтобы избежать фокусировки дерева при клике на узел, необходимо передать значение `true` в свойство `disableFocusTreeOnItemClick` компонента `Tree`.
+
+Пример ниже демонстрирует, что при клике на элемент дерева, само дерево не получает фокус, но при использовании клавиатуры оно фокусируется
+
+<Preview code={RawTreeDisableFocusOnClick}>
+  <TreeDisableFocusOnClick />
+</Preview>
+
+## Примеры использования
+
+### Узлы с интерактивным контентом в правой части
+
+<Preview code={RawTreeRightElements}>
+  <TreeRightElements />
+</Preview>
+
+### Интервалы
+
+#### Интервалы между узлами
+
+<Preview code={RawTreeGapAll}>
+  <TreeGapAll />
+</Preview>
+
+#### Интервалы между группами элементов
+
+<Preview code={RawTreeGapGroup}>
+  <TreeGapGroup />
+</Preview>
+
+### Стилизация с помощью токен-системы
+
+<Preview code={RawTreeThemed}>
+  <TreeThemed />
+</Preview>
+
+### Редактирование текста
+
+<Preview code={RawTreeEdit}>
+  <TreeEdit />
+</Preview>
+
+### Раскрытие узлов без кнопок
+
+<Preview code={RawTreeExpandNoExpander}>
+  <TreeExpandNoExpander />
+</Preview>
+
+## Связанные компоненты
+
+- [Checkbox](?path=/docs/элементы-управления-checkbox-checkbox--checkbox);
+- [CircularProgress](?path=/docs/обратная-связь-progress-progress--progress#circularprogress).
+
+## Полезные ссылки
+
+- [Контролируемые и неконтролируемые компоненты](https://react.dev/learn/sharing-state-between-components#controlled-and-uncontrolled-components);
+
+- [Доступность компонента Tree](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tree_role).

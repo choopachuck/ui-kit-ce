@@ -2,56 +2,56 @@ import { TreeNodePlain, TreeItem } from '../types'
 
 type ProcessKeysResult = {
   /**
-   * Объект ключей выбранных элементов
+   * Объект ключей выбранных узлов
    */
   keysToCheck: Record<React.Key, boolean>
   /**
-   * Объект ключей полувыбранных элементов
+   * Объект ключей полувыбранных узлов
    */
   keysToIndeterminate: Record<React.Key, boolean>
 }
 
 export type ProcessChildrenKeysOptions = {
   /**
-   *  Значение выбранного целевого элемента дерева
+   *  Значение выбранного целевого узла дерева
    */
   targetValue?: boolean
   /**
-   * Массив ключей дочерних элементов у целевого элемента
+   * Массив ключей дочерних узлов у целевого узла
    */
   keys?: React.Key[]
   /**
-   * Объект ключей заблокированных элементов дерева
+   * Объект ключей заблокированных узлов дерева
    */
   disabledKeys?: Record<React.Key, boolean>
   /**
-   * Ссылка на объект всех выбранных ключей элементов дерева
+   * Ссылка на объект всех выбранных ключей узлов дерева
    */
   currentCheckedKeys?: Record<React.Key, boolean>
 }
 
 export type ProcessParentKeysOptions = {
   /**
-   * Ключ родительского элемента у целевого элемента
+   * Ключ родительского узла у целевого узла
    */
   parentKey?: React.Key
   /**
-   * Объект выбранных ключей дочерних элементов дерева у целевого элемента
+   * Объект выбранных ключей дочерних узлов дерева у целевого узла
    */
   checkedKeys?: Record<React.Key, boolean>
   /**
-   * Ссылка на объект всех полувыбранных ключей элементов дерева
+   * Ссылка на объект всех полувыбранных ключей узлов дерева
    */
   currentIndeterminateKeys?: Record<React.Key, boolean>
   /**
-   * Ссылка на объект всех выбранных ключей элементов дерева
+   * Ссылка на объект всех выбранных ключей узлов дерева
    */
   currentCheckedKeys?: Record<React.Key, boolean>
 }
 
 export type ProcessChildrenKeysResult = ProcessKeysResult & {
   /**
-   * Все дочерние элементы целевого элемента выбраны
+   * Все дочерние узелы целевого узла выбраны
    */
   isAllChildrenChecked: boolean
 }
@@ -60,19 +60,19 @@ export type ProcessParentKeysResult = ProcessKeysResult
 
 export type GetKeysOptions = {
   /**
-   * Объект всех полувыбранных ключей элементов дерева
+   * Объект всех полувыбранных ключей узлов дерева
    */
   currentIndeterminateKeys?: Record<React.Key, boolean>
   /**
-   * Массив ключей элементов дерева для выбора
+   * Массив ключей узлов дерева для выбора
    */
   arrayKeys?: React.Key[]
   /**
-   * Объект, содержащий текущие ключи выбранных элементов дерева
+   * Объект, содержащий текущие ключи выбранных узлов дерева
    */
   currentCheckedKeys?: Record<React.Key, boolean>
   /**
-   * Объект ключей заблокированных элементов дерева
+   * Объект ключей заблокированных узлов дерева
    */
   disabledKeys?: Record<React.Key, boolean>
   /**
@@ -84,23 +84,23 @@ export type GetKeysOptions = {
 
 export type GetKeysResult = {
   /**
-   * Объект выбранных ключей элементов дерева
+   * Объект выбранных ключей узлов дерева
    */
   keysToCheck: Record<React.Key, boolean>
   /**
-   * Объект полувыбранных ключей элементов дерева
+   * Объект полувыбранных ключей узлов дерева
    */
   keysToIndeterminate: Record<React.Key, boolean>
 }
 
 /**
- * Функция для обхода дочерних элементов дерева в глубину
+ * Функция для обхода дочерних узлов дерева в глубину
  *
- * @param {TreeNodes} treeNodes Плоский объект дерева элементов
+ * @param {TreeNodes} treeNodes Плоский объект дерева узлов
  * @param {ProcessChildrenKeysOptions} options Объект с конфигурацией обхода дерева
  *
- * @returns Объект с объектом ключей выбранных элементов, с объектом ключей полувыбранных элементов и
- * флагом, что все дочерние элементы текущего элемента были выбраны
+ * @returns Объект с объектом ключей выбранных узлов, с объектом ключей полувыбранных узлов и
+ * флагом, что все дочерние узелы текущего узла были выбраны
  */
 export const processChildrenKeys = <TItem = TreeItem>(
   treeNodes: TreeNodePlain<TItem>,
@@ -178,12 +178,12 @@ export const processChildrenKeys = <TItem = TreeItem>(
 }
 
 /**
- * Функция для обхода родительских элементов дерева наверх
+ * Функция для обхода родительских узлов дерева наверх
  *
- * @param {TreeNodes} treeNodes Плоский объект дерева элементов
+ * @param {TreeNodes} treeNodes Плоский объект дерева узлов
  * @param {ProcessParentKeysOptions} options Объект с конфигурацией обхода дерева
  *
- * @returns Объект с объектом ключей выбранных элементо и с объектом ключей полувыбранных элементов
+ * @returns Объект с объектом ключей выбранных узело и с объектом ключей полувыбранных узлов
  */
 export const processParentKeys = <TItem = TreeItem>(
   treeNodes: TreeNodePlain<TItem>,
@@ -263,10 +263,10 @@ export const processParentKeys = <TItem = TreeItem>(
 }
 
 /**
- * Функция для получения объектов с ключами выбранных и полувыбранных элементов дерева
+ * Функция для получения объектов с ключами выбранных и полувыбранных узлов дерева
  *
- * @param {TreeNodes} treeNodes Плоский объект дерева элементов
- * @param {TreeNodeKey} targetKey Ключ целевого элемента дерева
+ * @param {TreeNodes} treeNodes Плоский объект дерева узлов
+ * @param {TreeNodeKey} targetKey Ключ целевого узла дерева
  * @param {GetKeysOptions} options Объект с конфигурацией обхода дерева
  */
 export const getKeys = <TItem = TreeItem>(

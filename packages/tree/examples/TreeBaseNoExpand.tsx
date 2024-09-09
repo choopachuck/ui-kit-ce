@@ -3,68 +3,68 @@ import { Tree } from '@v-uik/tree'
 
 const dataSource = [
   {
-    key: 'item-1-0',
-    label: 'item-1-0',
+    key: 'node-0',
+    label: 'node-0',
     children: [
       {
-        key: 'item-1-0-0',
-        label: 'item-1-0-0',
+        key: 'node-0-0',
+        label: 'node-0-0',
         children: [
           {
-            key: 'item-1-0-0-0',
-            label: 'item-1-0-0-0',
+            key: 'node-0-0-0',
+            label: 'node-0-0-0',
           },
           {
-            key: 'item-1-0-0-1',
-            label: 'item-1-0-0-1',
+            key: 'node-0-0-1',
+            label: 'node-0-0-1',
           },
         ],
       },
       {
-        key: 'item-1-0-1',
-        label: 'item-1-0-1',
+        key: 'node-0-1',
+        label: 'node-0-1',
         children: [
           {
-            key: 'item-1-0-1-0',
-            label: 'item-1-0-1-0',
+            key: 'node-0-1-0',
+            label: 'node-0-1-0',
           },
           {
-            key: 'item-1-0-0-1-1',
-            label: 'item-1-0-0-1-1',
+            key: 'node-0-1-1',
+            label: 'node-0-1-1',
           },
         ],
       },
     ],
   },
   {
-    key: 'item-2-0',
-    label: 'item-2-0',
+    key: 'node-1',
+    label: 'node-1',
     children: [
       {
-        key: 'item-2-0-0',
-        label: 'item-2-0-0',
+        key: 'node-1-0',
+        label: 'node-1-0',
         children: [
           {
-            key: 'item-2-0-0-0',
-            label: 'item-2-0-0-0',
+            key: 'node-1-0-0',
+            label: 'node-1-0-0',
           },
           {
-            key: 'item-2-0-0-0-1',
-            label: 'item-2-0-0-0-1',
+            key: 'node-1-0-1',
+            label: 'node-1-0-1',
           },
         ],
       },
       {
-        key: 'item-2-0-1',
-        label: 'item-2-0-1',
+        key: 'node-1-1',
+        label: 'node-1-1',
         children: [
           {
-            key: 'item-2-0-1-0',
-            label: 'item-2-0-1-0',
+            key: 'node-1-1-0',
+            label: 'node-1-1-0',
           },
           {
-            key: 'item-2-0-0-1-1',
-            label: 'item-2-0-0-1-1',
+            key: 'node-1-1-1',
+            label: 'node-1-1-1',
           },
         ],
       },
@@ -73,5 +73,18 @@ const dataSource = [
 ]
 
 export const TreeBaseNoExpand: React.FC = () => {
-  return <Tree disableExpand dataSource={dataSource} />
+  return (
+    <Tree
+      disableExpand
+      dataSource={dataSource}
+      defaultExpandedKeys={[
+        'node-0',
+        'node-1',
+        'node-0-0',
+        'node-1-0',
+        'node-1-1',
+        'node-0-1',
+      ]}
+    />
+  )
 }

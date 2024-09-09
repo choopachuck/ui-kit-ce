@@ -34,7 +34,7 @@ export const useStyles = createUseStyles(
       },
       //#endregion
 
-      //#region Классы стилей элементов дерева
+      //#region Классы стилей узлов дерева
       item: {
         minWidth: 288,
         display: 'flex',
@@ -177,7 +177,7 @@ export const useStyles = createUseStyles(
       itemLoading: {},
       //#endregion
 
-      //#region Классы стилей элементов управления
+      //#region Классы стилей узлов управления
       nodeControlContainer: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -213,7 +213,7 @@ export const useStyles = createUseStyles(
       },
       //#endregion
 
-      //#region Классы стилей элемента для скрытия/раскрытия
+      //#region Классы стилей узла для скрытия/раскрытия
       itemExpandable: {
         '& > $node': {
           cursor: 'pointer',
@@ -225,7 +225,7 @@ export const useStyles = createUseStyles(
       },
       //#endregion
 
-      //#region Классы стилей для путей у элементов дерева
+      //#region Классы стилей для путей у узлов дерева
       trailContainer: {
         position: 'absolute',
         height: '100%',
@@ -250,7 +250,7 @@ export const useStyles = createUseStyles(
       },
       //#endregion
 
-      //#region Классы для элемента с функционалом выбора
+      //#region Классы для узла с функциональностью выбора
       itemSelectable: {
         '& $node': {
           cursor: 'pointer',

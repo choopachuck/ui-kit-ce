@@ -1,7 +1,7 @@
 import { TreeSizeType } from './types'
 
 /**
- * Размеры элементов.
+ * Размеры узлов.
  *
  * XS - extra small. очень маленький размер
  * SM - small. маленький размер
@@ -14,12 +14,12 @@ export const TreeSize = {
 } as const
 
 /**
- * Базовый размер элементов управления (длина и ширина)
+ * Базовый размер узлов управления (длина и ширина)
  */
 export const CONTROL_ELEMENT_SIZE = 24
 
 /**
- * Базовые отступы сверху и снизу у элементов дерева относительно размера дерева
+ * Базовые отступы сверху и снизу у узлов дерева относительно размера дерева
  */
 export const TreeSpacingVertical: Record<keyof typeof TreeSize, number> = {
   [TreeSize.xs]: 0,
@@ -28,12 +28,12 @@ export const TreeSpacingVertical: Record<keyof typeof TreeSize, number> = {
 }
 
 /**
- * Базовый отступ между компонентами элемента дерева
+ * Базовый отступ между компонентами узла дерева
  */
 export const DEFAULT_SPACING = 4
 
 /**
- * Основной дата-атрибут для элемента дерева
+ * Основной дата-атрибут для узла дерева
  */
 export const DATA_ITEM_ID = 'data-tree-item-id'
 
@@ -48,6 +48,6 @@ export const DATA_MAIN_TREE = 'data-tree'
 export const DEFAULT_SIZE: TreeSizeType = TreeSize.md
 
 /**
- * Длина пути до элемента дерева по умолчанию
+ * Длина пути до узла дерева по умолчанию
  */
 export const DEFAULT_TREE_TRAIL_LENGTH = 12
