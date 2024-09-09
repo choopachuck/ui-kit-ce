@@ -520,6 +520,10 @@ export const ComboBox = React.forwardRef(
     const close = React.useCallback(
       (e?: Event) => {
         if (e && popupRef.current?.contains(e.target as Node)) {
+          // preventDefault чтобы не срабатывал onblur после выбора элемента
+          e.preventDefault()
+          e.stopPropagation()
+
           return
         }
 

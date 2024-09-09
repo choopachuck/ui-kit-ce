@@ -144,10 +144,6 @@ export const OptionItem = <
           onClick={(event: React.MouseEvent<HTMLElement>) =>
             onSelectOption(option, event)
           }
-          onMouseDown={(event: React.MouseEvent<HTMLElement>) => {
-            // это здесь для того, что не срабатывал onblur после выбора элемента
-            event.preventDefault()
-          }}
           {...(restCommonOptionItemProps as ListItemProps<E>)}
         >
           {formatOptionLabel ? formatOptionLabel(label, inputValue) : label}

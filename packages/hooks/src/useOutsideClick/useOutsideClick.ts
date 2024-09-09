@@ -25,12 +25,14 @@ export const useOutsideClick = <Ref extends HTMLElement>(
     (node) => {
       if (ref.current) {
         document.removeEventListener('mousedown', handleMouseDown, true)
+        document.removeEventListener('touchstart', handleMouseDown, true)
       }
 
       ref.current = node
 
       if (ref.current) {
         document.addEventListener('mousedown', handleMouseDown, true)
+        document.addEventListener('touchstart', handleMouseDown, true)
       }
     },
     [handleMouseDown]
