@@ -10,6 +10,7 @@ import type { ListProps } from '@v-uik/list'
 
 import type { FilterOption } from '../utils'
 import type { LabelledProps } from '@v-uik/labelled'
+import { OptionListProps } from '../components'
 
 export type Options<Option> = Option[]
 
@@ -217,6 +218,18 @@ export interface BaseComboBoxProps<
    * Свойства для нативного элемента input
    */
   inputProps?: ComponentPropsWithRefFix<'input'>
+
+  /**
+   * Функция для переопределения свойств компонента ListItemGroup
+   * @param {string} groupName название группы опций
+   * @param {Option[]} options массив опций переданный в компонент ComboBox
+   * @returns пропсы компонента ListItemGroup
+   */
+  getListItemGroupProps?: OptionListProps<
+    Option,
+    ListElement,
+    'li'
+  >['getListItemGroupProps']
 }
 
 export type ComboboxEvent =

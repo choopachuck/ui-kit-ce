@@ -1,5 +1,11 @@
 import React from 'react'
-import { ListProps, List, ListItemGroup, ListItemProps } from '@v-uik/list'
+import {
+  ListProps,
+  List,
+  ListItemGroup,
+  ListItemGroupProps,
+  ListItemProps,
+} from '@v-uik/list'
 import {
   CommonProps,
   GroupType,
@@ -26,6 +32,10 @@ export type OptionListProps<
   loadingLabel?: React.ReactNode
   loading?: boolean
   listProps: Omit<ListProps<E>, 'children'>
+  getListItemGroupProps?: (
+    groupName: string,
+    options: Option[]
+  ) => Omit<ListItemGroupProps<O>, 'children'>
   handleChangeInputValue: (value: string, event?: ComboBoxInputEvent) => void
   handleClear: (event: ComboboxEvent) => void
   inputRef: React.RefObject<HTMLInputElement>
@@ -42,6 +52,7 @@ export const OptionList = <
   noOptionsText,
   commonOptionItemProps,
   listProps,
+  getListItemGroupProps,
   loadingLabel,
   loading,
   OptionItemComponent,
@@ -52,7 +63,16 @@ export const OptionList = <
   const renderGroupOptions = () => {
     if (groupBy && groupedOptions) {
       return groupedOptions.map(({ key, group, options }) => (
-        <ListItemGroup key={key} label={group}>
+        <ListItemGroup
+          key={key}
+          label={group}
+          {...(getListItemGroupProps?.(group, options) as
+            | Omit<
+                ListItemGroupProps<typeof defaultOptionItemElement>,
+                'children'
+              >
+            | undefined)}
+        >
           {options.map((option) => renderListOption(option))}
         </ListItemGroup>
       ))

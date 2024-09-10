@@ -27,7 +27,11 @@ import {
 import { Tooltip } from '@v-uik/tooltip'
 import { ErrorIcon } from './assets/ErrorIcon'
 
-import { ComboBoxComponentsConfig, getComponents } from './components'
+import {
+  ComboBoxComponentsConfig,
+  getComponents,
+  OptionListProps,
+} from './components'
 import {
   BaseComboBoxProps,
   Classes,
@@ -292,6 +296,7 @@ export const ComboBox = React.forwardRef(
       required,
       inputProps,
       filterOption = defaultFilterOption,
+      getListItemGroupProps,
       ...rest
     }: ComboboxProps<Option, ListElement, ListItemElement>,
     ref: React.Ref<HTMLDivElement>
@@ -1422,12 +1427,18 @@ export const ComboBox = React.forwardRef(
           setActive={setActive}
           isCreatableDivided={isCreatableDivided}
           createAriaActiveDescendantId={createAriaActiveDescendantId}
-          commonOptionItemProps={{
-            interactive: false,
-            classes: { disabled: classesMap.optionDisabled },
-            role: 'option',
-            size,
-          }}
+          commonOptionItemProps={
+            {
+              interactive: false,
+              classes: { disabled: classesMap.optionDisabled },
+              role: 'option',
+              size,
+            } as OptionListProps<
+              Option,
+              ListElement,
+              ListItemElement
+            >['commonOptionItemProps']
+          }
           optionClasses={{
             option: classesMap.option,
             optionSmall: classesMap.optionSmall,
@@ -1448,6 +1459,13 @@ export const ComboBox = React.forwardRef(
           loadingLabel={loadingLabel}
           loading={loading}
           OptionItemComponent={OptionItem}
+          getListItemGroupProps={
+            getListItemGroupProps as OptionListProps<
+              Option,
+              ListElement,
+              ListItemElement
+            >['getListItemGroupProps']
+          }
           handleChangeInputValue={handleChangeInputValue}
           handleClear={handleClear}
           onSelectOption={handleOptionClick}
