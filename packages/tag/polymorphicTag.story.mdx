@@ -1,0 +1,77 @@
+import { Meta, Source, Story } from '@storybook/addon-docs'
+import { PolymorphicTag } from '@v-uik/tag'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../docs/showroom/config'
+import { CanvasPolymorphic as CanvasStory } from './examples'
+import RawCanvas from '!!raw-loader!@v-uik/tag/examples/CanvasPolymorphic'
+import RawTagWithLink from '!!raw-loader!@v-uik/tag/examples/TagWithLink'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Tag', 'PolymorphicTag'])}
+  component={PolymorphicTag}
+/>
+
+<Story
+  name="PolymorphicTag"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: { disable: true },
+  }}
+>
+  {story.component}
+</Story>
+
+# PolymorphicTag
+
+Компонент PolymorphicTag позволяет заменить стандартный тег button на любой другой HTML-тег, например, на `<a />`, чтобы отобразить его в виде ссылки для интеграции с библиотеками маршрутизации.
+
+## Пример работы с обычными ссылками
+
+<Source language="tsx" code={RawTagWithLink} />
+
+## Примеры работы с библиотеками маршрутизации
+
+Демонстрация работы компонента с библиотекой [react-router](https://v5.reactrouter.com/web/guides/quick-start).
+Для интеграции со сторонними библиотеками нужно использовать параметр `as`.
+
+```tsx
+import React from 'react'
+import { Bar, PolymorphicTag } from '@v-uik/base'
+import {
+  BrowserRouter as Router,
+  Link as RouterLink,
+  Route,
+  Switch,
+} from 'react-router-dom'
+import { Home } from './Home'
+import { Blog } from './Blog'
+
+export const TagWithRouterLink = (): JSX.Element => {
+  return (
+    <Router>
+      <Bar>
+        <PolymorphicTag as={RouterLink} to="/">
+          Home
+        </PolymorphicTag>
+        <PolymorphicTag as={RouterLink} to="/blog">
+          Blog
+        </PolymorphicTag>
+      </Bar>
+      <div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/blog" component={Blog} />
+        </Switch>
+      </div>
+    </Router>
+  )
+}
+```

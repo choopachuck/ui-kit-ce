@@ -1,7 +1,7 @@
 import { Meta, ArgsTable } from '@storybook/addon-docs'
-import { Tag } from '@v-uik/tag'
+import { Tag, PolymorphicTag } from '@v-uik/tag'
 import { createTitle, COMPONENTS } from '../../docs/showroom/config'
-import { TagClassesDummy } from './examples'
+import { TagClassesDummy, PolymorphicTagDummy } from './examples'
 
 <Meta
   title={createTitle([COMPONENTS.controls, 'Tag', 'API'])}
@@ -16,8 +16,16 @@ import { TagClassesDummy } from './examples'
 
 # Tag API
 
-<ArgsTable of={Tag} />
+<ArgsTable of={Tag} exclude="placeholder" />
 
 # Tag classes
 
 <ArgsTable of={TagClassesDummy} />{' '}
+
+# PolymorphicTag API
+
+<ArgsTable of={PolymorphicTagDummy} />
+
+# PolymorphicTag Classes
+
+Набор классов PolymorphicTag совпадает с набором [классов компонента Tag](?path=/docs/элементы-управления-tag-api--page#tag-classes)
