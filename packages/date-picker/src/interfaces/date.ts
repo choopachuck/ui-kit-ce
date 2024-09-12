@@ -16,6 +16,9 @@ export interface BaseDatePickerProps<TDate = unknown> {
   onChange: (value: TDate | null) => void
   /**
    * Какие панели выбора даты доступны ('day', 'month', 'year')
+   *
+   * `@deprecated свойство не используется`
+   *
    */
   views?: DatePickerViewType[]
   /**

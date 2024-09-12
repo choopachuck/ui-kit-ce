@@ -76,6 +76,8 @@ export interface BaseTimePickerProps<TDate = unknown> {
   onChange: (value: TDate) => void
   /**
    * Какие панели выбора даты доступны ('hours', 'minutes', 'seconds')
+   
+   * `@deprecated свойство не используется`
    */
   views?: BaseTimePickerViewType[]
   /**
