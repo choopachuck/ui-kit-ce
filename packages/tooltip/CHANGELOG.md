@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.0] (2024-09-07)
+
+
+### Bug Fixes
+
+* **tooltip:** отключен показ тултипа, если в его контент ничего не передано ([0946f97](#))
+* **tooltip:** поправлена логика отрисовка arrow ([afc115b](#))
+
+
+
 ### 1.12.1 (2024-07-24)
 
 **Note:** Version bump only for package @v-uik/tooltip
