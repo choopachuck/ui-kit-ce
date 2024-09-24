@@ -1,0 +1,50 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { ClickStreamProvider } from '@v-uik/clickstream'
+import {
+  createTitle,
+  COMPONENTS,
+  DocsAlert,
+  STORY_TITLES,
+} from '../../docs/showroom/config'
+import { InactivityTime } from './examples'
+
+import RawInactivityTime from '!!raw-loader!./examples/InactivityTime'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.utility,
+    'ClickStreamProvider',
+    STORY_TITLES.clickStreamProvider.inactivityTime,
+  ])}
+  component={ClickStreamProvider}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Время бездействия пользователя
+
+Если пользователь совершил количество действий меньше максимального размера очереди событий, то по истечению указанного времени провайдер
+автоматически запустит функцию обратного вызова `onSendEvent` с накопившейся очередью событий.
+
+Каждое новое добавление события в очередь сбрасывает таймер автоматической отправки очереди обратно до значения, указанного в `inactivityTime`.
+
+Чтобы изменить максимальное разрешенное время бездействия пользователя, достаточно указать значение в свойстве `inactivityTime` в
+миллисекундах.
+
+Ниже представлен пример использования компонента с указанием максимального разрешенного времени бездействия пользователя,
+равное 5 секундам (или 5000 миллисекунд).
+
+<DocsAlert justify="start">
+  Результат манипуляций с элементами формы или со всей страницей отобразится в
+  панели с кодом снизу под формой
+</DocsAlert>
+
+<Canvas withSource="none">
+  <InactivityTime />
+</Canvas>
+
+<Source language="tsx" code={RawInactivityTime} />

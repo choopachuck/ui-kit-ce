@@ -1,0 +1,349 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`check controlled check on checkbox click 1`] = `
+Object {
+  "$meta": Object {
+    "boundaryChildrenKeys": Array [
+      "item-0-1",
+      "item-0-2",
+      "item-0-3",
+    ],
+    "closestChildKey": "item-0-1",
+    "depth": 0,
+    "disabled": false,
+    "id": "item-0",
+    "order": 1,
+  },
+  "children": Array [
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-1",
+        "order": 2,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-1",
+      "key": "item-0-1",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-1",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-2",
+        "order": 3,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-2",
+      "key": "item-0-2",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-2",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-3",
+        "order": 4,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-3",
+      "key": "item-0-3",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-3",
+    },
+  ],
+  "custom": "custom-item-0",
+  "key": "item-0",
+  "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0",
+}
+`;
+
+exports[`check controlled check on node click 1`] = `
+Object {
+  "$meta": Object {
+    "boundaryChildrenKeys": Array [
+      "item-0-1",
+      "item-0-2",
+      "item-0-3",
+    ],
+    "closestChildKey": "item-0-1",
+    "depth": 0,
+    "disabled": false,
+    "id": "item-0",
+    "order": 1,
+  },
+  "children": Array [
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-1",
+        "order": 2,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-1",
+      "key": "item-0-1",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-1",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-2",
+        "order": 3,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-2",
+      "key": "item-0-2",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-2",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-3",
+        "order": 4,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-3",
+      "key": "item-0-3",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-3",
+    },
+  ],
+  "custom": "custom-item-0",
+  "key": "item-0",
+  "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0",
+}
+`;
+
+exports[`expand controlled expand on expander click 1`] = `
+Object {
+  "$meta": Object {
+    "boundaryChildrenKeys": Array [
+      "item-0-1",
+      "item-0-2",
+      "item-0-3",
+    ],
+    "closestChildKey": "item-0-1",
+    "depth": 0,
+    "disabled": false,
+    "id": "item-0",
+    "order": 1,
+  },
+  "children": Array [
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-1",
+        "order": 2,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-1",
+      "key": "item-0-1",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-1",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-2",
+        "order": 3,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-2",
+      "key": "item-0-2",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-2",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-3",
+        "order": 4,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-3",
+      "key": "item-0-3",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-3",
+    },
+  ],
+  "custom": "custom-item-0",
+  "key": "item-0",
+  "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0",
+}
+`;
+
+exports[`expand controlled expand on node click 1`] = `
+Object {
+  "$meta": Object {
+    "boundaryChildrenKeys": Array [
+      "item-0-1",
+      "item-0-2",
+      "item-0-3",
+    ],
+    "closestChildKey": "item-0-1",
+    "depth": 0,
+    "disabled": false,
+    "id": "item-0",
+    "order": 1,
+  },
+  "children": Array [
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-1",
+        "order": 2,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-1",
+      "key": "item-0-1",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-1",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-2",
+        "order": 3,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-2",
+      "key": "item-0-2",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-2",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-3",
+        "order": 4,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-3",
+      "key": "item-0-3",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-3",
+    },
+  ],
+  "custom": "custom-item-0",
+  "key": "item-0",
+  "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0",
+}
+`;
+
+exports[`select controlled multiple select on node click 1`] = `
+Object {
+  "$meta": Object {
+    "boundaryChildrenKeys": Array [
+      "item-0-1",
+      "item-0-2",
+      "item-0-3",
+    ],
+    "closestChildKey": "item-0-1",
+    "depth": 0,
+    "disabled": false,
+    "id": "item-0",
+    "order": 1,
+  },
+  "children": Array [
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-1",
+        "order": 2,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-1",
+      "key": "item-0-1",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-1",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-2",
+        "order": 3,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-2",
+      "key": "item-0-2",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-2",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-3",
+        "order": 4,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-3",
+      "key": "item-0-3",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-3",
+    },
+  ],
+  "custom": "custom-item-0",
+  "key": "item-0",
+  "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0",
+}
+`;
+
+exports[`select controlled select on node click 1`] = `
+Object {
+  "$meta": Object {
+    "boundaryChildrenKeys": Array [
+      "item-0-1",
+      "item-0-2",
+      "item-0-3",
+    ],
+    "closestChildKey": "item-0-1",
+    "depth": 0,
+    "disabled": false,
+    "id": "item-0",
+    "order": 1,
+  },
+  "children": Array [
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-1",
+        "order": 2,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-1",
+      "key": "item-0-1",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-1",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-2",
+        "order": 3,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-2",
+      "key": "item-0-2",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-2",
+    },
+    Object {
+      "$meta": Object {
+        "depth": 1,
+        "disabled": false,
+        "id": "item-0-3",
+        "order": 4,
+        "parentKey": "item-0",
+      },
+      "custom": "custom-item-0-3",
+      "key": "item-0-3",
+      "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0-3",
+    },
+  ],
+  "custom": "custom-item-0",
+  "key": "item-0",
+  "label": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem qui perferendis pariatur itaque est, repellendus reprehenderit fuga debitis reiciendis amet quas cum id at ipsa harum aut consectetur, eos repellat item-0",
+}
+`;

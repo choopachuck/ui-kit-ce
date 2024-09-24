@@ -1,10 +1,10 @@
-import { Meta, Story, Canvas, ArgsTable, Source } from '@storybook/addon-docs'
+import { Meta, Story, Canvas, Source } from '@storybook/addon-docs'
 import { Button } from '@v-uik/button'
 import {
   createTitle,
   COMPONENTS,
   createStory,
-} from '../../docs/showroom/config'
+} from '../../../docs/showroom/config'
 import {
   ClassesDummy,
   FilledButtons,
@@ -13,12 +13,12 @@ import {
   IconButtons,
   DifferentSizeButtons,
   Canvas as CanvasStory,
-} from './examples'
-import RawFilledButtons from '!!raw-loader!./examples/FilledButtons'
-import RawOutlinedButtons from '!!raw-loader!./examples/OutlinedButtons'
-import RawGhostButtons from '!!raw-loader!./examples/GhostButtons'
-import RawIconButtons from '!!raw-loader!./examples/IconButtons'
-import RawDifferentSizeButtons from '!!raw-loader!./examples/DifferentSizeButtons'
+} from '../examples'
+import RawFilledButtons from '!!raw-loader!../examples/FilledButtons'
+import RawOutlinedButtons from '!!raw-loader!../examples/OutlinedButtons'
+import RawGhostButtons from '!!raw-loader!../examples/GhostButtons'
+import RawIconButtons from '!!raw-loader!../examples/IconButtons'
+import RawDifferentSizeButtons from '!!raw-loader!../examples/DifferentSizeButtons'
 import RawCanvas from '!!raw-loader!@v-uik/button/examples/Canvas'
 
 export const story = createStory(CanvasStory, RawCanvas)

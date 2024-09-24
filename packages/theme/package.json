@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/theme",
-  "version": "1.12.1",
+  "version": "1.13.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "typings": "dist/esm/index.d.ts",
@@ -16,9 +16,9 @@
     "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json"
   },
   "author": "UFSUI",
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "dependencies": {
-    "@v-uik/utils": "^1.12.1",
+    "@v-uik/utils": "^1.13.0",
     "clsx": "^1.0.0",
     "jss": "^10.6.0",
     "react-jss": "^10.9.0",

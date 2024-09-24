@@ -102,6 +102,7 @@ export const computeInputs = <TComponentProps extends Args = Args>({
         (rest?.name as string) || storyFields[key]?.name || (key as string),
       name: key,
     }
+    //@ts-ignore
     defaultValues[key as string] = strictInputs?.[key]?.defaultValue as unknown
   })
 

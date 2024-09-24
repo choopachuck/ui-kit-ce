@@ -8,9 +8,11 @@ import { ExpandableStory } from '../examples/ExpandableStory'
 import { TreeExpandableStory } from '../examples/TreeExpandableStory'
 import { PaginateTable } from '../examples/PaginateTable'
 import { FixedHeaderStory } from '../examples/FixedHeaderStory'
+import { MultiRowHeaderWithFixedColumns } from '../examples/MultiRowHeaderWithFixedColumns'
 import { FixedColumnsStory } from '../examples/FixedColumnsStory'
 import { SortableStory } from '../examples/SortableStory'
 import { CustomPaginateTable } from '../examples/CustomPaginateTable'
+import { default as PaginationCanvas } from '../examples/PaginationCanvas'
 import { AlignmentStory } from '../examples/AlignmentStory'
 import { AlignmentSortableStory } from '../examples/AlignmentSortableStory'
 
@@ -214,12 +216,46 @@ test.describe('Pagination', () => {
 
       await expect(comp).toHaveScreenshot()
     })
+    test('Select', async ({ mount, page }) => {
+      // await page.setViewportSize({ width: 1024, height: 200 })
+      const comp = await mount(
+        <div style={{ height: 700 }}>
+          <PaginationCanvas />
+        </div>
+      )
+
+      await page.locator('[aria-label="выбор страницы"]').click()
+
+      await page
+        .locator('[role="listbox"]')
+        .evaluate((element) =>
+          element.setAttribute(
+            'style',
+            'overscroll-behavior: contain;max-height: 150px;overflow-y: scroll;'
+          )
+        )
+      await expect(comp).toHaveScreenshot()
+    })
   })
 })
 
 test.describe('Fixed', () => {
   test('Header', async ({ mount, page }) => {
     const comp = await mount(<FixedHeaderStory />)
+
+    await page.evaluate(() => {
+      const tableWrapper = document.querySelector('div div')
+
+      if (tableWrapper) {
+        tableWrapper.scrollTop = 100
+      }
+    })
+
+    await expect(comp).toHaveScreenshot()
+  })
+
+  test('Multi Row Header', async ({ mount, page }) => {
+    const comp = await mount(<MultiRowHeaderWithFixedColumns />)
 
     await page.evaluate(() => {
       const tableWrapper = document.querySelector('div div')

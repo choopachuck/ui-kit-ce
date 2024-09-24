@@ -865,3 +865,42 @@ it('handle delete selected value by backspace key press STS-30124', () => {
     'force-clear'
   )
 })
+
+it('shouldnt close popup when click was on scroll', () => {
+  const outsideClick = jest.fn()
+
+  const { getByRole } = render(
+    <div style={{ padding: 50 }} onMouseDown={outsideClick}>
+      <ComboBox options={options} />
+    </div>
+  )
+
+  const openButton = getByRole('button', { name: 'openPopupButton' })
+  fireEvent.mouseDown(openButton)
+
+  const list = getByRole('list')
+
+  fireEvent.mouseDown(list)
+  expect(outsideClick).toHaveBeenCalledTimes(0)
+})
+
+// UIK-598 (SBTSUPPORT-45624)
+it('combobox not fires onBlur when click on option', async () => {
+  const onChange = jest.fn()
+  const onBlur = jest.fn()
+
+  const { getByRole, findAllByRole } = render(
+    <ComboBox
+      options={options}
+      controlInnerProps={{ onBlur }}
+      onChange={onChange}
+    />
+  )
+
+  const openButton = getByRole('button', { name: 'openPopupButton' })
+  userEvent.click(openButton)
+  const foundOptions = await findAllByRole('option')
+  userEvent.click(foundOptions[2], { bubbles: true })
+  expect(onChange).toBeCalledTimes(1)
+  expect(onBlur).toBeCalledTimes(0)
+})

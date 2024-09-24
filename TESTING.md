@@ -29,6 +29,9 @@ docker pull mcr.microsoft.com/playwright:v1.23.2-focal
 // Для MacOS, Linux и PowerShell
 docker run --rm --network host -v $(pwd):/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.23.2-focal /bin/bash
 
+// в случае, если инструкция выше для PowerShell не сработает, то можно использовать команду ниже
+docker run --rm --network host -v .:/work/ -w /work/ -it mcr.microsoft.com/playwright:v1.23.2-focal /bin/bash
+
 // или для Windows
 docker run --rm --network host -v "%cd%:/work/" -w /work/ -it mcr.microsoft.com/playwright:v1.23.2-focal /bin/bash
 ```

@@ -2,18 +2,22 @@
 
 import * as React from 'react'
 import { createUseStyles, clsx } from '@v-uik/theme'
-import {
+import type {
   TableSizeProp,
   TableEventType,
   ReservedDataSourceProps,
   ColumnProps,
+  TableProps,
+  SortOrderProp,
 } from '../interfaces'
 import {
   useButtonReset,
   ButtonAriaActionEventHandler,
   useButtonAriaActionProps,
+  useClassList,
 } from '@v-uik/hooks'
 import { useTableDataContext } from '../context'
+import { DefaultSortIcon } from '../assets/DefaultSortIcon'
 
 const useStyles = createUseStyles((theme) => ({
   headCellContent: {
@@ -105,8 +109,15 @@ const useStyles = createUseStyles((theme) => ({
   none: {},
 }))
 
+export type TableHeadCellContentClasses = Partial<Record<SortOrderProp, string>>
+
 export interface TableHeadCellContentProps<DataSource = unknown>
-  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'> {
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'onChange'>,
+    Pick<TableProps<DataSource>, 'components'> {
+  /**
+   * JSS-классы для стилизации
+   */
+  classes?: TableHeadCellContentClasses
   /**
    *  Объект, описывающий структуру столбца
    */
@@ -135,10 +146,12 @@ const nextSortOrderMap = {
 export const TableHeadCellContent = <
   DataSource extends ReservedDataSourceProps<DataSource>
 >({
+  classes,
   column,
   children,
   size,
   onChange,
+  components,
   ...rest
 }: TableHeadCellContentProps<DataSource>): JSX.Element => {
   const {
@@ -152,16 +165,17 @@ export const TableHeadCellContent = <
 
   const buttonClasses = useButtonReset()
   const classList = useStyles()
+  const classesMap = useClassList(classList, classes)
 
-  const className = clsx(classList.headCellContent, classList[size], {
-    [classList.sortable]: sortable,
+  const className = clsx(classesMap.headCellContent, classesMap[size], {
+    [classesMap.sortable]: sortable,
   })
 
   const { setColumnSortState, columnsSortState } = useTableDataContext()
   const currentSortOrder = columnsSortState[column.key] ?? column.sortOrder
 
   /**
-   * Калбек отрабатывающий нажатие
+   * Коллбек отрабатывающий нажатие
    */
   const handleOnClick: ButtonAriaActionEventHandler<HTMLDivElement> =
     React.useCallback(
@@ -203,6 +217,22 @@ export const TableHeadCellContent = <
     rest.onKeyDown
   )
 
+  const getSortIcon = () => {
+    if (!components?.head?.sortIcon) {
+      return (
+        <DefaultSortIcon
+          className={clsx(classesMap.sorter, classesMap[currentSortOrder])}
+          classNameUpArrow={classesMap.upArrow}
+          classNameDownArrow={classesMap.downArrow}
+        />
+      )
+    }
+
+    const Component = components.head.sortIcon[currentSortOrder]
+
+    return <Component className={classesMap[currentSortOrder]} />
+  }
+
   if (renderHeaderCellContent) {
     return renderHeaderCellContent<DataSource>({
       title,
@@ -220,9 +250,9 @@ export const TableHeadCellContent = <
     <div
       {...rest}
       className={clsx(className, {
-        [classList.headerCellContentAlignLeft]: align === 'left',
-        [classList.headerCellContentAlignCenter]: align === 'center',
-        [classList.headerCellContentAlignRight]: align === 'right',
+        [classesMap.headerCellContentAlignLeft]: align === 'left',
+        [classesMap.headerCellContentAlignCenter]: align === 'center',
+        [classesMap.headerCellContentAlignRight]: align === 'right',
       })}
       tabIndex={sortable ? 0 : undefined}
       role={sortable ? 'button' : undefined}
@@ -235,36 +265,11 @@ export const TableHeadCellContent = <
           aria-hidden
           type="button"
           // TODO подумать над содержимом aria-label
-          className={clsx(buttonClasses.resetButton, classList.sortButton)}
+          className={clsx(buttonClasses.resetButton, classesMap.sortButton)}
           aria-label="Сортировка"
           tabIndex={-1}
         >
-          <svg
-            aria-hidden
-            className={clsx(classList.sorter, classList[currentSortOrder])}
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              className={classList.upArrow}
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M8 14H16L12 18L8 14Z"
-              fill="currentColor"
-              data-testid="ArrowUp"
-            />
-            <path
-              className={classList.downArrow}
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M8 10H16L12 6L8 10Z"
-              fill="currentColor"
-              data-testid="ArrowDown"
-            />
-          </svg>
+          {getSortIcon()}
         </button>
       )}
     </div>

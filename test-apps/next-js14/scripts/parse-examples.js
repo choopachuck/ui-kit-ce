@@ -10,6 +10,9 @@ const ignore = [
   'TextareaAutosize.tsx',
   'Playground.tsx',
   'UseResetCss.tsx',
+  'ButtonWithRouterLink.tsx',
+  'LinkWithComponent.tsx',
+  '/clickstream/examples/',
 ]
 
 const files = globSync('../../packages/*/examples/*.tsx')

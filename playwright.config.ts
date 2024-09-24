@@ -45,6 +45,9 @@ const config: PlaywrightTestConfig = {
         ],
       },
     },
+    launchOptions: {
+      ignoreDefaultArgs: ['--hide-scrollbars'],
+    },
   },
 
   /* Configure projects for major browsers */

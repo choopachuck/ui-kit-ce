@@ -24,7 +24,7 @@ export const secondary = (theme: Theme): JssStyle => ({
         theme.comp.button.colorBackgroundContainedSecondaryActive,
     },
 
-    '&:disabled': {
+    '&$disabled': {
       color: theme.comp.button.colorTextContainedSecondaryDisabled,
       backgroundColor:
         theme.comp.button.colorBackgroundContainedSecondaryDisabled,
@@ -68,7 +68,7 @@ export const secondary = (theme: Theme): JssStyle => ({
       },
     },
 
-    '&:disabled': {
+    '&$disabled': {
       color: theme.comp.button.colorTextOutlinedSecondaryDisabled,
 
       '&::after': {
@@ -94,7 +94,7 @@ export const secondary = (theme: Theme): JssStyle => ({
       backgroundColor: theme.comp.button.colorBackgroundGhostSecondaryActive,
     },
 
-    '&:disabled': {
+    '&$disabled': {
       color: theme.comp.button.colorTextGhostSecondaryDisabled,
     },
   },

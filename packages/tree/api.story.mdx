@@ -1,0 +1,73 @@
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import { Tree } from '@v-uik/tree'
+import { createTitle, COMPONENTS } from '../../docs/showroom/config'
+import {
+  TreeNodeCheckboxDummy,
+  TreeNodeContentDummy,
+  TreeNodeExpandButtonDummy,
+  TreeNodeExpandIconDummy,
+  TreeNodeIconDummy,
+  TreeClassesDummy,
+  UseTreePropsDummy,
+  UseTreeReturnPropsDummy,
+  TreeItemDummy,
+  TreeNodeItemDummy,
+  TreeNodeItemMetaDummy,
+} from './examples/TreeTypes.dummy'
+
+<Meta
+  title={createTitle([COMPONENTS.dataDisplay, 'Tree', 'API'])}
+  component={Tree}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Tree API
+
+<ArgsTable of={Tree} exclude="placeholder" sort="requiredFirst" />
+
+# TreeNodeCheckbox API
+
+<ArgsTable of={TreeNodeCheckboxDummy} exclude="placeholder|ref" />
+
+# TreeNodeContent API
+
+<ArgsTable of={TreeNodeContentDummy} exclude="placeholder|ref" />
+
+# TreeNodeContent API
+
+<ArgsTable of={TreeNodeExpandButtonDummy} exclude="placeholder|ref" />
+
+# TreeNodeExpandIcon API
+
+<ArgsTable of={TreeNodeExpandIconDummy} exclude="placeholder|ref" />
+
+# TreeNodeIcon API
+
+<ArgsTable of={TreeNodeIconDummy} exclude="placeholder|ref" />
+
+# UsePagination API
+
+## Props
+
+<ArgsTable of={UseTreePropsDummy} exclude="placeholder|ref" />
+
+## Return value
+
+<ArgsTable of={UseTreeReturnPropsDummy} exclude="placeholder|ref" />
+
+# TreeItem API
+
+<ArgsTable of={TreeItemDummy} exclude="placeholder|ref" />
+
+# TreeNodeItem API
+
+<ArgsTable of={TreeNodeItemDummy} exclude="placeholder|ref" />
+
+# TreeNodeItemMeta API
+
+<ArgsTable of={TreeNodeItemMetaDummy} exclude="placeholder|ref" />

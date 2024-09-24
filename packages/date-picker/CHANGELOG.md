@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.0] (2024-09-07)
+
+
+### Bug Fixes
+
+* **date-picker:** исправлено срабатывание onClickLastNumberColumn ([89ea86f](#))
+* **table:** исправлено сжатие выбраной опции текущей страницы если присутсвует скролл ([d426198](#))
+
+
+
 ### 1.12.1 (2024-07-24)
 
 

@@ -12,6 +12,9 @@ const rootPath = path.resolve(__dirname, '../')
 run(path.resolve(rootPath, './theme-tokens.json'))
 
 module.exports = {
+  core: {
+    builder: '@storybook/builder-webpack5',
+  },
   stories: [
     '../cookbook/**/*story.[tj]sx',
     '../cookbook/**/*story.mdx',
@@ -51,6 +54,7 @@ module.exports = {
       ...config.resolve.alias,
     }
 
+    config.resolve.plugins = config.resolve.plugins ?? []
     config.resolve.plugins.push(new TsconfigPathsPlugin())
 
     if (process.argv.indexOf('--no-lint') === -1) {

@@ -63,20 +63,22 @@ export const ListItemGroup = React.forwardRef(
         className={clsx(listClassesList.list, classesList.groupList)}
         data-type={DATA_TYPE_GROUP}
       >
-        <ListItem<typeof defaultElement>
-          ref={ref}
-          disabled
-          {...rest}
-          role="presentation"
-          id={id}
-          className={clsx(className, cl.label)}
-          classes={{
-            text: classesList.text,
-            textTypography: classesList.textTypography,
-          }}
-        >
-          {label}
-        </ListItem>
+        {label && (
+          <ListItem<typeof defaultElement>
+            ref={ref}
+            disabled
+            {...rest}
+            role="presentation"
+            id={id}
+            className={clsx(className, cl.label)}
+            classes={{
+              text: classesList.text,
+              textTypography: classesList.textTypography,
+            }}
+          >
+            {label}
+          </ListItem>
+        )}
         {children}
       </Box>
     )

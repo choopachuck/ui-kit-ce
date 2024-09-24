@@ -10,13 +10,6 @@ import { TooltipContext } from './TooltipContext'
 import { IndicatorIcon } from './assets/IndicatorIcon'
 
 const useStyles = createUseStyles((theme) => {
-  const arrowShape = {
-    position: 'absolute',
-    width: '8px',
-    height: '8px',
-    background: 'inherit',
-  }
-
   return {
     tooltip: {
       position: 'relative',
@@ -53,54 +46,69 @@ const useStyles = createUseStyles((theme) => {
     },
 
     arrow: {
-      ...arrowShape,
+      overflow: 'hidden',
+      position: 'absolute',
+      width: 12,
+      height: 9 /**  {@link https://github.com/mui/material-ui/blob/next/packages/mui-material/src/Tooltip/Tooltip.js#L273} **/,
+      backgroundColor: 'inherit',
       visibility: 'hidden',
 
       '&::before': {
-        ...arrowShape,
-        left: 0,
         content: '""',
-        visibility: 'visible',
+        margin: 'auto',
+        display: 'block',
+        width: '100%',
+        height: '100%',
         transform: 'rotate(45deg)',
+        backgroundColor: 'inherit',
+        visibility: 'visible',
         boxSizing: 'border-box',
         borderWidth: 0,
         borderColor: theme.comp.tooltip.arrowColorBorder,
         borderStyle: 'solid',
       },
 
-      '[data-popper-placement^="top"] &': {
-        bottom: '-5px',
-
+      '[data-popper-placement*="bottom"] &': {
+        top: 0,
+        marginTop: -9,
         '&::before': {
-          borderBottomWidth: 1,
-          borderRightWidth: 1,
-        },
-      },
-
-      '[data-popper-placement^="bottom"] &': {
-        top: '-5px',
-
-        '&::before': {
+          transformOrigin: '0 100%',
           borderLeftWidth: 1,
           borderTopWidth: 1,
         },
       },
 
-      '[data-popper-placement^="left"] &': {
-        right: '-5px',
-
+      '[data-popper-placement*="top"] &': {
+        bottom: 0,
+        marginBottom: -9,
         '&::before': {
-          borderTopWidth: 1,
+          transformOrigin: '100% 0',
+          borderBottomWidth: 1,
           borderRightWidth: 1,
         },
       },
 
-      '[data-popper-placement^="right"] &': {
-        left: '-5px',
-
+      '[data-popper-placement*="right"] &': {
+        left: 0,
+        height: 12,
+        width: 9,
+        marginLeft: -9,
         '&::before': {
+          transformOrigin: '100% 100%',
           borderBottomWidth: 1,
           borderLeftWidth: 1,
+        },
+      },
+
+      '[data-popper-placement*="left"] &': {
+        right: 0,
+        height: 12,
+        width: 9,
+        marginRight: -9,
+        '&::before': {
+          transformOrigin: '0 0',
+          borderTopWidth: 1,
+          borderRightWidth: 1,
         },
       },
     },
@@ -159,7 +167,7 @@ const arrowModifiers = [
   {
     name: 'arrow',
     options: {
-      padding: 8,
+      padding: 4,
     },
   },
 ]
@@ -232,16 +240,6 @@ export const Tooltip = React.forwardRef(
       [setOpen, onStateChangeProp]
     )
 
-    const content = (
-      <TooltipContext.Provider value={{ close: handleClose }}>
-        <div {...rest} ref={tooltipRef} className={tooltipClassName}>
-          <div data-popper-arrow className={classesMap.arrow} />
-          {indicator && <IndicatorIcon className={classesMap.indicator} />}
-          {contentProp}
-        </div>
-      </TooltipContext.Provider>
-    )
-
     const child = React.Children.only(childrenProp)
 
     const dropdownId = useGeneratedId(dropdownProps?.id)
@@ -271,6 +269,20 @@ export const Tooltip = React.forwardRef(
     const modifiers = dropdownProps?.modifiers
       ? [...arrowModifiers, ...dropdownProps?.modifiers]
       : arrowModifiers
+
+    if (!contentProp) {
+      return children
+    }
+
+    const content = (
+      <TooltipContext.Provider value={{ close: handleClose }}>
+        <div {...rest} ref={tooltipRef} className={tooltipClassName}>
+          <div data-popper-arrow className={classesMap.arrow} />
+          {indicator && <IndicatorIcon className={classesMap.indicator} />}
+          {contentProp}
+        </div>
+      </TooltipContext.Provider>
+    )
 
     return (
       <Dropdown

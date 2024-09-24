@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
 
 export interface ButtonUploaderProps
   extends UploaderBaseProps,
-    Omit<ButtonProps, 'onError'> {
+    Omit<ButtonProps, 'onError' | 'ref'> {
   /**
    * Калбек выбора файла Выбор файла
    */
@@ -33,7 +33,6 @@ export interface ButtonUploaderProps
 export const ButtonUploader = React.forwardRef(
   (
     {
-      classes,
       inputProps,
       multiple = true,
       disabled = false,

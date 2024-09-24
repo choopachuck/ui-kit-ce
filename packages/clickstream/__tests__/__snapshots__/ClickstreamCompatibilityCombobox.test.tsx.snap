@@ -326,6 +326,74 @@ exports[`clickstream lib components compatibility: combobox::creatable 1`] = `
             "connectionType": "UNKNOWN",
             "elementAttributes": Array [
               Object {
+                "key": "data-v-uik-input-type",
+                "value": "combo-box-creatable",
+              },
+              Object {
+                "key": "type",
+                "value": "hidden",
+              },
+              Object {
+                "key": "value",
+                "value": "\\"Новая опция\\"",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "hidden",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "\\"Новая опция\\"",
+          },
+          "event": Event {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "role",
+                "value": "option",
+              },
+              Object {
+                "key": "aria-selected",
+                "value": "false",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-63-option-Новая опция",
+              },
+              Object {
+                "key": "aria-disabled",
+                "value": "false",
+              },
+              Object {
+                "key": "class",
+                "value": "listItem-0-2-212 option-0-2-127 medium-0-2-218 optionMedium-0-2-129",
+              },
+            ],
+            "elementEvent": "click",
+            "elementTag": "li",
+            "elementType": "li",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "\\"Новая опция\\"",
+          },
+          "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
                 "key": "class",
                 "value": "input-0-2-163",
               },
@@ -387,74 +455,6 @@ exports[`clickstream lib components compatibility: combobox::creatable 1`] = `
             "value": "Новая опция",
           },
           "event": Event {
-            "isTrusted": false,
-          },
-        },
-        Object {
-          "data": Object {
-            "batteryLevel": "0",
-            "connectionType": "UNKNOWN",
-            "elementAttributes": Array [
-              Object {
-                "key": "data-v-uik-input-type",
-                "value": "combo-box-creatable",
-              },
-              Object {
-                "key": "type",
-                "value": "hidden",
-              },
-              Object {
-                "key": "value",
-                "value": "\\"Новая опция\\"",
-              },
-            ],
-            "elementEvent": "change",
-            "elementTag": "input",
-            "elementType": "hidden",
-            "pageName": "",
-            "timeStamp": "2020-01-01T00:00:00.078-00:00",
-            "url": "http://localhost/",
-            "value": "\\"Новая опция\\"",
-          },
-          "event": Event {
-            "isTrusted": false,
-          },
-        },
-        Object {
-          "data": Object {
-            "batteryLevel": "0",
-            "connectionType": "UNKNOWN",
-            "elementAttributes": Array [
-              Object {
-                "key": "role",
-                "value": "option",
-              },
-              Object {
-                "key": "aria-selected",
-                "value": "false",
-              },
-              Object {
-                "key": "id",
-                "value": "v-uik-63-option-Новая опция",
-              },
-              Object {
-                "key": "aria-disabled",
-                "value": "false",
-              },
-              Object {
-                "key": "class",
-                "value": "listItem-0-2-212 option-0-2-127 medium-0-2-218 optionMedium-0-2-129",
-              },
-            ],
-            "elementEvent": "click",
-            "elementTag": "li",
-            "elementType": "li",
-            "pageName": "",
-            "timeStamp": "2020-01-01T00:00:00.078-00:00",
-            "url": "http://localhost/",
-            "value": "\\"Новая опция\\"",
-          },
-          "event": MouseEvent {
             "isTrusted": false,
           },
         },
@@ -805,76 +805,6 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
             "connectionType": "UNKNOWN",
             "elementAttributes": Array [
               Object {
-                "key": "class",
-                "value": "input-0-2-163",
-              },
-              Object {
-                "key": "aria-autocomplete",
-                "value": "list",
-              },
-              Object {
-                "key": "aria-controls",
-                "value": "v-uik-31",
-              },
-              Object {
-                "key": "aria-expanded",
-                "value": "true",
-              },
-              Object {
-                "key": "autocapitalize",
-                "value": "none",
-              },
-              Object {
-                "key": "autocomplete",
-                "value": "off",
-              },
-              Object {
-                "key": "autocorrect",
-                "value": "off",
-              },
-              Object {
-                "key": "id",
-                "value": "v-uik-33",
-              },
-              Object {
-                "key": "spellcheck",
-                "value": "false",
-              },
-              Object {
-                "key": "tabindex",
-                "value": "0",
-              },
-              Object {
-                "key": "type",
-                "value": "text",
-              },
-              Object {
-                "key": "title",
-                "value": "combobox-multiple-search-input",
-              },
-              Object {
-                "key": "value",
-                "value": "Треть",
-              },
-            ],
-            "elementEvent": "change",
-            "elementTag": "input",
-            "elementType": "text",
-            "pageName": "",
-            "timeStamp": "2020-01-01T00:00:00.078-00:00",
-            "url": "http://localhost/",
-            "value": "Треть",
-          },
-          "event": Event {
-            "isTrusted": false,
-          },
-        },
-        Object {
-          "data": Object {
-            "batteryLevel": "0",
-            "connectionType": "UNKNOWN",
-            "elementAttributes": Array [
-              Object {
                 "key": "data-v-uik-input-type",
                 "value": "combo-box",
               },
@@ -934,6 +864,76 @@ exports[`clickstream lib components compatibility: combobox::multiple 1`] = `
             "value": "Третье",
           },
           "event": MouseEvent {
+            "isTrusted": false,
+          },
+        },
+        Object {
+          "data": Object {
+            "batteryLevel": "0",
+            "connectionType": "UNKNOWN",
+            "elementAttributes": Array [
+              Object {
+                "key": "class",
+                "value": "input-0-2-163",
+              },
+              Object {
+                "key": "aria-autocomplete",
+                "value": "list",
+              },
+              Object {
+                "key": "aria-controls",
+                "value": "v-uik-31",
+              },
+              Object {
+                "key": "aria-expanded",
+                "value": "false",
+              },
+              Object {
+                "key": "autocapitalize",
+                "value": "none",
+              },
+              Object {
+                "key": "autocomplete",
+                "value": "off",
+              },
+              Object {
+                "key": "autocorrect",
+                "value": "off",
+              },
+              Object {
+                "key": "id",
+                "value": "v-uik-33",
+              },
+              Object {
+                "key": "spellcheck",
+                "value": "false",
+              },
+              Object {
+                "key": "tabindex",
+                "value": "0",
+              },
+              Object {
+                "key": "type",
+                "value": "text",
+              },
+              Object {
+                "key": "title",
+                "value": "combobox-multiple-search-input",
+              },
+              Object {
+                "key": "value",
+                "value": "Треть",
+              },
+            ],
+            "elementEvent": "change",
+            "elementTag": "input",
+            "elementType": "text",
+            "pageName": "",
+            "timeStamp": "2020-01-01T00:00:00.078-00:00",
+            "url": "http://localhost/",
+            "value": "Треть",
+          },
+          "event": Event {
             "isTrusted": false,
           },
         },

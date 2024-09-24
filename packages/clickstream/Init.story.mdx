@@ -1,0 +1,42 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { ClickStreamProvider } from '@v-uik/clickstream'
+import {
+  createTitle,
+  COMPONENTS,
+  DocsAlert,
+  STORY_TITLES,
+} from '../../docs/showroom/config'
+import { Init } from './examples'
+
+import RawInit from '!!raw-loader!./examples/Init'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.utility,
+    'ClickStreamProvider',
+    STORY_TITLES.clickStreamProvider.init,
+  ])}
+  component={ClickStreamProvider}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Инициализация провайдера
+
+`ClickStreamProvider` предоставляет функцию обратного вызова для первичной инициализации провайдера, которая в качестве аргументов принимает
+базовые данные инициализации, а также ее метаданные.
+
+<DocsAlert justify="start">
+  Данные, получаемые во время первичной инициализации, появятся в панели снизу
+  под формой
+</DocsAlert>
+
+<Canvas withSource="none">
+  <Init />
+</Canvas>
+
+<Source language="tsx" code={RawInit} />

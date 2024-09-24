@@ -13,6 +13,7 @@ import {
   WithRows,
   WithMaxLength,
   TextareaAutosize,
+  TextareaUserResize,
 } from './examples'
 import RawBasic from '!!raw-loader!@v-uik/textarea/examples/Basic'
 import RawDisabled from '!!raw-loader!@v-uik/textarea/examples/Disabled'
@@ -20,6 +21,7 @@ import RawWithError from '!!raw-loader!@v-uik/textarea/examples/WithError'
 import RawFullWidth from '!!raw-loader!@v-uik/textarea/examples/FullWidth'
 import RawWithRows from '!!raw-loader!@v-uik/textarea/examples/WithRows'
 import RawTextareaAutosize from '!!raw-loader!@v-uik/textarea/examples/TextareaAutosize'
+import RawTextareaUserResize from '!!raw-loader!@v-uik/textarea/examples/TextareaUserResize'
 import RawWithMaxLength from '!!raw-loader!@v-uik/textarea/examples/WithMaxLength'
 
 export const story = createStory(Basic, RawBasic)
@@ -124,6 +126,16 @@ export const onChange = () => {}
 </Canvas>
 
 <Source language="tsx" code={RawTextareaAutosize} />
+
+## Пользовательское изменение размеров
+
+Если необходимо пользователю позволить изменять размер поля, то можно передать свойство `resize`
+
+<Canvas withSource="none">
+  <TextareaUserResize />
+</Canvas>
+
+<Source language="tsx" code={RawTextareaUserResize} />
 
 ## Связанные компоненты
 

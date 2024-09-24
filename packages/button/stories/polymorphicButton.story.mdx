@@ -1,0 +1,47 @@
+import { Meta, Source, Story } from '@storybook/addon-docs'
+import { PolymorphicButton } from '@v-uik/button'
+import {
+  createTitle,
+  COMPONENTS,
+  createStory,
+} from '../../../docs/showroom/config'
+import { ClassesDummy, CanvasPolymorphic as CanvasStory } from '../examples'
+import RawButtonWithRouterLink from '!!raw-loader!@v-uik/button/examples/ButtonWithRouterLink'
+import RawButtonWithLink from '!!raw-loader!@v-uik/button/examples/ButtonWithLink'
+import RawCanvas from '!!raw-loader!@v-uik/button/examples/CanvasPolymorphic'
+
+export const story = createStory(CanvasStory, RawCanvas)
+
+<Meta
+  title={createTitle([COMPONENTS.controls, 'Button', 'PolymorphicButton'])}
+  component={PolymorphicButton}
+/>
+
+<Story
+  name="PolymorphicButton"
+  parameters={{
+    ...story.parameters,
+    controls: {
+      disable: true,
+    },
+    docs: { disable: true },
+  }}
+>
+  {story.component}
+</Story>
+
+# PolymorphicButton
+
+Компонент PolymorphicButton решает проблему использования компонента [Button](?path=/docs/элементы-управления-button-button--button), как ссылки или
+для интеграции с библиотеками маршрутизации
+
+## Пример работы с обычными ссылками
+
+<Source language="tsx" code={RawButtonWithLink} />
+
+## Примеры работы с библиотеками маршрутизации
+
+Демонстрация работы компонента с библиотекой [react-router](https://v5.reactrouter.com/web/guides/quick-start).
+Для интеграции со сторонними библиотеками рекомендуется использовать параметр `as`.
+
+<Source language="tsx" code={RawButtonWithRouterLink} />

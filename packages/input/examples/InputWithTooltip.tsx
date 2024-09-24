@@ -6,6 +6,7 @@ export const InputWithTooltip = (): JSX.Element => {
     <Input
       label="Login"
       inputProps={{ id: 'third-case', title: 'Tooltip' }}
+      style={{ paddingTop: 8 }}
       labelProps={{
         htmlFor: 'third-case',
         tooltipText: 'Tooltip',

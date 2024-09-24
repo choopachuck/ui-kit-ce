@@ -29,4 +29,6 @@ export type Classes = {
   textMd?: string
   /** Стиль, применяемый к тексту в элементе с `size='lg'` */
   textLg?: string
+  /** Стиль, применяемый к элементу с `disabled='true'` */
+  disabled?: string
 }

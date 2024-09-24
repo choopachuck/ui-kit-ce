@@ -23,13 +23,19 @@ export const Autocomplete = React.forwardRef(
       ListElement,
       ListItemElement
     >
-    const comboBoxProps = useAutocomplete(autocompleteProps)
+    const { currentValue, ...comboBoxProps } =
+      useAutocomplete(autocompleteProps)
     const hiddenProps: IHiddenPropsContext = React.useMemo(
       () => ({
         backfill: props.backfill ?? true,
         recoveryBackfillInputValue: (handler: (inputValue: string) => void) =>
           handler(autocompleteProps.inputValue ?? ''),
+        shouldClearValue: (value) => {
+          return value !== currentValue.current
+        },
+        isAutocomplete: true,
       }),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [props.backfill, autocompleteProps.inputValue]
     )
 

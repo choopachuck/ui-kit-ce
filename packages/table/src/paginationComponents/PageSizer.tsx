@@ -13,6 +13,9 @@ const useStyles = createUseStyles({
       border: 'none',
     },
   },
+  optionText: {
+    flexShrink: 0,
+  },
 })
 
 type Classes = Partial<Record<'customSelectButton', string>>
@@ -58,6 +61,7 @@ export const Picker = ({
       }}
       classes={{
         button: classesMap.customSelectButton,
+        optionText: classesMap.optionText,
       }}
       options={options}
       value={value}

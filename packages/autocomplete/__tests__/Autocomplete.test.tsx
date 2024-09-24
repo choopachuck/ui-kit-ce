@@ -35,6 +35,40 @@ it('should select correct value when using keyboard', () => {
   expect(onChange).lastCalledWith('Второе', expect.anything(), 'select-arrows')
 })
 
+it('handle change return value when input value equal option value with canClear=true && options type === string[]', async () => {
+  const onChange = jest.fn()
+  const { getByRole, findAllByRole } = render(
+    <Autocomplete canClear options={['first', 'second']} onChange={onChange} />
+  )
+  const searchInput = getByRole('textbox') as HTMLInputElement
+  fireEvent.change(searchInput, { target: { value: 'first' } })
+
+  const foundOptions = await findAllByRole('option')
+  fireEvent.click(foundOptions[0])
+  expect(onChange).toBeCalledWith('first', expect.anything(), 'select')
+  expect(onChange).toBeCalledTimes(2)
+})
+
+describe('handle change return label when input value equal value.value with  options type === {value: string;label: string}[]', () => {
+  it.each([true, false, undefined])('canClear=%s', async (canClear) => {
+    const onChange = jest.fn()
+    const { getByRole, findAllByRole } = render(
+      <Autocomplete
+        canClear={canClear}
+        options={[{ value: '1', label: 'first' }]}
+        onChange={onChange}
+      />
+    )
+    const searchInput = getByRole('textbox') as HTMLInputElement
+    fireEvent.change(searchInput, { target: { value: '1' } })
+
+    const foundOptions = await findAllByRole('option')
+    fireEvent.click(foundOptions[0])
+    expect(onChange).toBeCalledWith('first', expect.anything(), 'select')
+    expect(onChange).toBeCalledTimes(2)
+  })
+})
+
 it('dropdown not opening when option not found', async () => {
   const options = [
     { value: '', label: 'Пустое' },
@@ -72,6 +106,25 @@ it('has focus when click on label STS-30123', () => {
   const searchInput = getByRole('textbox')
 
   expect(searchInput).toHaveFocus()
+})
+
+it('has to work with special character', async () => {
+  const options = [{ value: '', label: `$&+,:;=?@#|'<>.-^*()%!` }]
+  const onChange = jest.fn()
+  const { findByRole, getByRole } = render(
+    <Autocomplete options={options} onChange={onChange} />
+  )
+
+  const searchInput = getByRole('textbox') as HTMLInputElement
+  fireEvent.change(searchInput, { target: { value: `$&+,:;=?@#|'<>.-^*()%!` } })
+
+  const foundOption = await findByRole('option')
+  fireEvent.click(foundOption)
+  expect(onChange).toBeCalledWith(
+    `$&+,:;=?@#|'<>.-^*()%!`,
+    expect.anything(),
+    'select'
+  )
 })
 
 it('outside value change clears inputs text STS-30122', async () => {

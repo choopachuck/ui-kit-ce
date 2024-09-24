@@ -1,0 +1,44 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { ClickStreamProvider } from '@v-uik/clickstream'
+import {
+  createTitle,
+  COMPONENTS,
+  DocsAlert,
+  STORY_TITLES,
+} from '../../docs/showroom/config'
+import { BatchSize } from './examples'
+
+import RawBatchSize from '!!raw-loader!./examples/BatchSize'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.utility,
+    'ClickStreamProvider',
+    STORY_TITLES.clickStreamProvider.batchSize,
+  ])}
+  component={ClickStreamProvider}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Размер очереди событий
+
+Для того чтобы изменить максимальный размер очереди событий, необходимо указать соответствующее значение
+в свойство `batchSize`.
+
+Ниже представлен пример использования компонента с указанием максимального размера очереди событий, равного 3.
+
+<DocsAlert justify="start">
+  Результат манипуляций с элементами формы или со всей страницей отобразится в
+  панели с кодом снизу под формой
+</DocsAlert>
+
+<Canvas withSource="none">
+  <BatchSize />
+</Canvas>
+
+<Source language="tsx" code={RawBatchSize} />

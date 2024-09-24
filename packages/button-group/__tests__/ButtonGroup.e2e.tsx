@@ -98,4 +98,14 @@ test.describe('ButtonGroup', () => {
 
     await expect(component).toHaveScreenshot()
   })
+
+  test('single', async ({ mount }) => {
+    const component = await mount(
+      <ButtonGroup style={{ padding: 5 }}>
+        <Button name="1">button 1</Button>
+      </ButtonGroup>
+    )
+
+    await expect(component).toHaveScreenshot()
+  })
 })

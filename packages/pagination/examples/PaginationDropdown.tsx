@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {
   Pagination,
+  PaginationAppearance,
   createUseStyles,
   clsx,
   PaginationOverflowButtonProps,
@@ -8,7 +9,6 @@ import {
   DropdownMenuItem,
   Button,
 } from '@v-uik/base'
-import { PaginationAppearance } from '../src'
 
 const FIRST_PAGE = 1
 const TOTAL_PAGE_COUNT = 50

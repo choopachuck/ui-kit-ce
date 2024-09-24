@@ -1,6 +1,6 @@
 {
   "name": "@v-uik/input-number",
-  "version": "1.12.1",
+  "version": "1.13.0",
   "description": "",
   "sideEffects": false,
   "module": "dist/esm/index.js",
@@ -17,15 +17,15 @@
     "build:cjs": "tsc -d --outDir ./dist/cjs --project tsconfig.cjs.json",
     "build:esm": "tsc -d --outDir ./dist/esm --project tsconfig.esm.json"
   },
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "author": "UFSUI",
   "peerDependencies": {
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@v-uik/common": "^1.12.1",
-    "@v-uik/hooks": "^1.12.1",
-    "@v-uik/input": "^1.12.1",
-    "@v-uik/utils": "^1.12.1"
+    "@v-uik/common": "^1.13.0",
+    "@v-uik/hooks": "^1.13.0",
+    "@v-uik/input": "^1.13.0",
+    "@v-uik/utils": "^1.13.0"
   }
 }

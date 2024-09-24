@@ -31,7 +31,7 @@
     "postinstall": "node ./scripts/theme-parser/update-in-storybook.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "GitVerse-1.0",
   "simple-git-hooks": {
     "commit-msg": "yarn commitlint --edit $1"
   },

@@ -59,6 +59,7 @@ const packages = [
   'textarea',
   'theme',
   'tooltip',
+  'tree',
   'typography',
   'underlay',
   'utils',

@@ -52,6 +52,10 @@ export interface TextareaProps<
    */
   error?: boolean
   /**
+   * Возможность изменения размера поля пользователем
+   */
+  resize?: 'none' | 'both' | 'horizontal' | 'vertical'
+  /**
    * Размер поля
    */
   size?: ElementSizeType
@@ -181,7 +185,6 @@ const useStyles = createUseStyles((theme) => ({
     width: '100%',
     margin: 0,
     padding: [8, 16],
-    resize: 'none',
     outline: 0,
     border: 0,
     boxShadow: 'none',
@@ -206,6 +209,19 @@ const useStyles = createUseStyles((theme) => ({
     '&:focus': {
       outline: 0,
     },
+  },
+
+  resizeNone: {
+    resize: 'none',
+  },
+  resizeBoth: {
+    resize: 'both',
+  },
+  resizeHorizontal: {
+    resize: 'horizontal',
+  },
+  resizeVertical: {
+    resize: 'vertical',
   },
 
   textareaSmall: {
@@ -254,6 +270,7 @@ export const Textarea = React.forwardRef(
       disabled,
       error,
       size = ElementSize.md,
+      resize = 'none',
       rows = 3,
       components,
       showCount,
@@ -287,6 +304,10 @@ export const Textarea = React.forwardRef(
       [classesMap?.textareaSmall ?? '']: size === ElementSize.sm,
       [classesMap?.textareaMedium ?? '']: size === ElementSize.md,
       [classesMap?.textareaLarge ?? '']: size === ElementSize.lg,
+      [classesMap?.resizeNone]: resize === 'none',
+      [classesMap?.resizeBoth]: resize === 'both',
+      [classesMap?.resizeHorizontal]: resize === 'horizontal',
+      [classesMap?.resizeVertical]: resize === 'vertical',
     })
 
     const handleFocus = (event: React.FocusEvent<HTMLTextAreaElement>) => {

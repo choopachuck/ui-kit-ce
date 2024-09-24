@@ -74,7 +74,7 @@ exports[`clickstream lib components compatibility: date-time-picker::keyboard 1`
               },
               Object {
                 "key": "class",
-                "value": "resetButton-0-2-42 dayButton-0-2-236 today-0-2-237 selected-0-2-238",
+                "value": "resetButton-0-2-42 dayButton-0-2-237 today-0-2-238 selected-0-2-239",
               },
               Object {
                 "key": "aria-selected",
@@ -166,7 +166,7 @@ exports[`clickstream lib components compatibility: date-time-picker::keyboard 1`
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42 selected-0-2-253",
+                "value": "option-0-2-252 resetButton-0-2-42 selected-0-2-254",
               },
               Object {
                 "key": "role",
@@ -254,7 +254,7 @@ exports[`clickstream lib components compatibility: date-time-picker::keyboard 1`
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42",
+                "value": "option-0-2-252 resetButton-0-2-42",
               },
               Object {
                 "key": "role",
@@ -417,7 +417,7 @@ exports[`clickstream lib components compatibility: date-time-picker::mouseclick 
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42 selected-0-2-253",
+                "value": "option-0-2-252 resetButton-0-2-42 selected-0-2-254",
               },
               Object {
                 "key": "role",
@@ -505,7 +505,7 @@ exports[`clickstream lib components compatibility: date-time-picker::mouseclick 
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42",
+                "value": "option-0-2-252 resetButton-0-2-42",
               },
               Object {
                 "key": "role",
@@ -668,7 +668,7 @@ exports[`clickstream lib components compatibility: time-picker::mouseclick 1`] =
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42 selected-0-2-253",
+                "value": "option-0-2-252 resetButton-0-2-42 selected-0-2-254",
               },
               Object {
                 "key": "role",
@@ -756,7 +756,7 @@ exports[`clickstream lib components compatibility: time-picker::mouseclick 1`] =
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42 selected-0-2-253",
+                "value": "option-0-2-252 resetButton-0-2-42 selected-0-2-254",
               },
               Object {
                 "key": "role",
@@ -844,7 +844,7 @@ exports[`clickstream lib components compatibility: time-picker::mouseclick 1`] =
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42",
+                "value": "option-0-2-252 resetButton-0-2-42",
               },
               Object {
                 "key": "role",
@@ -999,7 +999,7 @@ exports[`clickstream lib components compatibility: time-range-picker::keyboard 1
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42 selected-0-2-253",
+                "value": "option-0-2-252 resetButton-0-2-42 selected-0-2-254",
               },
               Object {
                 "key": "role",
@@ -1079,7 +1079,7 @@ exports[`clickstream lib components compatibility: time-range-picker::keyboard 1
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42 selected-0-2-253",
+                "value": "option-0-2-252 resetButton-0-2-42 selected-0-2-254",
               },
               Object {
                 "key": "role",
@@ -1159,7 +1159,7 @@ exports[`clickstream lib components compatibility: time-range-picker::keyboard 1
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42",
+                "value": "option-0-2-252 resetButton-0-2-42",
               },
               Object {
                 "key": "role",
@@ -1243,7 +1243,7 @@ exports[`clickstream lib components compatibility: time-range-picker::keyboard 1
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42 selected-0-2-253",
+                "value": "option-0-2-252 resetButton-0-2-42 selected-0-2-254",
               },
               Object {
                 "key": "role",
@@ -1327,7 +1327,7 @@ exports[`clickstream lib components compatibility: time-range-picker::keyboard 1
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42 selected-0-2-253",
+                "value": "option-0-2-252 resetButton-0-2-42 selected-0-2-254",
               },
               Object {
                 "key": "role",
@@ -1411,7 +1411,7 @@ exports[`clickstream lib components compatibility: time-range-picker::keyboard 1
               },
               Object {
                 "key": "class",
-                "value": "option-0-2-251 resetButton-0-2-42",
+                "value": "option-0-2-252 resetButton-0-2-42",
               },
               Object {
                 "key": "role",

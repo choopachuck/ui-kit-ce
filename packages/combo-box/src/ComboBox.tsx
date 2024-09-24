@@ -219,8 +219,8 @@ export type ComboboxProps<
     components?: ComboBoxComponentsConfig<Option, ListElement, ListItem>
   }
 
-const defaultFilterOption = createFilter()
 const defaultOptions: Options<unknown> = []
+const defaultFilterOption = createFilter()
 
 export const ComboBox = React.forwardRef(
   <
@@ -240,7 +240,6 @@ export const ComboBox = React.forwardRef(
       dropdownProps,
       error,
       errorIconTooltipProps,
-      filterOption = defaultFilterOption,
       getOptionLabel = getOptionLabelBuiltin,
       getOptionPrefix = getOptionPrefixBuiltin,
       getOptionSuffix = getOptionSuffixBuiltin,
@@ -292,14 +291,19 @@ export const ComboBox = React.forwardRef(
       keepHelperTextMinHeight,
       required,
       inputProps,
+      filterOption = defaultFilterOption,
       ...rest
     }: ComboboxProps<Option, ListElement, ListItemElement>,
     ref: React.Ref<HTMLDivElement>
   ) => {
     useForceSecondRender(propsOpened)
 
-    const { backfill, recoveryBackfillInputValue: recoveryBackfillInputValue } =
-      React.useContext(HiddenPropsContext)
+    const {
+      backfill,
+      recoveryBackfillInputValue: recoveryBackfillInputValue,
+      shouldClearValue,
+      isAutocomplete,
+    } = React.useContext(HiddenPropsContext)
 
     const classList = useStyles()
     const dynamicStyles = getDynamicStyles({ rows })
@@ -380,6 +384,7 @@ export const ComboBox = React.forwardRef(
     const popupRef = React.useRef<HTMLDivElement | null>(null)
     const indexOfSelected = React.useRef<number>()
     const listRef = React.useRef<HTMLElement | null>(null)
+    const clearRef = React.useRef<HTMLDivElement | null>(null)
 
     const hiddenInputRef = React.useRef<HTMLInputElement>(null)
     const hiddenInputMergedRef = useMergedRefs([
@@ -409,11 +414,24 @@ export const ComboBox = React.forwardRef(
     // после ввода в autocomplete, введенное значение должно стать опцией с возможностью очистки при canClear
     React.useEffect(() => {
       if (backfill) {
-        setSelectedValue(
-          inputValue ? [toOption(inputValue) as unknown as Option] : []
+        let option = toOption(inputValue) as unknown as Option
+        const sameOption = options.find(
+          (x) =>
+            getOptionLabel(x) === inputValue || getOptionValue(x) === inputValue
         )
+        if (sameOption) {
+          option = sameOption
+        }
+        setSelectedValue(inputValue ? [option] : [])
       }
-    }, [backfill, inputValue, setSelectedValue])
+    }, [
+      backfill,
+      inputValue,
+      setSelectedValue,
+      getOptionLabel,
+      getOptionValue,
+      options,
+    ])
 
     const [active, setActive] = React.useState<Option | undefined>(undefined)
     const [selectedActive, setSelectedActive] = React.useState<
@@ -523,7 +541,9 @@ export const ComboBox = React.forwardRef(
 
     const handleOutsideClick = React.useCallback(
       (e?: Event) => {
-        if (e && listRef.current?.contains(e.target as Node)) {
+        if (e && listRef.current === e.target) {
+          e.stopPropagation()
+        } else if (e && listRef.current?.contains(e.target as Node)) {
           close(e)
         } else {
           closeWithUnFocus(e)
@@ -580,7 +600,7 @@ export const ComboBox = React.forwardRef(
     const hasValue = () => selectedValue.length > 0
 
     const canChangeValue = (option?: Option) => {
-      if (multiple || canClear) {
+      if (multiple || canClear || isAutocomplete) {
         return true
       }
 
@@ -665,7 +685,18 @@ export const ComboBox = React.forwardRef(
         (x) => getOptionValue(x) === getOptionValue(option)
       )
 
-      if (index !== -1) {
+      if (isAutocomplete) {
+        if (
+          index !== -1 &&
+          canClear &&
+          shouldClearValue?.(getOptionValue(option))
+        ) {
+          optionsClone.splice(index, 1)
+        } else {
+          optionsClone = [option]
+        }
+        setSelectedValue(optionsClone)
+      } else if (index !== -1 && !isAutocomplete) {
         optionsClone.splice(index, 1)
         setSelectedValue(optionsClone)
       } else {
@@ -708,9 +739,6 @@ export const ComboBox = React.forwardRef(
       if (!disableCloseOnSelect) {
         close()
       }
-
-      // это здесь для того, что не срабатывал onblur после выбора элемента
-      event.preventDefault()
     }
 
     const handleClear = (event: ComboboxEvent) => {
@@ -811,7 +839,12 @@ export const ComboBox = React.forwardRef(
 
     const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
       onControlMouseDown?.(event)
-      if (openOnClick && !disabled) {
+      if (
+        openOnClick &&
+        !disabled &&
+        event.target !== clearRef.current &&
+        !clearRef.current?.contains(event.target as HTMLElement)
+      ) {
         handleMouseDownDropdown(event)
       }
     }
@@ -1238,6 +1271,7 @@ export const ComboBox = React.forwardRef(
         return (
           <ClearIndicator
             {...commonProps}
+            ref={clearRef}
             disabled={disabled}
             size={size}
             innerProps={{
@@ -1304,6 +1338,7 @@ export const ComboBox = React.forwardRef(
         checked: isSelected,
         className: clsx({
           [classList.checkbox]: !!getOptionPrefix(option),
+          [classes?.checkBox ?? '']: multiple,
         }),
       }
 
@@ -1372,6 +1407,7 @@ export const ComboBox = React.forwardRef(
             style: { ...dynamicStyles.list, ...(listProps?.style || {}) },
           }}
           {...commonProps}
+          inputRef={inputRef}
           renderOptionPrefix={renderOptionPrefix}
           renderOptionSuffix={renderOptionSuffix}
           groupBy={groupBy}
@@ -1412,6 +1448,8 @@ export const ComboBox = React.forwardRef(
           loadingLabel={loadingLabel}
           loading={loading}
           OptionItemComponent={OptionItem}
+          handleChangeInputValue={handleChangeInputValue}
+          handleClear={handleClear}
           onSelectOption={handleOptionClick}
         />
       )

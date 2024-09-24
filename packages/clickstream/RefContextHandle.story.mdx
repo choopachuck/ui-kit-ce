@@ -1,0 +1,63 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs'
+import { ClickStreamProvider } from '@v-uik/clickstream'
+import {
+  createTitle,
+  COMPONENTS,
+  DocsAlert,
+  STORY_TITLES,
+} from '../../docs/showroom/config'
+import { RefHandle, ContextHandle } from './examples'
+
+import RawRefHandle from '!!raw-loader!./examples/RefHandle'
+import RawContextHandle from '!!raw-loader!./examples/ContextHandle'
+
+<Meta
+  title={createTitle([
+    COMPONENTS.utility,
+    'ClickStreamProvider',
+    STORY_TITLES.clickStreamProvider.refAndCustomEvents,
+  ])}
+  component={ClickStreamProvider}
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: {
+      canvas: { hidden: true },
+    },
+  }}
+/>
+
+# Ref, контекст, пользовательские события и ручная отправка
+
+`ClickStreamProvider` предоставляет возможность для отправки событий вручную через использование контекста и через
+использование механизма `React.useRef`.
+
+Данный способ отправки дает возможность пользователю отправлять любые виды событий и настраивать их под нужды проекта, а также
+отправлять события моментально, вне основной очереди событий.
+
+<DocsAlert justify="start">
+  Результат манипуляций с элементами формы или со всей страницей отобразится в
+  панели с кодом снизу под примером реализации
+</DocsAlert>
+<br />
+
+## Использование контекста
+
+Ниже представлен пример реализации отправки обычных и пользовательских событий событий вручную через использование контекста
+`useClickStreamContext`.
+
+<Canvas withSource="none">
+  <ContextHandle />
+</Canvas>
+
+<Source language="tsx" code={RawContextHandle} />
+
+## Использование Ref
+
+Ниже представлен пример реализации отправки обычных и пользовательских событий событий вручную через использование механизма
+`React.useRef`.
+
+<Canvas withSource="none">
+  <RefHandle />
+</Canvas>
+
+<Source language="tsx" code={RawRefHandle} />

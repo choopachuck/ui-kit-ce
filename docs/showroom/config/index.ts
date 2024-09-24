@@ -41,6 +41,23 @@ export const COMPONENTS = {
 }
 
 /**
+ * Заголовки сторей
+ */
+export const STORY_TITLES = {
+  clickStreamProvider: {
+    api: 'API',
+    baseUsage: 'Базовое использование',
+    batchSize: 'Размер очереди событий',
+    init: 'Инициализация провайдера',
+    inactivityTime: 'Время бездействия пользователя',
+    formatData: 'Преобразование данных',
+    refAndCustomEvents:
+      'Ref, контекст, пользовательские события и ручная отправка',
+    disableEvents: 'Отключение автоматической отправки событий',
+  },
+}
+
+/**
  * Формирует структуру заголовка для story
  *
  * @example

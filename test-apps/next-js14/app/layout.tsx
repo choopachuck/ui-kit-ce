@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ThemeProvider } from '@v-uik/theme'
-import { theme } from './theme'
 import { NextJsProvider } from '@v-uik/next-js-provider'
+import { CustomThemeProvider } from './ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextJsProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <CustomThemeProvider>{children}</CustomThemeProvider>
         </NextJsProvider>
       </body>
     </html>
